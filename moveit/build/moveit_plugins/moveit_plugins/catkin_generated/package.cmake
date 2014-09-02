@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "moveit_plugins")
+set(moveit_plugins_MAINTAINER "Ioan Sucan <isucan@gmail.com>")
+set(moveit_plugins_DEPRECATED "")
+set(moveit_plugins_VERSION "0.5.6")
+set(moveit_plugins_BUILD_DEPENDS )
+set(moveit_plugins_RUN_DEPENDS "moveit_simple_controller_manager" "moveit_fake_controller_manager")
+set(moveit_plugins_BUILDTOOL_DEPENDS "catkin")

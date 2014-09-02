@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/kunal15595/ros/moveit/devel/setup.sh

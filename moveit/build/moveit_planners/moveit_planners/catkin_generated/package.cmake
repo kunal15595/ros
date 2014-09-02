@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "moveit_planners")
+set(moveit_planners_MAINTAINER "Ioan Sucan <isucan@willowgarage.com>")
+set(moveit_planners_DEPRECATED "")
+set(moveit_planners_VERSION "0.5.6")
+set(moveit_planners_BUILD_DEPENDS )
+set(moveit_planners_RUN_DEPENDS "moveit_planners_ompl")
+set(moveit_planners_BUILDTOOL_DEPENDS "catkin")

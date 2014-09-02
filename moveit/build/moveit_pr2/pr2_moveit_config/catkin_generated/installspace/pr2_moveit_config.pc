@@ -1,0 +1,8 @@
+prefix=/home/kunal15595/ros/moveit/install
+
+Name: pr2_moveit_config
+Description: Description of pr2_moveit_config
+Version: 0.5.7
+Cflags: 
+Libs: -L/home/kunal15595/ros/moveit/install/lib 
+Requires: 

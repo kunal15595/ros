@@ -1,8 +1,18 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 
+void callback1(const ros::TimerEvent&)
+{
+  ROS_INFO("Callback 1 triggered");
+}
+
+void callback2(const ros::TimerEvent&)
+{
+  ROS_INFO("Callback 2 triggered");
+}
+
 /**
- * This tutorial demonstrates simple receipt of messages over the ROS system.
+ * demonstrates simple receipt of messages over the ROS system.
  */
 void chatterCallback(const std_msgs::String::ConstPtr& msg)
 {
@@ -29,7 +39,8 @@ int main(int argc, char **argv)
    * NodeHandle destructed will close down the node.
    */
   ros::NodeHandle n;
-
+  ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);
+  ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
   /**
    * The subscribe() call is how you tell ROS that you want to receive messages
    * on a given topic.  This invokes a call to the ROS

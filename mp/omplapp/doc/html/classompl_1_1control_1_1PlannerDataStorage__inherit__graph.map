@@ -1,0 +1,3 @@
+<map id="ompl::control::PlannerDataStorage" name="ompl::control::PlannerDataStorage">
+<area shape="rect" id="node2" href="$classompl_1_1base_1_1PlannerDataStorage.html" title="Object that handles loading/storing a PlannerData object to/from a binary stream. Serialization of ve..." alt="" coords="4,5,213,32"/>
+</map>

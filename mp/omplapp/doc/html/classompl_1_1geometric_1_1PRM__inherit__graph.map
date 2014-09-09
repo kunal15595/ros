@@ -1,0 +1,6 @@
+<map id="ompl::geometric::PRM" name="ompl::geometric::PRM">
+<area shape="rect" id="node4" href="$classompl_1_1geometric_1_1LazyPRM.html" title="Lazy Probabilistic RoadMap planner. " alt="" coords="16,229,197,256"/>
+<area shape="rect" id="node6" href="$classompl_1_1geometric_1_1PRMstar.html" title="PRM* planner. " alt="" coords="222,229,396,256"/>
+<area shape="rect" id="node2" href="$classompl_1_1base_1_1Planner.html" title="Base class for a planner. " alt="" coords="139,80,277,107"/>
+<area shape="rect" id="node5" href="$classompl_1_1geometric_1_1LazyPRMstar.html" title="PRM* planner. " alt="" coords="5,304,208,331"/>
+</map>

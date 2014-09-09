@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::base::ProblemDefinition Class Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1base.html">base</a></li><li class="navelem"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html">ProblemDefinition</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="classompl_1_1base_1_1ProblemDefinition-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::base::ProblemDefinition Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Definition of a problem to be solved. This includes the start state(s) for the system and a goal specification. Will contain solutions, if found.  
+ <a href="classompl_1_1base_1_1ProblemDefinition.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ProblemDefinition_8h_source.html">ProblemDefinition.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ompl::base::ProblemDefinition:</div>
+<div class="dyncontent">
+<div class="center"><img src="classompl_1_1base_1_1ProblemDefinition__inherit__graph.png" border="0" usemap="#ompl_1_1base_1_1ProblemDefinition_inherit__map" alt="Inheritance graph"/></div>
+<map name="ompl_1_1base_1_1ProblemDefinition_inherit__map" id="ompl_1_1base_1_1ProblemDefinition_inherit__map">
+<area shape="rect" id="node3" href="classompl_1_1control_1_1LTLProblemDefinition.html" title="ompl::control::LTLProblem\lDefinition" alt="" coords="17,155,191,197"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a1626717b23766adb3e901bc2ff746744"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1626717b23766adb3e901bc2ff746744"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a1626717b23766adb3e901bc2ff746744">ProblemDefinition</a> (const <a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;si)</td></tr>
+<tr class="memdesc:a1626717b23766adb3e901bc2ff746744"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a problem definition given the <a class="el" href="classompl_1_1base_1_1SpaceInformation.html" title="The base class for space information. This contains all the information about the space planning is d...">SpaceInformation</a> it is part of. <br/></td></tr>
+<tr class="separator:a1626717b23766adb3e901bc2ff746744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2073c0761c97b87274004ec41b40beed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2073c0761c97b87274004ec41b40beed"></a>
+const <a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a2073c0761c97b87274004ec41b40beed">getSpaceInformation</a> () const </td></tr>
+<tr class="memdesc:a2073c0761c97b87274004ec41b40beed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the space information this problem definition is for. <br/></td></tr>
+<tr class="separator:a2073c0761c97b87274004ec41b40beed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3120682d036099f68fd26805fee0736d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3120682d036099f68fd26805fee0736d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a3120682d036099f68fd26805fee0736d">addStartState</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state)</td></tr>
+<tr class="memdesc:a3120682d036099f68fd26805fee0736d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a start state. The state is copied. <br/></td></tr>
+<tr class="separator:a3120682d036099f68fd26805fee0736d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a874c33b1adab325a2ebf489fa04b8099"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a874c33b1adab325a2ebf489fa04b8099">addStartState</a> (const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt;&gt; &amp;state)</td></tr>
+<tr class="memdesc:a874c33b1adab325a2ebf489fa04b8099"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a start state. The state is copied.  <a href="#a874c33b1adab325a2ebf489fa04b8099">More...</a><br/></td></tr>
+<tr class="separator:a874c33b1adab325a2ebf489fa04b8099"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b292f3df6545bb90fbeff72e11f0b59"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b292f3df6545bb90fbeff72e11f0b59"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a8b292f3df6545bb90fbeff72e11f0b59">hasStartState</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state, unsigned int *startIndex=NULL)</td></tr>
+<tr class="memdesc:a8b292f3df6545bb90fbeff72e11f0b59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether a specified starting state is already included in the problem definition and optionally return the index of that starting state. <br/></td></tr>
+<tr class="separator:a8b292f3df6545bb90fbeff72e11f0b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6959a875ace6ebdce9024cd24324fb49"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6959a875ace6ebdce9024cd24324fb49"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a6959a875ace6ebdce9024cd24324fb49">clearStartStates</a> ()</td></tr>
+<tr class="memdesc:a6959a875ace6ebdce9024cd24324fb49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all start states (memory is freed) <br/></td></tr>
+<tr class="separator:a6959a875ace6ebdce9024cd24324fb49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ece75a393981197ef64aee59e9c9f23"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ece75a393981197ef64aee59e9c9f23"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a7ece75a393981197ef64aee59e9c9f23">getStartStateCount</a> () const </td></tr>
+<tr class="memdesc:a7ece75a393981197ef64aee59e9c9f23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of start states. <br/></td></tr>
+<tr class="separator:a7ece75a393981197ef64aee59e9c9f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf141b46b6b36418bc115fcb5e8afff3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf141b46b6b36418bc115fcb5e8afff3"></a>
+const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#aaf141b46b6b36418bc115fcb5e8afff3">getStartState</a> (unsigned int index) const </td></tr>
+<tr class="memdesc:aaf141b46b6b36418bc115fcb5e8afff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a specific start state. <br/></td></tr>
+<tr class="separator:aaf141b46b6b36418bc115fcb5e8afff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9fb68d7aab6f613645cf02fa6995c52"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#ad9fb68d7aab6f613645cf02fa6995c52">getStartState</a> (unsigned int index)</td></tr>
+<tr class="memdesc:ad9fb68d7aab6f613645cf02fa6995c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a specific start state.  <a href="#ad9fb68d7aab6f613645cf02fa6995c52">More...</a><br/></td></tr>
+<tr class="separator:ad9fb68d7aab6f613645cf02fa6995c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a039bef3abd7e8319e4ea2e4cda752ff6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a039bef3abd7e8319e4ea2e4cda752ff6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a039bef3abd7e8319e4ea2e4cda752ff6">setGoal</a> (const <a class="el" href="classompl_1_1base_1_1GoalPtr.html">GoalPtr</a> &amp;goal)</td></tr>
+<tr class="memdesc:a039bef3abd7e8319e4ea2e4cda752ff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the goal. <br/></td></tr>
+<tr class="separator:a039bef3abd7e8319e4ea2e4cda752ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae03b63af701fa3935d50877c53c78e80"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae03b63af701fa3935d50877c53c78e80"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#ae03b63af701fa3935d50877c53c78e80">clearGoal</a> ()</td></tr>
+<tr class="memdesc:ae03b63af701fa3935d50877c53c78e80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the goal. Memory is freed. <br/></td></tr>
+<tr class="separator:ae03b63af701fa3935d50877c53c78e80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42f28fa7a94f496859d7b8d1fcde47ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42f28fa7a94f496859d7b8d1fcde47ba"></a>
+const <a class="el" href="classompl_1_1base_1_1GoalPtr.html">GoalPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a42f28fa7a94f496859d7b8d1fcde47ba">getGoal</a> () const </td></tr>
+<tr class="memdesc:a42f28fa7a94f496859d7b8d1fcde47ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current goal. <br/></td></tr>
+<tr class="separator:a42f28fa7a94f496859d7b8d1fcde47ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a817035d12f2b66e0cb9bbf339b56921e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a817035d12f2b66e0cb9bbf339b56921e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a817035d12f2b66e0cb9bbf339b56921e">getInputStates</a> (std::vector&lt; const <a class="el" href="classompl_1_1base_1_1State.html">State</a> * &gt; &amp;states) const </td></tr>
+<tr class="memdesc:a817035d12f2b66e0cb9bbf339b56921e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all the input states. This includes start states and states that are part of goal regions that can be casted as <a class="el" href="classompl_1_1base_1_1GoalState.html" title="Definition of a goal state. ">ompl::base::GoalState</a> or <a class="el" href="classompl_1_1base_1_1GoalStates.html" title="Definition of a set of goal states. ">ompl::base::GoalStates</a>. <br/></td></tr>
+<tr class="separator:a817035d12f2b66e0cb9bbf339b56921e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ab5830fd9366be606349ea1885a3695"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a9ab5830fd9366be606349ea1885a3695">setStartAndGoalStates</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *start, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *goal, const double threshold=std::numeric_limits&lt; double &gt;::epsilon())</td></tr>
+<tr class="memdesc:a9ab5830fd9366be606349ea1885a3695"><td class="mdescLeft">&#160;</td><td class="mdescRight">In the simplest case possible, we have a single starting state and a single goal state.  <a href="#a9ab5830fd9366be606349ea1885a3695">More...</a><br/></td></tr>
+<tr class="separator:a9ab5830fd9366be606349ea1885a3695"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cd271339a73f61bc1b13588a92a36d7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5cd271339a73f61bc1b13588a92a36d7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a5cd271339a73f61bc1b13588a92a36d7">setGoalState</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *goal, const double threshold=std::numeric_limits&lt; double &gt;::epsilon())</td></tr>
+<tr class="memdesc:a5cd271339a73f61bc1b13588a92a36d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple form of setting the goal. This is called by <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a9ab5830fd9366be606349ea1885a3695" title="In the simplest case possible, we have a single starting state and a single goal state. ">setStartAndGoalStates()</a>. A more general form is <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a039bef3abd7e8319e4ea2e4cda752ff6" title="Set the goal. ">setGoal()</a> <br/></td></tr>
+<tr class="separator:a5cd271339a73f61bc1b13588a92a36d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ada7160decb7894ac566615eb22633a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a5ada7160decb7894ac566615eb22633a">setStartAndGoalStates</a> (const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt;&gt; &amp;start, const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt;&gt; &amp;goal, const double threshold=std::numeric_limits&lt; double &gt;::epsilon())</td></tr>
+<tr class="memdesc:a5ada7160decb7894ac566615eb22633a"><td class="mdescLeft">&#160;</td><td class="mdescRight">In the simplest case possible, we have a single starting state and a single goal state.  <a href="#a5ada7160decb7894ac566615eb22633a">More...</a><br/></td></tr>
+<tr class="separator:a5ada7160decb7894ac566615eb22633a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a935f86078c4e65dd397db736c02b3c81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a935f86078c4e65dd397db736c02b3c81">setGoalState</a> (const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt;&gt; &amp;goal, const double threshold=std::numeric_limits&lt; double &gt;::epsilon())</td></tr>
+<tr class="memdesc:a935f86078c4e65dd397db736c02b3c81"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple form of setting the goal. This is called by <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a9ab5830fd9366be606349ea1885a3695" title="In the simplest case possible, we have a single starting state and a single goal state. ">setStartAndGoalStates()</a>. A more general form is <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a039bef3abd7e8319e4ea2e4cda752ff6" title="Set the goal. ">setGoal()</a>  <a href="#a935f86078c4e65dd397db736c02b3c81">More...</a><br/></td></tr>
+<tr class="separator:a935f86078c4e65dd397db736c02b3c81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a1bc59a508ca02a412dd3171ce0c440"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a1bc59a508ca02a412dd3171ce0c440"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a3a1bc59a508ca02a412dd3171ce0c440">hasOptimizationObjective</a> () const </td></tr>
+<tr class="memdesc:a3a1bc59a508ca02a412dd3171ce0c440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if an optimization objective was defined for planning. <br/></td></tr>
+<tr class="separator:a3a1bc59a508ca02a412dd3171ce0c440"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00cf2be0c6330fb0a3d414294e29a353"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00cf2be0c6330fb0a3d414294e29a353"></a>
+const <a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a00cf2be0c6330fb0a3d414294e29a353">getOptimizationObjective</a> () const </td></tr>
+<tr class="memdesc:a00cf2be0c6330fb0a3d414294e29a353"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the optimization objective to be considered during planning. <br/></td></tr>
+<tr class="separator:a00cf2be0c6330fb0a3d414294e29a353"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2c1ea487eb353290651767435f0e74b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab2c1ea487eb353290651767435f0e74b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#ab2c1ea487eb353290651767435f0e74b">setOptimizationObjective</a> (const <a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;optimizationObjective)</td></tr>
+<tr class="memdesc:ab2c1ea487eb353290651767435f0e74b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the optimization objective to be considered during planning. <br/></td></tr>
+<tr class="separator:ab2c1ea487eb353290651767435f0e74b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8c6ae8979fb163fd01387c4a9f8fd2b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae8c6ae8979fb163fd01387c4a9f8fd2b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#ae8c6ae8979fb163fd01387c4a9f8fd2b">isTrivial</a> (unsigned int *startIndex=NULL, double *distance=NULL) const </td></tr>
+<tr class="memdesc:ae8c6ae8979fb163fd01387c4a9f8fd2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">A problem is trivial if a given starting state already in the goal region, so we need no motion planning. startID will be set to the index of the starting state that satisfies the goal. The distance to the goal can optionally be returned as well. <br/></td></tr>
+<tr class="separator:ae8c6ae8979fb163fd01387c4a9f8fd2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fcafadf45ea071ec4896a9a700e526c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classompl_1_1base_1_1PathPtr.html">PathPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a3fcafadf45ea071ec4896a9a700e526c">isStraightLinePathValid</a> () const </td></tr>
+<tr class="memdesc:a3fcafadf45ea071ec4896a9a700e526c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a straight line path is valid. If it is, return an instance of a path that represents the straight line.  <a href="#a3fcafadf45ea071ec4896a9a700e526c">More...</a><br/></td></tr>
+<tr class="separator:a3fcafadf45ea071ec4896a9a700e526c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74aa8792df6065a84f1b602db53d108c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74aa8792df6065a84f1b602db53d108c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a74aa8792df6065a84f1b602db53d108c">fixInvalidInputStates</a> (double distStart, double distGoal, unsigned int attempts)</td></tr>
+<tr class="memdesc:a74aa8792df6065a84f1b602db53d108c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Many times the start or goal state will barely touch an obstacle. In this case, we may want to automatically find a nearby state that is valid so motion planning can be performed. This function enables this behaviour. The allowed distance for both start and goal states is specified. The number of attempts is also specified. Returns true if all states are valid after completion. <br/></td></tr>
+<tr class="separator:a74aa8792df6065a84f1b602db53d108c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a021a6600a5e54ffa20e9626cf97e3bda"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a021a6600a5e54ffa20e9626cf97e3bda"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a021a6600a5e54ffa20e9626cf97e3bda">hasSolution</a> () const </td></tr>
+<tr class="memdesc:a021a6600a5e54ffa20e9626cf97e3bda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if a solution path has been found (could be approximate) <br/></td></tr>
+<tr class="separator:a021a6600a5e54ffa20e9626cf97e3bda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a510a806faa9a59c120380f268708ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a510a806faa9a59c120380f268708ad"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a5a510a806faa9a59c120380f268708ad">hasApproximateSolution</a> () const </td></tr>
+<tr class="memdesc:a5a510a806faa9a59c120380f268708ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the top found solution is approximate (does not actually reach the desired goal, but hopefully is closer to it) <br/></td></tr>
+<tr class="separator:a5a510a806faa9a59c120380f268708ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a894e668c245b35eba378c5096da97411"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a894e668c245b35eba378c5096da97411"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a894e668c245b35eba378c5096da97411">getSolutionDifference</a> () const </td></tr>
+<tr class="memdesc:a894e668c245b35eba378c5096da97411"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the distance to the desired goal for the top solution. Return -1.0 if there are no solutions available. <br/></td></tr>
+<tr class="separator:a894e668c245b35eba378c5096da97411"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a137b1b26766ae699c79e2dbf75bb8b22"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a137b1b26766ae699c79e2dbf75bb8b22"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a137b1b26766ae699c79e2dbf75bb8b22">hasOptimizedSolution</a> () const </td></tr>
+<tr class="memdesc:a137b1b26766ae699c79e2dbf75bb8b22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the top found solution is optimized (satisfies the specified optimization objective) <br/></td></tr>
+<tr class="separator:a137b1b26766ae699c79e2dbf75bb8b22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a897ff51629dda105778b5950d9e0e141"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classompl_1_1base_1_1PathPtr.html">PathPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a897ff51629dda105778b5950d9e0e141">getSolutionPath</a> () const </td></tr>
+<tr class="memdesc:a897ff51629dda105778b5950d9e0e141"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the top solution path, if one is found. The top path is the shortest one that was found, preference being given to solutions that are not approximate.  <a href="#a897ff51629dda105778b5950d9e0e141">More...</a><br/></td></tr>
+<tr class="separator:a897ff51629dda105778b5950d9e0e141"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afae998ad1781b683ab89493059e63aa3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afae998ad1781b683ab89493059e63aa3"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#afae998ad1781b683ab89493059e63aa3">getSolution</a> (<a class="el" href="structompl_1_1base_1_1PlannerSolution.html">PlannerSolution</a> &amp;solution) const </td></tr>
+<tr class="memdesc:afae998ad1781b683ab89493059e63aa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if a top solution is found, with the top solution passed by reference in the function header The top path is the shortest one that was found, preference being given to solutions that are not approximate. This will need to be casted into the specialization computed by the planner. <br/></td></tr>
+<tr class="separator:afae998ad1781b683ab89493059e63aa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80d99e28ec3579fbdb0fba5afa7bc4bb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a80d99e28ec3579fbdb0fba5afa7bc4bb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a80d99e28ec3579fbdb0fba5afa7bc4bb">addSolutionPath</a> (const <a class="el" href="classompl_1_1base_1_1PathPtr.html">PathPtr</a> &amp;path, bool approximate=false, double difference=-1.0, const std::string &amp;plannerName=&quot;Unknown&quot;) const </td></tr>
+<tr class="memdesc:a80d99e28ec3579fbdb0fba5afa7bc4bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a solution path in a thread-safe manner. Multiple solutions can be set for a goal. If a solution does not reach the desired goal it is considered approximate. Optionally, the distance between the desired goal and the one actually achieved is set by <em>difference</em>. Optionally, the name of the planner that generated the solution. <br/></td></tr>
+<tr class="separator:a80d99e28ec3579fbdb0fba5afa7bc4bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25cc4db3bd874d912d6836836fbbff3e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25cc4db3bd874d912d6836836fbbff3e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a25cc4db3bd874d912d6836836fbbff3e">addSolutionPath</a> (const <a class="el" href="structompl_1_1base_1_1PlannerSolution.html">PlannerSolution</a> &amp;sol) const </td></tr>
+<tr class="memdesc:a25cc4db3bd874d912d6836836fbbff3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a solution path in a thread-safe manner. Multiple solutions can be set for a goal. <br/></td></tr>
+<tr class="separator:a25cc4db3bd874d912d6836836fbbff3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe4191f019264fbeec6e1cab7580c898"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe4191f019264fbeec6e1cab7580c898"></a>
+std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#abe4191f019264fbeec6e1cab7580c898">getSolutionCount</a> () const </td></tr>
+<tr class="memdesc:abe4191f019264fbeec6e1cab7580c898"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of solutions already found. <br/></td></tr>
+<tr class="separator:abe4191f019264fbeec6e1cab7580c898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bdb879b091c0d74fabe8050fff087a0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bdb879b091c0d74fabe8050fff087a0"></a>
+std::vector&lt; <a class="el" href="structompl_1_1base_1_1PlannerSolution.html">PlannerSolution</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a2bdb879b091c0d74fabe8050fff087a0">getSolutions</a> () const </td></tr>
+<tr class="memdesc:a2bdb879b091c0d74fabe8050fff087a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all the solution paths available for this goal. <br/></td></tr>
+<tr class="separator:a2bdb879b091c0d74fabe8050fff087a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa88547718b7905c99c02762cec7a3b1a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa88547718b7905c99c02762cec7a3b1a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#aa88547718b7905c99c02762cec7a3b1a">clearSolutionPaths</a> () const </td></tr>
+<tr class="memdesc:aa88547718b7905c99c02762cec7a3b1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forget the solution paths (thread safe). Memory is freed. <br/></td></tr>
+<tr class="separator:aa88547718b7905c99c02762cec7a3b1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aebd53a31048a9141fc95aaac61350e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5aebd53a31048a9141fc95aaac61350e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a5aebd53a31048a9141fc95aaac61350e">hasSolutionNonExistenceProof</a> () const </td></tr>
+<tr class="memdesc:a5aebd53a31048a9141fc95aaac61350e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the problem definition has a proof of non existence for a solution. <br/></td></tr>
+<tr class="separator:a5aebd53a31048a9141fc95aaac61350e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1916346ceb217c0db3db1b0059b54b11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1916346ceb217c0db3db1b0059b54b11"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a1916346ceb217c0db3db1b0059b54b11">clearSolutionNonExistenceProof</a> ()</td></tr>
+<tr class="memdesc:a1916346ceb217c0db3db1b0059b54b11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes any existing instance of <a class="el" href="classompl_1_1base_1_1SolutionNonExistenceProof.html" title="Abstract definition of a proof for the non-existence of a solution to a problem. ">SolutionNonExistenceProof</a>. <br/></td></tr>
+<tr class="separator:a1916346ceb217c0db3db1b0059b54b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6301e9ec89b989daa8eca7a97964aa94"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6301e9ec89b989daa8eca7a97964aa94"></a>
+const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1SolutionNonExistenceProofPtr.html">SolutionNonExistenceProofPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a6301e9ec89b989daa8eca7a97964aa94">getSolutionNonExistenceProof</a> () const </td></tr>
+<tr class="memdesc:a6301e9ec89b989daa8eca7a97964aa94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a pointer to the <a class="el" href="classompl_1_1base_1_1SolutionNonExistenceProof.html" title="Abstract definition of a proof for the non-existence of a solution to a problem. ">SolutionNonExistenceProof</a> instance for this problem definition. <br/></td></tr>
+<tr class="separator:a6301e9ec89b989daa8eca7a97964aa94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b2d1cdeb0b4df2a1e77e6096daf1d10"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b2d1cdeb0b4df2a1e77e6096daf1d10"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a8b2d1cdeb0b4df2a1e77e6096daf1d10">setSolutionNonExistenceProof</a> (const <a class="el" href="classompl_1_1base_1_1SolutionNonExistenceProofPtr.html">SolutionNonExistenceProofPtr</a> &amp;nonExistenceProof)</td></tr>
+<tr class="memdesc:a8b2d1cdeb0b4df2a1e77e6096daf1d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the instance of <a class="el" href="classompl_1_1base_1_1SolutionNonExistenceProof.html" title="Abstract definition of a proof for the non-existence of a solution to a problem. ">SolutionNonExistenceProof</a> for this problem definition. <br/></td></tr>
+<tr class="separator:a8b2d1cdeb0b4df2a1e77e6096daf1d10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76cd24bc1d239ffa674967c004c7df20"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a76cd24bc1d239ffa674967c004c7df20"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a76cd24bc1d239ffa674967c004c7df20">print</a> (std::ostream &amp;out=std::cout) const </td></tr>
+<tr class="memdesc:a76cd24bc1d239ffa674967c004c7df20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print information about the start and goal states and the optimization objective. <br/></td></tr>
+<tr class="separator:a76cd24bc1d239ffa674967c004c7df20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a4afcbeee27af97ac5eefdc40ea8ecfbe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4afcbeee27af97ac5eefdc40ea8ecfbe"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a4afcbeee27af97ac5eefdc40ea8ecfbe">fixInvalidInputState</a> (<a class="el" href="classompl_1_1base_1_1State.html">State</a> *state, double dist, bool start, unsigned int attempts)</td></tr>
+<tr class="memdesc:a4afcbeee27af97ac5eefdc40ea8ecfbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function for <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a74aa8792df6065a84f1b602db53d108c" title="Many times the start or goal state will barely touch an obstacle. In this case, we may want to automa...">fixInvalidInputStates()</a>. Attempts to fix an individual state. <br/></td></tr>
+<tr class="separator:a4afcbeee27af97ac5eefdc40ea8ecfbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:ac24e830b5fedc3642f3b3c4194d0decb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac24e830b5fedc3642f3b3c4194d0decb"></a>
+<a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#ac24e830b5fedc3642f3b3c4194d0decb">si_</a></td></tr>
+<tr class="memdesc:ac24e830b5fedc3642f3b3c4194d0decb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The space information this problem definition is for. <br/></td></tr>
+<tr class="separator:ac24e830b5fedc3642f3b3c4194d0decb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab545e2929804683e9841c27d492dae82"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab545e2929804683e9841c27d492dae82"></a>
+std::vector&lt; <a class="el" href="classompl_1_1base_1_1State.html">State</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#ab545e2929804683e9841c27d492dae82">startStates_</a></td></tr>
+<tr class="memdesc:ab545e2929804683e9841c27d492dae82"><td class="mdescLeft">&#160;</td><td class="mdescRight">The set of start states. <br/></td></tr>
+<tr class="separator:ab545e2929804683e9841c27d492dae82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bdc61f288bbf3f1dece9a275cd2c113"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3bdc61f288bbf3f1dece9a275cd2c113"></a>
+<a class="el" href="classompl_1_1base_1_1GoalPtr.html">GoalPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a3bdc61f288bbf3f1dece9a275cd2c113">goal_</a></td></tr>
+<tr class="memdesc:a3bdc61f288bbf3f1dece9a275cd2c113"><td class="mdescLeft">&#160;</td><td class="mdescRight">The goal representation. <br/></td></tr>
+<tr class="separator:a3bdc61f288bbf3f1dece9a275cd2c113"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9eb7796abd9f95bbad330669973d2664"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9eb7796abd9f95bbad330669973d2664"></a>
+<a class="el" href="classompl_1_1base_1_1SolutionNonExistenceProofPtr.html">SolutionNonExistenceProofPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a9eb7796abd9f95bbad330669973d2664">nonExistenceProof_</a></td></tr>
+<tr class="memdesc:a9eb7796abd9f95bbad330669973d2664"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Representation of a proof of non-existence of a solution for this problem definition. <br/></td></tr>
+<tr class="separator:a9eb7796abd9f95bbad330669973d2664"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9ad7eb5bcfff9223ddcc8a5dab14301"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab9ad7eb5bcfff9223ddcc8a5dab14301"></a>
+<a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#ab9ad7eb5bcfff9223ddcc8a5dab14301">optimizationObjective_</a></td></tr>
+<tr class="memdesc:ab9ad7eb5bcfff9223ddcc8a5dab14301"><td class="mdescLeft">&#160;</td><td class="mdescRight">The objective to be optimized while solving the planning problem. <br/></td></tr>
+<tr class="separator:ab9ad7eb5bcfff9223ddcc8a5dab14301"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Definition of a problem to be solved. This includes the start state(s) for the system and a goal specification. Will contain solutions, if found. </p>
+
+<p>Definition at line <a class="el" href="ProblemDefinition_8h_source.html#l00129">129</a> of file <a class="el" href="ProblemDefinition_8h_source.html">ProblemDefinition.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a874c33b1adab325a2ebf489fa04b8099"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ompl::base::ProblemDefinition::addStartState </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add a start state. The state is copied. </p>
+
+<p>Definition at line <a class="el" href="ProblemDefinition_8h_source.html#l00154">154</a> of file <a class="el" href="ProblemDefinition_8h_source.html">ProblemDefinition.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a897ff51629dda105778b5950d9e0e141"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classompl_1_1base_1_1PathPtr.html">ompl::base::PathPtr</a> ompl::base::ProblemDefinition::getSolutionPath </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the top solution path, if one is found. The top path is the shortest one that was found, preference being given to solutions that are not approximate. </p>
+<p>This will need to be casted into the specialization computed by the planner </p>
+
+<p>Definition at line <a class="el" href="ProblemDefinition_8cpp_source.html#l00400">400</a> of file <a class="el" href="ProblemDefinition_8cpp_source.html">ProblemDefinition.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad9fb68d7aab6f613645cf02fa6995c52"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classompl_1_1base_1_1State.html">State</a>* ompl::base::ProblemDefinition::getStartState </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a specific start state. </p>
+
+<p>Definition at line <a class="el" href="ProblemDefinition_8h_source.html#l00185">185</a> of file <a class="el" href="ProblemDefinition_8h_source.html">ProblemDefinition.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3fcafadf45ea071ec4896a9a700e526c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classompl_1_1base_1_1PathPtr.html">ompl::base::PathPtr</a> ompl::base::ProblemDefinition::isStraightLinePathValid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if a straight line path is valid. If it is, return an instance of a path that represents the straight line. </p>
+<dl class="section note"><dt>Note</dt><dd>When planning under geometric constraints, this works only if the goal region can be sampled. If the goal region cannot be sampled, this call is equivalent to calling <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#ae8c6ae8979fb163fd01387c4a9f8fd2b" title="A problem is trivial if a given starting state already in the goal region, so we need no motion plann...">isTrivial()</a></dd>
+<dd>
+When planning under differential constraints, the system is propagated forward in time using the null control. </dd></dl>
+
+<p>Definition at line <a class="el" href="ProblemDefinition_8cpp_source.html#l00265">265</a> of file <a class="el" href="ProblemDefinition_8cpp_source.html">ProblemDefinition.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a935f86078c4e65dd397db736c02b3c81"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ompl::base::ProblemDefinition::setGoalState </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>goal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>threshold</em> = <code>std::numeric_limits&lt;double&gt;::epsilon()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A simple form of setting the goal. This is called by <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a9ab5830fd9366be606349ea1885a3695" title="In the simplest case possible, we have a single starting state and a single goal state. ">setStartAndGoalStates()</a>. A more general form is <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a039bef3abd7e8319e4ea2e4cda752ff6" title="Set the goal. ">setGoal()</a> </p>
+
+<p>Definition at line <a class="el" href="ProblemDefinition_8h_source.html#l00233">233</a> of file <a class="el" href="ProblemDefinition_8h_source.html">ProblemDefinition.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9ab5830fd9366be606349ea1885a3695"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ompl::base::ProblemDefinition::setStartAndGoalStates </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>goal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>threshold</em> = <code>std::numeric_limits&lt;double&gt;::epsilon()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>In the simplest case possible, we have a single starting state and a single goal state. </p>
+<p>This function simply configures the problem definition using these states (performs the needed calls to <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a3120682d036099f68fd26805fee0736d" title="Add a start state. The state is copied. ">addStartState()</a>, creates an instance of <a class="el" href="classompl_1_1base_1_1GoalState.html" title="Definition of a goal state. ">ompl::base::GoalState</a> and calls <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a039bef3abd7e8319e4ea2e4cda752ff6" title="Set the goal. ">setGoal()</a> on it. </p>
+
+<p>Definition at line <a class="el" href="ProblemDefinition_8cpp_source.html#l00156">156</a> of file <a class="el" href="ProblemDefinition_8cpp_source.html">ProblemDefinition.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5ada7160decb7894ac566615eb22633a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ompl::base::ProblemDefinition::setStartAndGoalStates </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>goal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>threshold</em> = <code>std::numeric_limits&lt;double&gt;::epsilon()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>In the simplest case possible, we have a single starting state and a single goal state. </p>
+<p>This function simply configures the problem definition using these states (performs the needed calls to <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a3120682d036099f68fd26805fee0736d" title="Add a start state. The state is copied. ">addStartState()</a>, creates an instance of <a class="el" href="classompl_1_1base_1_1GoalState.html" title="Definition of a goal state. ">ompl::base::GoalState</a> and calls <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a039bef3abd7e8319e4ea2e4cda752ff6" title="Set the goal. ">setGoal()</a> on it. </p>
+
+<p>Definition at line <a class="el" href="ProblemDefinition_8h_source.html#l00227">227</a> of file <a class="el" href="ProblemDefinition_8h_source.html">ProblemDefinition.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>ompl/src/ompl/base/<a class="el" href="ProblemDefinition_8h_source.html">ProblemDefinition.h</a></li>
+<li>ompl/src/ompl/base/src/<a class="el" href="ProblemDefinition_8cpp_source.html">ProblemDefinition.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:27 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

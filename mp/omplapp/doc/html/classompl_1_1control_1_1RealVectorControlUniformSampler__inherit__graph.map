@@ -1,0 +1,3 @@
+<map id="ompl::control::RealVectorControlUniformSampler" name="ompl::control::RealVectorControlUniformSampler">
+<area shape="rect" id="node2" href="$classompl_1_1control_1_1ControlSampler.html" title="Abstract definition of a control sampler. Motion planners that need to sample controls will call func..." alt="" coords="5,80,200,107"/>
+</map>

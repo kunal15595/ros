@@ -1,0 +1,8 @@
+<map id="ompl::base::OptimizationObjective" name="ompl::base::OptimizationObjective">
+<area shape="rect" id="node3" href="$classompl_1_1base_1_1MechanicalWorkOptimizationObjective.html" title="An optimization objective which defines path cost using the idea of mechanical work. To be used in conjunction with TRRT. " alt="" coords="387,6,578,47"/>
+<area shape="rect" id="node4" href="$classompl_1_1base_1_1MinimaxObjective.html" title="The cost of a path is defined as the worst state cost over the entire path. This objective attempts t..." alt="" coords="383,72,582,99"/>
+<area shape="rect" id="node6" href="$classompl_1_1base_1_1MultiOptimizationObjective.html" title="This class allows for the definition of multiobjective optimal planning problems. Objectives are adde..." alt="" coords="385,123,580,165"/>
+<area shape="rect" id="node7" href="$classompl_1_1base_1_1PathLengthOptimizationObjective.html" title="An optimization objective which corresponds to optimizing path length. " alt="" coords="366,189,599,230"/>
+<area shape="rect" id="node8" href="$classompl_1_1base_1_1StateCostIntegralObjective.html" title="Defines optimization objectives where path cost can be represented as a path integral over a cost fun..." alt="" coords="385,254,581,295"/>
+<area shape="rect" id="node5" href="$classompl_1_1base_1_1MaximizeMinClearanceObjective.html" title="Objective for attempting to maximize the minimum clearance along a path. " alt="" coords="649,65,879,106"/>
+</map>

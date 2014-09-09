@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/base/GenericParam.h Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_06e181af1f5888faac16991b57afb430.html">base</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">GenericParam.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2011, Willow Garage</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Willow Garage nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Ioan Sucan */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifndef OMPL_BASE_GENERIC_PARAM_</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define OMPL_BASE_GENERIC_PARAM_</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Console_8h.html">ompl/util/Console.h</a>&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;ompl/util/ClassForward.h&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;boost/function.hpp&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &lt;boost/lexical_cast.hpp&gt;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">namespace </span>ompl</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">namespace </span>base</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        OMPL_CLASS_FORWARD(GenericParam);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1GenericParam.html">   64</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1base_1_1GenericParam.html">GenericParam</a></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1GenericParam.html#ab90d05f6f48ba107c7a3b2580593b1ec">   69</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1GenericParam.html#ab90d05f6f48ba107c7a3b2580593b1ec">GenericParam</a>(<span class="keyword">const</span> std::string &amp;name) : <a class="code" href="classompl_1_1base_1_1GenericParam.html#a4aa3a92cdf3ce19efdec17284ac460ae">name_</a>(name)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keyword">virtual</span> ~<a class="code" href="classompl_1_1base_1_1GenericParam.html">GenericParam</a>()</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1GenericParam.html#a373e5cf9fba686ce117b5248fed80121">   78</a></span>&#160;            <span class="keyword">const</span> std::string&amp; <a class="code" href="classompl_1_1base_1_1GenericParam.html#a373e5cf9fba686ce117b5248fed80121">getName</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1GenericParam.html#a4aa3a92cdf3ce19efdec17284ac460ae">name_</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1GenericParam.html#afef9c614152e54f0622ad820ed6e216e">   84</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1GenericParam.html#afef9c614152e54f0622ad820ed6e216e">setName</a>(<span class="keyword">const</span> std::string &amp;name)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <a class="code" href="classompl_1_1base_1_1GenericParam.html#a4aa3a92cdf3ce19efdec17284ac460ae">name_</a> = name;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1GenericParam.html#ac86966b2dbc76ade5f19832315440972">setValue</a>(<span class="keyword">const</span> std::string &amp;value) = 0;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keyword">virtual</span> std::string <a class="code" href="classompl_1_1base_1_1GenericParam.html#a1e887eea4d9cfb443a749a3621701cab">getValue</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1GenericParam.html#a60aff425e9f64795991d6a0da3c437ad">   97</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1GenericParam.html">GenericParam</a>&amp; <a class="code" href="classompl_1_1base_1_1GenericParam.html#a60aff425e9f64795991d6a0da3c437ad">operator=</a>(<span class="keyword">const</span> T &amp;value)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                    <a class="code" href="classompl_1_1base_1_1GenericParam.html#ac86966b2dbc76ade5f19832315440972">setValue</a>(boost::lexical_cast&lt;std::string&gt;(value));</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <span class="keywordflow">catch</span> (boost::bad_lexical_cast &amp;e)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                    <a class="code" href="group__logging.html#gab76357dced39cb468d2061d3358f80a6">OMPL_WARN</a>(<span class="stringliteral">&quot;Invalid value format specified for parameter &#39;%s&#39;: %s&quot;</span>, <a class="code" href="classompl_1_1base_1_1GenericParam.html#a4aa3a92cdf3ce19efdec17284ac460ae">name_</a>.c_str(), e.what());</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1GenericParam.html#a78b8f0256bb82994ba01107ddb23afab">  111</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1GenericParam.html#a78b8f0256bb82994ba01107ddb23afab">setRangeSuggestion</a>(<span class="keyword">const</span> std::string &amp;rangeSuggestion)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                <a class="code" href="classompl_1_1base_1_1GenericParam.html#adfcb7422d41e2a863c604bc6b28e892e">rangeSuggestion_</a> = rangeSuggestion;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1GenericParam.html#a6f2ed34cf56bc1b5abe0b684f5969e51">  117</a></span>&#160;            <span class="keyword">const</span> std::string&amp; <a class="code" href="classompl_1_1base_1_1GenericParam.html#a6f2ed34cf56bc1b5abe0b684f5969e51">getRangeSuggestion</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1GenericParam.html#adfcb7422d41e2a863c604bc6b28e892e">rangeSuggestion_</a>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1GenericParam.html#a4aa3a92cdf3ce19efdec17284ac460ae">  125</a></span>&#160;            std::string <a class="code" href="classompl_1_1base_1_1GenericParam.html#a4aa3a92cdf3ce19efdec17284ac460ae">name_</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1GenericParam.html#adfcb7422d41e2a863c604bc6b28e892e">  140</a></span>&#160;            std::string <a class="code" href="classompl_1_1base_1_1GenericParam.html#adfcb7422d41e2a863c604bc6b28e892e">rangeSuggestion_</a>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        };</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SpecificParam.html">  146</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1base_1_1SpecificParam.html">SpecificParam</a> : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1GenericParam.html">GenericParam</a></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SpecificParam.html#aea785726481f576b1b16e0d99955c458">  151</a></span>&#160;            <span class="keyword">typedef</span> boost::function&lt;void(T)&gt; <a class="code" href="classompl_1_1base_1_1SpecificParam.html#aea785726481f576b1b16e0d99955c458">SetterFn</a>;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SpecificParam.html#a169a2f279ac81518bc6e2b9fd337659b">  154</a></span>&#160;            <span class="keyword">typedef</span> boost::function&lt;T()&gt;     <a class="code" href="classompl_1_1base_1_1SpecificParam.html#a169a2f279ac81518bc6e2b9fd337659b">GetterFn</a>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SpecificParam.html#ab4b35b62764ee08282a25355c9e8a4d5">  158</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1SpecificParam.html#ab4b35b62764ee08282a25355c9e8a4d5">SpecificParam</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpecificParam.html#aea785726481f576b1b16e0d99955c458">SetterFn</a> &amp;setter, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpecificParam.html#a169a2f279ac81518bc6e2b9fd337659b">GetterFn</a> &amp;getter = <a class="code" href="classompl_1_1base_1_1SpecificParam.html#a169a2f279ac81518bc6e2b9fd337659b">GetterFn</a>()) :</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <a class="code" href="classompl_1_1base_1_1GenericParam.html">GenericParam</a>(name), <a class="code" href="classompl_1_1base_1_1SpecificParam.html#a10b96ca4213c941f72705c24b3c5bb17">setter_</a>(setter), <a class="code" href="classompl_1_1base_1_1SpecificParam.html#a49851acea9ec2a9f22c0765a11a41bfa">getter_</a>(getter)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="classompl_1_1base_1_1SpecificParam.html#a10b96ca4213c941f72705c24b3c5bb17">setter_</a>)</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;Setter function must be specified for parameter&quot;</span>);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keyword">virtual</span> ~<a class="code" href="classompl_1_1base_1_1SpecificParam.html">SpecificParam</a>()</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SpecificParam.html#aa92af935bdaf5ab46172422bf54fc231">  169</a></span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1SpecificParam.html#aa92af935bdaf5ab46172422bf54fc231">setValue</a>(<span class="keyword">const</span> std::string &amp;value)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="keywordtype">bool</span> result = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="classompl_1_1base_1_1SpecificParam.html#a10b96ca4213c941f72705c24b3c5bb17">setter_</a>)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                        <a class="code" href="classompl_1_1base_1_1SpecificParam.html#a10b96ca4213c941f72705c24b3c5bb17">setter_</a>(boost::lexical_cast&lt;T&gt;(value));</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="keywordflow">catch</span> (boost::bad_lexical_cast &amp;e)</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                    result = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                    <a class="code" href="group__logging.html#gab76357dced39cb468d2061d3358f80a6">OMPL_WARN</a>(<span class="stringliteral">&quot;Invalid value format specified for parameter &#39;%s&#39;: %s&quot;</span>, <a class="code" href="classompl_1_1base_1_1GenericParam.html#a4aa3a92cdf3ce19efdec17284ac460ae">name_</a>.c_str(), e.what());</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="classompl_1_1base_1_1SpecificParam.html#a49851acea9ec2a9f22c0765a11a41bfa">getter_</a>)</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                    <a class="code" href="group__logging.html#ga576d0bc79b521f19c5415f330e2b173d">OMPL_DEBUG</a>(<span class="stringliteral">&quot;The value of parameter &#39;%s&#39; is now: &#39;%s&#39;&quot;</span>, <a class="code" href="classompl_1_1base_1_1GenericParam.html#a4aa3a92cdf3ce19efdec17284ac460ae">name_</a>.c_str(), <a class="code" href="classompl_1_1base_1_1SpecificParam.html#afbe61b8b66c9d14a50bffc45435a59c3">getValue</a>().c_str());</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                    <a class="code" href="group__logging.html#ga576d0bc79b521f19c5415f330e2b173d">OMPL_DEBUG</a>(<span class="stringliteral">&quot;The value of parameter &#39;%s&#39; was set to: &#39;%s&#39;&quot;</span>, <a class="code" href="classompl_1_1base_1_1GenericParam.html#a4aa3a92cdf3ce19efdec17284ac460ae">name_</a>.c_str(), value.c_str());</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SpecificParam.html#afbe61b8b66c9d14a50bffc45435a59c3">  190</a></span>&#160;            <span class="keyword">virtual</span> std::string <a class="code" href="classompl_1_1base_1_1SpecificParam.html#afbe61b8b66c9d14a50bffc45435a59c3">getValue</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="classompl_1_1base_1_1SpecificParam.html#a49851acea9ec2a9f22c0765a11a41bfa">getter_</a>)</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                        <span class="keywordflow">return</span> boost::lexical_cast&lt;std::string&gt;(<a class="code" href="classompl_1_1base_1_1SpecificParam.html#a49851acea9ec2a9f22c0765a11a41bfa">getter_</a>());</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    <span class="keywordflow">catch</span> (boost::bad_lexical_cast &amp;e)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                    {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                        <a class="code" href="group__logging.html#gab76357dced39cb468d2061d3358f80a6">OMPL_WARN</a>(<span class="stringliteral">&quot;Unable to parameter &#39;%s&#39; to string: %s&quot;</span>, <a class="code" href="classompl_1_1base_1_1GenericParam.html#a4aa3a92cdf3ce19efdec17284ac460ae">name_</a>.c_str(), e.what());</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                        <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                    }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SpecificParam.html#a10b96ca4213c941f72705c24b3c5bb17">  209</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1SpecificParam.html#aea785726481f576b1b16e0d99955c458">SetterFn</a> <a class="code" href="classompl_1_1base_1_1SpecificParam.html#a10b96ca4213c941f72705c24b3c5bb17">setter_</a>;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SpecificParam.html#a49851acea9ec2a9f22c0765a11a41bfa">  212</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1SpecificParam.html#a169a2f279ac81518bc6e2b9fd337659b">GetterFn</a> <a class="code" href="classompl_1_1base_1_1SpecificParam.html#a49851acea9ec2a9f22c0765a11a41bfa">getter_</a>;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        };</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ParamSet.html">  216</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1base_1_1ParamSet.html">ParamSet</a></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ParamSet.html#a3b27e180d07144d220f332750590fc71">  222</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ParamSet.html#a3b27e180d07144d220f332750590fc71">declareParam</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> <span class="keyword">typename</span> <a class="code" href="classompl_1_1base_1_1SpecificParam.html#aea785726481f576b1b16e0d99955c458">SpecificParam&lt;T&gt;::SetterFn</a> &amp;setter,</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                              <span class="keyword">const</span> <span class="keyword">typename</span> <a class="code" href="classompl_1_1base_1_1SpecificParam.html#a169a2f279ac81518bc6e2b9fd337659b">SpecificParam&lt;T&gt;::GetterFn</a> &amp;getter = <span class="keyword">typename</span> <a class="code" href="classompl_1_1base_1_1SpecificParam.html#a169a2f279ac81518bc6e2b9fd337659b">SpecificParam&lt;T&gt;::GetterFn</a>())</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                params_[name].reset(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1SpecificParam.html">SpecificParam&lt;T&gt;</a>(name, setter, getter));</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ParamSet.html#a200630b07f2f43ec2d658f4d1d6d0ede">add</a>(<span class="keyword">const</span> GenericParamPtr &amp;param);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="keywordtype">void</span> <span class="keyword">remove</span>(<span class="keyword">const</span> std::string &amp;name);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ParamSet.html#a33cd1e7ae354235187393487292a5a46">include</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1ParamSet.html">ParamSet</a> &amp;other, <span class="keyword">const</span> std::string &amp;prefix = <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ParamSet.html#aa5db8ef79b6eafab44004b2d034b9a83">setParam</a>(<span class="keyword">const</span> std::string &amp;key, <span class="keyword">const</span> std::string &amp;value);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ParamSet.html#aed196ed9df566fd4d1d56f68134d1708">getParam</a>(<span class="keyword">const</span> std::string &amp;key, std::string &amp;value) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ParamSet.html#a663944c14405167c22aa7d8477f39b39">setParams</a>(<span class="keyword">const</span> std::map&lt;std::string, std::string&gt; &amp;kv, <span class="keywordtype">bool</span> ignoreUnknown = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ParamSet.html#ad72e99b19ee114fa65a2f2d1fe9f10b7">getParams</a>(std::map&lt;std::string, std::string&gt; &amp;params) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ParamSet.html#a0ff0f1b1ca7cb0a08dc9fc6812b787dc">getParamNames</a>(std::vector&lt;std::string&gt; &amp;params) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ParamSet.html#ab45ff8b34d97017567e7867c2cf1daed">getParamValues</a>(std::vector&lt;std::string&gt; &amp;vals) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <span class="keyword">const</span> std::map&lt;std::string, GenericParamPtr&gt;&amp; <a class="code" href="classompl_1_1base_1_1ParamSet.html#ad72e99b19ee114fa65a2f2d1fe9f10b7">getParams</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <span class="keyword">const</span> GenericParamPtr&amp; <a class="code" href="classompl_1_1base_1_1ParamSet.html#aed196ed9df566fd4d1d56f68134d1708">getParam</a>(<span class="keyword">const</span> std::string &amp;key) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ParamSet.html#ad918276962dd623e31e20d867ceed51e">hasParam</a>(<span class="keyword">const</span> std::string &amp;key) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <a class="code" href="classompl_1_1base_1_1GenericParam.html">GenericParam</a>&amp; <a class="code" href="classompl_1_1base_1_1ParamSet.html#ab933c691bdd425ef342b8790b5931e87">operator[]</a>(<span class="keyword">const</span> std::string &amp;key);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ParamSet.html#af4eb4f1075827a089f59f3ffcfe6aa7b">  284</a></span>&#160;            std::size_t <a class="code" href="classompl_1_1base_1_1ParamSet.html#af4eb4f1075827a089f59f3ffcfe6aa7b">size</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                <span class="keywordflow">return</span> params_.size();</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            }</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ParamSet.html#a604191032ff2beebf813c6bae2e80d6c">clear</a>();</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ParamSet.html#a56f643fa2e3a9542320d38ec43c63eb1">print</a>(std::ostream &amp;out) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            std::map&lt;std::string, GenericParamPtr&gt; params_;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        };</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;}</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html_a56f643fa2e3a9542320d38ec43c63eb1"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html#a56f643fa2e3a9542320d38ec43c63eb1">ompl::base::ParamSet::print</a></div><div class="ttdeci">void print(std::ostream &amp;out) const </div><div class="ttdoc">Print the parameters to a stream. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8cpp_source.html#l00153">GenericParam.cpp:153</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html_ad918276962dd623e31e20d867ceed51e"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html#ad918276962dd623e31e20d867ceed51e">ompl::base::ParamSet::hasParam</a></div><div class="ttdeci">bool hasParam(const std::string &amp;key) const </div><div class="ttdoc">Check whether this set of parameters includes the parameter named key. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8cpp_source.html#l00115">GenericParam.cpp:115</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html_ad72e99b19ee114fa65a2f2d1fe9f10b7"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html#ad72e99b19ee114fa65a2f2d1fe9f10b7">ompl::base::ParamSet::getParams</a></div><div class="ttdeci">const std::map&lt; std::string, GenericParamPtr &gt; &amp; getParams() const </div><div class="ttdoc">Get the map from parameter names to parameter descriptions. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8cpp_source.html#l00094">GenericParam.cpp:94</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpecificParam_html_aea785726481f576b1b16e0d99955c458"><div class="ttname"><a href="classompl_1_1base_1_1SpecificParam.html#aea785726481f576b1b16e0d99955c458">ompl::base::SpecificParam::SetterFn</a></div><div class="ttdeci">boost::function&lt; void(T)&gt; SetterFn</div><div class="ttdoc">The type for the &#39;setter&#39; function for this parameter. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00151">GenericParam.h:151</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GenericParam_html_a4aa3a92cdf3ce19efdec17284ac460ae"><div class="ttname"><a href="classompl_1_1base_1_1GenericParam.html#a4aa3a92cdf3ce19efdec17284ac460ae">ompl::base::GenericParam::name_</a></div><div class="ttdeci">std::string name_</div><div class="ttdoc">The name of the parameter. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00125">GenericParam.h:125</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html_a33cd1e7ae354235187393487292a5a46"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html#a33cd1e7ae354235187393487292a5a46">ompl::base::ParamSet::include</a></div><div class="ttdeci">void include(const ParamSet &amp;other, const std::string &amp;prefix=&quot;&quot;)</div><div class="ttdoc">Include the params of a different ParamSet into this one. Optionally include a prefix for each of the...</div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8cpp_source.html#l00127">GenericParam.cpp:127</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GenericParam_html_ab90d05f6f48ba107c7a3b2580593b1ec"><div class="ttname"><a href="classompl_1_1base_1_1GenericParam.html#ab90d05f6f48ba107c7a3b2580593b1ec">ompl::base::GenericParam::GenericParam</a></div><div class="ttdeci">GenericParam(const std::string &amp;name)</div><div class="ttdoc">The constructor of a parameter takes the name of the parameter (name) </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00069">GenericParam.h:69</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GenericParam_html_a1e887eea4d9cfb443a749a3621701cab"><div class="ttname"><a href="classompl_1_1base_1_1GenericParam.html#a1e887eea4d9cfb443a749a3621701cab">ompl::base::GenericParam::getValue</a></div><div class="ttdeci">virtual std::string getValue() const =0</div><div class="ttdoc">Retrieve the value of the parameter, as a string. </div></div>
+<div class="ttc" id="classompl_1_1base_1_1GenericParam_html"><div class="ttname"><a href="classompl_1_1base_1_1GenericParam.html">ompl::base::GenericParam</a></div><div class="ttdoc">Motion planning algorithms often employ parameters to guide their exploration process. (e.g., goal biasing). Motion planners (and some of their components) use this class to declare what the parameters are, in a generic way, so that they can be set externally. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00064">GenericParam.h:64</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpecificParam_html_aa92af935bdaf5ab46172422bf54fc231"><div class="ttname"><a href="classompl_1_1base_1_1SpecificParam.html#aa92af935bdaf5ab46172422bf54fc231">ompl::base::SpecificParam::setValue</a></div><div class="ttdeci">virtual bool setValue(const std::string &amp;value)</div><div class="ttdoc">Set the value of the parameter. The value is taken in as a string, but converted to the type of that ...</div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00169">GenericParam.h:169</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html_a0ff0f1b1ca7cb0a08dc9fc6812b787dc"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html#a0ff0f1b1ca7cb0a08dc9fc6812b787dc">ompl::base::ParamSet::getParamNames</a></div><div class="ttdeci">void getParamNames(std::vector&lt; std::string &gt; &amp;params) const </div><div class="ttdoc">List the names of the known parameters. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8cpp_source.html#l00077">GenericParam.cpp:77</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html_af4eb4f1075827a089f59f3ffcfe6aa7b"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html#af4eb4f1075827a089f59f3ffcfe6aa7b">ompl::base::ParamSet::size</a></div><div class="ttdeci">std::size_t size() const </div><div class="ttdoc">Get the number of parameters maintained by this instance. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00284">GenericParam.h:284</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html_a663944c14405167c22aa7d8477f39b39"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html#a663944c14405167c22aa7d8477f39b39">ompl::base::ParamSet::setParams</a></div><div class="ttdeci">bool setParams(const std::map&lt; std::string, std::string &gt; &amp;kv, bool ignoreUnknown=false)</div><div class="ttdoc">Set the values for a set of parameters. The parameter names are the keys in the map kv...</div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8cpp_source.html#l00052">GenericParam.cpp:52</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html_aed196ed9df566fd4d1d56f68134d1708"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html#aed196ed9df566fd4d1d56f68134d1708">ompl::base::ParamSet::getParam</a></div><div class="ttdeci">bool getParam(const std::string &amp;key, std::string &amp;value) const </div><div class="ttdoc">Get the value of the parameter named key. Store the value as string in value and return true if the p...</div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8cpp_source.html#l00066">GenericParam.cpp:66</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpecificParam_html_afbe61b8b66c9d14a50bffc45435a59c3"><div class="ttname"><a href="classompl_1_1base_1_1SpecificParam.html#afbe61b8b66c9d14a50bffc45435a59c3">ompl::base::SpecificParam::getValue</a></div><div class="ttdeci">virtual std::string getValue() const </div><div class="ttdoc">Retrieve the value of the parameter, as a string. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00190">GenericParam.h:190</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpecificParam_html"><div class="ttname"><a href="classompl_1_1base_1_1SpecificParam.html">ompl::base::SpecificParam</a></div><div class="ttdoc">This is a helper class that instantiates parameters with different data types. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00146">GenericParam.h:146</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html">ompl::base::ParamSet</a></div><div class="ttdoc">Maintain a set of parameters. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00216">GenericParam.h:216</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GenericParam_html_a6f2ed34cf56bc1b5abe0b684f5969e51"><div class="ttname"><a href="classompl_1_1base_1_1GenericParam.html#a6f2ed34cf56bc1b5abe0b684f5969e51">ompl::base::GenericParam::getRangeSuggestion</a></div><div class="ttdeci">const std::string &amp; getRangeSuggestion() const </div><div class="ttdoc">Get the suggested range of values. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00117">GenericParam.h:117</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html_aa5db8ef79b6eafab44004b2d034b9a83"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html#aa5db8ef79b6eafab44004b2d034b9a83">ompl::base::ParamSet::setParam</a></div><div class="ttdeci">bool setParam(const std::string &amp;key, const std::string &amp;value)</div><div class="ttdoc">Algorithms in OMPL often have parameters that can be set externally. While each algorithm will have t...</div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8cpp_source.html#l00040">GenericParam.cpp:40</a></div></div>
+<div class="ttc" id="group__logging_html_ga05ad3ae88188e7f248748785afd2b882"><div class="ttname"><a href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a></div><div class="ttdeci">#define OMPL_ERROR(fmt,...)</div><div class="ttdoc">Log a formatted error string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00064">Console.h:64</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html_ab45ff8b34d97017567e7867c2cf1daed"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html#ab45ff8b34d97017567e7867c2cf1daed">ompl::base::ParamSet::getParamValues</a></div><div class="ttdeci">void getParamValues(std::vector&lt; std::string &gt; &amp;vals) const </div><div class="ttdoc">List the values of the known parameters, in the same order as getParamNames() </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8cpp_source.html#l00085">GenericParam.cpp:85</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpecificParam_html_a10b96ca4213c941f72705c24b3c5bb17"><div class="ttname"><a href="classompl_1_1base_1_1SpecificParam.html#a10b96ca4213c941f72705c24b3c5bb17">ompl::base::SpecificParam::setter_</a></div><div class="ttdeci">SetterFn setter_</div><div class="ttdoc">The setter function for this parameter. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00209">GenericParam.h:209</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html_ab933c691bdd425ef342b8790b5931e87"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html#ab933c691bdd425ef342b8790b5931e87">ompl::base::ParamSet::operator[]</a></div><div class="ttdeci">GenericParam &amp; operator[](const std::string &amp;key)</div><div class="ttdoc">Access operator for parameters, by name. If the parameter is not defined, an exception is thrown...</div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8cpp_source.html#l00120">GenericParam.cpp:120</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GenericParam_html_afef9c614152e54f0622ad820ed6e216e"><div class="ttname"><a href="classompl_1_1base_1_1GenericParam.html#afef9c614152e54f0622ad820ed6e216e">ompl::base::GenericParam::setName</a></div><div class="ttdeci">void setName(const std::string &amp;name)</div><div class="ttdoc">Set the name of the parameter. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00084">GenericParam.h:84</a></div></div>
+<div class="ttc" id="group__logging_html_gab76357dced39cb468d2061d3358f80a6"><div class="ttname"><a href="group__logging.html#gab76357dced39cb468d2061d3358f80a6">OMPL_WARN</a></div><div class="ttdeci">#define OMPL_WARN(fmt,...)</div><div class="ttdoc">Log a formatted warning string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00066">Console.h:66</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GenericParam_html_a60aff425e9f64795991d6a0da3c437ad"><div class="ttname"><a href="classompl_1_1base_1_1GenericParam.html#a60aff425e9f64795991d6a0da3c437ad">ompl::base::GenericParam::operator=</a></div><div class="ttdeci">GenericParam &amp; operator=(const T &amp;value)</div><div class="ttdoc">Assignment operator by type. This is just for convenience, as it just calls setValue() ...</div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00097">GenericParam.h:97</a></div></div>
+<div class="ttc" id="group__logging_html_ga576d0bc79b521f19c5415f330e2b173d"><div class="ttname"><a href="group__logging.html#ga576d0bc79b521f19c5415f330e2b173d">OMPL_DEBUG</a></div><div class="ttdeci">#define OMPL_DEBUG(fmt,...)</div><div class="ttdoc">Log a formatted debugging string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00070">Console.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html_a3b27e180d07144d220f332750590fc71"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html#a3b27e180d07144d220f332750590fc71">ompl::base::ParamSet::declareParam</a></div><div class="ttdeci">void declareParam(const std::string &amp;name, const typename SpecificParam&lt; T &gt;::SetterFn &amp;setter, const typename SpecificParam&lt; T &gt;::GetterFn &amp;getter=typename SpecificParam&lt; T &gt;::GetterFn())</div><div class="ttdoc">This function declares a parameter name, and specifies the setter and getter functions. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00222">GenericParam.h:222</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpecificParam_html_a169a2f279ac81518bc6e2b9fd337659b"><div class="ttname"><a href="classompl_1_1base_1_1SpecificParam.html#a169a2f279ac81518bc6e2b9fd337659b">ompl::base::SpecificParam::GetterFn</a></div><div class="ttdeci">boost::function&lt; T()&gt; GetterFn</div><div class="ttdoc">The type for the &#39;getter&#39; function for this parameter. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00154">GenericParam.h:154</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GenericParam_html_a373e5cf9fba686ce117b5248fed80121"><div class="ttname"><a href="classompl_1_1base_1_1GenericParam.html#a373e5cf9fba686ce117b5248fed80121">ompl::base::GenericParam::getName</a></div><div class="ttdeci">const std::string &amp; getName() const </div><div class="ttdoc">Get the name of the parameter. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00078">GenericParam.h:78</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html_a200630b07f2f43ec2d658f4d1d6d0ede"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html#a200630b07f2f43ec2d658f4d1d6d0ede">ompl::base::ParamSet::add</a></div><div class="ttdeci">void add(const GenericParamPtr &amp;param)</div><div class="ttdoc">Add a parameter to the set. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8cpp_source.html#l00138">GenericParam.cpp:138</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GenericParam_html_a78b8f0256bb82994ba01107ddb23afab"><div class="ttname"><a href="classompl_1_1base_1_1GenericParam.html#a78b8f0256bb82994ba01107ddb23afab">ompl::base::GenericParam::setRangeSuggestion</a></div><div class="ttdeci">void setRangeSuggestion(const std::string &amp;rangeSuggestion)</div><div class="ttdoc">Set a suggested range. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00111">GenericParam.h:111</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GenericParam_html_adfcb7422d41e2a863c604bc6b28e892e"><div class="ttname"><a href="classompl_1_1base_1_1GenericParam.html#adfcb7422d41e2a863c604bc6b28e892e">ompl::base::GenericParam::rangeSuggestion_</a></div><div class="ttdeci">std::string rangeSuggestion_</div><div class="ttdoc">Suggested range for the parameter. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00140">GenericParam.h:140</a></div></div>
+<div class="ttc" id="Console_8h_html"><div class="ttname"><a href="Console_8h.html">Console.h</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ParamSet_html_a604191032ff2beebf813c6bae2e80d6c"><div class="ttname"><a href="classompl_1_1base_1_1ParamSet.html#a604191032ff2beebf813c6bae2e80d6c">ompl::base::ParamSet::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Clear all the set parameters. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8cpp_source.html#l00148">GenericParam.cpp:148</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpecificParam_html_ab4b35b62764ee08282a25355c9e8a4d5"><div class="ttname"><a href="classompl_1_1base_1_1SpecificParam.html#ab4b35b62764ee08282a25355c9e8a4d5">ompl::base::SpecificParam::SpecificParam</a></div><div class="ttdeci">SpecificParam(const std::string &amp;name, const SetterFn &amp;setter, const GetterFn &amp;getter=GetterFn())</div><div class="ttdoc">An explicit instantiation of a parameter name requires the setter function and optionally the getter ...</div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00158">GenericParam.h:158</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GenericParam_html_ac86966b2dbc76ade5f19832315440972"><div class="ttname"><a href="classompl_1_1base_1_1GenericParam.html#ac86966b2dbc76ade5f19832315440972">ompl::base::GenericParam::setValue</a></div><div class="ttdeci">virtual bool setValue(const std::string &amp;value)=0</div><div class="ttdoc">Set the value of the parameter. The value is taken in as a string, but converted to the type of that ...</div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpecificParam_html_a49851acea9ec2a9f22c0765a11a41bfa"><div class="ttname"><a href="classompl_1_1base_1_1SpecificParam.html#a49851acea9ec2a9f22c0765a11a41bfa">ompl::base::SpecificParam::getter_</a></div><div class="ttdeci">GetterFn getter_</div><div class="ttdoc">The getter function for this parameter. </div><div class="ttdef"><b>Definition:</b> <a href="GenericParam_8h_source.html#l00212">GenericParam.h:212</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:25 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

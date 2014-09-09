@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::GridB&lt; _T, LessThanExternal, LessThanInternal &gt; Class Template Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="classompl_1_1GridB.html">GridB</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-types">Protected Types</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="classompl_1_1GridB-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::GridB&lt; _T, LessThanExternal, LessThanInternal &gt; Class Template Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>This class defines a grid that keeps track of its boundary: it distinguishes between interior and exterior cells.  
+ <a href="classompl_1_1GridB.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="GridB_8h_source.html">GridB.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ompl::GridB&lt; _T, LessThanExternal, LessThanInternal &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="classompl_1_1GridB__inherit__graph.png" border="0" usemap="#ompl_1_1GridB_3_01__T_00_01LessThanExternal_00_01LessThanInternal_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="ompl_1_1GridB_3_01__T_00_01LessThanExternal_00_01LessThanInternal_01_4_inherit__map" id="ompl_1_1GridB_3_01__T_00_01LessThanExternal_00_01LessThanInternal_01_4_inherit__map">
+<area shape="rect" id="node2" href="classompl_1_1GridN.html" title="Representation of a grid where cells keep track of how many neighbors they have. " alt="" coords="35,80,164,107"/><area shape="rect" id="node3" href="classompl_1_1Grid.html" title="Representation of a simple grid. " alt="" coords="39,5,160,32"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structompl_1_1GridB_1_1LessThanExternalCell.html">LessThanExternalCell</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define order for external cells.  <a href="structompl_1_1GridB_1_1LessThanExternalCell.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structompl_1_1GridB_1_1LessThanInternalCell.html">LessThanInternalCell</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define order for internal cells.  <a href="structompl_1_1GridB_1_1LessThanInternalCell.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a7fd1b48d2b5451f40c57f4e3fba4e4c3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fd1b48d2b5451f40c57f4e3fba4e4c3"></a>
+typedef <a class="el" href="classompl_1_1GridN.html">GridN</a>&lt; _T &gt;::<a class="el" href="classompl_1_1GridB.html#a7fd1b48d2b5451f40c57f4e3fba4e4c3">Cell</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a7fd1b48d2b5451f40c57f4e3fba4e4c3">Cell</a></td></tr>
+<tr class="memdesc:a7fd1b48d2b5451f40c57f4e3fba4e4c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a cell in this grid. <br/></td></tr>
+<tr class="separator:a7fd1b48d2b5451f40c57f4e3fba4e4c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8af7231656ec5aac513048369d7388d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8af7231656ec5aac513048369d7388d8"></a>
+typedef <a class="el" href="classompl_1_1GridN.html">GridN</a>&lt; _T &gt;::<a class="el" href="classompl_1_1Grid.html#a75eda082fd346c84697130d347c1eb2f">CellArray</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a8af7231656ec5aac513048369d7388d8">CellArray</a></td></tr>
+<tr class="memdesc:a8af7231656ec5aac513048369d7388d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The datatype for arrays of cells. <br/></td></tr>
+<tr class="separator:a8af7231656ec5aac513048369d7388d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1ffa2705f26a8916307afa7b020ba49"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1ffa2705f26a8916307afa7b020ba49"></a>
+typedef <a class="el" href="classompl_1_1GridN.html">GridN</a>&lt; _T &gt;::<a class="el" href="classompl_1_1Grid.html#ada6a72bd91ec78dd8a0806c00055d917">Coord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#ae1ffa2705f26a8916307afa7b020ba49">Coord</a></td></tr>
+<tr class="memdesc:ae1ffa2705f26a8916307afa7b020ba49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Datatype for cell coordinates. <br/></td></tr>
+<tr class="separator:ae1ffa2705f26a8916307afa7b020ba49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1023a1ca22bfe01e260ed8c975407aea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1023a1ca22bfe01e260ed8c975407aea"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a1023a1ca22bfe01e260ed8c975407aea">EventCellUpdate</a> )(<a class="el" href="classompl_1_1GridB.html#a7fd1b48d2b5451f40c57f4e3fba4e4c3">Cell</a> *, void *)</td></tr>
+<tr class="memdesc:a1023a1ca22bfe01e260ed8c975407aea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event to be called when a cell's priority is to be updated. <br/></td></tr>
+<tr class="separator:a1023a1ca22bfe01e260ed8c975407aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_classompl_1_1GridN"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classompl_1_1GridN')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classompl_1_1GridN.html">ompl::GridN&lt; _T &gt;</a></td></tr>
+<tr class="memitem:aa26d52609e9a958a0dee1c774d817f34 inherit pub_types_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa26d52609e9a958a0dee1c774d817f34"></a>
+typedef <a class="el" href="classompl_1_1Grid.html">Grid</a>&lt; _T &gt;::<a class="el" href="structompl_1_1GridN_1_1Cell.html">Cell</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#aa26d52609e9a958a0dee1c774d817f34">BaseCell</a></td></tr>
+<tr class="memdesc:aa26d52609e9a958a0dee1c774d817f34 inherit pub_types_classompl_1_1GridN"><td class="mdescLeft">&#160;</td><td class="mdescRight">Datatype for cell in base class. <br/></td></tr>
+<tr class="separator:aa26d52609e9a958a0dee1c774d817f34 inherit pub_types_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b26a5015ed43cb79442a1d7041ca877 inherit pub_types_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b26a5015ed43cb79442a1d7041ca877"></a>
+typedef <a class="el" href="classompl_1_1Grid.html">Grid</a>&lt; _T &gt;::<a class="el" href="classompl_1_1Grid.html#a75eda082fd346c84697130d347c1eb2f">CellArray</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#a4b26a5015ed43cb79442a1d7041ca877">BaseCellArray</a></td></tr>
+<tr class="memdesc:a4b26a5015ed43cb79442a1d7041ca877 inherit pub_types_classompl_1_1GridN"><td class="mdescLeft">&#160;</td><td class="mdescRight">Datatype for array of cells in base class. <br/></td></tr>
+<tr class="separator:a4b26a5015ed43cb79442a1d7041ca877 inherit pub_types_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae15a0d9d76a01bc9f98afbed8ce23342 inherit pub_types_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae15a0d9d76a01bc9f98afbed8ce23342"></a>
+typedef <a class="el" href="classompl_1_1Grid.html">Grid</a>&lt; _T &gt;::<a class="el" href="classompl_1_1GridN.html#ae15a0d9d76a01bc9f98afbed8ce23342">Coord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#ae15a0d9d76a01bc9f98afbed8ce23342">Coord</a></td></tr>
+<tr class="memdesc:ae15a0d9d76a01bc9f98afbed8ce23342 inherit pub_types_classompl_1_1GridN"><td class="mdescLeft">&#160;</td><td class="mdescRight">Datatype for cell coordinates. <br/></td></tr>
+<tr class="separator:ae15a0d9d76a01bc9f98afbed8ce23342 inherit pub_types_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44c57859eaebc6bdc3c9c453662ac252 inherit pub_types_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44c57859eaebc6bdc3c9c453662ac252"></a>
+typedef std::vector&lt; <a class="el" href="structompl_1_1GridN_1_1Cell.html">Cell</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#a44c57859eaebc6bdc3c9c453662ac252">CellArray</a></td></tr>
+<tr class="memdesc:a44c57859eaebc6bdc3c9c453662ac252 inherit pub_types_classompl_1_1GridN"><td class="mdescLeft">&#160;</td><td class="mdescRight">The datatype for arrays of cells. <br/></td></tr>
+<tr class="separator:a44c57859eaebc6bdc3c9c453662ac252 inherit pub_types_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_classompl_1_1Grid"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classompl_1_1Grid')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classompl_1_1Grid.html">ompl::Grid&lt; _T &gt;</a></td></tr>
+<tr class="memitem:ada6a72bd91ec78dd8a0806c00055d917 inherit pub_types_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada6a72bd91ec78dd8a0806c00055d917"></a>
+typedef std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#ada6a72bd91ec78dd8a0806c00055d917">Coord</a></td></tr>
+<tr class="memdesc:ada6a72bd91ec78dd8a0806c00055d917 inherit pub_types_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a coordinate within this grid. <br/></td></tr>
+<tr class="separator:ada6a72bd91ec78dd8a0806c00055d917 inherit pub_types_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75eda082fd346c84697130d347c1eb2f inherit pub_types_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75eda082fd346c84697130d347c1eb2f"></a>
+typedef std::vector&lt; <a class="el" href="structompl_1_1Grid_1_1Cell.html">Cell</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a75eda082fd346c84697130d347c1eb2f">CellArray</a></td></tr>
+<tr class="memdesc:a75eda082fd346c84697130d347c1eb2f inherit pub_types_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">The datatype for arrays of cells. <br/></td></tr>
+<tr class="separator:a75eda082fd346c84697130d347c1eb2f inherit pub_types_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac85bc047c9574aea0fb08c1c53701eb9 inherit pub_types_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac85bc047c9574aea0fb08c1c53701eb9"></a>
+typedef CoordHash::const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#ac85bc047c9574aea0fb08c1c53701eb9">iterator</a></td></tr>
+<tr class="memdesc:ac85bc047c9574aea0fb08c1c53701eb9 inherit pub_types_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">We only allow const iterators. <br/></td></tr>
+<tr class="separator:ac85bc047c9574aea0fb08c1c53701eb9 inherit pub_types_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a6f51bf34a19905e875d6bdffa3246b11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f51bf34a19905e875d6bdffa3246b11"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a6f51bf34a19905e875d6bdffa3246b11">GridB</a> (unsigned int dimension)</td></tr>
+<tr class="memdesc:a6f51bf34a19905e875d6bdffa3246b11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br/></td></tr>
+<tr class="separator:a6f51bf34a19905e875d6bdffa3246b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89bffe3573ef977f63b4ab4ff7759705"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a89bffe3573ef977f63b4ab4ff7759705">onCellUpdate</a> (<a class="el" href="classompl_1_1GridB.html#a1023a1ca22bfe01e260ed8c975407aea">EventCellUpdate</a> event, void *arg)</td></tr>
+<tr class="separator:a89bffe3573ef977f63b4ab4ff7759705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91963302f00507b2c8c52e1b049525d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a91963302f00507b2c8c52e1b049525d4"></a>
+<a class="el" href="classompl_1_1GridB.html#a7fd1b48d2b5451f40c57f4e3fba4e4c3">Cell</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a91963302f00507b2c8c52e1b049525d4">topInternal</a> () const </td></tr>
+<tr class="memdesc:a91963302f00507b2c8c52e1b049525d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the cell that is at the top of the heap maintaining internal cells. <br/></td></tr>
+<tr class="separator:a91963302f00507b2c8c52e1b049525d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59964153d08cd2af9d80cad73aa10b48"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a59964153d08cd2af9d80cad73aa10b48"></a>
+<a class="el" href="classompl_1_1GridB.html#a7fd1b48d2b5451f40c57f4e3fba4e4c3">Cell</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a59964153d08cd2af9d80cad73aa10b48">topExternal</a> () const </td></tr>
+<tr class="memdesc:a59964153d08cd2af9d80cad73aa10b48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the cell that is at the top of the heap maintaining external cells. <br/></td></tr>
+<tr class="separator:a59964153d08cd2af9d80cad73aa10b48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4474d70facf47e05f73dda1464760ef2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4474d70facf47e05f73dda1464760ef2"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a4474d70facf47e05f73dda1464760ef2">countInternal</a> () const </td></tr>
+<tr class="memdesc:a4474d70facf47e05f73dda1464760ef2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of internal cells. <br/></td></tr>
+<tr class="separator:a4474d70facf47e05f73dda1464760ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68d281d2f257392080725ccb408fb6b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a68d281d2f257392080725ccb408fb6b1"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a68d281d2f257392080725ccb408fb6b1">countExternal</a> () const </td></tr>
+<tr class="memdesc:a68d281d2f257392080725ccb408fb6b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of external cells. <br/></td></tr>
+<tr class="separator:a68d281d2f257392080725ccb408fb6b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7afdbf67ca787a6cb135b10a0227521"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac7afdbf67ca787a6cb135b10a0227521"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#ac7afdbf67ca787a6cb135b10a0227521">fracExternal</a> () const </td></tr>
+<tr class="memdesc:ac7afdbf67ca787a6cb135b10a0227521"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the fraction of external cells. <br/></td></tr>
+<tr class="separator:ac7afdbf67ca787a6cb135b10a0227521"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a179a5009ee225315d07865ff15c673a8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a179a5009ee225315d07865ff15c673a8"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a179a5009ee225315d07865ff15c673a8">fracInternal</a> () const </td></tr>
+<tr class="memdesc:a179a5009ee225315d07865ff15c673a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the fraction of internal cells. <br/></td></tr>
+<tr class="separator:a179a5009ee225315d07865ff15c673a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceb50d07f1b2bdb195df8ef2c06999e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aceb50d07f1b2bdb195df8ef2c06999e7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#aceb50d07f1b2bdb195df8ef2c06999e7">update</a> (<a class="el" href="classompl_1_1GridB.html#a7fd1b48d2b5451f40c57f4e3fba4e4c3">Cell</a> *cell)</td></tr>
+<tr class="memdesc:aceb50d07f1b2bdb195df8ef2c06999e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the position in the heaps for a particular cell. <br/></td></tr>
+<tr class="separator:aceb50d07f1b2bdb195df8ef2c06999e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a177ec08a842589d77338095e36a3b2f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a177ec08a842589d77338095e36a3b2f6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a177ec08a842589d77338095e36a3b2f6">updateAll</a> ()</td></tr>
+<tr class="memdesc:a177ec08a842589d77338095e36a3b2f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update all cells and reconstruct the heaps. <br/></td></tr>
+<tr class="separator:a177ec08a842589d77338095e36a3b2f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13473103dede044e44d731b094ea6515"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13473103dede044e44d731b094ea6515"></a>
+virtual <a class="el" href="classompl_1_1GridB.html#a7fd1b48d2b5451f40c57f4e3fba4e4c3">Cell</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a13473103dede044e44d731b094ea6515">createCell</a> (const <a class="el" href="classompl_1_1Grid.html#ada6a72bd91ec78dd8a0806c00055d917">Coord</a> &amp;coord, <a class="el" href="classompl_1_1Grid.html#a75eda082fd346c84697130d347c1eb2f">CellArray</a> *nbh=NULL)</td></tr>
+<tr class="memdesc:a13473103dede044e44d731b094ea6515"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a cell but do not add it to the grid; update neighboring cells however. <br/></td></tr>
+<tr class="separator:a13473103dede044e44d731b094ea6515"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d028cfdf6233f097ff43fd70591896b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d028cfdf6233f097ff43fd70591896b"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a2d028cfdf6233f097ff43fd70591896b">add</a> (<a class="el" href="classompl_1_1GridB.html#a7fd1b48d2b5451f40c57f4e3fba4e4c3">Cell</a> *cell)</td></tr>
+<tr class="memdesc:a2d028cfdf6233f097ff43fd70591896b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the cell to the grid. <br/></td></tr>
+<tr class="separator:a2d028cfdf6233f097ff43fd70591896b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35d8377f870c0e03fca9f2839d863165"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35d8377f870c0e03fca9f2839d863165"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a35d8377f870c0e03fca9f2839d863165">remove</a> (<a class="el" href="classompl_1_1GridB.html#a7fd1b48d2b5451f40c57f4e3fba4e4c3">Cell</a> *cell)</td></tr>
+<tr class="memdesc:a35d8377f870c0e03fca9f2839d863165"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a cell from the grid. <br/></td></tr>
+<tr class="separator:a35d8377f870c0e03fca9f2839d863165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5c6fe7b6616afef1120f34811124286"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5c6fe7b6616afef1120f34811124286"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#ad5c6fe7b6616afef1120f34811124286">clear</a> ()</td></tr>
+<tr class="memdesc:ad5c6fe7b6616afef1120f34811124286"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all cells in the grid. <br/></td></tr>
+<tr class="separator:ad5c6fe7b6616afef1120f34811124286"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08fa3fdf1d4a74a1bdab9d99ca5e8925"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a08fa3fdf1d4a74a1bdab9d99ca5e8925"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a08fa3fdf1d4a74a1bdab9d99ca5e8925">status</a> (std::ostream &amp;out=std::cout) const </td></tr>
+<tr class="memdesc:a08fa3fdf1d4a74a1bdab9d99ca5e8925"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print information about the data in this grid structure. <br/></td></tr>
+<tr class="separator:a08fa3fdf1d4a74a1bdab9d99ca5e8925"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classompl_1_1GridN"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classompl_1_1GridN')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classompl_1_1GridN.html">ompl::GridN&lt; _T &gt;</a></td></tr>
+<tr class="memitem:a19056d56c0b54dd8ef2c3c9d483f1211 inherit pub_methods_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19056d56c0b54dd8ef2c3c9d483f1211"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#a19056d56c0b54dd8ef2c3c9d483f1211">GridN</a> (unsigned int dimension)</td></tr>
+<tr class="memdesc:a19056d56c0b54dd8ef2c3c9d483f1211 inherit pub_methods_classompl_1_1GridN"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor takes the dimension of the grid as argument. <br/></td></tr>
+<tr class="separator:a19056d56c0b54dd8ef2c3c9d483f1211 inherit pub_methods_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f301e691e48294e1e216d1c7971aa9d inherit pub_methods_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#a8f301e691e48294e1e216d1c7971aa9d">setDimension</a> (unsigned int dimension)</td></tr>
+<tr class="separator:a8f301e691e48294e1e216d1c7971aa9d inherit pub_methods_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae69767d44f200c28b21683ac76d1624d inherit pub_methods_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#ae69767d44f200c28b21683ac76d1624d">setBounds</a> (const <a class="el" href="classompl_1_1GridN.html#ae15a0d9d76a01bc9f98afbed8ce23342">Coord</a> &amp;low, const <a class="el" href="classompl_1_1GridN.html#ae15a0d9d76a01bc9f98afbed8ce23342">Coord</a> &amp;up)</td></tr>
+<tr class="separator:ae69767d44f200c28b21683ac76d1624d inherit pub_methods_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d42e023d6aa00ac1d479dad46d7144 inherit pub_methods_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#ae5d42e023d6aa00ac1d479dad46d7144">setInteriorCellNeighborLimit</a> (unsigned int count)</td></tr>
+<tr class="separator:ae5d42e023d6aa00ac1d479dad46d7144 inherit pub_methods_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55b24fea201c89c9dab91c8624cec4e5 inherit pub_methods_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a55b24fea201c89c9dab91c8624cec4e5"></a>
+<a class="el" href="structompl_1_1GridN_1_1Cell.html">Cell</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#a55b24fea201c89c9dab91c8624cec4e5">getCell</a> (const <a class="el" href="classompl_1_1GridN.html#ae15a0d9d76a01bc9f98afbed8ce23342">Coord</a> &amp;coord) const </td></tr>
+<tr class="memdesc:a55b24fea201c89c9dab91c8624cec4e5 inherit pub_methods_classompl_1_1GridN"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the cell at a specified coordinate. <br/></td></tr>
+<tr class="separator:a55b24fea201c89c9dab91c8624cec4e5 inherit pub_methods_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfe8ed73a5dc1ce935e9abf51d91682b inherit pub_methods_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adfe8ed73a5dc1ce935e9abf51d91682b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#adfe8ed73a5dc1ce935e9abf51d91682b">neighbors</a> (const <a class="el" href="structompl_1_1GridN_1_1Cell.html">Cell</a> *cell, <a class="el" href="classompl_1_1Grid.html#a75eda082fd346c84697130d347c1eb2f">CellArray</a> &amp;list) const </td></tr>
+<tr class="memdesc:adfe8ed73a5dc1ce935e9abf51d91682b inherit pub_methods_classompl_1_1GridN"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of neighbors for a given cell. <br/></td></tr>
+<tr class="separator:adfe8ed73a5dc1ce935e9abf51d91682b inherit pub_methods_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ba55b0907ff580f04447d58af044de0 inherit pub_methods_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ba55b0907ff580f04447d58af044de0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#a1ba55b0907ff580f04447d58af044de0">neighbors</a> (const <a class="el" href="classompl_1_1GridN.html#ae15a0d9d76a01bc9f98afbed8ce23342">Coord</a> &amp;coord, <a class="el" href="classompl_1_1Grid.html#a75eda082fd346c84697130d347c1eb2f">CellArray</a> &amp;list) const </td></tr>
+<tr class="memdesc:a1ba55b0907ff580f04447d58af044de0 inherit pub_methods_classompl_1_1GridN"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of neighbors for a given coordinate. <br/></td></tr>
+<tr class="separator:a1ba55b0907ff580f04447d58af044de0 inherit pub_methods_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6833ae9f28a7b57275faee82437255d9 inherit pub_methods_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6833ae9f28a7b57275faee82437255d9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#a6833ae9f28a7b57275faee82437255d9">neighbors</a> (<a class="el" href="classompl_1_1GridN.html#ae15a0d9d76a01bc9f98afbed8ce23342">Coord</a> &amp;coord, <a class="el" href="classompl_1_1Grid.html#a75eda082fd346c84697130d347c1eb2f">CellArray</a> &amp;list) const </td></tr>
+<tr class="memdesc:a6833ae9f28a7b57275faee82437255d9 inherit pub_methods_classompl_1_1GridN"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of neighbors for a given coordinate. <br/></td></tr>
+<tr class="separator:a6833ae9f28a7b57275faee82437255d9 inherit pub_methods_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abafef2aa6c3f2e6c35ef1a82f10f97c8 inherit pub_methods_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#abafef2aa6c3f2e6c35ef1a82f10f97c8">remove</a> (<a class="el" href="classompl_1_1GridN.html#aa26d52609e9a958a0dee1c774d817f34">BaseCell</a> *cell)</td></tr>
+<tr class="separator:abafef2aa6c3f2e6c35ef1a82f10f97c8 inherit pub_methods_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bc2efb9f3533a98381ee2e12da28117 inherit pub_methods_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bc2efb9f3533a98381ee2e12da28117"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#a1bc2efb9f3533a98381ee2e12da28117">getCells</a> (<a class="el" href="classompl_1_1Grid.html#a75eda082fd346c84697130d347c1eb2f">CellArray</a> &amp;cells) const </td></tr>
+<tr class="memdesc:a1bc2efb9f3533a98381ee2e12da28117 inherit pub_methods_classompl_1_1GridN"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the set of instantiated cells in the grid. <br/></td></tr>
+<tr class="separator:a1bc2efb9f3533a98381ee2e12da28117 inherit pub_methods_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classompl_1_1Grid"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classompl_1_1Grid')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classompl_1_1Grid.html">ompl::Grid&lt; _T &gt;</a></td></tr>
+<tr class="memitem:aa11294d2cb47b1e55bacd101b131d3c1 inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa11294d2cb47b1e55bacd101b131d3c1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#aa11294d2cb47b1e55bacd101b131d3c1">Grid</a> (unsigned int dimension)</td></tr>
+<tr class="memdesc:aa11294d2cb47b1e55bacd101b131d3c1 inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor takes the dimension of the grid as argument. <br/></td></tr>
+<tr class="separator:aa11294d2cb47b1e55bacd101b131d3c1 inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acace53abca008ae9210248cb2d54739d inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acace53abca008ae9210248cb2d54739d"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#acace53abca008ae9210248cb2d54739d">~Grid</a> ()</td></tr>
+<tr class="memdesc:acace53abca008ae9210248cb2d54739d inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br/></td></tr>
+<tr class="separator:acace53abca008ae9210248cb2d54739d inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa58eb9423709340be0fa233986c3f6fb inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa58eb9423709340be0fa233986c3f6fb"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#aa58eb9423709340be0fa233986c3f6fb">getDimension</a> () const </td></tr>
+<tr class="memdesc:aa58eb9423709340be0fa233986c3f6fb inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the dimension of the grid. <br/></td></tr>
+<tr class="separator:aa58eb9423709340be0fa233986c3f6fb inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a118373bcfe70886449d94782b0a7c783 inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a118373bcfe70886449d94782b0a7c783">setDimension</a> (unsigned int dimension)</td></tr>
+<tr class="separator:a118373bcfe70886449d94782b0a7c783 inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6f884d8fc3c401a3610d7e5659e16b9 inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac6f884d8fc3c401a3610d7e5659e16b9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#ac6f884d8fc3c401a3610d7e5659e16b9">has</a> (const <a class="el" href="classompl_1_1Grid.html#ada6a72bd91ec78dd8a0806c00055d917">Coord</a> &amp;coord) const </td></tr>
+<tr class="memdesc:ac6f884d8fc3c401a3610d7e5659e16b9 inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a cell exists at the specified coordinate. <br/></td></tr>
+<tr class="separator:ac6f884d8fc3c401a3610d7e5659e16b9 inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae563fea4e6a46c741682b6dcbe93ce54 inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae563fea4e6a46c741682b6dcbe93ce54"></a>
+<a class="el" href="structompl_1_1Grid_1_1Cell.html">Cell</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#ae563fea4e6a46c741682b6dcbe93ce54">getCell</a> (const <a class="el" href="classompl_1_1Grid.html#ada6a72bd91ec78dd8a0806c00055d917">Coord</a> &amp;coord) const </td></tr>
+<tr class="memdesc:ae563fea4e6a46c741682b6dcbe93ce54 inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the cell at a specified coordinate. <br/></td></tr>
+<tr class="separator:ae563fea4e6a46c741682b6dcbe93ce54 inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af462d094f175c8c409237802d875aad2 inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af462d094f175c8c409237802d875aad2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#af462d094f175c8c409237802d875aad2">neighbors</a> (const <a class="el" href="structompl_1_1Grid_1_1Cell.html">Cell</a> *cell, <a class="el" href="classompl_1_1Grid.html#a75eda082fd346c84697130d347c1eb2f">CellArray</a> &amp;list) const </td></tr>
+<tr class="memdesc:af462d094f175c8c409237802d875aad2 inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of neighbors for a given cell. <br/></td></tr>
+<tr class="separator:af462d094f175c8c409237802d875aad2 inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75d952cdcfbf49f084d7ec1434170fbf inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75d952cdcfbf49f084d7ec1434170fbf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a75d952cdcfbf49f084d7ec1434170fbf">neighbors</a> (const <a class="el" href="classompl_1_1Grid.html#ada6a72bd91ec78dd8a0806c00055d917">Coord</a> &amp;coord, <a class="el" href="classompl_1_1Grid.html#a75eda082fd346c84697130d347c1eb2f">CellArray</a> &amp;list) const </td></tr>
+<tr class="memdesc:a75d952cdcfbf49f084d7ec1434170fbf inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of neighbors for a given coordinate. <br/></td></tr>
+<tr class="separator:a75d952cdcfbf49f084d7ec1434170fbf inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a9e29f3d8bb2d337d36f0ba8efb0d45 inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a9e29f3d8bb2d337d36f0ba8efb0d45"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a6a9e29f3d8bb2d337d36f0ba8efb0d45">neighbors</a> (<a class="el" href="classompl_1_1Grid.html#ada6a72bd91ec78dd8a0806c00055d917">Coord</a> &amp;coord, <a class="el" href="classompl_1_1Grid.html#a75eda082fd346c84697130d347c1eb2f">CellArray</a> &amp;list) const </td></tr>
+<tr class="memdesc:a6a9e29f3d8bb2d337d36f0ba8efb0d45 inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of neighbors for a given coordinate. <br/></td></tr>
+<tr class="separator:a6a9e29f3d8bb2d337d36f0ba8efb0d45 inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27fcbd257ec49b14b88cffd182db8b39 inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27fcbd257ec49b14b88cffd182db8b39"></a>
+std::vector&lt; std::vector&lt; <a class="el" href="structompl_1_1Grid_1_1Cell.html">Cell</a> * &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a27fcbd257ec49b14b88cffd182db8b39">components</a> () const </td></tr>
+<tr class="memdesc:a27fcbd257ec49b14b88cffd182db8b39 inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the connected components formed by the cells in this grid (based on neighboring relation) <br/></td></tr>
+<tr class="separator:a27fcbd257ec49b14b88cffd182db8b39 inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac72fa046a57332c7627126e8d84fb1dc inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac72fa046a57332c7627126e8d84fb1dc"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#ac72fa046a57332c7627126e8d84fb1dc">add</a> (<a class="el" href="structompl_1_1Grid_1_1Cell.html">Cell</a> *cell)</td></tr>
+<tr class="memdesc:ac72fa046a57332c7627126e8d84fb1dc inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an instantiated cell to the grid. <br/></td></tr>
+<tr class="separator:ac72fa046a57332c7627126e8d84fb1dc inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5876a2ff7b1092fd00fc58fee9ad1829 inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5876a2ff7b1092fd00fc58fee9ad1829"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a5876a2ff7b1092fd00fc58fee9ad1829">destroyCell</a> (<a class="el" href="structompl_1_1Grid_1_1Cell.html">Cell</a> *cell) const </td></tr>
+<tr class="memdesc:a5876a2ff7b1092fd00fc58fee9ad1829 inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the memory occupied by a cell; do not call this function unless <a class="el" href="classompl_1_1Grid.html#a72386f9ffd43e98d25aa38b224541564">remove()</a> was called first. <br/></td></tr>
+<tr class="separator:a5876a2ff7b1092fd00fc58fee9ad1829 inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe4fa2e9e3b6db8d57c69daaeb1be0b7 inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afe4fa2e9e3b6db8d57c69daaeb1be0b7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#afe4fa2e9e3b6db8d57c69daaeb1be0b7">getContent</a> (std::vector&lt; _T &gt; &amp;content) const </td></tr>
+<tr class="memdesc:afe4fa2e9e3b6db8d57c69daaeb1be0b7 inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the data stored in the cells we are aware of. <br/></td></tr>
+<tr class="separator:afe4fa2e9e3b6db8d57c69daaeb1be0b7 inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0864cd4aae571bd30003b7ae82dccbd5 inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0864cd4aae571bd30003b7ae82dccbd5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a0864cd4aae571bd30003b7ae82dccbd5">getCoordinates</a> (std::vector&lt; <a class="el" href="classompl_1_1Grid.html#ada6a72bd91ec78dd8a0806c00055d917">Coord</a> * &gt; &amp;coords) const </td></tr>
+<tr class="memdesc:a0864cd4aae571bd30003b7ae82dccbd5 inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the set of coordinates where there are cells. <br/></td></tr>
+<tr class="separator:a0864cd4aae571bd30003b7ae82dccbd5 inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5606423660b0f121ad2f227030085a9c inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5606423660b0f121ad2f227030085a9c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a5606423660b0f121ad2f227030085a9c">getCells</a> (<a class="el" href="classompl_1_1Grid.html#a75eda082fd346c84697130d347c1eb2f">CellArray</a> &amp;cells) const </td></tr>
+<tr class="memdesc:a5606423660b0f121ad2f227030085a9c inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the set of instantiated cells in the grid. <br/></td></tr>
+<tr class="separator:a5606423660b0f121ad2f227030085a9c inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab586680ae4fb05376c91b114d95e1b7b inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab586680ae4fb05376c91b114d95e1b7b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#ab586680ae4fb05376c91b114d95e1b7b">printCoord</a> (<a class="el" href="classompl_1_1Grid.html#ada6a72bd91ec78dd8a0806c00055d917">Coord</a> &amp;coord, std::ostream &amp;out=std::cout) const </td></tr>
+<tr class="memdesc:ab586680ae4fb05376c91b114d95e1b7b inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the value of a coordinate to a stream. <br/></td></tr>
+<tr class="separator:ab586680ae4fb05376c91b114d95e1b7b inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68c59b4c32f76bf4d698305be349faa8 inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a68c59b4c32f76bf4d698305be349faa8"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a68c59b4c32f76bf4d698305be349faa8">empty</a> () const </td></tr>
+<tr class="memdesc:a68c59b4c32f76bf4d698305be349faa8 inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the grid is empty. <br/></td></tr>
+<tr class="separator:a68c59b4c32f76bf4d698305be349faa8 inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b6823f08c397d48bc7e6b2b4567566e inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b6823f08c397d48bc7e6b2b4567566e"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a1b6823f08c397d48bc7e6b2b4567566e">size</a> () const </td></tr>
+<tr class="memdesc:a1b6823f08c397d48bc7e6b2b4567566e inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check the size of the grid. <br/></td></tr>
+<tr class="separator:a1b6823f08c397d48bc7e6b2b4567566e inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73ad31c53eef29b58c753634b886b49c inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a73ad31c53eef29b58c753634b886b49c"></a>
+<a class="el" href="classompl_1_1Grid.html#ac85bc047c9574aea0fb08c1c53701eb9">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a73ad31c53eef29b58c753634b886b49c">begin</a> () const </td></tr>
+<tr class="memdesc:a73ad31c53eef29b58c753634b886b49c inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <a class="el" href="classompl_1_1Grid.html#a73ad31c53eef29b58c753634b886b49c" title="Return the begin() iterator for the grid. ">begin()</a> iterator for the grid. <br/></td></tr>
+<tr class="separator:a73ad31c53eef29b58c753634b886b49c inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8155d8b764675cec88b3c670bb9cc705 inherit pub_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8155d8b764675cec88b3c670bb9cc705"></a>
+<a class="el" href="classompl_1_1Grid.html#ac85bc047c9574aea0fb08c1c53701eb9">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a8155d8b764675cec88b3c670bb9cc705">end</a> () const </td></tr>
+<tr class="memdesc:a8155d8b764675cec88b3c670bb9cc705 inherit pub_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <a class="el" href="classompl_1_1Grid.html#a8155d8b764675cec88b3c670bb9cc705" title="Return the end() iterator for the grid. ">end()</a> iterator for the grid. <br/></td></tr>
+<tr class="separator:a8155d8b764675cec88b3c670bb9cc705 inherit pub_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-types"></a>
+Protected Types</h2></td></tr>
+<tr class="memitem:abf7cedc47aa3e2b2cb87986fcdf9ed44"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf7cedc47aa3e2b2cb87986fcdf9ed44"></a>
+typedef <a class="el" href="classompl_1_1BinaryHeap.html">BinaryHeap</a>&lt; CellX <br class="typebreak"/>
+*, <a class="el" href="structompl_1_1GridB_1_1LessThanInternalCell.html">LessThanInternalCell</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#abf7cedc47aa3e2b2cb87986fcdf9ed44">internalBHeap</a></td></tr>
+<tr class="memdesc:abf7cedc47aa3e2b2cb87986fcdf9ed44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Datatype for a heap of cells containing interior cells. <br/></td></tr>
+<tr class="separator:abf7cedc47aa3e2b2cb87986fcdf9ed44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01bc4d75a25963312eecd700ed643399"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01bc4d75a25963312eecd700ed643399"></a>
+typedef <a class="el" href="classompl_1_1BinaryHeap.html">BinaryHeap</a>&lt; CellX <br class="typebreak"/>
+*, <a class="el" href="structompl_1_1GridB_1_1LessThanExternalCell.html">LessThanExternalCell</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a01bc4d75a25963312eecd700ed643399">externalBHeap</a></td></tr>
+<tr class="memdesc:a01bc4d75a25963312eecd700ed643399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Datatype for a heap of cells containing exterior cells. <br/></td></tr>
+<tr class="separator:a01bc4d75a25963312eecd700ed643399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_types_classompl_1_1Grid"><td colspan="2" onclick="javascript:toggleInherit('pro_types_classompl_1_1Grid')"><img src="closed.png" alt="-"/>&#160;Protected Types inherited from <a class="el" href="classompl_1_1Grid.html">ompl::Grid&lt; _T &gt;</a></td></tr>
+<tr class="memitem:a979747c1db17535f9b4f90d4b9a84b66 inherit pro_types_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a979747c1db17535f9b4f90d4b9a84b66"></a>
+typedef boost::unordered_map<br class="typebreak"/>
+&lt; <a class="el" href="classompl_1_1Grid.html#ada6a72bd91ec78dd8a0806c00055d917">Coord</a> *, <a class="el" href="structompl_1_1Grid_1_1Cell.html">Cell</a> <br class="typebreak"/>
+*, <a class="el" href="structompl_1_1Grid_1_1HashFunCoordPtr.html">HashFunCoordPtr</a>, <br class="typebreak"/>
+<a class="el" href="structompl_1_1Grid_1_1EqualCoordPtr.html">EqualCoordPtr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a979747c1db17535f9b4f90d4b9a84b66">CoordHash</a></td></tr>
+<tr class="memdesc:a979747c1db17535f9b4f90d4b9a84b66 inherit pro_types_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the datatype for the used hash structure. <br/></td></tr>
+<tr class="separator:a979747c1db17535f9b4f90d4b9a84b66 inherit pro_types_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a885d2d151a374acf376617019f0c4f86"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a885d2d151a374acf376617019f0c4f86"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a885d2d151a374acf376617019f0c4f86">setupHeaps</a> ()</td></tr>
+<tr class="memdesc:a885d2d151a374acf376617019f0c4f86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the update procedure for the heaps of internal and external cells. <br/></td></tr>
+<tr class="separator:a885d2d151a374acf376617019f0c4f86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab332ad98c88d0ddc7c2ba9e04eaa6c65"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab332ad98c88d0ddc7c2ba9e04eaa6c65"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#ab332ad98c88d0ddc7c2ba9e04eaa6c65">clearHeaps</a> ()</td></tr>
+<tr class="memdesc:ab332ad98c88d0ddc7c2ba9e04eaa6c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the data from both heaps. <br/></td></tr>
+<tr class="separator:ab332ad98c88d0ddc7c2ba9e04eaa6c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classompl_1_1GridN"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classompl_1_1GridN')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classompl_1_1GridN.html">ompl::GridN&lt; _T &gt;</a></td></tr>
+<tr class="memitem:ab065311737237a3731d41e0cbc4e1b76 inherit pro_methods_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab065311737237a3731d41e0cbc4e1b76"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#ab065311737237a3731d41e0cbc4e1b76">numberOfBoundaryDimensions</a> (const <a class="el" href="classompl_1_1GridN.html#ae15a0d9d76a01bc9f98afbed8ce23342">Coord</a> &amp;coord) const </td></tr>
+<tr class="memdesc:ab065311737237a3731d41e0cbc4e1b76 inherit pro_methods_classompl_1_1GridN"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute how many sides of a coordinate touch the boundaries of the grid. <br/></td></tr>
+<tr class="separator:ab065311737237a3731d41e0cbc4e1b76 inherit pro_methods_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classompl_1_1Grid"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classompl_1_1Grid')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classompl_1_1Grid.html">ompl::Grid&lt; _T &gt;</a></td></tr>
+<tr class="memitem:ab5f51d3c4ae3f021f17d8435643cd3d0 inherit pro_methods_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5f51d3c4ae3f021f17d8435643cd3d0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#ab5f51d3c4ae3f021f17d8435643cd3d0">freeMemory</a> ()</td></tr>
+<tr class="memdesc:ab5f51d3c4ae3f021f17d8435643cd3d0 inherit pro_methods_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the allocated memory. <br/></td></tr>
+<tr class="separator:ab5f51d3c4ae3f021f17d8435643cd3d0 inherit pro_methods_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
+Static Protected Member Functions</h2></td></tr>
+<tr class="memitem:a24ba3c3dfcd76b0f7f79006252e18928"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24ba3c3dfcd76b0f7f79006252e18928"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a24ba3c3dfcd76b0f7f79006252e18928">noCellUpdate</a> (<a class="el" href="classompl_1_1GridB.html#a7fd1b48d2b5451f40c57f4e3fba4e4c3">Cell</a> *, void *)</td></tr>
+<tr class="memdesc:a24ba3c3dfcd76b0f7f79006252e18928"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default no-op update routine for a cell. <br/></td></tr>
+<tr class="separator:a24ba3c3dfcd76b0f7f79006252e18928"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d5d287741c00a9dba43113064f867d1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5d5d287741c00a9dba43113064f867d1"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a5d5d287741c00a9dba43113064f867d1">setHeapElementI</a> (typename internalBHeap::Element *element, void *)</td></tr>
+<tr class="memdesc:a5d5d287741c00a9dba43113064f867d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routine used internally for keeping track of binary heap elements for internal cells. <br/></td></tr>
+<tr class="separator:a5d5d287741c00a9dba43113064f867d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2fb49e37b99d8f9e224c17577f5c622"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae2fb49e37b99d8f9e224c17577f5c622"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#ae2fb49e37b99d8f9e224c17577f5c622">setHeapElementE</a> (typename externalBHeap::Element *element, void *)</td></tr>
+<tr class="memdesc:ae2fb49e37b99d8f9e224c17577f5c622"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routine used internally for keeping track of binary heap elements for external cells. <br/></td></tr>
+<tr class="separator:ae2fb49e37b99d8f9e224c17577f5c622"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a21a662edc0904ba14495d44b2088669f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a21a662edc0904ba14495d44b2088669f"></a>
+<a class="el" href="classompl_1_1GridB.html#a1023a1ca22bfe01e260ed8c975407aea">EventCellUpdate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a21a662edc0904ba14495d44b2088669f">eventCellUpdate_</a></td></tr>
+<tr class="memdesc:a21a662edc0904ba14495d44b2088669f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to function to be called when a cell needs to be updated. <br/></td></tr>
+<tr class="separator:a21a662edc0904ba14495d44b2088669f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab229dc7aca157fe152411fe75ad2f73f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab229dc7aca157fe152411fe75ad2f73f"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#ab229dc7aca157fe152411fe75ad2f73f">eventCellUpdateData_</a></td></tr>
+<tr class="memdesc:ab229dc7aca157fe152411fe75ad2f73f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data to be passed to function pointer above. <br/></td></tr>
+<tr class="separator:ab229dc7aca157fe152411fe75ad2f73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00fa01d1103ced09fb7ee3ebee187665"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00fa01d1103ced09fb7ee3ebee187665"></a>
+<a class="el" href="classompl_1_1GridB.html#abf7cedc47aa3e2b2cb87986fcdf9ed44">internalBHeap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#a00fa01d1103ced09fb7ee3ebee187665">internal_</a></td></tr>
+<tr class="memdesc:a00fa01d1103ced09fb7ee3ebee187665"><td class="mdescLeft">&#160;</td><td class="mdescRight">The heap of interior cells. <br/></td></tr>
+<tr class="separator:a00fa01d1103ced09fb7ee3ebee187665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afede0d811f4f9b53abc0f1945b871516"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afede0d811f4f9b53abc0f1945b871516"></a>
+<a class="el" href="classompl_1_1GridB.html#a01bc4d75a25963312eecd700ed643399">externalBHeap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridB.html#afede0d811f4f9b53abc0f1945b871516">external_</a></td></tr>
+<tr class="memdesc:afede0d811f4f9b53abc0f1945b871516"><td class="mdescLeft">&#160;</td><td class="mdescRight">The heap of external cells. <br/></td></tr>
+<tr class="separator:afede0d811f4f9b53abc0f1945b871516"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classompl_1_1GridN"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classompl_1_1GridN')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classompl_1_1GridN.html">ompl::GridN&lt; _T &gt;</a></td></tr>
+<tr class="memitem:ace239cb56364f32748d8c4a66ec8b31f inherit pro_attribs_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace239cb56364f32748d8c4a66ec8b31f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#ace239cb56364f32748d8c4a66ec8b31f">hasBounds_</a></td></tr>
+<tr class="memdesc:ace239cb56364f32748d8c4a66ec8b31f inherit pro_attribs_classompl_1_1GridN"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating whether bounds are in effect for this grid. <br/></td></tr>
+<tr class="separator:ace239cb56364f32748d8c4a66ec8b31f inherit pro_attribs_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdf65b3cd4603c5d25597e62064751d8 inherit pro_attribs_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acdf65b3cd4603c5d25597e62064751d8"></a>
+<a class="el" href="classompl_1_1GridN.html#ae15a0d9d76a01bc9f98afbed8ce23342">Coord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#acdf65b3cd4603c5d25597e62064751d8">lowBound_</a></td></tr>
+<tr class="memdesc:acdf65b3cd4603c5d25597e62064751d8 inherit pro_attribs_classompl_1_1GridN"><td class="mdescLeft">&#160;</td><td class="mdescRight">If bounds are set, this defines the lower corner cell. <br/></td></tr>
+<tr class="separator:acdf65b3cd4603c5d25597e62064751d8 inherit pro_attribs_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a422a9ee23538f070a2d9704e2ca70ead inherit pro_attribs_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a422a9ee23538f070a2d9704e2ca70ead"></a>
+<a class="el" href="classompl_1_1GridN.html#ae15a0d9d76a01bc9f98afbed8ce23342">Coord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#a422a9ee23538f070a2d9704e2ca70ead">upBound_</a></td></tr>
+<tr class="memdesc:a422a9ee23538f070a2d9704e2ca70ead inherit pro_attribs_classompl_1_1GridN"><td class="mdescLeft">&#160;</td><td class="mdescRight">If bounds are set, this defines the upper corner cell. <br/></td></tr>
+<tr class="separator:a422a9ee23538f070a2d9704e2ca70ead inherit pro_attribs_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a035b9527b8cfd98a6e4f4d7472e668a1 inherit pro_attribs_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#a035b9527b8cfd98a6e4f4d7472e668a1">interiorCellNeighborsLimit_</a></td></tr>
+<tr class="separator:a035b9527b8cfd98a6e4f4d7472e668a1 inherit pro_attribs_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e9cc38ff1df4dca6c9969f73dcad61e inherit pro_attribs_classompl_1_1GridN"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1GridN.html#a1e9cc38ff1df4dca6c9969f73dcad61e">overrideCellNeighborsLimit_</a></td></tr>
+<tr class="separator:a1e9cc38ff1df4dca6c9969f73dcad61e inherit pro_attribs_classompl_1_1GridN"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classompl_1_1Grid"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classompl_1_1Grid')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classompl_1_1Grid.html">ompl::Grid&lt; _T &gt;</a></td></tr>
+<tr class="memitem:a8dfdf767f8c14a15fddbdb4bc1e993f1 inherit pro_attribs_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8dfdf767f8c14a15fddbdb4bc1e993f1"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a8dfdf767f8c14a15fddbdb4bc1e993f1">dimension_</a></td></tr>
+<tr class="memdesc:a8dfdf767f8c14a15fddbdb4bc1e993f1 inherit pro_attribs_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">The dimension of the grid. <br/></td></tr>
+<tr class="separator:a8dfdf767f8c14a15fddbdb4bc1e993f1 inherit pro_attribs_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a826614263d30ffcc37924cecfef25471 inherit pro_attribs_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a826614263d30ffcc37924cecfef25471"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#a826614263d30ffcc37924cecfef25471">maxNeighbors_</a></td></tr>
+<tr class="memdesc:a826614263d30ffcc37924cecfef25471 inherit pro_attribs_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of neighbors a cell can have (2 * dimension) <br/></td></tr>
+<tr class="separator:a826614263d30ffcc37924cecfef25471 inherit pro_attribs_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbf8751613b70340e9e287d3bb53650d inherit pro_attribs_classompl_1_1Grid"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afbf8751613b70340e9e287d3bb53650d"></a>
+<a class="el" href="classompl_1_1Grid.html#a979747c1db17535f9b4f90d4b9a84b66">CoordHash</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1Grid.html#afbf8751613b70340e9e287d3bb53650d">hash_</a></td></tr>
+<tr class="memdesc:afbf8751613b70340e9e287d3bb53650d inherit pro_attribs_classompl_1_1Grid"><td class="mdescLeft">&#160;</td><td class="mdescRight">The hash holding the cells. <br/></td></tr>
+<tr class="separator:afbf8751613b70340e9e287d3bb53650d inherit pro_attribs_classompl_1_1Grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename _T, class LessThanExternal = std::less&lt;_T&gt;, class LessThanInternal = LessThanExternal&gt;<br/>
+class ompl::GridB&lt; _T, LessThanExternal, LessThanInternal &gt;</h3>
+
+<p>This class defines a grid that keeps track of its boundary: it distinguishes between interior and exterior cells. </p>
+
+<p>Definition at line <a class="el" href="GridB_8h_source.html#l00051">51</a> of file <a class="el" href="GridB_8h_source.html">GridB.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a89bffe3573ef977f63b4ab4ff7759705"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename _T, class LessThanExternal = std::less&lt;_T&gt;, class LessThanInternal = LessThanExternal&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classompl_1_1GridB.html">ompl::GridB</a>&lt; _T, LessThanExternal, LessThanInternal &gt;::onCellUpdate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classompl_1_1GridB.html#a1023a1ca22bfe01e260ed8c975407aea">EventCellUpdate</a>&#160;</td>
+          <td class="paramname"><em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the function callback and to be called when a cell's priority is updated </p>
+
+<p>Definition at line <a class="el" href="GridB_8h_source.html#l00103">103</a> of file <a class="el" href="GridB_8h_source.html">GridB.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>ompl/src/ompl/datastructures/<a class="el" href="GridB_8h_source.html">GridB.h</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:27 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/control/planners/pdst/src/PDST.cpp Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_d108bf77affaa88433173d7604bedd7d.html">control</a></li><li class="navelem"><a class="el" href="dir_832d68db76be362de2e8a3539c780dbd.html">planners</a></li><li class="navelem"><a class="el" href="dir_6dc6f3f67cc5290072bba17b1fe22fda.html">pdst</a></li><li class="navelem"><a class="el" href="dir_915607f01da4c881d6c9e4f582d2aaa1.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">PDST.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2013, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Rice University nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Jonathan Sobieski, Mark Moll */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;ompl/tools/config/SelfConfig.h&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;ompl/control/planners/pdst/PDST.h&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;ompl::control::PDST::PDST(<span class="keyword">const</span> SpaceInformationPtr &amp;si)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    : base::Planner(si, <span class="stringliteral">&quot;PDST&quot;</span>), siC_(si.get()), bsp_(NULL), goalBias_(0.05),</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    goalSampler_(NULL), iteration_(1), lastGoalMotion_(NULL)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    Planner::declareParam&lt;double&gt;(<span class="stringliteral">&quot;goal_bias&quot;</span>, <span class="keyword">this</span>, &amp;<a class="code" href="classompl_1_1geometric_1_1PDST.html#a3792d2e346c2b0a7fdc3ade7e1a49c98">PDST::setGoalBias</a>, &amp;<a class="code" href="classompl_1_1geometric_1_1PDST.html#a905c0bdfa0883806e709283f45e9acea">PDST::getGoalBias</a>, <span class="stringliteral">&quot;0.:.05:1.&quot;</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;ompl::control::PDST::~PDST()</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    freeMemory();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PDST.html#a87abcb1dee0095fe0ee9fcca07e43025">   52</a></span>&#160;<a class="code" href="structompl_1_1base_1_1PlannerStatus.html">ompl::base::PlannerStatus</a> <a class="code" href="classompl_1_1control_1_1PDST.html#a87abcb1dee0095fe0ee9fcca07e43025">ompl::control::PDST::solve</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;ptc)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// Make sure the planner is configured correctly.</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">// ompl::base::Planner::checkValidity checks that there is at least one</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// start state and an ompl::base::Goal object specified and throws an</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// exception if this is not the case.</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    checkValidity();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// depending on how the planning problem is set up, this may be necessary</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    bsp_-&gt;bounds_ = projectionEvaluator_-&gt;getBounds();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classompl_1_1base_1_1Goal.html">base::Goal</a> *goal = pdef_-&gt;getGoal().get();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    goalSampler_ = <span class="keyword">dynamic_cast&lt;</span><a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html">ompl::base::GoalSampleableRegion</a>*<span class="keyword">&gt;</span>(goal);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// Ensure that we have a state sampler AND a control sampler</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (!sampler_)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        sampler_ = si_-&gt;allocStateSampler();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span> (!controlSampler_)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        controlSampler_ = siC_-&gt;allocDirectedControlSampler();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// Initialize to correct values depending on whether or not previous calls to solve</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// generated an approximate or exact solution. If solve is being called for the first</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// time then initializes hasSolution to false and isApproximate to true.</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">double</span> distanceToGoal, closestDistanceToGoal = std::numeric_limits&lt;double&gt;::infinity();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">bool</span> hasSolution = lastGoalMotion_ != NULL;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">bool</span> isApproximate = !hasSolution || !goal-&gt;<a class="code" href="classompl_1_1base_1_1Goal.html#a02ba4ba487714cd4e8f67c9d4164d0ec">isSatisfied</a>(lastGoalMotion_-&gt;endState_, &amp;closestDistanceToGoal);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ndim = projectionEvaluator_-&gt;getDimension();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">// If an exact solution has already been found, do not run for another iteration.</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span> (hasSolution &amp;&amp; !isApproximate)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a20f8c901516c72e258d43d7156fe8e28">ompl::base::PlannerStatus::EXACT_SOLUTION</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// Initialize tree with start state(s)</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *st = pis_.nextStart())</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html">Motion</a> *startMotion = <span class="keyword">new</span> <a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html">Motion</a>(si_-&gt;cloneState(st));</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        bsp_-&gt;addMotion(startMotion);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        startMotion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a5c59b6b22de96263fbf6cc89a9fa6d85">heapElement_</a> = priorityQueue_.<a class="code" href="classompl_1_1BinaryHeap.html#a7712c8909b596a4d12e0080960bd0274">insert</a>(startMotion);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">if</span> (priorityQueue_.empty())</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;%s: There are no valid initial states!&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547">base::PlannerStatus::INVALID_START</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;%s: Starting planning with %u states already in datastructure&quot;</span>, getName().c_str(), priorityQueue_.size());</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *tmpState1 = si_-&gt;allocState(), *tmpState2 = si_-&gt;allocState();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="namespaceompl_1_1base.html#aa83f2e90d56884b236b1e400d116b10b">base::EuclideanProjection</a> tmpProj1(ndim), tmpProj2(ndim);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">while</span> (!ptc)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="comment">// Get the top priority path.</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html">Motion</a> *motionSelected = priorityQueue_.top()-&gt;data;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        motionSelected-&gt;updatePriority();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        priorityQueue_.update(motionSelected-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a5c59b6b22de96263fbf6cc89a9fa6d85">heapElement_</a>);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html">Motion</a> *newMotion = propagateFrom(motionSelected, tmpState1, tmpState2);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">if</span> (newMotion == NULL)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        addMotion(newMotion, bsp_, tmpState1, tmpState2, tmpProj1, tmpProj2);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="comment">// Check if the newMotion reached the goal.</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        hasSolution = goal-&gt;<a class="code" href="classompl_1_1base_1_1Goal.html#a02ba4ba487714cd4e8f67c9d4164d0ec">isSatisfied</a>(newMotion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a86924a606bc657930610b4f97ca37925">endState_</a>, &amp;distanceToGoal);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">if</span> (hasSolution)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            closestDistanceToGoal = distanceToGoal;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            lastGoalMotion_ = newMotion;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            isApproximate = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (distanceToGoal &lt; closestDistanceToGoal)</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            closestDistanceToGoal = distanceToGoal;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            lastGoalMotion_ = newMotion;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="comment">// subdivide cell that contained selected motion, put motions of that</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="comment">// cell in subcells and split motions so that they contained within</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="comment">// one subcell</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <a class="code" href="structompl_1_1control_1_1PDST_1_1Cell.html">Cell</a> *cellSelected = motionSelected-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a9bc738ede1dada52205853232a240aa8">cell_</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        std::vector&lt;Motion*&gt; motions;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        cellSelected-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Cell.html#a54f7d2983d7b36341a1f7299737c119d">subdivide</a>(ndim);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        motions.swap(cellSelected-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Cell.html#a2dae375c8acee6abbcc231fcaf239058">motions_</a>);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">for</span> (std::vector&lt;Motion*&gt;::iterator m = motions.begin() ; m != motions.end() ; ++m)</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            addMotion(*m, cellSelected, tmpState1, tmpState2, tmpProj1, tmpProj2);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordflow">if</span> (lastGoalMotion_ != NULL)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        hasSolution = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="comment">// If a solution path has been computed, save it in the problem definition object.</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">if</span> (hasSolution)</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html">Motion</a> *m;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        std::vector&lt;unsigned int&gt; durations(1,</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            findDurationAndAncestor(lastGoalMotion_, lastGoalMotion_-&gt;endState_, tmpState1, m));</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        std::vector&lt;Motion*&gt; mpath(1, m);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordflow">while</span> (m-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a0322a2e03780ee2b1d1aac32b1deaa81">parent_</a>)</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            durations.push_back(findDurationAndAncestor(m-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a0322a2e03780ee2b1d1aac32b1deaa81">parent_</a>, m-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a33824f2aa2476bcffc2dad6dafd19827">startState_</a>, tmpState1, m));</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            mpath.push_back(m);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <a class="code" href="classompl_1_1control_1_1PathControl.html">PathControl</a> *path = <span class="keyword">new</span> <a class="code" href="classompl_1_1control_1_1PathControl.html">PathControl</a>(si_);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordtype">double</span> dt = siC_-&gt;getPropagationStepSize();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        path-&gt;<a class="code" href="classompl_1_1control_1_1PathControl.html#aa81092a35fc88ea1a490a4e1e8444edc">append</a>(mpath.back()-&gt;endState_);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = (<span class="keywordtype">int</span>) mpath.size() - 2; i &gt; 0; i--)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            path-&gt;<a class="code" href="classompl_1_1control_1_1PathControl.html#aa81092a35fc88ea1a490a4e1e8444edc">append</a>(mpath[i-1]-&gt;startState_, mpath[i]-&gt;control_, durations[i] * dt);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        path-&gt;<a class="code" href="classompl_1_1control_1_1PathControl.html#aa81092a35fc88ea1a490a4e1e8444edc">append</a>(lastGoalMotion_-&gt;endState_, mpath[0]-&gt;control_, durations[0] * dt);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        pdef_-&gt;addSolutionPath(<a class="code" href="classompl_1_1base_1_1PathPtr.html">base::PathPtr</a>(path), isApproximate, closestDistanceToGoal, getName());</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    si_-&gt;freeState(tmpState1);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    si_-&gt;freeState(tmpState2);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;%s: Created %u states and %u cells&quot;</span>, getName().c_str(), priorityQueue_.size(), bsp_-&gt;size());</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html">base::PlannerStatus</a>(hasSolution, isApproximate);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PDST.html#a1d200c83edc3e1500a2acbd9897995d4">  174</a></span>&#160;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html">ompl::control::PDST::Motion</a>* <a class="code" href="classompl_1_1control_1_1PDST.html#a1d200c83edc3e1500a2acbd9897995d4">ompl::control::PDST::propagateFrom</a>(</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html">Motion</a> *motion, <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *start, <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *rnd)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;{</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="comment">// sample a point along the trajectory given by motion</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> prevDuration = motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#afefe572cd9f43f1598c361b84104a654">controlDuration_</a>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">if</span> (motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#afefe572cd9f43f1598c361b84104a654">controlDuration_</a> &gt; 1)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        prevDuration = rng_.uniformInt(1, motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#afefe572cd9f43f1598c361b84104a654">controlDuration_</a>);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">if</span> (prevDuration == motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#afefe572cd9f43f1598c361b84104a654">controlDuration_</a>)</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        start = motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a86924a606bc657930610b4f97ca37925">endState_</a>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        siC_-&gt;propagate(motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a33824f2aa2476bcffc2dad6dafd19827">startState_</a>, motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#aa98d81ae1038695da52fce6e987eb401">control_</a>, prevDuration, start);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="comment">// generate a random state</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">if</span> (goalSampler_ &amp;&amp; rng_.uniform01() &lt; goalBias_ &amp;&amp; goalSampler_-&gt;canSample())</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        goalSampler_-&gt;sampleGoal(rnd);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        sampler_-&gt;sampleUniform(rnd);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="comment">// generate a random control</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *control = siC_-&gt;allocControl();</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> duration = controlSampler_-&gt;sampleTo(control, motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#aa98d81ae1038695da52fce6e987eb401">control_</a>, start, rnd);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="comment">// return new motion if duration is large enough</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">if</span> (duration &lt; siC_-&gt;getMinControlDuration())</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        siC_-&gt;freeControl(control);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html">Motion</a>(si_-&gt;cloneState(start), si_-&gt;cloneState(rnd),</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        control, duration, ++iteration_, motion);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PDST.html#a2158a0fc794229ffdda2cb24d5c0e202">  203</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1PDST.html#a2158a0fc794229ffdda2cb24d5c0e202">ompl::control::PDST::addMotion</a>(<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html">Motion</a> *motion, <a class="code" href="structompl_1_1control_1_1PDST_1_1Cell.html">Cell</a> *bsp, <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *prevState, <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *state,</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <a class="code" href="namespaceompl_1_1base.html#aa83f2e90d56884b236b1e400d116b10b">base::EuclideanProjection</a>&amp; prevProj, <a class="code" href="namespaceompl_1_1base.html#aa83f2e90d56884b236b1e400d116b10b">base::EuclideanProjection</a>&amp; proj)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;{</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="comment">// If the motion is at most 1 step, then it cannot be split across cell bounds.</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">if</span> (motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#afefe572cd9f43f1598c361b84104a654">controlDuration_</a> &lt;= 1)</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        projectionEvaluator_-&gt;project(motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a86924a606bc657930610b4f97ca37925">endState_</a>, proj);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        bsp-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Cell.html#a1ed9f3b212052a95a9ef94d12227d83b">stab</a>(proj)-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Cell.html#a85edeaabe2fcc01a13e7b1433e804178">addMotion</a>(motion);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        updateHeapElement(motion);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <a class="code" href="structompl_1_1control_1_1PDST_1_1Cell.html">Cell</a> *cell = NULL, *prevCell = NULL;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    si_-&gt;copyState(prevState, motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a33824f2aa2476bcffc2dad6dafd19827">startState_</a>);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="comment">// propagate the motion, check for cell boundary crossings, and split as necessary</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0, duration = 0 ; i &lt; motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#afefe572cd9f43f1598c361b84104a654">controlDuration_</a> - 1 ; ++i, ++duration)</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        siC_-&gt;propagate(prevState, motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#aa98d81ae1038695da52fce6e987eb401">control_</a>, 1, state);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        projectionEvaluator_-&gt;project(state, proj);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        cell = bsp-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Cell.html#a1ed9f3b212052a95a9ef94d12227d83b">stab</a>(proj);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="keywordflow">if</span> (duration &gt; 0 &amp;&amp; cell != prevCell)</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html">Motion</a> *newMotion = <span class="keyword">new</span> <a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html">Motion</a>(motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a33824f2aa2476bcffc2dad6dafd19827">startState_</a>, si_-&gt;cloneState(prevState),</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#aa98d81ae1038695da52fce6e987eb401">control_</a>, duration, motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#aa00ec3d3728b2d12b5fcda1ea1267280">priority_</a>, motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a0322a2e03780ee2b1d1aac32b1deaa81">parent_</a>);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            newMotion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a662f84767c6a621443e16b9ef2c2b44d">isSplit_</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            prevCell-&gt;addMotion(newMotion);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            updateHeapElement(newMotion);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a33824f2aa2476bcffc2dad6dafd19827">startState_</a> = newMotion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a86924a606bc657930610b4f97ca37925">endState_</a>;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#afefe572cd9f43f1598c361b84104a654">controlDuration_</a> -= duration;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a0322a2e03780ee2b1d1aac32b1deaa81">parent_</a> = newMotion;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            duration = 0;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        std::swap(state, prevState);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        std::swap(cell, prevCell);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        proj.swap(prevProj);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    }</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    prevCell-&gt;addMotion(motion);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    updateHeapElement(motion);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;}</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PDST.html#aa244c3901fbd7cf6070d6e1881844c1e">  244</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1control_1_1PDST.html#aa244c3901fbd7cf6070d6e1881844c1e">ompl::control::PDST::findDurationAndAncestor</a>(<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html">Motion</a> *motion, <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *state,</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *scratch, <a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html">Motion</a>*&amp; ancestor)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> eps = std::numeric_limits&lt;float&gt;::epsilon();</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> duration;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    ancestor = motion;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">if</span> (state == motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a86924a606bc657930610b4f97ca37925">endState_</a> || motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#afefe572cd9f43f1598c361b84104a654">controlDuration_</a> == 0 ||</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        si_-&gt;distance(motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a86924a606bc657930610b4f97ca37925">endState_</a>, state) &lt; eps)</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        duration = motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#afefe572cd9f43f1598c361b84104a654">controlDuration_</a>;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">else</span> if (motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#afefe572cd9f43f1598c361b84104a654">controlDuration_</a> &gt; 0 &amp;&amp;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        si_-&gt;distance(motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a33824f2aa2476bcffc2dad6dafd19827">startState_</a>, state) &lt; eps)</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        duration = 0;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        duration = 1;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        si_-&gt;copyState(scratch, motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a33824f2aa2476bcffc2dad6dafd19827">startState_</a>);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="keywordflow">for</span> (; duration &lt;= motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#afefe572cd9f43f1598c361b84104a654">controlDuration_</a>; ++duration)</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            siC_-&gt;propagate(scratch, motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#aa98d81ae1038695da52fce6e987eb401">control_</a>, 1, scratch);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <span class="keywordflow">if</span> (si_-&gt;distance(scratch, state) &lt; eps)</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">if</span> (duration &lt;= motion-&gt;controlDuration_)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="comment">// ancestor points to the start of a split motion; duration is computed</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="comment">// relative to start state of ancestor motion</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="keywordflow">while</span> (ancestor-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a0322a2e03780ee2b1d1aac32b1deaa81">parent_</a> &amp;&amp; ancestor-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#aa98d81ae1038695da52fce6e987eb401">control_</a> == ancestor-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a0322a2e03780ee2b1d1aac32b1deaa81">parent_</a>-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#aa98d81ae1038695da52fce6e987eb401">control_</a>)</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        {</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            ancestor = ancestor-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a0322a2e03780ee2b1d1aac32b1deaa81">parent_</a>;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            duration += ancestor-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#afefe572cd9f43f1598c361b84104a654">controlDuration_</a>;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        }</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="keywordflow">return</span> duration;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="comment">// motion is no longer the parent of the motion starting at</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="comment">// state because it has been split afterwards, so look for</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="comment">// the starting point in the parent of motion.</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">return</span> findDurationAndAncestor(motion-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a0322a2e03780ee2b1d1aac32b1deaa81">parent_</a>, state, scratch, ancestor);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;}</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PDST.html#a6b63185dd048eb4313c1b57a77b9edcd">  284</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1PDST.html#a6b63185dd048eb4313c1b57a77b9edcd">ompl::control::PDST::clear</a>()</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;{</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    Planner::clear();</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    sampler_.reset();</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    controlSampler_.reset();</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    iteration_ = 1;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    lastGoalMotion_ = NULL;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    freeMemory();</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    bsp_ = <span class="keyword">new</span> <a class="code" href="structompl_1_1control_1_1PDST_1_1Cell.html">Cell</a>(1., projectionEvaluator_-&gt;getBounds(), 0);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;}</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="keywordtype">void</span> ompl::control::PDST::freeMemory()</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;{</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="comment">// Iterate over the elements in the priority queue and clear it</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    std::vector&lt;Motion*&gt; motions;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    motions.reserve(priorityQueue_.size());</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    priorityQueue_.getContent(motions);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordflow">for</span> (std::vector&lt;Motion*&gt;::iterator it = motions.begin() ; it &lt; motions.end() ; ++it)</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keywordflow">if</span> ((*it)-&gt;startState_ != (*it)-&gt;endState_)</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            si_-&gt;freeState((*it)-&gt;startState_);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keywordflow">if</span> (!(*it)-&gt;isSplit_)</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            si_-&gt;freeState((*it)-&gt;endState_);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            <span class="keywordflow">if</span> ((*it)-&gt;control_)</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                siC_-&gt;freeControl((*it)-&gt;control_);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keyword">delete</span> *it;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    }</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    priorityQueue_.clear(); <span class="comment">// clears the Element objects in the priority queue</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keyword">delete</span> bsp_;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    bsp_ = NULL;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;}</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;</div>
+<div class="line"><a name="l00318"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PDST.html#ae75d5a4fca1fd028ab23bfcdd5a1a644">  318</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1PDST.html#ae75d5a4fca1fd028ab23bfcdd5a1a644">ompl::control::PDST::setup</a>()</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;{</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    Planner::setup();</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <a class="code" href="classompl_1_1tools_1_1SelfConfig.html">tools::SelfConfig</a> sc(si_, getName());</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    sc.<a class="code" href="classompl_1_1tools_1_1SelfConfig.html#a6af441eace888354bcc5afe172561d62">configureProjectionEvaluator</a>(projectionEvaluator_);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">if</span> (!projectionEvaluator_-&gt;hasBounds())</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        projectionEvaluator_-&gt;inferBounds();</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keywordflow">if</span> (!projectionEvaluator_-&gt;hasBounds())</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classompl_1_1Exception.html">Exception</a>(<span class="stringliteral">&quot;PDST requires a projection evaluator that specifies bounds for the projected space&quot;</span>);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">if</span> (bsp_)</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <span class="keyword">delete</span> bsp_;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    bsp_ = <span class="keyword">new</span> <a class="code" href="structompl_1_1control_1_1PDST_1_1Cell.html">Cell</a>(1., projectionEvaluator_-&gt;getBounds(), 0);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    lastGoalMotion_ = NULL;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;}</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;</div>
+<div class="line"><a name="l00333"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PDST.html#a6d43e2667213ff0b46b1bd52e75d949a">  333</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1PDST.html#a6d43e2667213ff0b46b1bd52e75d949a">ompl::control::PDST::getPlannerData</a>(<a class="code" href="classompl_1_1base_1_1PlannerData.html">ompl::base::PlannerData</a> &amp;data)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#afaaf08c87f8797803fbeb60771635ea5">base::Planner::getPlannerData</a>(data);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordtype">double</span> dt = siC_-&gt;getPropagationStepSize();</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *scratch = si_-&gt;allocState();</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    std::vector&lt;Motion*&gt; motions;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    motions.reserve(priorityQueue_.size());</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    priorityQueue_.getContent(motions);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="comment">// Add goal vertex</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordflow">if</span> (lastGoalMotion_ != NULL)</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">addGoalVertex</a>(lastGoalMotion_-&gt;endState_);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordflow">for</span> (std::vector&lt;Motion*&gt;::iterator it = motions.begin(); it &lt; motions.end(); ++it)</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="keywordflow">if</span> (!(*it)-&gt;isSplit_)</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        {</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            <span class="comment">// We only add one edge for each motion that has been split into smaller segments</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            <a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html">Motion</a> *cur = *it, *ancestor;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> duration = findDurationAndAncestor(cur, cur-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a86924a606bc657930610b4f97ca37925">endState_</a>, scratch, ancestor);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            <span class="keywordflow">if</span> (cur-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a0322a2e03780ee2b1d1aac32b1deaa81">parent_</a> == NULL)</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">addStartVertex</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(cur-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a86924a606bc657930610b4f97ca37925">endState_</a>));</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a7ee1c1a4c085d16b2aedc573e1d6a956">hasControls</a>())</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            {</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(ancestor-&gt;startState_),</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                    <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(cur-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a86924a606bc657930610b4f97ca37925">endState_</a>),</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                    <a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html">PlannerDataEdgeControl</a>(cur-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#aa98d81ae1038695da52fce6e987eb401">control_</a>, duration * dt));</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                <span class="keywordflow">if</span> (ancestor-&gt;parent_)</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                {</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                    <span class="comment">// Include an edge between start state of parent ancestor motion and</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                    <span class="comment">// the start state of the ancestor motion, which lies somewhere on</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                    <span class="comment">// the parent ancestor motion.</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                    cur = ancestor;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                    duration = findDurationAndAncestor(cur-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a0322a2e03780ee2b1d1aac32b1deaa81">parent_</a>, cur-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a33824f2aa2476bcffc2dad6dafd19827">startState_</a>, scratch, ancestor);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                    data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(ancestor-&gt;startState_),</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                        <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(cur-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a33824f2aa2476bcffc2dad6dafd19827">startState_</a>),</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                        <a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html">PlannerDataEdgeControl</a>(ancestor-&gt;control_, duration * dt));</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                }</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            }</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(ancestor-&gt;startState_),</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                    <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(cur-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a86924a606bc657930610b4f97ca37925">endState_</a>));</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                <span class="keywordflow">if</span> (ancestor-&gt;parent_)</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                {</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                    <span class="comment">// Include an edge between start state of parent ancestor motion and</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                    <span class="comment">// the start state of the ancestor motion, which lies somewhere on</span></div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                    <span class="comment">// the parent ancestor motion.</span></div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                    cur = ancestor;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                    findDurationAndAncestor(cur-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a0322a2e03780ee2b1d1aac32b1deaa81">parent_</a>, cur-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a33824f2aa2476bcffc2dad6dafd19827">startState_</a>, scratch, ancestor);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                    data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(ancestor-&gt;startState_),</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                        <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(cur-&gt;<a class="code" href="structompl_1_1control_1_1PDST_1_1Motion.html#a33824f2aa2476bcffc2dad6dafd19827">startState_</a>));</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            }</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        }</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    si_-&gt;freeState(scratch);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;}</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
+<div class="line"><a name="l00393"></a><span class="lineno"><a class="line" href="structompl_1_1control_1_1PDST_1_1Cell.html#a54f7d2983d7b36341a1f7299737c119d">  393</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="structompl_1_1control_1_1PDST_1_1Cell.html#a54f7d2983d7b36341a1f7299737c119d">ompl::control::PDST::Cell::subdivide</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> spaceDimension)</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;{</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordtype">double</span> childVolume = .5 * volume_;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nextSplitDimension = (splitDimension_ + 1) % spaceDimension;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    splitValue_ = .5 * (bounds_.low[splitDimension_] + bounds_.high[splitDimension_]);</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    left_ = <span class="keyword">new</span> <a class="code" href="structompl_1_1control_1_1PDST_1_1Cell.html">Cell</a>(childVolume, bounds_, nextSplitDimension);</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    left_-&gt;bounds_.high[splitDimension_] = splitValue_;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    left_-&gt;motions_.reserve(motions_.size());</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    right_ = <span class="keyword">new</span> <a class="code" href="structompl_1_1control_1_1PDST_1_1Cell.html">Cell</a>(childVolume, bounds_, nextSplitDimension);</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    right_-&gt;bounds_.low[splitDimension_] = splitValue_;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    right_-&gt;motions_.reserve(motions_.size());</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;}</div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Motion_html_a662f84767c6a621443e16b9ef2c2b44d"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Motion.html#a662f84767c6a621443e16b9ef2c2b44d">ompl::control::PDST::Motion::isSplit_</a></div><div class="ttdeci">bool isSplit_</div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2PDST_8h_source.html#l00192">PDST.h:192</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Motion_html_afefe572cd9f43f1598c361b84104a654"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Motion.html#afefe572cd9f43f1598c361b84104a654">ompl::control::PDST::Motion::controlDuration_</a></div><div class="ttdeci">unsigned int controlDuration_</div><div class="ttdoc">The duration that the control was applied to arrive at this state from the parent. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2PDST_8h_source.html#l00181">PDST.h:181</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PDST_html_ae75d5a4fca1fd028ab23bfcdd5a1a644"><div class="ttname"><a href="classompl_1_1control_1_1PDST.html#ae75d5a4fca1fd028ab23bfcdd5a1a644">ompl::control::PDST::setup</a></div><div class="ttdeci">virtual void setup()</div><div class="ttdoc">Perform extra configuration steps, if needed. This call will also issue a call to ompl::base::SpaceIn...</div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2src_2PDST_8cpp_source.html#l00318">PDST.cpp:318</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html">ompl::base::PlannerData</a></div><div class="ttdoc">Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00164">PlannerData.h:164</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PDST_html_a1d200c83edc3e1500a2acbd9897995d4"><div class="ttname"><a href="classompl_1_1control_1_1PDST.html#a1d200c83edc3e1500a2acbd9897995d4">ompl::control::PDST::propagateFrom</a></div><div class="ttdeci">Motion * propagateFrom(Motion *motion, base::State *, base::State *)</div><div class="ttdoc">Select a state along motion and propagate a new motion from there. Return NULL if no valid motion cou...</div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2src_2PDST_8cpp_source.html#l00174">PDST.cpp:174</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Motion_html_aa00ec3d3728b2d12b5fcda1ea1267280"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Motion.html#aa00ec3d3728b2d12b5fcda1ea1267280">ompl::control::PDST::Motion::priority_</a></div><div class="ttdeci">double priority_</div><div class="ttdoc">Priority for selecting this path to extend from in the future. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2PDST_8h_source.html#l00183">PDST.h:183</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PathControl_html_aa81092a35fc88ea1a490a4e1e8444edc"><div class="ttname"><a href="classompl_1_1control_1_1PathControl.html#aa81092a35fc88ea1a490a4e1e8444edc">ompl::control::PathControl::append</a></div><div class="ttdeci">void append(const base::State *state)</div><div class="ttdoc">Append state to the end of the path; it is assumed state is the first state, so no control is applied...</div><div class="ttdef"><b>Definition:</b> <a href="PathControl_8cpp_source.html#l00259">PathControl.cpp:259</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1Control_html"><div class="ttname"><a href="classompl_1_1control_1_1Control.html">ompl::control::Control</a></div><div class="ttdoc">Definition of an abstract control. </div><div class="ttdef"><b>Definition:</b> <a href="Control_8h_source.html#l00048">Control.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a7ee1c1a4c085d16b2aedc573e1d6a956"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a7ee1c1a4c085d16b2aedc573e1d6a956">ompl::base::PlannerData::hasControls</a></div><div class="ttdeci">virtual bool hasControls() const </div><div class="ttdoc">Indicate whether any information about controls (ompl::control::Control) is stored in this instance...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00800">PlannerData.cpp:800</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Motion_html"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Motion.html">ompl::control::PDST::Motion</a></div><div class="ttdoc">Class representing the tree of motions exploring the state space. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2PDST_8h_source.html#l00148">PDST.h:148</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a3604cb85b0402b09b319c5f1df02b12e"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">ompl::base::PlannerData::addGoalVertex</a></div><div class="ttdeci">unsigned int addGoalVertex(const PlannerDataVertex &amp;v)</div><div class="ttdoc">Adds the given vertex to the graph data, and marks it as a start vertex. The vertex index is returned...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00434">PlannerData.cpp:434</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Goal_html"><div class="ttname"><a href="classompl_1_1base_1_1Goal.html">ompl::base::Goal</a></div><div class="ttdoc">Abstract definition of goals. </div><div class="ttdef"><b>Definition:</b> <a href="Goal_8h_source.html#l00063">Goal.h:63</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Motion_html_a33824f2aa2476bcffc2dad6dafd19827"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Motion.html#a33824f2aa2476bcffc2dad6dafd19827">ompl::control::PDST::Motion::startState_</a></div><div class="ttdeci">base::State * startState_</div><div class="ttdoc">The starting point of this motion. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2PDST_8h_source.html#l00175">PDST.h:175</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerTerminationCondition_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerTerminationCondition.html">ompl::base::PlannerTerminationCondition</a></div><div class="ttdoc">Encapsulate a termination condition for a motion planner. Planners will call operator() to decide whe...</div><div class="ttdef"><b>Definition:</b> <a href="PlannerTerminationCondition_8h_source.html#l00064">PlannerTerminationCondition.h:64</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataEdgeControl_html"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataEdgeControl.html">ompl::control::PlannerDataEdgeControl</a></div><div class="ttdoc">Representation of an edge in PlannerData for planning with controls. This structure encodes a specifi...</div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerData_8h_source.html#l00060">PlannerData.h:60</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PathControl_html"><div class="ttname"><a href="classompl_1_1control_1_1PathControl.html">ompl::control::PathControl</a></div><div class="ttdoc">Definition of a control path. </div><div class="ttdef"><b>Definition:</b> <a href="PathControl_8h_source.html#l00054">PathControl.h:54</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PDST_html_a6d43e2667213ff0b46b1bd52e75d949a"><div class="ttname"><a href="classompl_1_1control_1_1PDST.html#a6d43e2667213ff0b46b1bd52e75d949a">ompl::control::PDST::getPlannerData</a></div><div class="ttdeci">virtual void getPlannerData(base::PlannerData &amp;data) const </div><div class="ttdoc">Extracts the planner data from the priority queue into data. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2src_2PDST_8cpp_source.html#l00333">PDST.cpp:333</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PDST_html_a905c0bdfa0883806e709283f45e9acea"><div class="ttname"><a href="classompl_1_1geometric_1_1PDST.html#a905c0bdfa0883806e709283f45e9acea">ompl::geometric::PDST::getGoalBias</a></div><div class="ttdeci">double getGoalBias() const </div><div class="ttdoc">Get the goal bias the planner is using */. </div><div class="ttdef"><b>Definition:</b> <a href="geometric_2planners_2pdst_2PDST_8h_source.html#l00125">PDST.h:125</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerDataVertex_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a></div><div class="ttdoc">Base class for a vertex in the PlannerData structure. All derived classes must implement the clone an...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00060">PlannerData.h:60</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Cell_html_a1ed9f3b212052a95a9ef94d12227d83b"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Cell.html#a1ed9f3b212052a95a9ef94d12227d83b">ompl::control::PDST::Cell::stab</a></div><div class="ttdeci">Cell * stab(const base::EuclideanProjection &amp;projection) const </div><div class="ttdoc">Locates the cell that this motion begins in. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2PDST_8h_source.html#l00218">PDST.h:218</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547">ompl::base::PlannerStatus::INVALID_START</a></div><div class="ttdoc">Invalid start state or no start state specified. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00056">PlannerStatus.h:56</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GoalSampleableRegion_html"><div class="ttname"><a href="classompl_1_1base_1_1GoalSampleableRegion.html">ompl::base::GoalSampleableRegion</a></div><div class="ttdoc">Abstract definition of a goal region that can be sampled. </div><div class="ttdef"><b>Definition:</b> <a href="GoalSampleableRegion_8h_source.html#l00049">GoalSampleableRegion.h:49</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Motion_html_a5c59b6b22de96263fbf6cc89a9fa6d85"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Motion.html#a5c59b6b22de96263fbf6cc89a9fa6d85">ompl::control::PDST::Motion::heapElement_</a></div><div class="ttdeci">BinaryHeap&lt; Motion *, MotionCompare &gt;::Element * heapElement_</div><div class="ttdoc">Handle to the element of the priority queue for this Motion. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2PDST_8h_source.html#l00189">PDST.h:189</a></div></div>
+<div class="ttc" id="group__logging_html_ga05ad3ae88188e7f248748785afd2b882"><div class="ttname"><a href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a></div><div class="ttdeci">#define OMPL_ERROR(fmt,...)</div><div class="ttdoc">Log a formatted error string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00064">Console.h:64</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Motion_html_a9bc738ede1dada52205853232a240aa8"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Motion.html#a9bc738ede1dada52205853232a240aa8">ompl::control::PDST::Motion::cell_</a></div><div class="ttdeci">Cell * cell_</div><div class="ttdoc">Pointer to the cell that contains this path. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2PDST_8h_source.html#l00187">PDST.h:187</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a20f8c901516c72e258d43d7156fe8e28"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a20f8c901516c72e258d43d7156fe8e28">ompl::base::PlannerStatus::EXACT_SOLUTION</a></div><div class="ttdoc">The planner found an exact solution. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00066">PlannerStatus.h:66</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PDST_html_a6b63185dd048eb4313c1b57a77b9edcd"><div class="ttname"><a href="classompl_1_1control_1_1PDST.html#a6b63185dd048eb4313c1b57a77b9edcd">ompl::control::PDST::clear</a></div><div class="ttdeci">virtual void clear()</div><div class="ttdoc">Clear all internal datastructures. Planner settings are not affected. Subsequent calls to solve() wil...</div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2src_2PDST_8cpp_source.html#l00284">PDST.cpp:284</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PDST_html_a2158a0fc794229ffdda2cb24d5c0e202"><div class="ttname"><a href="classompl_1_1control_1_1PDST.html#a2158a0fc794229ffdda2cb24d5c0e202">ompl::control::PDST::addMotion</a></div><div class="ttdeci">void addMotion(Motion *motion, Cell *cell, base::State *, base::State *, base::EuclideanProjection &amp;, base::EuclideanProjection &amp;)</div><div class="ttdoc">Inserts the motion into the appropriate cells, splitting the motion as necessary. motion is assumed t...</div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2src_2PDST_8cpp_source.html#l00203">PDST.cpp:203</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html">ompl::base::PlannerStatus</a></div><div class="ttdoc">A class to store the exit status of Planner::solve() </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00048">PlannerStatus.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_ac09c21494a8c7db500ef1a66bbbb1aa7"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">ompl::base::PlannerData::addEdge</a></div><div class="ttdeci">virtual bool addEdge(unsigned int v1, unsigned int v2, const PlannerDataEdge &amp;edge=PlannerDataEdge(), Cost weight=Cost(1.0))</div><div class="ttdoc">Adds a directed edge between the given vertex indexes. An optional edge structure and weight can be s...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00444">PlannerData.cpp:444</a></div></div>
+<div class="ttc" id="namespaceompl_1_1base_html_aa83f2e90d56884b236b1e400d116b10b"><div class="ttname"><a href="namespaceompl_1_1base.html#aa83f2e90d56884b236b1e400d116b10b">ompl::base::EuclideanProjection</a></div><div class="ttdeci">boost::numeric::ublas::vector&lt; double &gt; EuclideanProjection</div><div class="ttdoc">The datatype for state projections. This class contains a real vector. </div><div class="ttdef"><b>Definition:</b> <a href="ProjectionEvaluator_8h_source.html#l00062">ProjectionEvaluator.h:62</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a2eea84456784452486aa0065af391f47"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">ompl::base::PlannerData::addStartVertex</a></div><div class="ttdeci">unsigned int addStartVertex(const PlannerDataVertex &amp;v)</div><div class="ttdoc">Adds the given vertex to the graph data, and marks it as a start vertex. The vertex index is returned...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00425">PlannerData.cpp:425</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Cell_html_a85edeaabe2fcc01a13e7b1433e804178"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Cell.html#a85edeaabe2fcc01a13e7b1433e804178">ompl::control::PDST::Cell::addMotion</a></div><div class="ttdeci">void addMotion(Motion *motion)</div><div class="ttdoc">Add a motion. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2PDST_8h_source.html#l00231">PDST.h:231</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Goal_html_a02ba4ba487714cd4e8f67c9d4164d0ec"><div class="ttname"><a href="classompl_1_1base_1_1Goal.html#a02ba4ba487714cd4e8f67c9d4164d0ec">ompl::base::Goal::isSatisfied</a></div><div class="ttdeci">virtual bool isSatisfied(const State *st) const =0</div><div class="ttdoc">Return true if the state satisfies the goal constraints. </div></div>
+<div class="ttc" id="classompl_1_1control_1_1PDST_html_aa244c3901fbd7cf6070d6e1881844c1e"><div class="ttname"><a href="classompl_1_1control_1_1PDST.html#aa244c3901fbd7cf6070d6e1881844c1e">ompl::control::PDST::findDurationAndAncestor</a></div><div class="ttdeci">unsigned int findDurationAndAncestor(Motion *motion, base::State *state, base::State *scratch, Motion *&amp;ancestor) const </div><div class="ttdoc">Find the max. duration that the control_ in motion can be applied s.t. the trajectory passes through ...</div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2src_2PDST_8cpp_source.html#l00244">PDST.cpp:244</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Motion_html_aa98d81ae1038695da52fce6e987eb401"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Motion.html#aa98d81ae1038695da52fce6e987eb401">ompl::control::PDST::Motion::control_</a></div><div class="ttdeci">control::Control * control_</div><div class="ttdoc">The control that was applied to arrive at this state from the parent. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2PDST_8h_source.html#l00179">PDST.h:179</a></div></div>
+<div class="ttc" id="classompl_1_1Exception_html"><div class="ttname"><a href="classompl_1_1Exception.html">ompl::Exception</a></div><div class="ttdoc">The exception type for ompl. </div><div class="ttdef"><b>Definition:</b> <a href="Exception_8h_source.html#l00047">Exception.h:47</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Cell_html_a2dae375c8acee6abbcc231fcaf239058"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Cell.html#a2dae375c8acee6abbcc231fcaf239058">ompl::control::PDST::Cell::motions_</a></div><div class="ttdeci">std::vector&lt; Motion * &gt; motions_</div><div class="ttdoc">The motions contained in this cell. Motions are stored only in leaf nodes. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2PDST_8h_source.html#l00259">PDST.h:259</a></div></div>
+<div class="ttc" id="classompl_1_1tools_1_1SelfConfig_html_a6af441eace888354bcc5afe172561d62"><div class="ttname"><a href="classompl_1_1tools_1_1SelfConfig.html#a6af441eace888354bcc5afe172561d62">ompl::tools::SelfConfig::configureProjectionEvaluator</a></div><div class="ttdeci">void configureProjectionEvaluator(base::ProjectionEvaluatorPtr &amp;proj)</div><div class="ttdoc">If proj is undefined, it is set to the default projection reported by base::StateSpace::getDefaultPro...</div><div class="ttdef"><b>Definition:</b> <a href="SelfConfig_8cpp_source.html#l00232">SelfConfig.cpp:232</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Cell_html_a54f7d2983d7b36341a1f7299737c119d"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Cell.html#a54f7d2983d7b36341a1f7299737c119d">ompl::control::PDST::Cell::subdivide</a></div><div class="ttdeci">void subdivide(unsigned int spaceDimension)</div><div class="ttdoc">Subdivides this cell. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2src_2PDST_8cpp_source.html#l00393">PDST.cpp:393</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Cell_html"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Cell.html">ompl::control::PDST::Cell</a></div><div class="ttdoc">Cell is a Binary Space Partition. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2PDST_8h_source.html#l00196">PDST.h:196</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PDST_html_a3792d2e346c2b0a7fdc3ade7e1a49c98"><div class="ttname"><a href="classompl_1_1geometric_1_1PDST.html#a3792d2e346c2b0a7fdc3ade7e1a49c98">ompl::geometric::PDST::setGoalBias</a></div><div class="ttdeci">*void setGoalBias(double goalBias)</div><div class="ttdoc">In the process of randomly selecting states in the state space to attempt to go towards, the algorithm may in fact choose the actual goal state, if it knows it, with some probability. This probability is a real number between 0.0 and 1.0; its value should usually be around 0.05 and should not be too large. It is probably a good idea to use the default value. </div><div class="ttdef"><b>Definition:</b> <a href="geometric_2planners_2pdst_2PDST_8h_source.html#l00120">PDST.h:120</a></div></div>
+<div class="ttc" id="classompl_1_1tools_1_1SelfConfig_html"><div class="ttname"><a href="classompl_1_1tools_1_1SelfConfig.html">ompl::tools::SelfConfig</a></div><div class="ttdoc">This class contains methods that automatically configure various parameters for motion planning...</div><div class="ttdef"><b>Definition:</b> <a href="SelfConfig_8h_source.html#l00056">SelfConfig.h:56</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Planner_html_afaaf08c87f8797803fbeb60771635ea5"><div class="ttname"><a href="classompl_1_1base_1_1Planner.html#afaaf08c87f8797803fbeb60771635ea5">ompl::base::Planner::getPlannerData</a></div><div class="ttdeci">virtual void getPlannerData(PlannerData &amp;data) const </div><div class="ttdoc">Get information about the current run of the motion planner. Repeated calls to this function will upd...</div><div class="ttdef"><b>Definition:</b> <a href="Planner_8cpp_source.html#l00118">Planner.cpp:118</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PDST_html_a87abcb1dee0095fe0ee9fcca07e43025"><div class="ttname"><a href="classompl_1_1control_1_1PDST.html#a87abcb1dee0095fe0ee9fcca07e43025">ompl::control::PDST::solve</a></div><div class="ttdeci">virtual base::PlannerStatus solve(const base::PlannerTerminationCondition &amp;ptc)</div><div class="ttdoc">Function that can solve the motion planning problem. This function can be called multiple times on th...</div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2src_2PDST_8cpp_source.html#l00052">PDST.cpp:52</a></div></div>
+<div class="ttc" id="classompl_1_1BinaryHeap_html_a7712c8909b596a4d12e0080960bd0274"><div class="ttname"><a href="classompl_1_1BinaryHeap.html#a7712c8909b596a4d12e0080960bd0274">ompl::BinaryHeap::insert</a></div><div class="ttdeci">Element * insert(const _T &amp;data)</div><div class="ttdoc">Add a new element. </div><div class="ttdef"><b>Definition:</b> <a href="BinaryHeap_8h_source.html#l00135">BinaryHeap.h:135</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PathPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1PathPtr.html">ompl::base::PathPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::Path. </div></div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Motion_html_a0322a2e03780ee2b1d1aac32b1deaa81"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Motion.html#a0322a2e03780ee2b1d1aac32b1deaa81">ompl::control::PDST::Motion::parent_</a></div><div class="ttdeci">Motion * parent_</div><div class="ttdoc">Parent motion from which this one started. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2PDST_8h_source.html#l00185">PDST.h:185</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1PDST_1_1Motion_html_a86924a606bc657930610b4f97ca37925"><div class="ttname"><a href="structompl_1_1control_1_1PDST_1_1Motion.html#a86924a606bc657930610b4f97ca37925">ompl::control::PDST::Motion::endState_</a></div><div class="ttdeci">base::State * endState_</div><div class="ttdoc">The state reached by this motion. </div><div class="ttdef"><b>Definition:</b> <a href="control_2planners_2pdst_2PDST_8h_source.html#l00177">PDST.h:177</a></div></div>
+<div class="ttc" id="group__logging_html_ga04bc36d1b8c57ad7e13a8a48451a3a05"><div class="ttname"><a href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a></div><div class="ttdeci">#define OMPL_INFORM(fmt,...)</div><div class="ttdoc">Log a formatted information string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00068">Console.h:68</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:25 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

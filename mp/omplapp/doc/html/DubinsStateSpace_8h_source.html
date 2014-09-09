@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/base/spaces/DubinsStateSpace.h Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_06e181af1f5888faac16991b57afb430.html">base</a></li><li class="navelem"><a class="el" href="dir_657904b0a08228494dbd1c9b23b24ab9.html">spaces</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">DubinsStateSpace.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2010, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Rice University nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Mark Moll */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifndef OMPL_BASE_SPACES_DUBINS_STATE_SPACE_</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define OMPL_BASE_SPACES_DUBINS_STATE_SPACE_</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;ompl/base/spaces/SE2StateSpace.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;ompl/base/MotionValidator.h&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;boost/math/constants/constants.hpp&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">namespace </span>ompl</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">namespace </span>base</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1DubinsStateSpace.html">   65</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html">DubinsStateSpace</a> : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1SE2StateSpace.html">SE2StateSpace</a></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1DubinsStateSpace.html#a34eab50fdbefb94065b43fb84fe8bdb3">   70</a></span>&#160;            <span class="keyword">enum</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#a34eab50fdbefb94065b43fb84fe8bdb3">DubinsPathSegmentType</a> { DUBINS_LEFT=0, DUBINS_STRAIGHT=1, DUBINS_RIGHT=2 };</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1DubinsStateSpace.html#aebf8057b5f39407b3b9be39804a1c156">   72</a></span>&#160;            <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#a34eab50fdbefb94065b43fb84fe8bdb3">DubinsPathSegmentType</a> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#aebf8057b5f39407b3b9be39804a1c156">dubinsPathType</a>[6][3];</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html">   74</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html">DubinsPath</a></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <a class="code" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html">DubinsPath</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#a34eab50fdbefb94065b43fb84fe8bdb3">DubinsPathSegmentType</a>* type = <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#aebf8057b5f39407b3b9be39804a1c156">dubinsPathType</a>[0],</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    <span class="keywordtype">double</span> t=0., <span class="keywordtype">double</span> p=std::numeric_limits&lt;double&gt;::max(), <span class="keywordtype">double</span> q=0.)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    : <a class="code" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#af858afdae77aab1792a7ccfc8e4fcb5b">type_</a>(type), <a class="code" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#a2e343bbf7753309853426bf7399c93a5">reverse_</a>(<span class="keyword">false</span>)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    <a class="code" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#a30de504b0ca835d4db99234983743834">length_</a>[0] = t;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    <a class="code" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#a30de504b0ca835d4db99234983743834">length_</a>[1] = p;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    <a class="code" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#a30de504b0ca835d4db99234983743834">length_</a>[2] = q;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    assert(t &gt;= 0.);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    assert(p &gt;= 0.);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    assert(q &gt;= 0.);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordtype">double</span> length()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">                </span>{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#a30de504b0ca835d4db99234983743834">length_</a>[0] + <a class="code" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#a30de504b0ca835d4db99234983743834">length_</a>[1] + <a class="code" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#a30de504b0ca835d4db99234983743834">length_</a>[2];</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#af858afdae77aab1792a7ccfc8e4fcb5b">   94</a></span>&#160;                <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#a34eab50fdbefb94065b43fb84fe8bdb3">DubinsPathSegmentType</a>* <a class="code" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#af858afdae77aab1792a7ccfc8e4fcb5b">type_</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#a30de504b0ca835d4db99234983743834">   96</a></span>&#160;                <span class="keywordtype">double</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#a30de504b0ca835d4db99234983743834">length_</a>[3];</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#a2e343bbf7753309853426bf7399c93a5">   98</a></span>&#160;                <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#a2e343bbf7753309853426bf7399c93a5">reverse_</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            };</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html">DubinsStateSpace</a>(<span class="keywordtype">double</span> turningRadius = 1.0, <span class="keywordtype">bool</span> isSymmetric = <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                : <a class="code" href="classompl_1_1base_1_1SE2StateSpace.html">SE2StateSpace</a>(), <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#abaaaafabe7d3861288fae598e4f11a79">rho_</a>(turningRadius), <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#adb79628e083c068506671524714fec49">isSymmetric_</a>(isSymmetric)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1DubinsStateSpace.html#a5bd39284c0cca0ab89546ce55257ac95">  106</a></span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#a5bd39284c0cca0ab89546ce55257ac95">isMetricSpace</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#a4425cef35d63ab90e7b5e63005f05b4b">distance</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state1, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#af3b5210e2a18217c233f5bc2fd5a2007">interpolate</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *from, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *to, <span class="keyword">const</span> <span class="keywordtype">double</span> t,</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#af3b5210e2a18217c233f5bc2fd5a2007">interpolate</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *from, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *to, <span class="keyword">const</span> <span class="keywordtype">double</span> t,</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                <span class="keywordtype">bool</span> &amp;firstTime, DubinsPath &amp;path, <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1DubinsStateSpace.html#a0ce7d020e382ba0a3d6be94c037acfcb">  118</a></span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#a0ce7d020e382ba0a3d6be94c037acfcb">hasSymmetricDistance</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#adb79628e083c068506671524714fec49">isSymmetric_</a>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1DubinsStateSpace.html#a3ee15ff3d53887174ed99852426133b1">  123</a></span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#a3ee15ff3d53887174ed99852426133b1">hasSymmetricInterpolate</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#adb79628e083c068506671524714fec49">isSymmetric_</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1DubinsStateSpace.html#af7ff1e4320953dcee1a7ccef5e9e6e86">  128</a></span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#af7ff1e4320953dcee1a7ccef5e9e6e86">sanityChecks</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keywordtype">double</span> zero = std::numeric_limits&lt;double&gt;::epsilon();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keywordtype">double</span> eps = std::numeric_limits&lt;float&gt;::epsilon();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="keywordtype">int</span> flags = ~(<a class="code" href="classompl_1_1base_1_1StateSpace.html#a64feddc33bb3b7459c4f589e6cd9d17ea26a108232d6265a1cc8bcc642216a6cf">STATESPACE_INTERPOLATION</a> | <a class="code" href="classompl_1_1base_1_1StateSpace.html#a64feddc33bb3b7459c4f589e6cd9d17ea54e30ec7ef77f42f255951ac6be08f97">STATESPACE_TRIANGLE_INEQUALITY</a> | <a class="code" href="classompl_1_1base_1_1StateSpace.html#a64feddc33bb3b7459c4f589e6cd9d17ea0134f2a38473e775c3037fde1c336d3f">STATESPACE_DISTANCE_BOUND</a>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#adb79628e083c068506671524714fec49">isSymmetric_</a>)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                    flags &amp;= ~<a class="code" href="classompl_1_1base_1_1StateSpace.html#a64feddc33bb3b7459c4f589e6cd9d17ea5acf49ce656838100e44ed7ee7321ab6">STATESPACE_DISTANCE_SYMMETRIC</a>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                <a class="code" href="classompl_1_1base_1_1StateSpace.html#a332bf3d53b9a2292d1df64f9908980fb">StateSpace::sanityChecks</a>(zero, eps, flags);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            DubinsPath <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#a15930a4c377d4ccad30a94fd40a3b8c5">dubins</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state1, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#af3b5210e2a18217c233f5bc2fd5a2007">interpolate</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *from, <span class="keyword">const</span> DubinsPath &amp;path, <span class="keyword">const</span> <span class="keywordtype">double</span> t,</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1DubinsStateSpace.html#abaaaafabe7d3861288fae598e4f11a79">  146</a></span>&#160;            <span class="keywordtype">double</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#abaaaafabe7d3861288fae598e4f11a79">rho_</a>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1DubinsStateSpace.html#adb79628e083c068506671524714fec49">  155</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html#adb79628e083c068506671524714fec49">isSymmetric_</a>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        };</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1DubinsMotionValidator.html">  164</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1base_1_1DubinsMotionValidator.html">DubinsMotionValidator</a> : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1MotionValidator.html">MotionValidator</a></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <a class="code" href="classompl_1_1base_1_1DubinsMotionValidator.html">DubinsMotionValidator</a>(<a class="code" href="classompl_1_1base_1_1SpaceInformation.html">SpaceInformation</a> *si) : <a class="code" href="classompl_1_1base_1_1MotionValidator.html#a15055e5f4def52f36c570ec7027ba158">MotionValidator</a>(si)</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                defaultSettings();</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <a class="code" href="classompl_1_1base_1_1DubinsMotionValidator.html">DubinsMotionValidator</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;si) : <a class="code" href="classompl_1_1base_1_1MotionValidator.html#a15055e5f4def52f36c570ec7027ba158">MotionValidator</a>(si)</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                defaultSettings();</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keyword">virtual</span> ~<a class="code" href="classompl_1_1base_1_1DubinsMotionValidator.html">DubinsMotionValidator</a>()</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1DubinsMotionValidator.html#ac0a5207503f3c81f00d93f219faf9a10">checkMotion</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *s1, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *s2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1DubinsMotionValidator.html#ac0a5207503f3c81f00d93f219faf9a10">checkMotion</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *s1, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *s2, std::pair&lt;State*, double&gt; &amp;lastValid) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <a class="code" href="classompl_1_1base_1_1DubinsStateSpace.html">DubinsStateSpace</a> *stateSpace_;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            <span class="keywordtype">void</span> defaultSettings();</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        };</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;}</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_html_a4425cef35d63ab90e7b5e63005f05b4b"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace.html#a4425cef35d63ab90e7b5e63005f05b4b">ompl::base::DubinsStateSpace::distance</a></div><div class="ttdeci">virtual double distance(const State *state1, const State *state2) const </div><div class="ttdoc">Computes distance between two states. This function satisfies the properties of a metric if isMetricS...</div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8cpp_source.html#l00214">DubinsStateSpace.cpp:214</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath_html_a2e343bbf7753309853426bf7399c93a5"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#a2e343bbf7753309853426bf7399c93a5">ompl::base::DubinsStateSpace::DubinsPath::reverse_</a></div><div class="ttdeci">bool reverse_</div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8h_source.html#l00098">DubinsStateSpace.h:98</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpace_html_a64feddc33bb3b7459c4f589e6cd9d17ea0134f2a38473e775c3037fde1c336d3f"><div class="ttname"><a href="classompl_1_1base_1_1StateSpace.html#a64feddc33bb3b7459c4f589e6cd9d17ea0134f2a38473e775c3037fde1c336d3f">ompl::base::StateSpace::STATESPACE_DISTANCE_BOUND</a></div><div class="ttdoc">Check whether the StateSpace::distance() is bounded by StateSpace::getExtent() </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8h_source.html#l00147">StateSpace.h:147</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_html"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace.html">ompl::base::DubinsStateSpace</a></div><div class="ttdoc">An SE(2) state space where distance is measured by the length of Dubins curves. </div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8h_source.html#l00065">DubinsStateSpace.h:65</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_html_a3ee15ff3d53887174ed99852426133b1"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace.html#a3ee15ff3d53887174ed99852426133b1">ompl::base::DubinsStateSpace::hasSymmetricInterpolate</a></div><div class="ttdeci">virtual bool hasSymmetricInterpolate() const </div><div class="ttdoc">Check if the interpolation function on this state space is symmetric, i.e. interpolate(from, to, t, state) = interpolate(to, from, 1-t, state). Default implementation returns true. </div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8h_source.html#l00123">DubinsStateSpace.h:123</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_html_a34eab50fdbefb94065b43fb84fe8bdb3"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace.html#a34eab50fdbefb94065b43fb84fe8bdb3">ompl::base::DubinsStateSpace::DubinsPathSegmentType</a></div><div class="ttdeci">DubinsPathSegmentType</div><div class="ttdoc">The Dubins path segment type. </div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8h_source.html#l00070">DubinsStateSpace.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath_html_af858afdae77aab1792a7ccfc8e4fcb5b"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#af858afdae77aab1792a7ccfc8e4fcb5b">ompl::base::DubinsStateSpace::DubinsPath::type_</a></div><div class="ttdeci">const DubinsPathSegmentType * type_</div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8h_source.html#l00094">DubinsStateSpace.h:94</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath_html_a30de504b0ca835d4db99234983743834"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#a30de504b0ca835d4db99234983743834">ompl::base::DubinsStateSpace::DubinsPath::length_</a></div><div class="ttdeci">double length_[3]</div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8h_source.html#l00096">DubinsStateSpace.h:96</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MotionValidator_html"><div class="ttname"><a href="classompl_1_1base_1_1MotionValidator.html">ompl::base::MotionValidator</a></div><div class="ttdoc">Abstract definition for a class checking the validity of motions – path segments between states...</div><div class="ttdef"><b>Definition:</b> <a href="MotionValidator_8h_source.html#l00065">MotionValidator.h:65</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_html_af3b5210e2a18217c233f5bc2fd5a2007"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace.html#af3b5210e2a18217c233f5bc2fd5a2007">ompl::base::DubinsStateSpace::interpolate</a></div><div class="ttdeci">virtual void interpolate(const State *from, const State *to, const double t, State *state) const </div><div class="ttdoc">Computes the state that lies at time t in [0, 1] on the segment that connects from state to to state...</div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8cpp_source.html#l00222">DubinsStateSpace.cpp:222</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SE2StateSpace_html"><div class="ttname"><a href="classompl_1_1base_1_1SE2StateSpace.html">ompl::base::SE2StateSpace</a></div><div class="ttdoc">A state space representing SE(2) </div><div class="ttdef"><b>Definition:</b> <a href="SE2StateSpace_8h_source.html#l00050">SE2StateSpace.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsMotionValidator_html_ac0a5207503f3c81f00d93f219faf9a10"><div class="ttname"><a href="classompl_1_1base_1_1DubinsMotionValidator.html#ac0a5207503f3c81f00d93f219faf9a10">ompl::base::DubinsMotionValidator::checkMotion</a></div><div class="ttdeci">virtual bool checkMotion(const State *s1, const State *s2) const </div><div class="ttdoc">Check if the path between two states (from s1 to s2) is valid. This function assumes s1 is valid...</div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8cpp_source.html#l00386">DubinsStateSpace.cpp:386</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_html_adb79628e083c068506671524714fec49"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace.html#adb79628e083c068506671524714fec49">ompl::base::DubinsStateSpace::isSymmetric_</a></div><div class="ttdeci">bool isSymmetric_</div><div class="ttdoc">Whether the distance is &quot;symmetrized&quot;. </div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8h_source.html#l00155">DubinsStateSpace.h:155</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_html_af7ff1e4320953dcee1a7ccef5e9e6e86"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace.html#af7ff1e4320953dcee1a7ccef5e9e6e86">ompl::base::DubinsStateSpace::sanityChecks</a></div><div class="ttdeci">virtual void sanityChecks() const </div><div class="ttdoc">Convenience function that allows derived state spaces to choose which checks should pass (see SanityC...</div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8h_source.html#l00128">DubinsStateSpace.h:128</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_html_a5bd39284c0cca0ab89546ce55257ac95"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace.html#a5bd39284c0cca0ab89546ce55257ac95">ompl::base::DubinsStateSpace::isMetricSpace</a></div><div class="ttdeci">virtual bool isMetricSpace() const </div><div class="ttdoc">Return true if the distance function associated with the space is a metric. </div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8h_source.html#l00106">DubinsStateSpace.h:106</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpaceInformationPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1SpaceInformationPtr.html">ompl::base::SpaceInformationPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::SpaceInformation. </div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpaceInformation_html"><div class="ttname"><a href="classompl_1_1base_1_1SpaceInformation.html">ompl::base::SpaceInformation</a></div><div class="ttdoc">The base class for space information. This contains all the information about the space planning is d...</div><div class="ttdef"><b>Definition:</b> <a href="base_2SpaceInformation_8h_source.html#l00086">SpaceInformation.h:86</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_html_a0ce7d020e382ba0a3d6be94c037acfcb"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace.html#a0ce7d020e382ba0a3d6be94c037acfcb">ompl::base::DubinsStateSpace::hasSymmetricDistance</a></div><div class="ttdeci">virtual bool hasSymmetricDistance() const </div><div class="ttdoc">Check if the distance function on this state space is symmetric, i.e. distance(s1,s2) = distance(s2,s1). Default implementation returns true. </div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8h_source.html#l00118">DubinsStateSpace.h:118</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpace_html_a64feddc33bb3b7459c4f589e6cd9d17ea54e30ec7ef77f42f255951ac6be08f97"><div class="ttname"><a href="classompl_1_1base_1_1StateSpace.html#a64feddc33bb3b7459c4f589e6cd9d17ea54e30ec7ef77f42f255951ac6be08f97">ompl::base::StateSpace::STATESPACE_TRIANGLE_INEQUALITY</a></div><div class="ttdoc">Check whether the triangle inequality holds when using StateSpace::interpolate() and StateSpace::dist...</div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8h_source.html#l00144">StateSpace.h:144</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsMotionValidator_html"><div class="ttname"><a href="classompl_1_1base_1_1DubinsMotionValidator.html">ompl::base::DubinsMotionValidator</a></div><div class="ttdoc">A Dubins motion validator that only uses the state validity checker. Motions are checked for validity...</div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8h_source.html#l00164">DubinsStateSpace.h:164</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MotionValidator_html_a15055e5f4def52f36c570ec7027ba158"><div class="ttname"><a href="classompl_1_1base_1_1MotionValidator.html#a15055e5f4def52f36c570ec7027ba158">ompl::base::MotionValidator::MotionValidator</a></div><div class="ttdeci">MotionValidator(SpaceInformation *si)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="MotionValidator_8h_source.html#l00070">MotionValidator.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpace_html_a64feddc33bb3b7459c4f589e6cd9d17ea5acf49ce656838100e44ed7ee7321ab6"><div class="ttname"><a href="classompl_1_1base_1_1StateSpace.html#a64feddc33bb3b7459c4f589e6cd9d17ea5acf49ce656838100e44ed7ee7321ab6">ompl::base::StateSpace::STATESPACE_DISTANCE_SYMMETRIC</a></div><div class="ttdoc">Check whether the distance function is symmetric (StateSpace::distance()) </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8h_source.html#l00138">StateSpace.h:138</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpace_html_a64feddc33bb3b7459c4f589e6cd9d17ea26a108232d6265a1cc8bcc642216a6cf"><div class="ttname"><a href="classompl_1_1base_1_1StateSpace.html#a64feddc33bb3b7459c4f589e6cd9d17ea26a108232d6265a1cc8bcc642216a6cf">ompl::base::StateSpace::STATESPACE_INTERPOLATION</a></div><div class="ttdoc">Check whether calling StateSpace::interpolate() works as expected. </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8h_source.html#l00141">StateSpace.h:141</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_html_aebf8057b5f39407b3b9be39804a1c156"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace.html#aebf8057b5f39407b3b9be39804a1c156">ompl::base::DubinsStateSpace::dubinsPathType</a></div><div class="ttdeci">static const DubinsPathSegmentType dubinsPathType[6][3]</div><div class="ttdoc">Dubins path types. </div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8h_source.html#l00072">DubinsStateSpace.h:72</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_html_a15930a4c377d4ccad30a94fd40a3b8c5"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace.html#a15930a4c377d4ccad30a94fd40a3b8c5">ompl::base::DubinsStateSpace::dubins</a></div><div class="ttdeci">DubinsPath dubins(const State *state1, const State *state2) const </div><div class="ttdoc">Return the shortest Dubins path from SE(2) state state1 to SE(2) state state2. </div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8cpp_source.html#l00322">DubinsStateSpace.cpp:322</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath_html"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html">ompl::base::DubinsStateSpace::DubinsPath</a></div><div class="ttdoc">Complete description of a Dubins path. </div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8h_source.html#l00074">DubinsStateSpace.h:74</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpace_html_a332bf3d53b9a2292d1df64f9908980fb"><div class="ttname"><a href="classompl_1_1base_1_1StateSpace.html#a332bf3d53b9a2292d1df64f9908980fb">ompl::base::StateSpace::sanityChecks</a></div><div class="ttdeci">virtual void sanityChecks() const </div><div class="ttdoc">Convenience function that allows derived state spaces to choose which checks should pass (see SanityC...</div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8cpp_source.html#l00580">StateSpace.cpp:580</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1DubinsStateSpace_html_abaaaafabe7d3861288fae598e4f11a79"><div class="ttname"><a href="classompl_1_1base_1_1DubinsStateSpace.html#abaaaafabe7d3861288fae598e4f11a79">ompl::base::DubinsStateSpace::rho_</a></div><div class="ttdeci">double rho_</div><div class="ttdoc">Turning radius. </div><div class="ttdef"><b>Definition:</b> <a href="DubinsStateSpace_8h_source.html#l00146">DubinsStateSpace.h:146</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:25 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/geometric/planners/prm/src/PRM.cpp Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_1f57d97647ebda1e28cc730ac7313960.html">geometric</a></li><li class="navelem"><a class="el" href="dir_955a6a93aceef09599971796437d173a.html">planners</a></li><li class="navelem"><a class="el" href="dir_7048b47995ff5db562a05c00dc363ed7.html">prm</a></li><li class="navelem"><a class="el" href="dir_bf8c0c00e096b714a39cced9981febbd.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">PRM.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2011, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of Rice University nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Ioan Sucan, James D. Marble, Ryan Luna */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;ompl/geometric/planners/prm/PRM.h&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;ompl/geometric/planners/prm/ConnectionStrategy.h&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;ompl/base/goals/GoalSampleableRegion.h&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;ompl/base/objectives/PathLengthOptimizationObjective.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;ompl/datastructures/PDF.h&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;ompl/tools/config/SelfConfig.h&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;ompl/tools/config/MagicConstants.h&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;boost/lambda/bind.hpp&gt;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &lt;boost/graph/astar_search.hpp&gt;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;boost/graph/incremental_components.hpp&gt;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;boost/property_map/vector_property_map.hpp&gt;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &lt;boost/foreach.hpp&gt;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &lt;boost/thread.hpp&gt;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &quot;GoalVisitor.hpp&quot;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define foreach BOOST_FOREACH</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define foreach_reverse BOOST_REVERSE_FOREACH</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">namespace </span>ompl</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="namespaceompl_1_1magic.html">   58</a></span>&#160;    <span class="keyword">namespace </span>magic</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="namespaceompl_1_1magic.html#acf09430426a57052295791746f014f12">   63</a></span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="namespaceompl_1_1magic.html#acf09430426a57052295791746f014f12">MAX_RANDOM_BOUNCE_STEPS</a>   = 5;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="namespaceompl_1_1magic.html#a44f09b05d50332500c8b681d441f91d2">   67</a></span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="namespaceompl_1_1magic.html#a44f09b05d50332500c8b681d441f91d2">DEFAULT_NEAREST_NEIGHBORS</a> = 10;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="namespaceompl_1_1magic.html#a3497680b3a4a3351ff97f12d813833b9">   70</a></span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespaceompl_1_1magic.html#a3497680b3a4a3351ff97f12d813833b9">ROADMAP_BUILD_TIME</a> = 0.2;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a5db629bb4a2bf02fb76a4cabbc5e0dcb">   74</a></span>&#160;<a class="code" href="classompl_1_1geometric_1_1PRM.html#a5db629bb4a2bf02fb76a4cabbc5e0dcb">ompl::geometric::PRM::PRM</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">base::SpaceInformationPtr</a> &amp;si, <span class="keywordtype">bool</span> starStrategy) :</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    base::Planner(si, <span class="stringliteral">&quot;PRM&quot;</span>),</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    starStrategy_(starStrategy),</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    stateProperty_(boost::get(<a class="code" href="structompl_1_1geometric_1_1PRM_1_1vertex__state__t.html">vertex_state_t</a>(), g_)),</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    totalConnectionAttemptsProperty_(boost::get(<a class="code" href="structompl_1_1geometric_1_1PRM_1_1vertex__total__connection__attempts__t.html">vertex_total_connection_attempts_t</a>(), g_)),</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    successfulConnectionAttemptsProperty_(boost::get(<a class="code" href="structompl_1_1geometric_1_1PRM_1_1vertex__successful__connection__attempts__t.html">vertex_successful_connection_attempts_t</a>(), g_)),</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    weightProperty_(boost::get(boost::edge_weight, g_)),</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    edgeIDProperty_(boost::get(boost::edge_index, g_)),</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    disjointSets_(boost::get(boost::vertex_rank, g_),</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                  boost::get(boost::vertex_predecessor, g_)),</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    maxEdgeID_(0),</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    userSetConnectionStrategy_(false),</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    addedSolution_(false)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">specs_</a>.<a class="code" href="structompl_1_1base_1_1PlannerSpecs.html#ac8a946673fef335d7a802d9ee8436804">recognizedGoal</a> = <a class="code" href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55a6fb685fa51055688c4e130094225b7f9">base::GOAL_SAMPLEABLE_REGION</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">specs_</a>.<a class="code" href="structompl_1_1base_1_1PlannerSpecs.html#ae2facc9260851b161577e36f5a4baefc">approximateSolutions</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">specs_</a>.<a class="code" href="structompl_1_1base_1_1PlannerSpecs.html#a83869b1cd49a91e29b0b926188402a0a">optimizingPaths</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    Planner::declareParam&lt;unsigned int&gt;(<span class="stringliteral">&quot;max_nearest_neighbors&quot;</span>, <span class="keyword">this</span>, &amp;<a class="code" href="classompl_1_1geometric_1_1PRM.html#ab8832a466b3178de436acbb000712f2b">PRM::setMaxNearestNeighbors</a>, std::string(<span class="stringliteral">&quot;8:1000&quot;</span>));</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;ompl::geometric::PRM::~PRM()</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    freeMemory();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a542eb5e312323a8a1ab588fe2a183632">  100</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a542eb5e312323a8a1ab588fe2a183632">ompl::geometric::PRM::setup</a>()</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;{</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    Planner::setup();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">if</span> (!nn_)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        nn_.reset(tools::SelfConfig::getDefaultNearestNeighbors&lt;Vertex&gt;(si_-&gt;getStateSpace()));</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        nn_-&gt;setDistanceFunction(boost::bind(&amp;<a class="code" href="classompl_1_1geometric_1_1PRM.html#a983bce5dd72ba208357b5518f4515125">PRM::distanceFunction</a>, <span class="keyword">this</span>, _1, _2));</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">if</span> (!connectionStrategy_)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">if</span> (starStrategy_)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            connectionStrategy_ = <a class="code" href="classompl_1_1geometric_1_1KStarStrategy.html">KStarStrategy&lt;Vertex&gt;</a>(boost::bind(&amp;<a class="code" href="classompl_1_1geometric_1_1PRM.html#aeb229e4d5e350624d05ab64bb59a6653">PRM::milestoneCount</a>, <span class="keyword">this</span>), nn_, si_-&gt;getStateDimension());</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            connectionStrategy_ = <a class="code" href="classompl_1_1geometric_1_1KStrategy.html">KStrategy&lt;Vertex&gt;</a>(<a class="code" href="namespaceompl_1_1magic.html#a44f09b05d50332500c8b681d441f91d2">magic::DEFAULT_NEAREST_NEIGHBORS</a>, nn_);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">if</span> (!connectionFilter_)</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        connectionFilter_ = boost::lambda::constant(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">if</span> (pdef_-&gt;hasOptimizationObjective())</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        opt_ = pdef_-&gt;getOptimizationObjective();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        opt_.reset(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1PathLengthOptimizationObjective.html">base::PathLengthOptimizationObjective</a>(si_));</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        opt_-&gt;setCostThreshold(opt_-&gt;infiniteCost());</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#ab8832a466b3178de436acbb000712f2b">  127</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#ab8832a466b3178de436acbb000712f2b">ompl::geometric::PRM::setMaxNearestNeighbors</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> k)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;{</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">if</span> (!nn_)</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        nn_.reset(tools::SelfConfig::getDefaultNearestNeighbors&lt;Vertex&gt;(si_-&gt;getStateSpace()));</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        nn_-&gt;setDistanceFunction(boost::bind(&amp;<a class="code" href="classompl_1_1geometric_1_1PRM.html#a983bce5dd72ba208357b5518f4515125">PRM::distanceFunction</a>, <span class="keyword">this</span>, _1, _2));</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    connectionStrategy_ = <a class="code" href="classompl_1_1geometric_1_1KStrategy.html">KStrategy&lt;Vertex&gt;</a>(k, nn_);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#aefef4c0c54de26622152347fa0078961">  137</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#aefef4c0c54de26622152347fa0078961">ompl::geometric::PRM::setProblemDefinition</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinitionPtr.html">base::ProblemDefinitionPtr</a> &amp;pdef)</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;{</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    Planner::setProblemDefinition(pdef);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    clearQuery();</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;}</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a821506e6c7997bb93b96dd64bfda6051">  143</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a821506e6c7997bb93b96dd64bfda6051">ompl::geometric::PRM::clearQuery</a>()</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;{</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    startM_.clear();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    goalM_.clear();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    pis_.restart();</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#ae9af092666bd96c2a238bf7bb2acd700">  150</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#ae9af092666bd96c2a238bf7bb2acd700">ompl::geometric::PRM::clear</a>()</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;{</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    Planner::clear();</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    sampler_.reset();</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    simpleSampler_.reset();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    freeMemory();</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">if</span> (nn_)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        nn_-&gt;clear();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    clearQuery();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    maxEdgeID_ = 0;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a2cb318fda9ada561e357a2dd539ec11b">  162</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a2cb318fda9ada561e357a2dd539ec11b">ompl::geometric::PRM::freeMemory</a>()</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;{</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">foreach</span> (Vertex v, boost::vertices(g_))</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        si_-&gt;freeState(stateProperty_[v]);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    g_.clear();</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a718ea717e0928e0d4555683021508e46">  169</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a718ea717e0928e0d4555683021508e46">ompl::geometric::PRM::expandRoadmap</a>(<span class="keywordtype">double</span> expandTime)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;{</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    expandRoadmap(<a class="code" href="namespaceompl_1_1base.html#ae26e5f143063be389fba4906d438a381">base::timedPlannerTerminationCondition</a>(expandTime));</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#aefbf3a3bb25b810e12e8b85b155858ce">  174</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a718ea717e0928e0d4555683021508e46">ompl::geometric::PRM::expandRoadmap</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;ptc)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;{</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">if</span> (!simpleSampler_)</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        simpleSampler_ = si_-&gt;allocStateSampler();</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    std::vector&lt;base::State*&gt; states(<a class="code" href="namespaceompl_1_1magic.html#acf09430426a57052295791746f014f12">magic::MAX_RANDOM_BOUNCE_STEPS</a>);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    si_-&gt;allocStates(states);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    expandRoadmap(ptc, states);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    si_-&gt;freeStates(states);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#af5fb6ce74e9f11411acba7b544ced5b0">  185</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a718ea717e0928e0d4555683021508e46">ompl::geometric::PRM::expandRoadmap</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;ptc,</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                                         std::vector&lt;base::State*&gt; &amp;workStates)</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;{</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="comment">// construct a probability distribution over the vertices in the roadmap</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="comment">// as indicated in</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="comment">//  &quot;Probabilistic Roadmaps for Path Planning in High-Dimensional Configuration Spaces&quot;</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="comment">//        Lydia E. Kavraki, Petr Svestka, Jean-Claude Latombe, and Mark H. Overmars</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <a class="code" href="classompl_1_1PDF.html">PDF&lt;Vertex&gt;</a> pdf;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">foreach</span> (Vertex v, boost::vertices(g_))</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> t = totalConnectionAttemptsProperty_[v];</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        pdf.<a class="code" href="classompl_1_1PDF.html#ae0e20ec9697abbbff4eb5ca7f06c04f7">add</a>(v, (<span class="keywordtype">double</span>)(t - successfulConnectionAttemptsProperty_[v]) / (<span class="keywordtype">double</span>)t);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">if</span> (pdf.<a class="code" href="classompl_1_1PDF.html#a207bc400e0fc68265f9076538419c58d">empty</a>())</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">while</span> (ptc == <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        Vertex v = pdf.<a class="code" href="classompl_1_1PDF.html#a9eabafd0857350a3c70b2c5e0cb8709b">sample</a>(rng_.uniform01());</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> s = si_-&gt;randomBounceMotion(simpleSampler_, stateProperty_[v], workStates.size(), workStates, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordflow">if</span> (s &gt; 0)</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            s--;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            Vertex last = addMilestone(si_-&gt;cloneState(workStates[s]));</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            graphMutex_.lock();</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; s ; ++i)</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <span class="comment">// add the vertex along the bouncing motion</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                Vertex m = boost::add_vertex(g_);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                stateProperty_[m] = si_-&gt;cloneState(workStates[i]);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                totalConnectionAttemptsProperty_[m] = 1;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                successfulConnectionAttemptsProperty_[m] = 0;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                disjointSets_.make_set(m);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                <span class="comment">// add the edge to the parent vertex</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                <span class="keyword">const</span> <a class="code" href="structompl_1_1base_1_1Cost.html">base::Cost</a> weight = opt_-&gt;motionCost(stateProperty_[v], stateProperty_[m]);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keywordtype">id</span> = maxEdgeID_++;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                <span class="keyword">const</span> Graph::edge_property_type properties(weight, <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                boost::add_edge(v, m, properties, g_);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                uniteComponents(v, m);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                <span class="comment">// add the vertex to the nearest neighbors data structure</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                nn_-&gt;add(m);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                v = m;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="comment">// if there are intermediary states or the milestone has not been connected to the initially sampled vertex,</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="comment">// we add an edge</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <span class="keywordflow">if</span> (s &gt; 0 || !sameComponent(v, last))</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                <span class="comment">// add the edge to the parent vertex</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                <span class="keyword">const</span> <a class="code" href="structompl_1_1base_1_1Cost.html">base::Cost</a> weight = opt_-&gt;motionCost(stateProperty_[v], stateProperty_[last]);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keywordtype">id</span> = maxEdgeID_++;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                <span class="keyword">const</span> Graph::edge_property_type properties(weight, <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                boost::add_edge(v, last, properties, g_);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                uniteComponents(v, last);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            graphMutex_.unlock();</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;</div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a9f15e6dafe26d97547526317b457c201">  250</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a9f15e6dafe26d97547526317b457c201">ompl::geometric::PRM::growRoadmap</a>(<span class="keywordtype">double</span> growTime)</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;{</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    growRoadmap(<a class="code" href="namespaceompl_1_1base.html#ae26e5f143063be389fba4906d438a381">base::timedPlannerTerminationCondition</a>(growTime));</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;}</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a3a3d60479b122a35b6425db26bf9e6f2">  255</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a9f15e6dafe26d97547526317b457c201">ompl::geometric::PRM::growRoadmap</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;ptc)</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;{</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordflow">if</span> (!isSetup())</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        setup();</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">if</span> (!sampler_)</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        sampler_ = si_-&gt;allocValidStateSampler();</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *workState = si_-&gt;allocState();</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    growRoadmap (ptc, workState);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    si_-&gt;freeState(workState);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;}</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
+<div class="line"><a name="l00267"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a4647ad646432fdd063fa5867049ad611">  267</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a9f15e6dafe26d97547526317b457c201">ompl::geometric::PRM::growRoadmap</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;ptc,</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                                       <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *workState)</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;{</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="comment">/* grow roadmap in the regular fashion -- sample valid states, add them to the roadmap, add valid connections */</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keywordflow">while</span> (ptc == <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    {</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="comment">// search for a valid state</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordtype">bool</span> found = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">while</span> (!found &amp;&amp; ptc == <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> attempts = 0;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keywordflow">do</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                found = sampler_-&gt;sample(workState);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                attempts++;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            } <span class="keywordflow">while</span> (attempts &lt; <a class="code" href="namespaceompl_1_1magic.html#a165c9405d5064e4101020d43163ec822">magic::FIND_VALID_STATE_ATTEMPTS_WITHOUT_TERMINATION_CHECK</a> &amp;&amp; !found);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        <span class="comment">// add it as a milestone</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        <span class="keywordflow">if</span> (found)</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            addMilestone(si_-&gt;cloneState(workState));</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    }</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;}</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
+<div class="line"><a name="l00290"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a664410622628a8a1283963dc51b92b03">  290</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a664410622628a8a1283963dc51b92b03">ompl::geometric::PRM::checkForSolution</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;ptc,</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                                            <a class="code" href="classompl_1_1base_1_1PathPtr.html">base::PathPtr</a> &amp;solution)</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;{</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html">base::GoalSampleableRegion</a> *goal = <span class="keyword">static_cast&lt;</span><a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html">base::GoalSampleableRegion</a>*<span class="keyword">&gt;</span>(pdef_-&gt;getGoal().get());</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordflow">while</span> (!ptc &amp;&amp; !addedSolution_)</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="comment">// Check for any new goal states</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="keywordflow">if</span> (goal-&gt;<a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html#ae0625cd4b7646d600244b79da9101f0d">maxSampleCount</a>() &gt; goalM_.size())</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *st = pis_.nextGoal();</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <span class="keywordflow">if</span> (st)</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                goalM_.push_back(addMilestone(si_-&gt;cloneState(st)));</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="comment">// Check for a solution</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        addedSolution_ = haveSolution(startM_, goalM_, solution);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="comment">// Sleep for 1ms</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keywordflow">if</span> (!addedSolution_)</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            boost::this_thread::sleep(boost::posix_time::milliseconds(1));</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;}</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
+<div class="line"><a name="l00312"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a7b0062dea557b1751cf242352313a9bf">  312</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a7b0062dea557b1751cf242352313a9bf">ompl::geometric::PRM::haveSolution</a>(<span class="keyword">const</span> std::vector&lt;Vertex&gt; &amp;starts, <span class="keyword">const</span> std::vector&lt;Vertex&gt; &amp;goals, <a class="code" href="classompl_1_1base_1_1PathPtr.html">base::PathPtr</a> &amp;solution)</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;{</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <a class="code" href="classompl_1_1base_1_1Goal.html">base::Goal</a> *g = pdef_-&gt;getGoal().get();</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <a class="code" href="structompl_1_1base_1_1Cost.html">base::Cost</a> sol_cost(0.0);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordtype">bool</span> sol_cost_set = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordflow">foreach</span> (Vertex start, starts)</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keywordflow">foreach</span> (Vertex goal, goals)</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            <span class="comment">// we lock because the connected components algorithm is incremental and may change disjointSets_</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            graphMutex_.lock();</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <span class="keywordtype">bool</span> same_component = sameComponent(start, goal);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            graphMutex_.unlock();</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <span class="keywordflow">if</span> (same_component &amp;&amp; g-&gt;<a class="code" href="classompl_1_1base_1_1Goal.html#a5d5285908b7e09d61577279f35e47175">isStartGoalPairValid</a>(stateProperty_[goal], stateProperty_[start]))</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                <a class="code" href="classompl_1_1base_1_1PathPtr.html">base::PathPtr</a> p = constructSolution(start, goal);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                <span class="keywordflow">if</span> (p)</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                    <span class="comment">// Check if optimization objective is satisfied</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                    <a class="code" href="structompl_1_1base_1_1Cost.html">base::Cost</a> pathCost = p-&gt;cost(opt_);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                    <span class="keywordflow">if</span> (opt_-&gt;isSatisfied(pathCost))</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                    {</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                        solution = p;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                    }</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!sol_cost_set || opt_-&gt;isCostBetterThan(pathCost, sol_cost))</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                    {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                        solution = p;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                        sol_cost = pathCost;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                        sol_cost_set = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                    }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                }</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            }</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        }</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    }</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;}</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;</div>
+<div class="line"><a name="l00352"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a566ccdc75bd560e89740f3e2e05c524f">  352</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a566ccdc75bd560e89740f3e2e05c524f">ompl::geometric::PRM::addedNewSolution</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="keywordflow">return</span> addedSolution_;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;}</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
+<div class="line"><a name="l00357"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a0e101dcced6fbf9971dc20d30736d00f">  357</a></span>&#160;<a class="code" href="structompl_1_1base_1_1PlannerStatus.html">ompl::base::PlannerStatus</a> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a0e101dcced6fbf9971dc20d30736d00f">ompl::geometric::PRM::solve</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;ptc)</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;{</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    checkValidity();</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html">base::GoalSampleableRegion</a> *goal = <span class="keyword">dynamic_cast&lt;</span><a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html">base::GoalSampleableRegion</a>*<span class="keyword">&gt;</span>(pdef_-&gt;getGoal().get());</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordflow">if</span> (!goal)</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    {</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;%s: Unknown type of goal&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a47d769205044efa345184a640bd863ff">base::PlannerStatus::UNRECOGNIZED_GOAL_TYPE</a>;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    }</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="comment">// Add the valid start states as milestones</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *st = pis_.nextStart())</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        startM_.push_back(addMilestone(si_-&gt;cloneState(st)));</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <span class="keywordflow">if</span> (startM_.size() == 0)</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    {</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;%s: There are no valid initial states!&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547">base::PlannerStatus::INVALID_START</a>;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    }</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keywordflow">if</span> (!goal-&gt;<a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html#adbfa83eb76309039b839e3fb87c88203">couldSample</a>())</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    {</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;%s: Insufficient states in sampleable goal region&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a2e2b2b7e02900c4417af0ecea272c637">base::PlannerStatus::INVALID_GOAL</a>;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    }</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="comment">// Ensure there is at least one valid goal state</span></div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <span class="keywordflow">if</span> (goal-&gt;<a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html#ae0625cd4b7646d600244b79da9101f0d">maxSampleCount</a>() &gt; goalM_.size() || goalM_.empty())</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    {</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *st = goalM_.empty() ? pis_.nextGoal(ptc) : pis_.nextGoal();</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        <span class="keywordflow">if</span> (st)</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            goalM_.push_back(addMilestone(si_-&gt;cloneState(st)));</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        <span class="keywordflow">if</span> (goalM_.empty())</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        {</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;%s: Unable to find any valid goal states&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a2e2b2b7e02900c4417af0ecea272c637">base::PlannerStatus::INVALID_GOAL</a>;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nrStartStates = boost::num_vertices(g_);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;%s: Starting planning with %u states already in datastructure&quot;</span>, getName().c_str(), nrStartStates);</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <span class="comment">// Reset addedSolution_ member and create solution checking thread</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    addedSolution_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <a class="code" href="classompl_1_1base_1_1PathPtr.html">base::PathPtr</a> sol;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    boost::thread slnThread(boost::bind(&amp;<a class="code" href="classompl_1_1geometric_1_1PRM.html#a664410622628a8a1283963dc51b92b03">PRM::checkForSolution</a>, <span class="keyword">this</span>, ptc, boost::ref(sol)));</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="comment">// construct new planner termination condition that fires when the given ptc is true, or a solution is found</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> ptcOrSolutionFound =</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <a class="code" href="namespaceompl_1_1base.html#a743743b4754208eb83ecb3ab20e4df4c">base::plannerOrTerminationCondition</a>(ptc, <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a>(boost::bind(&amp;<a class="code" href="classompl_1_1geometric_1_1PRM.html#a566ccdc75bd560e89740f3e2e05c524f">PRM::addedNewSolution</a>, <span class="keyword">this</span>)));</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    constructRoadmap(ptcOrSolutionFound);</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    <span class="comment">// Ensure slnThread is ceased before exiting solve</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    slnThread.join();</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;%s: Created %u states&quot;</span>, getName().c_str(), boost::num_vertices(g_) - nrStartStates);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <span class="keywordflow">if</span> (sol)</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    {</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <a class="code" href="structompl_1_1base_1_1PlannerSolution.html">base::PlannerSolution</a> psol(sol);</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        psol.<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a26f5a4cd93099f755212d46f44717ee3">plannerName_</a> = getName();</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        <span class="comment">// if the solution was optimized, we mark it as such</span></div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        <span class="keywordflow">if</span> (addedNewSolution())</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            psol.<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a19962696ffed99b53e6422d5fcda1fd0">optimized_</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        pdef_-&gt;addSolutionPath (psol);</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    }</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="comment">// Return true if any solution was found.</span></div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="keywordflow">return</span> sol ? (addedNewSolution() ? <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a20f8c901516c72e258d43d7156fe8e28">base::PlannerStatus::EXACT_SOLUTION</a> : <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a5fade5f3ded9dd85ce1693c1912edaa8">base::PlannerStatus::APPROXIMATE_SOLUTION</a>) : <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a620a03eebe49aa307140d6a4763278fd">base::PlannerStatus::TIMEOUT</a>;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;}</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;</div>
+<div class="line"><a name="l00431"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a8da5dd602d45e477612bb1401cf68c19">  431</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a8da5dd602d45e477612bb1401cf68c19">ompl::geometric::PRM::constructRoadmap</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;ptc)</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;{</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="keywordflow">if</span> (!isSetup())</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        setup();</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keywordflow">if</span> (!sampler_)</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        sampler_ = si_-&gt;allocValidStateSampler();</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordflow">if</span> (!simpleSampler_)</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        simpleSampler_ = si_-&gt;allocStateSampler();</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    std::vector&lt;base::State*&gt; xstates(<a class="code" href="namespaceompl_1_1magic.html#acf09430426a57052295791746f014f12">magic::MAX_RANDOM_BOUNCE_STEPS</a>);</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    si_-&gt;allocStates(xstates);</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    <span class="keywordtype">bool</span> grow = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="keywordflow">while</span> (ptc() == <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    {</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        <span class="comment">// maintain a 2:1 ratio for growing/expansion of roadmap</span></div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        <span class="comment">// call growRoadmap() twice as long for every call of expandRoadmap()</span></div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        <span class="keywordflow">if</span> (grow)</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            growRoadmap(<a class="code" href="namespaceompl_1_1base.html#a743743b4754208eb83ecb3ab20e4df4c">base::plannerOrTerminationCondition</a>(ptc, <a class="code" href="namespaceompl_1_1base.html#ae26e5f143063be389fba4906d438a381">base::timedPlannerTerminationCondition</a>(2.0 * <a class="code" href="namespaceompl_1_1magic.html#a3497680b3a4a3351ff97f12d813833b9">magic::ROADMAP_BUILD_TIME</a>)), xstates[0]);</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            expandRoadmap(<a class="code" href="namespaceompl_1_1base.html#a743743b4754208eb83ecb3ab20e4df4c">base::plannerOrTerminationCondition</a>(ptc, <a class="code" href="namespaceompl_1_1base.html#ae26e5f143063be389fba4906d438a381">base::timedPlannerTerminationCondition</a>(<a class="code" href="namespaceompl_1_1magic.html#a3497680b3a4a3351ff97f12d813833b9">magic::ROADMAP_BUILD_TIME</a>)), xstates);</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        grow = !grow;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    }</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    si_-&gt;freeStates(xstates);</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;}</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;</div>
+<div class="line"><a name="l00458"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#aa393c5591243c7d166fc0f73b46627f2">  458</a></span>&#160;ompl::geometric::PRM::Vertex <a class="code" href="classompl_1_1geometric_1_1PRM.html#aa393c5591243c7d166fc0f73b46627f2">ompl::geometric::PRM::addMilestone</a>(<a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *state)</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;{</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    boost::mutex::scoped_lock _(graphMutex_);</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    Vertex m = boost::add_vertex(g_);</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    stateProperty_[m] = state;</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    totalConnectionAttemptsProperty_[m] = 1;</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    successfulConnectionAttemptsProperty_[m] = 0;</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    <span class="comment">// Initialize to its own (dis)connected component.</span></div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    disjointSets_.make_set(m);</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    nn_-&gt;add(m);</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    <span class="comment">// Which milestones will we attempt to connect to?</span></div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    <span class="keyword">const</span> std::vector&lt;Vertex&gt;&amp; neighbors = connectionStrategy_(m);</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <span class="keywordflow">foreach</span> (Vertex n, neighbors)</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        <span class="keywordflow">if</span> (connectionFilter_(m, n))</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        {</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            totalConnectionAttemptsProperty_[m]++;</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            totalConnectionAttemptsProperty_[n]++;</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;            <span class="keywordflow">if</span> (si_-&gt;checkMotion(stateProperty_[m], stateProperty_[n]))</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;            {</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;                successfulConnectionAttemptsProperty_[m]++;</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;                successfulConnectionAttemptsProperty_[n]++;</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;                <span class="keyword">const</span> <a class="code" href="structompl_1_1base_1_1Cost.html">base::Cost</a> weight = opt_-&gt;motionCost(stateProperty_[m], stateProperty_[n]);</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keywordtype">id</span> = maxEdgeID_++;</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;                <span class="keyword">const</span> Graph::edge_property_type properties(weight, <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;                boost::add_edge(m, n, properties, g_);</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;                uniteComponents(n, m);</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;            }</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        }</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    <span class="keywordflow">return</span> m;</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;}</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;</div>
+<div class="line"><a name="l00495"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a8b699f5d6c9ffd15094ef3854f1eb7b4">  495</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a8b699f5d6c9ffd15094ef3854f1eb7b4">ompl::geometric::PRM::uniteComponents</a>(Vertex m1, Vertex m2)</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;{</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;    disjointSets_.union_set(m1, m2);</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;}</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;</div>
+<div class="line"><a name="l00500"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a20caf404f1f9fa7462bb23950a5c9c0a">  500</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a20caf404f1f9fa7462bb23950a5c9c0a">ompl::geometric::PRM::sameComponent</a>(Vertex m1, Vertex m2)</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;{</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    <span class="keywordflow">return</span> boost::same_component(m1, m2, disjointSets_);</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;}</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;</div>
+<div class="line"><a name="l00505"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a868cfb5924859c224fcab04081680065">  505</a></span>&#160;<a class="code" href="classompl_1_1base_1_1PathPtr.html">ompl::base::PathPtr</a> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a868cfb5924859c224fcab04081680065">ompl::geometric::PRM::constructSolution</a>(<span class="keyword">const</span> Vertex &amp;start, <span class="keyword">const</span> Vertex &amp;goal)</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;{</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    boost::mutex::scoped_lock _(graphMutex_);</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    boost::vector_property_map&lt;Vertex&gt; prev(boost::num_vertices(g_));</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    {</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;        <span class="comment">// Consider using a persistent distance_map if it&#39;s slow</span></div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;        boost::astar_search(g_, start,</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;                            boost::bind(&amp;<a class="code" href="classompl_1_1geometric_1_1PRM.html#afefd85b9fb3783fddc7a592ba7e5ae23">PRM::costHeuristic</a>, <span class="keyword">this</span>, _1, goal),</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;                            boost::predecessor_map(prev).</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;                            distance_compare(boost::bind(&amp;<a class="code" href="classompl_1_1base_1_1OptimizationObjective.html">base::OptimizationObjective</a>::</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;                                                         isCostBetterThan, opt_.get(), _1, _2)).</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;                            distance_combine(boost::bind(&amp;<a class="code" href="classompl_1_1base_1_1OptimizationObjective.html">base::OptimizationObjective</a>::</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;                                                         combineCosts, opt_.get(), _1, _2)).</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;                            distance_inf(opt_-&gt;infiniteCost()).</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;                            distance_zero(opt_-&gt;identityCost()).</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;                            visitor(AStarGoalVisitor&lt;Vertex&gt;(goal)));</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    }</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;    <span class="keywordflow">catch</span> (AStarFoundGoal&amp;)</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    {</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    }</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    <span class="keywordflow">if</span> (prev[goal] == goal)</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classompl_1_1Exception.html">Exception</a>(name_, <span class="stringliteral">&quot;Could not find solution path&quot;</span>);</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;        <span class="keywordflow">return</span> constructGeometricPath(prev, start, goal);</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;}</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;</div>
+<div class="line"><a name="l00534"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#ad1fee13ccaeee47bf256a14999e959b1">  534</a></span>&#160;<a class="code" href="classompl_1_1base_1_1PathPtr.html">ompl::base::PathPtr</a> <a class="code" href="classompl_1_1geometric_1_1PRM.html#ad1fee13ccaeee47bf256a14999e959b1">ompl::geometric::PRM::constructGeometricPath</a>(<span class="keyword">const</span> boost::vector_property_map&lt;Vertex&gt; &amp;prev, <span class="keyword">const</span> Vertex &amp;start, <span class="keyword">const</span> Vertex &amp;goal)</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;{</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1PathGeometric.html">PathGeometric</a> *p = <span class="keyword">new</span> <a class="code" href="classompl_1_1geometric_1_1PathGeometric.html">PathGeometric</a>(si_);</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    <span class="keywordflow">for</span> (Vertex pos = goal; prev[pos] != pos; pos = prev[pos])</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;        p-&gt;<a class="code" href="classompl_1_1geometric_1_1PathGeometric.html#aa9eb3ea81cc3ab442aae67d311bc4156">append</a>(stateProperty_[pos]);</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;    p-&gt;<a class="code" href="classompl_1_1geometric_1_1PathGeometric.html#aa9eb3ea81cc3ab442aae67d311bc4156">append</a>(stateProperty_[start]);</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    p-&gt;<a class="code" href="classompl_1_1geometric_1_1PathGeometric.html#a68e0627b7957b35e2723f9434ace5a95">reverse</a>();</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1PathPtr.html">base::PathPtr</a>(p);</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;}</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;</div>
+<div class="line"><a name="l00545"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#a294b21109833dbbc80f5eb322e9c4fbc">  545</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1PRM.html#a294b21109833dbbc80f5eb322e9c4fbc">ompl::geometric::PRM::getPlannerData</a>(<a class="code" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a> &amp;data)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;    Planner::getPlannerData(data);</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    <span class="comment">// Explicitly add start and goal states:</span></div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; startM_.size(); ++i)</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">addStartVertex</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(stateProperty_[startM_[i]], const_cast&lt;PRM*&gt;(<span class="keyword">this</span>)-&gt;disjointSets_.find_set(startM_[i])));</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; goalM_.size(); ++i)</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;        data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">addGoalVertex</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(stateProperty_[goalM_[i]], const_cast&lt;PRM*&gt;(<span class="keyword">this</span>)-&gt;disjointSets_.find_set(goalM_[i])));</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;    <span class="comment">// Adding edges and all other vertices simultaneously</span></div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    <span class="keywordflow">foreach</span>(<span class="keyword">const</span> Edge e, boost::edges(g_))</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;    {</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        <span class="keyword">const</span> Vertex v1 = boost::source(e, g_);</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;        <span class="keyword">const</span> Vertex v2 = boost::target(e, g_);</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;        data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(stateProperty_[v1]),</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;                     <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(stateProperty_[v2]));</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        <span class="comment">// Add the reverse edge, since we&#39;re constructing an undirected roadmap</span></div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(stateProperty_[v2]),</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;                     <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(stateProperty_[v1]));</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        <span class="comment">// Add tags for the newly added vertices</span></div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a2b0b7c124dcac4f07c5f6d0ab51386a6">tagState</a>(stateProperty_[v1], const_cast&lt;PRM*&gt;(<span class="keyword">this</span>)-&gt;disjointSets_.find_set(v1));</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a2b0b7c124dcac4f07c5f6d0ab51386a6">tagState</a>(stateProperty_[v2], const_cast&lt;PRM*&gt;(<span class="keyword">this</span>)-&gt;disjointSets_.find_set(v2));</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;    }</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;}</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;</div>
+<div class="line"><a name="l00574"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1PRM.html#afefd85b9fb3783fddc7a592ba7e5ae23">  574</a></span>&#160;<a class="code" href="structompl_1_1base_1_1Cost.html">ompl::base::Cost</a> <a class="code" href="classompl_1_1geometric_1_1PRM.html#afefd85b9fb3783fddc7a592ba7e5ae23">ompl::geometric::PRM::costHeuristic</a>(Vertex u, Vertex v)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;    <span class="keywordflow">return</span> opt_-&gt;motionCostHeuristic(stateProperty_[u], stateProperty_[v]);</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;}</div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a5db629bb4a2bf02fb76a4cabbc5e0dcb"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a5db629bb4a2bf02fb76a4cabbc5e0dcb">ompl::geometric::PRM::PRM</a></div><div class="ttdeci">PRM(const base::SpaceInformationPtr &amp;si, bool starStrategy=false)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00074">PRM.cpp:74</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSpecs_html_ae2facc9260851b161577e36f5a4baefc"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSpecs.html#ae2facc9260851b161577e36f5a4baefc">ompl::base::PlannerSpecs::approximateSolutions</a></div><div class="ttdeci">bool approximateSolutions</div><div class="ttdoc">Flag indicating whether the planner is able to compute approximate solutions. </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00212">Planner.h:212</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_aeb229e4d5e350624d05ab64bb59a6653"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#aeb229e4d5e350624d05ab64bb59a6653">ompl::geometric::PRM::milestoneCount</a></div><div class="ttdeci">unsigned int milestoneCount() const </div><div class="ttdoc">Compute distance between two milestones (this is simply distance between the states of the milestones...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8h_source.html#l00278">PRM.h:278</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html">ompl::base::PlannerData</a></div><div class="ttdoc">Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00164">PlannerData.h:164</a></div></div>
+<div class="ttc" id="namespaceompl_1_1base_html_a743743b4754208eb83ecb3ab20e4df4c"><div class="ttname"><a href="namespaceompl_1_1base.html#a743743b4754208eb83ecb3ab20e4df4c">ompl::base::plannerOrTerminationCondition</a></div><div class="ttdeci">PlannerTerminationCondition plannerOrTerminationCondition(const PlannerTerminationCondition &amp;c1, const PlannerTerminationCondition &amp;c2)</div><div class="ttdoc">Combine two termination conditions into one. If either termination condition returns true...</div><div class="ttdef"><b>Definition:</b> <a href="PlannerTerminationCondition_8cpp_source.html#l00213">PlannerTerminationCondition.cpp:213</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a821506e6c7997bb93b96dd64bfda6051"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a821506e6c7997bb93b96dd64bfda6051">ompl::geometric::PRM::clearQuery</a></div><div class="ttdeci">void clearQuery()</div><div class="ttdoc">Clear the query previously loaded from the ProblemDefinition. Subsequent calls to solve() will reuse ...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00143">PRM.cpp:143</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a664410622628a8a1283963dc51b92b03"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a664410622628a8a1283963dc51b92b03">ompl::geometric::PRM::checkForSolution</a></div><div class="ttdeci">void checkForSolution(const base::PlannerTerminationCondition &amp;ptc, base::PathPtr &amp;solution)</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00290">PRM.cpp:290</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinitionPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinitionPtr.html">ompl::base::ProblemDefinitionPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::ProblemDefinition. </div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSolution_html_a19962696ffed99b53e6422d5fcda1fd0"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSolution.html#a19962696ffed99b53e6422d5fcda1fd0">ompl::base::PlannerSolution::optimized_</a></div><div class="ttdeci">bool optimized_</div><div class="ttdoc">True of the solution was optimized to meet the specified optimization criterion. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00118">ProblemDefinition.h:118</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a620a03eebe49aa307140d6a4763278fd"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a620a03eebe49aa307140d6a4763278fd">ompl::base::PlannerStatus::TIMEOUT</a></div><div class="ttdoc">The planner failed to find a solution. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00062">PlannerStatus.h:62</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSolution_html"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSolution.html">ompl::base::PlannerSolution</a></div><div class="ttdoc">Representation of a solution to a planning problem. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00070">ProblemDefinition.h:70</a></div></div>
+<div class="ttc" id="structompl_1_1geometric_1_1PRM_1_1vertex__successful__connection__attempts__t_html"><div class="ttname"><a href="structompl_1_1geometric_1_1PRM_1_1vertex__successful__connection__attempts__t.html">ompl::geometric::PRM::vertex_successful_connection_attempts_t</a></div><div class="ttdef"><b>Definition:</b> <a href="PRM_8h_source.html#l00095">PRM.h:95</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSpecs_html_ac8a946673fef335d7a802d9ee8436804"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSpecs.html#ac8a946673fef335d7a802d9ee8436804">ompl::base::PlannerSpecs::recognizedGoal</a></div><div class="ttdeci">GoalType recognizedGoal</div><div class="ttdoc">The type of goal specification the planner can use. </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00206">Planner.h:206</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a983bce5dd72ba208357b5518f4515125"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a983bce5dd72ba208357b5518f4515125">ompl::geometric::PRM::distanceFunction</a></div><div class="ttdeci">double distanceFunction(const Vertex a, const Vertex b) const </div><div class="ttdoc">Compute distance between two milestones (this is simply distance between the states of the milestones...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8h_source.html#l00272">PRM.h:272</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a718ea717e0928e0d4555683021508e46"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a718ea717e0928e0d4555683021508e46">ompl::geometric::PRM::expandRoadmap</a></div><div class="ttdeci">virtual void expandRoadmap(double expandTime)</div><div class="ttdoc">Attempt to connect disjoint components in the roadmap using random bouncing motions (the PRM expansio...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00169">PRM.cpp:169</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a20caf404f1f9fa7462bb23950a5c9c0a"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a20caf404f1f9fa7462bb23950a5c9c0a">ompl::geometric::PRM::sameComponent</a></div><div class="ttdeci">bool sameComponent(Vertex m1, Vertex m2)</div><div class="ttdoc">Check if two milestones (m1 and m2) are part of the same connected component. This is not a const fun...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00500">PRM.cpp:500</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a3604cb85b0402b09b319c5f1df02b12e"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">ompl::base::PlannerData::addGoalVertex</a></div><div class="ttdeci">unsigned int addGoalVertex(const PlannerDataVertex &amp;v)</div><div class="ttdoc">Adds the given vertex to the graph data, and marks it as a start vertex. The vertex index is returned...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00434">PlannerData.cpp:434</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Goal_html"><div class="ttname"><a href="classompl_1_1base_1_1Goal.html">ompl::base::Goal</a></div><div class="ttdoc">Abstract definition of goals. </div><div class="ttdef"><b>Definition:</b> <a href="Goal_8h_source.html#l00063">Goal.h:63</a></div></div>
+<div class="ttc" id="namespaceompl_1_1magic_html_a3497680b3a4a3351ff97f12d813833b9"><div class="ttname"><a href="namespaceompl_1_1magic.html#a3497680b3a4a3351ff97f12d813833b9">ompl::magic::ROADMAP_BUILD_TIME</a></div><div class="ttdeci">static const double ROADMAP_BUILD_TIME</div><div class="ttdoc">The time in seconds for a single roadmap building operation (dt) </div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00070">PRM.cpp:70</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerTerminationCondition_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerTerminationCondition.html">ompl::base::PlannerTerminationCondition</a></div><div class="ttdoc">Encapsulate a termination condition for a motion planner. Planners will call operator() to decide whe...</div><div class="ttdef"><b>Definition:</b> <a href="PlannerTerminationCondition_8h_source.html#l00064">PlannerTerminationCondition.h:64</a></div></div>
+<div class="ttc" id="structompl_1_1geometric_1_1PRM_1_1vertex__state__t_html"><div class="ttname"><a href="structompl_1_1geometric_1_1PRM_1_1vertex__state__t.html">ompl::geometric::PRM::vertex_state_t</a></div><div class="ttdef"><b>Definition:</b> <a href="PRM_8h_source.html#l00087">PRM.h:87</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a9f15e6dafe26d97547526317b457c201"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a9f15e6dafe26d97547526317b457c201">ompl::geometric::PRM::growRoadmap</a></div><div class="ttdeci">virtual void growRoadmap(double growTime)</div><div class="ttdoc">If the user desires, the roadmap can be improved for the given time (seconds). The solve() method wil...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00250">PRM.cpp:250</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PathGeometric_html_aa9eb3ea81cc3ab442aae67d311bc4156"><div class="ttname"><a href="classompl_1_1geometric_1_1PathGeometric.html#aa9eb3ea81cc3ab442aae67d311bc4156">ompl::geometric::PathGeometric::append</a></div><div class="ttdeci">void append(const base::State *state)</div><div class="ttdoc">Append state to the end of this path. The memory for state is copied. </div><div class="ttdef"><b>Definition:</b> <a href="PathGeometric_8cpp_source.html#l00420">PathGeometric.cpp:420</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_ae9af092666bd96c2a238bf7bb2acd700"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#ae9af092666bd96c2a238bf7bb2acd700">ompl::geometric::PRM::clear</a></div><div class="ttdeci">virtual void clear()</div><div class="ttdoc">Clear all internal datastructures. Planner settings are not affected. Subsequent calls to solve() wil...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00150">PRM.cpp:150</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a0e101dcced6fbf9971dc20d30736d00f"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a0e101dcced6fbf9971dc20d30736d00f">ompl::geometric::PRM::solve</a></div><div class="ttdeci">virtual base::PlannerStatus solve(const base::PlannerTerminationCondition &amp;ptc)</div><div class="ttdoc">Function that can solve the motion planning problem. Grows a roadmap using constructRoadmap(). This function can be called multiple times on the same problem, without calling clear() in between. This allows the planner to continue work for more time on an unsolved problem, for example. Start and goal states from the currently specified ProblemDefinition are cached. This means that between calls to solve(), input states are only added, not removed. When using PRM as a multi-query planner, the input states should be however cleared, without clearing the roadmap itself. This can be done using the clearQuery() function. </div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00357">PRM.cpp:357</a></div></div>
+<div class="ttc" id="classompl_1_1PDF_html"><div class="ttname"><a href="classompl_1_1PDF.html">ompl::PDF</a></div><div class="ttdoc">A container that supports probabilistic sampling over weighted data. </div><div class="ttdef"><b>Definition:</b> <a href="PDF_8h_source.html#l00048">PDF.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerDataVertex_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a></div><div class="ttdoc">Base class for a vertex in the PlannerData structure. All derived classes must implement the clone an...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00060">PlannerData.h:60</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547">ompl::base::PlannerStatus::INVALID_START</a></div><div class="ttdoc">Invalid start state or no start state specified. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00056">PlannerStatus.h:56</a></div></div>
+<div class="ttc" id="namespaceompl_1_1base_html_ae26e5f143063be389fba4906d438a381"><div class="ttname"><a href="namespaceompl_1_1base.html#ae26e5f143063be389fba4906d438a381">ompl::base::timedPlannerTerminationCondition</a></div><div class="ttdeci">PlannerTerminationCondition timedPlannerTerminationCondition(double duration)</div><div class="ttdoc">Return a termination condition that will become true duration seconds in the future (wall-time) ...</div><div class="ttdef"><b>Definition:</b> <a href="PlannerTerminationCondition_8cpp_source.html#l00223">PlannerTerminationCondition.cpp:223</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GoalSampleableRegion_html"><div class="ttname"><a href="classompl_1_1base_1_1GoalSampleableRegion.html">ompl::base::GoalSampleableRegion</a></div><div class="ttdoc">Abstract definition of a goal region that can be sampled. </div><div class="ttdef"><b>Definition:</b> <a href="GoalSampleableRegion_8h_source.html#l00049">GoalSampleableRegion.h:49</a></div></div>
+<div class="ttc" id="namespaceompl_1_1magic_html_a44f09b05d50332500c8b681d441f91d2"><div class="ttname"><a href="namespaceompl_1_1magic.html#a44f09b05d50332500c8b681d441f91d2">ompl::magic::DEFAULT_NEAREST_NEIGHBORS</a></div><div class="ttdeci">static const unsigned int DEFAULT_NEAREST_NEIGHBORS</div><div class="ttdoc">The number of nearest neighbors to consider by default in the construction of the PRM roadmap...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00067">PRM.cpp:67</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GoalSampleableRegion_html_ae0625cd4b7646d600244b79da9101f0d"><div class="ttname"><a href="classompl_1_1base_1_1GoalSampleableRegion.html#ae0625cd4b7646d600244b79da9101f0d">ompl::base::GoalSampleableRegion::maxSampleCount</a></div><div class="ttdeci">virtual unsigned int maxSampleCount() const =0</div><div class="ttdoc">Return the maximum number of samples that can be asked for before repeating. </div></div>
+<div class="ttc" id="structompl_1_1base_1_1Cost_html"><div class="ttname"><a href="structompl_1_1base_1_1Cost.html">ompl::base::Cost</a></div><div class="ttdoc">Definition of a cost value. Can represent the cost of a motion or the cost of a state. </div><div class="ttdef"><b>Definition:</b> <a href="Cost_8h_source.html#l00047">Cost.h:47</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a47d769205044efa345184a640bd863ff"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a47d769205044efa345184a640bd863ff">ompl::base::PlannerStatus::UNRECOGNIZED_GOAL_TYPE</a></div><div class="ttdoc">The goal is of a type that a planner does not recognize. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00060">PlannerStatus.h:60</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a2cb318fda9ada561e357a2dd539ec11b"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a2cb318fda9ada561e357a2dd539ec11b">ompl::geometric::PRM::freeMemory</a></div><div class="ttdeci">void freeMemory()</div><div class="ttdoc">Free all the memory allocated by the planner. </div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00162">PRM.cpp:162</a></div></div>
+<div class="ttc" id="group__logging_html_ga05ad3ae88188e7f248748785afd2b882"><div class="ttname"><a href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a></div><div class="ttdeci">#define OMPL_ERROR(fmt,...)</div><div class="ttdoc">Log a formatted error string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00064">Console.h:64</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a2b0b7c124dcac4f07c5f6d0ab51386a6"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a2b0b7c124dcac4f07c5f6d0ab51386a6">ompl::base::PlannerData::tagState</a></div><div class="ttdeci">bool tagState(const State *st, int tag)</div><div class="ttdoc">Set the integer tag associated with the given state. If the given state does not exist in a vertex...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00578">PlannerData.cpp:578</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_aa393c5591243c7d166fc0f73b46627f2"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#aa393c5591243c7d166fc0f73b46627f2">ompl::geometric::PRM::addMilestone</a></div><div class="ttdeci">virtual Vertex addMilestone(base::State *state)</div><div class="ttdoc">Construct a milestone for a given state (state), store it in the nearest neighbors data structure and...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00458">PRM.cpp:458</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a868cfb5924859c224fcab04081680065"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a868cfb5924859c224fcab04081680065">ompl::geometric::PRM::constructSolution</a></div><div class="ttdeci">virtual base::PathPtr constructSolution(const Vertex &amp;start, const Vertex &amp;goal)</div><div class="ttdoc">Given two milestones from the same connected component, construct a path connecting them and set it a...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00505">PRM.cpp:505</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a20f8c901516c72e258d43d7156fe8e28"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a20f8c901516c72e258d43d7156fe8e28">ompl::base::PlannerStatus::EXACT_SOLUTION</a></div><div class="ttdoc">The planner found an exact solution. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00066">PlannerStatus.h:66</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1KStrategy_html"><div class="ttname"><a href="classompl_1_1geometric_1_1KStrategy.html">ompl::geometric::KStrategy</a></div><div class="ttdef"><b>Definition:</b> <a href="ConnectionStrategy_8h_source.html#l00056">ConnectionStrategy.h:56</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PathGeometric_html_a68e0627b7957b35e2723f9434ace5a95"><div class="ttname"><a href="classompl_1_1geometric_1_1PathGeometric.html#a68e0627b7957b35e2723f9434ace5a95">ompl::geometric::PathGeometric::reverse</a></div><div class="ttdeci">void reverse()</div><div class="ttdoc">Reverse the path. </div><div class="ttdef"><b>Definition:</b> <a href="PathGeometric_8cpp_source.html#l00356">PathGeometric.cpp:356</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a2e2b2b7e02900c4417af0ecea272c637"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a2e2b2b7e02900c4417af0ecea272c637">ompl::base::PlannerStatus::INVALID_GOAL</a></div><div class="ttdoc">Invalid goal state. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00058">PlannerStatus.h:58</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html">ompl::base::PlannerStatus</a></div><div class="ttdoc">A class to store the exit status of Planner::solve() </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00048">PlannerStatus.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_ac09c21494a8c7db500ef1a66bbbb1aa7"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">ompl::base::PlannerData::addEdge</a></div><div class="ttdeci">virtual bool addEdge(unsigned int v1, unsigned int v2, const PlannerDataEdge &amp;edge=PlannerDataEdge(), Cost weight=Cost(1.0))</div><div class="ttdoc">Adds a directed edge between the given vertex indexes. An optional edge structure and weight can be s...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00444">PlannerData.cpp:444</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Goal_html_a5d5285908b7e09d61577279f35e47175"><div class="ttname"><a href="classompl_1_1base_1_1Goal.html#a5d5285908b7e09d61577279f35e47175">ompl::base::Goal::isStartGoalPairValid</a></div><div class="ttdeci">virtual bool isStartGoalPairValid(const State *, const State *) const </div><div class="ttdoc">Since there can be multiple starting states (and multiple goal states) it is possible certain pairs a...</div><div class="ttdef"><b>Definition:</b> <a href="Goal_8h_source.html#l00136">Goal.h:136</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpaceInformationPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1SpaceInformationPtr.html">ompl::base::SpaceInformationPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::SpaceInformation. </div></div>
+<div class="ttc" id="classompl_1_1base_1_1PathLengthOptimizationObjective_html"><div class="ttname"><a href="classompl_1_1base_1_1PathLengthOptimizationObjective.html">ompl::base::PathLengthOptimizationObjective</a></div><div class="ttdoc">An optimization objective which corresponds to optimizing path length. </div><div class="ttdef"><b>Definition:</b> <a href="PathLengthOptimizationObjective_8h_source.html#l00047">PathLengthOptimizationObjective.h:47</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a2eea84456784452486aa0065af391f47"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">ompl::base::PlannerData::addStartVertex</a></div><div class="ttdeci">unsigned int addStartVertex(const PlannerDataVertex &amp;v)</div><div class="ttdoc">Adds the given vertex to the graph data, and marks it as a start vertex. The vertex index is returned...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00425">PlannerData.cpp:425</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="namespaceompl_1_1magic_html_a165c9405d5064e4101020d43163ec822"><div class="ttname"><a href="namespaceompl_1_1magic.html#a165c9405d5064e4101020d43163ec822">ompl::magic::FIND_VALID_STATE_ATTEMPTS_WITHOUT_TERMINATION_CHECK</a></div><div class="ttdeci">static const unsigned int FIND_VALID_STATE_ATTEMPTS_WITHOUT_TERMINATION_CHECK</div><div class="ttdoc">Maximum number of sampling attempts to find a valid state, without checking whether the allowed time ...</div><div class="ttdef"><b>Definition:</b> <a href="MagicConstants_8h_source.html#l00103">MagicConstants.h:103</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html">ompl::base::OptimizationObjective</a></div><div class="ttdoc">Abstract definition of optimization objectives. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8h_source.html#l00070">OptimizationObjective.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Planner_html_a4311ea7a0470f0e0f76cb1656d63e365"><div class="ttname"><a href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">ompl::base::Planner::specs_</a></div><div class="ttdeci">PlannerSpecs specs_</div><div class="ttdoc">The specifications of the planner (its capabilities) </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00404">Planner.h:404</a></div></div>
+<div class="ttc" id="classompl_1_1Exception_html"><div class="ttname"><a href="classompl_1_1Exception.html">ompl::Exception</a></div><div class="ttdoc">The exception type for ompl. </div><div class="ttdef"><b>Definition:</b> <a href="Exception_8h_source.html#l00047">Exception.h:47</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a5fade5f3ded9dd85ce1693c1912edaa8"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a5fade5f3ded9dd85ce1693c1912edaa8">ompl::base::PlannerStatus::APPROXIMATE_SOLUTION</a></div><div class="ttdoc">The planner found an approximate solution. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00064">PlannerStatus.h:64</a></div></div>
+<div class="ttc" id="classompl_1_1PDF_html_ae0e20ec9697abbbff4eb5ca7f06c04f7"><div class="ttname"><a href="classompl_1_1PDF.html#ae0e20ec9697abbbff4eb5ca7f06c04f7">ompl::PDF::add</a></div><div class="ttdeci">Element * add(const _T &amp;d, const double w)</div><div class="ttdoc">Adds a piece of data with a given weight to the PDF. Returns a corresponding Element, which can be used to subsequently update or remove the data from the PDF. </div><div class="ttdef"><b>Definition:</b> <a href="PDF_8h_source.html#l00097">PDF.h:97</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a7b0062dea557b1751cf242352313a9bf"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a7b0062dea557b1751cf242352313a9bf">ompl::geometric::PRM::haveSolution</a></div><div class="ttdeci">bool haveSolution(const std::vector&lt; Vertex &gt; &amp;starts, const std::vector&lt; Vertex &gt; &amp;goals, base::PathPtr &amp;solution)</div><div class="ttdoc">Check if there exists a solution, i.e., there exists a pair of milestones such that the first is in s...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00312">PRM.cpp:312</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GoalSampleableRegion_html_adbfa83eb76309039b839e3fb87c88203"><div class="ttname"><a href="classompl_1_1base_1_1GoalSampleableRegion.html#adbfa83eb76309039b839e3fb87c88203">ompl::base::GoalSampleableRegion::couldSample</a></div><div class="ttdeci">virtual bool couldSample() const </div><div class="ttdoc">Return true if samples could be generated by this sampler at some point in the future. By default this is equivalent to canSample(), but for GoalLazySamples, this call also reflects the fact that a sampling thread is active and although no samples are produced yet, some may become available at some point in the future. </div><div class="ttdef"><b>Definition:</b> <a href="GoalSampleableRegion_8h_source.html#l00078">GoalSampleableRegion.h:78</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1KStarStrategy_html"><div class="ttname"><a href="classompl_1_1geometric_1_1KStarStrategy.html">ompl::geometric::KStarStrategy</a></div><div class="ttdoc">Make the minimal number of connections required to ensure asymptotic optimality. </div><div class="ttdef"><b>Definition:</b> <a href="ConnectionStrategy_8h_source.html#l00126">ConnectionStrategy.h:126</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a8b699f5d6c9ffd15094ef3854f1eb7b4"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a8b699f5d6c9ffd15094ef3854f1eb7b4">ompl::geometric::PRM::uniteComponents</a></div><div class="ttdeci">void uniteComponents(Vertex m1, Vertex m2)</div><div class="ttdoc">Make two milestones (m1 and m2) be part of the same connected component. The component with fewer ele...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00495">PRM.cpp:495</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_ab8832a466b3178de436acbb000712f2b"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#ab8832a466b3178de436acbb000712f2b">ompl::geometric::PRM::setMaxNearestNeighbors</a></div><div class="ttdeci">void setMaxNearestNeighbors(unsigned int k)</div><div class="ttdoc">Convenience function that sets the connection strategy to the default one with k nearest neighbors...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00127">PRM.cpp:127</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSolution_html_a26f5a4cd93099f755212d46f44717ee3"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSolution.html#a26f5a4cd93099f755212d46f44717ee3">ompl::base::PlannerSolution::plannerName_</a></div><div class="ttdeci">std::string plannerName_</div><div class="ttdoc">Name of planner type that generated this solution, as received from Planner.getName() ...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00121">ProblemDefinition.h:121</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a542eb5e312323a8a1ab588fe2a183632"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a542eb5e312323a8a1ab588fe2a183632">ompl::geometric::PRM::setup</a></div><div class="ttdeci">virtual void setup()</div><div class="ttdoc">Perform extra configuration steps, if needed. This call will also issue a call to ompl::base::SpaceIn...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00100">PRM.cpp:100</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_aefef4c0c54de26622152347fa0078961"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#aefef4c0c54de26622152347fa0078961">ompl::geometric::PRM::setProblemDefinition</a></div><div class="ttdeci">virtual void setProblemDefinition(const base::ProblemDefinitionPtr &amp;pdef)</div><div class="ttdoc">Set the problem definition for the planner. The problem needs to be set before calling solve()...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00137">PRM.cpp:137</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSpecs_html_a83869b1cd49a91e29b0b926188402a0a"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSpecs.html#a83869b1cd49a91e29b0b926188402a0a">ompl::base::PlannerSpecs::optimizingPaths</a></div><div class="ttdeci">bool optimizingPaths</div><div class="ttdoc">Flag indicating whether the planner attempts to optimize the path and reduce its length until the max...</div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00216">Planner.h:216</a></div></div>
+<div class="ttc" id="namespaceompl_1_1magic_html_acf09430426a57052295791746f014f12"><div class="ttname"><a href="namespaceompl_1_1magic.html#acf09430426a57052295791746f014f12">ompl::magic::MAX_RANDOM_BOUNCE_STEPS</a></div><div class="ttdeci">static const unsigned int MAX_RANDOM_BOUNCE_STEPS</div><div class="ttdoc">The number of steps to take for a random bounce motion generated as part of the expansion step of PRM...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00063">PRM.cpp:63</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_ad1fee13ccaeee47bf256a14999e959b1"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#ad1fee13ccaeee47bf256a14999e959b1">ompl::geometric::PRM::constructGeometricPath</a></div><div class="ttdeci">virtual base::PathPtr constructGeometricPath(const boost::vector_property_map&lt; Vertex &gt; &amp;prev, const Vertex &amp;start, const Vertex &amp;goal)</div><div class="ttdoc">Given a solution represented as a vector of predecesors in the roadmap, construct a geometric path...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00534">PRM.cpp:534</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PathGeometric_html"><div class="ttname"><a href="classompl_1_1geometric_1_1PathGeometric.html">ompl::geometric::PathGeometric</a></div><div class="ttdoc">Definition of a geometric path. </div><div class="ttdef"><b>Definition:</b> <a href="PathGeometric_8h_source.html#l00054">PathGeometric.h:54</a></div></div>
+<div class="ttc" id="classompl_1_1PDF_html_a207bc400e0fc68265f9076538419c58d"><div class="ttname"><a href="classompl_1_1PDF.html#a207bc400e0fc68265f9076538419c58d">ompl::PDF::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdoc">Returns whether the PDF contains no data. </div><div class="ttdef"><b>Definition:</b> <a href="PDF_8h_source.html#l00262">PDF.h:262</a></div></div>
+<div class="ttc" id="structompl_1_1geometric_1_1PRM_1_1vertex__total__connection__attempts__t_html"><div class="ttname"><a href="structompl_1_1geometric_1_1PRM_1_1vertex__total__connection__attempts__t.html">ompl::geometric::PRM::vertex_total_connection_attempts_t</a></div><div class="ttdef"><b>Definition:</b> <a href="PRM_8h_source.html#l00091">PRM.h:91</a></div></div>
+<div class="ttc" id="classompl_1_1PDF_html_a9eabafd0857350a3c70b2c5e0cb8709b"><div class="ttname"><a href="classompl_1_1PDF.html#a9eabafd0857350a3c70b2c5e0cb8709b">ompl::PDF::sample</a></div><div class="ttdeci">_T &amp; sample(double r) const </div><div class="ttdoc">Returns a piece of data from the PDF according to the input sampling value, which must be between 0 a...</div><div class="ttdef"><b>Definition:</b> <a href="PDF_8h_source.html#l00132">PDF.h:132</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a8da5dd602d45e477612bb1401cf68c19"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a8da5dd602d45e477612bb1401cf68c19">ompl::geometric::PRM::constructRoadmap</a></div><div class="ttdeci">virtual void constructRoadmap(const base::PlannerTerminationCondition &amp;ptc)</div><div class="ttdoc">While the termination condition allows, this function will construct the roadmap (using growRoadmap()...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00431">PRM.cpp:431</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PathPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1PathPtr.html">ompl::base::PathPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::Path. </div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a294b21109833dbbc80f5eb322e9c4fbc"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a294b21109833dbbc80f5eb322e9c4fbc">ompl::geometric::PRM::getPlannerData</a></div><div class="ttdeci">virtual void getPlannerData(base::PlannerData &amp;data) const </div><div class="ttdoc">Get information about the current run of the motion planner. Repeated calls to this function will upd...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00545">PRM.cpp:545</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_a566ccdc75bd560e89740f3e2e05c524f"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#a566ccdc75bd560e89740f3e2e05c524f">ompl::geometric::PRM::addedNewSolution</a></div><div class="ttdeci">bool addedNewSolution() const </div><div class="ttdoc">Returns the value of the addedSolution_ member. </div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00352">PRM.cpp:352</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PRM_html_afefd85b9fb3783fddc7a592ba7e5ae23"><div class="ttname"><a href="classompl_1_1geometric_1_1PRM.html#afefd85b9fb3783fddc7a592ba7e5ae23">ompl::geometric::PRM::costHeuristic</a></div><div class="ttdeci">base::Cost costHeuristic(Vertex u, Vertex v) const </div><div class="ttdoc">Given two vertices, returns a heuristic on the cost of the path connecting them. This method wraps Op...</div><div class="ttdef"><b>Definition:</b> <a href="PRM_8cpp_source.html#l00574">PRM.cpp:574</a></div></div>
+<div class="ttc" id="namespaceompl_1_1base_html_a1620a159019faf720c550eeca5723f55a6fb685fa51055688c4e130094225b7f9"><div class="ttname"><a href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55a6fb685fa51055688c4e130094225b7f9">ompl::base::GOAL_SAMPLEABLE_REGION</a></div><div class="ttdoc">This bit is set if casting to sampleable goal regions (ompl::base::GoalSampleableRegion) is possible...</div><div class="ttdef"><b>Definition:</b> <a href="GoalTypes_8h_source.html#l00055">GoalTypes.h:55</a></div></div>
+<div class="ttc" id="group__logging_html_ga04bc36d1b8c57ad7e13a8a48451a3a05"><div class="ttname"><a href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a></div><div class="ttdeci">#define OMPL_INFORM(fmt,...)</div><div class="ttdoc">Log a formatted information string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00068">Console.h:68</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

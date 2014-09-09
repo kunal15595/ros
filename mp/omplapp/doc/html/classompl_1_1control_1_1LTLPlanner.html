@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::control::LTLPlanner Class Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1control.html">control</a></li><li class="navelem"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html">LTLPlanner</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="classompl_1_1control_1_1LTLPlanner-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::control::LTLPlanner Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>A planner for generating system trajectories to satisfy a logical specification given by an automaton, the propositions of which are defined over a decomposition of the system's state space.  
+ <a href="classompl_1_1control_1_1LTLPlanner.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="LTLPlanner_8h_source.html">LTLPlanner.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ompl::control::LTLPlanner:</div>
+<div class="dyncontent">
+<div class="center"><img src="classompl_1_1control_1_1LTLPlanner__inherit__graph.png" border="0" usemap="#ompl_1_1control_1_1LTLPlanner_inherit__map" alt="Inheritance graph"/></div>
+<map name="ompl_1_1control_1_1LTLPlanner_inherit__map" id="ompl_1_1control_1_1LTLPlanner_inherit__map">
+<area shape="rect" id="node2" href="classompl_1_1base_1_1Planner.html" title="Base class for a planner. " alt="" coords="21,80,160,107"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html">Motion</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Representation of a motion.  <a href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html">ProductGraphStateInfo</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure to hold measurement information for a high-level state, as well as the set of tree motions belonging to that high-level state. Exactly one <a class="el" href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html" title="A structure to hold measurement information for a high-level state, as well as the set of tree motion...">ProductGraphStateInfo</a> will exist for each <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">ProductGraph::State</a>.  <a href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ac5723a09662532b93eaceb1099e32356"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5723a09662532b93eaceb1099e32356"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#ac5723a09662532b93eaceb1099e32356">LTLPlanner</a> (const <a class="el" href="classompl_1_1control_1_1LTLSpaceInformationPtr.html">LTLSpaceInformationPtr</a> &amp;si, const <a class="el" href="classompl_1_1control_1_1ProductGraphPtr.html">ProductGraphPtr</a> &amp;a, double exploreTime=0.5)</td></tr>
+<tr class="memdesc:ac5723a09662532b93eaceb1099e32356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an <a class="el" href="classompl_1_1control_1_1LTLPlanner.html" title="A planner for generating system trajectories to satisfy a logical specification given by an automaton...">LTLPlanner</a> with a given space and product graph. Accepts an optional third parameter to control how much time is spent promoting low-level tree exploration along a given high-level lead. <br/></td></tr>
+<tr class="separator:ac5723a09662532b93eaceb1099e32356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e98eb8ba7590177994bb659c0a886b5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e98eb8ba7590177994bb659c0a886b5"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a9e98eb8ba7590177994bb659c0a886b5">~LTLPlanner</a> (void)</td></tr>
+<tr class="memdesc:a9e98eb8ba7590177994bb659c0a886b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all memory belonging to this <a class="el" href="classompl_1_1control_1_1LTLPlanner.html" title="A planner for generating system trajectories to satisfy a logical specification given by an automaton...">LTLPlanner</a> . <br/></td></tr>
+<tr class="separator:a9e98eb8ba7590177994bb659c0a886b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ac27cb96fe50e3e52703b187bcdacff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ac27cb96fe50e3e52703b187bcdacff"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a4ac27cb96fe50e3e52703b187bcdacff">getTree</a> (std::vector&lt; <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> * &gt; &amp;tree) const </td></tr>
+<tr class="memdesc:a4ac27cb96fe50e3e52703b187bcdacff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper debug method to access this planner's underlying tree of states. <br/></td></tr>
+<tr class="separator:a4ac27cb96fe50e3e52703b187bcdacff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a034bb59d0315926b70753382b9ac70a0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a034bb59d0315926b70753382b9ac70a0"></a>
+std::vector<br class="typebreak"/>
+&lt; <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a034bb59d0315926b70753382b9ac70a0">getHighLevelPath</a> (const std::vector&lt; <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> * &gt; &amp;path, <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a> *start=NULL) const </td></tr>
+<tr class="memdesc:a034bb59d0315926b70753382b9ac70a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper debug method to return the sequence of high-level product graph states corresponding to a sequence of low-level continous system states, beginning from an optional initial high-level state. <br/></td></tr>
+<tr class="separator:a034bb59d0315926b70753382b9ac70a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">ompl::base::Planner Interface</div></td></tr>
+<tr class="memitem:a81df627143f110fffdf66cad8ebb4f71"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a81df627143f110fffdf66cad8ebb4f71"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a81df627143f110fffdf66cad8ebb4f71">setup</a> (void)</td></tr>
+<tr class="memdesc:a81df627143f110fffdf66cad8ebb4f71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes <a class="el" href="classompl_1_1control_1_1LTLPlanner.html" title="A planner for generating system trajectories to satisfy a logical specification given by an automaton...">LTLPlanner</a> data structures. <br/></td></tr>
+<tr class="separator:a81df627143f110fffdf66cad8ebb4f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94fdeeba6e07e8ab736d7f8da70ae741"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a94fdeeba6e07e8ab736d7f8da70ae741"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a94fdeeba6e07e8ab736d7f8da70ae741">clear</a> (void)</td></tr>
+<tr class="memdesc:a94fdeeba6e07e8ab736d7f8da70ae741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all datastructures belonging to this <a class="el" href="classompl_1_1control_1_1LTLPlanner.html" title="A planner for generating system trajectories to satisfy a logical specification given by an automaton...">LTLPlanner</a>. <br/></td></tr>
+<tr class="separator:a94fdeeba6e07e8ab736d7f8da70ae741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35d2879950add3db59b96823858c3033"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35d2879950add3db59b96823858c3033"></a>
+virtual <a class="el" href="structompl_1_1base_1_1PlannerStatus.html">base::PlannerStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a35d2879950add3db59b96823858c3033">solve</a> (const <a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;ptc)</td></tr>
+<tr class="memdesc:a35d2879950add3db59b96823858c3033"><td class="mdescLeft">&#160;</td><td class="mdescRight">Continues solving until a solution is found or a given planner termination condition is met. Returns true if a solution was found. <br/></td></tr>
+<tr class="separator:a35d2879950add3db59b96823858c3033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classompl_1_1base_1_1Planner"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classompl_1_1base_1_1Planner')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td></tr>
+<tr class="memitem:a404c3be95f77983e95a468e3a7032cc9 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a404c3be95f77983e95a468e3a7032cc9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a404c3be95f77983e95a468e3a7032cc9">Planner</a> (const <a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;si, const std::string &amp;name)</td></tr>
+<tr class="memdesc:a404c3be95f77983e95a468e3a7032cc9 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br/></td></tr>
+<tr class="separator:a404c3be95f77983e95a468e3a7032cc9 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03f24b87575ab8d31b921fea6525a0c5 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03f24b87575ab8d31b921fea6525a0c5"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a03f24b87575ab8d31b921fea6525a0c5">~Planner</a> ()</td></tr>
+<tr class="memdesc:a03f24b87575ab8d31b921fea6525a0c5 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br/></td></tr>
+<tr class="separator:a03f24b87575ab8d31b921fea6525a0c5 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ca68a50629dd31d550632480d001c17 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a2ca68a50629dd31d550632480d001c17 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a> ()</td></tr>
+<tr class="memdesc:a2ca68a50629dd31d550632480d001c17 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast this instance to a desired type.  <a href="#a2ca68a50629dd31d550632480d001c17">More...</a><br/></td></tr>
+<tr class="separator:a2ca68a50629dd31d550632480d001c17 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ebb461363467a0a95ccb1c1e44a7332 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a6ebb461363467a0a95ccb1c1e44a7332 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memTemplItemLeft" align="right" valign="top">const T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a6ebb461363467a0a95ccb1c1e44a7332">as</a> () const </td></tr>
+<tr class="memdesc:a6ebb461363467a0a95ccb1c1e44a7332 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast this instance to a desired type.  <a href="#a6ebb461363467a0a95ccb1c1e44a7332">More...</a><br/></td></tr>
+<tr class="separator:a6ebb461363467a0a95ccb1c1e44a7332 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af467d750711d1f426125642e2a387ab9 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af467d750711d1f426125642e2a387ab9"></a>
+const <a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#af467d750711d1f426125642e2a387ab9">getSpaceInformation</a> () const </td></tr>
+<tr class="memdesc:af467d750711d1f426125642e2a387ab9 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the space information this planner is using. <br/></td></tr>
+<tr class="separator:af467d750711d1f426125642e2a387ab9 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d4a5b067f5a4e817e73d025e4324e80 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5d4a5b067f5a4e817e73d025e4324e80"></a>
+const <a class="el" href="classompl_1_1base_1_1ProblemDefinitionPtr.html">ProblemDefinitionPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a5d4a5b067f5a4e817e73d025e4324e80">getProblemDefinition</a> () const </td></tr>
+<tr class="memdesc:a5d4a5b067f5a4e817e73d025e4324e80 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the problem definition the planner is trying to solve. <br/></td></tr>
+<tr class="separator:a5d4a5b067f5a4e817e73d025e4324e80 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46e60c79e6e4dbc44788a5faab7e11ee inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46e60c79e6e4dbc44788a5faab7e11ee"></a>
+const <a class="el" href="classompl_1_1base_1_1PlannerInputStates.html">PlannerInputStates</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a46e60c79e6e4dbc44788a5faab7e11ee">getPlannerInputStates</a> () const </td></tr>
+<tr class="memdesc:a46e60c79e6e4dbc44788a5faab7e11ee inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the planner input states. <br/></td></tr>
+<tr class="separator:a46e60c79e6e4dbc44788a5faab7e11ee inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add968ea14f1aa3d3bffc110da3e1d031 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add968ea14f1aa3d3bffc110da3e1d031"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#add968ea14f1aa3d3bffc110da3e1d031">setProblemDefinition</a> (const <a class="el" href="classompl_1_1base_1_1ProblemDefinitionPtr.html">ProblemDefinitionPtr</a> &amp;pdef)</td></tr>
+<tr class="memdesc:add968ea14f1aa3d3bffc110da3e1d031 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the problem definition for the planner. The problem needs to be set before calling <a class="el" href="classompl_1_1base_1_1Planner.html#aea8c56d18a0326b10fd111872ebd674a" title="Function that can solve the motion planning problem. This function can be called multiple times on th...">solve()</a>. Note: If this problem definition replaces a previous one, it may also be necessary to call <a class="el" href="classompl_1_1base_1_1Planner.html#a7929c12020a42b679601d22fb204919a" title="Clear all internal datastructures. Planner settings are not affected. Subsequent calls to solve() wil...">clear()</a>. <br/></td></tr>
+<tr class="separator:add968ea14f1aa3d3bffc110da3e1d031 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46d2a6941a33dbac28e6736949375e2b inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46d2a6941a33dbac28e6736949375e2b"></a>
+<a class="el" href="structompl_1_1base_1_1PlannerStatus.html">PlannerStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a46d2a6941a33dbac28e6736949375e2b">solve</a> (const <a class="el" href="namespaceompl_1_1base.html#a9fd3e25e86865682038a538289c9f3f6">PlannerTerminationConditionFn</a> &amp;ptc, double checkInterval)</td></tr>
+<tr class="memdesc:a46d2a6941a33dbac28e6736949375e2b inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as above except the termination condition is only evaluated at a specified interval. <br/></td></tr>
+<tr class="separator:a46d2a6941a33dbac28e6736949375e2b inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a61ca64b36881603af880677f6445a7 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a61ca64b36881603af880677f6445a7"></a>
+<a class="el" href="structompl_1_1base_1_1PlannerStatus.html">PlannerStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a5a61ca64b36881603af880677f6445a7">solve</a> (double solveTime)</td></tr>
+<tr class="memdesc:a5a61ca64b36881603af880677f6445a7 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as above except the termination condition is solely a time limit: the number of seconds the algorithm is allowed to spend planning. <br/></td></tr>
+<tr class="separator:a5a61ca64b36881603af880677f6445a7 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaaf08c87f8797803fbeb60771635ea5 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afaaf08c87f8797803fbeb60771635ea5"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#afaaf08c87f8797803fbeb60771635ea5">getPlannerData</a> (<a class="el" href="classompl_1_1base_1_1PlannerData.html">PlannerData</a> &amp;data) const </td></tr>
+<tr class="memdesc:afaaf08c87f8797803fbeb60771635ea5 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get information about the current run of the motion planner. Repeated calls to this function will update <em>data</em> (only additions are made). This is useful to see what changed in the exploration datastructure, between calls to <a class="el" href="classompl_1_1base_1_1Planner.html#aea8c56d18a0326b10fd111872ebd674a" title="Function that can solve the motion planning problem. This function can be called multiple times on th...">solve()</a>, for example (without calling <a class="el" href="classompl_1_1base_1_1Planner.html#a7929c12020a42b679601d22fb204919a" title="Clear all internal datastructures. Planner settings are not affected. Subsequent calls to solve() wil...">clear()</a> in between). <br/></td></tr>
+<tr class="separator:afaaf08c87f8797803fbeb60771635ea5 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd7cf22ad75c421e8c454778dbe798e4 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acd7cf22ad75c421e8c454778dbe798e4"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#acd7cf22ad75c421e8c454778dbe798e4">getName</a> () const </td></tr>
+<tr class="memdesc:acd7cf22ad75c421e8c454778dbe798e4 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name of the planner. <br/></td></tr>
+<tr class="separator:acd7cf22ad75c421e8c454778dbe798e4 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99bb12c016b06563aab6bba5cdbed01e inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a99bb12c016b06563aab6bba5cdbed01e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a99bb12c016b06563aab6bba5cdbed01e">setName</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a99bb12c016b06563aab6bba5cdbed01e inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the name of the planner. <br/></td></tr>
+<tr class="separator:a99bb12c016b06563aab6bba5cdbed01e inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eb82ef833b530732e6c258638c53347 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6eb82ef833b530732e6c258638c53347"></a>
+const <a class="el" href="structompl_1_1base_1_1PlannerSpecs.html">PlannerSpecs</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a6eb82ef833b530732e6c258638c53347">getSpecs</a> () const </td></tr>
+<tr class="memdesc:a6eb82ef833b530732e6c258638c53347 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the specifications (capabilities of this planner) <br/></td></tr>
+<tr class="separator:a6eb82ef833b530732e6c258638c53347 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab416900477cf4499139c01f35663dffb inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab416900477cf4499139c01f35663dffb"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#ab416900477cf4499139c01f35663dffb">checkValidity</a> ()</td></tr>
+<tr class="memdesc:ab416900477cf4499139c01f35663dffb inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check to see if the planner is in a working state (setup has been called, a goal was set, the input states seem to be in order). In case of error, this function throws an exception. <br/></td></tr>
+<tr class="separator:ab416900477cf4499139c01f35663dffb inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a287976283c3556a6b331ecd30c10087c inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a287976283c3556a6b331ecd30c10087c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a287976283c3556a6b331ecd30c10087c">isSetup</a> () const </td></tr>
+<tr class="memdesc:a287976283c3556a6b331ecd30c10087c inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if <a class="el" href="classompl_1_1base_1_1Planner.html#ab7e49fc3b3b7011d46d647d8f1603bd5" title="Perform extra configuration steps, if needed. This call will also issue a call to ompl::base::SpaceIn...">setup()</a> was called for this planner. <br/></td></tr>
+<tr class="separator:a287976283c3556a6b331ecd30c10087c inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dc98f7169ae45aa0e886376f546887a inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9dc98f7169ae45aa0e886376f546887a"></a>
+<a class="el" href="classompl_1_1base_1_1ParamSet.html">ParamSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a9dc98f7169ae45aa0e886376f546887a">params</a> ()</td></tr>
+<tr class="memdesc:a9dc98f7169ae45aa0e886376f546887a inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parameters for this planner. <br/></td></tr>
+<tr class="separator:a9dc98f7169ae45aa0e886376f546887a inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a560a93ec86a9e421e7515e7828780e2d inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a560a93ec86a9e421e7515e7828780e2d"></a>
+const <a class="el" href="classompl_1_1base_1_1ParamSet.html">ParamSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a560a93ec86a9e421e7515e7828780e2d">params</a> () const </td></tr>
+<tr class="memdesc:a560a93ec86a9e421e7515e7828780e2d inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parameters for this planner. <br/></td></tr>
+<tr class="separator:a560a93ec86a9e421e7515e7828780e2d inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8be4a36399223d93deedb9c9fa3573b inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8be4a36399223d93deedb9c9fa3573b"></a>
+const <a class="el" href="classompl_1_1base_1_1Planner.html#a919f116d094eb88e4c877c44531c2b75">PlannerProgressProperties</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#ac8be4a36399223d93deedb9c9fa3573b">getPlannerProgressProperties</a> () const </td></tr>
+<tr class="memdesc:ac8be4a36399223d93deedb9c9fa3573b inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a planner's planner progress property map. <br/></td></tr>
+<tr class="separator:ac8be4a36399223d93deedb9c9fa3573b inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1e269df8fa9bd55926aed3b7403e685 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1e269df8fa9bd55926aed3b7403e685"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#ab1e269df8fa9bd55926aed3b7403e685">printProperties</a> (std::ostream &amp;out) const </td></tr>
+<tr class="memdesc:ab1e269df8fa9bd55926aed3b7403e685 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print properties of the motion planner. <br/></td></tr>
+<tr class="separator:ab1e269df8fa9bd55926aed3b7403e685 inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29aec12824480f7b3824a98fc9f5775b inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29aec12824480f7b3824a98fc9f5775b"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a29aec12824480f7b3824a98fc9f5775b">printSettings</a> (std::ostream &amp;out) const </td></tr>
+<tr class="memdesc:a29aec12824480f7b3824a98fc9f5775b inherit pub_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print information about the motion planner's settings. <br/></td></tr>
+<tr class="separator:a29aec12824480f7b3824a98fc9f5775b inherit pub_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a89deb77d1b529104ab7b4ea5e44c616d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89deb77d1b529104ab7b4ea5e44c616d"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a89deb77d1b529104ab7b4ea5e44c616d">updateWeight</a> (<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a> *<a class="el" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a>)</td></tr>
+<tr class="memdesc:a89deb77d1b529104ab7b4ea5e44c616d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates and returns the weight of an abstraction state. <br/></td></tr>
+<tr class="separator:a89deb77d1b529104ab7b4ea5e44c616d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a437e1411ec1e6a2943da05f9c97e19df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a437e1411ec1e6a2943da05f9c97e19df"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a437e1411ec1e6a2943da05f9c97e19df">initAbstractInfo</a> (<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a> *<a class="el" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a>)</td></tr>
+<tr class="memdesc:a437e1411ec1e6a2943da05f9c97e19df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the info object for a new high-level state. <br/></td></tr>
+<tr class="separator:a437e1411ec1e6a2943da05f9c97e19df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa960ed258c58c90915021a8cf50e1fbd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa960ed258c58c90915021a8cf50e1fbd"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#aa960ed258c58c90915021a8cf50e1fbd">buildAvail</a> (const std::vector&lt; <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a> * &gt; &amp;lead)</td></tr>
+<tr class="memdesc:aa960ed258c58c90915021a8cf50e1fbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute a set of high-level states along a lead to be considered for expansion. <br/></td></tr>
+<tr class="separator:aa960ed258c58c90915021a8cf50e1fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74c30d1c13b68108811b457ec6fbfd87"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74c30d1c13b68108811b457ec6fbfd87"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a74c30d1c13b68108811b457ec6fbfd87">explore</a> (const std::vector&lt; <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a> * &gt; &amp;lead, <a class="el" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html">Motion</a> *&amp;soln, double duration)</td></tr>
+<tr class="memdesc:a74c30d1c13b68108811b457ec6fbfd87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expand the tree of motions along a given lead for a given duration of time. Returns true if a solution was found, in which case the endpoint of the solution trajectory will be stored in the given <a class="el" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html" title="Representation of a motion. ">Motion</a> pointer. Otherwise, returns false. <br/></td></tr>
+<tr class="separator:a74c30d1c13b68108811b457ec6fbfd87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af818e37c48733702ee74f866ef2aa061"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af818e37c48733702ee74f866ef2aa061"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#af818e37c48733702ee74f866ef2aa061">abstractEdgeWeight</a> (<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a> *a, <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a> *b) const </td></tr>
+<tr class="memdesc:af818e37c48733702ee74f866ef2aa061"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the weight of an edge between two given high-level states, which we compute as the product of the reciprocals of the weights of the two states. <br/></td></tr>
+<tr class="separator:af818e37c48733702ee74f866ef2aa061"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classompl_1_1base_1_1Planner"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classompl_1_1base_1_1Planner')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td></tr>
+<tr class="memitem:a6b4a1345376e3e977772c38d38d5c50c inherit pro_methods_classompl_1_1base_1_1Planner"><td class="memTemplParams" colspan="2"><a class="anchor" id="a6b4a1345376e3e977772c38d38d5c50c"></a>
+template&lt;typename T , typename PlannerType , typename SetterType , typename GetterType &gt; </td></tr>
+<tr class="memitem:a6b4a1345376e3e977772c38d38d5c50c inherit pro_methods_classompl_1_1base_1_1Planner"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a6b4a1345376e3e977772c38d38d5c50c">declareParam</a> (const std::string &amp;name, const PlannerType &amp;planner, const SetterType &amp;setter, const GetterType &amp;getter, const std::string &amp;rangeSuggestion=&quot;&quot;)</td></tr>
+<tr class="memdesc:a6b4a1345376e3e977772c38d38d5c50c inherit pro_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function declares a parameter for this planner instance, and specifies the setter and getter functions. <br/></td></tr>
+<tr class="separator:a6b4a1345376e3e977772c38d38d5c50c inherit pro_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f9da0d41951502ea4df1184ef5a99a6 inherit pro_methods_classompl_1_1base_1_1Planner"><td class="memTemplParams" colspan="2"><a class="anchor" id="a3f9da0d41951502ea4df1184ef5a99a6"></a>
+template&lt;typename T , typename PlannerType , typename SetterType &gt; </td></tr>
+<tr class="memitem:a3f9da0d41951502ea4df1184ef5a99a6 inherit pro_methods_classompl_1_1base_1_1Planner"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a3f9da0d41951502ea4df1184ef5a99a6">declareParam</a> (const std::string &amp;name, const PlannerType &amp;planner, const SetterType &amp;setter, const std::string &amp;rangeSuggestion=&quot;&quot;)</td></tr>
+<tr class="memdesc:a3f9da0d41951502ea4df1184ef5a99a6 inherit pro_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function declares a parameter for this planner instance, and specifies the setter function. <br/></td></tr>
+<tr class="separator:a3f9da0d41951502ea4df1184ef5a99a6 inherit pro_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dc481539fac465497ad158e1bdac91a inherit pro_methods_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3dc481539fac465497ad158e1bdac91a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a3dc481539fac465497ad158e1bdac91a">addPlannerProgressProperty</a> (const std::string &amp;progressPropertyName, const <a class="el" href="classompl_1_1base_1_1Planner.html#a761c5b0eeff509479618ae7eefa3de46">PlannerProgressProperty</a> &amp;prop)</td></tr>
+<tr class="memdesc:a3dc481539fac465497ad158e1bdac91a inherit pro_methods_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a planner progress property called <em>progressPropertyName</em> with a property querying function <em>prop</em> to this planner's progress property map. <br/></td></tr>
+<tr class="separator:a3dc481539fac465497ad158e1bdac91a inherit pro_methods_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a528bcee36159dc9452d1bca7f26da26a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a528bcee36159dc9452d1bca7f26da26a"></a>
+<a class="el" href="classompl_1_1base_1_1StateSamplerPtr.html">base::StateSamplerPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a528bcee36159dc9452d1bca7f26da26a">sampler_</a></td></tr>
+<tr class="memdesc:a528bcee36159dc9452d1bca7f26da26a"><td class="mdescLeft">&#160;</td><td class="mdescRight">State sampler. <br/></td></tr>
+<tr class="separator:a528bcee36159dc9452d1bca7f26da26a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa238ad3eac7e6ad327432646d001996"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa238ad3eac7e6ad327432646d001996"></a>
+<a class="el" href="classompl_1_1control_1_1ControlSamplerPtr.html">ControlSamplerPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#afa238ad3eac7e6ad327432646d001996">controlSampler_</a></td></tr>
+<tr class="memdesc:afa238ad3eac7e6ad327432646d001996"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classompl_1_1control_1_1Control.html" title="Definition of an abstract control. ">Control</a> sampler. <br/></td></tr>
+<tr class="separator:afa238ad3eac7e6ad327432646d001996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3c97a4ca739deb93d61b624c89f5d9e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3c97a4ca739deb93d61b624c89f5d9e"></a>
+const <a class="el" href="classompl_1_1control_1_1LTLSpaceInformation.html">LTLSpaceInformation</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#ac3c97a4ca739deb93d61b624c89f5d9e">ltlsi_</a></td></tr>
+<tr class="memdesc:ac3c97a4ca739deb93d61b624c89f5d9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the <a class="el" href="classompl_1_1control_1_1SpaceInformation.html" title="Space information containing necessary information for planning with controls. setup() needs to be ca...">control::SpaceInformation</a> object. <br/></td></tr>
+<tr class="separator:ac3c97a4ca739deb93d61b624c89f5d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfc0b29ea71e0017bc6ba7a9546372cc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adfc0b29ea71e0017bc6ba7a9546372cc"></a>
+<a class="el" href="classompl_1_1control_1_1ProductGraphPtr.html">ProductGraphPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#adfc0b29ea71e0017bc6ba7a9546372cc">abstraction_</a></td></tr>
+<tr class="memdesc:adfc0b29ea71e0017bc6ba7a9546372cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The high level abstaction used to grow the tree structure. <br/></td></tr>
+<tr class="separator:adfc0b29ea71e0017bc6ba7a9546372cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc0af27966ec70e335745f564becf896"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afc0af27966ec70e335745f564becf896"></a>
+<a class="el" href="classompl_1_1PDF.html">PDF</a>&lt; <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#afc0af27966ec70e335745f564becf896">availDist_</a></td></tr>
+<tr class="memdesc:afc0af27966ec70e335745f564becf896"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to sample nonempty regions in which to promote expansion. <br/></td></tr>
+<tr class="separator:afc0af27966ec70e335745f564becf896"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ab35591e7638e8ecbbed927a9734f16"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ab35591e7638e8ecbbed927a9734f16"></a>
+<a class="el" href="classompl_1_1RNG.html">RNG</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a3ab35591e7638e8ecbbed927a9734f16">rng_</a></td></tr>
+<tr class="memdesc:a3ab35591e7638e8ecbbed927a9734f16"><td class="mdescLeft">&#160;</td><td class="mdescRight">A random number generator. <br/></td></tr>
+<tr class="separator:a3ab35591e7638e8ecbbed927a9734f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4d5b6b2ca391ba70d0a42ae0dd97e4f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab4d5b6b2ca391ba70d0a42ae0dd97e4f"></a>
+std::vector&lt; <a class="el" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html">Motion</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#ab4d5b6b2ca391ba70d0a42ae0dd97e4f">motions_</a></td></tr>
+<tr class="memdesc:ab4d5b6b2ca391ba70d0a42ae0dd97e4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set of all motions. <br/></td></tr>
+<tr class="separator:ab4d5b6b2ca391ba70d0a42ae0dd97e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41dc17a229cb9b2bfa9258b179694990"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41dc17a229cb9b2bfa9258b179694990"></a>
+<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a41dc17a229cb9b2bfa9258b179694990">prodStart_</a></td></tr>
+<tr class="memdesc:a41dc17a229cb9b2bfa9258b179694990"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start state in product graph. <br/></td></tr>
+<tr class="separator:a41dc17a229cb9b2bfa9258b179694990"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a265376d13acd1ce6e07a8a32b5e993b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a265376d13acd1ce6e07a8a32b5e993b3"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a265376d13acd1ce6e07a8a32b5e993b3">exploreTime_</a></td></tr>
+<tr class="memdesc:a265376d13acd1ce6e07a8a32b5e993b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time to spend exploring each lead. <br/></td></tr>
+<tr class="separator:a265376d13acd1ce6e07a8a32b5e993b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08f249dd44ef4c12c2a28e8a459b9a23"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a08f249dd44ef4c12c2a28e8a459b9a23"></a>
+boost::unordered_map<br class="typebreak"/>
+&lt; <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a> <br class="typebreak"/>
+*, <a class="el" href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html">ProductGraphStateInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a></td></tr>
+<tr class="memdesc:a08f249dd44ef4c12c2a28e8a459b9a23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of abstraction states to their details. <br/></td></tr>
+<tr class="separator:a08f249dd44ef4c12c2a28e8a459b9a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classompl_1_1base_1_1Planner"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classompl_1_1base_1_1Planner')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td></tr>
+<tr class="memitem:aa3ceb9471163b6c96f6eeadbcfd3694e inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3ceb9471163b6c96f6eeadbcfd3694e"></a>
+<a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#aa3ceb9471163b6c96f6eeadbcfd3694e">si_</a></td></tr>
+<tr class="memdesc:aa3ceb9471163b6c96f6eeadbcfd3694e inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">The space information for which planning is done. <br/></td></tr>
+<tr class="separator:aa3ceb9471163b6c96f6eeadbcfd3694e inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bbb3dcc3d1604977e319d52c16ef7e5 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6bbb3dcc3d1604977e319d52c16ef7e5"></a>
+<a class="el" href="classompl_1_1base_1_1ProblemDefinitionPtr.html">ProblemDefinitionPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a6bbb3dcc3d1604977e319d52c16ef7e5">pdef_</a></td></tr>
+<tr class="memdesc:a6bbb3dcc3d1604977e319d52c16ef7e5 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">The user set problem definition. <br/></td></tr>
+<tr class="separator:a6bbb3dcc3d1604977e319d52c16ef7e5 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c6ac45d44026aae6df87f3295d67436 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c6ac45d44026aae6df87f3295d67436"></a>
+<a class="el" href="classompl_1_1base_1_1PlannerInputStates.html">PlannerInputStates</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a1c6ac45d44026aae6df87f3295d67436">pis_</a></td></tr>
+<tr class="memdesc:a1c6ac45d44026aae6df87f3295d67436 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility class to extract valid input states. <br/></td></tr>
+<tr class="separator:a1c6ac45d44026aae6df87f3295d67436 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a806de82eeff9ef9231963a9851524b97 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a806de82eeff9ef9231963a9851524b97"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a806de82eeff9ef9231963a9851524b97">name_</a></td></tr>
+<tr class="memdesc:a806de82eeff9ef9231963a9851524b97 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of this planner. <br/></td></tr>
+<tr class="separator:a806de82eeff9ef9231963a9851524b97 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4311ea7a0470f0e0f76cb1656d63e365 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4311ea7a0470f0e0f76cb1656d63e365"></a>
+<a class="el" href="structompl_1_1base_1_1PlannerSpecs.html">PlannerSpecs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">specs_</a></td></tr>
+<tr class="memdesc:a4311ea7a0470f0e0f76cb1656d63e365 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">The specifications of the planner (its capabilities) <br/></td></tr>
+<tr class="separator:a4311ea7a0470f0e0f76cb1656d63e365 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cecf022e5ebac936c49b96079ba5359 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1cecf022e5ebac936c49b96079ba5359"></a>
+<a class="el" href="classompl_1_1base_1_1ParamSet.html">ParamSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a1cecf022e5ebac936c49b96079ba5359">params_</a></td></tr>
+<tr class="memdesc:a1cecf022e5ebac936c49b96079ba5359 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">A map from parameter names to parameter instances for this planner. This field is populated by the <a class="el" href="classompl_1_1base_1_1Planner.html#a6b4a1345376e3e977772c38d38d5c50c" title="This function declares a parameter for this planner instance, and specifies the setter and getter fun...">declareParam()</a> function. <br/></td></tr>
+<tr class="separator:a1cecf022e5ebac936c49b96079ba5359 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab630ca0634156172daf1a2620a01caf4 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab630ca0634156172daf1a2620a01caf4"></a>
+<a class="el" href="classompl_1_1base_1_1Planner.html#a919f116d094eb88e4c877c44531c2b75">PlannerProgressProperties</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#ab630ca0634156172daf1a2620a01caf4">plannerProgressProperties_</a></td></tr>
+<tr class="memdesc:ab630ca0634156172daf1a2620a01caf4 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">A mapping between this planner's progress property names and the functions used for querying those progress properties. <br/></td></tr>
+<tr class="separator:ab630ca0634156172daf1a2620a01caf4 inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adba44a4ee27079c5b258a2ebed719eed inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adba44a4ee27079c5b258a2ebed719eed"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#adba44a4ee27079c5b258a2ebed719eed">setup_</a></td></tr>
+<tr class="memdesc:adba44a4ee27079c5b258a2ebed719eed inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating whether <a class="el" href="classompl_1_1base_1_1Planner.html#ab7e49fc3b3b7011d46d647d8f1603bd5" title="Perform extra configuration steps, if needed. This call will also issue a call to ompl::base::SpaceIn...">setup()</a> has been called. <br/></td></tr>
+<tr class="separator:adba44a4ee27079c5b258a2ebed719eed inherit pro_attribs_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_types_classompl_1_1base_1_1Planner"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classompl_1_1base_1_1Planner')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td></tr>
+<tr class="memitem:a761c5b0eeff509479618ae7eefa3de46 inherit pub_types_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a761c5b0eeff509479618ae7eefa3de46"></a>
+typedef boost::function<br class="typebreak"/>
+&lt; std::string()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a761c5b0eeff509479618ae7eefa3de46">PlannerProgressProperty</a></td></tr>
+<tr class="memdesc:a761c5b0eeff509479618ae7eefa3de46 inherit pub_types_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a function which returns a property about the planner's progress that can be queried by a benchmarking routine. <br/></td></tr>
+<tr class="separator:a761c5b0eeff509479618ae7eefa3de46 inherit pub_types_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a919f116d094eb88e4c877c44531c2b75 inherit pub_types_classompl_1_1base_1_1Planner"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a919f116d094eb88e4c877c44531c2b75"></a>
+typedef std::map&lt; std::string, <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1Planner.html#a761c5b0eeff509479618ae7eefa3de46">PlannerProgressProperty</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html#a919f116d094eb88e4c877c44531c2b75">PlannerProgressProperties</a></td></tr>
+<tr class="memdesc:a919f116d094eb88e4c877c44531c2b75 inherit pub_types_classompl_1_1base_1_1Planner"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary which maps the name of a progress property to the function to be used for querying that property. <br/></td></tr>
+<tr class="separator:a919f116d094eb88e4c877c44531c2b75 inherit pub_types_classompl_1_1base_1_1Planner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A planner for generating system trajectories to satisfy a logical specification given by an automaton, the propositions of which are defined over a decomposition of the system's state space. </p>
+<p>TODO cite papers </p>
+
+<p>Definition at line <a class="el" href="LTLPlanner_8h_source.html#l00057">57</a> of file <a class="el" href="LTLPlanner_8h_source.html">LTLPlanner.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>ompl/src/ompl/control/planners/ltl/<a class="el" href="LTLPlanner_8h_source.html">LTLPlanner.h</a></li>
+<li>ompl/src/ompl/control/planners/ltl/src/<a class="el" href="LTLPlanner_8cpp_source.html">LTLPlanner.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:28 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

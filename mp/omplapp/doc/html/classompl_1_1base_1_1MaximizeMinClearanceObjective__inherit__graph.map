@@ -1,0 +1,4 @@
+<map id="ompl::base::MaximizeMinClearanceObjective" name="ompl::base::MaximizeMinClearanceObjective">
+<area shape="rect" id="node2" href="$classompl_1_1base_1_1MinimaxObjective.html" title="The cost of a path is defined as the worst state cost over the entire path. This objective attempts t..." alt="" coords="21,171,219,197"/>
+<area shape="rect" id="node3" href="$classompl_1_1base_1_1OptimizationObjective.html" title="Abstract definition of optimization objectives. " alt="" coords="37,81,203,122"/>
+</map>

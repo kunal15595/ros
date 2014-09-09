@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Generic Instructions for Setting Up a Planning Context</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Generic Instructions for Setting Up a Planning Context </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h3>Instantiating a state space</h3>
+<p>The first step for setting up a planning problem is selecting the space we are planning in. Simply create an instance of a class that inherits from <a class="el" href="classompl_1_1base_1_1StateSpace.html" title="Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. ">ompl::base::StateSpace</a>, or select one from the available implementations. To change the definition of the employed sampler or distance function, it is possible to provide a further specialization of such a state space. See [Implementing State Spaces]{implementingStateSpaces.html}.</p>
+<div class="fragment"><div class="line">base::StateSpacePtr space(<span class="keyword">new</span> base::SE2StateSpace());</div>
+<div class="line"><span class="comment">// set bounds ....</span></div>
+</div><!-- fragment --><h3>Instantiating a control space</h3>
+<p>If planning with differential constraints, a representation of the space of controls is needed as well. Simply create an instance of a class that inherits from <a class="el" href="classompl_1_1control_1_1ControlSpace.html" title="A control space representing the space of applicable controls. ">ompl::control::ControlSpace</a>. Usually, <a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html" title="A control space representing Rn. ">ompl::control::RealVectorControlSpace</a> is sufficient. An implementation needs to be specified for the ompl::control:ControlSpace::propagate() either by inheriting from the control space class or by calling ompl::control::ControlSpace::setPropagationFunction().</p>
+<div class="fragment"><div class="line">base::StateSpacePtr space(<span class="keyword">new</span> base::SE2StateSpace());</div>
+<div class="line"><span class="comment">// set bounds for state space</span></div>
+<div class="line">control::ControlSpacePtr cspace(<span class="keyword">new</span> control::RealVectorControlSpace(space));</div>
+<div class="line"><span class="comment">// set bounds for cspace</span></div>
+</div><!-- fragment --><h3>Instantiating a space information class</h3>
+<p>Creating an actual instance of a space information class (<a class="el" href="classompl_1_1base_1_1SpaceInformation.html" title="The base class for space information. This contains all the information about the space planning is d...">ompl::base::SpaceInformation</a>) is trivial as the constructor requires only a state space to be specified (<a class="el" href="classompl_1_1base_1_1StateSpace.html" title="Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. ">ompl::base::StateSpace</a>). When planning with controls (<a class="el" href="classompl_1_1control_1_1SpaceInformation.html" title="Space information containing necessary information for planning with controls. setup() needs to be ca...">ompl::control::SpaceInformation</a>), this constructor requires a control space (<a class="el" href="classompl_1_1control_1_1ControlSpace.html" title="A control space representing the space of applicable controls. ">ompl::control::ControlSpace</a>) as well. The space information class also needs to be configured before use:</p>
+<ul>
+<li><a class="el" href="classompl_1_1base_1_1StateValidityChecker.html" title="Abstract definition for a class checking the validity of states. The implementation of this class mus...">ompl::base::StateValidityChecker</a> is an abstract class that provides functionality for determining whether a state is valid or not. This class is assumed to be thread safe. The user should provide an implementation of this class and supply it to the space information instance by calling <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a0449ec0893e02aca2bdfc63323b624e5" title="Set the instance of the state validity checker to use. Parallel implementations of planners assume th...">ompl::base::SpaceInformation::setStateValidityChecker()</a>. Alternatively, the user can pass a function of the type <a class="el" href="namespaceompl_1_1base.html#a53fa8a46a28674eaa17899b2026f7b75" title="If no state validity checking class is specified (StateValidityChecker), a boost function can be spec...">ompl::base::StateValidityCheckerFn</a> to <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a0449ec0893e02aca2bdfc63323b624e5" title="Set the instance of the state validity checker to use. Parallel implementations of planners assume th...">ompl::base::SpaceInformation::setStateValidityChecker()</a> instead. By default, all states are considered valid, if this parameter is not set.</li>
+<li>if using <a class="el" href="classompl_1_1base_1_1DiscreteMotionValidator.html" title="A motion validator that only uses the state validity checker. Motions are checked for validity at a s...">ompl::base::DiscreteMotionValidator</a> for validating motions (this is the default), a call needs to be made to <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a2bcd47fd9b7cf54b086d2122646736bf" title="Set the resolution at which state validity needs to be verified in order for a motion between two sta...">ompl::base::SpaceInformation::setStateValidityCheckingResolution()</a> in order to specify the maximum distance between states to be checked for validity along a path segment. This distance is specified as a percentage of a space's maximum extent. If this call is not made, the resolution is assumed to be 1%. This value may be too low, in which case planning will be slower, or it may be too high, in which case it is possible to have collisions in solution plans. <div class="fragment"><div class="line"><span class="comment">// define this class:</span></div>
+<div class="line"><span class="keyword">class </span>myStateValidityCheckerClass : <span class="keyword">public</span> base::StateValidityChecker</div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">     myStateValidityCheckerClass(<span class="keyword">const</span> base::SpaceInformationPtr &amp;si) :</div>
+<div class="line">       base::StateValidityChecker(si)</div>
+<div class="line">        {</div>
+<div class="line">     }</div>
+<div class="line"></div>
+<div class="line">     <span class="keyword">virtual</span> <span class="keywordtype">bool</span> isValid(<span class="keyword">const</span> base::State *state)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">     </span>{</div>
+<div class="line">             <span class="keywordflow">return</span> ...;</div>
+<div class="line">     }</div>
+<div class="line">};</div>
+<div class="line"><span class="comment">// or this function:</span></div>
+<div class="line"><span class="keywordtype">bool</span> myStateValidityCheckerFunction(<span class="keyword">const</span> base::State *state)</div>
+<div class="line">{</div>
+<div class="line">     <span class="keywordflow">return</span> ...;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line">base::SpaceInformationPtr si(space);</div>
+<div class="line"><span class="comment">// either this call:</span></div>
+<div class="line">si-&gt;<a class="code" href="classompl_1_1base_1_1SpaceInformation.html#a0449ec0893e02aca2bdfc63323b624e5">setStateValidityChecker</a>(base::StateValidityCheckerPtr(<span class="keyword">new</span> myStateValidityCheckerClass(si)));</div>
+<div class="line"><span class="comment">// or this call:</span></div>
+<div class="line">si-&gt;<a class="code" href="classompl_1_1base_1_1SpaceInformation.html#a0449ec0893e02aca2bdfc63323b624e5">setStateValidityChecker</a>(boost::bind(&amp;myStateValidityCheckerFunction, _1));</div>
+<div class="line">si-&gt;<a class="code" href="classompl_1_1base_1_1SpaceInformation.html#a2bcd47fd9b7cf54b086d2122646736bf">setStateValidityCheckingResolution</a>(0.03); <span class="comment">// 3%</span></div>
+<div class="line">si-&gt;<a class="code" href="classompl_1_1base_1_1SpaceInformation.html#a6e8c41f946c3c04d126983e145404ad4">setup</a>();</div>
+</div><!-- fragment --> Once the class is instantiated and parameters have been set, the <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a6e8c41f946c3c04d126983e145404ad4" title="Perform additional setup tasks (run once, before use). If state validity checking resolution has not ...">ompl::base::SpaceInformation::setup()</a> function needs to be called and the instance is ready for use.</li>
+</ul>
+<h3>Instantiating a problem definition</h3>
+<ul>
+<li>Instances of <a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">ompl::base::State</a> or <a class="el" href="classompl_1_1base_1_1ScopedState.html" title="Definition of a scoped state. ">ompl::base::ScopedState</a> need to be supplied as starting states for the system (at least one), using <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a3120682d036099f68fd26805fee0736d" title="Add a start state. The state is copied. ">ompl::base::ProblemDefinition::addStartState()</a>.</li>
+<li>An <a class="el" href="classompl_1_1base_1_1Goal.html" title="Abstract definition of goals. ">ompl::base::Goal</a> specification must be set using <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a039bef3abd7e8319e4ea2e4cda752ff6" title="Set the goal. ">ompl::base::ProblemDefinition::setGoal()</a>. For simplicity, specifications of this class are available: <a class="el" href="classompl_1_1base_1_1GoalRegion.html" title="Definition of a goal region. ">ompl::base::GoalRegion</a>, <a class="el" href="classompl_1_1base_1_1GoalSampleableRegion.html" title="Abstract definition of a goal region that can be sampled. ">ompl::base::GoalSampleableRegion</a>, <a class="el" href="classompl_1_1base_1_1GoalState.html" title="Definition of a goal state. ">ompl::base::GoalState</a>, <a class="el" href="classompl_1_1base_1_1GoalStates.html" title="Definition of a set of goal states. ">ompl::base::GoalStates</a>.</li>
+<li>As a simplification, a call can be made to <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html#a9ab5830fd9366be606349ea1885a3695" title="In the simplest case possible, we have a single starting state and a single goal state. ">ompl::base::ProblemDefinition::setStartAndGoalStates()</a>. This will clear previous settings, add one start state and create an <a class="el" href="classompl_1_1base_1_1GoalState.html" title="Definition of a goal state. ">ompl::base::GoalState</a> representation for the goal. <div class="fragment"><div class="line">base::SpaceInformationPtr si(...);</div>
+<div class="line">base::ProblemDefinitionPtr pdef(<span class="keyword">new</span> base::ProblemDefinition(si));</div>
+<div class="line"></div>
+<div class="line">base::ScopedState start;</div>
+<div class="line"><span class="comment">// fill start state</span></div>
+<div class="line"></div>
+<div class="line">base::ScopedState goal;</div>
+<div class="line"><span class="comment">// fill goal state</span></div>
+<div class="line"></div>
+<div class="line">pdef-&gt;setStartAndGoalStates(start, goal);</div>
+</div><!-- fragment --> An important part of setting the problem definition is filling the content of start states (and goal states, if using a goal representation that requires states). Please see <a href="workingWithStates.html#stateOps">Operating with states</a>.</li>
+</ul>
+<h3>Instantiating a planner</h3>
+<p>In order to use a motion planner (ompl::geometric::XXX, from <b>ompl/geometric/planners</b> or ompl::control::XXX, from <b>ompl/control/planners</b>), an instance of <a class="el" href="classompl_1_1base_1_1SpaceInformation.html" title="The base class for space information. This contains all the information about the space planning is d...">ompl::base::SpaceInformation</a> (<a class="el" href="classompl_1_1control_1_1SpaceInformation.html" title="Space information containing necessary information for planning with controls. setup() needs to be ca...">ompl::control::SpaceInformation</a>, respectively) must be available. This instance is supplied to the planner's constructor. After creation, a call to the planner's <a class="el" href="classompl_1_1base_1_1Planner.html#ab7e49fc3b3b7011d46d647d8f1603bd5" title="Perform extra configuration steps, if needed. This call will also issue a call to ompl::base::SpaceIn...">ompl::base::Planner::setup()</a> method must be made and the planner instance is ready for use. The problem to be solved is set with <a class="el" href="classompl_1_1base_1_1Planner.html#add968ea14f1aa3d3bffc110da3e1d031" title="Set the problem definition for the planner. The problem needs to be set before calling solve()...">ompl::base::Planner::setProblemDefinition()</a>. The <a class="el" href="classompl_1_1base_1_1Planner.html#aea8c56d18a0326b10fd111872ebd674a" title="Function that can solve the motion planning problem. This function can be called multiple times on th...">ompl::base::Planner::solve()</a> method can be called repeatedly with different allowed time durations until a solution is found. The planning process continues with the available data structures when sequential calls to <a class="el" href="classompl_1_1base_1_1Planner.html#aea8c56d18a0326b10fd111872ebd674a" title="Function that can solve the motion planning problem. This function can be called multiple times on th...">ompl::base::Planner::solve()</a> are made. A call to <a class="el" href="classompl_1_1base_1_1Planner.html#a7929c12020a42b679601d22fb204919a" title="Clear all internal datastructures. Planner settings are not affected. Subsequent calls to solve() wil...">ompl::base::Planner::clear()</a> will restore a planner to its state before any calls to the <a class="el" href="classompl_1_1base_1_1Planner.html#aea8c56d18a0326b10fd111872ebd674a" title="Function that can solve the motion planning problem. This function can be called multiple times on th...">ompl::base::Planner::solve()</a> method were made.</p>
+<div class="fragment"><div class="line"><span class="keyword">using namespace </span>ompl;</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">base::SpaceInformationPtr</a> si(...);</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1ProblemDefinition.html">base::ProblemDefinition</a>   pdef(si);</div>
+<div class="line"><span class="comment">// set start states &amp; goal region for the problem definition</span></div>
+<div class="line"></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1PlannerPtr.html">base::PlannerPtr</a> planner(<span class="keyword">new</span> <a class="code" href="classompl_1_1geometric_1_1SBL.html">geometric::SBL</a>(si));</div>
+<div class="line">planner-&gt;setProblemDefinition(pdef);</div>
+<div class="line">planner-&gt;solve(1.0);</div>
+<div class="line"><span class="keywordflow">if</span> (pdef-&gt;getGoal()-&gt;getSolutionPath())</div>
+<div class="line">{</div>
+<div class="line">   <span class="comment">// do something with the solution</span></div>
+<div class="line">}</div>
+<div class="line">planner-&gt;clear();</div>
+</div><!-- fragment --><h3>Using SimpleSetup</h3>
+<p>The instantiation of all the above classes is facilitated by the <a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html" title="Create the set of classes typically needed to solve a geometric problem. ">ompl::geometric::SimpleSetup</a> class (<a class="el" href="classompl_1_1control_1_1SimpleSetup.html" title="Create the set of classes typically needed to solve a control problem. ">ompl::control::SimpleSetup</a>, respectively). Please see the documentation of these classes for more information. Making use of their functionality is recommended, if appropriate. </p>
+</div></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

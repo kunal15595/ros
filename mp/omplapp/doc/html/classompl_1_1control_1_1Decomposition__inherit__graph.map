@@ -1,0 +1,6 @@
+<map id="ompl::control::Decomposition" name="ompl::control::Decomposition">
+<area shape="rect" id="node2" href="$classompl_1_1control_1_1GridDecomposition.html" title="A GridDecomposition is a Decomposition implemented using a grid. " alt="" coords="245,106,461,133"/>
+<area shape="rect" id="node6" href="$classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region&#45;to&#45;proposition assignment ope..." alt="" coords="263,158,443,199"/>
+<area shape="rect" id="node8" href="$classompl_1_1control_1_1TriangularDecomposition.html" title="A TriangularDecomposition is a triangulation that ignores obstacles. " alt="" coords="272,223,435,264"/>
+<area shape="rect" id="node7" href="$classompl_1_1control_1_1PropositionalTriangularDecomposition.html" title="A PropositionalTriangularDecomposition is a triangulation that ignores obstacles and respects proposi..." alt="" coords="511,164,691,206"/>
+</map>

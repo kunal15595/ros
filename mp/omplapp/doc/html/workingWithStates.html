@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Working with States and State Spaces</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Working with States and State Spaces </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="stateAlloc"></a>
+Allocating memory for states</h1>
+<h4>The simple version:</h4>
+<div class="fragment"><div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> space(<span class="keyword">new</span> T());</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;&gt;</a> state(space);</div>
+</div><!-- fragment --><p>or</p>
+<div class="fragment"><div class="line"><a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">ompl::base::SpaceInformationPtr</a> si(space);</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;T&gt;</a> state(si);</div>
+</div><!-- fragment --><p>The <a class="el" href="classompl_1_1base_1_1ScopedState.html" title="Definition of a scoped state. ">ompl::base::ScopedState</a> class will do the necessary memory operations to allocate a state from the correct state space. This is the recommended way of allocating states for code other than ompl internals. Convenience operators such as = and == are provided. If a type T is provided, where T is a state space type, the maintained state is cast as T::StateType. operator= will use <a class="el" href="classompl_1_1base_1_1StateSpace.html#abff3478c3fc4da03c94d6f929f6ca7f9" title="Copy a state to another. The memory of source and destination should NOT overlap. ...">ompl::base::StateSpace::copyState()</a> and operator== will use <a class="el" href="classompl_1_1base_1_1StateSpace.html#a6babf3addb5ed9608800b7460a20da39" title="Checks whether two states are equal. ">ompl::base::StateSpace::equalStates()</a>.</p>
+<h4>The expert version:</h4>
+<div class="fragment"><div class="line"><a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">ompl::base::SpaceInformationPtr</a> si(space);</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1State.html">ompl::base::State</a>* state = si-&gt;<a class="code" href="classompl_1_1base_1_1SpaceInformation.html#a4f60741f726ebf33cdc512b622f60472">allocState</a>();</div>
+<div class="line">...</div>
+<div class="line">si-&gt;freeState(state);</div>
+</div><!-- fragment --><p>The structure of a state depends on the state space specification. The <a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">ompl::base::State</a> type is just an abstract base for the states of other state spaces. For this reason, states cannot be allocated directly, but through the allocation mechanism of the state space: <a class="el" href="classompl_1_1base_1_1StateSpace.html#ae86d2a2401044774fa4de3345a29d408" title="Allocate a state that can store a point in the described space. ">ompl::base::StateSpace::allocState()</a>. States are to be freed using <a class="el" href="classompl_1_1base_1_1StateSpace.html#aeb75db7a7ef3d05f13632b7ccc67e6b9" title="Free the memory of the allocated state. ">ompl::base::StateSpace::freeState()</a>. For convenience, <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a4f60741f726ebf33cdc512b622f60472" title="Allocate memory for a state. ">ompl::base::SpaceInformation::allocState()</a> and <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a78dff42e6a76b87a9a4d19680fb82e31" title="Free the memory of a state. ">ompl::base::SpaceInformation::freeState()</a> are defined as well. Using the calls from the <a class="el" href="classompl_1_1base_1_1SpaceInformation.html" title="The base class for space information. This contains all the information about the space planning is d...">ompl::base::SpaceInformation</a> class is better since they certainly use the same state space as the one used for planning. This is the lowest level of operating on states and only recommended for expert users.</p>
+<p>See <a href="#stateOps">Working with states</a> for how to fill the contents of the allocated states.</p>
+<h1><a class="anchor" id="stateOps"></a>
+Working with states</h1>
+<p>In order for states to be useful in setting start (or goal) positions, accessing their content is needed. It is assumed the reader is familiar with <a href="#stateAlloc">Allocating memory for states</a>. Furthermore, <a href="#stateAndSpaceOperatorsCopy">operators on states and state spaces</a> are also used.</p>
+<h4>Simple version:</h4>
+<p>The recommended use of states is with <a class="el" href="classompl_1_1base_1_1ScopedState.html" title="Definition of a scoped state. ">ompl::base::ScopedState</a>. Given the instance of a state space, this class will allocate a state from that space. The internally maintained state is freed when the instance of <a class="el" href="classompl_1_1base_1_1ScopedState.html" title="Definition of a scoped state. ">ompl::base::ScopedState</a> goes out of scope. <a class="el" href="classompl_1_1base_1_1ScopedState.html" title="Definition of a scoped state. ">ompl::base::ScopedState</a> is a templated class and it inherits from T::StateType, where T is a state space type. This allows it to cast the state it maintains to the desired type and thus exhibit the functionality (the same members) as T::StateType. If no template argument is specified, the internal state is kept as <a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">ompl::base::State</a>*.</p>
+<div class="fragment"><div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> space(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1SE2StateSpace.html">ompl::base::SE2StateSpace</a>());</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;ompl::base::SE2StateSpace&gt;</a> state(space);</div>
+<div class="line">state-&gt;setX(0.1);</div>
+<div class="line">state-&gt;setY(0.2);</div>
+<div class="line">state-&gt;setYaw(0.0);</div>
+<div class="line"></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;&gt;</a> backup = state;</div>
+<div class="line"><span class="comment">// backup maintains its internal state as State*, so setX() is not available.</span></div>
+<div class="line"><span class="comment">// the content of backup is copied from state</span></div>
+<div class="line"></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1State.html">ompl::base::State</a> *abstractState = space-&gt;allocState();</div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line"><span class="comment">// this will copy the content of abstractState to state and</span></div>
+<div class="line"><span class="comment">// cast it internally as ompl::base::SE2StateSpace::StateType</span></div>
+<div class="line">state = abstractState;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// restore state to it&#39;s original value</span></div>
+<div class="line">state = backup;</div>
+<div class="line"></div>
+<div class="line"><span class="keywordflow">if</span> (state != backup)</div>
+<div class="line">   <span class="keywordflow">throw</span> <a class="code" href="classompl_1_1Exception.html">ompl::Exception</a>(<span class="stringliteral">&quot;This should never happen&quot;</span>);</div>
+</div><!-- fragment --><p>Combining <a class="el" href="classompl_1_1base_1_1ScopedState.html" title="Definition of a scoped state. ">ompl::base::ScopedState</a> with <a class="el" href="classompl_1_1base_1_1CompoundStateSpace.html" title="A space to allow the composition of state spaces. ">ompl::base::CompoundStateSpace</a>:</p>
+<div class="fragment"><div class="line"><a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html">ompl::base::CompoundStateSpace</a> *cs = <span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html">ompl::base::CompoundStateSpace</a>();</div>
+<div class="line">cs-&gt;<a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#a9c772d5b74271f79d95531d00ed36bf7">addSubspace</a>(<a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a>(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html">ompl::base::SO2StateSpace</a>()), 1.0);</div>
+<div class="line">cs-&gt;<a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#a9c772d5b74271f79d95531d00ed36bf7">addSubspace</a>(<a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a>(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1SO3StateSpace.html">ompl::base::SO3StateSpace</a>()), 1.0);</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// put the pointer to the state space in a shared pointer</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> space(cs);</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the ompl::base::ScopedState helps only with one cast here, since we still need to</span></div>
+<div class="line"><span class="comment">// manually cast the components of the state to what we want them to be.</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;ompl::base::CompoundStateSpace&gt;</a> state(space);</div>
+<div class="line">state-&gt;<a class="code" href="classompl_1_1base_1_1State.html#a04177157c4ea22d1bb2d7f344162bf31">as</a>&lt;<a class="code" href="classompl_1_1base_1_1SO2StateSpace_1_1StateType.html">ompl::base::SO2StateSpace::StateType</a>&gt;(0)-&gt;setIdentity();</div>
+</div><!-- fragment --><p>The code above can be equivalently written as:</p>
+<div class="fragment"><div class="line"><span class="comment">// define the individual state spaces</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> so2(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html">ompl::base::SO2StateSpace</a>());</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> so3(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1SO3StateSpace.html">ompl::base::SO3StateSpace</a>());</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// construct a compound state space using the overloaded operator+</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> space = so2 + so3;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the ompl::base::ScopedState helps only with one cast here, since we still need to</span></div>
+<div class="line"><span class="comment">// manually cast the components of the state to what we want them to be.</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;ompl::base::CompoundStateSpace&gt;</a> state(space);</div>
+<div class="line">state-&gt;<a class="code" href="classompl_1_1base_1_1State.html#a04177157c4ea22d1bb2d7f344162bf31">as</a>&lt;<a class="code" href="classompl_1_1base_1_1SO2StateSpace_1_1StateType.html">ompl::base::SO2StateSpace::StateType</a>&gt;(0)-&gt;setIdentity();</div>
+</div><!-- fragment --><p>States can also be printed to streams:</p>
+<div class="fragment"><div class="line"><a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;&gt;</a> state(space);</div>
+<div class="line">std::cout &lt;&lt; state;</div>
+</div><!-- fragment --><p>Sometimes it may be useful to extract parts of a state, or assign only to some parts of a state, especially when using compound state spaces:</p>
+<div class="fragment"><div class="line"><span class="comment">// an SE2 state space is in fact a compound state space consisting of R^2 and SO2</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> space(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1SE2StateSpace.html">ompl::base::SE2StateSpace</a>());</div>
+<div class="line"><span class="comment">// define a full state for this state space</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;ompl::base::SE2StateSpace&gt;</a> fullState(space);</div>
+<div class="line"><span class="comment">// set the state to a random value</span></div>
+<div class="line">fullState.random();</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// construct a state that corresponds to the position component of SE2</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;&gt;</a> pos(space-&gt;as&lt;<a class="code" href="classompl_1_1base_1_1SE2StateSpace.html">ompl::base::SE2StateSpace</a>&gt;()-&gt;<a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#a1fb90480c2747977ebf6d2972aaa851a">getSubspace</a>(0));</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// copy the position</span></div>
+<div class="line">pos &lt;&lt; fullState;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// equivalently, this can be done too:</span></div>
+<div class="line">fullState &gt;&gt; pos;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// if we now modify pos somehow, we can set it back in the full state:</span></div>
+<div class="line">pos &gt;&gt; fullState;</div>
+</div><!-- fragment --><h4>Expert version:</h4>
+<p>For a state space type of type T, the result of <a class="el" href="classompl_1_1base_1_1StateSpace.html#ae86d2a2401044774fa4de3345a29d408" title="Allocate a state that can store a point in the described space. ">ompl::base::StateSpace::allocState()</a> can be casted to T::StateType* to gain access to the state's members. To ease this functionality, the <a class="el" href="classompl_1_1base_1_1State.html#ace9774faf8793299dc105292f8557987" title="Cast this instance to a desired type. ">ompl::base::State::as()</a> functions have been defined.</p>
+<div class="fragment"><div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> space(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html">ompl::base::RealVectorStateSpace</a>(1));</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1State.html">ompl::base::State</a> *state = space-&gt;allocState();</div>
+<div class="line">state-&gt;<a class="code" href="classompl_1_1base_1_1State.html#a04177157c4ea22d1bb2d7f344162bf31">as</a>&lt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">ompl::base::RealVectorStateSpace::StateType</a>&gt;()-&gt;values[0] = 0.1;</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1State.html">ompl::base::State</a> *copy = space-&gt;allocState();</div>
+<div class="line">space-&gt;copyState(copy, state);</div>
+<div class="line"><span class="keywordflow">if</span> (!space-&gt;equalStates(copy, state))</div>
+<div class="line">   <span class="keywordflow">throw</span> <a class="code" href="classompl_1_1Exception.html">ompl::Exception</a>(<span class="stringliteral">&quot;This should not happen&quot;</span>);</div>
+<div class="line">space-&gt;freeState(state);</div>
+<div class="line">space-&gt;freeState(copy);</div>
+</div><!-- fragment --><p>See <a href="group__advancedStateCopy.html">Advanced methods for copying states</a> for more information on copying states.</p>
+<h1><a class="anchor" id="stateAndSpaceOperatorsCopy"></a>
+Operators for States and State Spaces</h1>
+<p>These operators are intended to simplify code that manipulates states and state spaces. They rely on the fact that state spaces have unique names. Here are some examples for using these operators: </p>
+<div class="fragment"><div class="line"><span class="comment">// Assume X, Y, Z, W are state space instances, none of</span></div>
+<div class="line"><span class="comment">// which inherits from ompl::base::CompoundStateSpace.</span></div>
+<div class="line"><span class="comment">// Denote a compound state space as C[...], where &quot;...&quot; is the</span></div>
+<div class="line"><span class="comment">// list of subspaces.</span></div>
+<div class="line"></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> X;</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> Y;</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> Z;</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> W;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the following line will construct a state space C1 = C[X, Y]</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> C1 = X + Y;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the following line will construct a state space C2 = C[X, Y, Z]</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> C2 = C1 + Z;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the following line will leave C2 as C[X, Y, Z]</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> C2 = C1 + C2;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the following line will construct a state space C2 = C[X, Y, Z, W]</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> C2 = C2 + W;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the following line will construct a state space C3 = C[X, Z, Y]</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> C3 = X + Z + Y;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the following line will construct a state space C4 = C[Z, W]</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> C4 = C2 - C1;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the following line will construct a state space C5 = W</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> C5 = C2 - C3;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the following line will construct an empty state space C6 = C[]</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> C6 = X - X;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the following line will construct a state space C7 = Y</span></div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> C7 = Y + C6;</div>
+</div><!-- fragment --><p> These state spaces can be used when operating with states: </p>
+<div class="fragment"><div class="line"><a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;&gt;</a> sX(X);</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;&gt;</a> sXY(X + Y);</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;&gt;</a> sY(Y);</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;&gt;</a> sZX(Z + X);</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;&gt;</a> sXZW(X + Z + W);</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the following line will copy the content of the state sX to</span></div>
+<div class="line"><span class="comment">// the corresponding locations in sXZW. The components of the state</span></div>
+<div class="line"><span class="comment">// corresponding to the Z and W state spaces are not touched</span></div>
+<div class="line">sX &gt;&gt; sXZW;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the following line will initialize the X component of sXY with</span></div>
+<div class="line"><span class="comment">// the X component of sXZW;</span></div>
+<div class="line">sXY &lt;&lt; sXZW;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the following line will initialize both components of sZX, using</span></div>
+<div class="line"><span class="comment">// the X and Z components of sXZW;</span></div>
+<div class="line">sZX &lt;&lt; sXZW;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// the following line compares the concatenation of states sX and sY with sXY</span></div>
+<div class="line"><span class="comment">// the concatenation will automatically construct the state space X + Y and a state</span></div>
+<div class="line"><span class="comment">// from that state space containing the information from sX and sY. Since sXY is</span></div>
+<div class="line"><span class="comment">// constructed from the state space X + Y, the two are comparable.</span></div>
+<div class="line"><span class="keywordtype">bool</span> eq = (sX ^ sY) == sXY;</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:27 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

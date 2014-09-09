@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/geometric/planners/rrt/src/RRTConnect.cpp Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_1f57d97647ebda1e28cc730ac7313960.html">geometric</a></li><li class="navelem"><a class="el" href="dir_955a6a93aceef09599971796437d173a.html">planners</a></li><li class="navelem"><a class="el" href="dir_736ec1218ec11c17ebed8baec76dcd23.html">rrt</a></li><li class="navelem"><a class="el" href="dir_d338dba13966c9829e7850dc0578c858.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">RRTConnect.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2008, Willow Garage, Inc.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Willow Garage nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Ioan Sucan */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;ompl/geometric/planners/rrt/RRTConnect.h&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;ompl/base/goals/GoalSampleableRegion.h&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;ompl/tools/config/SelfConfig.h&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1RRTConnect.html#a918795ad317b8cee40184c3e289f8d51">   41</a></span>&#160;<a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a918795ad317b8cee40184c3e289f8d51">ompl::geometric::RRTConnect::RRTConnect</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">base::SpaceInformationPtr</a> &amp;si) : base::Planner(si, <span class="stringliteral">&quot;RRTConnect&quot;</span>)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">specs_</a>.<a class="code" href="structompl_1_1base_1_1PlannerSpecs.html#ac8a946673fef335d7a802d9ee8436804">recognizedGoal</a> = <a class="code" href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55a6fb685fa51055688c4e130094225b7f9">base::GOAL_SAMPLEABLE_REGION</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">specs_</a>.<a class="code" href="structompl_1_1base_1_1PlannerSpecs.html#abe3ce1c340ba64c14644b0cace72907d">directed</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a299caf818f757d96793d1bc092a665b3">maxDistance_</a> = 0.0;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    Planner::declareParam&lt;double&gt;(<span class="stringliteral">&quot;range&quot;</span>, <span class="keyword">this</span>, &amp;<a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a6d672e3b8c4e5f09719a5db74c75ca41">RRTConnect::setRange</a>, &amp;<a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#ae3bed4090501ec5a3698d8108cb94df2">RRTConnect::getRange</a>, <span class="stringliteral">&quot;0.:1.:10000.&quot;</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a4d0a02d3328dc40ae4cd32719e10f25c">connectionPoint_</a> = std::make_pair&lt;base::State*, base::State*&gt;(NULL, NULL);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;ompl::geometric::RRTConnect::~RRTConnect()</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    freeMemory();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1RRTConnect.html#afc3cc95aae55d09631c80dad116107cc">   57</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#afc3cc95aae55d09631c80dad116107cc">ompl::geometric::RRTConnect::setup</a>()</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    Planner::setup();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classompl_1_1tools_1_1SelfConfig.html">tools::SelfConfig</a> sc(si_, getName());</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    sc.<a class="code" href="classompl_1_1tools_1_1SelfConfig.html#a65bff53ea4bc6f158342a856175ab9a6">configurePlannerRange</a>(maxDistance_);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span> (!tStart_)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        tStart_.reset(tools::SelfConfig::getDefaultNearestNeighbors&lt;Motion*&gt;(si_-&gt;getStateSpace()));</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span> (!tGoal_)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        tGoal_.reset(tools::SelfConfig::getDefaultNearestNeighbors&lt;Motion*&gt;(si_-&gt;getStateSpace()));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    tStart_-&gt;setDistanceFunction(boost::bind(&amp;<a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a96e7a7a8ed32a88c490204fcb8847fb5">RRTConnect::distanceFunction</a>, <span class="keyword">this</span>, _1, _2));</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    tGoal_-&gt;setDistanceFunction(boost::bind(&amp;<a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a96e7a7a8ed32a88c490204fcb8847fb5">RRTConnect::distanceFunction</a>, <span class="keyword">this</span>, _1, _2));</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1RRTConnect.html#a74eab29b7c7ac5e75d88134067121e45">   71</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a74eab29b7c7ac5e75d88134067121e45">ompl::geometric::RRTConnect::freeMemory</a>()</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::vector&lt;Motion*&gt; motions;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span> (tStart_)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        tStart_-&gt;list(motions);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; motions.size() ; ++i)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">if</span> (motions[i]-&gt;state)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                si_-&gt;freeState(motions[i]-&gt;state);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keyword">delete</span> motions[i];</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">if</span> (tGoal_)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        tGoal_-&gt;list(motions);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; motions.size() ; ++i)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">if</span> (motions[i]-&gt;state)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                si_-&gt;freeState(motions[i]-&gt;state);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keyword">delete</span> motions[i];</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1RRTConnect.html#a0ce571b0313938bb1ca026fce1dbcbaf">   98</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a0ce571b0313938bb1ca026fce1dbcbaf">ompl::geometric::RRTConnect::clear</a>()</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;{</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    Planner::clear();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    sampler_.reset();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    freeMemory();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">if</span> (tStart_)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        tStart_-&gt;clear();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">if</span> (tGoal_)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        tGoal_-&gt;clear();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    connectionPoint_ = std::make_pair&lt;base::State*, base::State*&gt;(NULL, NULL);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1RRTConnect.html#a140a2bf524fe7c39dfbe1e8d5f55fe80">  110</a></span>&#160;<a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a6df5b0ed7234e4a70f82fd84f3e83c4b">ompl::geometric::RRTConnect::GrowState</a> <a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a140a2bf524fe7c39dfbe1e8d5f55fe80">ompl::geometric::RRTConnect::growTree</a>(<a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a605e6a7c713167b8655d06a8a30b91ef">TreeData</a> &amp;tree, <a class="code" href="structompl_1_1geometric_1_1RRTConnect_1_1TreeGrowingInfo.html">TreeGrowingInfo</a> &amp;tgi, <a class="code" href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">Motion</a> *rmotion)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;{</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">/* find closest state in the tree */</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">Motion</a> *nmotion = tree-&gt;nearest(rmotion);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="comment">/* assume we can reach the state we go towards */</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">bool</span> reach = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="comment">/* find state to add */</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *dstate = rmotion-&gt;state;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">double</span> d = si_-&gt;distance(nmotion-&gt;state, rmotion-&gt;state);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (d &gt; maxDistance_)</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        si_-&gt;getStateSpace()-&gt;interpolate(nmotion-&gt;state, rmotion-&gt;state, maxDistance_ / d, tgi.xstate);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        dstate = tgi.xstate;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        reach = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="comment">// if we are in the start tree, we just check the motion like we normally do;</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="comment">// if we are in the goal tree, we need to check the motion in reverse, but checkMotion() assumes the first state it receives as argument is valid,</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="comment">// so we check that one first</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordtype">bool</span> validMotion = tgi.start ? si_-&gt;checkMotion(nmotion-&gt;state, dstate) : si_-&gt;getStateValidityChecker()-&gt;isValid(dstate) &amp;&amp; si_-&gt;checkMotion(dstate, nmotion-&gt;state);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">if</span> (validMotion)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="comment">/* create a motion */</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="code" href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">Motion</a> *motion = <span class="keyword">new</span> <a class="code" href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">Motion</a>(si_);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        si_-&gt;copyState(motion-&gt;state, dstate);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        motion-&gt;parent = nmotion;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        motion-&gt;root = nmotion-&gt;root;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        tgi.xmotion = motion;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        tree-&gt;add(motion);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keywordflow">if</span> (reach)</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="keywordflow">return</span> REACHED;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">return</span> ADVANCED;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">return</span> TRAPPED;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1RRTConnect.html#a73d2a382a52f75eaf8ee35ae36656aca">  151</a></span>&#160;<a class="code" href="structompl_1_1base_1_1PlannerStatus.html">ompl::base::PlannerStatus</a> <a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a73d2a382a52f75eaf8ee35ae36656aca">ompl::geometric::RRTConnect::solve</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;ptc)</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;{</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    checkValidity();</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html">base::GoalSampleableRegion</a> *goal = <span class="keyword">dynamic_cast&lt;</span><a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html">base::GoalSampleableRegion</a>*<span class="keyword">&gt;</span>(pdef_-&gt;getGoal().get());</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">if</span> (!goal)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;%s: Unknown type of goal&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a47d769205044efa345184a640bd863ff">base::PlannerStatus::UNRECOGNIZED_GOAL_TYPE</a>;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *st = pis_.nextStart())</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <a class="code" href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">Motion</a> *motion = <span class="keyword">new</span> <a class="code" href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">Motion</a>(si_);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        si_-&gt;copyState(motion-&gt;state, st);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        motion-&gt;root = motion-&gt;state;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        tStart_-&gt;add(motion);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">if</span> (tStart_-&gt;size() == 0)</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;%s: Motion planning start tree could not be initialized!&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547">base::PlannerStatus::INVALID_START</a>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">if</span> (!goal-&gt;<a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html#adbfa83eb76309039b839e3fb87c88203">couldSample</a>())</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;%s: Insufficient states in sampleable goal region&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a2e2b2b7e02900c4417af0ecea272c637">base::PlannerStatus::INVALID_GOAL</a>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordflow">if</span> (!sampler_)</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        sampler_ = si_-&gt;allocStateSampler();</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;%s: Starting planning with %d states already in datastructure&quot;</span>, getName().c_str(), (<span class="keywordtype">int</span>)(tStart_-&gt;size() + tGoal_-&gt;size()));</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <a class="code" href="structompl_1_1geometric_1_1RRTConnect_1_1TreeGrowingInfo.html">TreeGrowingInfo</a> tgi;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    tgi.xstate = si_-&gt;allocState();</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">Motion</a>   *rmotion   = <span class="keyword">new</span> <a class="code" href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">Motion</a>(si_);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *rstate = rmotion-&gt;state;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordtype">bool</span> startTree      = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordtype">bool</span> solved         = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">while</span> (ptc == <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a605e6a7c713167b8655d06a8a30b91ef">TreeData</a> &amp;tree      = startTree ? tStart_ : tGoal_;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        tgi.start = startTree;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        startTree = !startTree;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a605e6a7c713167b8655d06a8a30b91ef">TreeData</a> &amp;otherTree = startTree ? tStart_ : tGoal_;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">if</span> (tGoal_-&gt;size() == 0 || pis_.getSampledGoalsCount() &lt; tGoal_-&gt;size() / 2)</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *st = tGoal_-&gt;size() == 0 ? pis_.nextGoal(ptc) : pis_.nextGoal();</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">if</span> (st)</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">Motion</a> *motion = <span class="keyword">new</span> <a class="code" href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">Motion</a>(si_);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                si_-&gt;copyState(motion-&gt;state, st);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                motion-&gt;root = motion-&gt;state;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                tGoal_-&gt;add(motion);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keywordflow">if</span> (tGoal_-&gt;size() == 0)</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;%s: Unable to sample any valid states for goal tree&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="comment">/* sample random state */</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        sampler_-&gt;sampleUniform(rstate);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a6df5b0ed7234e4a70f82fd84f3e83c4b">GrowState</a> gs = growTree(tree, tgi, rmotion);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keywordflow">if</span> (gs != TRAPPED)</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="comment">/* remember which motion was just added */</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <a class="code" href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">Motion</a> *addedMotion = tgi.xmotion;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <span class="comment">/* attempt to connect trees */</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="comment">/* if reached, it means we used rstate directly, no need top copy again */</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordflow">if</span> (gs != REACHED)</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                si_-&gt;copyState(rstate, tgi.xstate);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a6df5b0ed7234e4a70f82fd84f3e83c4b">GrowState</a> gsc = ADVANCED;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            tgi.start = startTree;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <span class="keywordflow">while</span> (gsc == ADVANCED)</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                gsc = growTree(otherTree, tgi, rmotion);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <a class="code" href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">Motion</a> *startMotion = startTree ? tgi.xmotion : addedMotion;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <a class="code" href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">Motion</a> *goalMotion  = startTree ? addedMotion : tgi.xmotion;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <span class="comment">/* if we connected the trees in a valid way (start and goal pair is valid)*/</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordflow">if</span> (gsc == REACHED &amp;&amp; goal-&gt;<a class="code" href="classompl_1_1base_1_1Goal.html#a5d5285908b7e09d61577279f35e47175">isStartGoalPairValid</a>(startMotion-&gt;root, goalMotion-&gt;root))</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                <span class="comment">// it must be the case that either the start tree or the goal tree has made some progress</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                <span class="comment">// so one of the parents is not NULL. We go one step &#39;back&#39; to avoid having a duplicate state</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                <span class="comment">// on the solution path</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keywordflow">if</span> (startMotion-&gt;parent)</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                    startMotion = startMotion-&gt;parent;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                    goalMotion = goalMotion-&gt;parent;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                connectionPoint_ = std::make_pair(startMotion-&gt;state, goalMotion-&gt;state);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                <span class="comment">/* construct the solution path */</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">Motion</a> *solution = startMotion;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                std::vector&lt;Motion*&gt; mpath1;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                <span class="keywordflow">while</span> (solution != NULL)</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    mpath1.push_back(solution);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                    solution = solution-&gt;parent;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                }</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                solution = goalMotion;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                std::vector&lt;Motion*&gt; mpath2;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                <span class="keywordflow">while</span> (solution != NULL)</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                {</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                    mpath2.push_back(solution);</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                    solution = solution-&gt;parent;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1PathGeometric.html">PathGeometric</a> *path = <span class="keyword">new</span> <a class="code" href="classompl_1_1geometric_1_1PathGeometric.html">PathGeometric</a>(si_);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                path-&gt;<a class="code" href="classompl_1_1geometric_1_1PathGeometric.html#aa1f2bd46e6cab28a74819a47e3ff04c8">getStates</a>().reserve(mpath1.size() + mpath2.size());</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = mpath1.size() - 1 ; i &gt;= 0 ; --i)</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                    path-&gt;<a class="code" href="classompl_1_1geometric_1_1PathGeometric.html#aa9eb3ea81cc3ab442aae67d311bc4156">append</a>(mpath1[i]-&gt;state);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; mpath2.size() ; ++i)</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                    path-&gt;<a class="code" href="classompl_1_1geometric_1_1PathGeometric.html#aa9eb3ea81cc3ab442aae67d311bc4156">append</a>(mpath2[i]-&gt;state);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                pdef_-&gt;addSolutionPath(<a class="code" href="classompl_1_1base_1_1PathPtr.html">base::PathPtr</a>(path), <span class="keyword">false</span>, 0.0, getName());</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                solved = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    }</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    si_-&gt;freeState(tgi.xstate);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    si_-&gt;freeState(rstate);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keyword">delete</span> rmotion;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;%s: Created %u states (%u start + %u goal)&quot;</span>, getName().c_str(), tStart_-&gt;size() + tGoal_-&gt;size(), tStart_-&gt;size(), tGoal_-&gt;size());</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordflow">return</span> solved ? <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a20f8c901516c72e258d43d7156fe8e28">base::PlannerStatus::EXACT_SOLUTION</a> : <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a620a03eebe49aa307140d6a4763278fd">base::PlannerStatus::TIMEOUT</a>;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;}</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
+<div class="line"><a name="l00297"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1RRTConnect.html#a32e3f019f790cb85b1f97a6cacb02e02">  297</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1RRTConnect.html#a32e3f019f790cb85b1f97a6cacb02e02">ompl::geometric::RRTConnect::getPlannerData</a>(<a class="code" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a> &amp;data)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    Planner::getPlannerData(data);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    std::vector&lt;Motion*&gt; motions;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordflow">if</span> (tStart_)</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        tStart_-&gt;list(motions);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; motions.size() ; ++i)</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keywordflow">if</span> (motions[i]-&gt;parent == NULL)</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">addStartVertex</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i]-&gt;state, 1));</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        {</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i]-&gt;parent-&gt;state, 1),</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                         <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i]-&gt;state, 1));</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        }</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    motions.clear();</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordflow">if</span> (tGoal_)</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        tGoal_-&gt;list(motions);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; motions.size() ; ++i)</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    {</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        <span class="keywordflow">if</span> (motions[i]-&gt;parent == NULL)</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">addGoalVertex</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i]-&gt;state, 2));</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <span class="comment">// The edges in the goal tree are reversed to be consistent with start tree</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i]-&gt;state, 2),</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                         <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i]-&gt;parent-&gt;state, 2));</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        }</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="comment">// Add the edge connecting the two trees</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a8fd081adb8e8a728eab89d57514724f0">vertexIndex</a>(connectionPoint_.first), data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a8fd081adb8e8a728eab89d57514724f0">vertexIndex</a>(connectionPoint_.second));</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;}</div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_html_a918795ad317b8cee40184c3e289f8d51"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect.html#a918795ad317b8cee40184c3e289f8d51">ompl::geometric::RRTConnect::RRTConnect</a></div><div class="ttdeci">RRTConnect(const base::SpaceInformationPtr &amp;si)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8cpp_source.html#l00041">RRTConnect.cpp:41</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html">ompl::base::PlannerData</a></div><div class="ttdoc">Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00164">PlannerData.h:164</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a620a03eebe49aa307140d6a4763278fd"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a620a03eebe49aa307140d6a4763278fd">ompl::base::PlannerStatus::TIMEOUT</a></div><div class="ttdoc">The planner failed to find a solution. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00062">PlannerStatus.h:62</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_html_a6d672e3b8c4e5f09719a5db74c75ca41"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect.html#a6d672e3b8c4e5f09719a5db74c75ca41">ompl::geometric::RRTConnect::setRange</a></div><div class="ttdeci">void setRange(double distance)</div><div class="ttdoc">Set the range the planner is supposed to use. </div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8h_source.html#l00081">RRTConnect.h:81</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSpecs_html_ac8a946673fef335d7a802d9ee8436804"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSpecs.html#ac8a946673fef335d7a802d9ee8436804">ompl::base::PlannerSpecs::recognizedGoal</a></div><div class="ttdeci">GoalType recognizedGoal</div><div class="ttdoc">The type of goal specification the planner can use. </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00206">Planner.h:206</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_html_afc3cc95aae55d09631c80dad116107cc"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect.html#afc3cc95aae55d09631c80dad116107cc">ompl::geometric::RRTConnect::setup</a></div><div class="ttdeci">virtual void setup()</div><div class="ttdoc">Perform extra configuration steps, if needed. This call will also issue a call to ompl::base::SpaceIn...</div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8cpp_source.html#l00057">RRTConnect.cpp:57</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a3604cb85b0402b09b319c5f1df02b12e"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">ompl::base::PlannerData::addGoalVertex</a></div><div class="ttdeci">unsigned int addGoalVertex(const PlannerDataVertex &amp;v)</div><div class="ttdoc">Adds the given vertex to the graph data, and marks it as a start vertex. The vertex index is returned...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00434">PlannerData.cpp:434</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerTerminationCondition_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerTerminationCondition.html">ompl::base::PlannerTerminationCondition</a></div><div class="ttdoc">Encapsulate a termination condition for a motion planner. Planners will call operator() to decide whe...</div><div class="ttdef"><b>Definition:</b> <a href="PlannerTerminationCondition_8h_source.html#l00064">PlannerTerminationCondition.h:64</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_html_a74eab29b7c7ac5e75d88134067121e45"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect.html#a74eab29b7c7ac5e75d88134067121e45">ompl::geometric::RRTConnect::freeMemory</a></div><div class="ttdeci">void freeMemory()</div><div class="ttdoc">Free the memory allocated by this planner. </div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8cpp_source.html#l00071">RRTConnect.cpp:71</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_html_a605e6a7c713167b8655d06a8a30b91ef"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect.html#a605e6a7c713167b8655d06a8a30b91ef">ompl::geometric::RRTConnect::TreeData</a></div><div class="ttdeci">boost::shared_ptr&lt; NearestNeighbors&lt; Motion * &gt; &gt; TreeData</div><div class="ttdoc">A nearest-neighbor datastructure representing a tree of motions. </div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8h_source.html#l00130">RRTConnect.h:130</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PathGeometric_html_aa9eb3ea81cc3ab442aae67d311bc4156"><div class="ttname"><a href="classompl_1_1geometric_1_1PathGeometric.html#aa9eb3ea81cc3ab442aae67d311bc4156">ompl::geometric::PathGeometric::append</a></div><div class="ttdeci">void append(const base::State *state)</div><div class="ttdoc">Append state to the end of this path. The memory for state is copied. </div><div class="ttdef"><b>Definition:</b> <a href="PathGeometric_8cpp_source.html#l00420">PathGeometric.cpp:420</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSpecs_html_abe3ce1c340ba64c14644b0cace72907d"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSpecs.html#abe3ce1c340ba64c14644b0cace72907d">ompl::base::PlannerSpecs::directed</a></div><div class="ttdeci">bool directed</div><div class="ttdoc">Flag indicating whether the planner is able to account for the fact that the validity of a motion fro...</div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00220">Planner.h:220</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_html_a299caf818f757d96793d1bc092a665b3"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect.html#a299caf818f757d96793d1bc092a665b3">ompl::geometric::RRTConnect::maxDistance_</a></div><div class="ttdeci">double maxDistance_</div><div class="ttdoc">The maximum length of a motion to be added to a tree. </div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8h_source.html#l00173">RRTConnect.h:173</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerDataVertex_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a></div><div class="ttdoc">Base class for a vertex in the PlannerData structure. All derived classes must implement the clone an...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00060">PlannerData.h:60</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_html_a4d0a02d3328dc40ae4cd32719e10f25c"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect.html#a4d0a02d3328dc40ae4cd32719e10f25c">ompl::geometric::RRTConnect::connectionPoint_</a></div><div class="ttdeci">std::pair&lt; base::State *, base::State * &gt; connectionPoint_</div><div class="ttdoc">The pair of states in each tree connected during planning. Used for PlannerData computation. </div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8h_source.html#l00179">RRTConnect.h:179</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547">ompl::base::PlannerStatus::INVALID_START</a></div><div class="ttdoc">Invalid start state or no start state specified. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00056">PlannerStatus.h:56</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GoalSampleableRegion_html"><div class="ttname"><a href="classompl_1_1base_1_1GoalSampleableRegion.html">ompl::base::GoalSampleableRegion</a></div><div class="ttdoc">Abstract definition of a goal region that can be sampled. </div><div class="ttdef"><b>Definition:</b> <a href="GoalSampleableRegion_8h_source.html#l00049">GoalSampleableRegion.h:49</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a47d769205044efa345184a640bd863ff"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a47d769205044efa345184a640bd863ff">ompl::base::PlannerStatus::UNRECOGNIZED_GOAL_TYPE</a></div><div class="ttdoc">The goal is of a type that a planner does not recognize. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00060">PlannerStatus.h:60</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_1_1Motion_html"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect_1_1Motion.html">ompl::geometric::RRTConnect::Motion</a></div><div class="ttdoc">Representation of a motion. </div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8h_source.html#l00105">RRTConnect.h:105</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PathGeometric_html_aa1f2bd46e6cab28a74819a47e3ff04c8"><div class="ttname"><a href="classompl_1_1geometric_1_1PathGeometric.html#aa1f2bd46e6cab28a74819a47e3ff04c8">ompl::geometric::PathGeometric::getStates</a></div><div class="ttdeci">std::vector&lt; base::State * &gt; &amp; getStates()</div><div class="ttdoc">Get the states that make up the path (as a reference, so it can be modified, hence the function is no...</div><div class="ttdef"><b>Definition:</b> <a href="PathGeometric_8h_source.html#l00205">PathGeometric.h:205</a></div></div>
+<div class="ttc" id="group__logging_html_ga05ad3ae88188e7f248748785afd2b882"><div class="ttname"><a href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a></div><div class="ttdeci">#define OMPL_ERROR(fmt,...)</div><div class="ttdoc">Log a formatted error string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00064">Console.h:64</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a20f8c901516c72e258d43d7156fe8e28"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a20f8c901516c72e258d43d7156fe8e28">ompl::base::PlannerStatus::EXACT_SOLUTION</a></div><div class="ttdoc">The planner found an exact solution. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00066">PlannerStatus.h:66</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a8fd081adb8e8a728eab89d57514724f0"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a8fd081adb8e8a728eab89d57514724f0">ompl::base::PlannerData::vertexIndex</a></div><div class="ttdeci">unsigned int vertexIndex(const PlannerDataVertex &amp;v) const </div><div class="ttdoc">Return the index for the vertex associated with the given data. INVALID_INDEX is returned if this ver...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00328">PlannerData.cpp:328</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_html_ae3bed4090501ec5a3698d8108cb94df2"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect.html#ae3bed4090501ec5a3698d8108cb94df2">ompl::geometric::RRTConnect::getRange</a></div><div class="ttdeci">double getRange() const </div><div class="ttdoc">Get the range the planner is using. </div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8h_source.html#l00087">RRTConnect.h:87</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a2e2b2b7e02900c4417af0ecea272c637"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a2e2b2b7e02900c4417af0ecea272c637">ompl::base::PlannerStatus::INVALID_GOAL</a></div><div class="ttdoc">Invalid goal state. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00058">PlannerStatus.h:58</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html">ompl::base::PlannerStatus</a></div><div class="ttdoc">A class to store the exit status of Planner::solve() </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00048">PlannerStatus.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_ac09c21494a8c7db500ef1a66bbbb1aa7"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">ompl::base::PlannerData::addEdge</a></div><div class="ttdeci">virtual bool addEdge(unsigned int v1, unsigned int v2, const PlannerDataEdge &amp;edge=PlannerDataEdge(), Cost weight=Cost(1.0))</div><div class="ttdoc">Adds a directed edge between the given vertex indexes. An optional edge structure and weight can be s...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00444">PlannerData.cpp:444</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Goal_html_a5d5285908b7e09d61577279f35e47175"><div class="ttname"><a href="classompl_1_1base_1_1Goal.html#a5d5285908b7e09d61577279f35e47175">ompl::base::Goal::isStartGoalPairValid</a></div><div class="ttdeci">virtual bool isStartGoalPairValid(const State *, const State *) const </div><div class="ttdoc">Since there can be multiple starting states (and multiple goal states) it is possible certain pairs a...</div><div class="ttdef"><b>Definition:</b> <a href="Goal_8h_source.html#l00136">Goal.h:136</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpaceInformationPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1SpaceInformationPtr.html">ompl::base::SpaceInformationPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::SpaceInformation. </div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_html_a96e7a7a8ed32a88c490204fcb8847fb5"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect.html#a96e7a7a8ed32a88c490204fcb8847fb5">ompl::geometric::RRTConnect::distanceFunction</a></div><div class="ttdeci">double distanceFunction(const Motion *a, const Motion *b) const </div><div class="ttdoc">Compute distance between motions (actually distance between contained states) </div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8h_source.html#l00155">RRTConnect.h:155</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_html_a6df5b0ed7234e4a70f82fd84f3e83c4b"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect.html#a6df5b0ed7234e4a70f82fd84f3e83c4b">ompl::geometric::RRTConnect::GrowState</a></div><div class="ttdeci">GrowState</div><div class="ttdoc">The state of the tree after an attempt to extend it. </div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8h_source.html#l00141">RRTConnect.h:141</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a2eea84456784452486aa0065af391f47"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">ompl::base::PlannerData::addStartVertex</a></div><div class="ttdeci">unsigned int addStartVertex(const PlannerDataVertex &amp;v)</div><div class="ttdoc">Adds the given vertex to the graph data, and marks it as a start vertex. The vertex index is returned...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00425">PlannerData.cpp:425</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_html_a32e3f019f790cb85b1f97a6cacb02e02"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect.html#a32e3f019f790cb85b1f97a6cacb02e02">ompl::geometric::RRTConnect::getPlannerData</a></div><div class="ttdeci">virtual void getPlannerData(base::PlannerData &amp;data) const </div><div class="ttdoc">Get information about the current run of the motion planner. Repeated calls to this function will upd...</div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8cpp_source.html#l00297">RRTConnect.cpp:297</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Planner_html_a4311ea7a0470f0e0f76cb1656d63e365"><div class="ttname"><a href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">ompl::base::Planner::specs_</a></div><div class="ttdeci">PlannerSpecs specs_</div><div class="ttdoc">The specifications of the planner (its capabilities) </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00404">Planner.h:404</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GoalSampleableRegion_html_adbfa83eb76309039b839e3fb87c88203"><div class="ttname"><a href="classompl_1_1base_1_1GoalSampleableRegion.html#adbfa83eb76309039b839e3fb87c88203">ompl::base::GoalSampleableRegion::couldSample</a></div><div class="ttdeci">virtual bool couldSample() const </div><div class="ttdoc">Return true if samples could be generated by this sampler at some point in the future. By default this is equivalent to canSample(), but for GoalLazySamples, this call also reflects the fact that a sampling thread is active and although no samples are produced yet, some may become available at some point in the future. </div><div class="ttdef"><b>Definition:</b> <a href="GoalSampleableRegion_8h_source.html#l00078">GoalSampleableRegion.h:78</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_html_a73d2a382a52f75eaf8ee35ae36656aca"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect.html#a73d2a382a52f75eaf8ee35ae36656aca">ompl::geometric::RRTConnect::solve</a></div><div class="ttdeci">virtual base::PlannerStatus solve(const base::PlannerTerminationCondition &amp;ptc)</div><div class="ttdoc">Function that can solve the motion planning problem. This function can be called multiple times on th...</div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8cpp_source.html#l00151">RRTConnect.cpp:151</a></div></div>
+<div class="ttc" id="classompl_1_1tools_1_1SelfConfig_html_a65bff53ea4bc6f158342a856175ab9a6"><div class="ttname"><a href="classompl_1_1tools_1_1SelfConfig.html#a65bff53ea4bc6f158342a856175ab9a6">ompl::tools::SelfConfig::configurePlannerRange</a></div><div class="ttdeci">void configurePlannerRange(double &amp;range)</div><div class="ttdoc">Compute what a good length for motion segments is. </div><div class="ttdef"><b>Definition:</b> <a href="SelfConfig_8cpp_source.html#l00226">SelfConfig.cpp:226</a></div></div>
+<div class="ttc" id="classompl_1_1tools_1_1SelfConfig_html"><div class="ttname"><a href="classompl_1_1tools_1_1SelfConfig.html">ompl::tools::SelfConfig</a></div><div class="ttdoc">This class contains methods that automatically configure various parameters for motion planning...</div><div class="ttdef"><b>Definition:</b> <a href="SelfConfig_8h_source.html#l00056">SelfConfig.h:56</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_html_a0ce571b0313938bb1ca026fce1dbcbaf"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect.html#a0ce571b0313938bb1ca026fce1dbcbaf">ompl::geometric::RRTConnect::clear</a></div><div class="ttdeci">virtual void clear()</div><div class="ttdoc">Clear all internal datastructures. Planner settings are not affected. Subsequent calls to solve() wil...</div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8cpp_source.html#l00098">RRTConnect.cpp:98</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PathGeometric_html"><div class="ttname"><a href="classompl_1_1geometric_1_1PathGeometric.html">ompl::geometric::PathGeometric</a></div><div class="ttdoc">Definition of a geometric path. </div><div class="ttdef"><b>Definition:</b> <a href="PathGeometric_8h_source.html#l00054">PathGeometric.h:54</a></div></div>
+<div class="ttc" id="structompl_1_1geometric_1_1RRTConnect_1_1TreeGrowingInfo_html"><div class="ttname"><a href="structompl_1_1geometric_1_1RRTConnect_1_1TreeGrowingInfo.html">ompl::geometric::RRTConnect::TreeGrowingInfo</a></div><div class="ttdoc">Information attached to growing a tree of motions (used internally) </div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8h_source.html#l00133">RRTConnect.h:133</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1RRTConnect_html_a140a2bf524fe7c39dfbe1e8d5f55fe80"><div class="ttname"><a href="classompl_1_1geometric_1_1RRTConnect.html#a140a2bf524fe7c39dfbe1e8d5f55fe80">ompl::geometric::RRTConnect::growTree</a></div><div class="ttdeci">GrowState growTree(TreeData &amp;tree, TreeGrowingInfo &amp;tgi, Motion *rmotion)</div><div class="ttdoc">Grow a tree towards a random state. </div><div class="ttdef"><b>Definition:</b> <a href="RRTConnect_8cpp_source.html#l00110">RRTConnect.cpp:110</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PathPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1PathPtr.html">ompl::base::PathPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::Path. </div></div>
+<div class="ttc" id="namespaceompl_1_1base_html_a1620a159019faf720c550eeca5723f55a6fb685fa51055688c4e130094225b7f9"><div class="ttname"><a href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55a6fb685fa51055688c4e130094225b7f9">ompl::base::GOAL_SAMPLEABLE_REGION</a></div><div class="ttdoc">This bit is set if casting to sampleable goal regions (ompl::base::GoalSampleableRegion) is possible...</div><div class="ttdef"><b>Definition:</b> <a href="GoalTypes_8h_source.html#l00055">GoalTypes.h:55</a></div></div>
+<div class="ttc" id="group__logging_html_ga04bc36d1b8c57ad7e13a8a48451a3a05"><div class="ttname"><a href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a></div><div class="ttdeci">#define OMPL_INFORM(fmt,...)</div><div class="ttdoc">Log a formatted information string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00068">Console.h:68</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

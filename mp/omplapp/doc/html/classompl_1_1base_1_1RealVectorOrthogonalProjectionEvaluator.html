@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::base::RealVectorOrthogonalProjectionEvaluator Class Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1base.html">base</a></li><li class="navelem"><a class="el" href="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html">RealVectorOrthogonalProjectionEvaluator</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::base::RealVectorOrthogonalProjectionEvaluator Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Definition for a class computing orthogonal projections.  
+ <a href="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="RealVectorStateProjections_8h_source.html">RealVectorStateProjections.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ompl::base::RealVectorOrthogonalProjectionEvaluator:</div>
+<div class="dyncontent">
+<div class="center"><img src="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator__inherit__graph.png" border="0" usemap="#ompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator_inherit__map" alt="Inheritance graph"/></div>
+<map name="ompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator_inherit__map" id="ompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator_inherit__map">
+<area shape="rect" id="node2" href="classompl_1_1base_1_1ProjectionEvaluator.html" title="Abstract definition for a class computing projections to Rn. Implicit integer grids are imposed on th..." alt="" coords="13,80,219,107"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a9b0012c55558270a7c8e061833fef665"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b0012c55558270a7c8e061833fef665"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html#a9b0012c55558270a7c8e061833fef665">RealVectorOrthogonalProjectionEvaluator</a> (const <a class="el" href="classompl_1_1base_1_1StateSpace.html">StateSpace</a> *space, const std::vector&lt; double &gt; &amp;cellSizes, const std::vector&lt; unsigned int &gt; &amp;components)</td></tr>
+<tr class="memdesc:a9b0012c55558270a7c8e061833fef665"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an orthogonal projection evaluator for state space <em>space</em>. The indices of the kept components are in <em>components</em> and the cell sizes are in <em>cellSizes</em>. <br/></td></tr>
+<tr class="separator:a9b0012c55558270a7c8e061833fef665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc36f7b3478cfb38893a3c223ba4f9bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc36f7b3478cfb38893a3c223ba4f9bd"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html#adc36f7b3478cfb38893a3c223ba4f9bd">RealVectorOrthogonalProjectionEvaluator</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;space, const std::vector&lt; double &gt; &amp;cellSizes, const std::vector&lt; unsigned int &gt; &amp;components)</td></tr>
+<tr class="memdesc:adc36f7b3478cfb38893a3c223ba4f9bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an orthogonal projection evaluator for state space <em>space</em>. The indices of the kept components are in <em>components</em> and the cell sizes are in <em>cellSizes</em>. <br/></td></tr>
+<tr class="separator:adc36f7b3478cfb38893a3c223ba4f9bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ab7cb8dab53cc2ff8149f8e199781b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ab7cb8dab53cc2ff8149f8e199781b8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html#a7ab7cb8dab53cc2ff8149f8e199781b8">RealVectorOrthogonalProjectionEvaluator</a> (const <a class="el" href="classompl_1_1base_1_1StateSpace.html">StateSpace</a> *space, const std::vector&lt; unsigned int &gt; &amp;components)</td></tr>
+<tr class="memdesc:a7ab7cb8dab53cc2ff8149f8e199781b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an orthogonal projection evaluator for state space <em>space</em>. The indices of the kept components are in <em>components</em> and the cell sizes are a tenth of the corresponding bounds from the state space. <br/></td></tr>
+<tr class="separator:a7ab7cb8dab53cc2ff8149f8e199781b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeb1515076a142d670ffdb54443cf399"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeeb1515076a142d670ffdb54443cf399"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html#aeeb1515076a142d670ffdb54443cf399">RealVectorOrthogonalProjectionEvaluator</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;space, const std::vector&lt; unsigned int &gt; &amp;components)</td></tr>
+<tr class="memdesc:aeeb1515076a142d670ffdb54443cf399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an orthogonal projection evaluator for state space <em>space</em>. The indices of the kept components are in <em>components</em> and the cell sizes are a tenth of the corresponding bounds from the state space. <br/></td></tr>
+<tr class="separator:aeeb1515076a142d670ffdb54443cf399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb7f2d733592a6708b58575f4fcaa4df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb7f2d733592a6708b58575f4fcaa4df"></a>
+virtual unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html#acb7f2d733592a6708b58575f4fcaa4df">getDimension</a> () const </td></tr>
+<tr class="memdesc:acb7f2d733592a6708b58575f4fcaa4df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the dimension of the projection defined by this evaluator. <br/></td></tr>
+<tr class="separator:acb7f2d733592a6708b58575f4fcaa4df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a674abf92673a22a5a85f408ad5f7105c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a674abf92673a22a5a85f408ad5f7105c"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html#a674abf92673a22a5a85f408ad5f7105c">defaultCellSizes</a> ()</td></tr>
+<tr class="memdesc:a674abf92673a22a5a85f408ad5f7105c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the default cell dimensions for this projection. The default implementation of this function is empty. <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#af40dd2632f9c9e19be07d56532476496" title="Perform configuration steps, if needed. ">setup()</a> calls this function if no cell dimensions have been previously set. <br/></td></tr>
+<tr class="separator:a674abf92673a22a5a85f408ad5f7105c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4123acbf3ac5a966d7cee039697bcd4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4123acbf3ac5a966d7cee039697bcd4e"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html#a4123acbf3ac5a966d7cee039697bcd4e">project</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state, <a class="el" href="namespaceompl_1_1base.html#aa83f2e90d56884b236b1e400d116b10b">EuclideanProjection</a> &amp;projection) const </td></tr>
+<tr class="memdesc:a4123acbf3ac5a966d7cee039697bcd4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the projection as an array of double values. <br/></td></tr>
+<tr class="separator:a4123acbf3ac5a966d7cee039697bcd4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classompl_1_1base_1_1ProjectionEvaluator')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html">ompl::base::ProjectionEvaluator</a></td></tr>
+<tr class="memitem:ac34c2c0327a221e0b382bb39e0d84ad4 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac34c2c0327a221e0b382bb39e0d84ad4"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#ac34c2c0327a221e0b382bb39e0d84ad4">ProjectionEvaluator</a> (const <a class="el" href="classompl_1_1base_1_1StateSpace.html">StateSpace</a> *space)</td></tr>
+<tr class="memdesc:ac34c2c0327a221e0b382bb39e0d84ad4 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a projection evaluator for a specific state space. <br/></td></tr>
+<tr class="separator:ac34c2c0327a221e0b382bb39e0d84ad4 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d34d1618b4a23bc0a3785fbe15f6fda inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d34d1618b4a23bc0a3785fbe15f6fda"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a9d34d1618b4a23bc0a3785fbe15f6fda">ProjectionEvaluator</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;space)</td></tr>
+<tr class="memdesc:a9d34d1618b4a23bc0a3785fbe15f6fda inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a projection evaluator for a specific state space. <br/></td></tr>
+<tr class="separator:a9d34d1618b4a23bc0a3785fbe15f6fda inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a159e26be9f83a75a001ad2d3ba477f71 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a159e26be9f83a75a001ad2d3ba477f71"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a159e26be9f83a75a001ad2d3ba477f71">setCellSizes</a> (const std::vector&lt; double &gt; &amp;cellSizes)</td></tr>
+<tr class="memdesc:a159e26be9f83a75a001ad2d3ba477f71 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the size (in each dimension) of a grid cell. The number of sizes set here must be the same as the dimension of the projection computed by the projection evaluator. After a call to this function, <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#af40dd2632f9c9e19be07d56532476496" title="Perform configuration steps, if needed. ">setup()</a> will not call <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a1a0598137c82fdbedb7a191184d30de1" title="Set the default cell dimensions for this projection. The default implementation of this function is e...">defaultCellSizes()</a> or <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a6990f14246d47c9321f883b34fdf531f" title="Sample the state space and decide on default cell sizes. This function is called by setup() if no cel...">inferCellSizes()</a> any more. <br/></td></tr>
+<tr class="separator:a159e26be9f83a75a001ad2d3ba477f71 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4de0e4ca8520aa105d5d345f3e76a2ac inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4de0e4ca8520aa105d5d345f3e76a2ac"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a4de0e4ca8520aa105d5d345f3e76a2ac">setCellSizes</a> (unsigned int dim, double cellSize)</td></tr>
+<tr class="memdesc:a4de0e4ca8520aa105d5d345f3e76a2ac inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the cell sizes to <em>cellSize</em> for a particular dimension <em>dim</em>. This function simply calls <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a0067c1bff1d03a8bf4588dadd8660373" title="Get the size (each dimension) of a grid cell. ">getCellSizes()</a>, modifies the desired dimension and then calls <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a159e26be9f83a75a001ad2d3ba477f71" title="Define the size (in each dimension) of a grid cell. The number of sizes set here must be the same as ...">setCellSizes()</a>. This is done intentionally to enforce a call to <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a159e26be9f83a75a001ad2d3ba477f71" title="Define the size (in each dimension) of a grid cell. The number of sizes set here must be the same as ...">setCellSizes()</a>. <br/></td></tr>
+<tr class="separator:a4de0e4ca8520aa105d5d345f3e76a2ac inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a203fee1c17bc3e1d60d85407fc2fe791 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a203fee1c17bc3e1d60d85407fc2fe791"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a203fee1c17bc3e1d60d85407fc2fe791">mulCellSizes</a> (double factor)</td></tr>
+<tr class="memdesc:a203fee1c17bc3e1d60d85407fc2fe791 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply the cell sizes in each dimension by a specified factor <em>factor</em>. This function does nothing if cell sizes have not been set. If cell sizes have been set (irrespective of source; e.g., user, default or inferred), this function will then call <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a159e26be9f83a75a001ad2d3ba477f71" title="Define the size (in each dimension) of a grid cell. The number of sizes set here must be the same as ...">setCellSizes()</a>, so the source of the cell sizes will be considered to be the user. <br/></td></tr>
+<tr class="separator:a203fee1c17bc3e1d60d85407fc2fe791 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48e6a0565234a9eac658af3e481c4337 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48e6a0565234a9eac658af3e481c4337"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a48e6a0565234a9eac658af3e481c4337">userConfigured</a> () const </td></tr>
+<tr class="memdesc:a48e6a0565234a9eac658af3e481c4337 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if any user configuration has been done to this projection evaluator (<a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a159e26be9f83a75a001ad2d3ba477f71" title="Define the size (in each dimension) of a grid cell. The number of sizes set here must be the same as ...">setCellSizes()</a> was called) <br/></td></tr>
+<tr class="separator:a48e6a0565234a9eac658af3e481c4337 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0067c1bff1d03a8bf4588dadd8660373 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0067c1bff1d03a8bf4588dadd8660373"></a>
+const std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a0067c1bff1d03a8bf4588dadd8660373">getCellSizes</a> () const </td></tr>
+<tr class="memdesc:a0067c1bff1d03a8bf4588dadd8660373 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size (each dimension) of a grid cell. <br/></td></tr>
+<tr class="separator:a0067c1bff1d03a8bf4588dadd8660373 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad858cfcf132061e3d1dc5fecda8719ca inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad858cfcf132061e3d1dc5fecda8719ca"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#ad858cfcf132061e3d1dc5fecda8719ca">getCellSizes</a> (unsigned int dim) const </td></tr>
+<tr class="memdesc:ad858cfcf132061e3d1dc5fecda8719ca inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of a particular dimension of a grid cell. <br/></td></tr>
+<tr class="separator:ad858cfcf132061e3d1dc5fecda8719ca inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13291cb75f24ee8255da1c826f6f4bb7 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13291cb75f24ee8255da1c826f6f4bb7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a13291cb75f24ee8255da1c826f6f4bb7">checkCellSizes</a> () const </td></tr>
+<tr class="memdesc:a13291cb75f24ee8255da1c826f6f4bb7 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if cell dimensions match projection dimension. <br/></td></tr>
+<tr class="separator:a13291cb75f24ee8255da1c826f6f4bb7 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6990f14246d47c9321f883b34fdf531f inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6990f14246d47c9321f883b34fdf531f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a6990f14246d47c9321f883b34fdf531f">inferCellSizes</a> ()</td></tr>
+<tr class="memdesc:a6990f14246d47c9321f883b34fdf531f inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sample the state space and decide on default cell sizes. This function is called by <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#af40dd2632f9c9e19be07d56532476496" title="Perform configuration steps, if needed. ">setup()</a> if no cell dsizes have been set and <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a1a0598137c82fdbedb7a191184d30de1" title="Set the default cell dimensions for this projection. The default implementation of this function is e...">defaultCellSizes()</a> does not fill the cell sizes either. <br/></td></tr>
+<tr class="separator:a6990f14246d47c9321f883b34fdf531f inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2549d1612f9273c163bc0856c8fa269 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2549d1612f9273c163bc0856c8fa269"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#ac2549d1612f9273c163bc0856c8fa269">checkBounds</a> () const </td></tr>
+<tr class="memdesc:ac2549d1612f9273c163bc0856c8fa269 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the projection dimension matched the dimension of the bounds. <br/></td></tr>
+<tr class="separator:ac2549d1612f9273c163bc0856c8fa269 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa52d797320ae061c2a5b5bfb30bcd77 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa52d797320ae061c2a5b5bfb30bcd77"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#aaa52d797320ae061c2a5b5bfb30bcd77">hasBounds</a> () const </td></tr>
+<tr class="memdesc:aaa52d797320ae061c2a5b5bfb30bcd77 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if bounds were specified for this projection. <br/></td></tr>
+<tr class="separator:aaa52d797320ae061c2a5b5bfb30bcd77 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b8ac8c10fadde8c8792db04a2dfc41f inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b8ac8c10fadde8c8792db04a2dfc41f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a0b8ac8c10fadde8c8792db04a2dfc41f">setBounds</a> (const <a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">RealVectorBounds</a> &amp;bounds)</td></tr>
+<tr class="memdesc:a0b8ac8c10fadde8c8792db04a2dfc41f inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set bounds on the projection. The PDST planner needs to known the bounds on the projection. Default bounds are automatically computed by <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a6990f14246d47c9321f883b34fdf531f" title="Sample the state space and decide on default cell sizes. This function is called by setup() if no cel...">inferCellSizes()</a>. <br/></td></tr>
+<tr class="separator:a0b8ac8c10fadde8c8792db04a2dfc41f inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08ad195d40da81094d6dbd4dc4eacd63 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a08ad195d40da81094d6dbd4dc4eacd63"></a>
+const <a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">RealVectorBounds</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a08ad195d40da81094d6dbd4dc4eacd63">getBounds</a> ()</td></tr>
+<tr class="memdesc:a08ad195d40da81094d6dbd4dc4eacd63 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the bounds computed/set for this projection. <br/></td></tr>
+<tr class="separator:a08ad195d40da81094d6dbd4dc4eacd63 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac11df5e004d74905fbaa240c4d99ca68 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac11df5e004d74905fbaa240c4d99ca68"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#ac11df5e004d74905fbaa240c4d99ca68">inferBounds</a> ()</td></tr>
+<tr class="memdesc:ac11df5e004d74905fbaa240c4d99ca68 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute an approximation of the bounds for this projection space. <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a08ad195d40da81094d6dbd4dc4eacd63" title="Get the bounds computed/set for this projection. ">getBounds()</a> will then report the computed bounds. <br/></td></tr>
+<tr class="separator:ac11df5e004d74905fbaa240c4d99ca68 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af40dd2632f9c9e19be07d56532476496 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af40dd2632f9c9e19be07d56532476496"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#af40dd2632f9c9e19be07d56532476496">setup</a> ()</td></tr>
+<tr class="memdesc:af40dd2632f9c9e19be07d56532476496 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform configuration steps, if needed. <br/></td></tr>
+<tr class="separator:af40dd2632f9c9e19be07d56532476496 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8ce42480db15d62a8996f569921aae9 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad8ce42480db15d62a8996f569921aae9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#ad8ce42480db15d62a8996f569921aae9">computeCoordinates</a> (const <a class="el" href="namespaceompl_1_1base.html#aa83f2e90d56884b236b1e400d116b10b">EuclideanProjection</a> &amp;projection, <a class="el" href="namespaceompl_1_1base.html#a01cfb1e28af37bb139841342cb4afb0c">ProjectionCoordinates</a> &amp;coord) const </td></tr>
+<tr class="memdesc:ad8ce42480db15d62a8996f569921aae9 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute integer coordinates for a projection. <br/></td></tr>
+<tr class="separator:ad8ce42480db15d62a8996f569921aae9 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a595d68385695e7d2eed24963bd44fbc2 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a595d68385695e7d2eed24963bd44fbc2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a595d68385695e7d2eed24963bd44fbc2">computeCoordinates</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state, <a class="el" href="namespaceompl_1_1base.html#a01cfb1e28af37bb139841342cb4afb0c">ProjectionCoordinates</a> &amp;coord) const </td></tr>
+<tr class="memdesc:a595d68385695e7d2eed24963bd44fbc2 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute integer coordinates for a state. <br/></td></tr>
+<tr class="separator:a595d68385695e7d2eed24963bd44fbc2 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa15a7ce6c94ca8fb9ea99965d7a3be9f inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa15a7ce6c94ca8fb9ea99965d7a3be9f"></a>
+<a class="el" href="classompl_1_1base_1_1ParamSet.html">ParamSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#aa15a7ce6c94ca8fb9ea99965d7a3be9f">params</a> ()</td></tr>
+<tr class="memdesc:aa15a7ce6c94ca8fb9ea99965d7a3be9f inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parameters for this projection. <br/></td></tr>
+<tr class="separator:aa15a7ce6c94ca8fb9ea99965d7a3be9f inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a078162761dc0cac923566c64eeecdca7 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a078162761dc0cac923566c64eeecdca7"></a>
+const <a class="el" href="classompl_1_1base_1_1ParamSet.html">ParamSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a078162761dc0cac923566c64eeecdca7">params</a> () const </td></tr>
+<tr class="memdesc:a078162761dc0cac923566c64eeecdca7 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parameters for this projection. <br/></td></tr>
+<tr class="separator:a078162761dc0cac923566c64eeecdca7 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a811a6a659d6e5e694905f57e26d33d61 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a811a6a659d6e5e694905f57e26d33d61"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a811a6a659d6e5e694905f57e26d33d61">printSettings</a> (std::ostream &amp;out=std::cout) const </td></tr>
+<tr class="memdesc:a811a6a659d6e5e694905f57e26d33d61 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print settings about this projection. <br/></td></tr>
+<tr class="separator:a811a6a659d6e5e694905f57e26d33d61 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1713d626c4389e38dfba86ec0cf67443 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1713d626c4389e38dfba86ec0cf67443"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a1713d626c4389e38dfba86ec0cf67443">printProjection</a> (const <a class="el" href="namespaceompl_1_1base.html#aa83f2e90d56884b236b1e400d116b10b">EuclideanProjection</a> &amp;projection, std::ostream &amp;out=std::cout) const </td></tr>
+<tr class="memdesc:a1713d626c4389e38dfba86ec0cf67443 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a euclidean projection. <br/></td></tr>
+<tr class="separator:a1713d626c4389e38dfba86ec0cf67443 inherit pub_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:ab170786ef29b2f224b5ac52dbffbf329"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab170786ef29b2f224b5ac52dbffbf329"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html#ab170786ef29b2f224b5ac52dbffbf329">copyBounds</a> ()</td></tr>
+<tr class="memdesc:ab170786ef29b2f224b5ac52dbffbf329"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill bounds_ with bounds from the state space. <br/></td></tr>
+<tr class="separator:ab170786ef29b2f224b5ac52dbffbf329"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classompl_1_1base_1_1ProjectionEvaluator"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classompl_1_1base_1_1ProjectionEvaluator')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html">ompl::base::ProjectionEvaluator</a></td></tr>
+<tr class="memitem:a8473159a6d845feeb0efd89787137d46 inherit pro_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8473159a6d845feeb0efd89787137d46"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a8473159a6d845feeb0efd89787137d46">estimateBounds</a> ()</td></tr>
+<tr class="memdesc:a8473159a6d845feeb0efd89787137d46 inherit pro_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill estimatedBounds_ with an approximate bounding box for the projection space (via sampling) <br/></td></tr>
+<tr class="separator:a8473159a6d845feeb0efd89787137d46 inherit pro_methods_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a0d7d60d956eca6610bb8102164ec502a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d7d60d956eca6610bb8102164ec502a"></a>
+std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html#a0d7d60d956eca6610bb8102164ec502a">components_</a></td></tr>
+<tr class="memdesc:a0d7d60d956eca6610bb8102164ec502a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The set of components selected by the projection. <br/></td></tr>
+<tr class="separator:a0d7d60d956eca6610bb8102164ec502a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classompl_1_1base_1_1ProjectionEvaluator')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html">ompl::base::ProjectionEvaluator</a></td></tr>
+<tr class="memitem:a5ecdb9c29409173a34c2efb7eed221a1 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ecdb9c29409173a34c2efb7eed221a1"></a>
+const <a class="el" href="classompl_1_1base_1_1StateSpace.html">StateSpace</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a5ecdb9c29409173a34c2efb7eed221a1">space_</a></td></tr>
+<tr class="memdesc:a5ecdb9c29409173a34c2efb7eed221a1 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">The state space this projection operates on. <br/></td></tr>
+<tr class="separator:a5ecdb9c29409173a34c2efb7eed221a1 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdc4796fe612cf83f74d4b313c664443 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdc4796fe612cf83f74d4b313c664443"></a>
+std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#afdc4796fe612cf83f74d4b313c664443">cellSizes_</a></td></tr>
+<tr class="memdesc:afdc4796fe612cf83f74d4b313c664443 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of a cell, in every dimension of the projected space, in the implicitly defined integer grid. <br/></td></tr>
+<tr class="separator:afdc4796fe612cf83f74d4b313c664443 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bb101a20dcb4f3f0033092b6def1b13 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3bb101a20dcb4f3f0033092b6def1b13"></a>
+<a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">RealVectorBounds</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a3bb101a20dcb4f3f0033092b6def1b13">bounds_</a></td></tr>
+<tr class="memdesc:a3bb101a20dcb4f3f0033092b6def1b13 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">A bounding box for projected state values. <br/></td></tr>
+<tr class="separator:a3bb101a20dcb4f3f0033092b6def1b13 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af371bf797f305b43f1bb35cf26b1f2d1 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af371bf797f305b43f1bb35cf26b1f2d1"></a>
+<a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">RealVectorBounds</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#af371bf797f305b43f1bb35cf26b1f2d1">estimatedBounds_</a></td></tr>
+<tr class="memdesc:af371bf797f305b43f1bb35cf26b1f2d1 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">An approximate bounding box for projected state values; This is the cached result of <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a8473159a6d845feeb0efd89787137d46" title="Fill estimatedBounds_ with an approximate bounding box for the projection space (via sampling) ...">estimateBounds()</a> which may later be copied to bounds_ if bounds are needed but were not specified. <br/></td></tr>
+<tr class="separator:af371bf797f305b43f1bb35cf26b1f2d1 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43fb61982ce66f9e431ebf3b9d0448b8 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43fb61982ce66f9e431ebf3b9d0448b8"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a43fb61982ce66f9e431ebf3b9d0448b8">defaultCellSizes_</a></td></tr>
+<tr class="memdesc:a43fb61982ce66f9e431ebf3b9d0448b8 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating whether cell sizes have been set by the user, or whether they were inferred automatically. This flag becomes false if <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a159e26be9f83a75a001ad2d3ba477f71" title="Define the size (in each dimension) of a grid cell. The number of sizes set here must be the same as ...">setCellSizes()</a> is called. <br/></td></tr>
+<tr class="separator:a43fb61982ce66f9e431ebf3b9d0448b8 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb34ed364e5eb616fc7b099477a86e89 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb34ed364e5eb616fc7b099477a86e89"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#aeb34ed364e5eb616fc7b099477a86e89">cellSizesWereInferred_</a></td></tr>
+<tr class="memdesc:aeb34ed364e5eb616fc7b099477a86e89 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating whether projection cell sizes were automatically inferred. <br/></td></tr>
+<tr class="separator:aeb34ed364e5eb616fc7b099477a86e89 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a718e2f2e548a3b5cea3197b5b0c852e3 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a718e2f2e548a3b5cea3197b5b0c852e3"></a>
+<a class="el" href="classompl_1_1base_1_1ParamSet.html">ParamSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a718e2f2e548a3b5cea3197b5b0c852e3">params_</a></td></tr>
+<tr class="memdesc:a718e2f2e548a3b5cea3197b5b0c852e3 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="mdescLeft">&#160;</td><td class="mdescRight">The set of parameters for this projection. <br/></td></tr>
+<tr class="separator:a718e2f2e548a3b5cea3197b5b0c852e3 inherit pro_attribs_classompl_1_1base_1_1ProjectionEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Definition for a class computing orthogonal projections. </p>
+
+<p>Definition at line <a class="el" href="RealVectorStateProjections_8h_source.html#l00126">126</a> of file <a class="el" href="RealVectorStateProjections_8h_source.html">RealVectorStateProjections.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>ompl/src/ompl/base/spaces/<a class="el" href="RealVectorStateProjections_8h_source.html">RealVectorStateProjections.h</a></li>
+<li>ompl/src/ompl/base/spaces/src/<a class="el" href="RealVectorStateProjections_8cpp_source.html">RealVectorStateProjections.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:27 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

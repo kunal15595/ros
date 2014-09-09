@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/control/ControlSpace.h Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_d108bf77affaa88433173d7604bedd7d.html">control</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ControlSpace.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2010, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Rice University nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Ioan Sucan */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifndef OMPL_CONTROL_CONTROL_SPACE_</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define OMPL_CONTROL_CONTROL_SPACE_</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;ompl/base/StateSpace.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;ompl/control/Control.h&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;ompl/control/ControlSampler.h&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;ompl/control/ControlSpaceTypes.h&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Console_8h.html">ompl/util/Console.h</a>&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;ompl/util/ClassForward.h&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;boost/concept_check.hpp&gt;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;boost/noncopyable.hpp&gt;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">namespace </span>ompl</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">namespace </span>control</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        OMPL_CLASS_FORWARD(ControlSpace);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1ControlSpace.html">   66</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1control_1_1ControlSpace.html">ControlSpace</a> : <span class="keyword">private</span> boost::noncopyable</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <a class="code" href="classompl_1_1control_1_1ControlSpace.html#ac967d6891fd4e0d5328ff304842288f4">ControlSpace</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">base::StateSpacePtr</a> &amp;stateSpace);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keyword">virtual</span> ~<a class="code" href="classompl_1_1control_1_1ControlSpace.html">ControlSpace</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1ControlSpace.html#ad493371248cdfb29afd658994ed9416f">   77</a></span>&#160;            T* <a class="code" href="classompl_1_1control_1_1ControlSpace.html#ad493371248cdfb29afd658994ed9416f">as</a>()</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                BOOST_CONCEPT_ASSERT((boost::Convertible&lt;T*, ControlSpace*&gt;));</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T*<span class="keyword">&gt;</span>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1ControlSpace.html#aaefe1e90033adc60ee85bb025efbc620">   87</a></span>&#160;            <span class="keyword">const</span> T* <a class="code" href="classompl_1_1control_1_1ControlSpace.html#aaefe1e90033adc60ee85bb025efbc620">as</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                BOOST_CONCEPT_ASSERT((boost::Convertible&lt;T*, ControlSpace*&gt;));</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>T*<span class="keyword">&gt;</span>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keyword">const</span> std::string&amp; <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a7c6eb7d9584d8baed33075110ea7a7a1">getName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#ae7138a1a3dd3b2dba3e222538707e15d">setName</a>(<span class="keyword">const</span> std::string &amp;name);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1ControlSpace.html#a4d9f0a85e62e1b64d0794b63055ad9f2">  104</a></span>&#160;            <span class="keywordtype">int</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a4d9f0a85e62e1b64d0794b63055ad9f2">getType</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a81070174fae65611ce0779673c5a60df">type_</a>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1ControlSpace.html#a7115057d0cbb11095a88515fce9ee9c2">  110</a></span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">base::StateSpacePtr</a>&amp; <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a7115057d0cbb11095a88515fce9ee9c2">getStateSpace</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a8998ac5d1f469f7e3113b4e69d8de1cd">stateSpace_</a>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#ac0db4716c6e243ee303e5273da9e6794">getDimension</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classompl_1_1control_1_1Control.html">Control</a>* <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a68756fe8e6fc9d3d2dc48540ee4afdcd">allocControl</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a86a442ebb728b2e7920de2875d479711">freeControl</a>(<a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *control) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#aed44e8a509283145434ae40fd2a3daee">copyControl</a>(<a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *destination, <span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *source) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#ad17fe532b56a3ffb3282cdc02b32cee8">equalControls</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *control1, <span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *control2) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#ab0d214352867b65976297b2f0bc6e57f">nullControl</a>(<a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *control) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classompl_1_1control_1_1ControlSamplerPtr.html">ControlSamplerPtr</a> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a92ec45728c99bcbc2d8dce127687fa89">allocDefaultControlSampler</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classompl_1_1control_1_1ControlSamplerPtr.html">ControlSamplerPtr</a> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#afb5db1155717cacfbbbd154e29fdd7ad">allocControlSampler</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#aff9f2582768673ba3c2091c960294115">setControlSamplerAllocator</a>(<span class="keyword">const</span> <a class="code" href="namespaceompl_1_1control.html#abdb02412125f6d2b9df7724f9c3d1029">ControlSamplerAllocator</a> &amp;csa);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#ad47a72cbf62af06147a324c906cf394e">clearControlSamplerAllocator</a>();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">double</span>* <a class="code" href="classompl_1_1control_1_1ControlSpace.html#af07a7dcaa5f24537f440e8297c077282">getValueAddressAtIndex</a>(<a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *control, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a3186af8403c734774619fa7383c3b10c">printControl</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *control, std::ostream &amp;out) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#ad8842e0ecff583a3ae5b0548ff3f0d4d">printSettings</a>(std::ostream &amp;out) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a1d21669ebe1a4d0d68936ab459af9a1f">setup</a>();</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#afc383c590ef1fe1f69f50102ac7c36ad">getSerializationLength</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a6396bb676f387eed3b4dac96ca0de6ee">serialize</a>(<span class="keywordtype">void</span> *serialization, <span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *ctrl) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a6ef1b68e508e1fad0685bc55c53672c7">deserialize</a>(<a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *ctrl, <span class="keyword">const</span> <span class="keywordtype">void</span> *serialization) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#abc4facfba1fb4f8dcada561f0ff5446d">computeSignature</a>(std::vector&lt;int&gt; &amp;signature) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a2161194b465644e305b6b0ed6eb6a49d">isCompound</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1ControlSpace.html#a81070174fae65611ce0779673c5a60df">  181</a></span>&#160;            <span class="keywordtype">int</span>                     <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a81070174fae65611ce0779673c5a60df">type_</a>;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1ControlSpace.html#a8998ac5d1f469f7e3113b4e69d8de1cd">  184</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">base::StateSpacePtr</a>     <a class="code" href="classompl_1_1control_1_1ControlSpace.html#a8998ac5d1f469f7e3113b4e69d8de1cd">stateSpace_</a>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1ControlSpace.html#aafc829af78b3a32e549bd6ed8f0bc8b0">  187</a></span>&#160;            <a class="code" href="namespaceompl_1_1control.html#abdb02412125f6d2b9df7724f9c3d1029">ControlSamplerAllocator</a> <a class="code" href="classompl_1_1control_1_1ControlSpace.html#aafc829af78b3a32e549bd6ed8f0bc8b0">csa_</a>;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            std::string             name_;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        };</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1CompoundControlSpace.html">  196</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html">CompoundControlSpace</a> : <span class="keyword">public</span> <a class="code" href="classompl_1_1control_1_1ControlSpace.html">ControlSpace</a></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1CompoundControlSpace.html#a0fd269c24c5e61cea5bbe264a6da4d81">  201</a></span>&#160;            <span class="keyword">typedef</span> <a class="code" href="classompl_1_1control_1_1CompoundControl.html">CompoundControl</a> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a0fd269c24c5e61cea5bbe264a6da4d81">ControlType</a>;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1CompoundControlSpace.html#aecf151ee04bb4cefac7d3891a7ae1214">  204</a></span>&#160;            <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#aecf151ee04bb4cefac7d3891a7ae1214">CompoundControlSpace</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">base::StateSpacePtr</a> &amp;stateSpace) : <a class="code" href="classompl_1_1control_1_1ControlSpace.html">ControlSpace</a>(stateSpace), <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#ab26054f5b3b19bdbff38de768f7637e6">componentCount_</a>(0), <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a10fa7793c1fa25f548a3e72872dfb1df">locked_</a>(false)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keyword">virtual</span> ~<a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html">CompoundControlSpace</a>()</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1CompoundControlSpace.html#a3c6113194424af23a42afa6f34954a8b">  214</a></span>&#160;            T* <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a3c6113194424af23a42afa6f34954a8b">as</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                BOOST_CONCEPT_ASSERT((boost::Convertible&lt;T*, ControlSpace*&gt;));</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T*<span class="keyword">&gt;</span>(<a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a44c4b6921348a7d7f3fbca5f3a17e1d1">getSubspace</a>(index).get());</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a97f6c0cb2ae71155e710fedf64f07c70">addSubspace</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1ControlSpacePtr.html">ControlSpacePtr</a> &amp;component);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#aa10c48698a0175acdb3e074628ab2f4a">getSubspaceCount</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1ControlSpacePtr.html">ControlSpacePtr</a>&amp; <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a44c4b6921348a7d7f3fbca5f3a17e1d1">getSubspace</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1ControlSpacePtr.html">ControlSpacePtr</a>&amp; <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a44c4b6921348a7d7f3fbca5f3a17e1d1">getSubspace</a>(<span class="keyword">const</span> std::string &amp;name) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a8cc713e9a347601569a904e5c5a06953">getDimension</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classompl_1_1control_1_1Control.html">Control</a>* <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a5274f56a9751499eaeacb85f3c6130ff">allocControl</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a28f345b66f692f0320131ebdc67cf3fd">freeControl</a>(<a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *control) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a788677c2b9ce983580d91e45300147a3">copyControl</a>(<a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *destination, <span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *source) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a973585257979befcf82c31a8fe33c48e">equalControls</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *control1, <span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *control2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a808ce868a2d0e29d75167377da1c9e87">nullControl</a>(<a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *control) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classompl_1_1control_1_1ControlSamplerPtr.html">ControlSamplerPtr</a> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#ac4b7a3feb005ba629d3972e8824815f0">allocDefaultControlSampler</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">double</span>* <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a21916aee5cb82733348c8d3d86957ec7">getValueAddressAtIndex</a>(<a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *control, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a4d98173138ebc8bd5e2d09afd50af24d">printControl</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *control, std::ostream &amp;out = std::cout) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a7c2d4ecff19582b6c1b6e253571a1305">printSettings</a>(std::ostream &amp;out) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a2ae91f0886e060fe83819618fdf17d2b">setup</a>();</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a1040702ce055bb4472e0781cef6474a7">getSerializationLength</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#adf7d97eb070b55ff9ea16aa5c7032c7a">serialize</a>(<span class="keywordtype">void</span> *serialization, <span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *ctrl) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a50cdc7d5c35c970292708776ebe5ae10">deserialize</a>(<a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *ctrl, <span class="keyword">const</span> <span class="keywordtype">void</span> *serialization) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#aa11b49f311a5f1f79045edb857d6700e">isCompound</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a0289ef7951c86aa50de720253c4b72a9">lock</a>();</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
+<div class="line"><a name="l00277"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1CompoundControlSpace.html#a27e33f86e7f378220485bf137f5f8f50">  277</a></span>&#160;            std::vector&lt;ControlSpacePtr&gt;    <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a27e33f86e7f378220485bf137f5f8f50">components_</a>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
+<div class="line"><a name="l00280"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1CompoundControlSpace.html#ab26054f5b3b19bdbff38de768f7637e6">  280</a></span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                    <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#ab26054f5b3b19bdbff38de768f7637e6">componentCount_</a>;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
+<div class="line"><a name="l00283"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1CompoundControlSpace.html#a10fa7793c1fa25f548a3e72872dfb1df">  283</a></span>&#160;            <span class="keywordtype">bool</span>                            <a class="code" href="classompl_1_1control_1_1CompoundControlSpace.html#a10fa7793c1fa25f548a3e72872dfb1df">locked_</a>;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        };</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_a68756fe8e6fc9d3d2dc48540ee4afdcd"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#a68756fe8e6fc9d3d2dc48540ee4afdcd">ompl::control::ControlSpace::allocControl</a></div><div class="ttdeci">virtual Control * allocControl() const =0</div><div class="ttdoc">Allocate memory for a control. </div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_aa10c48698a0175acdb3e074628ab2f4a"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#aa10c48698a0175acdb3e074628ab2f4a">ompl::control::CompoundControlSpace::getSubspaceCount</a></div><div class="ttdeci">unsigned int getSubspaceCount() const </div><div class="ttdoc">Get the number of control spaces that make up the compound control space. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00152">ControlSpace.cpp:152</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_a6396bb676f387eed3b4dac96ca0de6ee"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#a6396bb676f387eed3b4dac96ca0de6ee">ompl::control::ControlSpace::serialize</a></div><div class="ttdeci">virtual void serialize(void *serialization, const Control *ctrl) const </div><div class="ttdoc">Serializes the given control into the serialization buffer. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00123">ControlSpace.cpp:123</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_a7115057d0cbb11095a88515fce9ee9c2"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#a7115057d0cbb11095a88515fce9ee9c2">ompl::control::ControlSpace::getStateSpace</a></div><div class="ttdeci">const base::StateSpacePtr &amp; getStateSpace() const </div><div class="ttdoc">Return the state space this control space depends on. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00110">ControlSpace.h:110</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_a8998ac5d1f469f7e3113b4e69d8de1cd"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#a8998ac5d1f469f7e3113b4e69d8de1cd">ompl::control::ControlSpace::stateSpace_</a></div><div class="ttdeci">base::StateSpacePtr stateSpace_</div><div class="ttdoc">The state space controls can be applied to. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00184">ControlSpace.h:184</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_a7c6eb7d9584d8baed33075110ea7a7a1"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#a7c6eb7d9584d8baed33075110ea7a7a1">ompl::control::ControlSpace::getName</a></div><div class="ttdeci">const std::string &amp; getName() const </div><div class="ttdoc">Get the name of the control space. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00071">ControlSpace.cpp:71</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_a86a442ebb728b2e7920de2875d479711"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#a86a442ebb728b2e7920de2875d479711">ompl::control::ControlSpace::freeControl</a></div><div class="ttdeci">virtual void freeControl(Control *control) const =0</div><div class="ttdoc">Free the memory of a control. </div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a10fa7793c1fa25f548a3e72872dfb1df"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a10fa7793c1fa25f548a3e72872dfb1df">ompl::control::CompoundControlSpace::locked_</a></div><div class="ttdeci">bool locked_</div><div class="ttdoc">Flag indicating whether adding further components is allowed or not. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00283">ControlSpace.h:283</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_a92ec45728c99bcbc2d8dce127687fa89"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#a92ec45728c99bcbc2d8dce127687fa89">ompl::control::ControlSpace::allocDefaultControlSampler</a></div><div class="ttdeci">virtual ControlSamplerPtr allocDefaultControlSampler() const =0</div><div class="ttdoc">Allocate the default control sampler. </div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a97f6c0cb2ae71155e710fedf64f07c70"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a97f6c0cb2ae71155e710fedf64f07c70">ompl::control::CompoundControlSpace::addSubspace</a></div><div class="ttdeci">virtual void addSubspace(const ControlSpacePtr &amp;component)</div><div class="ttdoc">Adds a control space as a component of the compound control space. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00143">ControlSpace.cpp:143</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1Control_html"><div class="ttname"><a href="classompl_1_1control_1_1Control.html">ompl::control::Control</a></div><div class="ttdoc">Definition of an abstract control. </div><div class="ttdef"><b>Definition:</b> <a href="Control_8h_source.html#l00048">Control.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpacePtr_html"><div class="ttname"><a href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::StateSpace. </div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSamplerPtr_html"><div class="ttname"><a href="classompl_1_1control_1_1ControlSamplerPtr.html">ompl::control::ControlSamplerPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::control::ControlSampler. </div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_a6ef1b68e508e1fad0685bc55c53672c7"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#a6ef1b68e508e1fad0685bc55c53672c7">ompl::control::ControlSpace::deserialize</a></div><div class="ttdeci">virtual void deserialize(Control *ctrl, const void *serialization) const </div><div class="ttdoc">Deserializes a control from the serialization buffer. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00127">ControlSpace.cpp:127</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_adf7d97eb070b55ff9ea16aa5c7032c7a"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#adf7d97eb070b55ff9ea16aa5c7032c7a">ompl::control::CompoundControlSpace::serialize</a></div><div class="ttdeci">virtual void serialize(void *serialization, const Control *ctrl) const </div><div class="ttdoc">Serializes the given control into the serialization buffer. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00291">ControlSpace.cpp:291</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a0289ef7951c86aa50de720253c4b72a9"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a0289ef7951c86aa50de720253c4b72a9">ompl::control::CompoundControlSpace::lock</a></div><div class="ttdeci">void lock()</div><div class="ttdoc">Lock this control space. This means no further control spaces can be added as components. This function can be for instance called from the constructor of a state space that inherits from CompoundControlSpace to prevent the user to add further components. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00232">ControlSpace.cpp:232</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_aed44e8a509283145434ae40fd2a3daee"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#aed44e8a509283145434ae40fd2a3daee">ompl::control::ControlSpace::copyControl</a></div><div class="ttdeci">virtual void copyControl(Control *destination, const Control *source) const =0</div><div class="ttdoc">Copy a control to another. </div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a44c4b6921348a7d7f3fbca5f3a17e1d1"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a44c4b6921348a7d7f3fbca5f3a17e1d1">ompl::control::CompoundControlSpace::getSubspace</a></div><div class="ttdeci">const ControlSpacePtr &amp; getSubspace(const unsigned int index) const </div><div class="ttdoc">Get a specific subspace from the compound control space. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00157">ControlSpace.cpp:157</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a0fd269c24c5e61cea5bbe264a6da4d81"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a0fd269c24c5e61cea5bbe264a6da4d81">ompl::control::CompoundControlSpace::ControlType</a></div><div class="ttdeci">CompoundControl ControlType</div><div class="ttdoc">Define the type of control allocated by this control space. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00201">ControlSpace.h:201</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_ae7138a1a3dd3b2dba3e222538707e15d"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#ae7138a1a3dd3b2dba3e222538707e15d">ompl::control::ControlSpace::setName</a></div><div class="ttdeci">void setName(const std::string &amp;name)</div><div class="ttdoc">Set the name of the control space. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00076">ControlSpace.cpp:76</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_ad47a72cbf62af06147a324c906cf394e"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#ad47a72cbf62af06147a324c906cf394e">ompl::control::ControlSpace::clearControlSamplerAllocator</a></div><div class="ttdeci">void clearControlSamplerAllocator()</div><div class="ttdoc">Clear the control sampler allocator (reset to default) </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00098">ControlSpace.cpp:98</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a8cc713e9a347601569a904e5c5a06953"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a8cc713e9a347601569a904e5c5a06953">ompl::control::CompoundControlSpace::getDimension</a></div><div class="ttdeci">virtual unsigned int getDimension() const </div><div class="ttdoc">Get the dimension of this control space. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00173">ControlSpace.cpp:173</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_aecf151ee04bb4cefac7d3891a7ae1214"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#aecf151ee04bb4cefac7d3891a7ae1214">ompl::control::CompoundControlSpace::CompoundControlSpace</a></div><div class="ttdeci">CompoundControlSpace(const base::StateSpacePtr &amp;stateSpace)</div><div class="ttdoc">Constructor. The corresponding state space needs to be specified. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00204">ControlSpace.h:204</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a3c6113194424af23a42afa6f34954a8b"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a3c6113194424af23a42afa6f34954a8b">ompl::control::CompoundControlSpace::as</a></div><div class="ttdeci">T * as(const unsigned int index) const </div><div class="ttdoc">Cast a component of this instance to a desired type. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00214">ControlSpace.h:214</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a4d98173138ebc8bd5e2d09afd50af24d"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a4d98173138ebc8bd5e2d09afd50af24d">ompl::control::CompoundControlSpace::printControl</a></div><div class="ttdeci">virtual void printControl(const Control *control, std::ostream &amp;out=std::cout) const </div><div class="ttdoc">Print a control to a stream. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00259">ControlSpace.cpp:259</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_ad8842e0ecff583a3ae5b0548ff3f0d4d"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#ad8842e0ecff583a3ae5b0548ff3f0d4d">ompl::control::ControlSpace::printSettings</a></div><div class="ttdeci">virtual void printSettings(std::ostream &amp;out) const </div><div class="ttdoc">Print the settings for this control space to a stream. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00113">ControlSpace.cpp:113</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_af07a7dcaa5f24537f440e8297c077282"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#af07a7dcaa5f24537f440e8297c077282">ompl::control::ControlSpace::getValueAddressAtIndex</a></div><div class="ttdeci">virtual double * getValueAddressAtIndex(Control *control, const unsigned int index) const </div><div class="ttdoc">Many controls contain a number of double values. This function provides a means to get the memory add...</div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00103">ControlSpace.cpp:103</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a27e33f86e7f378220485bf137f5f8f50"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a27e33f86e7f378220485bf137f5f8f50">ompl::control::CompoundControlSpace::components_</a></div><div class="ttdeci">std::vector&lt; ControlSpacePtr &gt; components_</div><div class="ttdoc">The component control spaces that make up the compound control space. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00277">ControlSpace.h:277</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpacePtr_html"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpacePtr.html">ompl::control::ControlSpacePtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::control::ControlSpace. </div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_ad493371248cdfb29afd658994ed9416f"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#ad493371248cdfb29afd658994ed9416f">ompl::control::ControlSpace::as</a></div><div class="ttdeci">T * as()</div><div class="ttdoc">Cast this instance to a desired type. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00077">ControlSpace.h:77</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_aa11b49f311a5f1f79045edb857d6700e"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#aa11b49f311a5f1f79045edb857d6700e">ompl::control::CompoundControlSpace::isCompound</a></div><div class="ttdeci">virtual bool isCompound() const </div><div class="ttdoc">Check if the control space is compound. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00313">ControlSpace.cpp:313</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_a4d9f0a85e62e1b64d0794b63055ad9f2"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#a4d9f0a85e62e1b64d0794b63055ad9f2">ompl::control::ControlSpace::getType</a></div><div class="ttdeci">int getType() const </div><div class="ttdoc">Get the type of the control space. The type can be used to verify whether two space instances are of ...</div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00104">ControlSpace.h:104</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_a1d21669ebe1a4d0d68936ab459af9a1f"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#a1d21669ebe1a4d0d68936ab459af9a1f">ompl::control::ControlSpace::setup</a></div><div class="ttdeci">virtual void setup()</div><div class="ttdoc">Perform final setup steps. This function is automatically called by the SpaceInformation. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00081">ControlSpace.cpp:81</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControl_html"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControl.html">ompl::control::CompoundControl</a></div><div class="ttdoc">Definition of a compound control. </div><div class="ttdef"><b>Definition:</b> <a href="Control_8h_source.html#l00093">Control.h:93</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a788677c2b9ce983580d91e45300147a3"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a788677c2b9ce983580d91e45300147a3">ompl::control::CompoundControlSpace::copyControl</a></div><div class="ttdeci">virtual void copyControl(Control *destination, const Control *source) const </div><div class="ttdoc">Copy a control to another. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00199">ControlSpace.cpp:199</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a1040702ce055bb4472e0781cef6474a7"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a1040702ce055bb4472e0781cef6474a7">ompl::control::CompoundControlSpace::getSerializationLength</a></div><div class="ttdeci">virtual unsigned int getSerializationLength() const </div><div class="ttdoc">Returns the serialization size for a single control in this space. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00283">ControlSpace.cpp:283</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_a81070174fae65611ce0779673c5a60df"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#a81070174fae65611ce0779673c5a60df">ompl::control::ControlSpace::type_</a></div><div class="ttdeci">int type_</div><div class="ttdoc">A type assigned for this control space. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00181">ControlSpace.h:181</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a21916aee5cb82733348c8d3d86957ec7"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a21916aee5cb82733348c8d3d86957ec7">ompl::control::CompoundControlSpace::getValueAddressAtIndex</a></div><div class="ttdeci">virtual double * getValueAddressAtIndex(Control *control, const unsigned int index) const </div><div class="ttdoc">Many controls contain a number of double values. This function provides a means to get the memory add...</div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00237">ControlSpace.cpp:237</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_ac4b7a3feb005ba629d3972e8824815f0"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#ac4b7a3feb005ba629d3972e8824815f0">ompl::control::CompoundControlSpace::allocDefaultControlSampler</a></div><div class="ttdeci">virtual ControlSamplerPtr allocDefaultControlSampler() const </div><div class="ttdoc">Allocate the default control sampler. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00224">ControlSpace.cpp:224</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_ac0db4716c6e243ee303e5273da9e6794"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#ac0db4716c6e243ee303e5273da9e6794">ompl::control::ControlSpace::getDimension</a></div><div class="ttdeci">virtual unsigned int getDimension() const =0</div><div class="ttdoc">Get the dimension of this control space. </div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_ac967d6891fd4e0d5328ff304842288f4"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#ac967d6891fd4e0d5328ff304842288f4">ompl::control::ControlSpace::ControlSpace</a></div><div class="ttdeci">ControlSpace(const base::StateSpacePtr &amp;stateSpace)</div><div class="ttdoc">Construct a control space, given the state space. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00061">ControlSpace.cpp:61</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html">ompl::control::ControlSpace</a></div><div class="ttdoc">A control space representing the space of applicable controls. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00066">ControlSpace.h:66</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a973585257979befcf82c31a8fe33c48e"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a973585257979befcf82c31a8fe33c48e">ompl::control::CompoundControlSpace::equalControls</a></div><div class="ttdeci">virtual bool equalControls(const Control *control1, const Control *control2) const </div><div class="ttdoc">Check if two controls are the same. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00207">ControlSpace.cpp:207</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_afc383c590ef1fe1f69f50102ac7c36ad"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#afc383c590ef1fe1f69f50102ac7c36ad">ompl::control::ControlSpace::getSerializationLength</a></div><div class="ttdeci">virtual unsigned int getSerializationLength() const </div><div class="ttdoc">Returns the serialization size for a single control in this space. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00118">ControlSpace.cpp:118</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_aaefe1e90033adc60ee85bb025efbc620"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#aaefe1e90033adc60ee85bb025efbc620">ompl::control::ControlSpace::as</a></div><div class="ttdeci">const T * as() const </div><div class="ttdoc">Cast this instance to a desired type. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00087">ControlSpace.h:87</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_ab26054f5b3b19bdbff38de768f7637e6"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#ab26054f5b3b19bdbff38de768f7637e6">ompl::control::CompoundControlSpace::componentCount_</a></div><div class="ttdeci">unsigned int componentCount_</div><div class="ttdoc">The number of contained components. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00280">ControlSpace.h:280</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_ab0d214352867b65976297b2f0bc6e57f"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#ab0d214352867b65976297b2f0bc6e57f">ompl::control::ControlSpace::nullControl</a></div><div class="ttdeci">virtual void nullControl(Control *control) const =0</div><div class="ttdoc">Make the control have no effect if it were to be applied to a state for any amount of time...</div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_a3186af8403c734774619fa7383c3b10c"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#a3186af8403c734774619fa7383c3b10c">ompl::control::ControlSpace::printControl</a></div><div class="ttdeci">virtual void printControl(const Control *control, std::ostream &amp;out) const </div><div class="ttdoc">Print a control to a stream. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00108">ControlSpace.cpp:108</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_abc4facfba1fb4f8dcada561f0ff5446d"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#abc4facfba1fb4f8dcada561f0ff5446d">ompl::control::ControlSpace::computeSignature</a></div><div class="ttdeci">void computeSignature(std::vector&lt; int &gt; &amp;signature) const </div><div class="ttdoc">Compute an array of ints that uniquely identifies the structure of the control space. The first element of the signature is the number of integers that follow. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00131">ControlSpace.cpp:131</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_aff9f2582768673ba3c2091c960294115"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#aff9f2582768673ba3c2091c960294115">ompl::control::ControlSpace::setControlSamplerAllocator</a></div><div class="ttdeci">void setControlSamplerAllocator(const ControlSamplerAllocator &amp;csa)</div><div class="ttdoc">Set the sampler allocator to use. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00093">ControlSpace.cpp:93</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_aafc829af78b3a32e549bd6ed8f0bc8b0"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#aafc829af78b3a32e549bd6ed8f0bc8b0">ompl::control::ControlSpace::csa_</a></div><div class="ttdeci">ControlSamplerAllocator csa_</div><div class="ttdoc">An optional control sampler allocator. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00187">ControlSpace.h:187</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html">ompl::control::CompoundControlSpace</a></div><div class="ttdoc">A control space to allow the composition of control spaces. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8h_source.html#l00196">ControlSpace.h:196</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_a2161194b465644e305b6b0ed6eb6a49d"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#a2161194b465644e305b6b0ed6eb6a49d">ompl::control::ControlSpace::isCompound</a></div><div class="ttdeci">virtual bool isCompound() const </div><div class="ttdoc">Check if the control space is compound. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00138">ControlSpace.cpp:138</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a2ae91f0886e060fe83819618fdf17d2b"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a2ae91f0886e060fe83819618fdf17d2b">ompl::control::CompoundControlSpace::setup</a></div><div class="ttdeci">virtual void setup()</div><div class="ttdoc">Perform final setup steps. This function is automatically called by the SpaceInformation. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00276">ControlSpace.cpp:276</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_afb5db1155717cacfbbbd154e29fdd7ad"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#afb5db1155717cacfbbbd154e29fdd7ad">ompl::control::ControlSpace::allocControlSampler</a></div><div class="ttdeci">virtual ControlSamplerPtr allocControlSampler() const </div><div class="ttdoc">Allocate an instance of the control sampler for this space. This sampler will be allocated with the s...</div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00085">ControlSpace.cpp:85</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a50cdc7d5c35c970292708776ebe5ae10"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a50cdc7d5c35c970292708776ebe5ae10">ompl::control::CompoundControlSpace::deserialize</a></div><div class="ttdeci">virtual void deserialize(Control *ctrl, const void *serialization) const </div><div class="ttdoc">Deserializes a control from the serialization buffer. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00302">ControlSpace.cpp:302</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a808ce868a2d0e29d75167377da1c9e87"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a808ce868a2d0e29d75167377da1c9e87">ompl::control::CompoundControlSpace::nullControl</a></div><div class="ttdeci">virtual void nullControl(Control *control) const </div><div class="ttdoc">Make the control have no effect if it were to be applied to a state for any amount of time...</div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00217">ControlSpace.cpp:217</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a5274f56a9751499eaeacb85f3c6130ff"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a5274f56a9751499eaeacb85f3c6130ff">ompl::control::CompoundControlSpace::allocControl</a></div><div class="ttdeci">virtual Control * allocControl() const </div><div class="ttdoc">Allocate memory for a control. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00181">ControlSpace.cpp:181</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a7c2d4ecff19582b6c1b6e253571a1305"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a7c2d4ecff19582b6c1b6e253571a1305">ompl::control::CompoundControlSpace::printSettings</a></div><div class="ttdeci">virtual void printSettings(std::ostream &amp;out) const </div><div class="ttdoc">Print the settings for this control space to a stream. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00268">ControlSpace.cpp:268</a></div></div>
+<div class="ttc" id="Console_8h_html"><div class="ttname"><a href="Console_8h.html">Console.h</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1CompoundControlSpace_html_a28f345b66f692f0320131ebdc67cf3fd"><div class="ttname"><a href="classompl_1_1control_1_1CompoundControlSpace.html#a28f345b66f692f0320131ebdc67cf3fd">ompl::control::CompoundControlSpace::freeControl</a></div><div class="ttdeci">virtual void freeControl(Control *control) const </div><div class="ttdoc">Free the memory of a control. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSpace_8cpp_source.html#l00190">ControlSpace.cpp:190</a></div></div>
+<div class="ttc" id="namespaceompl_1_1control_html_abdb02412125f6d2b9df7724f9c3d1029"><div class="ttname"><a href="namespaceompl_1_1control.html#abdb02412125f6d2b9df7724f9c3d1029">ompl::control::ControlSamplerAllocator</a></div><div class="ttdeci">boost::function&lt; ControlSamplerPtr(const ControlSpace *)&gt; ControlSamplerAllocator</div><div class="ttdoc">Definition of a function that can allocate a control sampler. </div><div class="ttdef"><b>Definition:</b> <a href="ControlSampler_8h_source.html#l00167">ControlSampler.h:167</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpace_html_ad17fe532b56a3ffb3282cdc02b32cee8"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpace.html#ad17fe532b56a3ffb3282cdc02b32cee8">ompl::control::ControlSpace::equalControls</a></div><div class="ttdeci">virtual bool equalControls(const Control *control1, const Control *control2) const =0</div><div class="ttdoc">Check if two controls are the same. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:25 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

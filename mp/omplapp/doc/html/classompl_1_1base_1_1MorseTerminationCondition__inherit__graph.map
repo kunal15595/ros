@@ -1,0 +1,3 @@
+<map id="ompl::base::MorseTerminationCondition" name="ompl::base::MorseTerminationCondition">
+<area shape="rect" id="node2" href="$classompl_1_1base_1_1PlannerTerminationCondition.html" title="Encapsulate a termination condition for a motion planner. Planners will call operator() to decide whe..." alt="" coords="5,6,211,47"/>
+</map>

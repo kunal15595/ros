@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Representing Goals in OMPL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Representing Goals in OMPL </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1>Setting the Goal</h1>
+<p>The most general representation of a goal is <a class="el" href="classompl_1_1base_1_1Goal.html" title="Abstract definition of goals. ">ompl::base::Goal</a>. This class contains a pure virtual method, <a class="el" href="classompl_1_1base_1_1Goal.html#a02ba4ba487714cd4e8f67c9d4164d0ec" title="Return true if the state satisfies the goal constraints. ">ompl::base::Goal::isSatisfied()</a>, which takes a state as argument and returns a boolean indicating whether that state is a goal or not. No other information about the goal is given. This function can include arbitrary code deciding what is in the goal region and what is not.</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>MyArbitraryGoal : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1Goal.html">ompl::base::Goal</a></div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    MyArbitraryGoal(<span class="keyword">const</span> SpaceInformationPtr &amp;si) : ompl::base::Goal(si)</div>
+<div class="line">    {</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1Goal.html#a02ba4ba487714cd4e8f67c9d4164d0ec">isSatisfied</a>(<span class="keyword">const</span> State *st)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">    </span>{</div>
+<div class="line">        <span class="comment">// perform any operations and return a truth value</span></div>
+<div class="line">    }</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>While this is a very general definition, it is often the case more information is known about the goal. This information is helpful for planners and the user should specify this information when available. Here are types of information planners can use:</p>
+<ul>
+<li>If an approximation of distance to the goal is available, not necessarily a metric, this information can be given to the planner by also providing an implementation of <a class="el" href="classompl_1_1base_1_1Goal.html#a02ba4ba487714cd4e8f67c9d4164d0ec" title="Return true if the state satisfies the goal constraints. ">ompl::base::Goal::isSatisfied()</a> (the version that takes a <a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">ompl::base::State</a>* and a double* as arguments). By default, the implementation of this function simply sets the distance to the maximum value a double can hold.</li>
+</ul>
+<div class="fragment"><div class="line"><span class="keyword">class </span>MyArbitraryGoal : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1Goal.html">ompl::base::Goal</a></div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    MyArbitraryGoal(<span class="keyword">const</span> SpaceInformationPtr &amp;si) : ompl::base::Goal(si)</div>
+<div class="line">    {</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1Goal.html#a02ba4ba487714cd4e8f67c9d4164d0ec">isSatisfied</a>(<span class="keyword">const</span> State *st)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">        </span>{</div>
+<div class="line">        perform_any_operations();</div>
+<div class="line">        <span class="keywordflow">return</span> truth value;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1Goal.html#a02ba4ba487714cd4e8f67c9d4164d0ec">isSatisfied</a>(<span class="keyword">const</span> State *st, <span class="keywordtype">double</span> *distance)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">        </span>{</div>
+<div class="line">        <span class="keywordtype">bool</span> result = <a class="code" href="classompl_1_1base_1_1Goal.html#a02ba4ba487714cd4e8f67c9d4164d0ec">isSatisfied</a>(st);</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">if</span> (distance != NULL)</div>
+<div class="line">        {</div>
+<div class="line">            <span class="keywordflow">if</span> (state_clearly_out_of_goal_region(st))</div>
+<div class="line">                    {</div>
+<div class="line">                *distance = std::numeric_limits&lt;double&gt;::max();</div>
+<div class="line">            }</div>
+<div class="line">            <span class="keywordflow">else</span></div>
+<div class="line">            {</div>
+<div class="line">                <span class="keywordflow">if</span> (state_near_goal(st))</div>
+<div class="line">                    *distance = 1;</div>
+<div class="line">                <span class="keywordflow">else</span></div>
+<div class="line">                    *distance = 100;</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">return</span> result;</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+</div><!-- fragment --><ul>
+<li>It is often the case that when distance to goal approximations are available, the condition for a state being in the goal region is that that distance is less than a specified threshold. If this is indeed the case, <a class="el" href="classompl_1_1base_1_1GoalRegion.html" title="Definition of a goal region. ">ompl::base::GoalRegion</a> (which inherits from <a class="el" href="classompl_1_1base_1_1Goal.html" title="Abstract definition of goals. ">ompl::base::Goal</a>) should be used. The additional function <a class="el" href="classompl_1_1base_1_1GoalRegion.html#a4c7a9ab388d762c76711790af0ba53ea" title="Compute the distance to the goal (heuristic). This function is the one used in computing the distance...">ompl::base::GoalRegion::distanceGoal()</a> needs to be implemented. However, all the versions of <a class="el" href="classompl_1_1base_1_1Goal.html#a02ba4ba487714cd4e8f67c9d4164d0ec" title="Return true if the state satisfies the goal constraints. ">ompl::base::Goal::isSatisfied()</a> are implemented in terms of this new function and a specified threshold (which is equal to the machine epsilon, by default).</li>
+</ul>
+<div class="fragment"><div class="line"><span class="keyword">class </span>MyGoalRegion : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1GoalRegion.html">ompl::base::GoalRegion</a></div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    MyGoalRegion(<span class="keyword">const</span> SpaceInformationPtr &amp;si) : ompl::base::GoalRegion(si)</div>
+<div class="line">    {</div>
+<div class="line">        <a class="code" href="classompl_1_1base_1_1GoalRegion.html#a66faea81767a0772924082816b88e63f">setThreshold</a>(0.1);</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code" href="classompl_1_1base_1_1GoalRegion.html#a4c7a9ab388d762c76711790af0ba53ea">distanceGoal</a>(<span class="keyword">const</span> State *st)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">        </span>{</div>
+<div class="line">        <span class="comment">// perform any operations and return a double indicating the distance to the goal</span></div>
+<div class="line">    }</div>
+<div class="line">};</div>
+</div><!-- fragment --><ul>
+<li><p class="startli">For bi-directional planners to work, they need to know states in the goal region. If a means to sample the goal region is available, <a class="el" href="classompl_1_1base_1_1GoalSampleableRegion.html" title="Abstract definition of a goal region that can be sampled. ">ompl::base::GoalSampleableRegion</a> should be used. This class, which inherits from <a class="el" href="classompl_1_1base_1_1GoalRegion.html" title="Definition of a goal region. ">ompl::base::GoalRegion</a>, defines two additional functions: <a class="el" href="classompl_1_1base_1_1GoalSampleableRegion.html#a11c9d2c4d9d5ddbeb8c30e531d1efc5f" title="Sample a state in the goal region. ">ompl::base::GoalSampleableRegion::sampleGoal()</a> and <a class="el" href="classompl_1_1base_1_1GoalSampleableRegion.html#ae0625cd4b7646d600244b79da9101f0d" title="Return the maximum number of samples that can be asked for before repeating. ">ompl::base::GoalSampleableRegion::maxSampleCount()</a>. These functions allow the planners to sample goals and to tell how many different samples can be obtained in the goal region at most, respectively. Keep in mind that <a class="el" href="classompl_1_1base_1_1GoalRegion.html#a4c7a9ab388d762c76711790af0ba53ea" title="Compute the distance to the goal (heuristic). This function is the one used in computing the distance...">ompl::base::GoalRegion::distanceGoal()</a> still needs to be implemented.</p>
+<p class="startli">At this point, it is interesting to remark that bi-directional planners do not need to check whether a state is in the goal region, since they start with such states, so calls to <a class="el" href="classompl_1_1base_1_1Goal.html#a02ba4ba487714cd4e8f67c9d4164d0ec" title="Return true if the state satisfies the goal constraints. ">ompl::base::Goal::isSatisfied()</a> are not made. Instead, when the trees are connected, a call is made to <a class="el" href="classompl_1_1base_1_1Goal.html#a5d5285908b7e09d61577279f35e47175" title="Since there can be multiple starting states (and multiple goal states) it is possible certain pairs a...">ompl::base::Goal::isStartGoalPairValid()</a>. This function, which by default always returns true, tells the planner whether a particular start state should be considered as forming a valid path if connected to a particular goal state. Typically, changing this function is not needed. There are a few implementations of <a class="el" href="classompl_1_1base_1_1GoalSampleableRegion.html" title="Abstract definition of a goal region that can be sampled. ">ompl::base::GoalSampleableRegion</a> available, for convenience:</p>
+<ul>
+<li><a class="el" href="classompl_1_1base_1_1GoalState.html" title="Definition of a goal state. ">ompl::base::GoalState</a> (inherits from <a class="el" href="classompl_1_1base_1_1GoalSampleableRegion.html" title="Abstract definition of a goal region that can be sampled. ">ompl::base::GoalSampleableRegion</a>) stores one state as the goal. Sampling the goal state will always return this state and the distance to the goal is implemented by calling <a class="el" href="classompl_1_1base_1_1StateSpace.html#acb781becdcdf8770d61c218632c71bd5" title="Computes distance between two states. This function satisfies the properties of a metric if isMetricS...">ompl::base::StateSpace::distance()</a> between the stored goal state and the state passed to <a class="el" href="classompl_1_1base_1_1GoalRegion.html#a4c7a9ab388d762c76711790af0ba53ea" title="Compute the distance to the goal (heuristic). This function is the one used in computing the distance...">ompl::base::GoalRegion::distanceGoal()</a>.</li>
+<li><a class="el" href="classompl_1_1base_1_1GoalStates.html" title="Definition of a set of goal states. ">ompl::base::GoalStates</a> (inherits from <a class="el" href="classompl_1_1base_1_1GoalSampleableRegion.html" title="Abstract definition of a goal region that can be sampled. ">ompl::base::GoalSampleableRegion</a>) is a generalization of <a class="el" href="classompl_1_1base_1_1GoalState.html" title="Definition of a goal state. ">ompl::base::GoalState</a>. An array of goal states is stored. Sampling goals will cycle through the stored states. The implementation <a class="el" href="classompl_1_1base_1_1GoalRegion.html#a4c7a9ab388d762c76711790af0ba53ea" title="Compute the distance to the goal (heuristic). This function is the one used in computing the distance...">ompl::base::GoalRegion::distanceGoal()</a> will return the minimum distance between the state passed as argument and the stored states. This computation is performed in linear time (in terms of number of stored states), so it may become costly for a large number of states.</li>
+<li><a class="el" href="classompl_1_1base_1_1GoalLazySamples.html" title="Definition of a goal region that can be sampled, but the sampling process can be slow. This class allows sampling the happen in a separate thread, and the number of goals may increase, as the planner is running, in a thread-safe manner. ">ompl::base::GoalLazySamples</a> (inherits from <a class="el" href="classompl_1_1base_1_1GoalStates.html" title="Definition of a set of goal states. ">ompl::base::GoalStates</a>). In case sampling of states is a time consuming process, this version of a goal allows the sampling process to take place in a separate thread, while the planner is running. As new states are found, they are added to the array of stored states. This is useful for example when performing inverse kinematics for an arm. The inverse kinematics computations can be performed while the planner is running. As more states are found, they become available to the planner.</li>
+</ul>
+</li>
+</ul>
+<h1>Using the Goal Region</h1>
+<p>Planners cast the specified goal representation into the minimal representation they can use. For uni-directional planners, <a class="el" href="classompl_1_1base_1_1Goal.html" title="Abstract definition of goals. ">ompl::base::Goal</a> is fine. For bi-directional planners however, this needs to be <a class="el" href="classompl_1_1base_1_1GoalSampleableRegion.html" title="Abstract definition of a goal region that can be sampled. ">ompl::base::GoalSampleableRegion</a>.</p>
+<p>If the planner can use the goal specification, it will compute a motion plan. If successful, the found path is stored in the goal region. Flags indicating whether the solution was approximate are also set. The user can query all the information the planner has set using accessors from <a class="el" href="classompl_1_1base_1_1Goal.html" title="Abstract definition of goals. ">ompl::base::Goal</a>.</p>
+<p>Planners that include the notion of path length, and attempt to find solution paths that are shorter, also make use of a third version of <a class="el" href="classompl_1_1base_1_1Goal.html#a02ba4ba487714cd4e8f67c9d4164d0ec" title="Return true if the state satisfies the goal constraints. ">ompl::base::Goal::isSatisfied()</a>, the one that takes a path length as argument as well. This version decides whether a maximum path length is met. The user can set this maximum length by calling ompl::base::Goal::setMaximumPathLength(). </p>
+</div></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<map id="ompl::base::StateSampler" name="ompl::base::StateSampler">
+<area shape="rect" id="node3" href="$classompl_1_1base_1_1CompoundStateSampler.html" title="Definition of a compound state sampler. This is useful to construct samplers for compound states..." alt="" coords="378,5,566,46"/>
+<area shape="rect" id="node4" href="$classompl_1_1base_1_1DiscreteStateSampler.html" title="State space sampler for discrete states. " alt="" coords="385,70,559,111"/>
+<area shape="rect" id="node5" href="$classompl_1_1base_1_1PrecomputedStateSampler.html" title="State space sampler for discrete states. " alt="" coords="371,135,573,177"/>
+<area shape="rect" id="node6" href="$classompl_1_1base_1_1RealVectorStateSampler.html" title="State sampler for the Rn state space. " alt="" coords="377,201,567,242"/>
+<area shape="rect" id="node7" href="$classompl_1_1base_1_1SO2StateSampler.html" title="State space sampler for SO(2) " alt="" coords="373,267,571,293"/>
+<area shape="rect" id="node8" href="$classompl_1_1base_1_1SO3StateSampler.html" title="State space sampler for SO(3), using quaternion representation. " alt="" coords="373,317,571,344"/>
+<area shape="rect" id="node9" href="$classompl_1_1base_1_1SubspaceStateSampler.html" title="Construct a sampler that samples only within a subspace of the space. " alt="" coords="381,369,563,410"/>
+<area shape="rect" id="node10" href="$classompl_1_1base_1_1TimeStateSampler.html" title="State space sampler for time. " alt="" coords="371,435,573,461"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="ompl::control::MorseControlSpace" name="ompl::control::MorseControlSpace">
+<area shape="rect" id="node2" href="$classompl_1_1control_1_1RealVectorControlSpace.html" title="A control space representing Rn. " alt="" coords="12,155,183,197"/>
+<area shape="rect" id="node3" href="$classompl_1_1control_1_1ControlSpace.html" title="A control space representing the space of applicable controls. " alt="" coords="5,80,189,107"/>
+</map>

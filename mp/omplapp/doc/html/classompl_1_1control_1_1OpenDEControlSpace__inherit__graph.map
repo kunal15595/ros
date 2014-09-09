@@ -1,0 +1,4 @@
+<map id="ompl::control::OpenDEControlSpace" name="ompl::control::OpenDEControlSpace">
+<area shape="rect" id="node2" href="$classompl_1_1control_1_1RealVectorControlSpace.html" title="A control space representing Rn. " alt="" coords="19,155,189,197"/>
+<area shape="rect" id="node3" href="$classompl_1_1control_1_1ControlSpace.html" title="A control space representing the space of applicable controls. " alt="" coords="12,80,196,107"/>
+</map>

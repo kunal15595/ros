@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::base::SpaceInformation Class Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1base.html">base</a></li><li class="navelem"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html">SpaceInformation</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classompl_1_1base_1_1SpaceInformation-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::base::SpaceInformation Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>The base class for space information. This contains all the information about the space planning is done in. <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a6e8c41f946c3c04d126983e145404ad4" title="Perform additional setup tasks (run once, before use). If state validity checking resolution has not ...">setup()</a> needs to be called as well, before use.  
+ <a href="classompl_1_1base_1_1SpaceInformation.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="base_2SpaceInformation_8h_source.html">SpaceInformation.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ompl::base::SpaceInformation:</div>
+<div class="dyncontent">
+<div class="center"><img src="classompl_1_1base_1_1SpaceInformation__inherit__graph.png" border="0" usemap="#ompl_1_1base_1_1SpaceInformation_inherit__map" alt="Inheritance graph"/></div>
+<map name="ompl_1_1base_1_1SpaceInformation_inherit__map" id="ompl_1_1base_1_1SpaceInformation_inherit__map">
+<area shape="rect" id="node3" href="classompl_1_1control_1_1SpaceInformation.html" title="Space information containing necessary information for planning with controls. setup() needs to be ca..." alt="" coords="17,155,223,181"/><area shape="rect" id="node4" href="classompl_1_1control_1_1LTLSpaceInformation.html" title="ompl::control::LTLSpaceInformation" alt="" coords="5,229,235,256"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a60718797ea47fe7ccd4a5c14acaee510"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a60718797ea47fe7ccd4a5c14acaee510"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a60718797ea47fe7ccd4a5c14acaee510">SpaceInformation</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;space)</td></tr>
+<tr class="memdesc:a60718797ea47fe7ccd4a5c14acaee510"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Sets the instance of the state space to plan with. <br/></td></tr>
+<tr class="separator:a60718797ea47fe7ccd4a5c14acaee510"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af79b66aea243ec09f9f0db949efbe86b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af79b66aea243ec09f9f0db949efbe86b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#af79b66aea243ec09f9f0db949efbe86b">isValid</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state) const </td></tr>
+<tr class="memdesc:af79b66aea243ec09f9f0db949efbe86b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a given state is valid or not. <br/></td></tr>
+<tr class="separator:af79b66aea243ec09f9f0db949efbe86b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98f62ab975aad535efe4cd33df580449"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98f62ab975aad535efe4cd33df580449"></a>
+const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a98f62ab975aad535efe4cd33df580449">getStateSpace</a> () const </td></tr>
+<tr class="memdesc:a98f62ab975aad535efe4cd33df580449"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the instance of the used state space. <br/></td></tr>
+<tr class="separator:a98f62ab975aad535efe4cd33df580449"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e29db2962731f48c98e6bb05ffc5915"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e29db2962731f48c98e6bb05ffc5915"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a6e29db2962731f48c98e6bb05ffc5915">getStateDimension</a> () const </td></tr>
+<tr class="memdesc:a6e29db2962731f48c98e6bb05ffc5915"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the dimension of the state space. <br/></td></tr>
+<tr class="separator:a6e29db2962731f48c98e6bb05ffc5915"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Topology-specific state operations (as in the state space)</div></td></tr>
+<tr class="memitem:a6a58af29d996a5fa0b05f58e3493af7f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a58af29d996a5fa0b05f58e3493af7f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a6a58af29d996a5fa0b05f58e3493af7f">equalStates</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state1, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state2) const </td></tr>
+<tr class="memdesc:a6a58af29d996a5fa0b05f58e3493af7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if two states are the same. <br/></td></tr>
+<tr class="separator:a6a58af29d996a5fa0b05f58e3493af7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad76b863efa604add17cae43b4ebcb0b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad76b863efa604add17cae43b4ebcb0b9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ad76b863efa604add17cae43b4ebcb0b9">satisfiesBounds</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state) const </td></tr>
+<tr class="memdesc:ad76b863efa604add17cae43b4ebcb0b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a state is inside the bounding box. <br/></td></tr>
+<tr class="separator:ad76b863efa604add17cae43b4ebcb0b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8cadda9547f74d4193c3168a3b2d34f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8cadda9547f74d4193c3168a3b2d34f"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ac8cadda9547f74d4193c3168a3b2d34f">distance</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state1, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state2) const </td></tr>
+<tr class="memdesc:ac8cadda9547f74d4193c3168a3b2d34f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the distance between two states. <br/></td></tr>
+<tr class="separator:ac8cadda9547f74d4193c3168a3b2d34f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae59039c648f01e6bb3bf16de03b91574"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae59039c648f01e6bb3bf16de03b91574"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ae59039c648f01e6bb3bf16de03b91574">enforceBounds</a> (<a class="el" href="classompl_1_1base_1_1State.html">State</a> *state) const </td></tr>
+<tr class="memdesc:ae59039c648f01e6bb3bf16de03b91574"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bring the state within the bounds of the state space. <br/></td></tr>
+<tr class="separator:ae59039c648f01e6bb3bf16de03b91574"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0113dd07660e15d54a8f8c05562633d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0113dd07660e15d54a8f8c05562633d6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a0113dd07660e15d54a8f8c05562633d6">printState</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state, std::ostream &amp;out=std::cout) const </td></tr>
+<tr class="memdesc:a0113dd07660e15d54a8f8c05562633d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a state to a stream. <br/></td></tr>
+<tr class="separator:a0113dd07660e15d54a8f8c05562633d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Configuration of state validity checking</div></td></tr>
+<tr class="memitem:a0449ec0893e02aca2bdfc63323b624e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0449ec0893e02aca2bdfc63323b624e5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a0449ec0893e02aca2bdfc63323b624e5">setStateValidityChecker</a> (const <a class="el" href="classompl_1_1base_1_1StateValidityCheckerPtr.html">StateValidityCheckerPtr</a> &amp;svc)</td></tr>
+<tr class="memdesc:a0449ec0893e02aca2bdfc63323b624e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the instance of the state validity checker to use. Parallel implementations of planners assume this validity checker is thread safe. <br/></td></tr>
+<tr class="separator:a0449ec0893e02aca2bdfc63323b624e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac60c96cd6f8450bf8cd1a3a08ed1dee6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac60c96cd6f8450bf8cd1a3a08ed1dee6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ac60c96cd6f8450bf8cd1a3a08ed1dee6">setStateValidityChecker</a> (const <a class="el" href="namespaceompl_1_1base.html#a53fa8a46a28674eaa17899b2026f7b75">StateValidityCheckerFn</a> &amp;svc)</td></tr>
+<tr class="memdesc:ac60c96cd6f8450bf8cd1a3a08ed1dee6"><td class="mdescLeft">&#160;</td><td class="mdescRight">If no state validity checking class is specified (<a class="el" href="classompl_1_1base_1_1StateValidityChecker.html" title="Abstract definition for a class checking the validity of states. The implementation of this class mus...">StateValidityChecker</a>), a boost function can be specified instead. This version however incurs a small additional overhead when calling the function, since there is one more level of indirection. <br/></td></tr>
+<tr class="separator:ac60c96cd6f8450bf8cd1a3a08ed1dee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac22c95373f72e7082954c82a8575651a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac22c95373f72e7082954c82a8575651a"></a>
+const <a class="el" href="classompl_1_1base_1_1StateValidityCheckerPtr.html">StateValidityCheckerPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ac22c95373f72e7082954c82a8575651a">getStateValidityChecker</a> () const </td></tr>
+<tr class="memdesc:ac22c95373f72e7082954c82a8575651a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the instance of the used state validity checker. <br/></td></tr>
+<tr class="separator:ac22c95373f72e7082954c82a8575651a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69e58548f91db3e30ac7f41c87459279"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69e58548f91db3e30ac7f41c87459279"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a69e58548f91db3e30ac7f41c87459279">setMotionValidator</a> (const <a class="el" href="classompl_1_1base_1_1MotionValidatorPtr.html">MotionValidatorPtr</a> &amp;mv)</td></tr>
+<tr class="memdesc:a69e58548f91db3e30ac7f41c87459279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the instance of the motion validity checker to use. Parallel implementations of planners assume this validity checker is thread safe. <br/></td></tr>
+<tr class="separator:a69e58548f91db3e30ac7f41c87459279"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7288d3118ad4a47df20164b5c27525f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7288d3118ad4a47df20164b5c27525f3"></a>
+const <a class="el" href="classompl_1_1base_1_1MotionValidatorPtr.html">MotionValidatorPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a7288d3118ad4a47df20164b5c27525f3">getMotionValidator</a> () const </td></tr>
+<tr class="memdesc:a7288d3118ad4a47df20164b5c27525f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the instance of the used state validity checker. <br/></td></tr>
+<tr class="separator:a7288d3118ad4a47df20164b5c27525f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bcd47fd9b7cf54b086d2122646736bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bcd47fd9b7cf54b086d2122646736bf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a2bcd47fd9b7cf54b086d2122646736bf">setStateValidityCheckingResolution</a> (double resolution)</td></tr>
+<tr class="memdesc:a2bcd47fd9b7cf54b086d2122646736bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the resolution at which state validity needs to be verified in order for a motion between two states to be considered valid. This value is specified as a fraction of the space's extent. This call is only applicable if a <a class="el" href="classompl_1_1base_1_1DiscreteMotionValidator.html" title="A motion validator that only uses the state validity checker. Motions are checked for validity at a s...">ompl::base::DiscreteMotionValidator</a> is used. See <a class="el" href="stateValidation.html">State Validity Checking</a>. <br/></td></tr>
+<tr class="separator:a2bcd47fd9b7cf54b086d2122646736bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa52b116d51d5cec1ba8b8a9528bce661"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa52b116d51d5cec1ba8b8a9528bce661"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#aa52b116d51d5cec1ba8b8a9528bce661">getStateValidityCheckingResolution</a> () const </td></tr>
+<tr class="memdesc:aa52b116d51d5cec1ba8b8a9528bce661"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the resolution at which state validity is verified. This call is only applicable if a <a class="el" href="classompl_1_1base_1_1DiscreteMotionValidator.html" title="A motion validator that only uses the state validity checker. Motions are checked for validity at a s...">ompl::base::DiscreteMotionValidator</a> is used. See <a class="el" href="stateValidation.html">State Validity Checking</a>. <br/></td></tr>
+<tr class="separator:aa52b116d51d5cec1ba8b8a9528bce661"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">State memory management</div></td></tr>
+<tr class="memitem:a4f60741f726ebf33cdc512b622f60472"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f60741f726ebf33cdc512b622f60472"></a>
+<a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a4f60741f726ebf33cdc512b622f60472">allocState</a> () const </td></tr>
+<tr class="memdesc:a4f60741f726ebf33cdc512b622f60472"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate memory for a state. <br/></td></tr>
+<tr class="separator:a4f60741f726ebf33cdc512b622f60472"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae94a80be6d748f0d241beeab28c86957"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae94a80be6d748f0d241beeab28c86957"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ae94a80be6d748f0d241beeab28c86957">allocStates</a> (std::vector&lt; <a class="el" href="classompl_1_1base_1_1State.html">State</a> * &gt; &amp;states) const </td></tr>
+<tr class="memdesc:ae94a80be6d748f0d241beeab28c86957"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate memory for each element of the array <em>states</em>. <br/></td></tr>
+<tr class="separator:ae94a80be6d748f0d241beeab28c86957"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78dff42e6a76b87a9a4d19680fb82e31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a78dff42e6a76b87a9a4d19680fb82e31"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a78dff42e6a76b87a9a4d19680fb82e31">freeState</a> (<a class="el" href="classompl_1_1base_1_1State.html">State</a> *state) const </td></tr>
+<tr class="memdesc:a78dff42e6a76b87a9a4d19680fb82e31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the memory of a state. <br/></td></tr>
+<tr class="separator:a78dff42e6a76b87a9a4d19680fb82e31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a720c113d34500de5929e3fb908641079"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a720c113d34500de5929e3fb908641079"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a720c113d34500de5929e3fb908641079">freeStates</a> (std::vector&lt; <a class="el" href="classompl_1_1base_1_1State.html">State</a> * &gt; &amp;states) const </td></tr>
+<tr class="memdesc:a720c113d34500de5929e3fb908641079"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the memory of an array of states. <br/></td></tr>
+<tr class="separator:a720c113d34500de5929e3fb908641079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05e4c93df272965efa3459295f70bc0f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05e4c93df272965efa3459295f70bc0f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a05e4c93df272965efa3459295f70bc0f">copyState</a> (<a class="el" href="classompl_1_1base_1_1State.html">State</a> *destination, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *source) const </td></tr>
+<tr class="memdesc:a05e4c93df272965efa3459295f70bc0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy a state to another. <br/></td></tr>
+<tr class="separator:a05e4c93df272965efa3459295f70bc0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6558a06162464c7f06a78601c5ad8230"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6558a06162464c7f06a78601c5ad8230"></a>
+<a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a6558a06162464c7f06a78601c5ad8230">cloneState</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *source) const </td></tr>
+<tr class="memdesc:a6558a06162464c7f06a78601c5ad8230"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clone a state. <br/></td></tr>
+<tr class="separator:a6558a06162464c7f06a78601c5ad8230"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Sampling of valid states</div></td></tr>
+<tr class="memitem:a59497470af9e436021a1335745a9eb43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a59497470af9e436021a1335745a9eb43"></a>
+<a class="el" href="classompl_1_1base_1_1StateSamplerPtr.html">StateSamplerPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a59497470af9e436021a1335745a9eb43">allocStateSampler</a> () const </td></tr>
+<tr class="memdesc:a59497470af9e436021a1335745a9eb43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate a uniform state sampler for the state space. <br/></td></tr>
+<tr class="separator:a59497470af9e436021a1335745a9eb43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5eee88ea27c24102f1a0dd6df01fa92f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5eee88ea27c24102f1a0dd6df01fa92f"></a>
+<a class="el" href="classompl_1_1base_1_1ValidStateSamplerPtr.html">ValidStateSamplerPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a5eee88ea27c24102f1a0dd6df01fa92f">allocValidStateSampler</a> () const </td></tr>
+<tr class="memdesc:a5eee88ea27c24102f1a0dd6df01fa92f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate an instance of a valid state sampler for this space. If <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ae6391771fc74984a3266f986cfe07780" title="Set the allocator to use for a valid state sampler. This replaces the default uniform valid state sam...">setValidStateSamplerAllocator()</a> was previously called, the specified allocator is used to produce the state sampler. Otherwise, a <a class="el" href="classompl_1_1base_1_1UniformValidStateSampler.html" title="A state sampler that only samples valid states, uniformly. ">ompl::base::UniformValidStateSampler()</a> is allocated. <br/></td></tr>
+<tr class="separator:a5eee88ea27c24102f1a0dd6df01fa92f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6391771fc74984a3266f986cfe07780"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae6391771fc74984a3266f986cfe07780"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ae6391771fc74984a3266f986cfe07780">setValidStateSamplerAllocator</a> (const <a class="el" href="namespaceompl_1_1base.html#a169b699697e871752924a93e8254e3f4">ValidStateSamplerAllocator</a> &amp;vssa)</td></tr>
+<tr class="memdesc:ae6391771fc74984a3266f986cfe07780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the allocator to use for a valid state sampler. This replaces the default uniform valid state sampler. This call can be made at any time, but it should not be changed while <a class="el" href="classompl_1_1base_1_1Planner.html#aea8c56d18a0326b10fd111872ebd674a" title="Function that can solve the motion planning problem. This function can be called multiple times on th...">ompl::base::Planner::solve()</a> is executing. <br/></td></tr>
+<tr class="separator:ae6391771fc74984a3266f986cfe07780"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae805bde7621a7fd6c9022f6890645bd4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae805bde7621a7fd6c9022f6890645bd4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ae805bde7621a7fd6c9022f6890645bd4">clearValidStateSamplerAllocator</a> ()</td></tr>
+<tr class="memdesc:ae805bde7621a7fd6c9022f6890645bd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the allocator used for the valid state sampler. This will revert to using the uniform valid state sampler (the default). <br/></td></tr>
+<tr class="separator:ae805bde7621a7fd6c9022f6890645bd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Primitives typically used by motion planners</div></td></tr>
+<tr class="memitem:a27ad1fbf04a8afd345f45064cd4359b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27ad1fbf04a8afd345f45064cd4359b9"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a27ad1fbf04a8afd345f45064cd4359b9">getMaximumExtent</a> () const </td></tr>
+<tr class="memdesc:a27ad1fbf04a8afd345f45064cd4359b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum extent of the space we are planning in. This is the maximum distance that could be reported between any two given states. <br/></td></tr>
+<tr class="separator:a27ad1fbf04a8afd345f45064cd4359b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af936d24f2adf320e2158c855a0dad0af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#af936d24f2adf320e2158c855a0dad0af">searchValidNearby</a> (<a class="el" href="classompl_1_1base_1_1State.html">State</a> *state, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *near, double <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ac8cadda9547f74d4193c3168a3b2d34f">distance</a>, unsigned int attempts) const </td></tr>
+<tr class="memdesc:af936d24f2adf320e2158c855a0dad0af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find a valid state near a given one. If the given state is valid, it will be returned itself. The two passed state pointers need not point to different memory. Returns true on success.  <a href="#af936d24f2adf320e2158c855a0dad0af">More...</a><br/></td></tr>
+<tr class="separator:af936d24f2adf320e2158c855a0dad0af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4d572f3f831e3cfb96bd387b05798cf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ac4d572f3f831e3cfb96bd387b05798cf">searchValidNearby</a> (const <a class="el" href="classompl_1_1base_1_1ValidStateSamplerPtr.html">ValidStateSamplerPtr</a> &amp;sampler, <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *near, double <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ac8cadda9547f74d4193c3168a3b2d34f">distance</a>) const </td></tr>
+<tr class="memdesc:ac4d572f3f831e3cfb96bd387b05798cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find a valid state near a given one. If the given state is valid, it will be returned itself. The two passed state pointers need not point to different memory. Returns true on success.  <a href="#ac4d572f3f831e3cfb96bd387b05798cf">More...</a><br/></td></tr>
+<tr class="separator:ac4d572f3f831e3cfb96bd387b05798cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67f3734521dd86233648b0c9c3c80e74"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a67f3734521dd86233648b0c9c3c80e74">randomBounceMotion</a> (const <a class="el" href="classompl_1_1base_1_1StateSamplerPtr.html">StateSamplerPtr</a> &amp;sss, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *start, unsigned int steps, std::vector&lt; <a class="el" href="classompl_1_1base_1_1State.html">State</a> * &gt; &amp;states, bool alloc) const </td></tr>
+<tr class="memdesc:a67f3734521dd86233648b0c9c3c80e74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produce a valid motion starting at <em>start</em> by randomly bouncing off of invalid states. The start state <em>start</em> is not included in the computed motion (<em>states</em>). Returns the number of elements written to <em>states</em> (less or equal to <em>steps</em>).  <a href="#a67f3734521dd86233648b0c9c3c80e74">More...</a><br/></td></tr>
+<tr class="separator:a67f3734521dd86233648b0c9c3c80e74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6047b893546bab139139104a0a7b756e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a6047b893546bab139139104a0a7b756e">checkMotion</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *s1, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *s2, std::pair&lt; <a class="el" href="classompl_1_1base_1_1State.html">State</a> *, double &gt; &amp;lastValid) const </td></tr>
+<tr class="memdesc:a6047b893546bab139139104a0a7b756e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Incrementally check if the path between two motions is valid. Also compute the last state that was valid and the time of that state. The time is used to parametrize the motion from s1 to s2, s1 being at t = 0 and s2 being at t = 1. This function assumes s1 is valid.  <a href="#a6047b893546bab139139104a0a7b756e">More...</a><br/></td></tr>
+<tr class="separator:a6047b893546bab139139104a0a7b756e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a434b795993022c3742eb22f6c1db605d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a434b795993022c3742eb22f6c1db605d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a434b795993022c3742eb22f6c1db605d">checkMotion</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *s1, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *s2) const </td></tr>
+<tr class="memdesc:a434b795993022c3742eb22f6c1db605d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the path between two states (from <em>s1</em> to <em>s2</em>) is valid, using subdivision. This function assumes <em>s1</em> is valid. <br/></td></tr>
+<tr class="separator:a434b795993022c3742eb22f6c1db605d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6db453dae47c734046689c11fe7173f1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a6db453dae47c734046689c11fe7173f1">checkMotion</a> (const std::vector&lt; <a class="el" href="classompl_1_1base_1_1State.html">State</a> * &gt; &amp;states, unsigned int count, unsigned int &amp;firstInvalidStateIndex) const </td></tr>
+<tr class="memdesc:a6db453dae47c734046689c11fe7173f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Incrementally check if a sequence of states is valid. Given a vector of states, this routine only checks the first <em>count</em> elements and marks the index of the first invalid state.  <a href="#a6db453dae47c734046689c11fe7173f1">More...</a><br/></td></tr>
+<tr class="separator:a6db453dae47c734046689c11fe7173f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bdcc0c19a133e5d324af2c536c3779d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bdcc0c19a133e5d324af2c536c3779d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a7bdcc0c19a133e5d324af2c536c3779d">checkMotion</a> (const std::vector&lt; <a class="el" href="classompl_1_1base_1_1State.html">State</a> * &gt; &amp;states, unsigned int count) const </td></tr>
+<tr class="memdesc:a7bdcc0c19a133e5d324af2c536c3779d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a sequence of states is valid using subdivision. <br/></td></tr>
+<tr class="separator:a7bdcc0c19a133e5d324af2c536c3779d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e5a6cdbe7c636d8e60ed7833c573668"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a3e5a6cdbe7c636d8e60ed7833c573668">getMotionStates</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *s1, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *s2, std::vector&lt; <a class="el" href="classompl_1_1base_1_1State.html">State</a> * &gt; &amp;states, unsigned int count, bool endpoints, bool alloc) const </td></tr>
+<tr class="memdesc:a3e5a6cdbe7c636d8e60ed7833c573668"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get <em>count</em> states that make up a motion between <em>s1</em> and <em>s2</em>. Returns the number of states that were added to <em>states</em>. If <em>states.size()</em> &gt;= count or <em>alloc</em> is true, the returned value is equal to <em>count</em> (or <em>count</em> + 2, if <em>endpoints</em> is true). Otherwise, fewer states can be returned.  <a href="#a3e5a6cdbe7c636d8e60ed7833c573668">More...</a><br/></td></tr>
+<tr class="separator:a3e5a6cdbe7c636d8e60ed7833c573668"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
+Routines for inferring information about the state space</h2></td></tr>
+<tr class="memitem:ab7d8d572b76a5899b6c3816a544abe7a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab7d8d572b76a5899b6c3816a544abe7a"></a>
+<a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ab7d8d572b76a5899b6c3816a544abe7a">stateSpace_</a></td></tr>
+<tr class="memdesc:ab7d8d572b76a5899b6c3816a544abe7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The state space planning is to be performed in. <br/></td></tr>
+<tr class="separator:ab7d8d572b76a5899b6c3816a544abe7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03cab04f748eb6637fb5a088f21cead9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03cab04f748eb6637fb5a088f21cead9"></a>
+<a class="el" href="classompl_1_1base_1_1StateValidityCheckerPtr.html">StateValidityCheckerPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a03cab04f748eb6637fb5a088f21cead9">stateValidityChecker_</a></td></tr>
+<tr class="memdesc:a03cab04f748eb6637fb5a088f21cead9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The instance of the state validity checker used for determining the validity of states in the planning process. <br/></td></tr>
+<tr class="separator:a03cab04f748eb6637fb5a088f21cead9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace9276cca898e91739b7e8b0b2daafb1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace9276cca898e91739b7e8b0b2daafb1"></a>
+<a class="el" href="classompl_1_1base_1_1MotionValidatorPtr.html">MotionValidatorPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ace9276cca898e91739b7e8b0b2daafb1">motionValidator_</a></td></tr>
+<tr class="memdesc:ace9276cca898e91739b7e8b0b2daafb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The instance of the motion validator to use when determining the validity of motions in the planning process. <br/></td></tr>
+<tr class="separator:ace9276cca898e91739b7e8b0b2daafb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5dd22573e611e150d15af2081dd26c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af5dd22573e611e150d15af2081dd26c8"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#af5dd22573e611e150d15af2081dd26c8">setup_</a></td></tr>
+<tr class="memdesc:af5dd22573e611e150d15af2081dd26c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating whether <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a6e8c41f946c3c04d126983e145404ad4" title="Perform additional setup tasks (run once, before use). If state validity checking resolution has not ...">setup()</a> has been called on this instance. <br/></td></tr>
+<tr class="separator:af5dd22573e611e150d15af2081dd26c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad20bb9ec674edd4d4dbb2d13b2d89abd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad20bb9ec674edd4d4dbb2d13b2d89abd"></a>
+<a class="el" href="namespaceompl_1_1base.html#a169b699697e871752924a93e8254e3f4">ValidStateSamplerAllocator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ad20bb9ec674edd4d4dbb2d13b2d89abd">vssa_</a></td></tr>
+<tr class="memdesc:ad20bb9ec674edd4d4dbb2d13b2d89abd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The optional valid state sampler allocator. <br/></td></tr>
+<tr class="separator:ad20bb9ec674edd4d4dbb2d13b2d89abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9dd30fdbe4e702930f465d73f692427"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9dd30fdbe4e702930f465d73f692427"></a>
+<a class="el" href="classompl_1_1base_1_1ParamSet.html">ParamSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#aa9dd30fdbe4e702930f465d73f692427">params_</a></td></tr>
+<tr class="memdesc:aa9dd30fdbe4e702930f465d73f692427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combined parameters for the contained classes. <br/></td></tr>
+<tr class="separator:aa9dd30fdbe4e702930f465d73f692427"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84daee3700b856630c676b37536c9787"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a84daee3700b856630c676b37536c9787"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a84daee3700b856630c676b37536c9787">probabilityOfValidState</a> (unsigned int attempts) const </td></tr>
+<tr class="memdesc:a84daee3700b856630c676b37536c9787"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estimate probability of sampling a valid state. <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a6e8c41f946c3c04d126983e145404ad4" title="Perform additional setup tasks (run once, before use). If state validity checking resolution has not ...">setup()</a> is assumed to have been called. <br/></td></tr>
+<tr class="separator:a84daee3700b856630c676b37536c9787"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae83e285ab400971f1e5e6d171a83eb6c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae83e285ab400971f1e5e6d171a83eb6c"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ae83e285ab400971f1e5e6d171a83eb6c">averageValidMotionLength</a> (unsigned int attempts) const </td></tr>
+<tr class="memdesc:ae83e285ab400971f1e5e6d171a83eb6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estimate the length of a valid motion. <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a6e8c41f946c3c04d126983e145404ad4" title="Perform additional setup tasks (run once, before use). If state validity checking resolution has not ...">setup()</a> is assumed to have been called. <br/></td></tr>
+<tr class="separator:ae83e285ab400971f1e5e6d171a83eb6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a040fb4bf1798f14919c169603b3d4a68"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a040fb4bf1798f14919c169603b3d4a68"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a040fb4bf1798f14919c169603b3d4a68">samplesPerSecond</a> (double &amp;uniform, double &amp;near, double &amp;gaussian, unsigned int attempts) const </td></tr>
+<tr class="memdesc:a040fb4bf1798f14919c169603b3d4a68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estimate the number of samples that can be drawn per second, using the sampler returned by <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a59497470af9e436021a1335745a9eb43" title="Allocate a uniform state sampler for the state space. ">allocStateSampler()</a> <br/></td></tr>
+<tr class="separator:a040fb4bf1798f14919c169603b3d4a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9887f6b2810e5d3befa9a7b886b5b4dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9887f6b2810e5d3befa9a7b886b5b4dd"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a9887f6b2810e5d3befa9a7b886b5b4dd">printSettings</a> (std::ostream &amp;out=std::cout) const </td></tr>
+<tr class="memdesc:a9887f6b2810e5d3befa9a7b886b5b4dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print information about the current instance of the state space. <br/></td></tr>
+<tr class="separator:a9887f6b2810e5d3befa9a7b886b5b4dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaeaf7d8730ba3c1ae6b428be87a098c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abaeaf7d8730ba3c1ae6b428be87a098c"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#abaeaf7d8730ba3c1ae6b428be87a098c">printProperties</a> (std::ostream &amp;out=std::cout) const </td></tr>
+<tr class="memdesc:abaeaf7d8730ba3c1ae6b428be87a098c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print properties of the current instance of the state space. <br/></td></tr>
+<tr class="separator:abaeaf7d8730ba3c1ae6b428be87a098c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a879fb1ffcac0bf54aab292f2b933f881"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a879fb1ffcac0bf54aab292f2b933f881"></a>
+<a class="el" href="classompl_1_1base_1_1ParamSet.html">ParamSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a879fb1ffcac0bf54aab292f2b933f881">params</a> ()</td></tr>
+<tr class="memdesc:a879fb1ffcac0bf54aab292f2b933f881"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the combined parameters for the classes that the space information manages. <br/></td></tr>
+<tr class="separator:a879fb1ffcac0bf54aab292f2b933f881"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad15ec9be87db75d3c3db3869a9510e52"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad15ec9be87db75d3c3db3869a9510e52"></a>
+const <a class="el" href="classompl_1_1base_1_1ParamSet.html">ParamSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#ad15ec9be87db75d3c3db3869a9510e52">params</a> () const </td></tr>
+<tr class="memdesc:ad15ec9be87db75d3c3db3869a9510e52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the combined parameters for the classes that the space information manages. <br/></td></tr>
+<tr class="separator:ad15ec9be87db75d3c3db3869a9510e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e8c41f946c3c04d126983e145404ad4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e8c41f946c3c04d126983e145404ad4"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a6e8c41f946c3c04d126983e145404ad4">setup</a> ()</td></tr>
+<tr class="memdesc:a6e8c41f946c3c04d126983e145404ad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform additional setup tasks (run once, before use). If state validity checking resolution has not been set, estimateMaxResolution() is called to estimate it. <br/></td></tr>
+<tr class="separator:a6e8c41f946c3c04d126983e145404ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e492b244e339a9bb0e8a20df855bb57"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e492b244e339a9bb0e8a20df855bb57"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a8e492b244e339a9bb0e8a20df855bb57">isSetup</a> () const </td></tr>
+<tr class="memdesc:a8e492b244e339a9bb0e8a20df855bb57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if setup was called. <br/></td></tr>
+<tr class="separator:a8e492b244e339a9bb0e8a20df855bb57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d0c51561f5372ade7720a7e76d8546f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1d0c51561f5372ade7720a7e76d8546f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a1d0c51561f5372ade7720a7e76d8546f">setDefaultMotionValidator</a> ()</td></tr>
+<tr class="memdesc:a1d0c51561f5372ade7720a7e76d8546f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set default motion validator for the state space. <br/></td></tr>
+<tr class="separator:a1d0c51561f5372ade7720a7e76d8546f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The base class for space information. This contains all the information about the space planning is done in. <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a6e8c41f946c3c04d126983e145404ad4" title="Perform additional setup tasks (run once, before use). If state validity checking resolution has not ...">setup()</a> needs to be called as well, before use. </p>
+
+<p>Definition at line <a class="el" href="base_2SpaceInformation_8h_source.html#l00086">86</a> of file <a class="el" href="base_2SpaceInformation_8h_source.html">SpaceInformation.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a6047b893546bab139139104a0a7b756e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ompl::base::SpaceInformation::checkMotion </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::pair&lt; <a class="el" href="classompl_1_1base_1_1State.html">State</a> *, double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lastValid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Incrementally check if the path between two motions is valid. Also compute the last state that was valid and the time of that state. The time is used to parametrize the motion from s1 to s2, s1 being at t = 0 and s2 being at t = 1. This function assumes s1 is valid. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s1</td><td>start state of the motion to be checked (assumed to be valid) </td></tr>
+    <tr><td class="paramname">s2</td><td>final state of the motion to be checked </td></tr>
+    <tr><td class="paramname">lastValid</td><td>first: storage for the last valid state (may be NULL); this need not be different from <em>s1</em> or <em>s2</em>. second: the time (between 0 and 1) of the last valid state, on the motion from <em>s1</em> to <em>s2</em> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="base_2SpaceInformation_8h_source.html#l00326">326</a> of file <a class="el" href="base_2SpaceInformation_8h_source.html">SpaceInformation.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6db453dae47c734046689c11fe7173f1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ompl::base::SpaceInformation::checkMotion </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="classompl_1_1base_1_1State.html">State</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>states</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int &amp;&#160;</td>
+          <td class="paramname"><em>firstInvalidStateIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Incrementally check if a sequence of states is valid. Given a vector of states, this routine only checks the first <em>count</em> elements and marks the index of the first invalid state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">states</td><td>the array of states to be checked </td></tr>
+    <tr><td class="paramname">count</td><td>the number of states to be checked in the array (0 to <em>count</em>) </td></tr>
+    <tr><td class="paramname">firstInvalidStateIndex</td><td>location to store the first invalid state index. Unmodified if the function returns true </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="base_2src_2SpaceInformation_8cpp_source.html#l00270">270</a> of file <a class="el" href="base_2src_2SpaceInformation_8cpp_source.html">SpaceInformation.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3e5a6cdbe7c636d8e60ed7833c573668"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int ompl::base::SpaceInformation::getMotionStates </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classompl_1_1base_1_1State.html">State</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>states</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>endpoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>alloc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get <em>count</em> states that make up a motion between <em>s1</em> and <em>s2</em>. Returns the number of states that were added to <em>states</em>. If <em>states.size()</em> &gt;= count or <em>alloc</em> is true, the returned value is equal to <em>count</em> (or <em>count</em> + 2, if <em>endpoints</em> is true). Otherwise, fewer states can be returned. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s1</td><td>the start state of the considered motion </td></tr>
+    <tr><td class="paramname">s2</td><td>the end state of the considered motion </td></tr>
+    <tr><td class="paramname">states</td><td>the computed set of states along the specified motion </td></tr>
+    <tr><td class="paramname">count</td><td>the number of intermediate states to compute </td></tr>
+    <tr><td class="paramname">endpoints</td><td>flag indicating whether <em>s1</em> and <em>s2</em> are to be included in states </td></tr>
+    <tr><td class="paramname">alloc</td><td>flag indicating whether memory is to be allocated automatically </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="base_2src_2SpaceInformation_8cpp_source.html#l00198">198</a> of file <a class="el" href="base_2src_2SpaceInformation_8cpp_source.html">SpaceInformation.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a67f3734521dd86233648b0c9c3c80e74"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int ompl::base::SpaceInformation::randomBounceMotion </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1StateSamplerPtr.html">StateSamplerPtr</a> &amp;&#160;</td>
+          <td class="paramname"><em>sss</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>steps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classompl_1_1base_1_1State.html">State</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>states</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>alloc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Produce a valid motion starting at <em>start</em> by randomly bouncing off of invalid states. The start state <em>start</em> is not included in the computed motion (<em>states</em>). Returns the number of elements written to <em>states</em> (less or equal to <em>steps</em>). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sss</td><td>the state space sampler to use </td></tr>
+    <tr><td class="paramname">start</td><td>the state at which to start bouncing </td></tr>
+    <tr><td class="paramname">steps</td><td>the number of bouncing steps to take </td></tr>
+    <tr><td class="paramname">states</td><td>the location at which generated states will be stored </td></tr>
+    <tr><td class="paramname">alloc</td><td>flag indicating whether memory should be allocated for <em>states</em> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="base_2src_2SpaceInformation_8cpp_source.html#l00133">133</a> of file <a class="el" href="base_2src_2SpaceInformation_8cpp_source.html">SpaceInformation.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af936d24f2adf320e2158c855a0dad0af"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ompl::base::SpaceInformation::searchValidNearby </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>near</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>attempts</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Find a valid state near a given one. If the given state is valid, it will be returned itself. The two passed state pointers need not point to different memory. Returns true on success. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>the location at which to store the valid state, if one is found. This location may be modified even if no valid state is found. </td></tr>
+    <tr><td class="paramname">near</td><td>a state that may be invalid near which we would like to find a valid state </td></tr>
+    <tr><td class="paramname">distance</td><td>the maximum allowed distance between <em>state</em> and <em>near</em> </td></tr>
+    <tr><td class="paramname">attempts</td><td>the algorithm works by sampling states near state <em>near</em>. This parameter defines the maximum number of sampling attempts </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="base_2src_2SpaceInformation_8cpp_source.html#l00181">181</a> of file <a class="el" href="base_2src_2SpaceInformation_8cpp_source.html">SpaceInformation.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac4d572f3f831e3cfb96bd387b05798cf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ompl::base::SpaceInformation::searchValidNearby </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1ValidStateSamplerPtr.html">ValidStateSamplerPtr</a> &amp;&#160;</td>
+          <td class="paramname"><em>sampler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>near</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Find a valid state near a given one. If the given state is valid, it will be returned itself. The two passed state pointers need not point to different memory. Returns true on success. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sampler</td><td>the valid state sampler to use when attemting to find a valid sample. </td></tr>
+    <tr><td class="paramname">state</td><td>the location at which to store the valid state, if one is found. This location may be modified even if no valid state is found. </td></tr>
+    <tr><td class="paramname">near</td><td>a state that may be invalid near which we would like to find a valid state </td></tr>
+    <tr><td class="paramname">distance</td><td>the maximum allowed distance between <em>state</em> and <em>near</em> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="base_2src_2SpaceInformation_8cpp_source.html#l00159">159</a> of file <a class="el" href="base_2src_2SpaceInformation_8cpp_source.html">SpaceInformation.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>ompl/src/ompl/base/<a class="el" href="base_2SpaceInformation_8h_source.html">SpaceInformation.h</a></li>
+<li>ompl/src/ompl/base/src/<a class="el" href="base_2src_2SpaceInformation_8cpp_source.html">SpaceInformation.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:27 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

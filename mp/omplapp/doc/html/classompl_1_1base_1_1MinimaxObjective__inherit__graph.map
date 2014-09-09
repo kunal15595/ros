@@ -1,0 +1,4 @@
+<map id="ompl::base::MinimaxObjective" name="ompl::base::MinimaxObjective">
+<area shape="rect" id="node4" href="$classompl_1_1base_1_1MaximizeMinClearanceObjective.html" title="Objective for attempting to maximize the minimum clearance along a path. " alt="" coords="5,246,235,287"/>
+<area shape="rect" id="node2" href="$classompl_1_1base_1_1OptimizationObjective.html" title="Abstract definition of optimization objectives. " alt="" coords="37,81,203,122"/>
+</map>

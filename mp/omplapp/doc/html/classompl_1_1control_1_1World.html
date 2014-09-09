@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::control::World Class Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1control.html">control</a></li><li class="navelem"><a class="el" href="classompl_1_1control_1_1World.html">World</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="classompl_1_1control_1_1World-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::control::World Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>A class to represent an assignment of boolean values to propositions. A <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a> can be partially restrictive, i.e., some propositions do not have to be assigned a value, in which case it can take on any value. Our notion of a <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a> is similar to a set of truth assignments in propositional logic.  
+ <a href="classompl_1_1control_1_1World.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="World_8h_source.html">World.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a4fff35692311bf030af2fdd52132c2f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4fff35692311bf030af2fdd52132c2f5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1World.html#a4fff35692311bf030af2fdd52132c2f5">World</a> (unsigned int <a class="el" href="classompl_1_1control_1_1World.html#a65ab4eee14d8b6c201fddf80f60f051b">numProps</a>)</td></tr>
+<tr class="memdesc:a4fff35692311bf030af2fdd52132c2f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a world with a given number of propositions. <br/></td></tr>
+<tr class="separator:a4fff35692311bf030af2fdd52132c2f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f539be75924034c48e5395cd1d788f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f539be75924034c48e5395cd1d788f4"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1World.html#a7f539be75924034c48e5395cd1d788f4">operator[]</a> (unsigned int i) const </td></tr>
+<tr class="memdesc:a7f539be75924034c48e5395cd1d788f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the boolean value of a given proposition in this <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a>. Reports an error if the proposition has not set in this <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a>. <br/></td></tr>
+<tr class="separator:a7f539be75924034c48e5395cd1d788f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8a6972f16a760dde67aaf87cac8374d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8a6972f16a760dde67aaf87cac8374d"></a>
+bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1World.html#ac8a6972f16a760dde67aaf87cac8374d">operator[]</a> (unsigned int i)</td></tr>
+<tr class="memdesc:ac8a6972f16a760dde67aaf87cac8374d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the boolean value of a given proposition in this <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a>. Creates a boolean value for the proposition if one does not already exist. <br/></td></tr>
+<tr class="separator:ac8a6972f16a760dde67aaf87cac8374d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65ab4eee14d8b6c201fddf80f60f051b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65ab4eee14d8b6c201fddf80f60f051b"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1World.html#a65ab4eee14d8b6c201fddf80f60f051b">numProps</a> (void) const </td></tr>
+<tr class="memdesc:a65ab4eee14d8b6c201fddf80f60f051b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of propositions declared for this <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a>. Not all of the propositions have necessarily been set. <br/></td></tr>
+<tr class="separator:a65ab4eee14d8b6c201fddf80f60f051b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1decd9751571be2eabcf942e354d2ec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1decd9751571be2eabcf942e354d2ec"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1World.html#ac1decd9751571be2eabcf942e354d2ec">satisfies</a> (const <a class="el" href="classompl_1_1control_1_1World.html">World</a> &amp;w) const </td></tr>
+<tr class="memdesc:ac1decd9751571be2eabcf942e354d2ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a> propositionally satisfies a given <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a> w. Specifically, returns true iff for every proposition p assigned in w, p is assigned in this <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a> and this[p] == w[p]. <br/></td></tr>
+<tr class="separator:ac1decd9751571be2eabcf942e354d2ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9eed0fd5b4737d49176483839440697"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9eed0fd5b4737d49176483839440697"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1World.html#ac9eed0fd5b4737d49176483839440697">formula</a> (void) const </td></tr>
+<tr class="memdesc:ac9eed0fd5b4737d49176483839440697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a formatted string representation of this <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a>, as a conjunction of literals. <br/></td></tr>
+<tr class="separator:ac9eed0fd5b4737d49176483839440697"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adad5e22f925abef296f99b797f2f9d41"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adad5e22f925abef296f99b797f2f9d41"></a>
+const boost::unordered_map<br class="typebreak"/>
+&lt; unsigned int, bool &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1World.html#adad5e22f925abef296f99b797f2f9d41">props</a> (void) const </td></tr>
+<tr class="memdesc:adad5e22f925abef296f99b797f2f9d41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns this <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a>'s underlying proposition-to-boolean assignment map. <br/></td></tr>
+<tr class="separator:adad5e22f925abef296f99b797f2f9d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdc4ce23fd4bcc2a6c7e8f9efda65f1f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abdc4ce23fd4bcc2a6c7e8f9efda65f1f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1World.html#abdc4ce23fd4bcc2a6c7e8f9efda65f1f">operator==</a> (const <a class="el" href="classompl_1_1control_1_1World.html">World</a> &amp;w) const </td></tr>
+<tr class="memdesc:abdc4ce23fd4bcc2a6c7e8f9efda65f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a> is equivalent to a given <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a>, by comparing their truth assignment maps. <br/></td></tr>
+<tr class="separator:abdc4ce23fd4bcc2a6c7e8f9efda65f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7399efbcde563187f424fa9661b4763"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac7399efbcde563187f424fa9661b4763"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1World.html#ac7399efbcde563187f424fa9661b4763">clear</a> (void)</td></tr>
+<tr class="memdesc:ac7399efbcde563187f424fa9661b4763"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears this world's truth assignment. <br/></td></tr>
+<tr class="separator:ac7399efbcde563187f424fa9661b4763"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a336c06e9f77b0281b5c5c03e06d1bb35"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a336c06e9f77b0281b5c5c03e06d1bb35"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>numProps_</b></td></tr>
+<tr class="separator:a336c06e9f77b0281b5c5c03e06d1bb35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa57a25478c1999de664f8e5575c7829c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa57a25478c1999de664f8e5575c7829c"></a>
+boost::unordered_map&lt; unsigned <br class="typebreak"/>
+int, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>props_</b></td></tr>
+<tr class="separator:aa57a25478c1999de664f8e5575c7829c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A class to represent an assignment of boolean values to propositions. A <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a> can be partially restrictive, i.e., some propositions do not have to be assigned a value, in which case it can take on any value. Our notion of a <a class="el" href="classompl_1_1control_1_1World.html" title="A class to represent an assignment of boolean values to propositions. A World can be partially restri...">World</a> is similar to a set of truth assignments in propositional logic. </p>
+
+<p>Definition at line <a class="el" href="World_8h_source.html#l00051">51</a> of file <a class="el" href="World_8h_source.html">World.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>ompl/src/ompl/control/planners/ltl/<a class="el" href="World_8h_source.html">World.h</a></li>
+<li>ompl/src/ompl/control/planners/ltl/src/<a class="el" href="World_8cpp_source.html">World.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:28 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

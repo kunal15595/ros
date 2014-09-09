@@ -1,0 +1,4 @@
+<map id="ompl::NearestNeighborsLinear&lt; _T &gt;" name="ompl::NearestNeighborsLinear&lt; _T &gt;">
+<area shape="rect" id="node3" href="$classompl_1_1NearestNeighborsSqrtApprox.html" title="A nearest neighbors datastructure that uses linear search. The linear search is done over sqrt(n) ele..." alt="" coords="11,187,197,229"/>
+<area shape="rect" id="node2" href="$classompl_1_1NearestNeighbors.html" title="Abstract representation of a container that can perform nearest neighbors queries. " alt="" coords="23,6,185,47"/>
+</map>

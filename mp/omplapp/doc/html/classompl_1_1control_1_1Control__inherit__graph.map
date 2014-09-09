@@ -1,0 +1,5 @@
+<map id="ompl::control::Control" name="ompl::control::Control">
+<area shape="rect" id="node2" href="$classompl_1_1control_1_1CompoundControl.html" title="Definition of a compound control. " alt="" coords="200,5,411,32"/>
+<area shape="rect" id="node3" href="$classompl_1_1control_1_1DiscreteControlSpace_1_1ControlType.html" title="The definition of a discrete control. " alt="" coords="207,57,403,98"/>
+<area shape="rect" id="node4" href="$classompl_1_1control_1_1RealVectorControlSpace_1_1ControlType.html" title="The definition of a control in Rn " alt="" coords="215,122,395,163"/>
+</map>

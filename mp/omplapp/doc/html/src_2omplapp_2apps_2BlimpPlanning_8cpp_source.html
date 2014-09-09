@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>src/omplapp/apps/BlimpPlanning.cpp Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e2f3b614a327e4d13db899b0ebe1ed20.html">omplapp</a></li><li class="navelem"><a class="el" href="dir_a786739a157a6e0a83b86dac1f951081.html">apps</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">BlimpPlanning.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Rice University Software Distribution License</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* Copyright (c) 2010, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* All Rights Reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* For a full description see the file named LICENSE.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/* Author: Mark Moll */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;omplapp/apps/BlimpPlanning.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;&gt;</a> ompl::app::BlimpPlanning::getDefaultStartState(<span class="keywordtype">void</span>)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    base::ScopedState&lt;base::SE3StateSpace&gt; s(getGeometricComponentStateSpace());</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    aiVector3D c = <a class="code" href="classompl_1_1app_1_1RigidBodyGeometry.html#adadc73a93be62e9e593b5ae07538c126">getRobotCenter</a>(0);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    s-&gt;setXYZ(c.x, c.y, c.z);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    s-&gt;rotation().setIdentity();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">return</span> getFullStateFromGeometricComponent(s);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;&gt;</a> ompl::app::BlimpPlanning::getFullStateFromGeometricComponent(</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">const</span> base::ScopedState&lt;&gt; &amp;state)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1StateSpace.html#aa995357fedb73879bc7f0bb946db76d1">base::SO3StateSpace::StateType</a>&amp; rot = state-&gt;<a class="code" href="classompl_1_1base_1_1State.html#a04177157c4ea22d1bb2d7f344162bf31">as</a>&lt;<a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#af12997f7c56f7263fb78be7444b838e5">base::SE3StateSpace::StateType</a>&gt;()-&gt;rotation();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">double</span> norm = sqrt(rot.z * rot.z + rot.w * rot.w);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    base::ScopedState&lt;&gt; s(getStateSpace());</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classompl_1_1base_1_1StateSpace.html#aa995357fedb73879bc7f0bb946db76d1">base::SO3StateSpace::StateType</a>&amp; rot2 =</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        s-&gt;<a class="code" href="classompl_1_1base_1_1State.html#a04177157c4ea22d1bb2d7f344162bf31">as</a>&lt;<a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#af12997f7c56f7263fb78be7444b838e5">base::CompoundStateSpace::StateType</a>&gt;()-&gt;as&lt;base::SE3StateSpace::StateType&gt;(0)-&gt;rotation();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    s = 0.0;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">// set x,y,z</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;3; ++i)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        s[i] = state[i];</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// set heading</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    rot2.z = rot.z / norm;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    rot2.w = rot.w / norm;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">return</span> s;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> ompl::app::BlimpPlanning::postPropagate(<span class="keyword">const</span> base::State* <span class="comment">/*state*/</span>, <span class="keyword">const</span> control::Control* <span class="comment">/*control*/</span>, <span class="keyword">const</span> <span class="keywordtype">double</span> <span class="comment">/*duration*/</span>, base::State *result)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// Constrain orientation of the blimp about the z axis.</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#af12997f7c56f7263fb78be7444b838e5">base::CompoundStateSpace::StateType</a>&amp; s = *result-&gt;<a class="code" href="classompl_1_1base_1_1CompoundState.html#a195febd2ecd923df78eec842ddf9de6d">as</a>&lt;<a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#af12997f7c56f7263fb78be7444b838e5">base::CompoundStateSpace::StateType</a>&gt;();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#af12997f7c56f7263fb78be7444b838e5">base::SE3StateSpace::StateType</a>&amp; pose = *s.<a class="code" href="classompl_1_1base_1_1CompoundState.html#a195febd2ecd923df78eec842ddf9de6d">as</a>&lt;<a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#af12997f7c56f7263fb78be7444b838e5">base::SE3StateSpace::StateType</a>&gt;(0);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    pose.rotation().setAxisAngle(0,0,1, pose.rotation().x);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">// Enforce velocity bounds</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    getStateSpace()-&gt;<a class="code" href="classompl_1_1base_1_1CompoundState.html#a195febd2ecd923df78eec842ddf9de6d">as</a>&lt;base::CompoundStateSpace&gt;()-&gt;getSubspace(1)-&gt;enforceBounds(s[1]);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// Enforce steering bounds</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    getStateSpace()-&gt;as&lt;base::CompoundStateSpace&gt;()-&gt;getSubspace(2)-&gt;enforceBounds(s[2]);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> ompl::app::BlimpPlanning::ode(<span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1ODESolver.html#a89dbf06c71fe9fa377dfa12184f1b597">control::ODESolver::StateType</a>&amp; q, <span class="keyword">const</span> control::Control *ctrl, <a class="code" href="classompl_1_1control_1_1ODESolver.html#a89dbf06c71fe9fa377dfa12184f1b597">control::ODESolver::StateType</a>&amp; qdot)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// Retrieving control inputs</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> *u = ctrl-&gt;as&lt;control::RealVectorControlSpace::ControlType&gt;()-&gt;values;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// zero out qdot</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    qdot.resize (q.size (), 0);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    qdot[0] = q[7];</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    qdot[1] = q[8];</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    qdot[2] = q[9];</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    qdot[3] = q[10];</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    qdot[7] = u[0] * cos(q[3]);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    qdot[8] = u[0] * sin(q[3]);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    qdot[9] = u[1];</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    qdot[10] = u[2];</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> ompl::app::BlimpPlanning::constructStateSpace(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    base::StateSpacePtr stateSpace = base::StateSpacePtr(<span class="keyword">new</span> base::CompoundStateSpace());</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    stateSpace-&gt;as&lt;base::CompoundStateSpace&gt;()-&gt;addSubspace(base::StateSpacePtr(<span class="keyword">new</span> base::SE3StateSpace()), 1.);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    stateSpace-&gt;as&lt;base::CompoundStateSpace&gt;()-&gt;addSubspace(base::StateSpacePtr(<span class="keyword">new</span> base::RealVectorStateSpace(3)), .3);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    stateSpace-&gt;as&lt;base::CompoundStateSpace&gt;()-&gt;addSubspace(base::StateSpacePtr(<span class="keyword">new</span> base::RealVectorStateSpace(1)), .3);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    stateSpace-&gt;as&lt;base::CompoundStateSpace&gt;()-&gt;lock();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> stateSpace;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keywordtype">void</span> ompl::app::BlimpPlanning::setDefaultBounds()</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    base::RealVectorBounds velbounds(3), omegabounds(1), controlbounds(3);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    velbounds.setLow(-1);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    velbounds.setHigh(1);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    getStateSpace()-&gt;as&lt;base::CompoundStateSpace&gt;()-&gt;as&lt;base::RealVectorStateSpace&gt;(1)-&gt;setBounds(velbounds);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    omegabounds.setLow(-.2);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    omegabounds.setHigh(.2);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    getStateSpace()-&gt;as&lt;base::CompoundStateSpace&gt;()-&gt;as&lt;base::RealVectorStateSpace&gt;(2)-&gt;setBounds(omegabounds);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    controlbounds.setLow(-1);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    controlbounds.setHigh(1);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    controlbounds.setLow(2,-.3);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    controlbounds.setHigh(2,.3);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    getControlSpace()-&gt;as&lt;control::RealVectorControlSpace&gt;()-&gt;setBounds(controlbounds);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="ttc" id="classompl_1_1base_1_1ScopedState_html"><div class="ttname"><a href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState</a></div><div class="ttdoc">Definition of a scoped state. </div><div class="ttdef"><b>Definition:</b> <a href="ScopedState_8h_source.html#l00056">ScopedState.h:56</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpacePtr_html"><div class="ttname"><a href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::StateSpace. </div></div>
+<div class="ttc" id="classompl_1_1base_1_1CompoundStateSpace_html_af12997f7c56f7263fb78be7444b838e5"><div class="ttname"><a href="classompl_1_1base_1_1CompoundStateSpace.html#af12997f7c56f7263fb78be7444b838e5">ompl::base::CompoundStateSpace::StateType</a></div><div class="ttdeci">CompoundState StateType</div><div class="ttdoc">Define the type of state allocated by this state space. </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8h_source.html#l00546">StateSpace.h:546</a></div></div>
+<div class="ttc" id="classompl_1_1app_1_1RigidBodyGeometry_html_adadc73a93be62e9e593b5ae07538c126"><div class="ttname"><a href="classompl_1_1app_1_1RigidBodyGeometry.html#adadc73a93be62e9e593b5ae07538c126">ompl::app::RigidBodyGeometry::getRobotCenter</a></div><div class="ttdeci">aiVector3D getRobotCenter(unsigned int robotIndex) const </div><div class="ttdoc">Get the robot&#39;s center (average of all the vertices of all its parts) </div><div class="ttdef"><b>Definition:</b> <a href="RigidBodyGeometry_8cpp_source.html#l00152">RigidBodyGeometry.cpp:152</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpace_html_aa995357fedb73879bc7f0bb946db76d1"><div class="ttname"><a href="classompl_1_1base_1_1StateSpace.html#aa995357fedb73879bc7f0bb946db76d1">ompl::base::StateSpace::StateType</a></div><div class="ttdeci">State StateType</div><div class="ttdoc">Define the type of state allocated by this space. </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8h_source.html#l00078">StateSpace.h:78</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ODESolver_html_a89dbf06c71fe9fa377dfa12184f1b597"><div class="ttname"><a href="classompl_1_1control_1_1ODESolver.html#a89dbf06c71fe9fa377dfa12184f1b597">ompl::control::ODESolver::StateType</a></div><div class="ttdeci">std::vector&lt; double &gt; StateType</div><div class="ttdoc">Portable data type for the state values. </div><div class="ttdef"><b>Definition:</b> <a href="ODESolver_8h_source.html#l00084">ODESolver.h:84</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html_a04177157c4ea22d1bb2d7f344162bf31"><div class="ttname"><a href="classompl_1_1base_1_1State.html#a04177157c4ea22d1bb2d7f344162bf31">ompl::base::State::as</a></div><div class="ttdeci">const T * as() const </div><div class="ttdoc">Cast this instance to a desired type. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00074">State.h:74</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1CompoundState_html_a195febd2ecd923df78eec842ddf9de6d"><div class="ttname"><a href="classompl_1_1base_1_1CompoundState.html#a195febd2ecd923df78eec842ddf9de6d">ompl::base::CompoundState::as</a></div><div class="ttdeci">const T * as(const unsigned int index) const </div><div class="ttdoc">Cast a component of this instance to a desired type. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00109">State.h:109</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

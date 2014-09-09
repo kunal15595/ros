@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classompl_1_1msg_1_1OutputHandler.html" title="Generic class to handle output from a piece of code. " alt="" coords="6,31,181,57"/>
+<area shape="rect" id="node2" href="$classompl_1_1msg_1_1OutputHandlerFile.html" title="Implementation of OutputHandler that saves messages in a file. " alt="" coords="233,5,429,32"/>
+<area shape="rect" id="node3" href="$classompl_1_1msg_1_1OutputHandlerSTD.html" title="Default implementation of OutputHandler. This sends the information to the console. " alt="" coords="229,56,432,83"/>
+</map>

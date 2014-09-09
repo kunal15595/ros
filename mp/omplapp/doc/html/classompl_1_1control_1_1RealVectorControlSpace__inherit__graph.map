@@ -1,0 +1,6 @@
+<map id="ompl::control::RealVectorControlSpace" name="ompl::control::RealVectorControlSpace">
+<area shape="rect" id="node4" href="$classKoulesControlSpace.html" title="KoulesControlSpace" alt="" coords="628,5,769,32"/>
+<area shape="rect" id="node5" href="$classompl_1_1control_1_1MorseControlSpace.html" title="Representation of controls applied in MORSE environments. This is an array of double values..." alt="" coords="607,57,790,98"/>
+<area shape="rect" id="node6" href="$classompl_1_1control_1_1OpenDEControlSpace.html" title="Representation of controls applied in OpenDE environments. This is an array of double values..." alt="" coords="600,122,797,163"/>
+<area shape="rect" id="node2" href="$classompl_1_1control_1_1ControlSpace.html" title="A control space representing the space of applicable controls. " alt="" coords="149,64,333,91"/>
+</map>

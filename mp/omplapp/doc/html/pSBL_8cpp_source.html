@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/geometric/planners/sbl/src/pSBL.cpp Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_1f57d97647ebda1e28cc730ac7313960.html">geometric</a></li><li class="navelem"><a class="el" href="dir_955a6a93aceef09599971796437d173a.html">planners</a></li><li class="navelem"><a class="el" href="dir_0a7271531061811756fdf5f47fc9b166.html">sbl</a></li><li class="navelem"><a class="el" href="dir_898824c056723a0f5923267231228531.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">pSBL.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2008, Willow Garage, Inc.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Willow Garage nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Ioan Sucan */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;ompl/geometric/planners/sbl/pSBL.h&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;ompl/base/goals/GoalState.h&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;ompl/tools/config/SelfConfig.h&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;boost/thread.hpp&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;ompl::geometric::pSBL::pSBL(<span class="keyword">const</span> base::SpaceInformationPtr &amp;si) : base::Planner(si, <span class="stringliteral">&quot;pSBL&quot;</span>),</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                                                   samplerArray_(si)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">specs_</a>.<a class="code" href="structompl_1_1base_1_1PlannerSpecs.html#ac8a946673fef335d7a802d9ee8436804">recognizedGoal</a> = <a class="code" href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55a451d783254d6bb398c15495e87bc1b86">base::GOAL_STATE</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">specs_</a>.<a class="code" href="structompl_1_1base_1_1PlannerSpecs.html#a7ef07a003ebc248097f479168d75a1e3">multithreaded</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1SBL.html#afd6d54cc164f50d105aa615a2052daa6">maxDistance_</a> = 0.0;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    setThreadCount(2);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1SBL.html#ad8561a85612a008237b87a5d19f689e4">connectionPoint_</a> = std::make_pair&lt;base::State*, base::State*&gt;(NULL, NULL);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    Planner::declareParam&lt;double&gt;(<span class="stringliteral">&quot;range&quot;</span>, <span class="keyword">this</span>, &amp;<a class="code" href="classompl_1_1geometric_1_1pSBL.html#a684881ad135214cf17dc1d417a921805">pSBL::setRange</a>, &amp;<a class="code" href="classompl_1_1geometric_1_1pSBL.html#a5aa31fd087855b2c8f648284ea388a8a">pSBL::getRange</a>, <span class="stringliteral">&quot;0.:1.:10000.&quot;</span>);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    Planner::declareParam&lt;unsigned int&gt;(<span class="stringliteral">&quot;thread_count&quot;</span>, <span class="keyword">this</span>, &amp;<a class="code" href="classompl_1_1geometric_1_1pSBL.html#aa4ac4755ecdf651d5d0e584cbf742393">pSBL::setThreadCount</a>, &amp;<a class="code" href="classompl_1_1geometric_1_1pSBL.html#a7f18c3f6104cdad3841d67afdd904d18">pSBL::getThreadCount</a>, <span class="stringliteral">&quot;1:64&quot;</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;ompl::geometric::pSBL::~pSBL()</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    freeMemory();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1pSBL.html#abee35fddcae435af52ebf169328bb044">   62</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1pSBL.html#abee35fddcae435af52ebf169328bb044">ompl::geometric::pSBL::setup</a>()</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    Planner::setup();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="classompl_1_1tools_1_1SelfConfig.html">tools::SelfConfig</a> sc(si_, getName());</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    sc.<a class="code" href="classompl_1_1tools_1_1SelfConfig.html#a6af441eace888354bcc5afe172561d62">configureProjectionEvaluator</a>(projectionEvaluator_);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    sc.<a class="code" href="classompl_1_1tools_1_1SelfConfig.html#a65bff53ea4bc6f158342a856175ab9a6">configurePlannerRange</a>(maxDistance_);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    tStart_.grid.setDimension(projectionEvaluator_-&gt;getDimension());</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    tGoal_.grid.setDimension(projectionEvaluator_-&gt;getDimension());</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1pSBL.html#add0c81901c04f9f7e7a427c5d018018f">   73</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1pSBL.html#add0c81901c04f9f7e7a427c5d018018f">ompl::geometric::pSBL::clear</a>()</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    Planner::clear();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    samplerArray_.clear();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    freeMemory();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    tStart_.grid.clear();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    tStart_.size = 0;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    tStart_.pdf.clear();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    tGoal_.grid.clear();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    tGoal_.size = 0;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    tGoal_.pdf.clear();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    removeList_.motions.clear();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    connectionPoint_ = std::make_pair&lt;base::State*, base::State*&gt;(NULL, NULL);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">void</span> ompl::geometric::pSBL::freeGridMotions(<a class="code" href="classompl_1_1Grid.html">Grid&lt;MotionInfo&gt;</a> &amp;grid)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;{</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="classompl_1_1Grid.html#ac85bc047c9574aea0fb08c1c53701eb9">Grid&lt;MotionInfo&gt;::iterator</a> it = grid.<a class="code" href="classompl_1_1Grid.html#a73ad31c53eef29b58c753634b886b49c">begin</a>(); it != grid.<a class="code" href="classompl_1_1Grid.html#a8155d8b764675cec88b3c670bb9cc705">end</a>() ; ++it)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; it-&gt;second-&gt;data.size() ; ++i)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">if</span> (it-&gt;second-&gt;data[i]-&gt;state)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                si_-&gt;freeState(it-&gt;second-&gt;data[i]-&gt;state);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keyword">delete</span> it-&gt;second-&gt;data[i];</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keywordtype">void</span> ompl::geometric::pSBL::threadSolve(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> tid, <span class="keyword">const</span> base::PlannerTerminationCondition &amp;ptc, SolutionInfo *sol)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    RNG rng;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    std::vector&lt;Motion*&gt; solution;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    base::State *xstate = si_-&gt;allocState();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">bool</span>      startTree = rng.uniformBool();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">while</span> (!sol-&gt;found &amp;&amp; ptc == <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordtype">bool</span> retry = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">while</span> (retry &amp;&amp; !sol-&gt;found &amp;&amp; ptc == <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            removeList_.lock.lock();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordflow">if</span> (!removeList_.motions.empty())</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                <span class="keywordflow">if</span> (loopLock_.try_lock())</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                    retry = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                    std::map&lt;Motion*, bool&gt; seen;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; removeList_.motions.size() ; ++i)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                        <span class="keywordflow">if</span> (seen.find(removeList_.motions[i].motion) == seen.end())</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                            removeMotion(*removeList_.motions[i].tree, removeList_.motions[i].motion, seen);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                    removeList_.motions.clear();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                    loopLock_.unlock();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                retry = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            removeList_.lock.unlock();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">if</span> (sol-&gt;found || ptc)</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        loopLockCounter_.lock();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keywordflow">if</span> (loopCounter_ == 0)</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            loopLock_.lock();</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        loopCounter_++;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        loopLockCounter_.unlock();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        TreeData &amp;tree      = startTree ? tStart_ : tGoal_;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        startTree = !startTree;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        TreeData &amp;otherTree = startTree ? tStart_ : tGoal_;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        Motion *existing = selectMotion(rng, tree);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">if</span> (!samplerArray_[tid]-&gt;sampleNear(xstate, existing-&gt;state, maxDistance_))</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="comment">/* create a motion */</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        Motion *motion = <span class="keyword">new</span> Motion(si_);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        si_-&gt;copyState(motion-&gt;state, xstate);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        motion-&gt;parent = existing;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        motion-&gt;root = existing-&gt;root;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        existing-&gt;lock.lock();</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        existing-&gt;children.push_back(motion);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        existing-&gt;lock.unlock();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        addMotion(tree, motion);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordflow">if</span> (checkSolution(rng, !startTree, tree, otherTree, motion, solution))</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            sol-&gt;lock.lock();</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keywordflow">if</span> (!sol-&gt;found)</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                sol-&gt;found = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                PathGeometric *path = <span class="keyword">new</span> PathGeometric(si_);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; solution.size() ; ++i)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                    path-&gt;append(solution[i]-&gt;state);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                pdef_-&gt;addSolutionPath(base::PathPtr(path), <span class="keyword">false</span>, 0.0, getName());</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            sol-&gt;lock.unlock();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        loopLockCounter_.lock();</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        loopCounter_--;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">if</span> (loopCounter_ == 0)</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            loopLock_.unlock();</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        loopLockCounter_.unlock();</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    si_-&gt;freeState(xstate);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;}</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1pSBL.html#aa487312ea5c2cb970654ae324e8941cc">  193</a></span>&#160;<a class="code" href="structompl_1_1base_1_1PlannerStatus.html">ompl::base::PlannerStatus</a> <a class="code" href="classompl_1_1geometric_1_1pSBL.html#aa487312ea5c2cb970654ae324e8941cc">ompl::geometric::pSBL::solve</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;ptc)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;{</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    checkValidity();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <a class="code" href="classompl_1_1base_1_1GoalState.html">base::GoalState</a> *goal = <span class="keyword">dynamic_cast&lt;</span><a class="code" href="classompl_1_1base_1_1GoalState.html">base::GoalState</a>*<span class="keyword">&gt;</span>(pdef_-&gt;getGoal().get());</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">if</span> (!goal)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;%s: Unknown type of goal&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a47d769205044efa345184a640bd863ff">base::PlannerStatus::UNRECOGNIZED_GOAL_TYPE</a>;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *st = pis_.nextStart())</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <a class="code" href="classompl_1_1geometric_1_1pSBL_1_1Motion.html">Motion</a> *motion = <span class="keyword">new</span> <a class="code" href="classompl_1_1geometric_1_1pSBL_1_1Motion.html">Motion</a>(si_);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        si_-&gt;copyState(motion-&gt;state, st);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        motion-&gt;valid = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        motion-&gt;root = motion-&gt;state;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        addMotion(tStart_, motion);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keywordflow">if</span> (tGoal_.size == 0)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="keywordflow">if</span> (si_-&gt;satisfiesBounds(goal-&gt;<a class="code" href="classompl_1_1base_1_1GoalState.html#abfe70cdec2b6b6cc50bcdc0e1d1037e9">getState</a>()) &amp;&amp; si_-&gt;isValid(goal-&gt;<a class="code" href="classompl_1_1base_1_1GoalState.html#abfe70cdec2b6b6cc50bcdc0e1d1037e9">getState</a>()))</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <a class="code" href="classompl_1_1geometric_1_1pSBL_1_1Motion.html">Motion</a> *motion = <span class="keyword">new</span> <a class="code" href="classompl_1_1geometric_1_1pSBL_1_1Motion.html">Motion</a>(si_);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            si_-&gt;copyState(motion-&gt;state, goal-&gt;<a class="code" href="classompl_1_1base_1_1GoalState.html#abfe70cdec2b6b6cc50bcdc0e1d1037e9">getState</a>());</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            motion-&gt;valid = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            motion-&gt;root = motion-&gt;state;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            addMotion(tGoal_, motion);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;%s: Goal state is invalid!&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">if</span> (tStart_.size == 0)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;%s: Motion planning start tree could not be initialized!&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547">base::PlannerStatus::INVALID_START</a>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">if</span> (tGoal_.size == 0)</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;%s: Motion planning goal tree could not be initialized!&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a2e2b2b7e02900c4417af0ecea272c637">base::PlannerStatus::INVALID_GOAL</a>;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    samplerArray_.resize(threadCount_);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;%s: Starting planning with %d states already in datastructure&quot;</span>, getName().c_str(), (<span class="keywordtype">int</span>)(tStart_.size + tGoal_.size));</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <a class="code" href="structompl_1_1geometric_1_1pSBL_1_1SolutionInfo.html">SolutionInfo</a> sol;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    sol.found = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    loopCounter_ = 0;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    std::vector&lt;boost::thread*&gt; th(threadCount_);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; threadCount_ ; ++i)</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        th[i] = <span class="keyword">new</span> boost::thread(boost::bind(&amp;pSBL::threadSolve, <span class="keyword">this</span>, i, ptc, &amp;sol));</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; threadCount_ ; ++i)</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        th[i]-&gt;join();</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keyword">delete</span> th[i];</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;%s: Created %u (%u start + %u goal) states in %u cells (%u start + %u goal)&quot;</span>,</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                getName().c_str(), tStart_.size + tGoal_.size, tStart_.size, tGoal_.size,</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                tStart_.grid.size() + tGoal_.grid.size(), tStart_.grid.size(), tGoal_.grid.size());</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keywordflow">return</span> sol.found ? <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a20f8c901516c72e258d43d7156fe8e28">base::PlannerStatus::EXACT_SOLUTION</a> : <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a620a03eebe49aa307140d6a4763278fd">base::PlannerStatus::TIMEOUT</a>;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;}</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keywordtype">bool</span> ompl::geometric::pSBL::checkSolution(<a class="code" href="classompl_1_1RNG.html">RNG</a> &amp;rng, <span class="keywordtype">bool</span> start, TreeData &amp;tree, TreeData &amp;otherTree, Motion *motion, std::vector&lt;Motion*&gt; &amp;solution)</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;{</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <a class="code" href="classompl_1_1Grid.html#ada6a72bd91ec78dd8a0806c00055d917">Grid&lt;MotionInfo&gt;::Coord</a> coord;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    projectionEvaluator_-&gt;computeCoordinates(motion-&gt;state, coord);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    otherTree.lock.lock();</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <a class="code" href="structompl_1_1Grid_1_1Cell.html">Grid&lt;MotionInfo&gt;::Cell</a>* cell = otherTree.grid.getCell(coord);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keywordflow">if</span> (cell &amp;&amp; !cell-&gt;<a class="code" href="structompl_1_1Grid_1_1Cell.html#a9a32dbce70bab52e6d45b0a4d0106366">data</a>.empty())</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    {</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        Motion *connectOther = cell-&gt;<a class="code" href="structompl_1_1Grid_1_1Cell.html#a9a32dbce70bab52e6d45b0a4d0106366">data</a>[rng.<a class="code" href="classompl_1_1RNG.html#ad122fd3309d2a2c72ca1dd665c1a2803">uniformInt</a>(0, cell-&gt;<a class="code" href="structompl_1_1Grid_1_1Cell.html#a9a32dbce70bab52e6d45b0a4d0106366">data</a>.size() - 1)];</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        otherTree.lock.unlock();</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="keywordflow">if</span> (pdef_-&gt;getGoal()-&gt;isStartGoalPairValid(start ? motion-&gt;root : connectOther-&gt;root, start ? connectOther-&gt;root : motion-&gt;root))</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            Motion *connect = <span class="keyword">new</span> Motion(si_);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            si_-&gt;copyState(connect-&gt;state, connectOther-&gt;state);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            connect-&gt;parent = motion;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            connect-&gt;root = motion-&gt;root;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            motion-&gt;lock.lock();</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            motion-&gt;children.push_back(connect);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            motion-&gt;lock.unlock();</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            addMotion(tree, connect);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <span class="keywordflow">if</span> (isPathValid(tree, connect) &amp;&amp; isPathValid(otherTree, connectOther))</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                <span class="keywordflow">if</span> (start)</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                    connectionPoint_ = std::make_pair(motion-&gt;state, connectOther-&gt;state);</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                    connectionPoint_ = std::make_pair(connectOther-&gt;state, motion-&gt;state);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                <span class="comment">/* extract the motions and put them in solution vector */</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                std::vector&lt;Motion*&gt; mpath1;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                <span class="keywordflow">while</span> (motion != NULL)</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                    mpath1.push_back(motion);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                    motion = motion-&gt;parent;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                std::vector&lt;Motion*&gt; mpath2;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                <span class="keywordflow">while</span> (connectOther != NULL)</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                    mpath2.push_back(connectOther);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                    connectOther = connectOther-&gt;parent;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                <span class="keywordflow">if</span> (!start)</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                    mpath1.swap(mpath2);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = mpath1.size() - 1 ; i &gt;= 0 ; --i)</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                    solution.push_back(mpath1[i]);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                solution.insert(solution.end(), mpath2.begin(), mpath2.end());</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    }</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        otherTree.lock.unlock();</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;}</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="keywordtype">bool</span> ompl::geometric::pSBL::isPathValid(TreeData &amp;tree, Motion *motion)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;{</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    std::vector&lt;Motion*&gt; mpath;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="comment">/* construct the solution path */</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keywordflow">while</span> (motion != NULL)</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    {</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        mpath.push_back(motion);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        motion = motion-&gt;parent;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    }</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordtype">bool</span> result = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="comment">/* check the path */</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = mpath.size() - 1 ; result &amp;&amp; i &gt;= 0 ; --i)</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    {</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        mpath[i]-&gt;lock.lock();</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <span class="keywordflow">if</span> (!mpath[i]-&gt;valid)</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        {</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            <span class="keywordflow">if</span> (si_-&gt;checkMotion(mpath[i]-&gt;parent-&gt;state, mpath[i]-&gt;state))</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                mpath[i]-&gt;valid = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            {</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                <span class="comment">// remember we need to remove this motion</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                PendingRemoveMotion prm;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                prm.tree = &amp;tree;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                prm.motion = mpath[i];</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                removeList_.lock.lock();</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                removeList_.motions.push_back(prm);</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                removeList_.lock.unlock();</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                result = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            }</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        }</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        mpath[i]-&gt;lock.unlock();</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    }</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;}</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<a class="code" href="classompl_1_1geometric_1_1pSBL_1_1Motion.html">ompl::geometric::pSBL::Motion</a>* ompl::geometric::pSBL::selectMotion(RNG &amp;rng, TreeData &amp;tree)</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;{</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    tree.lock.lock ();</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    GridCell* cell = tree.pdf.sample(rng.uniform01());</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    Motion *result = cell &amp;&amp; !cell-&gt;<a class="code" href="structompl_1_1Grid_1_1Cell.html#a9a32dbce70bab52e6d45b0a4d0106366">data</a>.empty() ? cell-&gt;data[rng.uniformInt(0, cell-&gt;data.size() - 1)] : NULL;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    tree.lock.unlock ();</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;}</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="keywordtype">void</span> ompl::geometric::pSBL::removeMotion(TreeData &amp;tree, Motion *motion, std::map&lt;Motion*, bool&gt; &amp;seen)</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;{</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="comment">/* remove from grid */</span></div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    seen[motion] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    Grid&lt;MotionInfo&gt;::Coord coord;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    projectionEvaluator_-&gt;computeCoordinates(motion-&gt;state, coord);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    Grid&lt;MotionInfo&gt;::Cell* cell = tree.grid.<a class="code" href="classompl_1_1Grid.html#ae563fea4e6a46c741682b6dcbe93ce54">getCell</a>(coord);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="keywordflow">if</span> (cell)</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    {</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; cell-&gt;data.size(); ++i)</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            <span class="keywordflow">if</span> (cell-&gt;data[i] == motion)</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            {</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                cell-&gt;data.erase(cell-&gt;data.begin() + i);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                tree.size--;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            }</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        <span class="keywordflow">if</span> (cell-&gt;data.empty())</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        {</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            tree.pdf.remove(cell-&gt;data.elem_);</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            tree.grid.remove(cell);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            tree.grid.destroyCell(cell);</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        }</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        {</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            tree.pdf.update(cell-&gt;data.elem_, 1.0/cell-&gt;data.size());</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        }</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    }</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="comment">/* remove self from parent list */</span></div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <span class="keywordflow">if</span> (motion-&gt;parent)</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    {</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; motion-&gt;parent-&gt;children.size() ; ++i)</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;            <span class="keywordflow">if</span> (motion-&gt;parent-&gt;children[i] == motion)</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            {</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                motion-&gt;parent-&gt;children.erase(motion-&gt;parent-&gt;children.begin() + i);</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            }</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    }</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="comment">/* remove children */</span></div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; motion-&gt;children.size() ; ++i)</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    {</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        motion-&gt;children[i]-&gt;parent = NULL;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        removeMotion(tree, motion-&gt;children[i], seen);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    }</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <span class="keywordflow">if</span> (motion-&gt;state)</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        si_-&gt;freeState(motion-&gt;state);</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="keyword">delete</span> motion;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;}</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;<span class="keywordtype">void</span> ompl::geometric::pSBL::addMotion(TreeData &amp;tree, Motion *motion)</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;{</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    Grid&lt;MotionInfo&gt;::Coord coord;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    projectionEvaluator_-&gt;computeCoordinates(motion-&gt;state, coord);</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    tree.lock.lock();</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    Grid&lt;MotionInfo&gt;::Cell* cell = tree.grid.getCell(coord);</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordflow">if</span> (cell)</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    {</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        cell-&gt;data.push_back(motion);</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        tree.pdf.update(cell-&gt;data.elem_, 1.0/cell-&gt;data.size());</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    }</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    {</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        cell = tree.grid.createCell(coord);</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        cell-&gt;data.push_back(motion);</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        tree.grid.add(cell);</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        cell-&gt;data.elem_ = tree.pdf.add(cell, 1.0);</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    }</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    tree.size++;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    tree.lock.unlock();</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;}</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;</div>
+<div class="line"><a name="l00453"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1pSBL.html#ab9f5004971fe0571e6145a64e4a8772c">  453</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1pSBL.html#ab9f5004971fe0571e6145a64e4a8772c">ompl::geometric::pSBL::getPlannerData</a>(<a class="code" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a> &amp;data)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    Planner::getPlannerData(data);</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    std::vector&lt;MotionInfo&gt; motions;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    tStart_.grid.getContent(motions);</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; motions.size() ; ++i)</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0 ; j &lt; motions[i].size() ; ++j)</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            <span class="keywordflow">if</span> (motions[i][j]-&gt;parent == NULL)</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;                data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">addStartVertex</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i][j]-&gt;state, 1));</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i][j]-&gt;parent-&gt;state, 1),</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;                             <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i][j]-&gt;state, 1));</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    motions.clear();</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    tGoal_.grid.getContent(motions);</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; motions.size() ; ++i)</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0 ; j &lt; motions[i].size() ; ++j)</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            <span class="keywordflow">if</span> (motions[i][j]-&gt;parent == NULL)</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;                data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">addGoalVertex</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i][j]-&gt;state, 2));</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                <span class="comment">// The edges in the goal tree are reversed so that they are in the same direction as start tree</span></div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i][j]-&gt;state, 2),</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                             <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i][j]-&gt;parent-&gt;state, 2));</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a8fd081adb8e8a728eab89d57514724f0">vertexIndex</a>(connectionPoint_.first), data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a8fd081adb8e8a728eab89d57514724f0">vertexIndex</a>(connectionPoint_.second));</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;}</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;</div>
+<div class="line"><a name="l00482"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1pSBL.html#aa4ac4755ecdf651d5d0e584cbf742393">  482</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1pSBL.html#aa4ac4755ecdf651d5d0e584cbf742393">ompl::geometric::pSBL::setThreadCount</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nthreads)</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;{</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;    assert(nthreads &gt; 0);</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;    threadCount_ = nthreads;</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;}</div>
+<div class="ttc" id="classompl_1_1geometric_1_1pSBL_1_1Motion_html"><div class="ttname"><a href="classompl_1_1geometric_1_1pSBL_1_1Motion.html">ompl::geometric::pSBL::Motion</a></div><div class="ttdef"><b>Definition:</b> <a href="pSBL_8h_source.html#l00159">pSBL.h:159</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html">ompl::base::PlannerData</a></div><div class="ttdoc">Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00164">PlannerData.h:164</a></div></div>
+<div class="ttc" id="classompl_1_1Grid_html"><div class="ttname"><a href="classompl_1_1Grid.html">ompl::Grid</a></div><div class="ttdoc">Representation of a simple grid. </div><div class="ttdef"><b>Definition:</b> <a href="Grid_8h_source.html#l00051">Grid.h:51</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1pSBL_html_aa4ac4755ecdf651d5d0e584cbf742393"><div class="ttname"><a href="classompl_1_1geometric_1_1pSBL.html#aa4ac4755ecdf651d5d0e584cbf742393">ompl::geometric::pSBL::setThreadCount</a></div><div class="ttdeci">void setThreadCount(unsigned int nthreads)</div><div class="ttdoc">Set the number of threads the planner should use. Default is 2. </div><div class="ttdef"><b>Definition:</b> <a href="pSBL_8cpp_source.html#l00482">pSBL.cpp:482</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a620a03eebe49aa307140d6a4763278fd"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a620a03eebe49aa307140d6a4763278fd">ompl::base::PlannerStatus::TIMEOUT</a></div><div class="ttdoc">The planner failed to find a solution. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00062">PlannerStatus.h:62</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSpecs_html_ac8a946673fef335d7a802d9ee8436804"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSpecs.html#ac8a946673fef335d7a802d9ee8436804">ompl::base::PlannerSpecs::recognizedGoal</a></div><div class="ttdeci">GoalType recognizedGoal</div><div class="ttdoc">The type of goal specification the planner can use. </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00206">Planner.h:206</a></div></div>
+<div class="ttc" id="classompl_1_1Grid_html_ada6a72bd91ec78dd8a0806c00055d917"><div class="ttname"><a href="classompl_1_1Grid.html#ada6a72bd91ec78dd8a0806c00055d917">ompl::Grid::Coord</a></div><div class="ttdeci">std::vector&lt; int &gt; Coord</div><div class="ttdoc">Definition of a coordinate within this grid. </div><div class="ttdef"><b>Definition:</b> <a href="Grid_8h_source.html#l00056">Grid.h:56</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GoalState_html_abfe70cdec2b6b6cc50bcdc0e1d1037e9"><div class="ttname"><a href="classompl_1_1base_1_1GoalState.html#abfe70cdec2b6b6cc50bcdc0e1d1037e9">ompl::base::GoalState::getState</a></div><div class="ttdeci">const State * getState() const </div><div class="ttdoc">Get the goal state. </div><div class="ttdef"><b>Definition:</b> <a href="GoalState_8cpp_source.html#l00079">GoalState.cpp:79</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GoalState_html"><div class="ttname"><a href="classompl_1_1base_1_1GoalState.html">ompl::base::GoalState</a></div><div class="ttdoc">Definition of a goal state. </div><div class="ttdef"><b>Definition:</b> <a href="GoalState_8h_source.html#l00050">GoalState.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a3604cb85b0402b09b319c5f1df02b12e"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">ompl::base::PlannerData::addGoalVertex</a></div><div class="ttdeci">unsigned int addGoalVertex(const PlannerDataVertex &amp;v)</div><div class="ttdoc">Adds the given vertex to the graph data, and marks it as a start vertex. The vertex index is returned...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00434">PlannerData.cpp:434</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerTerminationCondition_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerTerminationCondition.html">ompl::base::PlannerTerminationCondition</a></div><div class="ttdoc">Encapsulate a termination condition for a motion planner. Planners will call operator() to decide whe...</div><div class="ttdef"><b>Definition:</b> <a href="PlannerTerminationCondition_8h_source.html#l00064">PlannerTerminationCondition.h:64</a></div></div>
+<div class="ttc" id="structompl_1_1Grid_1_1Cell_html_a9a32dbce70bab52e6d45b0a4d0106366"><div class="ttname"><a href="structompl_1_1Grid_1_1Cell.html#a9a32dbce70bab52e6d45b0a4d0106366">ompl::Grid::Cell::data</a></div><div class="ttdeci">_T data</div><div class="ttdoc">The data we store in the cell. </div><div class="ttdef"><b>Definition:</b> <a href="Grid_8h_source.html#l00062">Grid.h:62</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSpecs_html_a7ef07a003ebc248097f479168d75a1e3"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSpecs.html#a7ef07a003ebc248097f479168d75a1e3">ompl::base::PlannerSpecs::multithreaded</a></div><div class="ttdeci">bool multithreaded</div><div class="ttdoc">Flag indicating whether multiple threads are used in the computation of the planner. </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00209">Planner.h:209</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerDataVertex_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a></div><div class="ttdoc">Base class for a vertex in the PlannerData structure. All derived classes must implement the clone an...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00060">PlannerData.h:60</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547">ompl::base::PlannerStatus::INVALID_START</a></div><div class="ttdoc">Invalid start state or no start state specified. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00056">PlannerStatus.h:56</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1pSBL_html_aa487312ea5c2cb970654ae324e8941cc"><div class="ttname"><a href="classompl_1_1geometric_1_1pSBL.html#aa487312ea5c2cb970654ae324e8941cc">ompl::geometric::pSBL::solve</a></div><div class="ttdeci">virtual base::PlannerStatus solve(const base::PlannerTerminationCondition &amp;ptc)</div><div class="ttdoc">Function that can solve the motion planning problem. This function can be called multiple times on th...</div><div class="ttdef"><b>Definition:</b> <a href="pSBL_8cpp_source.html#l00193">pSBL.cpp:193</a></div></div>
+<div class="ttc" id="classompl_1_1Grid_html_ae563fea4e6a46c741682b6dcbe93ce54"><div class="ttname"><a href="classompl_1_1Grid.html#ae563fea4e6a46c741682b6dcbe93ce54">ompl::Grid::getCell</a></div><div class="ttdeci">Cell * getCell(const Coord &amp;coord) const </div><div class="ttdoc">Get the cell at a specified coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="Grid_8h_source.html#l00122">Grid.h:122</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1pSBL_html_add0c81901c04f9f7e7a427c5d018018f"><div class="ttname"><a href="classompl_1_1geometric_1_1pSBL.html#add0c81901c04f9f7e7a427c5d018018f">ompl::geometric::pSBL::clear</a></div><div class="ttdeci">virtual void clear()</div><div class="ttdoc">Clear all internal datastructures. Planner settings are not affected. Subsequent calls to solve() wil...</div><div class="ttdef"><b>Definition:</b> <a href="pSBL_8cpp_source.html#l00073">pSBL.cpp:73</a></div></div>
+<div class="ttc" id="classompl_1_1RNG_html"><div class="ttname"><a href="classompl_1_1RNG.html">ompl::RNG</a></div><div class="ttdoc">Random number generation. An instance of this class cannot be used by multiple threads at once (membe...</div><div class="ttdef"><b>Definition:</b> <a href="RandomNumbers_8h_source.html#l00054">RandomNumbers.h:54</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a47d769205044efa345184a640bd863ff"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a47d769205044efa345184a640bd863ff">ompl::base::PlannerStatus::UNRECOGNIZED_GOAL_TYPE</a></div><div class="ttdoc">The goal is of a type that a planner does not recognize. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00060">PlannerStatus.h:60</a></div></div>
+<div class="ttc" id="group__logging_html_ga05ad3ae88188e7f248748785afd2b882"><div class="ttname"><a href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a></div><div class="ttdeci">#define OMPL_ERROR(fmt,...)</div><div class="ttdoc">Log a formatted error string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00064">Console.h:64</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a20f8c901516c72e258d43d7156fe8e28"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a20f8c901516c72e258d43d7156fe8e28">ompl::base::PlannerStatus::EXACT_SOLUTION</a></div><div class="ttdoc">The planner found an exact solution. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00066">PlannerStatus.h:66</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a8fd081adb8e8a728eab89d57514724f0"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a8fd081adb8e8a728eab89d57514724f0">ompl::base::PlannerData::vertexIndex</a></div><div class="ttdeci">unsigned int vertexIndex(const PlannerDataVertex &amp;v) const </div><div class="ttdoc">Return the index for the vertex associated with the given data. INVALID_INDEX is returned if this ver...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00328">PlannerData.cpp:328</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a2e2b2b7e02900c4417af0ecea272c637"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a2e2b2b7e02900c4417af0ecea272c637">ompl::base::PlannerStatus::INVALID_GOAL</a></div><div class="ttdoc">Invalid goal state. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00058">PlannerStatus.h:58</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html">ompl::base::PlannerStatus</a></div><div class="ttdoc">A class to store the exit status of Planner::solve() </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00048">PlannerStatus.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_ac09c21494a8c7db500ef1a66bbbb1aa7"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">ompl::base::PlannerData::addEdge</a></div><div class="ttdeci">virtual bool addEdge(unsigned int v1, unsigned int v2, const PlannerDataEdge &amp;edge=PlannerDataEdge(), Cost weight=Cost(1.0))</div><div class="ttdoc">Adds a directed edge between the given vertex indexes. An optional edge structure and weight can be s...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00444">PlannerData.cpp:444</a></div></div>
+<div class="ttc" id="classompl_1_1Grid_html_a8155d8b764675cec88b3c670bb9cc705"><div class="ttname"><a href="classompl_1_1Grid.html#a8155d8b764675cec88b3c670bb9cc705">ompl::Grid::end</a></div><div class="ttdeci">iterator end() const </div><div class="ttdoc">Return the end() iterator for the grid. </div><div class="ttdef"><b>Definition:</b> <a href="Grid_8h_source.html#l00383">Grid.h:383</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a2eea84456784452486aa0065af391f47"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">ompl::base::PlannerData::addStartVertex</a></div><div class="ttdeci">unsigned int addStartVertex(const PlannerDataVertex &amp;v)</div><div class="ttdoc">Adds the given vertex to the graph data, and marks it as a start vertex. The vertex index is returned...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00425">PlannerData.cpp:425</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Planner_html_a4311ea7a0470f0e0f76cb1656d63e365"><div class="ttname"><a href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">ompl::base::Planner::specs_</a></div><div class="ttdeci">PlannerSpecs specs_</div><div class="ttdoc">The specifications of the planner (its capabilities) </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00404">Planner.h:404</a></div></div>
+<div class="ttc" id="structompl_1_1Grid_1_1Cell_html"><div class="ttname"><a href="structompl_1_1Grid_1_1Cell.html">ompl::Grid::Cell</a></div><div class="ttdoc">Definition of a cell in this grid. </div><div class="ttdef"><b>Definition:</b> <a href="Grid_8h_source.html#l00059">Grid.h:59</a></div></div>
+<div class="ttc" id="classompl_1_1tools_1_1SelfConfig_html_a6af441eace888354bcc5afe172561d62"><div class="ttname"><a href="classompl_1_1tools_1_1SelfConfig.html#a6af441eace888354bcc5afe172561d62">ompl::tools::SelfConfig::configureProjectionEvaluator</a></div><div class="ttdeci">void configureProjectionEvaluator(base::ProjectionEvaluatorPtr &amp;proj)</div><div class="ttdoc">If proj is undefined, it is set to the default projection reported by base::StateSpace::getDefaultPro...</div><div class="ttdef"><b>Definition:</b> <a href="SelfConfig_8cpp_source.html#l00232">SelfConfig.cpp:232</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1SBL_html_ad8561a85612a008237b87a5d19f689e4"><div class="ttname"><a href="classompl_1_1geometric_1_1SBL.html#ad8561a85612a008237b87a5d19f689e4">ompl::geometric::SBL::connectionPoint_</a></div><div class="ttdeci">std::pair&lt; base::State *, base::State * &gt; connectionPoint_</div><div class="ttdoc">The pair of states in each tree connected during planning. Used for PlannerData computation. </div><div class="ttdef"><b>Definition:</b> <a href="SBL_8h_source.html#l00276">SBL.h:276</a></div></div>
+<div class="ttc" id="classompl_1_1Grid_html_a73ad31c53eef29b58c753634b886b49c"><div class="ttname"><a href="classompl_1_1Grid.html#a73ad31c53eef29b58c753634b886b49c">ompl::Grid::begin</a></div><div class="ttdeci">iterator begin() const </div><div class="ttdoc">Return the begin() iterator for the grid. </div><div class="ttdef"><b>Definition:</b> <a href="Grid_8h_source.html#l00377">Grid.h:377</a></div></div>
+<div class="ttc" id="namespaceompl_1_1base_html_a1620a159019faf720c550eeca5723f55a451d783254d6bb398c15495e87bc1b86"><div class="ttname"><a href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55a451d783254d6bb398c15495e87bc1b86">ompl::base::GOAL_STATE</a></div><div class="ttdoc">This bit is set if casting to goal state (ompl::base::GoalState) is possible. </div><div class="ttdef"><b>Definition:</b> <a href="GoalTypes_8h_source.html#l00058">GoalTypes.h:58</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1pSBL_html_a7f18c3f6104cdad3841d67afdd904d18"><div class="ttname"><a href="classompl_1_1geometric_1_1pSBL.html#a7f18c3f6104cdad3841d67afdd904d18">ompl::geometric::pSBL::getThreadCount</a></div><div class="ttdeci">unsigned int getThreadCount() const </div><div class="ttdoc">Get the thread count. </div><div class="ttdef"><b>Definition:</b> <a href="pSBL_8h_source.html#l00135">pSBL.h:135</a></div></div>
+<div class="ttc" id="classompl_1_1tools_1_1SelfConfig_html_a65bff53ea4bc6f158342a856175ab9a6"><div class="ttname"><a href="classompl_1_1tools_1_1SelfConfig.html#a65bff53ea4bc6f158342a856175ab9a6">ompl::tools::SelfConfig::configurePlannerRange</a></div><div class="ttdeci">void configurePlannerRange(double &amp;range)</div><div class="ttdoc">Compute what a good length for motion segments is. </div><div class="ttdef"><b>Definition:</b> <a href="SelfConfig_8cpp_source.html#l00226">SelfConfig.cpp:226</a></div></div>
+<div class="ttc" id="classompl_1_1tools_1_1SelfConfig_html"><div class="ttname"><a href="classompl_1_1tools_1_1SelfConfig.html">ompl::tools::SelfConfig</a></div><div class="ttdoc">This class contains methods that automatically configure various parameters for motion planning...</div><div class="ttdef"><b>Definition:</b> <a href="SelfConfig_8h_source.html#l00056">SelfConfig.h:56</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1pSBL_html_ab9f5004971fe0571e6145a64e4a8772c"><div class="ttname"><a href="classompl_1_1geometric_1_1pSBL.html#ab9f5004971fe0571e6145a64e4a8772c">ompl::geometric::pSBL::getPlannerData</a></div><div class="ttdeci">virtual void getPlannerData(base::PlannerData &amp;data) const </div><div class="ttdoc">Get information about the current run of the motion planner. Repeated calls to this function will upd...</div><div class="ttdef"><b>Definition:</b> <a href="pSBL_8cpp_source.html#l00453">pSBL.cpp:453</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1pSBL_html_a684881ad135214cf17dc1d417a921805"><div class="ttname"><a href="classompl_1_1geometric_1_1pSBL.html#a684881ad135214cf17dc1d417a921805">ompl::geometric::pSBL::setRange</a></div><div class="ttdeci">void setRange(double distance)</div><div class="ttdoc">Set the range the planner is supposed to use. </div><div class="ttdef"><b>Definition:</b> <a href="pSBL_8h_source.html#l00120">pSBL.h:120</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1pSBL_html_abee35fddcae435af52ebf169328bb044"><div class="ttname"><a href="classompl_1_1geometric_1_1pSBL.html#abee35fddcae435af52ebf169328bb044">ompl::geometric::pSBL::setup</a></div><div class="ttdeci">virtual void setup()</div><div class="ttdoc">Perform extra configuration steps, if needed. This call will also issue a call to ompl::base::SpaceIn...</div><div class="ttdef"><b>Definition:</b> <a href="pSBL_8cpp_source.html#l00062">pSBL.cpp:62</a></div></div>
+<div class="ttc" id="classompl_1_1RNG_html_ad122fd3309d2a2c72ca1dd665c1a2803"><div class="ttname"><a href="classompl_1_1RNG.html#ad122fd3309d2a2c72ca1dd665c1a2803">ompl::RNG::uniformInt</a></div><div class="ttdeci">int uniformInt(int lower_bound, int upper_bound)</div><div class="ttdoc">Generate a random integer within given bounds: [lower_bound, upper_bound]. </div><div class="ttdef"><b>Definition:</b> <a href="RandomNumbers_8h_source.html#l00075">RandomNumbers.h:75</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1SBL_html_afd6d54cc164f50d105aa615a2052daa6"><div class="ttname"><a href="classompl_1_1geometric_1_1SBL.html#afd6d54cc164f50d105aa615a2052daa6">ompl::geometric::SBL::maxDistance_</a></div><div class="ttdeci">double maxDistance_</div><div class="ttdoc">The maximum length of a motion to be added in the tree. </div><div class="ttdef"><b>Definition:</b> <a href="SBL_8h_source.html#l00270">SBL.h:270</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1pSBL_html_a5aa31fd087855b2c8f648284ea388a8a"><div class="ttname"><a href="classompl_1_1geometric_1_1pSBL.html#a5aa31fd087855b2c8f648284ea388a8a">ompl::geometric::pSBL::getRange</a></div><div class="ttdeci">double getRange() const </div><div class="ttdoc">Get the range the planner is using. </div><div class="ttdef"><b>Definition:</b> <a href="pSBL_8h_source.html#l00126">pSBL.h:126</a></div></div>
+<div class="ttc" id="classompl_1_1Grid_html_ac85bc047c9574aea0fb08c1c53701eb9"><div class="ttname"><a href="classompl_1_1Grid.html#ac85bc047c9574aea0fb08c1c53701eb9">ompl::Grid::iterator</a></div><div class="ttdeci">CoordHash::const_iterator iterator</div><div class="ttdoc">We only allow const iterators. </div><div class="ttdef"><b>Definition:</b> <a href="Grid_8h_source.html#l00374">Grid.h:374</a></div></div>
+<div class="ttc" id="structompl_1_1geometric_1_1pSBL_1_1SolutionInfo_html"><div class="ttname"><a href="structompl_1_1geometric_1_1pSBL_1_1SolutionInfo.html">ompl::geometric::pSBL::SolutionInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="pSBL_8h_source.html#l00226">pSBL.h:226</a></div></div>
+<div class="ttc" id="group__logging_html_ga04bc36d1b8c57ad7e13a8a48451a3a05"><div class="ttname"><a href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a></div><div class="ttdeci">#define OMPL_INFORM(fmt,...)</div><div class="ttdoc">Log a formatted information string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00068">Console.h:68</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

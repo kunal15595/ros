@@ -1,0 +1,4 @@
+<map id="ompl::control::SimpleSetup" name="ompl::control::SimpleSetup">
+<area shape="rect" id="node2" href="$classompl_1_1control_1_1MorseSimpleSetup.html" title="Create the set of classes typically needed to solve a control problem when forward propagation is com..." alt="" coords="5,81,187,122"/>
+<area shape="rect" id="node3" href="$classompl_1_1control_1_1OpenDESimpleSetup.html" title="Create the set of classes typically needed to solve a control problem when forward propagation is com..." alt="" coords="211,81,405,122"/>
+</map>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Python Bindings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Python Bindings </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>Almost all of the functionality of the C++ OMPL library is accessible through Python using more or less the same API. Some important differences will be described below. The Python bindings are generated with <a href="https://bitbucket.org/ompl/pyplusplus">Py++</a>, which relies on <a href="http://www.boost.org/doc/libs/release/libs/python/doc">Boost.Python</a>. The bindings are packaged in the ompl module. The main namespaces (<a class="el" href="namespaceompl_1_1base.html" title="This namespace contains sampling based planning routines shared by both planning under geometric cons...">ompl::base</a>, <a class="el" href="namespaceompl_1_1control.html" title="This namespace contains sampling based planning routines used by planning under differential constrai...">ompl::control</a>, <a class="el" href="namespaceompl_1_1geometric.html" title="This namespace contains code that is specific to planning under geometric constraints. ">ompl::geometric</a>) are available as sub-modules. To quickly get an idea of what classes, functions, etc., are available within each submodule, type something like this at the Python prompt:</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">from</span> ompl <span class="keyword">import</span> base, control, geometric, tools, util</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;dir(base), dir(control), dir(geometric), dir(tools), dir(util)</div>
+</div><!-- fragment --><h1>Contents:</h1>
+<ul>
+<li><a class="el" href="md_ompl_doc_markdown_python.html#py_good_practices">Usage of the Python bindings: Good practices</a></li>
+<li><a class="el" href="md_ompl_doc_markdown_python.html#cpp_py_diffs">Important differences between C++ and Python</a></li>
+<li><a class="el" href="md_ompl_doc_markdown_python.html#py_api_diffs">Differences between the C++ and Python API's</a></li>
+<li><a class="el" href="md_ompl_doc_markdown_python.html#py_example">A simple example</a></li>
+<li><a class="el" href="md_ompl_doc_markdown_python.html#pyfunction_to_boostfunction">Creating boost::function objects from Python functions</a></li>
+<li><a class="el" href="md_ompl_doc_markdown_python.html#updating_python_bindings">(Re)generating the Python bindings</a></li>
+</ul>
+<h1><a class="anchor" id="py_good_practices"></a>
+Usage of the Python bindings: Good practices</h1>
+<p>Although almost all C++ functionality is exposed to Python, there are some caveats to be aware off:</p>
+<ul>
+<li>By default OMPL often returns a reference to an internal object when the original C++ function or method returns a reference or takes a reference as input. This means that you have to be careful about the scope of variables. Python objects need to exist as long as there exist at least one OMPL object that contains a reference to it. Analogously, you should not try to use Python variables that point to OMPL objects that have already been destroyed.</li>
+<li>C++ threads and Boost.Python don't mix; see the <a href="http://www.boost.org/libs/python/doc/v2/faq.html">Boost.Python FAQ</a>. If you have multi-threaded C++ code where multiple threads can call the Python interpreter at the same time, then this can lead to crashes. For that reason, we do not have Python bindings for the parallelized RRT and SBL planners, because they can call a Python state validator function at the same time.</li>
+<li>Just because you <em>can</em> create Python classes that derive from C++ classes, this doesn't mean it is a good idea. You pay a performance penalty each time your code crosses the Python-C++ barrier (objects may need to copied, locks acquired, etc.). This means that it is an especially bad idea to override low-level classes. For low-level functionality it is best to stick to the built-in OMPL functionality and use just the callback functions (e.g., for state validation and state propagation). It is also highly recommended to use the <a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html" title="Create the set of classes typically needed to solve a geometric problem. ">ompl::geometric::SimpleSetup</a> <a class="el" href="classompl_1_1control_1_1SimpleSetup.html" title="Create the set of classes typically needed to solve a control problem. ">ompl::control::SimpleSetup</a> classes rather than the lower-level classes for that same reason.</li>
+</ul>
+<h1><a class="anchor" id="cpp_py_diffs"></a>
+Important differences between C++ and Python</h1>
+<ul>
+<li>There are no templates in Python, so templated C++ classes and functions need to be fully instantiated to allow them to be exposed to python.</li>
+<li>There are no C-style pointers in python, and no “new” or “delete” operators. This could be a problem, but can be dealt with mostly by using Boost <a href="http://www.boost.org/doc/libs/release/libs/smart_ptr/shared_ptr.htm">shared_ptr</a>'s. If a C++ function takes pointer input/output parameters, <em>usually</em> a reference to the object is passed in the python bindings. In other words, you should be able to get and set the current value of an object through its methods. In some cases odd side effects may occur if you pass temporary objects (e.g., <code>function_call(Constructor_call())</code>), so it's advisable to create variables with the appropriate scope.</li>
+</ul>
+<h1><a class="anchor" id="py_api_diffs"></a>
+Differences between the C++ and Python API's</h1>
+<ul>
+<li>An STL vector of int's is of type vectorInt in Python (analogously for other types).</li>
+<li>The C++ class State has been renamed AbstractState, while the C++ class ScopedState&lt;&gt; is called State in Python.</li>
+<li>The C++ class ScopedState&lt;RealVectorStateSpace&gt; is called RealVectorState. The ScopedState's for the other pre-defined state spaces have been renamed analogously.</li>
+<li>The C++ class RealVectorStateSpace::StateType has been renamed to RealVectorStateInternal (analogously for the other state space types), to emphasize that an end user should really be using RealVectorState.</li>
+<li>To get a reference to a C++ State stored inside a ScopedState from Python, use the "()" operator: <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;spc = SE3StateSpace()  <span class="comment"># create an SE(3) state space</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;s = State(spc)         <span class="comment"># allocate a state corresponding to a C++ ScopedState&lt;SE3StateSpace&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;sref = s()             <span class="comment"># sref corresponds to a C++ State*. In this case sref is</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;                       <span class="comment"># a reference to SE3StateSpace::StateType</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;sref.setX(1.0)         <span class="comment"># set the X coordinate</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;s().setX(1.0)          <span class="comment"># this also works</span></div>
+</div><!-- fragment --></li>
+<li>The print method (for classes that have one) is mapped to the special python method <b>str</b>, so a C++ call like <code>foo.print(std::cout)</code> becomes <code>print(foo_</code> in python. Similarly, a C++ call like <code>foo.printSettings(std::cout)</code> becomes <code>print(foo.settings())</code> in python.</li>
+</ul>
+<p>Many of the python demo and test programs are direct ports of the corresponding C++ programs. If you compare these programs, the sometimes subtle differences will become more obvious. In the python programs you will notice that we can create python classes that derive from C++ classes and pass instances of such classes to C++ functions. Similarly, we can create python functions (such as state validity checkers or propagate functions) that can be called by C++ code.</p>
+<h1><a class="anchor" id="py_example"></a>
+A simple example</h1>
+<p>Below is a simple annotated example. It is available in ompl/py-bindings/demos/RigidBodyPlanning.py.</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">from</span> ompl <span class="keyword">import</span> base <span class="keyword">as</span> ob</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">from</span> ompl <span class="keyword">import</span> geometric <span class="keyword">as</span> og</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">def </span>isStateValid(state):</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="comment"># &quot;state&quot; is of type SE2StateInternal, so we don&#39;t need to use the &quot;()&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="comment"># operator.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="comment">#</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="comment"># Some arbitrary condition on the state (note that thanks to</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="comment"># dynamic type checking we can just call getX() and do not need</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="comment"># to convert state to an SE2State.)</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">return</span> state.getX() &lt; .6</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">def </span>plan():</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="comment"># create an SE2 state space</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    space = <a class="code" href="classompl_1_1base_1_1SE2StateSpace.html">ob.SE2StateSpace</a>()</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment"># set lower and upper bounds</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    bounds = <a class="code" href="classompl_1_1base_1_1RealVectorBounds.html">ob.RealVectorBounds</a>(2)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    bounds.setLow(-1)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    bounds.setHigh(1)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    space.setBounds(bounds)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment"># create a simple setup object</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    ss = <a class="code" href="classompl_1_1geometric_1_1SimpleSetup.html">og.SimpleSetup</a>(space)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    ss.setStateValidityChecker(<a class="code" href="namespaceompl_1_1base.html#a53fa8a46a28674eaa17899b2026f7b75">ob.StateValidityCheckerFn</a>(isStateValid))</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    start = <a class="code" href="classompl_1_1base_1_1State.html">ob.State</a>(space)</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment"># we can pick a random start state...</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    start.random()</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment"># ... or set specific values</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    start().setX(.5)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    goal = <a class="code" href="classompl_1_1base_1_1State.html">ob.State</a>(space)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment"># we can pick a random goal state...</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    goal.random()</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment"># ... or set specific values</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    goal().setX(-.5)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ss.setStartAndGoalStates(start, goal)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment"># this will automatically choose a default planner with</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment"># default parameters</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    solved = ss.solve(1.0)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span> solved:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment"># try to shorten the path</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        ss.simplifySolution()</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="comment"># print the simplified path</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">print</span> ss.getSolutionPath()</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    plan()</div>
+</div><!-- fragment --><h1><a class="anchor" id="pyfunction_to_boostfunction"></a>
+Creating boost::function objects from Python functions</h1>
+<p>OMPL relies heavily on boost::function objects for callback functions. To specify a Python function as a callback function, that function needs to be cast to the right function type. The simple example above already showed how to do this for a state validity checker function:</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;ss.setStateValidityChecker(<a class="code" href="namespaceompl_1_1base.html#a53fa8a46a28674eaa17899b2026f7b75">ob.StateValidityCheckerFn</a>(isStateValid))</div>
+</div><!-- fragment --><p>If you need to pass extra arguments to a function, you can use the Python <code>partial</code> function like so:</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">from</span> functools <span class="keyword">import</span> partial</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">def </span>isStateValid(spaceInformation, state):</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    <span class="keywordflow">return</span> spaceInformation.satiesfiesBounds(state)</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">def </span>plan()</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    ...</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    isValidFn = <a class="code" href="namespaceompl_1_1base.html#a53fa8a46a28674eaa17899b2026f7b75">ob.StateValidityCheckerFn</a>(partial(isStateValid, ss.getSpaceInformation()))</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    ss.setStateValidityChecker(isValidFn)</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    ...</div>
+</div><!-- fragment --><h1><a class="anchor" id="updating_python_bindings"></a>
+(Re)generating the Python bindings</h1>
+<dl class="section attention"><dt>Attention</dt><dd>See also the tutorial <a href="pybindingsPlanner.html">Creating Python bindings for a new planner</a></dd></dl>
+<p>The Python bindings are subdivided into modules, to reflect the main namespaces: <a class="el" href="namespaceompl_1_1base.html" title="This namespace contains sampling based planning routines shared by both planning under geometric cons...">ompl::base</a>, <a class="el" href="namespaceompl_1_1control.html" title="This namespace contains sampling based planning routines used by planning under differential constrai...">ompl::control</a>, and <a class="el" href="namespaceompl_1_1geometric.html" title="This namespace contains code that is specific to planning under geometric constraints. ">ompl::geometric</a>. The code in the ompl/src/ompl/util directory is available in a submodule as well. Whenever you change the API to OMPL, you will need to update the Python bindings. Updating the bindings is a two-step process. First, the code for the modules needs to be generated. Second, the code needs to be compiled into binary Python modules.</p>
+<h2><a class="anchor" id="binding_code_generation"></a>
+Code generation</h2>
+<p><b>The code for the Python bindings can be generated by typing “<code>make update_bindings</code>.”</b> This creates one header file per module, formed by concatenating all relevant header files for that module. This header file is then parsed by Py++ and the appropriate C++ code is generated. This code uses Boost.Python. Py++ is smart enough to create wrapper classes when necessary, register Python &lt;-&gt; C++ type conversions, and so on. If you only need to update the bindings for one module (say <code>base</code>), you can type “<code>make update_base_bindings</code>.” Any diagnostic information from Py++ is stored in a log file in the build directory for each module (<code>pyplusplus_base.log</code> for the module <code>base</code> and likewise for other modules). You can remove all generated code by typing “<code>make clean_bindings</code>”. This is sometimes necessary if Py++ gets confused about which code needs to be regenerated. If this happens, all the generated code might still compile, but you can get odd crashes or errors at runtime.</p>
+<p>For each module the relevant header files are listed in <code>ompl/py-bindings/headers_&lt;<em>modulename</em>&gt;.txt.</code> The order in which the header files are listed is important. A header file should not be included by another header file listed above it. If you have created new header files, you should add the names of these files to the appropriate <code>headers_&lt;<em>modulename</em>&gt;.txt.</code> file.</p>
+<h2><a class="anchor" id="compile_bindings"></a>
+Compiling the Python modules</h2>
+<p>To compile the Python modules type “<code>make py_ompl</code>” (or simply “make”). If you only want to compile one python module (say <code>base</code>), type “<code>make py_ompl_base</code>.” The modules will appear as libraries in the lib subdirectory in the build directory, but they are also copied to <code>ompl/py-bindings/ompl/&lt;<em>modulename</em>&gt;/_&lt;<em>modulename</em>&gt;.so</code>.</p>
+<h2><a class="anchor" id="bindings_cmake"></a>
+Forcing CMake to do The Right Thing</h2>
+<p>Every attempt has been to have CMake correctly identify dependencies and only compile code when necessary. If you want force CMake to regenerate the bindings from scratch, you can type “<code>make clean_bindings</code>,” followed by “<code>make update_bindings</code>” again. If, on the other hand, you want to (temporarily) disable the compilation of Python bindings, type: </p>
+<pre class="fragment">cmake -D OMPL_BUILD_PYBINDINGS:BOOL=OFF .
+</pre><p>in your build directory. You can re-enable them, by running this command again, but with OFF changed to ON. Changing these settings can also be done through the CMake GUI. </p>
+</div></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:27 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::base::StateStorageWithMetadata&lt; M &gt; Class Template Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1base.html">base</a></li><li class="navelem"><a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html">StateStorageWithMetadata</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="classompl_1_1base_1_1StateStorageWithMetadata-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::base::StateStorageWithMetadata&lt; M &gt; Class Template Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> storage that allows storing state metadata as well.  
+ <a href="classompl_1_1base_1_1StateStorageWithMetadata.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="StateStorage_8h_source.html">StateStorage.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ompl::base::StateStorageWithMetadata&lt; M &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="classompl_1_1base_1_1StateStorageWithMetadata__inherit__graph.png" border="0" usemap="#ompl_1_1base_1_1StateStorageWithMetadata_3_01M_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="ompl_1_1base_1_1StateStorageWithMetadata_3_01M_01_4_inherit__map" id="ompl_1_1base_1_1StateStorageWithMetadata_3_01M_01_4_inherit__map">
+<area shape="rect" id="node2" href="classompl_1_1base_1_1StateStorage.html" title="Manage loading and storing for a set of states of a specified state space. " alt="" coords="5,5,176,32"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a20dafb7005cf4dbd6c6d24b0257b478d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20dafb7005cf4dbd6c6d24b0257b478d"></a>
+typedef M&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html#a20dafb7005cf4dbd6c6d24b0257b478d">MetadataType</a></td></tr>
+<tr class="memdesc:a20dafb7005cf4dbd6c6d24b0257b478d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the datatype of the metadata <br/></td></tr>
+<tr class="separator:a20dafb7005cf4dbd6c6d24b0257b478d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a91ecfc1d568cfa3844107f904b75c6de"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a91ecfc1d568cfa3844107f904b75c6de"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html#a91ecfc1d568cfa3844107f904b75c6de">StateStorageWithMetadata</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;space)</td></tr>
+<tr class="memdesc:a91ecfc1d568cfa3844107f904b75c6de"><td class="mdescLeft">&#160;</td><td class="mdescRight">The state space to store states for is specified as argument. <br/></td></tr>
+<tr class="separator:a91ecfc1d568cfa3844107f904b75c6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1547528ad5f5fc3d33f8b57e39435bb3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1547528ad5f5fc3d33f8b57e39435bb3"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html#a1547528ad5f5fc3d33f8b57e39435bb3">addState</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state)</td></tr>
+<tr class="memdesc:a1547528ad5f5fc3d33f8b57e39435bb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a state to the set of states maintained by this storage structure. The state is copied to internal storage and metadata with default values is stored as well. <br/></td></tr>
+<tr class="separator:a1547528ad5f5fc3d33f8b57e39435bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab55dc6dc746107d0b2f7b639ac7d272a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab55dc6dc746107d0b2f7b639ac7d272a"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html#ab55dc6dc746107d0b2f7b639ac7d272a">addState</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state, const M &amp;metadata)</td></tr>
+<tr class="memdesc:ab55dc6dc746107d0b2f7b639ac7d272a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a state to the set of states maintained by this storage structure. The state is copied to internal storage. Corresponding metadata is stored too. <br/></td></tr>
+<tr class="separator:ab55dc6dc746107d0b2f7b639ac7d272a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f318f0efa7fd89c35a2b161a5c841d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f318f0efa7fd89c35a2b161a5c841d8"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html#a7f318f0efa7fd89c35a2b161a5c841d8">clear</a> ()</td></tr>
+<tr class="memdesc:a7f318f0efa7fd89c35a2b161a5c841d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the stored states. This frees all the memory. <br/></td></tr>
+<tr class="separator:a7f318f0efa7fd89c35a2b161a5c841d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a578e91822cf7190a46576d67c438c63d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a578e91822cf7190a46576d67c438c63d"></a>
+const M &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html#a578e91822cf7190a46576d67c438c63d">getMetadata</a> (unsigned int index) const </td></tr>
+<tr class="memdesc:a578e91822cf7190a46576d67c438c63d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get const access to the metadata of a state at a particular index. <br/></td></tr>
+<tr class="separator:a578e91822cf7190a46576d67c438c63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2823f12dc99173a08109600958b04efc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2823f12dc99173a08109600958b04efc"></a>
+M &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html#a2823f12dc99173a08109600958b04efc">getMetadata</a> (unsigned int index)</td></tr>
+<tr class="memdesc:a2823f12dc99173a08109600958b04efc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get write access to the metadata of a state at a particular index. <br/></td></tr>
+<tr class="separator:a2823f12dc99173a08109600958b04efc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classompl_1_1base_1_1StateStorage"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classompl_1_1base_1_1StateStorage')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classompl_1_1base_1_1StateStorage.html">ompl::base::StateStorage</a></td></tr>
+<tr class="memitem:a4e289fe7e4c726661d3a794afed36079 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e289fe7e4c726661d3a794afed36079"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#a4e289fe7e4c726661d3a794afed36079">StateStorage</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;space)</td></tr>
+<tr class="memdesc:a4e289fe7e4c726661d3a794afed36079 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">The state space to store states for is specified as argument. <br/></td></tr>
+<tr class="separator:a4e289fe7e4c726661d3a794afed36079 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01047676a24f6ccdbd2208246946424c inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01047676a24f6ccdbd2208246946424c"></a>
+const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#a01047676a24f6ccdbd2208246946424c">getStateSpace</a> () const </td></tr>
+<tr class="memdesc:a01047676a24f6ccdbd2208246946424c inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the state space this class maintains states for. <br/></td></tr>
+<tr class="separator:a01047676a24f6ccdbd2208246946424c inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4db3b5045f9107a1f5185941aa163eda inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4db3b5045f9107a1f5185941aa163eda"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#a4db3b5045f9107a1f5185941aa163eda">load</a> (const char *filename)</td></tr>
+<tr class="memdesc:a4db3b5045f9107a1f5185941aa163eda inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a set of states from a specified file. <br/></td></tr>
+<tr class="separator:a4db3b5045f9107a1f5185941aa163eda inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff774060c40e7c9b5296c1feaa9b10a6 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff774060c40e7c9b5296c1feaa9b10a6"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#aff774060c40e7c9b5296c1feaa9b10a6">load</a> (std::istream &amp;in)</td></tr>
+<tr class="memdesc:aff774060c40e7c9b5296c1feaa9b10a6 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a set of states from a stream. <br/></td></tr>
+<tr class="separator:aff774060c40e7c9b5296c1feaa9b10a6 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1419e59cd3566da325cf10855a11457 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1419e59cd3566da325cf10855a11457"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#ae1419e59cd3566da325cf10855a11457">store</a> (const char *filename)</td></tr>
+<tr class="memdesc:ae1419e59cd3566da325cf10855a11457 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save a set of states to a file. <br/></td></tr>
+<tr class="separator:ae1419e59cd3566da325cf10855a11457 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9821196ec356c0126836b66d3b24ef5b inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9821196ec356c0126836b66d3b24ef5b"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#a9821196ec356c0126836b66d3b24ef5b">store</a> (std::ostream &amp;out)</td></tr>
+<tr class="memdesc:a9821196ec356c0126836b66d3b24ef5b inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save a set of states to a stream. <br/></td></tr>
+<tr class="separator:a9821196ec356c0126836b66d3b24ef5b inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12921311a320c9e25648228ab334b12e inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a12921311a320c9e25648228ab334b12e"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#a12921311a320c9e25648228ab334b12e">generateSamples</a> (unsigned int count)</td></tr>
+<tr class="memdesc:a12921311a320c9e25648228ab334b12e inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate <em>count</em> states uniformly at random and store them in this structure. <br/></td></tr>
+<tr class="separator:a12921311a320c9e25648228ab334b12e inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f8d99d5defdf8beb30a276c14a70c07 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f8d99d5defdf8beb30a276c14a70c07"></a>
+std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#a6f8d99d5defdf8beb30a276c14a70c07">size</a> () const </td></tr>
+<tr class="memdesc:a6f8d99d5defdf8beb30a276c14a70c07 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of stored states. <br/></td></tr>
+<tr class="separator:a6f8d99d5defdf8beb30a276c14a70c07 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b81cc15691f5259cbbffba14690f880 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b81cc15691f5259cbbffba14690f880"></a>
+const std::vector&lt; const <a class="el" href="classompl_1_1base_1_1State.html">State</a> * &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#a1b81cc15691f5259cbbffba14690f880">getStates</a> () const </td></tr>
+<tr class="memdesc:a1b81cc15691f5259cbbffba14690f880 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the stored states. <br/></td></tr>
+<tr class="separator:a1b81cc15691f5259cbbffba14690f880 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9bcadde6f6d98433fc67e5310439709 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9bcadde6f6d98433fc67e5310439709"></a>
+<a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#ac9bcadde6f6d98433fc67e5310439709">getState</a> (unsigned int index)</td></tr>
+<tr class="memdesc:ac9bcadde6f6d98433fc67e5310439709 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a particular state for non-const access. <br/></td></tr>
+<tr class="separator:ac9bcadde6f6d98433fc67e5310439709 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c533b00a6dbe75d5210d6cccc98701d inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c533b00a6dbe75d5210d6cccc98701d"></a>
+const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#a6c533b00a6dbe75d5210d6cccc98701d">getState</a> (unsigned int index) const </td></tr>
+<tr class="memdesc:a6c533b00a6dbe75d5210d6cccc98701d inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a particular state. <br/></td></tr>
+<tr class="separator:a6c533b00a6dbe75d5210d6cccc98701d inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d1bd43ceed0624bebbff18a58cce0d5 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d1bd43ceed0624bebbff18a58cce0d5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#a0d1bd43ceed0624bebbff18a58cce0d5">hasMetadata</a> () const </td></tr>
+<tr class="memdesc:a0d1bd43ceed0624bebbff18a58cce0d5 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a flag that indicates whether there is metadata associated to the states in this storage. <br/></td></tr>
+<tr class="separator:a0d1bd43ceed0624bebbff18a58cce0d5 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5bd48ef8961ff3dc3ec9ba7cb92b6e9 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5bd48ef8961ff3dc3ec9ba7cb92b6e9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#ac5bd48ef8961ff3dc3ec9ba7cb92b6e9">sort</a> (const boost::function&lt; bool(const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *)&gt; &amp;op)</td></tr>
+<tr class="memdesc:ac5bd48ef8961ff3dc3ec9ba7cb92b6e9 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the states according to the less-equal operator <em>op</em>. Metadata is NOT sorted; if metadata was added, the index values of the metadata will not match after the sort. <br/></td></tr>
+<tr class="separator:ac5bd48ef8961ff3dc3ec9ba7cb92b6e9 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf0d10558ab1593b89c625f08fd16a71 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf0d10558ab1593b89c625f08fd16a71"></a>
+<a class="el" href="namespaceompl_1_1base.html#a0898b21bd2fed51298626f7be55779b8">StateSamplerAllocator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#aaf0d10558ab1593b89c625f08fd16a71">getStateSamplerAllocator</a> () const </td></tr>
+<tr class="memdesc:aaf0d10558ab1593b89c625f08fd16a71 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a sampler allocator to a sampler that can be specified for a <a class="el" href="classompl_1_1base_1_1StateSpace.html" title="Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. ">StateSpace</a>, such that all sampled states are actually from this storage structure. <br/></td></tr>
+<tr class="separator:aaf0d10558ab1593b89c625f08fd16a71 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f05a8bc04279a48eef8ad082541c59f inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f05a8bc04279a48eef8ad082541c59f"></a>
+<a class="el" href="namespaceompl_1_1base.html#a0898b21bd2fed51298626f7be55779b8">StateSamplerAllocator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#a7f05a8bc04279a48eef8ad082541c59f">getStateSamplerAllocatorRangeUntil</a> (std::size_t until) const </td></tr>
+<tr class="memdesc:a7f05a8bc04279a48eef8ad082541c59f inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a sampler allocator to a sampler that can be specified for a <a class="el" href="classompl_1_1base_1_1StateSpace.html" title="Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. ">StateSpace</a>, such that all sampled states are actually from this storage structure at an index less than or equal to <em>until</em>. <br/></td></tr>
+<tr class="separator:a7f05a8bc04279a48eef8ad082541c59f inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9fa4a99208639b2b9d36e0a65cfdd19 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9fa4a99208639b2b9d36e0a65cfdd19"></a>
+<a class="el" href="namespaceompl_1_1base.html#a0898b21bd2fed51298626f7be55779b8">StateSamplerAllocator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#ae9fa4a99208639b2b9d36e0a65cfdd19">getStateSamplerAllocatorRangeAfter</a> (std::size_t after) const </td></tr>
+<tr class="memdesc:ae9fa4a99208639b2b9d36e0a65cfdd19 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a sampler allocator to a sampler that can be specified for a <a class="el" href="classompl_1_1base_1_1StateSpace.html" title="Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. ">StateSpace</a>, such that all sampled states are actually from this storage structure at an index above or equal to <em>after</em>. <br/></td></tr>
+<tr class="separator:ae9fa4a99208639b2b9d36e0a65cfdd19 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad544c18a3270f4dd69b72f1725a08eca inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad544c18a3270f4dd69b72f1725a08eca"></a>
+virtual <a class="el" href="namespaceompl_1_1base.html#a0898b21bd2fed51298626f7be55779b8">StateSamplerAllocator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#ad544c18a3270f4dd69b72f1725a08eca">getStateSamplerAllocatorRange</a> (std::size_t from, std::size_t to) const </td></tr>
+<tr class="memdesc:ad544c18a3270f4dd69b72f1725a08eca inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a sampler allocator to a sampler that can be specified for a <a class="el" href="classompl_1_1base_1_1StateSpace.html" title="Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. ">StateSpace</a>, such that all sampled states are actually from this storage structure at an index in the range [<em>from</em>, <em>to</em>] (inclusive) <br/></td></tr>
+<tr class="separator:ad544c18a3270f4dd69b72f1725a08eca inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae74a77dea8ea63fc941d0aa7e3d2c159 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae74a77dea8ea63fc941d0aa7e3d2c159"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#ae74a77dea8ea63fc941d0aa7e3d2c159">print</a> (std::ostream &amp;out=std::cout) const </td></tr>
+<tr class="memdesc:ae74a77dea8ea63fc941d0aa7e3d2c159 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output the set of states to a specified stream, in a human readable fashion. <br/></td></tr>
+<tr class="separator:ae74a77dea8ea63fc941d0aa7e3d2c159 inherit pub_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a75d53443f63663816d9b8bf8f7cbfde5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75d53443f63663816d9b8bf8f7cbfde5"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html#a75d53443f63663816d9b8bf8f7cbfde5">loadMetadata</a> (const <a class="el" href="structompl_1_1base_1_1StateStorage_1_1Header.html">Header</a> &amp;, boost::archive::binary_iarchive &amp;ia)</td></tr>
+<tr class="memdesc:a75d53443f63663816d9b8bf8f7cbfde5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the state metadata from a binary archive <em>ia</em>, given the loaded header is <em>h</em>. No metadata is actually loaded unless the <a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html" title="State storage that allows storing state metadata as well. ">StateStorageWithMetadata</a> class is used. <br/></td></tr>
+<tr class="separator:a75d53443f63663816d9b8bf8f7cbfde5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa03b8ca979dd08be0b84fa1d958892e6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa03b8ca979dd08be0b84fa1d958892e6"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html#aa03b8ca979dd08be0b84fa1d958892e6">storeMetadata</a> (const <a class="el" href="structompl_1_1base_1_1StateStorage_1_1Header.html">Header</a> &amp;, boost::archive::binary_oarchive &amp;oa)</td></tr>
+<tr class="memdesc:aa03b8ca979dd08be0b84fa1d958892e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the state metadata to a binary archive <em>oa</em>, given the stored header is <em>h</em>. No metadata is actually saved unless the <a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html" title="State storage that allows storing state metadata as well. ">StateStorageWithMetadata</a> class is used. <br/></td></tr>
+<tr class="separator:aa03b8ca979dd08be0b84fa1d958892e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classompl_1_1base_1_1StateStorage"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classompl_1_1base_1_1StateStorage')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classompl_1_1base_1_1StateStorage.html">ompl::base::StateStorage</a></td></tr>
+<tr class="memitem:a2a7645e1be9b7fbafea18efe6e9ec668 inherit pro_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a7645e1be9b7fbafea18efe6e9ec668"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#a2a7645e1be9b7fbafea18efe6e9ec668">loadStates</a> (const <a class="el" href="structompl_1_1base_1_1StateStorage_1_1Header.html">Header</a> &amp;h, boost::archive::binary_iarchive &amp;ia)</td></tr>
+<tr class="memdesc:a2a7645e1be9b7fbafea18efe6e9ec668 inherit pro_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the states from a binary archive <em>ia</em>, given the loaded header is <em>h</em>. <br/></td></tr>
+<tr class="separator:a2a7645e1be9b7fbafea18efe6e9ec668 inherit pro_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d548219ee3be541508ef59092010c2 inherit pro_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65d548219ee3be541508ef59092010c2"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#a65d548219ee3be541508ef59092010c2">storeStates</a> (const <a class="el" href="structompl_1_1base_1_1StateStorage_1_1Header.html">Header</a> &amp;h, boost::archive::binary_oarchive &amp;oa)</td></tr>
+<tr class="memdesc:a65d548219ee3be541508ef59092010c2 inherit pro_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store the states to a binary archive <em>oa</em>, given the stored header is <em>h</em>. <br/></td></tr>
+<tr class="separator:a65d548219ee3be541508ef59092010c2 inherit pro_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5bd812f772394584e527178750d15a8 inherit pro_methods_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae5bd812f772394584e527178750d15a8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#ae5bd812f772394584e527178750d15a8">freeMemory</a> ()</td></tr>
+<tr class="memdesc:ae5bd812f772394584e527178750d15a8 inherit pro_methods_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the memory allocated for states. <br/></td></tr>
+<tr class="separator:ae5bd812f772394584e527178750d15a8 inherit pro_methods_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a86da79c284b5a9048b10603f6f3dc988"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86da79c284b5a9048b10603f6f3dc988"></a>
+std::vector&lt; M &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html#a86da79c284b5a9048b10603f6f3dc988">metadata_</a></td></tr>
+<tr class="memdesc:a86da79c284b5a9048b10603f6f3dc988"><td class="mdescLeft">&#160;</td><td class="mdescRight">The metadata for each state. <br/></td></tr>
+<tr class="separator:a86da79c284b5a9048b10603f6f3dc988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classompl_1_1base_1_1StateStorage"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classompl_1_1base_1_1StateStorage')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classompl_1_1base_1_1StateStorage.html">ompl::base::StateStorage</a></td></tr>
+<tr class="memitem:ac8cea7a2266a29d7cb4d354c93bf25e4 inherit pro_attribs_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8cea7a2266a29d7cb4d354c93bf25e4"></a>
+<a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#ac8cea7a2266a29d7cb4d354c93bf25e4">space_</a></td></tr>
+<tr class="memdesc:ac8cea7a2266a29d7cb4d354c93bf25e4 inherit pro_attribs_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> space that corresponds to maintained states. <br/></td></tr>
+<tr class="separator:ac8cea7a2266a29d7cb4d354c93bf25e4 inherit pro_attribs_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd197da261fe11291a864ac086d3fc52 inherit pro_attribs_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd197da261fe11291a864ac086d3fc52"></a>
+std::vector&lt; const <a class="el" href="classompl_1_1base_1_1State.html">State</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#abd197da261fe11291a864ac086d3fc52">states_</a></td></tr>
+<tr class="memdesc:abd197da261fe11291a864ac086d3fc52 inherit pro_attribs_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">The list of maintained states. <br/></td></tr>
+<tr class="separator:abd197da261fe11291a864ac086d3fc52 inherit pro_attribs_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a195e161dffd85bfe1c6a5027982c47b3 inherit pro_attribs_classompl_1_1base_1_1StateStorage"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a195e161dffd85bfe1c6a5027982c47b3"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html#a195e161dffd85bfe1c6a5027982c47b3">hasMetadata_</a></td></tr>
+<tr class="memdesc:a195e161dffd85bfe1c6a5027982c47b3 inherit pro_attribs_classompl_1_1base_1_1StateStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating whether there is metadata associated to the states in this storage. <br/></td></tr>
+<tr class="separator:a195e161dffd85bfe1c6a5027982c47b3 inherit pro_attribs_classompl_1_1base_1_1StateStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename M&gt;<br/>
+class ompl::base::StateStorageWithMetadata&lt; M &gt;</h3>
+
+<p><a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> storage that allows storing state metadata as well. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">M</td><td>the datatype for the stored metadata. boost::serialization operation needs to be defined </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="StateStorage_8h_source.html#l00210">210</a> of file <a class="el" href="StateStorage_8h_source.html">StateStorage.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
+<li>ompl/src/ompl/base/<a class="el" href="StateStorage_8h_source.html">StateStorage.h</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:27 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

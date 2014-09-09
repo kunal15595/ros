@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Available State Samplers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Available State Samplers </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>There are two different kinds of samplers that sound similar, but have different roles: state space samplers (<a class="el" href="classompl_1_1base_1_1StateSampler.html" title="Abstract definition of a state space sampler. ">ompl::base::StateSampler</a>) and <em>valid</em> state samplers (<a class="el" href="classompl_1_1base_1_1ValidStateSampler.html" title="Abstract definition of a state sampler. ">ompl::base::ValidStateSampler</a>). For each type of state space there needs to exist a corresponding derived <a class="el" href="classompl_1_1base_1_1StateSampler.html" title="Abstract definition of a state space sampler. ">ompl::base::StateSampler</a> class that allows one to generate uniform samples from that state space, generate states near another state from that state space and generate states using a Gaussian distribution. The valid state samplers use the state space samplers as a low level primitive. Typically, they generate a number of state samples using the appropriate state space sampler until a valid state is found or a maximum number of iterations is exceeded. The validity of a state is determined through the <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#af79b66aea243ec09f9f0db949efbe86b" title="Check if a given state is valid or not. ">ompl::base::SpaceInformation::isValid</a> method. There are some pre-defined derived <a class="el" href="classompl_1_1base_1_1ValidStateSampler.html" title="Abstract definition of a state sampler. ">ompl::base::ValidStateSampler</a> classes:</p>
+<ul>
+<li><a class="el" href="classompl_1_1base_1_1UniformValidStateSampler.html" title="A state sampler that only samples valid states, uniformly. ">ompl::base::UniformValidStateSampler</a>: This is the default sampler. It simply calls the state space sampler to generate uniform samples until a valid state is found or a maximum number of iterations is exceeded.</li>
+<li><a class="el" href="classompl_1_1base_1_1ObstacleBasedValidStateSampler.html" title="Generate valid samples using obstacle based sampling. First sample an invalid state, then sample a valid state. Then, interpolate from the invalid state to the valid state, returning the first valid state encountered. ">ompl::base::ObstacleBasedValidStateSampler</a>: This sampler tries to first find one invalid sample and one valid sample. Next, it interpolates states incrementally from the valid to the invalid state. It returns the last state that is valid before reaching an invalid state. The idea is that samples near obstacles improve the chance of finding samples in narrow passages. Finding such samples is often the crucial problem in solving motion planning queries.</li>
+<li><a class="el" href="classompl_1_1base_1_1GaussianValidStateSampler.html" title="Generate valid samples using the Gaussian sampling strategy. ">ompl::base::GaussianValidStateSampler</a>: This sampler tries to accomplish something similar to the previous one, but in a different way. It repeatedly generates pairs of of states. The first one is uniformly random, while the second one is sampled according to a Gaussian distribution centered around the first sample. If one sample is valid and the other one invalid, the valid one is returned. If both are valid or invalid, it generates a new pair. This process repeats until a maximum number of iterations is exceeded.</li>
+<li><a class="el" href="classompl_1_1base_1_1MaximizeClearanceValidStateSampler.html" title="Generate valid samples randomly, but with a bias towards higher clearance. ">ompl::base::MaximizeClearanceValidStateSampler</a>: This sampler behaves a lot like <a class="el" href="classompl_1_1base_1_1UniformValidStateSampler.html" title="A state sampler that only samples valid states, uniformly. ">ompl::base::UniformValidStateSampler</a> but once it finds a valid state, it attempts to find additional valid states with higher clearance. The reported sample is the one with highest clearance.</li>
+</ul>
+<p>Below we will describe how you can specify a planner to use one of these samplers and how to write your own valid state sampler. The code examples are taken from the <a href="StateSampling_8cpp_source.html">StateSampling.cpp</a> demo program (note that there is also a <a href="StateSampling_8py_source.html">Python version</a> of this demo).</p>
+<h1>Using an Existing Sampler</h1>
+<p>We cannot set the type of sampler directly in the SimpleSetup or SpaceInformation classes, because each thread needs it own copy of a sampler. Instead, we need to define a <a class="el" href="namespaceompl_1_1base.html#a169b699697e871752924a93e8254e3f4" title="Definition of a function that can allocate a valid state sampler. ">ompl::base::ValidStateSamplerAllocator</a>, a function that, given a pointer to an <a class="el" href="classompl_1_1base_1_1SpaceInformation.html" title="The base class for space information. This contains all the information about the space planning is d...">ompl::base::SpaceInformation</a>, returns <a class="el" href="classompl_1_1base_1_1ValidStateSamplerPtr.html" title="A boost shared pointer wrapper for ompl::base::ValidStateSampler. ">ompl::base::ValidStateSamplerPtr</a>. This function can also configure the valid state sampler according to the specific space information before returning it. The following simple example shows how to use the ObstacleBasedValidStateSampler:</p>
+ <div class="fragment"><div class="line"><span class="keyword">namespace </span>ob = ompl::base;</div>
+<div class="line"><span class="keyword">namespace </span>og = ompl::geometric;</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1ValidStateSamplerPtr.html">ob::ValidStateSamplerPtr</a> allocOBValidStateSampler(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformation.html">ob::SpaceInformation</a> *si)</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// we can perform any additional setup / configuration of a sampler here,</span></div>
+<div class="line">    <span class="comment">// but there is nothing to tweak in case of the ObstacleBasedValidStateSampler.</span></div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1ValidStateSamplerPtr.html">ob::ValidStateSamplerPtr</a>(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1ObstacleBasedValidStateSampler.html">ob::ObstacleBasedValidStateSampler</a>(si));</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordtype">void</span> plan(<span class="keywordtype">int</span> samplerIndex)</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// construct the state space we are planning in</span></div>
+<div class="line">    <a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ob::StateSpacePtr</a> space(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html">ob::RealVectorStateSpace</a>(3));</div>
+<div class="line">    <a class="code" href="classompl_1_1geometric_1_1SimpleSetup.html">og::SimpleSetup</a> ss(space);</div>
+<div class="line">    <span class="comment">// set sampler (optional; the default is uniform sampling)</span></div>
+<div class="line">    <span class="keywordflow">if</span> (samplerIndex==1)</div>
+<div class="line">        <span class="comment">// use obstacle-based sampling</span></div>
+<div class="line">        ss.getSpaceInformation()-&gt;setValidStateSamplerAllocator(allocOBValidStateSampler);</div>
+</div><!-- fragment --> Other setup steps, such as specifying start and goal states, have been omitted for the sake of clarity.</p>
+<h1>Creating a New Valid State Sampler</h1>
+<p>A wide variety of heuristics have been proposed to improve the sampling of states. The quality of a sample can be characterized, e.g., by its distance to the nearest obstacle or by the “visibility” from a state. There are also two common cases where problem-specific information can be exploited:</p>
+<ul>
+<li>If you use a collision checker that returns the distance to the closest obstacle or—even better—returns also the gradient of the distance function, then it would make sense to create a new valid state sampler that can exploit this information.</li>
+<li>If you can directly incorporate state validity constraints into the sampling (rather than use the rejection sampling scheme of the standard valid state samplers), then this will help boost performance. We will give an example of such sampler below.</li>
+</ul>
+<p>In the code below we are planning for a 3D point moving around inside a cube centered at the origin. There is one rectangular obstacle. Since the valid region is easy to describe, we can sample directly from the free space.</p>
+ <div class="fragment"><div class="line"><span class="keyword">namespace </span>ob = ompl::base;</div>
+<div class="line"><span class="keyword">namespace </span>og = ompl::geometric;</div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line"><span class="comment">// This is a problem-specific sampler that automatically generates valid</span></div>
+<div class="line"><span class="comment">// states; it doesn&#39;t need to call SpaceInformation::isValid. This is an</span></div>
+<div class="line"><span class="comment">// example of constrained sampling. If you can explicitly describe the set valid</span></div>
+<div class="line"><span class="comment">// states and can draw samples from it, then this is typically much more</span></div>
+<div class="line"><span class="comment">// efficient than generating random samples from the entire state space and</span></div>
+<div class="line"><span class="comment">// checking for validity.</span></div>
+<div class="line"><span class="keyword">class </span>MyValidStateSampler : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1ValidStateSampler.html">ob::ValidStateSampler</a></div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    MyValidStateSampler(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformation.html">ob::SpaceInformation</a> *si) : ValidStateSampler(si)</div>
+<div class="line">    {</div>
+<div class="line">        name_ = <span class="stringliteral">&quot;my sampler&quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="comment">// Generate a sample in the valid part of the R^3 state space</span></div>
+<div class="line">    <span class="comment">// Valid states satisfy the following constraints:</span></div>
+<div class="line">    <span class="comment">// -1&lt;= x,y,z &lt;=1</span></div>
+<div class="line">    <span class="comment">// if .25 &lt;= z &lt;= .5, then |x|&gt;.8 and |y|&gt;.8</span></div>
+<div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ValidStateSampler.html#a011ee3910d747d806b00ff71bb66e1ea">sample</a>(<a class="code" href="classompl_1_1base_1_1State.html">ob::State</a> *state)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordtype">double</span>* val = <span class="keyword">static_cast&lt;</span><a class="code" href="classompl_1_1base_1_1StateSpace.html#aa995357fedb73879bc7f0bb946db76d1">ob::RealVectorStateSpace::StateType</a>*<span class="keyword">&gt;</span>(state)-&gt;values;</div>
+<div class="line">        <span class="keywordtype">double</span> z = rng_.uniformReal(-1,1);</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">if</span> (z&gt;.25 &amp;&amp; z&lt;.5)</div>
+<div class="line">        {</div>
+<div class="line">            <span class="keywordtype">double</span> x = rng_.uniformReal(0,1.8), y = rng_.uniformReal(0,.2);</div>
+<div class="line">            <span class="keywordflow">switch</span>(rng_.uniformInt(0,3))</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keywordflow">case</span> 0: val[0]=x-1;  val[1]=y-1;</div>
+<div class="line">                <span class="keywordflow">case</span> 1: val[0]=x-.8; val[1]=y+.8;</div>
+<div class="line">                <span class="keywordflow">case</span> 2: val[0]=y-1;  val[1]=x-1;</div>
+<div class="line">                <span class="keywordflow">case</span> 3: val[0]=y+.8; val[1]=x-.8;</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">        {</div>
+<div class="line">            val[0] = rng_.uniformReal(-1,1);</div>
+<div class="line">            val[1] = rng_.uniformReal(-1,1);</div>
+<div class="line">        }</div>
+<div class="line">        val[2] = z;</div>
+<div class="line">        assert(si_-&gt;isValid(state));</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="comment">// We don&#39;t need this in the example below.</span></div>
+<div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ValidStateSampler.html#a86a022797e62aa7953d5381f0109c6a2">sampleNear</a>(<a class="code" href="classompl_1_1base_1_1State.html">ob::State</a>*, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">ob::State</a>*, <span class="keyword">const</span> <span class="keywordtype">double</span>)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">throw</span> <a class="code" href="classompl_1_1Exception.html">ompl::Exception</a>(<span class="stringliteral">&quot;MyValidStateSampler::sampleNear&quot;</span>, <span class="stringliteral">&quot;not implemented&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">    }</div>
+<div class="line"><span class="keyword">protected</span>:</div>
+<div class="line">    <a class="code" href="classompl_1_1RNG.html">ompl::RNG</a> rng_;</div>
+<div class="line">};</div>
+</div><!-- fragment --> We define a valid state allocator similarly as describe above: <div class="fragment"><div class="line"><a class="code" href="classompl_1_1base_1_1ValidStateSamplerPtr.html">ob::ValidStateSamplerPtr</a> allocMyValidStateSampler(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformation.html">ob::SpaceInformation</a> *si)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1ValidStateSamplerPtr.html">ob::ValidStateSamplerPtr</a>(<span class="keyword">new</span> MyValidStateSampler(si));</div>
+<div class="line">}</div>
+</div><!-- fragment --> Finally, using the new sampler is done analogously as before: <div class="fragment"><div class="line">        ss.getSpaceInformation()-&gt;setValidStateSamplerAllocator(allocMyValidStateSampler);</div>
+</div><!-- fragment --> </p>
+</div></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:27 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

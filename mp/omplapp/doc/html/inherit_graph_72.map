@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ..." alt="" coords="5,64,197,91"/>
+<area shape="rect" id="node2" href="$classompl_1_1control_1_1GridDecomposition.html" title="A GridDecomposition is a Decomposition implemented using a grid. " alt="" coords="245,5,461,32"/>
+<area shape="rect" id="node3" href="$classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region&#45;to&#45;proposition assignment ope..." alt="" coords="263,57,443,98"/>
+<area shape="rect" id="node5" href="$classompl_1_1control_1_1TriangularDecomposition.html" title="A TriangularDecomposition is a triangulation that ignores obstacles. " alt="" coords="272,122,435,163"/>
+<area shape="rect" id="node4" href="$classompl_1_1control_1_1PropositionalTriangularDecomposition.html" title="A PropositionalTriangularDecomposition is a triangulation that ignores obstacles and respects proposi..." alt="" coords="510,57,690,98"/>
+</map>

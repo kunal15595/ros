@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/control/planners/ltl/src/LTLPlanner.cpp Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_d108bf77affaa88433173d7604bedd7d.html">control</a></li><li class="navelem"><a class="el" href="dir_832d68db76be362de2e8a3539c780dbd.html">planners</a></li><li class="navelem"><a class="el" href="dir_5196855fdac68c9a3ba7584271d7f6f0.html">ltl</a></li><li class="navelem"><a class="el" href="dir_4bcb8dd7886bb7d351e2a3c7c596abc0.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">LTLPlanner.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;ompl/control/planners/ltl/LTLPlanner.h&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;ompl/control/planners/PlannerIncludes.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;ompl/control/planners/ltl/ProductGraph.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;ompl/control/planners/ltl/LTLProblemDefinition.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;ompl/datastructures/PDF.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Console_8h.html">ompl/util/Console.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;boost/unordered_map.hpp&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1LTLPlanner.html#ac5723a09662532b93eaceb1099e32356">   15</a></span>&#160;<a class="code" href="classompl_1_1control_1_1LTLPlanner.html#ac5723a09662532b93eaceb1099e32356">ompl::control::LTLPlanner::LTLPlanner</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1LTLSpaceInformationPtr.html">LTLSpaceInformationPtr</a>&amp; ltlsi, <span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1ProductGraphPtr.html">ProductGraphPtr</a>&amp; a, <span class="keywordtype">double</span> exploreTime) :</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    ompl::base::Planner(ltlsi, <span class="stringliteral">&quot;LTLPlanner&quot;</span>),</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    ltlsi_(ltlsi.get()),</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    abstraction_(a),</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    prodStart_(NULL),</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    exploreTime_(exploreTime)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">specs_</a>.<a class="code" href="structompl_1_1base_1_1PlannerSpecs.html#ae2facc9260851b161577e36f5a4baefc">approximateSolutions</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1LTLPlanner.html#a9e98eb8ba7590177994bb659c0a886b5">   25</a></span>&#160;<a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a9e98eb8ba7590177994bb659c0a886b5">ompl::control::LTLPlanner::~LTLPlanner</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    clearMotions();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1LTLPlanner.html#a81df627143f110fffdf66cad8ebb4f71">   30</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a81df627143f110fffdf66cad8ebb4f71">ompl::control::LTLPlanner::setup</a>()</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#ab7e49fc3b3b7011d46d647d8f1603bd5">base::Planner::setup</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1LTLPlanner.html#a94fdeeba6e07e8ab736d7f8da70ae741">   35</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a94fdeeba6e07e8ab736d7f8da70ae741">ompl::control::LTLPlanner::clear</a>()</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#a7929c12020a42b679601d22fb204919a">base::Planner::clear</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    availDist_.clear();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    abstractInfo_.clear();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    clearMotions();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1LTLPlanner.html#a35d2879950add3db59b96823858c3033">   43</a></span>&#160;<a class="code" href="structompl_1_1base_1_1PlannerStatus.html">ompl::base::PlannerStatus</a> <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a35d2879950add3db59b96823858c3033">ompl::control::LTLPlanner::solve</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">ompl::base::PlannerTerminationCondition</a>&amp; ptc)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// TODO make solve work when called more than once!</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    checkValidity();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a>* start = pis_.nextStart();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    prodStart_ = ltlsi_-&gt;getProdGraphState(start);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span> (pis_.haveMoreStartStates())</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="group__logging.html#gab76357dced39cb468d2061d3358f80a6">OMPL_WARN</a>(<span class="stringliteral">&quot;Multiple start states given. Using only the first start state.&quot;</span>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html">Motion</a>* startMotion = <span class="keyword">new</span> <a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html">Motion</a>(ltlsi_);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    si_-&gt;copyState(startMotion-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a331874d57f6d1d0e1c0c584de639e96f">state</a>, start);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    ltlsi_-&gt;nullControl(startMotion-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a432477f4e1f02f21955e67504de7b43a">control</a>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    startMotion-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a97d2a306f90f137e417c2d74131bd5ba">abstractState</a> = prodStart_;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    motions_.push_back(startMotion);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    abstractInfo_[prodStart_].addMotion(startMotion);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    updateWeight(prodStart_);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    availDist_.add(prodStart_, abstractInfo_[prodStart_].weight);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    abstraction_-&gt;buildGraph(prodStart_, boost::bind(&amp;<a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a437e1411ec1e6a2943da05f9c97e19df">LTLPlanner::initAbstractInfo</a>, <span class="keyword">this</span>, _1));</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span> (!sampler_)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        sampler_ = si_-&gt;allocStateSampler();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span> (!controlSampler_)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        controlSampler_ = ltlsi_-&gt;allocControlSampler();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">bool</span> solved = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html">Motion</a>* soln;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">while</span> (ptc()==<span class="keyword">false</span> &amp;&amp; !solved)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">const</span> std::vector&lt;ProductGraph::State*&gt; lead = abstraction_-&gt;computeLead(prodStart_, boost::bind(&amp;<a class="code" href="classompl_1_1control_1_1LTLPlanner.html#af818e37c48733702ee74f866ef2aa061">LTLPlanner::abstractEdgeWeight</a>, <span class="keyword">this</span>, _1, _2));</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        buildAvail(lead);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        solved = explore(lead, soln, exploreTime_);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span> (solved)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="comment">//build solution path</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        std::vector&lt;Motion*&gt; path;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">while</span> (soln != NULL)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            path.push_back(soln);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            soln = soln-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a96aca4e90ed379782688874b2e7e5c67">parent</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="classompl_1_1control_1_1PathControl.html">PathControl</a>* pc = <span class="keyword">new</span> <a class="code" href="classompl_1_1control_1_1PathControl.html">PathControl</a>(si_);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = path.size()-1; i &gt;= 0; --i)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">if</span> (path[i]-&gt;parent != NULL) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                pc-&gt;<a class="code" href="classompl_1_1control_1_1PathControl.html#aa81092a35fc88ea1a490a4e1e8444edc">append</a>(path[i]-&gt;state, path[i]-&gt;control, path[i]-&gt;steps * ltlsi_-&gt;getPropagationStepSize());</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                pc-&gt;<a class="code" href="classompl_1_1control_1_1PathControl.html#aa81092a35fc88ea1a490a4e1e8444edc">append</a>(path[i]-&gt;state);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        pdef_-&gt;addSolutionPath(<a class="code" href="classompl_1_1base_1_1PathPtr.html">base::PathPtr</a>(pc));</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;Created %u states&quot;</span>, motions_.size());</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html">base::PlannerStatus</a>(solved, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1LTLPlanner.html#a4ac27cb96fe50e3e52703b187bcdacff">  106</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a4ac27cb96fe50e3e52703b187bcdacff">ompl::control::LTLPlanner::getTree</a>(std::vector&lt;base::State*&gt;&amp; tree)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    tree.resize(motions_.size());</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; motions_.size(); ++i)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        tree[i] = motions_[i]-&gt;state;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1LTLPlanner.html#a034bb59d0315926b70753382b9ac70a0">  113</a></span>&#160;std::vector&lt;ompl::control::ProductGraph::State*&gt; <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a034bb59d0315926b70753382b9ac70a0">ompl::control::LTLPlanner::getHighLevelPath</a>(<span class="keyword">const</span> std::vector&lt;base::State*&gt;&amp; path, <a class="code" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a>* start)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    std::vector&lt;ProductGraph::State*&gt; hlPath(path.size());</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    hlPath[0] = (start != NULL ? start : ltlsi_-&gt;getProdGraphState(path[0]));</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 1; i &lt; path.size(); ++i)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        hlPath[i] = ltlsi_-&gt;getProdGraphState(path[i]);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">if</span> (!hlPath[i]-&gt;isValid())</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <a class="code" href="group__logging.html#gab76357dced39cb468d2061d3358f80a6">OMPL_WARN</a>(<span class="stringliteral">&quot;High-level path fails automata&quot;</span>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">return</span> hlPath;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a74dfac58aeb69cbba90a1429a05d860f">  126</a></span>&#160;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a74dfac58aeb69cbba90a1429a05d860f">ompl::control::LTLPlanner::Motion::Motion</a>(<span class="keywordtype">void</span>) : state(NULL), control(NULL), parent(NULL), steps(0)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;{</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a1ad7cddd0a97b46f8526e6a7d36202e8">  130</a></span>&#160;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a74dfac58aeb69cbba90a1429a05d860f">ompl::control::LTLPlanner::Motion::Motion</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1SpaceInformation.html">SpaceInformation</a>* si) :</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    state(si-&gt;allocState()),</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    control(si-&gt;allocControl()),</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    parent(NULL),</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    steps(0)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;{</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#ac79a2b8e46b6eadbd5dc40fb230c1274">  138</a></span>&#160;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#ac79a2b8e46b6eadbd5dc40fb230c1274">ompl::control::LTLPlanner::Motion::~Motion</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;{</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html#afe2023caf543ba04ecbd00dfb30900a4">  142</a></span>&#160;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html#afe2023caf543ba04ecbd00dfb30900a4">ompl::control::LTLPlanner::ProductGraphStateInfo::ProductGraphStateInfo</a>(<span class="keywordtype">void</span>) :</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    numSel(0),</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    pdfElem(NULL)</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;{</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html#a6516a1ccb5154de3678987c7dddaf294">  148</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html#a6516a1ccb5154de3678987c7dddaf294">ompl::control::LTLPlanner::ProductGraphStateInfo::addMotion</a>(<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html">Motion</a>* m)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;{</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    motionElems[m] = motions.add(m, 1.);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1LTLPlanner.html#a89deb77d1b529104ab7b4ea5e44c616d">  153</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a89deb77d1b529104ab7b4ea5e44c616d">ompl::control::LTLPlanner::updateWeight</a>(<a class="code" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a>* <a class="code" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a>)</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;{</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html">ProductGraphStateInfo</a>&amp; info = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>[<a class="code" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a>];</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="comment">/* TODO weight should include freeVolume, for cases in which decomposition</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">       does not respect obstacles. */</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    info.weight = ((info.motions.size()+1)*info.volume) / (info.autWeight*(info.numSel+1)*(info.numSel+1));</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">return</span> info.weight;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1LTLPlanner.html#a437e1411ec1e6a2943da05f9c97e19df">  162</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a437e1411ec1e6a2943da05f9c97e19df">ompl::control::LTLPlanner::initAbstractInfo</a>(<a class="code" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a>* <a class="code" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a>)</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;{</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html">ProductGraphStateInfo</a>&amp; info = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>[<a class="code" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a>];</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    info.numSel = 0;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    info.pdfElem = NULL;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        info.volume = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#adfc0b29ea71e0017bc6ba7a9546372cc">abstraction_</a>-&gt;getRegionVolume(as);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> autDist = std::max(<a class="code" href="classompl_1_1control_1_1LTLPlanner.html#adfc0b29ea71e0017bc6ba7a9546372cc">abstraction_</a>-&gt;getCosafeAutDistance(as),</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#adfc0b29ea71e0017bc6ba7a9546372cc">abstraction_</a>-&gt;getSafeAutDistance(as));</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="comment">//TODO try something larger than epsilon</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">if</span> (autDist == 0)</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        info.autWeight = std::numeric_limits&lt;double&gt;::epsilon();</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        info.autWeight = autDist;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    info.weight = info.volume/info.autWeight;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1LTLPlanner.html#aa960ed258c58c90915021a8cf50e1fbd">  178</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#aa960ed258c58c90915021a8cf50e1fbd">ompl::control::LTLPlanner::buildAvail</a>(<span class="keyword">const</span> std::vector&lt;ProductGraph::State*&gt;&amp; lead)</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;{</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#afc0af27966ec70e335745f564becf896">availDist_</a>.size(); ++i)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>[<a class="code" href="classompl_1_1control_1_1LTLPlanner.html#afc0af27966ec70e335745f564becf896">availDist_</a>[i]].pdfElem = NULL;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#afc0af27966ec70e335745f564becf896">availDist_</a>.clear();</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numTreePts = 1;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = lead.size()-1; i &gt;= 0; --i)</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <a class="code" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a>* <a class="code" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a> = lead[i];</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html">ProductGraphStateInfo</a>&amp; info = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>[<a class="code" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a>];</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keywordflow">if</span> (!info.motions.empty())</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            info.pdfElem = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#afc0af27966ec70e335745f564becf896">availDist_</a>.add(as, info.weight);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            numTreePts += info.motions.size();</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a3ab35591e7638e8ecbbed927a9734f16">rng_</a>.<a class="code" href="classompl_1_1RNG.html#af9450941c808fc53f30173c364bbfd25">uniform01</a>() &lt; 0.5)</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;}</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1LTLPlanner.html#a74c30d1c13b68108811b457ec6fbfd87">  198</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a74c30d1c13b68108811b457ec6fbfd87">ompl::control::LTLPlanner::explore</a>(<span class="keyword">const</span> std::vector&lt;ProductGraph::State*&gt;&amp; lead, <a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html">Motion</a>*&amp; soln, <span class="keywordtype">double</span> duration)</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;{</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordtype">bool</span> solved = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> ptc = <a class="code" href="namespaceompl_1_1base.html#ae26e5f143063be389fba4906d438a381">base::timedPlannerTerminationCondition</a>(duration);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <a class="code" href="classompl_1_1base_1_1GoalPtr.html">base::GoalPtr</a> goal = <a class="code" href="classompl_1_1base_1_1Planner.html#a6bbb3dcc3d1604977e319d52c16ef7e5">pdef_</a>-&gt;getGoal();</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">while</span> (!ptc() &amp;&amp; !solved)</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <a class="code" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a>* <a class="code" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a> = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#afc0af27966ec70e335745f564becf896">availDist_</a>.sample(<a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a3ab35591e7638e8ecbbed927a9734f16">rng_</a>.<a class="code" href="classompl_1_1RNG.html#af9450941c808fc53f30173c364bbfd25">uniform01</a>());</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        ++<a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>[<a class="code" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a>].numSel;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a89deb77d1b529104ab7b4ea5e44c616d">updateWeight</a>(as);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <a class="code" href="classompl_1_1PDF.html">PDF&lt;Motion*&gt;</a>&amp; motions = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>[<a class="code" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a>].motions;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html">Motion</a>* v = motions.<a class="code" href="classompl_1_1PDF.html#a9eabafd0857350a3c70b2c5e0cb8709b">sample</a>(<a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a3ab35591e7638e8ecbbed927a9734f16">rng_</a>.<a class="code" href="classompl_1_1RNG.html#af9450941c808fc53f30173c364bbfd25">uniform01</a>());</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <a class="code" href="classompl_1_1PDF_1_1Element.html">PDF&lt;Motion*&gt;::Element</a>* velem = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>[<a class="code" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a>].motionElems[v];</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordtype">double</span> vweight = motions.<a class="code" href="classompl_1_1PDF.html#a5d521366fafb2030f496268386a2494b">getWeight</a>(velem);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordflow">if</span> (vweight &gt; 1e-20)</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            motions.<a class="code" href="classompl_1_1PDF.html#a5a6869bcc93cf5b5483048cd26dcb635">update</a>(velem, vweight/(vweight+1.));</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <a class="code" href="classompl_1_1control_1_1Control.html">Control</a>* rctrl = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#ac3c97a4ca739deb93d61b624c89f5d9e">ltlsi_</a>-&gt;<a class="code" href="classompl_1_1control_1_1SpaceInformation.html#a8d00abfe260796867e4541983434d636">allocControl</a>();</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#afa238ad3eac7e6ad327432646d001996">controlSampler_</a>-&gt;sampleNext(rctrl, v-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a432477f4e1f02f21955e67504de7b43a">control</a>, v-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a331874d57f6d1d0e1c0c584de639e96f">state</a>);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> cd = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#afa238ad3eac7e6ad327432646d001996">controlSampler_</a>-&gt;sampleStepCount(<a class="code" href="classompl_1_1control_1_1LTLPlanner.html#ac3c97a4ca739deb93d61b624c89f5d9e">ltlsi_</a>-&gt;<a class="code" href="classompl_1_1control_1_1SpaceInformation.html#a8d6da990de7e79e8e0f2553d98a7c02a">getMinControlDuration</a>(), <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#ac3c97a4ca739deb93d61b624c89f5d9e">ltlsi_</a>-&gt;<a class="code" href="classompl_1_1control_1_1SpaceInformation.html#ae53b0738239876d70ec9a293fdde0457">getMaxControlDuration</a>());</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <a class="code" href="classompl_1_1base_1_1State.html">base::State</a>* newState = <a class="code" href="classompl_1_1base_1_1Planner.html#aa3ceb9471163b6c96f6eeadbcfd3694e">si_</a>-&gt;allocState();</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        cd = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#ac3c97a4ca739deb93d61b624c89f5d9e">ltlsi_</a>-&gt;<a class="code" href="classompl_1_1control_1_1SpaceInformation.html#a62706721769680c1aafa41aa368406c7">propagateWhileValid</a>(v-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a331874d57f6d1d0e1c0c584de639e96f">state</a>, rctrl, cd, newState);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordflow">if</span> (cd &lt; ltlsi_-&gt;getMinControlDuration())</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            <a class="code" href="classompl_1_1base_1_1Planner.html#aa3ceb9471163b6c96f6eeadbcfd3694e">si_</a>-&gt;freeState(newState);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#ac3c97a4ca739deb93d61b624c89f5d9e">ltlsi_</a>-&gt;<a class="code" href="classompl_1_1control_1_1SpaceInformation.html#a4fd67c06599f1b1968c16dd59215ec2f">freeControl</a>(rctrl);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html">Motion</a>* m = <span class="keyword">new</span> <a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html">Motion</a>();</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a331874d57f6d1d0e1c0c584de639e96f">state</a> = newState;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a432477f4e1f02f21955e67504de7b43a">control</a> = rctrl;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a98bcc1eaf3ba112a2d6202f51174f109">steps</a> = cd;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a96aca4e90ed379782688874b2e7e5c67">parent</a> = v;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="comment">// Since the state was determined to be valid by SpaceInformation, we don&#39;t need to check automaton states</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a97d2a306f90f137e417c2d74131bd5ba">abstractState</a> = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#ac3c97a4ca739deb93d61b624c89f5d9e">ltlsi_</a>-&gt;getProdGraphState(m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a331874d57f6d1d0e1c0c584de639e96f">state</a>);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#ab4d5b6b2ca391ba70d0a42ae0dd97e4f">motions_</a>.push_back(m);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>[m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a97d2a306f90f137e417c2d74131bd5ba">abstractState</a>].addMotion(m);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a89deb77d1b529104ab7b4ea5e44c616d">updateWeight</a>(m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a97d2a306f90f137e417c2d74131bd5ba">abstractState</a>);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="comment">// update weight if hl state already exists in avail</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>[m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a97d2a306f90f137e417c2d74131bd5ba">abstractState</a>].pdfElem != NULL)</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#afc0af27966ec70e335745f564becf896">availDist_</a>.update(<a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>[m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a97d2a306f90f137e417c2d74131bd5ba">abstractState</a>].pdfElem, <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>[m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a97d2a306f90f137e417c2d74131bd5ba">abstractState</a>].weight);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <span class="comment">// otherwise, only add hl state to avail if it already exists in lead</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                        <span class="keywordflow">if</span> (std::find(lead.begin(), lead.end(), m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a97d2a306f90f137e417c2d74131bd5ba">abstractState</a>) != lead.end())</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                <a class="code" href="classompl_1_1PDF_1_1Element.html">PDF&lt;ProductGraph::State*&gt;::Element</a>* elem = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#afc0af27966ec70e335745f564becf896">availDist_</a>.add(m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a97d2a306f90f137e417c2d74131bd5ba">abstractState</a>, <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>[m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a97d2a306f90f137e417c2d74131bd5ba">abstractState</a>].weight);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>[m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a97d2a306f90f137e417c2d74131bd5ba">abstractState</a>].pdfElem = elem;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        solved = goal-&gt;isSatisfied(m-&gt;<a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a331874d57f6d1d0e1c0c584de639e96f">state</a>);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">if</span> (solved)</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            soln = m;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">return</span> solved;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;}</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
+<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1LTLPlanner.html#af818e37c48733702ee74f866ef2aa061">  262</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#af818e37c48733702ee74f866ef2aa061">ompl::control::LTLPlanner::abstractEdgeWeight</a>(<a class="code" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a>* a, <a class="code" href="classompl_1_1control_1_1ProductGraph_1_1State.html">ProductGraph::State</a>* b)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keyword">const</span> <a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html">ProductGraphStateInfo</a>&amp; infoA = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>.find(a)-&gt;second;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keyword">const</span> <a class="code" href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html">ProductGraphStateInfo</a>&amp; infoB = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">abstractInfo_</a>.find(b)-&gt;second;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">return</span> 1./(infoA.weight * infoB.weight);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;}</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="keywordtype">void</span> ompl::control::LTLPlanner::clearMotions(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;{</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#afc0af27966ec70e335745f564becf896">availDist_</a>.clear();</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">for</span> (std::vector&lt;Motion*&gt;::iterator i = <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#ab4d5b6b2ca391ba70d0a42ae0dd97e4f">motions_</a>.begin(); i != <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#ab4d5b6b2ca391ba70d0a42ae0dd97e4f">motions_</a>.end(); ++i)</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        Motion* m = *i;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">if</span> (m-&gt;state != NULL)</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <a class="code" href="classompl_1_1base_1_1Planner.html#aa3ceb9471163b6c96f6eeadbcfd3694e">si_</a>-&gt;freeState(m-&gt;state);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordflow">if</span> (m-&gt;control != NULL)</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#ac3c97a4ca739deb93d61b624c89f5d9e">ltlsi_</a>-&gt;<a class="code" href="classompl_1_1control_1_1SpaceInformation.html#a4fd67c06599f1b1968c16dd59215ec2f">freeControl</a>(m-&gt;control);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <span class="keyword">delete</span> m;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    }</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <a class="code" href="classompl_1_1control_1_1LTLPlanner.html#ab4d5b6b2ca391ba70d0a42ae0dd97e4f">motions_</a>.clear();</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#a1c6ac45d44026aae6df87f3295d67436">pis_</a>.<a class="code" href="classompl_1_1base_1_1PlannerInputStates.html#a17f6475970c635039e5118687251f644">clear</a>();</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#a1c6ac45d44026aae6df87f3295d67436">pis_</a>.<a class="code" href="classompl_1_1base_1_1PlannerInputStates.html#a986c1876d09a254a67673a0272ed355e">update</a>();</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;}</div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSpecs_html_ae2facc9260851b161577e36f5a4baefc"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSpecs.html#ae2facc9260851b161577e36f5a4baefc">ompl::base::PlannerSpecs::approximateSolutions</a></div><div class="ttdeci">bool approximateSolutions</div><div class="ttdoc">Flag indicating whether the planner is able to compute approximate solutions. </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00212">Planner.h:212</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo_html_a6516a1ccb5154de3678987c7dddaf294"><div class="ttname"><a href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html#a6516a1ccb5154de3678987c7dddaf294">ompl::control::LTLPlanner::ProductGraphStateInfo::addMotion</a></div><div class="ttdeci">void addMotion(Motion *m)</div><div class="ttdoc">Adds a tree motion to an info object. This method is called whenever a new tree motion is created in ...</div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00148">LTLPlanner.cpp:148</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1LTLPlanner_1_1Motion_html_a331874d57f6d1d0e1c0c584de639e96f"><div class="ttname"><a href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a331874d57f6d1d0e1c0c584de639e96f">ompl::control::LTLPlanner::Motion::state</a></div><div class="ttdeci">base::State * state</div><div class="ttdoc">The state contained by the motion. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8h_source.html#l00112">LTLPlanner.h:112</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1SpaceInformation_html_a8d6da990de7e79e8e0f2553d98a7c02a"><div class="ttname"><a href="classompl_1_1control_1_1SpaceInformation.html#a8d6da990de7e79e8e0f2553d98a7c02a">ompl::control::SpaceInformation::getMinControlDuration</a></div><div class="ttdeci">unsigned int getMinControlDuration() const </div><div class="ttdoc">Get the minimum number of steps a control is propagated for. </div><div class="ttdef"><b>Definition:</b> <a href="control_2SpaceInformation_8h_source.html#l00161">SpaceInformation.h:161</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_ac3c97a4ca739deb93d61b624c89f5d9e"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#ac3c97a4ca739deb93d61b624c89f5d9e">ompl::control::LTLPlanner::ltlsi_</a></div><div class="ttdeci">const LTLSpaceInformation * ltlsi_</div><div class="ttdoc">Handle to the control::SpaceInformation object. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8h_source.html#l00178">LTLPlanner.h:178</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_a08f249dd44ef4c12c2a28e8a459b9a23"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#a08f249dd44ef4c12c2a28e8a459b9a23">ompl::control::LTLPlanner::abstractInfo_</a></div><div class="ttdeci">boost::unordered_map&lt; ProductGraph::State *, ProductGraphStateInfo &gt; abstractInfo_</div><div class="ttdoc">Map of abstraction states to their details. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8h_source.html#l00199">LTLPlanner.h:199</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_a034bb59d0315926b70753382b9ac70a0"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#a034bb59d0315926b70753382b9ac70a0">ompl::control::LTLPlanner::getHighLevelPath</a></div><div class="ttdeci">std::vector&lt; ProductGraph::State * &gt; getHighLevelPath(const std::vector&lt; base::State * &gt; &amp;path, ProductGraph::State *start=NULL) const </div><div class="ttdoc">Helper debug method to return the sequence of high-level product graph states corresponding to a sequ...</div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00113">LTLPlanner.cpp:113</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1SpaceInformation_html_a8d00abfe260796867e4541983434d636"><div class="ttname"><a href="classompl_1_1control_1_1SpaceInformation.html#a8d00abfe260796867e4541983434d636">ompl::control::SpaceInformation::allocControl</a></div><div class="ttdeci">Control * allocControl() const </div><div class="ttdoc">Allocate memory for a control. </div><div class="ttdef"><b>Definition:</b> <a href="control_2SpaceInformation_8h_source.html#l00094">SpaceInformation.h:94</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1SpaceInformation_html_a62706721769680c1aafa41aa368406c7"><div class="ttname"><a href="classompl_1_1control_1_1SpaceInformation.html#a62706721769680c1aafa41aa368406c7">ompl::control::SpaceInformation::propagateWhileValid</a></div><div class="ttdeci">unsigned int propagateWhileValid(const base::State *state, const Control *control, int steps, base::State *result) const </div><div class="ttdoc">Propagate the model of the system forward, starting at a given state, with a given control...</div><div class="ttdef"><b>Definition:</b> <a href="control_2src_2SpaceInformation_8cpp_source.html#l00147">SpaceInformation.cpp:147</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1LTLPlanner_1_1Motion_html_a98bcc1eaf3ba112a2d6202f51174f109"><div class="ttname"><a href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a98bcc1eaf3ba112a2d6202f51174f109">ompl::control::LTLPlanner::Motion::steps</a></div><div class="ttdeci">unsigned int steps</div><div class="ttdoc">The number of steps for which the control is applied. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8h_source.html#l00121">LTLPlanner.h:121</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PathControl_html_aa81092a35fc88ea1a490a4e1e8444edc"><div class="ttname"><a href="classompl_1_1control_1_1PathControl.html#aa81092a35fc88ea1a490a4e1e8444edc">ompl::control::PathControl::append</a></div><div class="ttdeci">void append(const base::State *state)</div><div class="ttdoc">Append state to the end of the path; it is assumed state is the first state, so no control is applied...</div><div class="ttdef"><b>Definition:</b> <a href="PathControl_8cpp_source.html#l00259">PathControl.cpp:259</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1Control_html"><div class="ttname"><a href="classompl_1_1control_1_1Control.html">ompl::control::Control</a></div><div class="ttdoc">Definition of an abstract control. </div><div class="ttdef"><b>Definition:</b> <a href="Control_8h_source.html#l00048">Control.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_a437e1411ec1e6a2943da05f9c97e19df"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#a437e1411ec1e6a2943da05f9c97e19df">ompl::control::LTLPlanner::initAbstractInfo</a></div><div class="ttdeci">virtual void initAbstractInfo(ProductGraph::State *as)</div><div class="ttdoc">Initializes the info object for a new high-level state. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00162">LTLPlanner.cpp:162</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_a89deb77d1b529104ab7b4ea5e44c616d"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#a89deb77d1b529104ab7b4ea5e44c616d">ompl::control::LTLPlanner::updateWeight</a></div><div class="ttdeci">virtual double updateWeight(ProductGraph::State *as)</div><div class="ttdoc">Updates and returns the weight of an abstraction state. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00153">LTLPlanner.cpp:153</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_ab4d5b6b2ca391ba70d0a42ae0dd97e4f"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#ab4d5b6b2ca391ba70d0a42ae0dd97e4f">ompl::control::LTLPlanner::motions_</a></div><div class="ttdeci">std::vector&lt; Motion * &gt; motions_</div><div class="ttdoc">Set of all motions. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8h_source.html#l00190">LTLPlanner.h:190</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_a94fdeeba6e07e8ab736d7f8da70ae741"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#a94fdeeba6e07e8ab736d7f8da70ae741">ompl::control::LTLPlanner::clear</a></div><div class="ttdeci">virtual void clear(void)</div><div class="ttdoc">Clears all datastructures belonging to this LTLPlanner. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00035">LTLPlanner.cpp:35</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_afc0af27966ec70e335745f564becf896"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#afc0af27966ec70e335745f564becf896">ompl::control::LTLPlanner::availDist_</a></div><div class="ttdeci">PDF&lt; ProductGraph::State * &gt; availDist_</div><div class="ttdoc">Used to sample nonempty regions in which to promote expansion. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8h_source.html#l00184">LTLPlanner.h:184</a></div></div>
+<div class="ttc" id="classompl_1_1PDF_html_a5d521366fafb2030f496268386a2494b"><div class="ttname"><a href="classompl_1_1PDF.html#a5d521366fafb2030f496268386a2494b">ompl::PDF::getWeight</a></div><div class="ttdeci">double getWeight(const Element *elem) const </div><div class="ttdoc">Returns the current weight of the given Element. </div><div class="ttdef"><b>Definition:</b> <a href="PDF_8h_source.html#l00171">PDF.h:171</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerTerminationCondition_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerTerminationCondition.html">ompl::base::PlannerTerminationCondition</a></div><div class="ttdoc">Encapsulate a termination condition for a motion planner. Planners will call operator() to decide whe...</div><div class="ttdef"><b>Definition:</b> <a href="PlannerTerminationCondition_8h_source.html#l00064">PlannerTerminationCondition.h:64</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1LTLPlanner_1_1Motion_html_a74dfac58aeb69cbba90a1429a05d860f"><div class="ttname"><a href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a74dfac58aeb69cbba90a1429a05d860f">ompl::control::LTLPlanner::Motion::Motion</a></div><div class="ttdeci">Motion(void)</div><div class="ttdoc">Default constructor for Motion. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00126">LTLPlanner.cpp:126</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Planner_html_a7929c12020a42b679601d22fb204919a"><div class="ttname"><a href="classompl_1_1base_1_1Planner.html#a7929c12020a42b679601d22fb204919a">ompl::base::Planner::clear</a></div><div class="ttdeci">virtual void clear()</div><div class="ttdoc">Clear all internal datastructures. Planner settings are not affected. Subsequent calls to solve() wil...</div><div class="ttdef"><b>Definition:</b> <a href="Planner_8cpp_source.html#l00112">Planner.cpp:112</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1SpaceInformation_html_a4fd67c06599f1b1968c16dd59215ec2f"><div class="ttname"><a href="classompl_1_1control_1_1SpaceInformation.html#a4fd67c06599f1b1968c16dd59215ec2f">ompl::control::SpaceInformation::freeControl</a></div><div class="ttdeci">void freeControl(Control *control) const </div><div class="ttdoc">Free the memory of a control. </div><div class="ttdef"><b>Definition:</b> <a href="control_2SpaceInformation_8h_source.html#l00100">SpaceInformation.h:100</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PathControl_html"><div class="ttname"><a href="classompl_1_1control_1_1PathControl.html">ompl::control::PathControl</a></div><div class="ttdoc">Definition of a control path. </div><div class="ttdef"><b>Definition:</b> <a href="PathControl_8h_source.html#l00054">PathControl.h:54</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_af818e37c48733702ee74f866ef2aa061"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#af818e37c48733702ee74f866ef2aa061">ompl::control::LTLPlanner::abstractEdgeWeight</a></div><div class="ttdeci">virtual double abstractEdgeWeight(ProductGraph::State *a, ProductGraph::State *b) const </div><div class="ttdoc">Returns the weight of an edge between two given high-level states, which we compute as the product of...</div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00262">LTLPlanner.cpp:262</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Planner_html_a6bbb3dcc3d1604977e319d52c16ef7e5"><div class="ttname"><a href="classompl_1_1base_1_1Planner.html#a6bbb3dcc3d1604977e319d52c16ef7e5">ompl::base::Planner::pdef_</a></div><div class="ttdeci">ProblemDefinitionPtr pdef_</div><div class="ttdoc">The user set problem definition. </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00395">Planner.h:395</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1LTLPlanner_1_1Motion_html"><div class="ttname"><a href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html">ompl::control::LTLPlanner::Motion</a></div><div class="ttdoc">Representation of a motion. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8h_source.html#l00097">LTLPlanner.h:97</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1LTLPlanner_1_1Motion_html_a432477f4e1f02f21955e67504de7b43a"><div class="ttname"><a href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a432477f4e1f02f21955e67504de7b43a">ompl::control::LTLPlanner::Motion::control</a></div><div class="ttdeci">Control * control</div><div class="ttdoc">The control contained by the motion. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8h_source.html#l00115">LTLPlanner.h:115</a></div></div>
+<div class="ttc" id="classompl_1_1PDF_html"><div class="ttname"><a href="classompl_1_1PDF.html">ompl::PDF</a></div><div class="ttdoc">A container that supports probabilistic sampling over weighted data. </div><div class="ttdef"><b>Definition:</b> <a href="PDF_8h_source.html#l00048">PDF.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1RNG_html_af9450941c808fc53f30173c364bbfd25"><div class="ttname"><a href="classompl_1_1RNG.html#af9450941c808fc53f30173c364bbfd25">ompl::RNG::uniform01</a></div><div class="ttdeci">double uniform01()</div><div class="ttdoc">Generate a random real between 0 and 1. </div><div class="ttdef"><b>Definition:</b> <a href="RandomNumbers_8h_source.html#l00062">RandomNumbers.h:62</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLSpaceInformationPtr_html"><div class="ttname"><a href="classompl_1_1control_1_1LTLSpaceInformationPtr.html">ompl::control::LTLSpaceInformationPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::control::LTLSpaceInformation. </div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_afa238ad3eac7e6ad327432646d001996"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#afa238ad3eac7e6ad327432646d001996">ompl::control::LTLPlanner::controlSampler_</a></div><div class="ttdeci">ControlSamplerPtr controlSampler_</div><div class="ttdoc">Control sampler. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8h_source.html#l00175">LTLPlanner.h:175</a></div></div>
+<div class="ttc" id="namespaceompl_1_1base_html_ae26e5f143063be389fba4906d438a381"><div class="ttname"><a href="namespaceompl_1_1base.html#ae26e5f143063be389fba4906d438a381">ompl::base::timedPlannerTerminationCondition</a></div><div class="ttdeci">PlannerTerminationCondition timedPlannerTerminationCondition(double duration)</div><div class="ttdoc">Return a termination condition that will become true duration seconds in the future (wall-time) ...</div><div class="ttdef"><b>Definition:</b> <a href="PlannerTerminationCondition_8cpp_source.html#l00223">PlannerTerminationCondition.cpp:223</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_a3ab35591e7638e8ecbbed927a9734f16"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#a3ab35591e7638e8ecbbed927a9734f16">ompl::control::LTLPlanner::rng_</a></div><div class="ttdeci">RNG rng_</div><div class="ttdoc">A random number generator. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8h_source.html#l00187">LTLPlanner.h:187</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerInputStates_html_a17f6475970c635039e5118687251f644"><div class="ttname"><a href="classompl_1_1base_1_1PlannerInputStates.html#a17f6475970c635039e5118687251f644">ompl::base::PlannerInputStates::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Clear all stored information. </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8cpp_source.html#l00155">Planner.cpp:155</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Planner_html_ab7e49fc3b3b7011d46d647d8f1603bd5"><div class="ttname"><a href="classompl_1_1base_1_1Planner.html#ab7e49fc3b3b7011d46d647d8f1603bd5">ompl::base::Planner::setup</a></div><div class="ttdeci">virtual void setup()</div><div class="ttdoc">Perform extra configuration steps, if needed. This call will also issue a call to ompl::base::SpaceIn...</div><div class="ttdef"><b>Definition:</b> <a href="Planner_8cpp_source.html#l00086">Planner.cpp:86</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ProductGraph_1_1State_html"><div class="ttname"><a href="classompl_1_1control_1_1ProductGraph_1_1State.html">ompl::control::ProductGraph::State</a></div><div class="ttdoc">A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...</div><div class="ttdef"><b>Definition:</b> <a href="ProductGraph_8h_source.html#l00074">ProductGraph.h:74</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html">ompl::base::PlannerStatus</a></div><div class="ttdoc">A class to store the exit status of Planner::solve() </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00048">PlannerStatus.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_ac5723a09662532b93eaceb1099e32356"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#ac5723a09662532b93eaceb1099e32356">ompl::control::LTLPlanner::LTLPlanner</a></div><div class="ttdeci">LTLPlanner(const LTLSpaceInformationPtr &amp;si, const ProductGraphPtr &amp;a, double exploreTime=0.5)</div><div class="ttdoc">Create an LTLPlanner with a given space and product graph. Accepts an optional third parameter to con...</div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00015">LTLPlanner.cpp:15</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_aa960ed258c58c90915021a8cf50e1fbd"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#aa960ed258c58c90915021a8cf50e1fbd">ompl::control::LTLPlanner::buildAvail</a></div><div class="ttdeci">virtual void buildAvail(const std::vector&lt; ProductGraph::State * &gt; &amp;lead)</div><div class="ttdoc">Compute a set of high-level states along a lead to be considered for expansion. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00178">LTLPlanner.cpp:178</a></div></div>
+<div class="ttc" id="group__logging_html_gab76357dced39cb468d2061d3358f80a6"><div class="ttname"><a href="group__logging.html#gab76357dced39cb468d2061d3358f80a6">OMPL_WARN</a></div><div class="ttdeci">#define OMPL_WARN(fmt,...)</div><div class="ttdoc">Log a formatted warning string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00066">Console.h:66</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Planner_html_a1c6ac45d44026aae6df87f3295d67436"><div class="ttname"><a href="classompl_1_1base_1_1Planner.html#a1c6ac45d44026aae6df87f3295d67436">ompl::base::Planner::pis_</a></div><div class="ttdeci">PlannerInputStates pis_</div><div class="ttdoc">Utility class to extract valid input states. </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00398">Planner.h:398</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo_html_afe2023caf543ba04ecbd00dfb30900a4"><div class="ttname"><a href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html#afe2023caf543ba04ecbd00dfb30900a4">ompl::control::LTLPlanner::ProductGraphStateInfo::ProductGraphStateInfo</a></div><div class="ttdeci">ProductGraphStateInfo(void)</div><div class="ttdoc">Creates an info object with no measurements and no tree motions. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00142">LTLPlanner.cpp:142</a></div></div>
+<div class="ttc" id="classompl_1_1PDF_1_1Element_html"><div class="ttname"><a href="classompl_1_1PDF_1_1Element.html">ompl::PDF::Element</a></div><div class="ttdoc">A class that will hold data contained in the PDF. </div><div class="ttdef"><b>Definition:</b> <a href="PDF_8h_source.html#l00053">PDF.h:53</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_a4ac27cb96fe50e3e52703b187bcdacff"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#a4ac27cb96fe50e3e52703b187bcdacff">ompl::control::LTLPlanner::getTree</a></div><div class="ttdeci">void getTree(std::vector&lt; base::State * &gt; &amp;tree) const </div><div class="ttdoc">Helper debug method to access this planner&#39;s underlying tree of states. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00106">LTLPlanner.cpp:106</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_adfc0b29ea71e0017bc6ba7a9546372cc"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#adfc0b29ea71e0017bc6ba7a9546372cc">ompl::control::LTLPlanner::abstraction_</a></div><div class="ttdeci">ProductGraphPtr abstraction_</div><div class="ttdoc">The high level abstaction used to grow the tree structure. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8h_source.html#l00181">LTLPlanner.h:181</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Planner_html_a4311ea7a0470f0e0f76cb1656d63e365"><div class="ttname"><a href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">ompl::base::Planner::specs_</a></div><div class="ttdeci">PlannerSpecs specs_</div><div class="ttdoc">The specifications of the planner (its capabilities) </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00404">Planner.h:404</a></div></div>
+<div class="ttc" id="classompl_1_1PDF_html_a5a6869bcc93cf5b5483048cd26dcb635"><div class="ttname"><a href="classompl_1_1PDF.html#a5a6869bcc93cf5b5483048cd26dcb635">ompl::PDF::update</a></div><div class="ttdeci">void update(Element *elem, const double w)</div><div class="ttdoc">Updates the data in the given Element with a new weight value. </div><div class="ttdef"><b>Definition:</b> <a href="PDF_8h_source.html#l00155">PDF.h:155</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_a74c30d1c13b68108811b457ec6fbfd87"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#a74c30d1c13b68108811b457ec6fbfd87">ompl::control::LTLPlanner::explore</a></div><div class="ttdeci">virtual bool explore(const std::vector&lt; ProductGraph::State * &gt; &amp;lead, Motion *&amp;soln, double duration)</div><div class="ttdoc">Expand the tree of motions along a given lead for a given duration of time. Returns true if a solutio...</div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00198">LTLPlanner.cpp:198</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerInputStates_html_a986c1876d09a254a67673a0272ed355e"><div class="ttname"><a href="classompl_1_1base_1_1PlannerInputStates.html#a986c1876d09a254a67673a0272ed355e">ompl::base::PlannerInputStates::update</a></div><div class="ttdeci">bool update()</div><div class="ttdoc">Set the space information and problem definition this class operates on, based on the available plann...</div><div class="ttdef"><b>Definition:</b> <a href="Planner_8cpp_source.html#l00174">Planner.cpp:174</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ProductGraphPtr_html"><div class="ttname"><a href="classompl_1_1control_1_1ProductGraphPtr.html">ompl::control::ProductGraphPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::control::ProductGraph. </div></div>
+<div class="ttc" id="classompl_1_1control_1_1SpaceInformation_html_ae53b0738239876d70ec9a293fdde0457"><div class="ttname"><a href="classompl_1_1control_1_1SpaceInformation.html#ae53b0738239876d70ec9a293fdde0457">ompl::control::SpaceInformation::getMaxControlDuration</a></div><div class="ttdeci">unsigned int getMaxControlDuration() const </div><div class="ttdoc">Get the maximum number of steps a control is propagated for. </div><div class="ttdef"><b>Definition:</b> <a href="control_2SpaceInformation_8h_source.html#l00167">SpaceInformation.h:167</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_a81df627143f110fffdf66cad8ebb4f71"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#a81df627143f110fffdf66cad8ebb4f71">ompl::control::LTLPlanner::setup</a></div><div class="ttdeci">virtual void setup(void)</div><div class="ttdoc">Initializes LTLPlanner data structures. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00030">LTLPlanner.cpp:30</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GoalPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1GoalPtr.html">ompl::base::GoalPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::Goal. </div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_a9e98eb8ba7590177994bb659c0a886b5"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#a9e98eb8ba7590177994bb659c0a886b5">ompl::control::LTLPlanner::~LTLPlanner</a></div><div class="ttdeci">virtual ~LTLPlanner(void)</div><div class="ttdoc">Clears all memory belonging to this LTLPlanner . </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00025">LTLPlanner.cpp:25</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Planner_html_aa3ceb9471163b6c96f6eeadbcfd3694e"><div class="ttname"><a href="classompl_1_1base_1_1Planner.html#aa3ceb9471163b6c96f6eeadbcfd3694e">ompl::base::Planner::si_</a></div><div class="ttdeci">SpaceInformationPtr si_</div><div class="ttdoc">The space information for which planning is done. </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00392">Planner.h:392</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1SpaceInformation_html"><div class="ttname"><a href="classompl_1_1control_1_1SpaceInformation.html">ompl::control::SpaceInformation</a></div><div class="ttdoc">Space information containing necessary information for planning with controls. setup() needs to be ca...</div><div class="ttdef"><b>Definition:</b> <a href="control_2SpaceInformation_8h_source.html#l00069">SpaceInformation.h:69</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1LTLPlanner_1_1Motion_html_ac79a2b8e46b6eadbd5dc40fb230c1274"><div class="ttname"><a href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#ac79a2b8e46b6eadbd5dc40fb230c1274">ompl::control::LTLPlanner::Motion::~Motion</a></div><div class="ttdeci">virtual ~Motion(void)</div><div class="ttdoc">Motion destructor does not clear memory. Deletions should be performed by the LTLPlanner. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00138">LTLPlanner.cpp:138</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1LTLPlanner_1_1Motion_html_a96aca4e90ed379782688874b2e7e5c67"><div class="ttname"><a href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a96aca4e90ed379782688874b2e7e5c67">ompl::control::LTLPlanner::Motion::parent</a></div><div class="ttdeci">Motion * parent</div><div class="ttdoc">The parent motion in the tree. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8h_source.html#l00118">LTLPlanner.h:118</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo_html"><div class="ttname"><a href="structompl_1_1control_1_1LTLPlanner_1_1ProductGraphStateInfo.html">ompl::control::LTLPlanner::ProductGraphStateInfo</a></div><div class="ttdoc">A structure to hold measurement information for a high-level state, as well as the set of tree motion...</div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8h_source.html#l00130">LTLPlanner.h:130</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Planner_html_a2ca68a50629dd31d550632480d001c17"><div class="ttname"><a href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">ompl::base::Planner::as</a></div><div class="ttdeci">T * as()</div><div class="ttdoc">Cast this instance to a desired type. </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00242">Planner.h:242</a></div></div>
+<div class="ttc" id="classompl_1_1PDF_html_a9eabafd0857350a3c70b2c5e0cb8709b"><div class="ttname"><a href="classompl_1_1PDF.html#a9eabafd0857350a3c70b2c5e0cb8709b">ompl::PDF::sample</a></div><div class="ttdeci">_T &amp; sample(double r) const </div><div class="ttdoc">Returns a piece of data from the PDF according to the input sampling value, which must be between 0 a...</div><div class="ttdef"><b>Definition:</b> <a href="PDF_8h_source.html#l00132">PDF.h:132</a></div></div>
+<div class="ttc" id="Console_8h_html"><div class="ttname"><a href="Console_8h.html">Console.h</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1LTLPlanner_1_1Motion_html_a97d2a306f90f137e417c2d74131bd5ba"><div class="ttname"><a href="structompl_1_1control_1_1LTLPlanner_1_1Motion.html#a97d2a306f90f137e417c2d74131bd5ba">ompl::control::LTLPlanner::Motion::abstractState</a></div><div class="ttdeci">ProductGraph::State * abstractState</div><div class="ttdoc">The high-level state to which this motion belongs. </div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8h_source.html#l00124">LTLPlanner.h:124</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PathPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1PathPtr.html">ompl::base::PathPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::Path. </div></div>
+<div class="ttc" id="group__logging_html_ga04bc36d1b8c57ad7e13a8a48451a3a05"><div class="ttname"><a href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a></div><div class="ttdeci">#define OMPL_INFORM(fmt,...)</div><div class="ttdoc">Log a formatted information string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00068">Console.h:68</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1LTLPlanner_html_a35d2879950add3db59b96823858c3033"><div class="ttname"><a href="classompl_1_1control_1_1LTLPlanner.html#a35d2879950add3db59b96823858c3033">ompl::control::LTLPlanner::solve</a></div><div class="ttdeci">virtual base::PlannerStatus solve(const base::PlannerTerminationCondition &amp;ptc)</div><div class="ttdoc">Continues solving until a solution is found or a given planner termination condition is met...</div><div class="ttdef"><b>Definition:</b> <a href="LTLPlanner_8cpp_source.html#l00043">LTLPlanner.cpp:43</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:25 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

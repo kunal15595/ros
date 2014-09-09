@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Release Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Release Notes </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1>OMPL.app 0.14.2 (May 23, 2014)</h1>
+<ul>
+<li>Changed the <a class="el" href="md_ompl_doc_markdown_benchmark.html#benchmark_database">benchmark database schema</a> to make it easier to create your own plots.</li>
+<li>Real-valued state components are now also stored when exporting PlannerData objects in <a href="http://graphml.graphdrawing.org">GraphML</a> format.</li>
+<li>Bug fixes.</li>
+<li>Documentation fixes.</li>
+<li>New menu option in the OMPL.app GUI to save the roadmap/tree created by a planner in GraphML format.</li>
+<li>Update FCL bindings to be compatible with FCL 0.3.0.</li>
+</ul>
+<h1>OMPL.app 0.14.1 (January 23, 2014)</h1>
+<ul>
+<li>Update PlannerData to use new cost infrastructure.</li>
+<li>Bug fixes.</li>
+</ul>
+<h1>OMPL.app 0.14.0 (December 20, 2013)</h1>
+<ul>
+<li>Added new cost infrastructure to plan optimal paths with respect to arbitrary cost functions. Several common cost objective functions have been defined (such as path length and mechanical work) and new ones can easily be defined.</li>
+<li>RRT*, PRM*, TRRT, and PRM have been updated to use this cost infrastructure.</li>
+<li>BallTreeRRT* has been removed since it assumed that the path cost is equal to the path length.</li>
+<li>Added two new planners:<ul>
+<li><a class="el" href="classompl_1_1geometric_1_1LBTRRT.html#gLBTRRT">Lower Bound Tree RRT (LBTRRT)</a>, a near asymptotically-optimal incremental sampling-based motion planning algorithm.</li>
+<li><a class="el" href="classompl_1_1geometric_1_1STRIDE.html#gSTRIDE">Search Tree with Resolution Independent Density Estimation (STRIDE)</a>, an EST-like planner that uses an extension of the GNAT nearest neighbor data structure that supports sampling states inversely proportional to the density of previously sampled states.</li>
+</ul>
+</li>
+<li>Added support for MORSE. Through a plugin you can use OMPL with Blender and MORSE to plan kinodynamic paths. See <a href="gallery.html">the gallery</a> for some examples.</li>
+<li>Added functionality to the Benchmark class to keep track of user-specified properties at regular intervals. This is especially useful for asymptotically/approximately optimal or anytime planners.</li>
+<li>Added more <a href="group__demos.html">demo programs</a>.</li>
+<li>Added several new planning problems for use with the GUI and ompl_benchmark program.</li>
+<li>Updated gccxml snapshot. If you use gcc 4.8 and the OMPL Python bindings, you need to run "make installpyplusplus" again.</li>
+<li>Bug fixes.</li>
+</ul>
+<h1>OMPL.app 0.13.0 (August 5, 2013)</h1>
+<ul>
+<li>Added several new planners:<ul>
+<li><a class="el" href="classompl_1_1geometric_1_1SPARS.html#gSPARS">SPARS</a> and <a class="el" href="classompl_1_1geometric_1_1SPARStwo.html#gSPARStwo">SPARS2</a> are roadmap-based planners that operate similarly to Visibility-based PRM, but provide asymptotic near-optimality guarantees.</li>
+<li>Path-Directed Subdivision Tree (PDST). There are actually two versions: <a class="el" href="classompl_1_1geometric_1_1PDST.html#gPDST">one for geometric planning</a> and <a class="el" href="classompl_1_1control_1_1PDST.html#cPDST">one for control-based planning</a>.</li>
+<li><a class="el" href="classompl_1_1geometric_1_1LazyPRM.html#gLazyPRM">Lazy PRM</a>, a variant that lazily evaluates the validity of nodes and edges in a roadmap.</li>
+</ul>
+</li>
+<li>Various improvements and bug fixes in the RRTstar and BallTreeRRTstar planners.</li>
+<li>Various optimizations in the Syclop planner.</li>
+<li>The Syclop planner can now operate over triangular decompositions. This is enabled if the <a href="http://www.cs.cmu.edu/~quake/triangle.html">triangle</a> package is installed.</li>
+<li>Significantly reworked and extended unit tests for planning algorithms.</li>
+<li>Added method to extract a <a class="el" href="classompl_1_1base_1_1StateStorage.html" title="Manage loading and storing for a set of states of a specified state space. ">ompl::base::StateStorage</a> object from <a class="el" href="classompl_1_1base_1_1PlannerData.html" title="Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...">ompl::base::PlannerData</a>.</li>
+<li>State spaces can indicate whether they are metric.</li>
+<li>Certain path shortcutting techniques are disabled for non-metric state spaces during path simplification.</li>
+<li>Extended ProblemDefinition API to support path optimizing planners.</li>
+<li>Added printAsMatrix method to <a class="el" href="classompl_1_1geometric_1_1PathGeometric.html" title="Definition of a geometric path. ">ompl::geometric::PathGeometric</a> and <a class="el" href="classompl_1_1control_1_1PathControl.html" title="Definition of a control path. ">ompl::control::PathControl</a> to facilitate plotting of paths. Added a <a href="pathVisualization.html">tutorial on path visualization</a>.</li>
+<li>The path format produced by the printAsMatrix method is also used by the <a href="gui.html">OMPL.app GUI</a>.</li>
+<li>Added more <a href="group__demos.html">demo programs</a>.</li>
+<li>Use the officially released version of <a href="http://www.boost.org/libs/numeric/odeint">OdeInt</a> that comes with Boost 1.53 for numerical integration. The bundled version of OdeInt is not used or installed if the user has Boost &gt;= 1.53 installed.</li>
+<li>Updated Py++ toolchain (gccxml, pygccxml, pyplusplus). If you use gcc 4.7/4.8 or Boost 1.54, you need to run "make installpyplusplus" again.</li>
+<li>Various fixes for Python 3.x. The python bindings and GUI can now be used with Python 3.x.</li>
+<li>Bug fixes.</li>
+</ul>
+<h1>OMPL.app 0.12.2 (January 22, 2013)</h1>
+<ul>
+<li>Initial support for FLANN, a library for approximate nearest neighbors.</li>
+<li>Documentation updates.</li>
+<li>Bug fixes.</li>
+</ul>
+<h1>OMPL.app 0.12.1 (12/12/12)</h1>
+<ul>
+<li>Stricter checking for FCL and CCD versions, to avoid link problems with ROS Fuerte.</li>
+<li>Bug fixes.</li>
+</ul>
+<h1>OMPL.app 0.12.0 (November 20, 2012)</h1>
+<ul>
+<li>Added representation of costs to <a class="el" href="classompl_1_1base_1_1StateValidityChecker.html" title="Abstract definition for a class checking the validity of states. The implementation of this class mus...">ompl::base::StateValidityChecker</a>.</li>
+<li>Added the notion of objectives to be optimized: <a class="el" href="classompl_1_1base_1_1OptimizationObjective.html" title="Abstract definition of optimization objectives. ">ompl::base::OptimizationObjective</a>.</li>
+<li>Added <a class="el" href="classompl_1_1geometric_1_1TRRT.html#gTRRT">T-RRT</a>, a planner for planning low-cost paths.</li>
+<li>Planners now have the option to report the non-existence of a solution (<a class="el" href="classompl_1_1base_1_1SolutionNonExistenceProof.html" title="Abstract definition of a proof for the non-existence of a solution to a problem. ">ompl::base::SolutionNonExistenceProof</a>).</li>
+<li>Replaced PQP with FCL as the default collision checker.</li>
+<li>In the GUI the trees/roadmap produced by a planner can now be visualized.</li>
+<li>Improved infrastructure for creating python bindings for planners (see <a href="pybindingsPlanner.html">tutorial</a> for details).</li>
+<li>The GUI widgets for planners and their parameters are automatically constructed, which should make it easier to add new planners to the GUI.</li>
+<li>Documentation updates.</li>
+<li>Bug fixes.</li>
+</ul>
+<h1>OMPL.app 0.11.1 (July 26, 2012)</h1>
+<ul>
+<li>Fixed bug in RRT* where nearest neighbor radius shrinks too fast.</li>
+<li>Added option for versioned installs: multiple versions of OMPL.app can be installed simultaneously (disabled by default). This is enabled by running <code>cmake -DOMPL_VERSIONED_INSTALL=ON</code>.</li>
+<li>Added support for Assimp 3 (Assimp 2 is still supported as well).</li>
+<li>Bug and documentation fixes.</li>
+</ul>
+<h1>OMPL.app 0.11.0 (June 30, 2012)</h1>
+<ul>
+<li>PlannerData now uses the Boost Graph Library (BGL). This offers much more flexibility and power in the inspection of planner data structures. Rather than storing only the data common to all planners, each planner can store its own (meta)data per vertex and edge in a graph. All graph algorithms that exists in BGL can be applied directly.</li>
+<li>Added PlannerDataStorage object for serialization/deserialization of PlannerData</li>
+<li>Logging mechanism is now using macros instead of the msg::Interface class. The file name and line number where a message originated is printed out for every message type.</li>
+<li>Changed the return type for Planner::solve from bool to an enumeration (base::PlannerStatus). This allows for more refined failure/success reporting. A cast to bool exists for a quick success check.</li>
+<li>Added serialization for controls and a signature for the control space.</li>
+<li>Moved solution paths from Goal to ProblemDefinition.</li>
+<li>Implementation of PRM is now threaded (one thread for growing the roadmap, one thread for monitoring whether the problem is solved).</li>
+<li>Improvements to sampleUniformNear() for SO3.</li>
+<li>Options were added to the benchmark configuration file syntax to save solution paths. Either all paths, no paths, or the shortest path can be saved.</li>
+<li>A TeamCity Continuous Integration server has been set up at <a href="http://teamcity.kavrakilab.org">http://teamcity.kavrakilab.org</a>.</li>
+<li>The public repository, issue tracker, and downloads have been moved to Bitbucket. Sourceforge is being phased out for these services.</li>
+<li>Reduced dependencies: GTest has been replaced by Boost Test, subversion and CVS are no longer needed to get some optional dependencies.</li>
+<li>Bug fixes.</li>
+</ul>
+<h1>OMPL.app 0.10.2 (March 21, 2012)</h1>
+<ul>
+<li>Created a blog to highlight new features.</li>
+<li>Added support for multi-robot rigid-body motion planning.</li>
+<li>Updated FCL (which now uses FLANN instead of ANN for nearest neighbors)</li>
+<li>Bug fixes.</li>
+</ul>
+<h1>OMPL.app 0.10.1 (February 27, 2012)</h1>
+<ul>
+<li>Added representation of discrete control spaces.</li>
+<li>Fixes for XCode 4.3 when compiling the Python bindings.</li>
+<li>Updates to support Python 3.x in existing demo programs.</li>
+<li>Removed mutex from FCL collision checking wrapper. The newer version of the FCL library is thread-safe.</li>
+<li>Bug fixes.</li>
+</ul>
+<h1>OMPL.app 0.10.0 (February 16, 2012)</h1>
+<ul>
+<li>Minimum Boost version is now 1.44.</li>
+<li>Added a primer on sampling-based motion planning and OMPL.</li>
+<li>Added an implementation of SyCLoP, a new multilayered meta-planner that combines discrete search with a sampling-based motion planner. Implementations of Syclop with RRT and EST as the low-level planners are provided.</li>
+<li>Added an implementation of EST for planning with controls.</li>
+<li>New generic interface for parameter settings for almost anything that is user-configurable. This was done to simplify reading parameters from an input file (see next bullet).</li>
+<li>New benchmark program that allows one to easily specify benchmark problems with simple configuration files.</li>
+<li>New state spaces for Dubins vehicles and Reeds-Shepp vehicles. This allows one to use any geometric planner to compute feasible paths for such vehicles. See the demo program demo_GeometricCarPlanning.</li>
+<li>Added state serialization, deserialization, state space signatures.</li>
+<li>Added the notion of DirectedControlSampler.</li>
+<li>Added path hybridization, a technique for combining several solutions to a motion planning query to form a better bath. We also introduced a utility class called ParallelPlan that runs several planner instances in parallel and (optionally) uses path hybridization.</li>
+<li>Added a more advanced path shortcutting method.</li>
+<li>Added support for FCL collision checking library. PQP is actually still faster, and is therefore still the default.</li>
+<li>All versions of EST and SBL use the new PDF class to sample more efficiently from empirical probability distribution functions.</li>
+<li>Added a wrapper for boost::numeric::odeint to support high-order numerical integration of ordinary differential equations.</li>
+<li>Fixed issues with static variables for console.</li>
+<li>Added RPY sampling to the RNG class.</li>
+<li>Made some public members protected for GoalState and GoalStates; improvements to GoalLazySamples.</li>
+<li>Added support for multiple solution paths in a Goal datastructure.</li>
+<li>Added StateSpace::getValueAddressAtLocation() to allow faster indexing in states using state space names.</li>
+<li>The C++ code switched to the preferred boost::function syntax. A general method for exposing boost::function objects to Python was added, but this requires a patch to pygccxml.</li>
+<li>To make installing and patching Py++, pygccml, and gccxml easier there is now a script called installPyPlusPlus.sh that does this. One can call this script after running cmake by typing “make installpyplusplus”.</li>
+</ul>
+<h1>OMPL.app 0.9.5 (October 4, 2011)</h1>
+<ul>
+<li>Added control sampler functions that allow specifying an intended direction of propagation</li>
+<li>Made python, Boost.Python, PyOpenGL, and PyQt optional; the omplapp library is useful even without the GUI or python bindings.</li>
+<li>Removed pre-generated Python binding code. It turns out that they are dependent on the particular Boost version.</li>
+<li>Bug fixes.</li>
+</ul>
+<h1>OMPL.app 0.9.4 (August 16, 2011)</h1>
+<ul>
+<li>Renamed StateManifold to StateSpace and ControlManifold to ControlSpace</li>
+<li>Added RRTstar contribution</li>
+<li>Added GNAT nearest neighbors datastructure</li>
+<li>Added representation of a discrete state space (DiscreteStateSpace)</li>
+<li>Added representation of probability density functions (PDF)</li>
+<li>Replaced the implementation of BasicPRM with PRM. Thanks to James Marble, the new implementation uses BGL.</li>
+<li>Moved state propagation functionality from ControlSpace to a separate StatePropagator class</li>
+<li>Added SimpleSetup-derived classes for several control-based systems: kinematic car, Reeds-Shepp car, Dubins car, dynamic car, blimp, and quadrotor. Made them accessible through the GUI.</li>
+<li>Added isStraightLinePathValid() to PlannerDefinition</li>
+<li>Using boost ublas for real vector projections</li>
+<li>Add sanity checks for state spaces</li>
+<li>Benchmarked planners are now run in a separate thread (and termination conditions are evaluated separately, to detect crashes)</li>
+<li>Added getType() for Goal and replaced getType() for planners by getSpecs()</li>
+<li>Generalized planner termination conditions. The user can now call terminate() at any time to signal a planner it should stop its computation</li>
+<li>Improvements to control::KPIECE1, so that it considers goal biasing more appropriately</li>
+<li>Move code for extracting machine properties from util/ to benchmark/</li>
+<li>Documentation fixes</li>
+</ul>
+<h1>OMPL.app 0.9.3 (May 2, 2011)</h1>
+<ul>
+<li>Added support for visualizing internal planner data</li>
+<li>Planning for 2D environments as well (SE2)</li>
+<li>Significant reorganization of code in OMPL.app</li>
+<li>Added path smoothing with splines</li>
+<li>Added a bi-directional implementation of KPIECE (BKPIECE)</li>
+<li>Support for computation of clearance and gradients that move away from invalid regions</li>
+<li>Separate "magic constants" to a separate, visible, location</li>
+<li>A number of bug fixes</li>
+</ul>
+<h1>OMPL.app 0.9.2 (February 21, 2011)</h1>
+<ul>
+<li>Updates to operations on states: indexing in states can be done using state spaces or using integer values</li>
+<li>Bug fixes for planning with controls</li>
+<li>Minor doc improvements</li>
+</ul>
+<h1>OMPL.app 0.9.1 (December 17, 2010)</h1>
+<ul>
+<li>Minor updates to build system</li>
+</ul>
+<h1>OMPL.app 0.9.0 (December 15, 2010; initial release)</h1>
+<ul>
+<li>Implementations of many state-of-the-art sampling-based motion planning algorithms. For purely geometric planning, there are implementations of KPIECE, SBL, RRT, RRT Connect, EST, PRM, Lazy RRT, and others. For planning with differential constraints there are implementations of KPIECE and RRT. Addition of new planners poses very few constraints on the added code.</li>
+<li>A flexible mechanism for constructing arbitrarily complex configuration spaces and control spaces from simpler ones.</li>
+<li>A general method of defining goals: as states, as regions in configuration space, or implicitly.</li>
+<li>Various sampling strategies and an easy way to add other ones.</li>
+<li>Automatic selection of reasonable default parameters. Performance can be improved by tuning parameters, but solutions can be obtained without setting any parameters.</li>
+<li>GUI for rigid body motion planning.</li>
+<li>Support for planning with the Open Dynamics Engine, a popular physics simulator.</li>
+<li>Tools for systematic, large-scale benchmarking. </li>
+</ul>
+</div></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

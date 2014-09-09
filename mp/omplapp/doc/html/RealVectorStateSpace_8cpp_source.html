@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/base/spaces/src/RealVectorStateSpace.cpp Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_06e181af1f5888faac16991b57afb430.html">base</a></li><li class="navelem"><a class="el" href="dir_657904b0a08228494dbd1c9b23b24ab9.html">spaces</a></li><li class="navelem"><a class="el" href="dir_e8f8cdfc7b99567ad5e67656e7cef3c3.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">RealVectorStateSpace.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2010, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Rice University nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Ioan Sucan */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;ompl/base/spaces/RealVectorStateSpace.h&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;ompl/base/spaces/RealVectorStateProjections.h&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;ompl/util/Exception.h&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;boost/lexical_cast.hpp&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSampler.html#a7c7a1af5acf4d03c33dd5ec6a4ab50b4">   46</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSampler.html#a7c7a1af5acf4d03c33dd5ec6a4ab50b4">ompl::base::RealVectorStateSampler::sampleUniform</a>(<a class="code" href="classompl_1_1base_1_1State.html">State</a> *state)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> dim = <a class="code" href="classompl_1_1base_1_1StateSampler.html#ade7594512889b577995b3479c71f3b6d">space_</a>-&gt;<a class="code" href="classompl_1_1base_1_1StateSpace.html#a7cfc88ad641d95adbc20c7b6c6b4151d">getDimension</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1RealVectorBounds.html">RealVectorBounds</a> &amp;bounds = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html">RealVectorStateSpace</a>*<span class="keyword">&gt;</span>(<a class="code" href="classompl_1_1base_1_1StateSampler.html#ade7594512889b577995b3479c71f3b6d">space_</a>)-&gt;getBounds();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">RealVectorStateSpace::StateType</a> *rstate = <span class="keyword">static_cast&lt;</span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">RealVectorStateSpace::StateType</a>*<span class="keyword">&gt;</span>(state);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dim ; ++i)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        rstate-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i] = <a class="code" href="classompl_1_1base_1_1StateSampler.html#ad8b2f106c42eaa4788bb6914cd5371fb">rng_</a>.<a class="code" href="classompl_1_1RNG.html#a691ddf8d21630c69d4ba3f8b1f8c449f">uniformReal</a>(bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a36ebebb6a9e116093581afbd07425baa">low</a>[i], bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a06827561804a768d6ee86a20a664153c">high</a>[i]);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSampler.html#a04d589c5cb197f5cfa0626557491fac8">   56</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSampler.html#a04d589c5cb197f5cfa0626557491fac8">ompl::base::RealVectorStateSampler::sampleUniformNear</a>(<a class="code" href="classompl_1_1base_1_1State.html">State</a> *state, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *near, <span class="keyword">const</span> <span class="keywordtype">double</span> distance)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> dim = space_-&gt;getDimension();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1RealVectorBounds.html">RealVectorBounds</a> &amp;bounds = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html">RealVectorStateSpace</a>*<span class="keyword">&gt;</span>(space_)-&gt;getBounds();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">RealVectorStateSpace::StateType</a> *rstate = <span class="keyword">static_cast&lt;</span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">RealVectorStateSpace::StateType</a>*<span class="keyword">&gt;</span>(state);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">RealVectorStateSpace::StateType</a> *rnear = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">RealVectorStateSpace::StateType</a>*<span class="keyword">&gt;</span>(near);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dim ; ++i)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        rstate-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i] =</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            rng_.uniformReal(std::max(bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a36ebebb6a9e116093581afbd07425baa">low</a>[i], rnear-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i] - distance),</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                             std::min(bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a06827561804a768d6ee86a20a664153c">high</a>[i], rnear-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i] + distance));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSampler.html#a403799674d976ff4a1ae0a817b6c1b73">   69</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSampler.html#a403799674d976ff4a1ae0a817b6c1b73">ompl::base::RealVectorStateSampler::sampleGaussian</a>(<a class="code" href="classompl_1_1base_1_1State.html">State</a> *state, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *mean, <span class="keyword">const</span> <span class="keywordtype">double</span> stdDev)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> dim = space_-&gt;getDimension();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1RealVectorBounds.html">RealVectorBounds</a> &amp;bounds = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html">RealVectorStateSpace</a>*<span class="keyword">&gt;</span>(space_)-&gt;getBounds();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">RealVectorStateSpace::StateType</a> *rstate = <span class="keyword">static_cast&lt;</span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">RealVectorStateSpace::StateType</a>*<span class="keyword">&gt;</span>(state);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">RealVectorStateSpace::StateType</a> *rmean = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">RealVectorStateSpace::StateType</a>*<span class="keyword">&gt;</span>(mean);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dim ; ++i)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">double</span> v = rng_.gaussian(rmean-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i], stdDev);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">if</span> (v &lt; bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a36ebebb6a9e116093581afbd07425baa">low</a>[i])</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            v = bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a36ebebb6a9e116093581afbd07425baa">low</a>[i];</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">if</span> (v &gt; bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a06827561804a768d6ee86a20a664153c">high</a>[i])</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                v = bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a06827561804a768d6ee86a20a664153c">high</a>[i];</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        rstate-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i] = v;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a35ad3c9f423fabe6b93c5c1cb27f8d02">   88</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a35ad3c9f423fabe6b93c5c1cb27f8d02">ompl::base::RealVectorStateSpace::registerProjections</a>()</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">// compute a default random projection</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">if</span> (dimension_ &gt; 0)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">if</span> (dimension_ &gt; 2)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordtype">int</span> p = std::max(2, (<span class="keywordtype">int</span>)ceil(<a class="code" href="namespaceompl_1_1msg.html#affe7852f27c06f98af7eb2579f1e5350">log</a>((<span class="keywordtype">double</span>)dimension_)));</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            registerDefaultProjection(<a class="code" href="classompl_1_1base_1_1ProjectionEvaluatorPtr.html">ProjectionEvaluatorPtr</a>(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1RealVectorRandomLinearProjectionEvaluator.html">RealVectorRandomLinearProjectionEvaluator</a>(<span class="keyword">this</span>, p)));</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            registerDefaultProjection(<a class="code" href="classompl_1_1base_1_1ProjectionEvaluatorPtr.html">ProjectionEvaluatorPtr</a>(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1RealVectorIdentityProjectionEvaluator.html">RealVectorIdentityProjectionEvaluator</a>(<span class="keyword">this</span>)));</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#adfcadeafb7f1ad44074c0dcf753a862a">  103</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#adfcadeafb7f1ad44074c0dcf753a862a">ompl::base::RealVectorStateSpace::setup</a>()</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;{</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    bounds_.check();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="classompl_1_1base_1_1StateSpace.html#a92ca030ac21b5aa209241febcfbae2e7">StateSpace::setup</a>();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a03b7187e42e78e2874db062dc88a1bd0">  109</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a2893436790633b216ed31123b3cf1634">ompl::base::RealVectorStateSpace::addDimension</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">double</span> minBound, <span class="keywordtype">double</span> maxBound)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    addDimension(minBound, maxBound);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    setDimensionName(dimension_ - 1, name);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a2893436790633b216ed31123b3cf1634">  115</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a2893436790633b216ed31123b3cf1634">ompl::base::RealVectorStateSpace::addDimension</a>(<span class="keywordtype">double</span> minBound, <span class="keywordtype">double</span> maxBound)</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    dimension_++;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    stateBytes_ = dimension_ * <span class="keyword">sizeof</span>(double);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    bounds_.low.push_back(minBound);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    bounds_.high.push_back(maxBound);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    dimensionNames_.resize(dimension_, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#ab53c0ef2a517e34f4c387785dd3f8956">  124</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#ab53c0ef2a517e34f4c387785dd3f8956">ompl::base::RealVectorStateSpace::setBounds</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1RealVectorBounds.html">RealVectorBounds</a> &amp;bounds)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;{</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a3489a2e013b8b752632ba3ebd217c871">check</a>();</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">if</span> (bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a36ebebb6a9e116093581afbd07425baa">low</a>.size() != dimension_)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classompl_1_1Exception.html">Exception</a>(<span class="stringliteral">&quot;Bounds do not match dimension of state space: expected dimension &quot;</span> +</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                        boost::lexical_cast&lt;std::string&gt;(dimension_) + <span class="stringliteral">&quot; but got dimension &quot;</span> +</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                        boost::lexical_cast&lt;std::string&gt;(bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a36ebebb6a9e116093581afbd07425baa">low</a>.size()));</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    bounds_ = bounds;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a592f658c4d3c546d96342146d18b5d13">  134</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#ab53c0ef2a517e34f4c387785dd3f8956">ompl::base::RealVectorStateSpace::setBounds</a>(<span class="keywordtype">double</span> low, <span class="keywordtype">double</span> high)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;{</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <a class="code" href="classompl_1_1base_1_1RealVectorBounds.html">RealVectorBounds</a> bounds(dimension_);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a6f63c8d793a056e2160e5d9d85c27a58">setLow</a>(low);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a756253c602ddc6bd299dc9c870fadfee">setHigh</a>(high);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    setBounds(bounds);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#ae745e04e8bd7429a2aaa6e05522ac383">  142</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#ae745e04e8bd7429a2aaa6e05522ac383">ompl::base::RealVectorStateSpace::getDimension</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">return</span> dimension_;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;}</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#ae5112c5d1bfbe7d69094b71ead4f84ca">  147</a></span>&#160;<span class="keyword">const</span> std::string&amp; <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#ae5112c5d1bfbe7d69094b71ead4f84ca">ompl::base::RealVectorStateSpace::getDimensionName</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">if</span> (index &lt; dimensionNames_.size())</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">return</span> dimensionNames_[index];</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">throw</span> <a class="code" href="classompl_1_1Exception.html">Exception</a>(<span class="stringliteral">&quot;Index out of bounds&quot;</span>);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a3b43a37b02d3164f55581c4cda94fa00">  154</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a3b43a37b02d3164f55581c4cda94fa00">ompl::base::RealVectorStateSpace::getDimensionIndex</a>(<span class="keyword">const</span> std::string &amp;name)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    std::map&lt;std::string, unsigned int&gt;::const_iterator it = dimensionIndex_.find(name);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">return</span> it != dimensionIndex_.end() ? (int)it-&gt;second : -1;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a2d387a4a02fafea56315ddd449703847">  160</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a2d387a4a02fafea56315ddd449703847">ompl::base::RealVectorStateSpace::setDimensionName</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index, <span class="keyword">const</span> std::string &amp;name)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;{</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">if</span> (index &lt; dimensionNames_.size())</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        dimensionNames_[index] = name;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        dimensionIndex_[name] = index;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classompl_1_1Exception.html">Exception</a>(<span class="stringliteral">&quot;Cannot set dimension name. Index out of bounds&quot;</span>);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a6bba8c34051ad558739f8beecaa9c647">  171</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a6bba8c34051ad558739f8beecaa9c647">ompl::base::RealVectorStateSpace::getMaximumExtent</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordtype">double</span> e = 0.0;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dimension_ ; ++i)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordtype">double</span> d = bounds_.high[i] - bounds_.low[i];</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        e += d*d;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">return</span> sqrt(e);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a455ab2bd7fb9e17d8d58695c9016abb5">  182</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a455ab2bd7fb9e17d8d58695c9016abb5">ompl::base::RealVectorStateSpace::getMeasure</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordtype">double</span> m = 1.0;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dimension_ ; ++i)</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        m *= bounds_.high[i] - bounds_.low[i];</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">return</span> m;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#ae473cc4d0feaefb5e568578cd927d9b9">  192</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#ae473cc4d0feaefb5e568578cd927d9b9">ompl::base::RealVectorStateSpace::enforceBounds</a>(<a class="code" href="classompl_1_1base_1_1State.html">State</a> *state)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a> *rstate = <span class="keyword">static_cast&lt;</span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a>*<span class="keyword">&gt;</span>(state);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dimension_ ; ++i)</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">if</span> (rstate-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i] &gt; bounds_.high[i])</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            rstate-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i] = bounds_.high[i];</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">if</span> (rstate-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i] &lt; bounds_.low[i])</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                rstate-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i] = bounds_.low[i];</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;}</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a8ea04b460df8e8cb638ced218fef71e0">  205</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a8ea04b460df8e8cb638ced218fef71e0">ompl::base::RealVectorStateSpace::satisfiesBounds</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a> *rstate = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a>*<span class="keyword">&gt;</span>(state);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dimension_ ; ++i)</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordflow">if</span> (rstate-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i] - std::numeric_limits&lt;double&gt;::epsilon() &gt; bounds_.high[i] ||</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            rstate-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i] + std::numeric_limits&lt;double&gt;::epsilon() &lt; bounds_.low[i])</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;}</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a2304bbddd850d5b10eaa70142547b67d">  215</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a2304bbddd850d5b10eaa70142547b67d">ompl::base::RealVectorStateSpace::copyState</a>(<a class="code" href="classompl_1_1base_1_1State.html">State</a> *destination, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *source)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    memcpy(static_cast&lt;StateType*&gt;(destination)-&gt;values,</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;           static_cast&lt;const StateType*&gt;(source)-&gt;values, stateBytes_);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;}</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a5b5dac1f059b7883f0ae5e97a7d3165d">  221</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a5b5dac1f059b7883f0ae5e97a7d3165d">ompl::base::RealVectorStateSpace::getSerializationLength</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordflow">return</span> stateBytes_;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#ac7218998762d2f8f8c2ced983d4e3460">  226</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#ac7218998762d2f8f8c2ced983d4e3460">ompl::base::RealVectorStateSpace::serialize</a>(<span class="keywordtype">void</span> *serialization, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    memcpy(serialization, state-&gt;<a class="code" href="classompl_1_1base_1_1State.html#a04177157c4ea22d1bb2d7f344162bf31">as</a>&lt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a>&gt;()-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>, stateBytes_);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;}</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a3a4968be30e69839b62c0c61896ab315">  231</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a3a4968be30e69839b62c0c61896ab315">ompl::base::RealVectorStateSpace::deserialize</a>(<a class="code" href="classompl_1_1base_1_1State.html">State</a> *state, <span class="keyword">const</span> <span class="keywordtype">void</span> *serialization)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    memcpy(state-&gt;<a class="code" href="classompl_1_1base_1_1State.html#a04177157c4ea22d1bb2d7f344162bf31">as</a>&lt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a>&gt;()-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>, serialization, stateBytes_);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;}</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#ae9dba965480f0b4771455c79aae8a195">  236</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#ae9dba965480f0b4771455c79aae8a195">ompl::base::RealVectorStateSpace::distance</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state1, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state2)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordtype">double</span> dist = 0.0;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> *s1 = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a>*<span class="keyword">&gt;</span>(state1)-&gt;values;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> *s2 = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a>*<span class="keyword">&gt;</span>(state2)-&gt;values;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dimension_ ; ++i)</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keywordtype">double</span> diff = (*s1++) - (*s2++);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        dist += diff * diff;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">return</span> sqrt(dist);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;</div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a7de4ee53afed57ec78012c764758274e">  250</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a7de4ee53afed57ec78012c764758274e">ompl::base::RealVectorStateSpace::equalStates</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state1, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state2)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> *s1 = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a>*<span class="keyword">&gt;</span>(state1)-&gt;values;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> *s2 = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a>*<span class="keyword">&gt;</span>(state2)-&gt;values;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dimension_ ; ++i)</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keywordtype">double</span> diff = (*s1++) - (*s2++);</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">if</span> (fabs(diff) &gt; std::numeric_limits&lt;double&gt;::epsilon() * 2.0)</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;}</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a5135607e2fedf624b07d5546f8fec2c5">  263</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a5135607e2fedf624b07d5546f8fec2c5">ompl::base::RealVectorStateSpace::interpolate</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *from, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *to, <span class="keyword">const</span> <span class="keywordtype">double</span> t, <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a> *rfrom = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a>*<span class="keyword">&gt;</span>(from);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a> *rto = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a>*<span class="keyword">&gt;</span>(to);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a> *rstate = <span class="keyword">static_cast&lt;</span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a>*<span class="keyword">&gt;</span>(state);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dimension_ ; ++i)</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        rstate-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i] = rfrom-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i] + (rto-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i] - rfrom-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i]) * t;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;}</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;</div>
+<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#ab6a1442eaabc49053327606dbba87522">  272</a></span>&#160;<a class="code" href="classompl_1_1base_1_1StateSamplerPtr.html">ompl::base::StateSamplerPtr</a> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#ab6a1442eaabc49053327606dbba87522">ompl::base::RealVectorStateSpace::allocDefaultStateSampler</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1StateSamplerPtr.html">StateSamplerPtr</a>(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSampler.html">RealVectorStateSampler</a>(<span class="keyword">this</span>));</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;}</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
+<div class="line"><a name="l00277"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a06c6f2ecf6cba497f8178aa4fd924046">  277</a></span>&#160;<a class="code" href="classompl_1_1base_1_1State.html">ompl::base::State</a>* <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a06c6f2ecf6cba497f8178aa4fd924046">ompl::base::RealVectorStateSpace::allocState</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a> *rstate = <span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a>();</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    rstate-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a> = <span class="keyword">new</span> <span class="keywordtype">double</span>[dimension_];</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">return</span> rstate;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;}</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#af2ed57519f3da6e87cd96d3c300336cb">  284</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#af2ed57519f3da6e87cd96d3c300336cb">ompl::base::RealVectorStateSpace::freeState</a>(<a class="code" href="classompl_1_1base_1_1State.html">State</a> *state)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a> *rstate = <span class="keyword">static_cast&lt;</span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a>*<span class="keyword">&gt;</span>(state);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keyword">delete</span>[] rstate-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keyword">delete</span> rstate;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;}</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;</div>
+<div class="line"><a name="l00291"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#aa263419b2d378049b3315286413d5a2f">  291</a></span>&#160;<span class="keywordtype">double</span>* <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#aa263419b2d378049b3315286413d5a2f">ompl::base::RealVectorStateSpace::getValueAddressAtIndex</a>(<a class="code" href="classompl_1_1base_1_1State.html">State</a> *state, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordflow">return</span> index &lt; dimension_ ? static_cast&lt;StateType*&gt;(state)-&gt;values + index : NULL;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;}</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
+<div class="line"><a name="l00296"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a2a3d613e6aef0a811f89bfae0ac3f181">  296</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a2a3d613e6aef0a811f89bfae0ac3f181">ompl::base::RealVectorStateSpace::printState</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state, std::ostream &amp;out)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;RealVectorState [&quot;</span>;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordflow">if</span> (state)</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a> *rstate = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">StateType</a>*<span class="keyword">&gt;</span>(state);</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dimension_ ; ++i)</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        {</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            out &lt;&lt; rstate-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[i];</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <span class="keywordflow">if</span> (i + 1 &lt; dimension_)</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                out &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        }</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        out &lt;&lt; <span class="stringliteral">&quot;NULL&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    out &lt;&lt; <span class="charliteral">&#39;]&#39;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;}</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div>
+<div class="line"><a name="l00314"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1RealVectorStateSpace.html#a7297b3664373e5dbe9dea943f9a49bc4">  314</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html#a7297b3664373e5dbe9dea943f9a49bc4">ompl::base::RealVectorStateSpace::printSettings</a>(std::ostream &amp;out)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;Real vector state space &#39;&quot;</span> &lt;&lt; getName() &lt;&lt; <span class="stringliteral">&quot;&#39; of dimension &quot;</span> &lt;&lt; dimension_ &lt;&lt; <span class="stringliteral">&quot; with bounds: &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;  - min: &quot;</span>;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dimension_ ; ++i)</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        out &lt;&lt; bounds_.low[i] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    out &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;  - max: &quot;</span>;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    for (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dimension_ ; ++i)</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        out &lt;&lt; bounds_.high[i] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    out &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordtype">bool</span> printNames = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    for (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dimension_ ; ++i)</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <span class="keywordflow">if</span> (!dimensionNames_[i].empty())</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            printNames = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">if</span> (printNames)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        out &lt;&lt; <span class="stringliteral">&quot;  and dimension names: &quot;</span>;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; dimension_ ; ++i)</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            out &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span> &lt;&lt; dimensionNames_[i] &lt;&lt; <span class="stringliteral">&quot;&#39; &quot;</span>;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        out &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;}</div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a3b43a37b02d3164f55581c4cda94fa00"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a3b43a37b02d3164f55581c4cda94fa00">ompl::base::RealVectorStateSpace::getDimensionIndex</a></div><div class="ttdeci">int getDimensionIndex(const std::string &amp;name) const </div><div class="ttdoc">Get the index of a specific dimension, by name. Return -1 if name is not found. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00154">RealVectorStateSpace.cpp:154</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSampler_html_ade7594512889b577995b3479c71f3b6d"><div class="ttname"><a href="classompl_1_1base_1_1StateSampler.html#ade7594512889b577995b3479c71f3b6d">ompl::base::StateSampler::space_</a></div><div class="ttdeci">const StateSpace * space_</div><div class="ttdoc">The state space this sampler samples. </div><div class="ttdef"><b>Definition:</b> <a href="StateSampler_8h_source.html#l00091">StateSampler.h:91</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSampler_html"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSampler.html">ompl::base::RealVectorStateSampler</a></div><div class="ttdoc">State sampler for the Rn state space. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8h_source.html#l00052">RealVectorStateSpace.h:52</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a8ea04b460df8e8cb638ced218fef71e0"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a8ea04b460df8e8cb638ced218fef71e0">ompl::base::RealVectorStateSpace::satisfiesBounds</a></div><div class="ttdeci">virtual bool satisfiesBounds(const State *state) const </div><div class="ttdoc">Check if a state is inside the bounding box. For unbounded spaces this function can always return tru...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00205">RealVectorStateSpace.cpp:205</a></div></div>
+<div class="ttc" id="namespaceompl_1_1msg_html_affe7852f27c06f98af7eb2579f1e5350"><div class="ttname"><a href="namespaceompl_1_1msg.html#affe7852f27c06f98af7eb2579f1e5350">ompl::msg::log</a></div><div class="ttdeci">void log(const char *file, int line, LogLevel level, const char *m,...)</div><div class="ttdoc">Root level logging function. This should not be invoked directly, but rather used via a logging macro...</div><div class="ttdef"><b>Definition:</b> <a href="Console_8cpp_source.html#l00104">Console.cpp:104</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorBounds_html_a36ebebb6a9e116093581afbd07425baa"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorBounds.html#a36ebebb6a9e116093581afbd07425baa">ompl::base::RealVectorBounds::low</a></div><div class="ttdeci">std::vector&lt; double &gt; low</div><div class="ttdoc">Lower bound. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorBounds_8h_source.html#l00085">RealVectorBounds.h:85</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a2304bbddd850d5b10eaa70142547b67d"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a2304bbddd850d5b10eaa70142547b67d">ompl::base::RealVectorStateSpace::copyState</a></div><div class="ttdeci">virtual void copyState(State *destination, const State *source) const </div><div class="ttdoc">Copy a state to another. The memory of source and destination should NOT overlap. ...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00215">RealVectorStateSpace.cpp:215</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSamplerPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1StateSamplerPtr.html">ompl::base::StateSamplerPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::StateSampler. </div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSampler_html_ad8b2f106c42eaa4788bb6914cd5371fb"><div class="ttname"><a href="classompl_1_1base_1_1StateSampler.html#ad8b2f106c42eaa4788bb6914cd5371fb">ompl::base::StateSampler::rng_</a></div><div class="ttdeci">RNG rng_</div><div class="ttdoc">An instance of a random number generator. </div><div class="ttdef"><b>Definition:</b> <a href="StateSampler_8h_source.html#l00094">StateSampler.h:94</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpace_html_a7cfc88ad641d95adbc20c7b6c6b4151d"><div class="ttname"><a href="classompl_1_1base_1_1StateSpace.html#a7cfc88ad641d95adbc20c7b6c6b4151d">ompl::base::StateSpace::getDimension</a></div><div class="ttdeci">virtual unsigned int getDimension() const =0</div><div class="ttdoc">Get the dimension of the space (not the dimension of the surrounding ambient space) ...</div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a455ab2bd7fb9e17d8d58695c9016abb5"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a455ab2bd7fb9e17d8d58695c9016abb5">ompl::base::RealVectorStateSpace::getMeasure</a></div><div class="ttdeci">virtual double getMeasure() const </div><div class="ttdoc">Get a measure of the space (this can be thought of as a generalization of volume) ...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00182">RealVectorStateSpace.cpp:182</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a5b5dac1f059b7883f0ae5e97a7d3165d"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a5b5dac1f059b7883f0ae5e97a7d3165d">ompl::base::RealVectorStateSpace::getSerializationLength</a></div><div class="ttdeci">virtual unsigned int getSerializationLength() const </div><div class="ttdoc">Get the number of chars in the serialization of a state in this space. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00221">RealVectorStateSpace.cpp:221</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_ae5112c5d1bfbe7d69094b71ead4f84ca"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#ae5112c5d1bfbe7d69094b71ead4f84ca">ompl::base::RealVectorStateSpace::getDimensionName</a></div><div class="ttdeci">const std::string &amp; getDimensionName(unsigned int index) const </div><div class="ttdoc">Each dimension can optionally have a name associated to it. If it does, this function returns that na...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00147">RealVectorStateSpace.cpp:147</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSampler_html_a04d589c5cb197f5cfa0626557491fac8"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSampler.html#a04d589c5cb197f5cfa0626557491fac8">ompl::base::RealVectorStateSampler::sampleUniformNear</a></div><div class="ttdeci">virtual void sampleUniformNear(State *state, const State *near, const double distance)</div><div class="ttdoc">Sample a state such that each component state[i] is uniformly sampled from [near[i]-distance, near[i]+distance]. If this interval exceeds the state space bounds, the interval is truncated. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00056">RealVectorStateSpace.cpp:56</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a06c6f2ecf6cba497f8178aa4fd924046"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a06c6f2ecf6cba497f8178aa4fd924046">ompl::base::RealVectorStateSpace::allocState</a></div><div class="ttdeci">virtual State * allocState() const </div><div class="ttdoc">Allocate a state that can store a point in the described space. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00277">RealVectorStateSpace.cpp:277</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorIdentityProjectionEvaluator_html"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorIdentityProjectionEvaluator.html">ompl::base::RealVectorIdentityProjectionEvaluator</a></div><div class="ttdoc">Define the identity projection. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateProjections_8h_source.html#l00165">RealVectorStateProjections.h:165</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a3a4968be30e69839b62c0c61896ab315"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a3a4968be30e69839b62c0c61896ab315">ompl::base::RealVectorStateSpace::deserialize</a></div><div class="ttdeci">virtual void deserialize(State *state, const void *serialization) const </div><div class="ttdoc">Read the binary representation of a state from serialization and write it to state. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00231">RealVectorStateSpace.cpp:231</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_ae473cc4d0feaefb5e568578cd927d9b9"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#ae473cc4d0feaefb5e568578cd927d9b9">ompl::base::RealVectorStateSpace::enforceBounds</a></div><div class="ttdeci">virtual void enforceBounds(State *state) const </div><div class="ttdoc">Bring the state within the bounds of the state space. For unbounded spaces this function can be a no-...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00192">RealVectorStateSpace.cpp:192</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a6bba8c34051ad558739f8beecaa9c647"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a6bba8c34051ad558739f8beecaa9c647">ompl::base::RealVectorStateSpace::getMaximumExtent</a></div><div class="ttdeci">virtual double getMaximumExtent() const </div><div class="ttdoc">Get the maximum value a call to distance() can return (or an upper bound). For unbounded state spaces...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00171">RealVectorStateSpace.cpp:171</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a35ad3c9f423fabe6b93c5c1cb27f8d02"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a35ad3c9f423fabe6b93c5c1cb27f8d02">ompl::base::RealVectorStateSpace::registerProjections</a></div><div class="ttdeci">virtual void registerProjections()</div><div class="ttdoc">Register the projections for this state space. Usually, this is at least the default projection...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00088">RealVectorStateSpace.cpp:88</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_aa263419b2d378049b3315286413d5a2f"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#aa263419b2d378049b3315286413d5a2f">ompl::base::RealVectorStateSpace::getValueAddressAtIndex</a></div><div class="ttdeci">virtual double * getValueAddressAtIndex(State *state, const unsigned int index) const </div><div class="ttdoc">Many states contain a number of double values. This function provides a means to get the memory addre...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00291">RealVectorStateSpace.cpp:291</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorRandomLinearProjectionEvaluator_html"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorRandomLinearProjectionEvaluator.html">ompl::base::RealVectorRandomLinearProjectionEvaluator</a></div><div class="ttdoc">Definition for a class computing a random linear projections. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateProjections_8h_source.html#l00089">RealVectorStateProjections.h:89</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_af2ed57519f3da6e87cd96d3c300336cb"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#af2ed57519f3da6e87cd96d3c300336cb">ompl::base::RealVectorStateSpace::freeState</a></div><div class="ttdeci">virtual void freeState(State *state) const </div><div class="ttdoc">Free the memory of the allocated state. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00284">RealVectorStateSpace.cpp:284</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorBounds_html_a6f63c8d793a056e2160e5d9d85c27a58"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorBounds.html#a6f63c8d793a056e2160e5d9d85c27a58">ompl::base::RealVectorBounds::setLow</a></div><div class="ttdeci">void setLow(double value)</div><div class="ttdoc">Set the lower bound in each dimension to a specific value. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorBounds_8cpp_source.html#l00042">RealVectorBounds.cpp:42</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_ab6a1442eaabc49053327606dbba87522"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#ab6a1442eaabc49053327606dbba87522">ompl::base::RealVectorStateSpace::allocDefaultStateSampler</a></div><div class="ttdeci">virtual StateSamplerPtr allocDefaultStateSampler() const </div><div class="ttdoc">Allocate an instance of the default uniform state sampler for this space. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00272">RealVectorStateSpace.cpp:272</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorBounds_html_a756253c602ddc6bd299dc9c870fadfee"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorBounds.html#a756253c602ddc6bd299dc9c870fadfee">ompl::base::RealVectorBounds::setHigh</a></div><div class="ttdeci">void setHigh(double value)</div><div class="ttdoc">Set the upper bound in each dimension to a specific value. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorBounds_8cpp_source.html#l00047">RealVectorBounds.cpp:47</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a7297b3664373e5dbe9dea943f9a49bc4"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a7297b3664373e5dbe9dea943f9a49bc4">ompl::base::RealVectorStateSpace::printSettings</a></div><div class="ttdeci">virtual void printSettings(std::ostream &amp;out) const </div><div class="ttdoc">Print the settings for this state space to a stream. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00314">RealVectorStateSpace.cpp:314</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorBounds_html_a06827561804a768d6ee86a20a664153c"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorBounds.html#a06827561804a768d6ee86a20a664153c">ompl::base::RealVectorBounds::high</a></div><div class="ttdeci">std::vector&lt; double &gt; high</div><div class="ttdoc">Upper bound. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorBounds_8h_source.html#l00088">RealVectorBounds.h:88</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProjectionEvaluatorPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1ProjectionEvaluatorPtr.html">ompl::base::ProjectionEvaluatorPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::ProjectionEvaluator. </div></div>
+<div class="ttc" id="classompl_1_1RNG_html_a691ddf8d21630c69d4ba3f8b1f8c449f"><div class="ttname"><a href="classompl_1_1RNG.html#a691ddf8d21630c69d4ba3f8b1f8c449f">ompl::RNG::uniformReal</a></div><div class="ttdeci">double uniformReal(double lower_bound, double upper_bound)</div><div class="ttdoc">Generate a random real within given bounds: [lower_bound, upper_bound) </div><div class="ttdef"><b>Definition:</b> <a href="RandomNumbers_8h_source.html#l00068">RandomNumbers.h:68</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html">ompl::base::RealVectorStateSpace</a></div><div class="ttdoc">A state space representing Rn. The distance function is the L2 norm. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8h_source.html#l00075">RealVectorStateSpace.h:75</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpace_html_a92ca030ac21b5aa209241febcfbae2e7"><div class="ttname"><a href="classompl_1_1base_1_1StateSpace.html#a92ca030ac21b5aa209241febcfbae2e7">ompl::base::StateSpace::setup</a></div><div class="ttdeci">virtual void setup()</div><div class="ttdoc">Perform final setup steps. This function is automatically called by the SpaceInformation. If any default projections are to be registered, this call will set them and call their setup() functions. It is safe to call this function multiple times. At a subsequent call, projections that have been previously user configured are not re-instantiated, but their setup() method is still called. </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8cpp_source.html#l00220">StateSpace.cpp:220</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSampler_html_a403799674d976ff4a1ae0a817b6c1b73"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSampler.html#a403799674d976ff4a1ae0a817b6c1b73">ompl::base::RealVectorStateSampler::sampleGaussian</a></div><div class="ttdeci">virtual void sampleGaussian(State *state, const State *mean, const double stdDev)</div><div class="ttdoc">Sample a state such that each component state[i] has a Gaussian distribution with mean mean[i] and st...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00069">RealVectorStateSpace.cpp:69</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a2d387a4a02fafea56315ddd449703847"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a2d387a4a02fafea56315ddd449703847">ompl::base::RealVectorStateSpace::setDimensionName</a></div><div class="ttdeci">void setDimensionName(unsigned int index, const std::string &amp;name)</div><div class="ttdoc">Set the name of a dimension. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00160">RealVectorStateSpace.cpp:160</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorBounds_html_a3489a2e013b8b752632ba3ebd217c871"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorBounds.html#a3489a2e013b8b752632ba3ebd217c871">ompl::base::RealVectorBounds::check</a></div><div class="ttdeci">void check() const </div><div class="ttdoc">Check if the bounds are valid (same length for low and high, high[i] &gt; low[i]). Throw an exception if...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorBounds_8cpp_source.html#l00089">RealVectorBounds.cpp:89</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a7de4ee53afed57ec78012c764758274e"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a7de4ee53afed57ec78012c764758274e">ompl::base::RealVectorStateSpace::equalStates</a></div><div class="ttdeci">virtual bool equalStates(const State *state1, const State *state2) const </div><div class="ttdoc">Checks whether two states are equal. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00250">RealVectorStateSpace.cpp:250</a></div></div>
+<div class="ttc" id="classompl_1_1Exception_html"><div class="ttname"><a href="classompl_1_1Exception.html">ompl::Exception</a></div><div class="ttdoc">The exception type for ompl. </div><div class="ttdef"><b>Definition:</b> <a href="Exception_8h_source.html#l00047">Exception.h:47</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorBounds_html"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorBounds.html">ompl::base::RealVectorBounds</a></div><div class="ttdoc">The lower and upper bounds for an Rn space. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorBounds_8h_source.html#l00048">RealVectorBounds.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType_html_a916575eb76687da3b47a2d9699128498"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">ompl::base::RealVectorStateSpace::StateType::values</a></div><div class="ttdeci">double * values</div><div class="ttdoc">The value of the actual vector in Rn </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8h_source.html#l00102">RealVectorStateSpace.h:102</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType_html"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">ompl::base::RealVectorStateSpace::StateType</a></div><div class="ttdoc">The definition of a state in Rn </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8h_source.html#l00080">RealVectorStateSpace.h:80</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a2a3d613e6aef0a811f89bfae0ac3f181"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a2a3d613e6aef0a811f89bfae0ac3f181">ompl::base::RealVectorStateSpace::printState</a></div><div class="ttdeci">virtual void printState(const State *state, std::ostream &amp;out) const </div><div class="ttdoc">Print a state to a stream. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00296">RealVectorStateSpace.cpp:296</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_ac7218998762d2f8f8c2ced983d4e3460"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#ac7218998762d2f8f8c2ced983d4e3460">ompl::base::RealVectorStateSpace::serialize</a></div><div class="ttdeci">virtual void serialize(void *serialization, const State *state) const </div><div class="ttdoc">Write the binary representation of state to serialization. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00226">RealVectorStateSpace.cpp:226</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a2893436790633b216ed31123b3cf1634"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a2893436790633b216ed31123b3cf1634">ompl::base::RealVectorStateSpace::addDimension</a></div><div class="ttdeci">void addDimension(double minBound=0.0, double maxBound=0.0)</div><div class="ttdoc">Increase the dimensionality of the state space by 1. Optionally, bounds can be specified for this add...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00115">RealVectorStateSpace.cpp:115</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_ae745e04e8bd7429a2aaa6e05522ac383"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#ae745e04e8bd7429a2aaa6e05522ac383">ompl::base::RealVectorStateSpace::getDimension</a></div><div class="ttdeci">virtual unsigned int getDimension() const </div><div class="ttdoc">Get the dimension of the space (not the dimension of the surrounding ambient space) ...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00142">RealVectorStateSpace.cpp:142</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html_a04177157c4ea22d1bb2d7f344162bf31"><div class="ttname"><a href="classompl_1_1base_1_1State.html#a04177157c4ea22d1bb2d7f344162bf31">ompl::base::State::as</a></div><div class="ttdeci">const T * as() const </div><div class="ttdoc">Cast this instance to a desired type. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00074">State.h:74</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_ae9dba965480f0b4771455c79aae8a195"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#ae9dba965480f0b4771455c79aae8a195">ompl::base::RealVectorStateSpace::distance</a></div><div class="ttdeci">virtual double distance(const State *state1, const State *state2) const </div><div class="ttdoc">Computes distance between two states. This function satisfies the properties of a metric if isMetricS...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00236">RealVectorStateSpace.cpp:236</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSampler_html_a7c7a1af5acf4d03c33dd5ec6a4ab50b4"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSampler.html#a7c7a1af5acf4d03c33dd5ec6a4ab50b4">ompl::base::RealVectorStateSampler::sampleUniform</a></div><div class="ttdeci">virtual void sampleUniform(State *state)</div><div class="ttdoc">Sample a state. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00046">RealVectorStateSpace.cpp:46</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_a5135607e2fedf624b07d5546f8fec2c5"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#a5135607e2fedf624b07d5546f8fec2c5">ompl::base::RealVectorStateSpace::interpolate</a></div><div class="ttdeci">virtual void interpolate(const State *from, const State *to, const double t, State *state) const </div><div class="ttdoc">Computes the state that lies at time t in [0, 1] on the segment that connects from state to to state...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00263">RealVectorStateSpace.cpp:263</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_adfcadeafb7f1ad44074c0dcf753a862a"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#adfcadeafb7f1ad44074c0dcf753a862a">ompl::base::RealVectorStateSpace::setup</a></div><div class="ttdeci">virtual void setup()</div><div class="ttdoc">Perform final setup steps. This function is automatically called by the SpaceInformation. If any default projections are to be registered, this call will set them and call their setup() functions. It is safe to call this function multiple times. At a subsequent call, projections that have been previously user configured are not re-instantiated, but their setup() method is still called. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00103">RealVectorStateSpace.cpp:103</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_html_ab53c0ef2a517e34f4c387785dd3f8956"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace.html#ab53c0ef2a517e34f4c387785dd3f8956">ompl::base::RealVectorStateSpace::setBounds</a></div><div class="ttdeci">void setBounds(const RealVectorBounds &amp;bounds)</div><div class="ttdoc">Set the bounds of this state space. This defines the range of the space in which sampling is performe...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8cpp_source.html#l00124">RealVectorStateSpace.cpp:124</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:25 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

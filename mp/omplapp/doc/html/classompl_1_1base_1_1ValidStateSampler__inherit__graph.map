@@ -1,0 +1,6 @@
+<map id="ompl::base::ValidStateSampler" name="ompl::base::ValidStateSampler">
+<area shape="rect" id="node3" href="$classompl_1_1base_1_1GaussianValidStateSampler.html" title="Generate valid samples using the Gaussian sampling strategy. " alt="" coords="416,5,595,46"/>
+<area shape="rect" id="node4" href="$classompl_1_1base_1_1MaximizeClearanceValidStateSampler.html" title="Generate valid samples randomly, but with a bias towards higher clearance. " alt="" coords="401,70,610,111"/>
+<area shape="rect" id="node5" href="$classompl_1_1base_1_1ObstacleBasedValidStateSampler.html" title="Generate valid samples using obstacle based sampling. First sample an invalid state, then sample a valid state. Then, interpolate from the invalid state to the valid state, returning the first valid state encountered. " alt="" coords="414,135,597,177"/>
+<area shape="rect" id="node6" href="$classompl_1_1base_1_1UniformValidStateSampler.html" title="A state sampler that only samples valid states, uniformly. " alt="" coords="421,201,590,242"/>
+</map>

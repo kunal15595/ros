@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Implementing State Spaces</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Implementing State Spaces </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h3>Combining existing state spaces</h3>
+<p>The simplest way to obtain new state spaces is to combine existing ones. For example, to get the state space of a manipulator arm one could combine R<sup>5</sup> (<a class="el" href="classompl_1_1base_1_1RealVectorStateSpace.html" title="A state space representing Rn. The distance function is the L2 norm. ">ompl::base::RealVectorStateSpace</a>) and SO2 (<a class="el" href="classompl_1_1base_1_1SO2StateSpace.html" title="A state space representing SO(2). The distance function and interpolation take into account angle wra...">ompl::base::SO2StateSpace</a>) to represent 5 joints that have bounds and one joint that can rotate continuously:</p>
+<div class="fragment"><div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> r5(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html">ompl::base::RealVectorStateSpace</a>(5));</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a> so2(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html">ompl::base::SO2StateSpace</a>())</div>
+<div class="line">ompl::base::StateSpacePtr newSpace = r5 + so2;</div>
+</div><!-- fragment --><p>Alternatively to using the “+” operator on state spaces (see <a href="workingWithStates.html">working with states and state spaces</a>), one could directly create an instance of <a class="el" href="classompl_1_1base_1_1CompoundStateSpace.html" title="A space to allow the composition of state spaces. ">ompl::base::CompoundStateSpace</a> and call <a class="el" href="classompl_1_1base_1_1CompoundStateSpace.html#a9c772d5b74271f79d95531d00ed36bf7" title="Adds a new state space as part of the compound state space. For computing distances within the compou...">ompl::base::CompoundStateSpace::addSubspace()</a> on it. This approach allows setting the weights of each added subspace for computing distances bewteen states in the compound state space. When using the “+” operator these weights are assumed to be 1.0.</p>
+<div class="fragment"><div class="line"><a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html">ompl::base::CompoundStateSpace</a> *newSpace = <span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html">ompl::base::CompoundStateSpace</a>();</div>
+<div class="line">newSpace-&gt;<a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#a9c772d5b74271f79d95531d00ed36bf7">addSubspace</a>(<a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a>(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1RealVectorStateSpace.html">ompl::base::RealVectorStateSpace</a>(5)), 1.0);</div>
+<div class="line">newSpace-&gt;<a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#a9c772d5b74271f79d95531d00ed36bf7">addSubspace</a>(<a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">ompl::base::StateSpacePtr</a>(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html">ompl::base::SO2StateSpace</a>()), 0.5);</div>
+</div><!-- fragment --><h3>Inheriting from existing state spaces</h3>
+<p>In order to implement a new state space it is necessary to define a class that inherits from an existing state space class (either the <a class="el" href="classompl_1_1base_1_1StateSpace.html" title="Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. ">ompl::base::StateSpace</a> class or an existing state space implementation). All state space specific functions (pure virtual in the <a class="el" href="classompl_1_1base_1_1StateSpace.html" title="Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. ">ompl::base::StateSpace</a> class) need to be implemented accordingly. If the implementation of the new state space uses a new state type (even if it inherits from an existing state type), that state type must be named <b>StateType</b> or a typedef must exist so that the name <b>StateType</b> refers to the state type of the new state space. To use the newly defined state type the <a class="el" href="classompl_1_1base_1_1StateSpace.html#ae86d2a2401044774fa4de3345a29d408" title="Allocate a state that can store a point in the described space. ">ompl::base::StateSpace::allocState()</a> and <a class="el" href="classompl_1_1base_1_1StateSpace.html#aeb75db7a7ef3d05f13632b7ccc67e6b9" title="Free the memory of the allocated state. ">ompl::base::StateSpace::freeState()</a> functions must be defined. The <a class="el" href="classompl_1_1base_1_1StateSpace.html#a68556edd816136a66a0d81544baef08c" title="A type assigned for this state space. ">ompl::base::StateSpace::type_</a> member must also be set to a new (unique) value when new state types are defined. It will often be necessary to also implement <a class="el" href="classompl_1_1base_1_1StateSpace.html#abff3478c3fc4da03c94d6f929f6ca7f9" title="Copy a state to another. The memory of source and destination should NOT overlap. ...">ompl::base::StateSpace::copyState()</a> and perhaps <a class="el" href="classompl_1_1base_1_1StateSpace.html#a6babf3addb5ed9608800b7460a20da39" title="Checks whether two states are equal. ">ompl::base::StateSpace::equalStates()</a>. Optionally, if the state type includes real values, an implementation of <a class="el" href="classompl_1_1base_1_1StateSpace.html#a8584afb9165d2aa7408fec81c18659f4" title="Many states contain a number of double values. This function provides a means to get the memory addre...">ompl::base::StateSpace::getValueAddressAtIndex()</a> can be provided to access those values separately. If (de)serialization of states is desired, the <a class="el" href="classompl_1_1base_1_1StateSpace.html#a842fb601d28735dd56a2480dbb460662" title="Write the binary representation of state to serialization. ">ompl::base::StateSpace::serialize()</a> and <a class="el" href="classompl_1_1base_1_1StateSpace.html#aea2d2ac9a93fea0a269382daf585e68a" title="Read the binary representation of a state from serialization and write it to state. ">ompl::base::StateSpace::deserialize()</a> functions must also be implemented.</p>
+<h3>Inheriting from <a class="el" href="classompl_1_1base_1_1CompoundStateSpace.html" title="A space to allow the composition of state spaces. ">ompl::base::CompoundStateSpace</a></h3>
+<p>Another option is to inherit from a <a class="el" href="classompl_1_1base_1_1CompoundStateSpace.html" title="A space to allow the composition of state spaces. ">ompl::base::CompoundStateSpace</a> and call <a class="el" href="classompl_1_1base_1_1CompoundStateSpace.html#a9c772d5b74271f79d95531d00ed36bf7" title="Adds a new state space as part of the compound state space. For computing distances within the compou...">ompl::base::CompoundStateSpace::addSubspace()</a> in the constructor of the new class for other existing state spaces. This is the easiest way to create new state spaces &ndash; only the constructor needs to be provided. For example, see <a class="el" href="classompl_1_1base_1_1SE2StateSpace.html" title="A state space representing SE(2) ">ompl::base::SE2StateSpace</a>. Optionally, the <a class="el" href="classompl_1_1base_1_1CompoundStateSpace.html#ab344f21f0aba84c14fda3ec87a0b21ab" title="Lock this state space. This means no further spaces can be added as components. This function can be ...">ompl::base::CompoundStateSpace::lock()</a> function can be called after the components have been set in order to prevent the user of the state space from adding further components.</p>
+<p>Optionally, if there exist projections to Euclidean spaces (<a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html" title="Abstract definition for a class computing projections to Rn. Implicit integer grids are imposed on th...">ompl::base::ProjectionEvaluator</a>) for the defined state space, these can be registered by the <a class="el" href="classompl_1_1base_1_1StateSpace.html#a9d83398ca1647e06036d9e69ebad7cf8" title="Register the projections for this state space. Usually, this is at least the default projection...">ompl::base::StateSpace::registerProjections()</a> function (by calling <a class="el" href="classompl_1_1base_1_1StateSpace.html#a309f2cdc5412ff16d31b87fec92b3595" title="Register a projection for this state space under a specified name. ">ompl::base::StateSpace::registerProjection()</a> or <a class="el" href="classompl_1_1base_1_1StateSpace.html#ac79f6342fb2d85f1c2c87bfff812fbbf" title="Register the default projection for this state space. ">ompl::base::StateSpace::registerDefaultProjection()</a>). Planners that need a projection but do not have one defined will attempt using this default projection during planning.</p>
+<dl class="section note"><dt>Note</dt><dd>It is always a good idea to call <a class="el" href="classompl_1_1base_1_1StateSpace.html#a24f53aa590e5054a150861d2d1689522" title="Perform sanity checks for this state space. Throws an exception if failures are found. ">ompl::base::StateSpace::sanityChecks()</a> to see if a new state space satisfies expected functionality. </dd></dl>
+</div></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

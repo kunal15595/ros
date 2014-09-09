@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/geometric/planners/kpiece/LBKPIECE1.h Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_1f57d97647ebda1e28cc730ac7313960.html">geometric</a></li><li class="navelem"><a class="el" href="dir_955a6a93aceef09599971796437d173a.html">planners</a></li><li class="navelem"><a class="el" href="dir_8563ad9cc395af0250a1edc99fdc12b7.html">kpiece</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">LBKPIECE1.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2008, Willow Garage, Inc.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Willow Garage nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Ioan Sucan */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifndef OMPL_GEOMETRIC_PLANNERS_KPIECE_LBKPIECE1_</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define OMPL_GEOMETRIC_PLANNERS_KPIECE_LBKPIECE1_</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;ompl/geometric/planners/PlannerIncludes.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;ompl/geometric/planners/kpiece/Discretization.h&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">namespace </span>ompl</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">namespace </span>geometric</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html">   78</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html">LBKPIECE1</a> : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1Planner.html">base::Planner</a></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a8e0b666627ef259f53f1f61d39e0e144">LBKPIECE1</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">base::SpaceInformationPtr</a> &amp;si);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keyword">virtual</span> ~<a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html">LBKPIECE1</a>();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#ad1a19e34bbf41e4417193acdb9588a01">   89</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#ad1a19e34bbf41e4417193acdb9588a01">setProjectionEvaluator</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1ProjectionEvaluatorPtr.html">base::ProjectionEvaluatorPtr</a> &amp;projectionEvaluator)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a0aa6ba979bea06453f4fee03e1159556">projectionEvaluator_</a> = projectionEvaluator;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#aea762724dae8ea9fb0dd505e5547f0a0">   96</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#aea762724dae8ea9fb0dd505e5547f0a0">setProjectionEvaluator</a>(<span class="keyword">const</span> std::string &amp;name)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a0aa6ba979bea06453f4fee03e1159556">projectionEvaluator_</a> = <a class="code" href="classompl_1_1base_1_1Planner.html#aa3ceb9471163b6c96f6eeadbcfd3694e">si_</a>-&gt;getStateSpace()-&gt;getProjection(name);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#ad598ac9c5e6b8eb18f1fa4dd01830d1c">  102</a></span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1ProjectionEvaluatorPtr.html">base::ProjectionEvaluatorPtr</a>&amp; <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#ad598ac9c5e6b8eb18f1fa4dd01830d1c">getProjectionEvaluator</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a0aa6ba979bea06453f4fee03e1159556">projectionEvaluator_</a>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#a7f5b7bb07df09b0004126c544e767d05">  112</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a7f5b7bb07df09b0004126c544e767d05">setRange</a>(<span class="keywordtype">double</span> distance)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a0d2971f710e5e969955bca7fd81136b2">maxDistance_</a> = distance;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#ae45ee0da8686713672c9800a4b4b5900">  118</a></span>&#160;            <span class="keywordtype">double</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#ae45ee0da8686713672c9800a4b4b5900">getRange</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a0d2971f710e5e969955bca7fd81136b2">maxDistance_</a>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            }</div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#a75bf4fdda87e444fe86ad1c5280e20eb">  128</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a75bf4fdda87e444fe86ad1c5280e20eb">setBorderFraction</a>(<span class="keywordtype">double</span> bp)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#aeced0b4215221d09d1469b378b96c971">dStart_</a>.setBorderFraction(bp);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#afb985c691eff1d1e0dafc816c4278549">dGoal_</a>.setBorderFraction(bp);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#af20871ab17542f3a959a4a6e9b381fcd">  136</a></span>&#160;            <span class="keywordtype">double</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#af20871ab17542f3a959a4a6e9b381fcd">getBorderFraction</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#aeced0b4215221d09d1469b378b96c971">dStart_</a>.getBorderFraction();</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#a127a917b708457b75841ab0fcbdc0f5d">  147</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a127a917b708457b75841ab0fcbdc0f5d">setMinValidPathFraction</a>(<span class="keywordtype">double</span> fraction)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a2232185fbc0d75b6848e10cc08913299">minValidPathFraction_</a> = fraction;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#a0083171619e2b03455d9764479d0e396">  153</a></span>&#160;            <span class="keywordtype">double</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a0083171619e2b03455d9764479d0e396">getMinValidPathFraction</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a2232185fbc0d75b6848e10cc08913299">minValidPathFraction_</a>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a3ea9fbd55cf9ad099971230d01fc0ccb">setup</a>();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html">base::PlannerStatus</a> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a350a7a0d6546580d2d2c8e806a2b47a8">solve</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;ptc);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a902a3cca5fcf1992fce680b948c2bf7d">clear</a>();</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#aa6e1f100b606a36ebc7fe9f6c9645c44">getPlannerData</a>(<a class="code" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a> &amp;data) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html">  168</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html">Motion</a></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html">Motion</a>() : <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#a8c1ec81c132808c43d8eac4ae1215505">root</a>(NULL), <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#aa8e2b686b5de213e2fd0221927086990">state</a>(NULL), <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#a6a7023de2ed53ea46eccb659c81b33c4">parent</a>(NULL), <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#aed3e73c089b6bf639c95d3eded41346d">valid</a>(<span class="keyword">false</span>)</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#aae061391718efcded6e346f2ea6ce243">  177</a></span>&#160;                <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#aae061391718efcded6e346f2ea6ce243">Motion</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">base::SpaceInformationPtr</a> &amp;si) : <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#a8c1ec81c132808c43d8eac4ae1215505">root</a>(NULL), <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#aa8e2b686b5de213e2fd0221927086990">state</a>(si-&gt;allocState()), <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#a6a7023de2ed53ea46eccb659c81b33c4">parent</a>(NULL), <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#aed3e73c089b6bf639c95d3eded41346d">valid</a>(false)</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                ~<a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html">Motion</a>()</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#a8c1ec81c132808c43d8eac4ae1215505">  186</a></span>&#160;                <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a>   *<a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#a8c1ec81c132808c43d8eac4ae1215505">root</a>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#aa8e2b686b5de213e2fd0221927086990">  189</a></span>&#160;                <a class="code" href="classompl_1_1base_1_1State.html">base::State</a>         *<a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#aa8e2b686b5de213e2fd0221927086990">state</a>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#a6a7023de2ed53ea46eccb659c81b33c4">  192</a></span>&#160;                <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html">Motion</a>              *<a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#a6a7023de2ed53ea46eccb659c81b33c4">parent</a>;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#aed3e73c089b6bf639c95d3eded41346d">  195</a></span>&#160;                <span class="keywordtype">bool</span>                 <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#aed3e73c089b6bf639c95d3eded41346d">valid</a>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#a9eda8240f08dc71cbed843f6d12bd189">  198</a></span>&#160;                std::vector&lt;Motion*&gt; <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#a9eda8240f08dc71cbed843f6d12bd189">children</a>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            };</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#ad0749f58ef83e7c6206646d0b6c22640">freeMotion</a>(<a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html">Motion</a> *motion);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a17099eefde5f6bbcc95fc9c0492c25af">removeMotion</a>(<a class="code" href="classompl_1_1geometric_1_1Discretization.html">Discretization&lt;Motion&gt;</a> &amp;disc, <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html">Motion</a> *motion);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#aa018c98afa53ab5a27ae60d9336b3d75">isPathValid</a>(<a class="code" href="classompl_1_1geometric_1_1Discretization.html">Discretization&lt;Motion&gt;</a> &amp;disc, <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html">Motion</a> *motion, <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *temp);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#ae02c891235992920b5c0e7b69f554c9d">  215</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1StateSamplerPtr.html">base::StateSamplerPtr</a>              <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#ae02c891235992920b5c0e7b69f554c9d">sampler_</a>;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#a0aa6ba979bea06453f4fee03e1159556">  218</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1ProjectionEvaluatorPtr.html">base::ProjectionEvaluatorPtr</a>               <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a0aa6ba979bea06453f4fee03e1159556">projectionEvaluator_</a>;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#aeced0b4215221d09d1469b378b96c971">  221</a></span>&#160;            <a class="code" href="classompl_1_1geometric_1_1Discretization.html">Discretization&lt;Motion&gt;</a>                     <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#aeced0b4215221d09d1469b378b96c971">dStart_</a>;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#afb985c691eff1d1e0dafc816c4278549">  224</a></span>&#160;            <a class="code" href="classompl_1_1geometric_1_1Discretization.html">Discretization&lt;Motion&gt;</a>                     <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#afb985c691eff1d1e0dafc816c4278549">dGoal_</a>;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#a2232185fbc0d75b6848e10cc08913299">  231</a></span>&#160;            <span class="keywordtype">double</span>                                     <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a2232185fbc0d75b6848e10cc08913299">minValidPathFraction_</a>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#a0d2971f710e5e969955bca7fd81136b2">  234</a></span>&#160;            <span class="keywordtype">double</span>                                     <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a0d2971f710e5e969955bca7fd81136b2">maxDistance_</a>;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
+<div class="line"><a name="l00237"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#a479b1ca98e2f83020e1a9063c388ef92">  237</a></span>&#160;            <a class="code" href="classompl_1_1RNG.html">RNG</a>                                        <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a479b1ca98e2f83020e1a9063c388ef92">rng_</a>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00240"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1LBKPIECE1.html#a423f0052068ebf05430bc54234fa3376">  240</a></span>&#160;            std::pair&lt;base::State*, base::State*&gt;      <a class="code" href="classompl_1_1geometric_1_1LBKPIECE1.html#a423f0052068ebf05430bc54234fa3376">connectionPoint_</a>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        };</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_aa6e1f100b606a36ebc7fe9f6c9645c44"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#aa6e1f100b606a36ebc7fe9f6c9645c44">ompl::geometric::LBKPIECE1::getPlannerData</a></div><div class="ttdeci">virtual void getPlannerData(base::PlannerData &amp;data) const </div><div class="ttdoc">Get information about the current run of the motion planner. Repeated calls to this function will upd...</div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8cpp_source.html#l00322">LBKPIECE1.cpp:322</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html">ompl::base::PlannerData</a></div><div class="ttdoc">Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00164">PlannerData.h:164</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_a0aa6ba979bea06453f4fee03e1159556"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#a0aa6ba979bea06453f4fee03e1159556">ompl::geometric::LBKPIECE1::projectionEvaluator_</a></div><div class="ttdeci">base::ProjectionEvaluatorPtr projectionEvaluator_</div><div class="ttdoc">The employed projection evaluator. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00218">LBKPIECE1.h:218</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion_html_a6a7023de2ed53ea46eccb659c81b33c4"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#a6a7023de2ed53ea46eccb659c81b33c4">ompl::geometric::LBKPIECE1::Motion::parent</a></div><div class="ttdeci">Motion * parent</div><div class="ttdoc">The parent motion in the exploration tree. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00192">LBKPIECE1.h:192</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion_html"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html">ompl::geometric::LBKPIECE1::Motion</a></div><div class="ttdoc">Representation of a motion for this algorithm. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00168">LBKPIECE1.h:168</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_a902a3cca5fcf1992fce680b948c2bf7d"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#a902a3cca5fcf1992fce680b948c2bf7d">ompl::geometric::LBKPIECE1::clear</a></div><div class="ttdeci">virtual void clear()</div><div class="ttdoc">Clear all internal datastructures. Planner settings are not affected. Subsequent calls to solve() wil...</div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8cpp_source.html#l00312">LBKPIECE1.cpp:312</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion_html_a9eda8240f08dc71cbed843f6d12bd189"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#a9eda8240f08dc71cbed843f6d12bd189">ompl::geometric::LBKPIECE1::Motion::children</a></div><div class="ttdeci">std::vector&lt; Motion * &gt; children</div><div class="ttdoc">The set of motions descending from the current motion. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00198">LBKPIECE1.h:198</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion_html_aa8e2b686b5de213e2fd0221927086990"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#aa8e2b686b5de213e2fd0221927086990">ompl::geometric::LBKPIECE1::Motion::state</a></div><div class="ttdeci">base::State * state</div><div class="ttdoc">The state contained by this motion. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00189">LBKPIECE1.h:189</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSamplerPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1StateSamplerPtr.html">ompl::base::StateSamplerPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::StateSampler. </div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_ad1a19e34bbf41e4417193acdb9588a01"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#ad1a19e34bbf41e4417193acdb9588a01">ompl::geometric::LBKPIECE1::setProjectionEvaluator</a></div><div class="ttdeci">void setProjectionEvaluator(const base::ProjectionEvaluatorPtr &amp;projectionEvaluator)</div><div class="ttdoc">Set the projection evaluator. This class is able to compute the projection of a given state...</div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00089">LBKPIECE1.h:89</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_a17099eefde5f6bbcc95fc9c0492c25af"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#a17099eefde5f6bbcc95fc9c0492c25af">ompl::geometric::LBKPIECE1::removeMotion</a></div><div class="ttdeci">void removeMotion(Discretization&lt; Motion &gt; &amp;disc, Motion *motion)</div><div class="ttdoc">Remove a motion from a tree of motions. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8cpp_source.html#l00274">LBKPIECE1.cpp:274</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerTerminationCondition_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerTerminationCondition.html">ompl::base::PlannerTerminationCondition</a></div><div class="ttdoc">Encapsulate a termination condition for a motion planner. Planners will call operator() to decide whe...</div><div class="ttdef"><b>Definition:</b> <a href="PlannerTerminationCondition_8h_source.html#l00064">PlannerTerminationCondition.h:64</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_a0d2971f710e5e969955bca7fd81136b2"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#a0d2971f710e5e969955bca7fd81136b2">ompl::geometric::LBKPIECE1::maxDistance_</a></div><div class="ttdeci">double maxDistance_</div><div class="ttdoc">The maximum length of a motion to be added to a tree. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00234">LBKPIECE1.h:234</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_aea762724dae8ea9fb0dd505e5547f0a0"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#aea762724dae8ea9fb0dd505e5547f0a0">ompl::geometric::LBKPIECE1::setProjectionEvaluator</a></div><div class="ttdeci">void setProjectionEvaluator(const std::string &amp;name)</div><div class="ttdoc">Set the projection evaluator (select one from the ones registered with the state space). </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00096">LBKPIECE1.h:96</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_a2232185fbc0d75b6848e10cc08913299"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#a2232185fbc0d75b6848e10cc08913299">ompl::geometric::LBKPIECE1::minValidPathFraction_</a></div><div class="ttdeci">double minValidPathFraction_</div><div class="ttdoc">When extending a motion, the planner can decide to keep the first valid part of it, even if invalid states are found, as long as the valid part represents a sufficiently large fraction from the original motion. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00231">LBKPIECE1.h:231</a></div></div>
+<div class="ttc" id="classompl_1_1RNG_html"><div class="ttname"><a href="classompl_1_1RNG.html">ompl::RNG</a></div><div class="ttdoc">Random number generation. An instance of this class cannot be used by multiple threads at once (membe...</div><div class="ttdef"><b>Definition:</b> <a href="RandomNumbers_8h_source.html#l00054">RandomNumbers.h:54</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1Discretization_html"><div class="ttname"><a href="classompl_1_1geometric_1_1Discretization.html">ompl::geometric::Discretization</a></div><div class="ttdoc">One-level discretization used for KPIECE. </div><div class="ttdef"><b>Definition:</b> <a href="Discretization_8h_source.html#l00059">Discretization.h:59</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Planner_html"><div class="ttname"><a href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></div><div class="ttdoc">Base class for a planner. </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00227">Planner.h:227</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_a7f5b7bb07df09b0004126c544e767d05"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#a7f5b7bb07df09b0004126c544e767d05">ompl::geometric::LBKPIECE1::setRange</a></div><div class="ttdeci">void setRange(double distance)</div><div class="ttdoc">Set the range the planner is supposed to use. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00112">LBKPIECE1.h:112</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_ad598ac9c5e6b8eb18f1fa4dd01830d1c"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#ad598ac9c5e6b8eb18f1fa4dd01830d1c">ompl::geometric::LBKPIECE1::getProjectionEvaluator</a></div><div class="ttdeci">const base::ProjectionEvaluatorPtr &amp; getProjectionEvaluator() const </div><div class="ttdoc">Get the projection evaluator. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00102">LBKPIECE1.h:102</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_aeced0b4215221d09d1469b378b96c971"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#aeced0b4215221d09d1469b378b96c971">ompl::geometric::LBKPIECE1::dStart_</a></div><div class="ttdeci">Discretization&lt; Motion &gt; dStart_</div><div class="ttdoc">The start tree. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00221">LBKPIECE1.h:221</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_afb985c691eff1d1e0dafc816c4278549"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#afb985c691eff1d1e0dafc816c4278549">ompl::geometric::LBKPIECE1::dGoal_</a></div><div class="ttdeci">Discretization&lt; Motion &gt; dGoal_</div><div class="ttdoc">The goal tree. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00224">LBKPIECE1.h:224</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProjectionEvaluatorPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1ProjectionEvaluatorPtr.html">ompl::base::ProjectionEvaluatorPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::ProjectionEvaluator. </div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html">ompl::base::PlannerStatus</a></div><div class="ttdoc">A class to store the exit status of Planner::solve() </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00048">PlannerStatus.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion_html_aae061391718efcded6e346f2ea6ce243"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#aae061391718efcded6e346f2ea6ce243">ompl::geometric::LBKPIECE1::Motion::Motion</a></div><div class="ttdeci">Motion(const base::SpaceInformationPtr &amp;si)</div><div class="ttdoc">Constructor that allocates memory for the state. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00177">LBKPIECE1.h:177</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpaceInformationPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1SpaceInformationPtr.html">ompl::base::SpaceInformationPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::SpaceInformation. </div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_aa018c98afa53ab5a27ae60d9336b3d75"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#aa018c98afa53ab5a27ae60d9336b3d75">ompl::geometric::LBKPIECE1::isPathValid</a></div><div class="ttdeci">bool isPathValid(Discretization&lt; Motion &gt; &amp;disc, Motion *motion, base::State *temp)</div><div class="ttdoc">Since solutions are computed in a lazy fashion, once trees are connected, the solution found needs to...</div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8cpp_source.html#l00229">LBKPIECE1.cpp:229</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_ae02c891235992920b5c0e7b69f554c9d"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#ae02c891235992920b5c0e7b69f554c9d">ompl::geometric::LBKPIECE1::sampler_</a></div><div class="ttdeci">base::StateSamplerPtr sampler_</div><div class="ttdoc">The employed state sampler. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00215">LBKPIECE1.h:215</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion_html_aed3e73c089b6bf639c95d3eded41346d"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#aed3e73c089b6bf639c95d3eded41346d">ompl::geometric::LBKPIECE1::Motion::valid</a></div><div class="ttdeci">bool valid</div><div class="ttdoc">Flag indicating whether this motion has been checked for validity. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00195">LBKPIECE1.h:195</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_ad0749f58ef83e7c6206646d0b6c22640"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#ad0749f58ef83e7c6206646d0b6c22640">ompl::geometric::LBKPIECE1::freeMotion</a></div><div class="ttdeci">void freeMotion(Motion *motion)</div><div class="ttdoc">Free the memory for a motion. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8cpp_source.html#l00305">LBKPIECE1.cpp:305</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html">ompl::geometric::LBKPIECE1</a></div><div class="ttdoc">Lazy Bi-directional KPIECE with one level of discretization. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00078">LBKPIECE1.h:78</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_a350a7a0d6546580d2d2c8e806a2b47a8"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#a350a7a0d6546580d2d2c8e806a2b47a8">ompl::geometric::LBKPIECE1::solve</a></div><div class="ttdeci">virtual base::PlannerStatus solve(const base::PlannerTerminationCondition &amp;ptc)</div><div class="ttdoc">Function that can solve the motion planning problem. This function can be called multiple times on th...</div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8cpp_source.html#l00075">LBKPIECE1.cpp:75</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_a0083171619e2b03455d9764479d0e396"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#a0083171619e2b03455d9764479d0e396">ompl::geometric::LBKPIECE1::getMinValidPathFraction</a></div><div class="ttdeci">double getMinValidPathFraction() const </div><div class="ttdoc">Get the value of the fraction set by setMinValidPathFraction() </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00153">LBKPIECE1.h:153</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_a127a917b708457b75841ab0fcbdc0f5d"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#a127a917b708457b75841ab0fcbdc0f5d">ompl::geometric::LBKPIECE1::setMinValidPathFraction</a></div><div class="ttdeci">void setMinValidPathFraction(double fraction)</div><div class="ttdoc">When extending a motion, the planner can decide to keep the first valid part of it, even if invalid states are found, as long as the valid part represents a sufficiently large fraction from the original motion. This function sets the minimum acceptable fraction. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00147">LBKPIECE1.h:147</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_a423f0052068ebf05430bc54234fa3376"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#a423f0052068ebf05430bc54234fa3376">ompl::geometric::LBKPIECE1::connectionPoint_</a></div><div class="ttdeci">std::pair&lt; base::State *, base::State * &gt; connectionPoint_</div><div class="ttdoc">The pair of states in each tree connected during planning. Used for PlannerData computation. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00240">LBKPIECE1.h:240</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_a3ea9fbd55cf9ad099971230d01fc0ccb"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#a3ea9fbd55cf9ad099971230d01fc0ccb">ompl::geometric::LBKPIECE1::setup</a></div><div class="ttdeci">virtual void setup()</div><div class="ttdoc">Perform extra configuration steps, if needed. This call will also issue a call to ompl::base::SpaceIn...</div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8cpp_source.html#l00061">LBKPIECE1.cpp:61</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Planner_html_aa3ceb9471163b6c96f6eeadbcfd3694e"><div class="ttname"><a href="classompl_1_1base_1_1Planner.html#aa3ceb9471163b6c96f6eeadbcfd3694e">ompl::base::Planner::si_</a></div><div class="ttdeci">SpaceInformationPtr si_</div><div class="ttdoc">The space information for which planning is done. </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00392">Planner.h:392</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_ae45ee0da8686713672c9800a4b4b5900"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#ae45ee0da8686713672c9800a4b4b5900">ompl::geometric::LBKPIECE1::getRange</a></div><div class="ttdeci">double getRange() const </div><div class="ttdoc">Get the range the planner is using. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00118">LBKPIECE1.h:118</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_af20871ab17542f3a959a4a6e9b381fcd"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#af20871ab17542f3a959a4a6e9b381fcd">ompl::geometric::LBKPIECE1::getBorderFraction</a></div><div class="ttdeci">double getBorderFraction() const </div><div class="ttdoc">Get the fraction of time to focus exploration on boundary. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00136">LBKPIECE1.h:136</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_a479b1ca98e2f83020e1a9063c388ef92"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#a479b1ca98e2f83020e1a9063c388ef92">ompl::geometric::LBKPIECE1::rng_</a></div><div class="ttdeci">RNG rng_</div><div class="ttdoc">The random number generator. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00237">LBKPIECE1.h:237</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion_html_a8c1ec81c132808c43d8eac4ae1215505"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#a8c1ec81c132808c43d8eac4ae1215505">ompl::geometric::LBKPIECE1::Motion::root</a></div><div class="ttdeci">const base::State * root</div><div class="ttdoc">The root state (start state) that leads to this motion. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00186">LBKPIECE1.h:186</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_a75bf4fdda87e444fe86ad1c5280e20eb"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#a75bf4fdda87e444fe86ad1c5280e20eb">ompl::geometric::LBKPIECE1::setBorderFraction</a></div><div class="ttdeci">void setBorderFraction(double bp)</div><div class="ttdoc">Set the fraction of time for focusing on the border (between 0 and 1). This is the minimum fraction u...</div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8h_source.html#l00128">LBKPIECE1.h:128</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1LBKPIECE1_html_a8e0b666627ef259f53f1f61d39e0e144"><div class="ttname"><a href="classompl_1_1geometric_1_1LBKPIECE1.html#a8e0b666627ef259f53f1f61d39e0e144">ompl::geometric::LBKPIECE1::LBKPIECE1</a></div><div class="ttdeci">LBKPIECE1(const base::SpaceInformationPtr &amp;si)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="LBKPIECE1_8cpp_source.html#l00042">LBKPIECE1.cpp:42</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

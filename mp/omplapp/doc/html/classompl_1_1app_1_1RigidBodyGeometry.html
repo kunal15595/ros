@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::app::RigidBodyGeometry Class Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1app.html">app</a></li><li class="navelem"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">RigidBodyGeometry</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="classompl_1_1app_1_1RigidBodyGeometry-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::app::RigidBodyGeometry Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+Inheritance diagram for ompl::app::RigidBodyGeometry:</div>
+<div class="dyncontent">
+<div class="center"><img src="classompl_1_1app_1_1RigidBodyGeometry__inherit__graph.png" border="0" usemap="#ompl_1_1app_1_1RigidBodyGeometry_inherit__map" alt="Inheritance graph"/></div>
+<map name="ompl_1_1app_1_1RigidBodyGeometry_inherit__map" id="ompl_1_1app_1_1RigidBodyGeometry_inherit__map">
+<area shape="rect" id="node2" href="classompl_1_1app_1_1AppBase.html" title="ompl::app::AppBase\l\&lt; CONTROL \&gt;" alt="" coords="275,105,415,146"/><area shape="rect" id="node11" href="classompl_1_1app_1_1AppBase.html" title="ompl::app::AppBase\l\&lt; GEOMETRIC \&gt;" alt="" coords="275,273,415,314"/><area shape="rect" id="node18" href="classompl_1_1app_1_1AppBase.html" title="ompl::app::AppBase\&lt; T \&gt;" alt="" coords="259,339,431,365"/><area shape="rect" id="node3" href="classompl_1_1app_1_1BlimpPlanning.html" title="A class to facilitate planning for a simple blimp model. " alt="" coords="507,5,677,32"/><area shape="rect" id="node5" href="classompl_1_1app_1_1DynamicCarPlanning.html" title="A class to facilitate planning for a generic second&#45;order car model. " alt="" coords="487,57,697,84"/><area shape="rect" id="node7" href="classompl_1_1app_1_1KinematicCarPlanning.html" title="A class to facilitate planning for a generic kinematic car model. " alt="" coords="484,112,700,139"/><area shape="rect" id="node9" href="classompl_1_1app_1_1QuadrotorPlanning.html" title="A class to facilitate planning for a simple quadrotor model. " alt="" coords="495,163,689,189"/><area shape="rect" id="node4" href="classompl_1_1app_1_1GBlimpPlanning.html" title="ompl::app::GBlimpPlanning" alt="" coords="773,5,953,32"/><area shape="rect" id="node6" href="classompl_1_1app_1_1GDynamicCarPlanning.html" title="ompl::app::GDynamicCarPlanning" alt="" coords="753,56,973,83"/><area shape="rect" id="node8" href="classompl_1_1app_1_1GKinematicCarPlanning.html" title="ompl::app::GKinematicCar\lPlanning" alt="" coords="775,107,951,149"/><area shape="rect" id="node10" href="classompl_1_1app_1_1GQuadrotorPlanning.html" title="ompl::app::GQuadrotorPlanning" alt="" coords="761,173,965,200"/><area shape="rect" id="node12" href="classompl_1_1app_1_1SE2MultiRigidBodyPlanning.html" title="Wrapper for ompl::app::RigidBodyPlanning that plans for multiple rigid bodies in SE2. " alt="" coords="507,214,677,255"/><area shape="rect" id="node13" href="classompl_1_1app_1_1SE2RigidBodyPlanning.html" title="Wrapper for ompl::app::RigidBodyPlanning that plans for rigid bodies in SE2. " alt="" coords="481,280,703,307"/><area shape="rect" id="node15" href="classompl_1_1app_1_1SE3MultiRigidBodyPlanning.html" title="Wrapper for ompl::app::RigidBodyPlanning that plans for multiple rigid bodies in SE3. " alt="" coords="507,331,677,373"/><area shape="rect" id="node16" href="classompl_1_1app_1_1SE3RigidBodyPlanning.html" title="Wrapper for ompl::app::RigidBodyPlanning that plans for rigid bodies in SE3. " alt="" coords="481,397,703,424"/><area shape="rect" id="node14" href="classompl_1_1app_1_1GSE2RigidBodyPlanning.html" title="ompl::app::GSE2RigidBody\lPlanning" alt="" coords="771,273,954,314"/><area shape="rect" id="node17" href="classompl_1_1app_1_1GSE3RigidBodyPlanning.html" title="ompl::app::GSE3RigidBody\lPlanning" alt="" coords="771,390,954,431"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a7725a8ba5d6559e59ed0fec797c9f82c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a7725a8ba5d6559e59ed0fec797c9f82c">RigidBodyGeometry</a> (<a class="el" href="namespaceompl_1_1app.html#a4eb5e3e5778337b61b7d3066eb2b9639">MotionModel</a> mtype, <a class="el" href="namespaceompl_1_1app.html#a6238cec22bc5c2f9cb3e9aa612d461e7">CollisionChecker</a> ctype)</td></tr>
+<tr class="memdesc:a7725a8ba5d6559e59ed0fec797c9f82c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor expects a state space that can represent a rigid body.  <a href="#a7725a8ba5d6559e59ed0fec797c9f82c">More...</a><br/></td></tr>
+<tr class="separator:a7725a8ba5d6559e59ed0fec797c9f82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75a03720541d92eecf21911e06d7de0d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a75a03720541d92eecf21911e06d7de0d">RigidBodyGeometry</a> (<a class="el" href="namespaceompl_1_1app.html#a4eb5e3e5778337b61b7d3066eb2b9639">MotionModel</a> mtype)</td></tr>
+<tr class="memdesc:a75a03720541d92eecf21911e06d7de0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor expects a state space that can represent a rigid body.  <a href="#a75a03720541d92eecf21911e06d7de0d">More...</a><br/></td></tr>
+<tr class="separator:a75a03720541d92eecf21911e06d7de0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc84b5098fc6a50eaeeca449f5850fa5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc84b5098fc6a50eaeeca449f5850fa5"></a>
+<a class="el" href="namespaceompl_1_1app.html#a4eb5e3e5778337b61b7d3066eb2b9639">MotionModel</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getMotionModel</b> (void) const </td></tr>
+<tr class="separator:abc84b5098fc6a50eaeeca449f5850fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5e67ab787e990002650b87379242dc6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae5e67ab787e990002650b87379242dc6"></a>
+<a class="el" href="namespaceompl_1_1app.html#a6238cec22bc5c2f9cb3e9aa612d461e7">CollisionChecker</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getCollisionCheckerType</b> (void) const </td></tr>
+<tr class="separator:ae5e67ab787e990002650b87379242dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9103abdeb3767abb2900d470b6c3d184"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9103abdeb3767abb2900d470b6c3d184"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasEnvironment</b> (void) const </td></tr>
+<tr class="separator:a9103abdeb3767abb2900d470b6c3d184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14fac8242dd8d31b10ade764390808b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a14fac8242dd8d31b10ade764390808b1"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasRobot</b> (void) const </td></tr>
+<tr class="separator:a14fac8242dd8d31b10ade764390808b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d6fe83085cdac8ae56c8a90cbed1cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65d6fe83085cdac8ae56c8a90cbed1cf"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getLoadedRobotCount</b> (void) const </td></tr>
+<tr class="separator:a65d6fe83085cdac8ae56c8a90cbed1cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adadc73a93be62e9e593b5ae07538c126"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adadc73a93be62e9e593b5ae07538c126"></a>
+aiVector3D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#adadc73a93be62e9e593b5ae07538c126">getRobotCenter</a> (unsigned int robotIndex) const </td></tr>
+<tr class="memdesc:adadc73a93be62e9e593b5ae07538c126"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the robot's center (average of all the vertices of all its parts) <br/></td></tr>
+<tr class="separator:adadc73a93be62e9e593b5ae07538c126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb0d41e6526a0a92786a583a7ff46fac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb0d41e6526a0a92786a583a7ff46fac"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#aeb0d41e6526a0a92786a583a7ff46fac">setEnvironmentMesh</a> (const std::string &amp;env)</td></tr>
+<tr class="memdesc:aeb0d41e6526a0a92786a583a7ff46fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function specifies the name of the CAD file representing the environment (<em>env</em>). Returns 1 on success, 0 on failure. <br/></td></tr>
+<tr class="separator:aeb0d41e6526a0a92786a583a7ff46fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3035eeb89ea10b3aab320ad18cff671"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3035eeb89ea10b3aab320ad18cff671"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#af3035eeb89ea10b3aab320ad18cff671">addEnvironmentMesh</a> (const std::string &amp;env)</td></tr>
+<tr class="memdesc:af3035eeb89ea10b3aab320ad18cff671"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function specifies the name of the CAD file representing a part of the environment (<em>env</em>). Returns 1 on success, 0 on failure. <br/></td></tr>
+<tr class="separator:af3035eeb89ea10b3aab320ad18cff671"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb53e418388ee15b48cdc683d1778ce0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abb53e418388ee15b48cdc683d1778ce0"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#abb53e418388ee15b48cdc683d1778ce0">setRobotMesh</a> (const std::string &amp;robot)</td></tr>
+<tr class="memdesc:abb53e418388ee15b48cdc683d1778ce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function specifies the name of the CAD file representing the robot (<em>robot</em>). Returns 1 on success, 0 on failure. <br/></td></tr>
+<tr class="separator:abb53e418388ee15b48cdc683d1778ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ddf0ba2f9046f45d1af8939aab87ee0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ddf0ba2f9046f45d1af8939aab87ee0"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a4ddf0ba2f9046f45d1af8939aab87ee0">addRobotMesh</a> (const std::string &amp;robot)</td></tr>
+<tr class="memdesc:a4ddf0ba2f9046f45d1af8939aab87ee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function specifies the name of the CAD file representing a part of the robot (<em>robot</em>). Returns 1 on success, 0 on failure. <br/></td></tr>
+<tr class="separator:a4ddf0ba2f9046f45d1af8939aab87ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1193a5ac3418afca23a00620178ce1da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1193a5ac3418afca23a00620178ce1da"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a1193a5ac3418afca23a00620178ce1da">setStateValidityCheckerType</a> (<a class="el" href="namespaceompl_1_1app.html#a6238cec22bc5c2f9cb3e9aa612d461e7">CollisionChecker</a> ctype)</td></tr>
+<tr class="memdesc:a1193a5ac3418afca23a00620178ce1da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the type of collision checking for the rigid body. <br/></td></tr>
+<tr class="separator:a1193a5ac3418afca23a00620178ce1da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c2e87c6f133d7cd2918d9856b215d22"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c2e87c6f133d7cd2918d9856b215d22"></a>
+const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1StateValidityCheckerPtr.html">base::StateValidityCheckerPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a0c2e87c6f133d7cd2918d9856b215d22">allocStateValidityChecker</a> (const <a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">base::SpaceInformationPtr</a> &amp;si, const GeometricStateExtractor &amp;se, bool selfCollision)</td></tr>
+<tr class="memdesc:a0c2e87c6f133d7cd2918d9856b215d22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate default state validity checker using PQP. <br/></td></tr>
+<tr class="separator:a0c2e87c6f133d7cd2918d9856b215d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16e513a22a93c70f345c741615360537"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16e513a22a93c70f345c741615360537"></a>
+const <a class="el" href="classompl_1_1app_1_1GeometrySpecification.html">GeometrySpecification</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getGeometrySpecification</b> (void) const </td></tr>
+<tr class="separator:a16e513a22a93c70f345c741615360537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af65ad6755f5e3b9c33823827391b7142"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af65ad6755f5e3b9c33823827391b7142"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#af65ad6755f5e3b9c33823827391b7142">setBoundsFactor</a> (double factor)</td></tr>
+<tr class="memdesc:af65ad6755f5e3b9c33823827391b7142"><td class="mdescLeft">&#160;</td><td class="mdescRight">The bounds of the environment are inferred based on the axis-aligned bounding box for the objects in the environment. The inferred size is multiplied by <em>factor</em>. By default <em>factor</em> = 1,. <br/></td></tr>
+<tr class="separator:af65ad6755f5e3b9c33823827391b7142"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abccf320c423532d647a3a1dd717c0e6f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abccf320c423532d647a3a1dd717c0e6f"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#abccf320c423532d647a3a1dd717c0e6f">getBoundsFactor</a> (void) const </td></tr>
+<tr class="memdesc:abccf320c423532d647a3a1dd717c0e6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the data set by <a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#af65ad6755f5e3b9c33823827391b7142" title="The bounds of the environment are inferred based on the axis-aligned bounding box for the objects in ...">setBoundsFactor()</a> <br/></td></tr>
+<tr class="separator:abccf320c423532d647a3a1dd717c0e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a27e27e8667bafb0f66bf04cab38031"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a27e27e8667bafb0f66bf04cab38031"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a8a27e27e8667bafb0f66bf04cab38031">setBoundsAddition</a> (double add)</td></tr>
+<tr class="memdesc:a8a27e27e8667bafb0f66bf04cab38031"><td class="mdescLeft">&#160;</td><td class="mdescRight">The bounds of the environment are inferred based on the axis-aligned bounding box for the objects in the environment. <em>add</em> is added to the inferred size. By default <em>add</em> = 0,. <br/></td></tr>
+<tr class="separator:a8a27e27e8667bafb0f66bf04cab38031"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f64285bff38265e8713a40862c6659b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f64285bff38265e8713a40862c6659b"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a9f64285bff38265e8713a40862c6659b">getBoundsAddition</a> (void) const </td></tr>
+<tr class="memdesc:a9f64285bff38265e8713a40862c6659b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the data set by <a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a8a27e27e8667bafb0f66bf04cab38031" title="The bounds of the environment are inferred based on the axis-aligned bounding box for the objects in ...">setBoundsAddition()</a> <br/></td></tr>
+<tr class="separator:a9f64285bff38265e8713a40862c6659b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04e138ba77e32f01216209c66a8e84f8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04e138ba77e32f01216209c66a8e84f8"></a>
+<a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a04e138ba77e32f01216209c66a8e84f8">inferEnvironmentBounds</a> (void) const </td></tr>
+<tr class="memdesc:a04e138ba77e32f01216209c66a8e84f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given the representation of an environment, infer its bounds. The bounds will be 2-dimensional when planning in 2D and 3-dimensional when planning in 3D. <br/></td></tr>
+<tr class="separator:a04e138ba77e32f01216209c66a8e84f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a8765ed2f2f2188ea497814cf84973063"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8765ed2f2f2188ea497814cf84973063"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>computeGeometrySpecification</b> (void)</td></tr>
+<tr class="separator:a8765ed2f2f2188ea497814cf84973063"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a869b378849f1984e8afc8693c3de6a5c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a869b378849f1984e8afc8693c3de6a5c"></a>
+<a class="el" href="namespaceompl_1_1app.html#a4eb5e3e5778337b61b7d3066eb2b9639">MotionModel</a>&#160;</td><td class="memItemRight" valign="bottom"><b>mtype_</b></td></tr>
+<tr class="separator:a869b378849f1984e8afc8693c3de6a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd74d6c1e427f0ea15639bd2e272edac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd74d6c1e427f0ea15639bd2e272edac"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#abd74d6c1e427f0ea15639bd2e272edac">factor_</a></td></tr>
+<tr class="memdesc:abd74d6c1e427f0ea15639bd2e272edac"><td class="mdescLeft">&#160;</td><td class="mdescRight">The factor to multiply inferred environment bounds by (default 1) <br/></td></tr>
+<tr class="separator:abd74d6c1e427f0ea15639bd2e272edac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0478e6dc78c1a6979a7a40c9a197b598"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0478e6dc78c1a6979a7a40c9a197b598"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a0478e6dc78c1a6979a7a40c9a197b598">add_</a></td></tr>
+<tr class="memdesc:a0478e6dc78c1a6979a7a40c9a197b598"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value to add to inferred environment bounds (default 0) <br/></td></tr>
+<tr class="separator:a0478e6dc78c1a6979a7a40c9a197b598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e00a741db81e72e8463dbcec2769b4d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e00a741db81e72e8463dbcec2769b4d"></a>
+std::vector&lt; boost::shared_ptr<br class="typebreak"/>
+&lt; Assimp::Importer &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a2e00a741db81e72e8463dbcec2769b4d">importerEnv_</a></td></tr>
+<tr class="memdesc:a2e00a741db81e72e8463dbcec2769b4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instance of assimp importer used to load environment. <br/></td></tr>
+<tr class="separator:a2e00a741db81e72e8463dbcec2769b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a1a7ea0ac6be0eede21904a7687ab14"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a1a7ea0ac6be0eede21904a7687ab14"></a>
+std::vector&lt; boost::shared_ptr<br class="typebreak"/>
+&lt; Assimp::Importer &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a4a1a7ea0ac6be0eede21904a7687ab14">importerRobot_</a></td></tr>
+<tr class="memdesc:a4a1a7ea0ac6be0eede21904a7687ab14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instance of assimp importer used to load robot. <br/></td></tr>
+<tr class="separator:a4a1a7ea0ac6be0eede21904a7687ab14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af013a42ce76aceac57ef85a1e4d1f8e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af013a42ce76aceac57ef85a1e4d1f8e5"></a>
+<a class="el" href="classompl_1_1app_1_1GeometrySpecification.html">GeometrySpecification</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#af013a42ce76aceac57ef85a1e4d1f8e5">geom_</a></td></tr>
+<tr class="memdesc:af013a42ce76aceac57ef85a1e4d1f8e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Object containing mesh data for robot and environment. <br/></td></tr>
+<tr class="separator:af013a42ce76aceac57ef85a1e4d1f8e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cbca57493592cf476a34f001149c8e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1cbca57493592cf476a34f001149c8e9"></a>
+<a class="el" href="classompl_1_1base_1_1StateValidityCheckerPtr.html">base::StateValidityCheckerPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a1cbca57493592cf476a34f001149c8e9">validitySvc_</a></td></tr>
+<tr class="memdesc:a1cbca57493592cf476a34f001149c8e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instance of the state validity checker for collision checking. <br/></td></tr>
+<tr class="separator:a1cbca57493592cf476a34f001149c8e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43993f7cee3e77cbc34f966b2709dfb1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43993f7cee3e77cbc34f966b2709dfb1"></a>
+<a class="el" href="namespaceompl_1_1app.html#a6238cec22bc5c2f9cb3e9aa612d461e7">CollisionChecker</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a43993f7cee3e77cbc34f966b2709dfb1">ctype_</a></td></tr>
+<tr class="memdesc:a43993f7cee3e77cbc34f966b2709dfb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value containing the type of collision checking to use. <br/></td></tr>
+<tr class="separator:a43993f7cee3e77cbc34f966b2709dfb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p>Definition at line <a class="el" href="RigidBodyGeometry_8h_source.html#l00041">41</a> of file <a class="el" href="RigidBodyGeometry_8h_source.html">RigidBodyGeometry.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a7725a8ba5d6559e59ed0fec797c9f82c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ompl::app::RigidBodyGeometry::RigidBodyGeometry </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceompl_1_1app.html#a4eb5e3e5778337b61b7d3066eb2b9639">MotionModel</a>&#160;</td>
+          <td class="paramname"><em>mtype</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceompl_1_1app.html#a6238cec22bc5c2f9cb3e9aa612d461e7">CollisionChecker</a>&#160;</td>
+          <td class="paramname"><em>ctype</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor expects a state space that can represent a rigid body. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mtype</td><td>The motion model (2D or 3D) for the rigid body. </td></tr>
+    <tr><td class="paramname">ctype</td><td>The type of collision checker to use for rigid body planning. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="RigidBodyGeometry_8h_source.html#l00049">49</a> of file <a class="el" href="RigidBodyGeometry_8h_source.html">RigidBodyGeometry.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a75a03720541d92eecf21911e06d7de0d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ompl::app::RigidBodyGeometry::RigidBodyGeometry </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceompl_1_1app.html#a4eb5e3e5778337b61b7d3066eb2b9639">MotionModel</a>&#160;</td>
+          <td class="paramname"><em>mtype</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor expects a state space that can represent a rigid body. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mtype</td><td>The motion model (2D or 3D) for the rigid body. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This constructor defaults to a PQP state validity checker </dd></dl>
+
+<p>Definition at line <a class="el" href="RigidBodyGeometry_8h_source.html#l00057">57</a> of file <a class="el" href="RigidBodyGeometry_8h_source.html">RigidBodyGeometry.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/omplapp/geometry/<a class="el" href="RigidBodyGeometry_8h_source.html">RigidBodyGeometry.h</a></li>
+<li>src/omplapp/geometry/<a class="el" href="RigidBodyGeometry_8cpp_source.html">RigidBodyGeometry.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:27 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

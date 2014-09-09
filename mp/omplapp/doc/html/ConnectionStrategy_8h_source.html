@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/geometric/planners/prm/ConnectionStrategy.h Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_1f57d97647ebda1e28cc730ac7313960.html">geometric</a></li><li class="navelem"><a class="el" href="dir_955a6a93aceef09599971796437d173a.html">planners</a></li><li class="navelem"><a class="el" href="dir_7048b47995ff5db562a05c00dc363ed7.html">prm</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ConnectionStrategy.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2011, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Rice University nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: James D. Marble */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifndef OMPL_GEOMETRIC_PLANNERS_PRM_CONNECTION_STRATEGY_</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define OMPL_GEOMETRIC_PLANNERS_PRM_CONNECTION_STRATEGY_</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;ompl/datastructures/NearestNeighbors.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;boost/function.hpp&gt;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;boost/shared_ptr.hpp&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &lt;boost/math/constants/constants.hpp&gt;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">namespace </span>ompl</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">namespace </span>geometric</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">class</span> Milestone&gt;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1KStrategy.html">   56</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1geometric_1_1KStrategy.html">KStrategy</a></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1KStrategy.html#a67c436891ba2b3cf8b0c4f83cb8eb5f5">   62</a></span>&#160;            <a class="code" href="classompl_1_1geometric_1_1KStrategy.html#a67c436891ba2b3cf8b0c4f83cb8eb5f5">KStrategy</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> k,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                      <span class="keyword">const</span> boost::shared_ptr&lt; <a class="code" href="classompl_1_1NearestNeighbors.html">NearestNeighbors&lt;Milestone&gt;</a> &gt; &amp;nn) :</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1KStrategy.html#aa9592c00a8daa71d247077553052e48d">k_</a>(k), <a class="code" href="classompl_1_1geometric_1_1KStrategy.html#a50bbca24d4d890b9a3e62538ed48c6c9">nn_</a>(nn)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1KStrategy.html#ae087877ca61f5f8822cf0d702fd581e6">neighbors_</a>.reserve(<a class="code" href="classompl_1_1geometric_1_1KStrategy.html#aa9592c00a8daa71d247077553052e48d">k_</a>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keyword">virtual</span> ~<a class="code" href="classompl_1_1geometric_1_1KStrategy.html">KStrategy</a>()</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1KStrategy.html#a4c3d13ce9a58ee58d7b4502866783b42">   74</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1KStrategy.html#a4c3d13ce9a58ee58d7b4502866783b42">setNearestNeighbors</a>(<span class="keyword">const</span> boost::shared_ptr&lt; <a class="code" href="classompl_1_1NearestNeighbors.html">NearestNeighbors&lt;Milestone&gt;</a> &gt; &amp;nn)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1KStrategy.html#a50bbca24d4d890b9a3e62538ed48c6c9">nn_</a> = nn;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1KStrategy.html#af5813981b8c79885fa86ceacaabd38ba">   82</a></span>&#160;            std::vector&lt;Milestone&gt;&amp; <a class="code" href="classompl_1_1geometric_1_1KStrategy.html#af5813981b8c79885fa86ceacaabd38ba">operator()</a>(<span class="keyword">const</span> Milestone &amp;m)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1KStrategy.html#a50bbca24d4d890b9a3e62538ed48c6c9">nn_</a>-&gt;nearestK(m, <a class="code" href="classompl_1_1geometric_1_1KStrategy.html#aa9592c00a8daa71d247077553052e48d">k_</a>, <a class="code" href="classompl_1_1geometric_1_1KStrategy.html#ae087877ca61f5f8822cf0d702fd581e6">neighbors_</a>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1geometric_1_1KStrategy.html#ae087877ca61f5f8822cf0d702fd581e6">neighbors_</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1KStrategy.html#aa9592c00a8daa71d247077553052e48d">   91</a></span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                                     <a class="code" href="classompl_1_1geometric_1_1KStrategy.html#aa9592c00a8daa71d247077553052e48d">k_</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1KStrategy.html#a50bbca24d4d890b9a3e62538ed48c6c9">   94</a></span>&#160;            boost::shared_ptr&lt; NearestNeighbors&lt;Milestone&gt; &gt; <a class="code" href="classompl_1_1geometric_1_1KStrategy.html#a50bbca24d4d890b9a3e62538ed48c6c9">nn_</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1KStrategy.html#ae087877ca61f5f8822cf0d702fd581e6">   97</a></span>&#160;            std::vector&lt;Milestone&gt;                           <a class="code" href="classompl_1_1geometric_1_1KStrategy.html#ae087877ca61f5f8822cf0d702fd581e6">neighbors_</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        };</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">class</span> Milestone&gt;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1KStarStrategy.html">  126</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1geometric_1_1KStarStrategy.html">KStarStrategy</a> : <span class="keyword">public</span> <a class="code" href="classompl_1_1geometric_1_1KStrategy.html">KStrategy</a>&lt;Milestone&gt;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keyword">typedef</span> boost::function&lt;unsigned int()&gt; NumNeighborsFn;</div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1KStarStrategy.html#a760155d4bce697fd4ac8c0782632f2b7">  139</a></span>&#160;            <a class="code" href="classompl_1_1geometric_1_1KStarStrategy.html#a760155d4bce697fd4ac8c0782632f2b7">KStarStrategy</a>(<span class="keyword">const</span> NumNeighborsFn&amp; n,</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                          <span class="keyword">const</span> boost::shared_ptr&lt; <a class="code" href="classompl_1_1NearestNeighbors.html">NearestNeighbors&lt;Milestone&gt;</a> &gt; &amp;nn,</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                          <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> d = 1) :</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1KStrategy.html">KStrategy</a>&lt;Milestone&gt;(n(), nn), <a class="code" href="classompl_1_1geometric_1_1KStarStrategy.html#a575ab299a1f4c23a2e3c42ae3a587634">n_</a>(n),</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                kPRMConstant_(boost::math::constants::e&lt;double&gt;() + (boost::math::constants::e&lt;double&gt;()/(double)d))</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            std::vector&lt;Milestone&gt;&amp; operator()(<span class="keyword">const</span> Milestone &amp;m)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                <a class="code" href="classompl_1_1geometric_1_1KStrategy.html">KStrategy&lt;Milestone&gt;::k_</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span><span class="keyword">&gt;</span>(ceil(kPRMConstant_ * <a class="code" href="namespaceompl_1_1msg.html#affe7852f27c06f98af7eb2579f1e5350">log</a>((<span class="keywordtype">double</span>)<a class="code" href="classompl_1_1geometric_1_1KStarStrategy.html#a575ab299a1f4c23a2e3c42ae3a587634">n_</a>())));</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="classompl_1_1geometric_1_1KStrategy.html">KStrategy&lt;Milestone&gt;</a>&amp;<span class="keyword">&gt;</span>(*this)(m);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1KStarStrategy.html#a575ab299a1f4c23a2e3c42ae3a587634">  156</a></span>&#160;            <span class="keyword">const</span> NumNeighborsFn  <a class="code" href="classompl_1_1geometric_1_1KStarStrategy.html#a575ab299a1f4c23a2e3c42ae3a587634">n_</a>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">double</span>          kPRMConstant_;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        };</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classompl_1_1geometric_1_1KStarStrategy_html_a760155d4bce697fd4ac8c0782632f2b7"><div class="ttname"><a href="classompl_1_1geometric_1_1KStarStrategy.html#a760155d4bce697fd4ac8c0782632f2b7">ompl::geometric::KStarStrategy::KStarStrategy</a></div><div class="ttdeci">KStarStrategy(const NumNeighborsFn &amp;n, const boost::shared_ptr&lt; NearestNeighbors&lt; Milestone &gt; &gt; &amp;nn, const unsigned int d=1)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="ConnectionStrategy_8h_source.html#l00139">ConnectionStrategy.h:139</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1KStrategy_html_a50bbca24d4d890b9a3e62538ed48c6c9"><div class="ttname"><a href="classompl_1_1geometric_1_1KStrategy.html#a50bbca24d4d890b9a3e62538ed48c6c9">ompl::geometric::KStrategy::nn_</a></div><div class="ttdeci">boost::shared_ptr&lt; NearestNeighbors&lt; Milestone &gt; &gt; nn_</div><div class="ttdoc">Nearest neighbors data structure. </div><div class="ttdef"><b>Definition:</b> <a href="ConnectionStrategy_8h_source.html#l00094">ConnectionStrategy.h:94</a></div></div>
+<div class="ttc" id="namespaceompl_1_1msg_html_affe7852f27c06f98af7eb2579f1e5350"><div class="ttname"><a href="namespaceompl_1_1msg.html#affe7852f27c06f98af7eb2579f1e5350">ompl::msg::log</a></div><div class="ttdeci">void log(const char *file, int line, LogLevel level, const char *m,...)</div><div class="ttdoc">Root level logging function. This should not be invoked directly, but rather used via a logging macro...</div><div class="ttdef"><b>Definition:</b> <a href="Console_8cpp_source.html#l00104">Console.cpp:104</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1KStrategy_html_ae087877ca61f5f8822cf0d702fd581e6"><div class="ttname"><a href="classompl_1_1geometric_1_1KStrategy.html#ae087877ca61f5f8822cf0d702fd581e6">ompl::geometric::KStrategy::neighbors_</a></div><div class="ttdeci">std::vector&lt; Milestone &gt; neighbors_</div><div class="ttdoc">Scratch space for storing k-nearest neighbors. </div><div class="ttdef"><b>Definition:</b> <a href="ConnectionStrategy_8h_source.html#l00097">ConnectionStrategy.h:97</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1KStrategy_html_aa9592c00a8daa71d247077553052e48d"><div class="ttname"><a href="classompl_1_1geometric_1_1KStrategy.html#aa9592c00a8daa71d247077553052e48d">ompl::geometric::KStrategy::k_</a></div><div class="ttdeci">unsigned int k_</div><div class="ttdoc">Maximum number of nearest neighbors to attempt to connect new milestones to. </div><div class="ttdef"><b>Definition:</b> <a href="ConnectionStrategy_8h_source.html#l00091">ConnectionStrategy.h:91</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1KStrategy_html_af5813981b8c79885fa86ceacaabd38ba"><div class="ttname"><a href="classompl_1_1geometric_1_1KStrategy.html#af5813981b8c79885fa86ceacaabd38ba">ompl::geometric::KStrategy::operator()</a></div><div class="ttdeci">std::vector&lt; Milestone &gt; &amp; operator()(const Milestone &amp;m)</div><div class="ttdoc">Given a milestone m, find the number of nearest neighbors connection attempts that should be made fro...</div><div class="ttdef"><b>Definition:</b> <a href="ConnectionStrategy_8h_source.html#l00082">ConnectionStrategy.h:82</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1KStrategy_html"><div class="ttname"><a href="classompl_1_1geometric_1_1KStrategy.html">ompl::geometric::KStrategy</a></div><div class="ttdef"><b>Definition:</b> <a href="ConnectionStrategy_8h_source.html#l00056">ConnectionStrategy.h:56</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1KStarStrategy_html_a575ab299a1f4c23a2e3c42ae3a587634"><div class="ttname"><a href="classompl_1_1geometric_1_1KStarStrategy.html#a575ab299a1f4c23a2e3c42ae3a587634">ompl::geometric::KStarStrategy::n_</a></div><div class="ttdeci">const NumNeighborsFn n_</div><div class="ttdoc">Function returning the number of milestones added to the roadmap so far. </div><div class="ttdef"><b>Definition:</b> <a href="ConnectionStrategy_8h_source.html#l00156">ConnectionStrategy.h:156</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1KStrategy_html_a4c3d13ce9a58ee58d7b4502866783b42"><div class="ttname"><a href="classompl_1_1geometric_1_1KStrategy.html#a4c3d13ce9a58ee58d7b4502866783b42">ompl::geometric::KStrategy::setNearestNeighbors</a></div><div class="ttdeci">void setNearestNeighbors(const boost::shared_ptr&lt; NearestNeighbors&lt; Milestone &gt; &gt; &amp;nn)</div><div class="ttdoc">Set the nearest neighbors datastructure to use. </div><div class="ttdef"><b>Definition:</b> <a href="ConnectionStrategy_8h_source.html#l00074">ConnectionStrategy.h:74</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1KStrategy_html_a67c436891ba2b3cf8b0c4f83cb8eb5f5"><div class="ttname"><a href="classompl_1_1geometric_1_1KStrategy.html#a67c436891ba2b3cf8b0c4f83cb8eb5f5">ompl::geometric::KStrategy::KStrategy</a></div><div class="ttdeci">KStrategy(const unsigned int k, const boost::shared_ptr&lt; NearestNeighbors&lt; Milestone &gt; &gt; &amp;nn)</div><div class="ttdoc">Constructor takes the maximum number of nearest neighbors to return (k) and the nearest neighbors dat...</div><div class="ttdef"><b>Definition:</b> <a href="ConnectionStrategy_8h_source.html#l00062">ConnectionStrategy.h:62</a></div></div>
+<div class="ttc" id="classompl_1_1NearestNeighbors_html"><div class="ttname"><a href="classompl_1_1NearestNeighbors.html">ompl::NearestNeighbors</a></div><div class="ttdoc">Abstract representation of a container that can perform nearest neighbors queries. </div><div class="ttdef"><b>Definition:</b> <a href="NearestNeighbors_8h_source.html#l00050">NearestNeighbors.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1KStarStrategy_html"><div class="ttname"><a href="classompl_1_1geometric_1_1KStarStrategy.html">ompl::geometric::KStarStrategy</a></div><div class="ttdoc">Make the minimal number of connections required to ensure asymptotic optimality. </div><div class="ttdef"><b>Definition:</b> <a href="ConnectionStrategy_8h_source.html#l00126">ConnectionStrategy.h:126</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

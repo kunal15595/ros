@@ -1,8 +1,0 @@
-prefix=/home/kunal15595/ros/moveit/install
-
-Name: moveit_resources
-Description: Description of moveit_resources
-Version: 0.5.0
-Cflags: -I/home/kunal15595/ros/moveit/install/include
-Libs: -L/home/kunal15595/ros/moveit/install/lib 
-Requires: 

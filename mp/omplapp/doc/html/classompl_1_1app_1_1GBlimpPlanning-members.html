@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Member List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1app.html">app</a></li><li class="navelem"><a class="el" href="classompl_1_1app_1_1GBlimpPlanning.html">GBlimpPlanning</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ompl::app::GBlimpPlanning Member List</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>This is the complete list of members for <a class="el" href="classompl_1_1app_1_1GBlimpPlanning.html">ompl::app::GBlimpPlanning</a>, including all inherited members.</p>
+<table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a0478e6dc78c1a6979a7a40c9a197b598">add_</a></td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#af3035eeb89ea10b3aab320ad18cff671">addEnvironmentMesh</a>(const std::string &amp;env)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a4ddf0ba2f9046f45d1af8939aab87ee0">addRobotMesh</a>(const std::string &amp;robot)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ab1dc047ae0b70d3492d7e222f56d83a7">addStartState</a>(const base::ScopedState&lt;&gt; &amp;state)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>allocDecomposition</b>() (defined in <a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a0c2e87c6f133d7cd2918d9856b215d22">allocStateValidityChecker</a>(const base::SpaceInformationPtr &amp;si, const GeometricStateExtractor &amp;se, bool selfCollision)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>AppBase</b>(const typename AppTypeSelector&lt; T &gt;::SpaceType &amp;space, MotionModel model) (defined in <a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>BlimpPlanning</b>() (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a6a2ed93879c02efab472c5db3e9a6aff">clear</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#abfd69f5fb87a3e95811ebe5f4f45ea0c">clearStartStates</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>computeGeometrySpecification</b>(void) (defined in <a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a4a346b6fccff04f3df867d78dba27db4">configured_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>constructControlSpace</b>(void) (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">static</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>constructStateSpace</b>(void) (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">protected</span><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a43993f7cee3e77cbc34f966b2709dfb1">ctype_</a></td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#abd74d6c1e427f0ea15639bd2e272edac">factor_</a></td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>GBlimpPlanning</b>(void) (defined in <a class="el" href="classompl_1_1app_1_1GBlimpPlanning.html">ompl::app::GBlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1GBlimpPlanning.html">ompl::app::GBlimpPlanning</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#af013a42ce76aceac57ef85a1e4d1f8e5">geom_</a></td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getAppType</b>() (defined in <a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a9f64285bff38265e8713a40862c6659b">getBoundsAddition</a>(void) const </td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#abccf320c423532d647a3a1dd717c0e6f">getBoundsFactor</a>(void) const </td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>getCollisionCheckerType</b>(void) const  (defined in <a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getDefaultStartState</b>(void) const  (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>getFullStateFromGeometricComponent</b>(const base::ScopedState&lt;&gt; &amp;state) const  (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getGeometricComponentState</b>(const base::ScopedState&lt;&gt; &amp;state, unsigned int index) const (defined in <a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>getGeometricComponentStateInternal</b>(const base::State *state, unsigned int) const  (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getGeometricComponentStateSpace</b>(void) const  (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>getGeometricStateExtractor</b>(void) const (defined in <a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getGeometrySpecification</b>(void) const  (defined in <a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a10255bd7d29bc6014613d47dbb48cd46">getGoal</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a336c44049aa54258f67e11abd8b693b8">getLastPlanComputationTime</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a6583b0cb996572ed376b360b2f650c44">getLastPlannerStatus</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a2fced050bceb5eb5db2e8e8d9553bc1d">getLastSimplificationTime</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>getLoadedRobotCount</b>(void) const  (defined in <a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getMotionModel</b>(void) const  (defined in <a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>getName</b>() (defined in <a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ad1b8f84b4417a6afc3a81b99f472705f">getOptimizationObjective</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a23c01de9e8925a740ee80ec2cb457d8f">getPathSimplifier</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#aed52ed9ae614cab6fa843975b8b3c60f">getPathSimplifier</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a07571d41a38b8c0b7ae66172559979e8">getPlanner</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a458ee1bcb5fb15fe6a659758da5a5995">getPlannerAllocator</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#af95bf82b928f80ec9985bf7a0979dbd3">getPlannerData</a>(base::PlannerData &amp;pd) const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#aa96ee7350ba2e076f48a33037568c11e">getProblemDefinition</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#adadc73a93be62e9e593b5ae07538c126">getRobotCenter</a>(unsigned int robotIndex) const </td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getRobotCount</b>(void) const  (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a39ebfd4caa153fb0a5a4312f85cffebf">getSolutionPath</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ad068d05484a4466287613b0f1327f644">getSolutionPlannerName</a>(void) const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a735d4f184302d9c18fd08ed068731533">getSpaceInformation</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ae1a66d09baf92854d9cb4fbd4c55caa9">getStateSpace</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a473762d97fa6eb655ea8ce67a0015043">getStateValidityChecker</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>hasEnvironment</b>(void) const  (defined in <a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>hasRobot</b>(void) const  (defined in <a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a0a47163e799d3367f58437dfd903cb0b">haveExactSolutionPath</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ae8b0aa5f124609bdade2d85dca1b9db9">haveSolutionPath</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a2e00a741db81e72e8463dbcec2769b4d">importerEnv_</a></td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a4a1a7ea0ac6be0eede21904a7687ab14">importerRobot_</a></td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>inferEnvironmentBounds</b>(void) (defined in <a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a04e138ba77e32f01216209c66a8e84f8">ompl::app::RigidBodyGeometry::inferEnvironmentBounds</a>(void) const </td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>inferProblemDefinitionBounds</b>(void) (defined in <a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>isSelfCollisionEnabled</b>(void) const  (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a2dff9b30ec063e43d154d59ef8a7bca9">lastStatus_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>mtype_</b> (defined in <a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>name_</b> (defined in <a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>ode</b>(const control::ODESolver::StateType &amp;q, const control::Control *ctrl, control::ODESolver::StateType &amp;qdot) (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">protected</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>odeSolver</b> (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#af0eec15376eb6e47b0ad03e7f281c420">pa_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a8a69adfe8170ebbd11c5f6919ccea354">params</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ab5b3c1b7f841c01d09a59bba29a4b645">params</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ae60b92e3fadf885bdca79c2119f5890f">params_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ab996b6b96ab19c5f51ca5167bb8dd60a">pdef_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a580b3608f6b473a1ea0bc5febd0b83cc">planner_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a1747fe1bdce1cb4c9284c98f381fcc1b">planTime_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>postPropagate</b>(const base::State *state, const control::Control *control, const double duration, base::State *result) (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ae787775ec6d05e0e9dcd6cd379839ce5">print</a>(std::ostream &amp;out=std::cout) const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a0b1dcfac122177dfdd3d64a0bbf86212">psk_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>renderEnvironment</b>(void) const  (defined in <a class="el" href="classompl_1_1app_1_1RenderGeometry.html">ompl::app::RenderGeometry</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RenderGeometry.html">ompl::app::RenderGeometry</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1app_1_1RenderGeometry.html#a434d7cebe9b8250f3515827b0b57ae37">RenderGeometry</a>(const RigidBodyGeometry &amp;rbg, const GeometricStateExtractor &amp;se)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RenderGeometry.html">ompl::app::RenderGeometry</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>renderPlannerData</b>(const base::PlannerData &amp;pd) const  (defined in <a class="el" href="classompl_1_1app_1_1RenderGeometry.html">ompl::app::RenderGeometry</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RenderGeometry.html">ompl::app::RenderGeometry</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>renderRobot</b>(void) const  (defined in <a class="el" href="classompl_1_1app_1_1RenderGeometry.html">ompl::app::RenderGeometry</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RenderGeometry.html">ompl::app::RenderGeometry</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>renderRobotPart</b>(unsigned int index) const  (defined in <a class="el" href="classompl_1_1app_1_1RenderGeometry.html">ompl::app::RenderGeometry</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RenderGeometry.html">ompl::app::RenderGeometry</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a7725a8ba5d6559e59ed0fec797c9f82c">RigidBodyGeometry</a>(MotionModel mtype, CollisionChecker ctype)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">explicit</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a75a03720541d92eecf21911e06d7de0d">RigidBodyGeometry</a>(MotionModel mtype)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">explicit</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a8a27e27e8667bafb0f66bf04cab38031">setBoundsAddition</a>(double add)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#af65ad6755f5e3b9c33823827391b7142">setBoundsFactor</a>(double factor)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setDefaultBounds</b>() (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#aeb0d41e6526a0a92786a583a7ff46fac">setEnvironmentMesh</a>(const std::string &amp;env)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a6f6e9a1b5facde7915f51e86b48860e9">setGoal</a>(const base::GoalPtr &amp;goal)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a8bb806d078ddaded372d7cbe4b1ef82a">setGoalState</a>(const base::ScopedState&lt;&gt; &amp;goal, const double threshold=std::numeric_limits&lt; double &gt;::epsilon())</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a9f69de97e7c0cfce7cd8e5a927591ac8">setOptimizationObjective</a>(const base::OptimizationObjectivePtr &amp;optimizationObjective)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a8a94558b2ece27d938a92b062d55df71">setPlanner</a>(const base::PlannerPtr &amp;planner)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a9e2d929e58376c4806234b6a473cd3e8">setPlannerAllocator</a>(const base::PlannerAllocator &amp;pa)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#abb53e418388ee15b48cdc683d1778ce0">setRobotMesh</a>(const std::string &amp;robot)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a5613360d370f7c68adde45f03d1966d3">setStartAndGoalStates</a>(const base::ScopedState&lt;&gt; &amp;start, const base::ScopedState&lt;&gt; &amp;goal, const double threshold=std::numeric_limits&lt; double &gt;::epsilon())</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#aee17b73abd2876dc4dbffd02038ded34">setStartState</a>(const base::ScopedState&lt;&gt; &amp;state)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a6774bcc65c0968e2cb927bab464a3aad">setStateValidityChecker</a>(const base::StateValidityCheckerPtr &amp;svc)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ad6b07d6a351500ea1333151733b254e2">setStateValidityChecker</a>(const base::StateValidityCheckerFn &amp;svc)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a1193a5ac3418afca23a00620178ce1da">setStateValidityCheckerType</a>(CollisionChecker ctype)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1app_1_1AppBase.html#ac88168b98fe9016ae4e576c32e938f5c">setup</a>(void)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a769e167e2959b1ca59fc9b3ea2416f45">si_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a6c77f5085972396a3797bb838667e8df">SimpleSetup</a>(const base::SpaceInformationPtr &amp;si)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#af945064d1e9216058e5ad1a4daa8d1f1">SimpleSetup</a>(const base::StateSpacePtr &amp;space)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a6be73057e3a2e13fa8342c70c2e4f674">simplifySolution</a>(double duration=0.0)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#adbbd67d9d06f2f9debde230b0c0e92c4">simplifySolution</a>(const base::PlannerTerminationCondition &amp;ptc)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a07bd87a344ef361d581b799e75471307">simplifyTime_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a387050f69afb31e4869f848cc837f8ba">solve</a>(double time=1.0)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#adae88a9d800135ebf84daedc77b23543">solve</a>(const base::PlannerTerminationCondition &amp;ptc)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>timeStep_</b> (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html#a1cbca57493592cf476a34f001149c8e9">validitySvc_</a></td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~AppBase</b>(void) (defined in <a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1AppBase.html">ompl::app::AppBase&lt; CONTROL &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>~BlimpPlanning</b>() (defined in <a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1BlimpPlanning.html">ompl::app::BlimpPlanning</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~GBlimpPlanning</b>(void) (defined in <a class="el" href="classompl_1_1app_1_1GBlimpPlanning.html">ompl::app::GBlimpPlanning</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1GBlimpPlanning.html">ompl::app::GBlimpPlanning</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>~RenderGeometry</b>(void) (defined in <a class="el" href="classompl_1_1app_1_1RenderGeometry.html">ompl::app::RenderGeometry</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RenderGeometry.html">ompl::app::RenderGeometry</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~RigidBodyGeometry</b>(void) (defined in <a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a>)</td><td class="entry"><a class="el" href="classompl_1_1app_1_1RigidBodyGeometry.html">ompl::app::RigidBodyGeometry</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>~SimpleSetup</b>() (defined in <a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a>)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">ompl::geometric::SimpleSetup</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+</table></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:27 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

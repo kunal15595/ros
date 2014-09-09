@@ -1,0 +1,6 @@
+<map id="ompl::app::SE3RigidBodyPlanning" name="ompl::app::SE3RigidBodyPlanning">
+<area shape="rect" id="node5" href="$classompl_1_1app_1_1GSE3RigidBodyPlanning.html" title="ompl::app::GSE3RigidBody\lPlanning" alt="" coords="83,262,265,303"/>
+<area shape="rect" id="node2" href="$classompl_1_1app_1_1AppBase.html" title="ompl::app::AppBase\l\&lt; GEOMETRIC \&gt;" alt="" coords="105,97,244,138"/>
+<area shape="rect" id="node3" href="$classompl_1_1geometric_1_1SimpleSetup.html" title="Create the set of classes typically needed to solve a geometric problem. " alt="" coords="5,6,147,47"/>
+<area shape="rect" id="node4" href="$classompl_1_1app_1_1RigidBodyGeometry.html" title="ompl::app::RigidBodyGeometry" alt="" coords="171,13,375,40"/>
+</map>

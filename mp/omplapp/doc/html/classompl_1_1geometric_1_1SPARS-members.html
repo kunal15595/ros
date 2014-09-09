@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Member List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1geometric.html">geometric</a></li><li class="navelem"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">SPARS</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ompl::geometric::SPARS Member List</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>This is the complete list of members for <a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a>, including all inherited members.</p>
+<table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a8f3e8537fac3946c786dfa7598268531">addedSolution_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a63e1c6fef239f3cc525fe8318403007b">addGuard</a>(base::State *state, GuardType type)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a265196562943fea265b218d91c65f345">addMilestone</a>(base::State *state)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a6b52502f78dfcaf771ef296f519885b3">addPathToSpanner</a>(const DensePath &amp;p, SparseVertex vp, SparseVertex vpp)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a3dc481539fac465497ad158e1bdac91a">addPlannerProgressProperty</a>(const std::string &amp;progressPropertyName, const PlannerProgressProperty &amp;prop)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#af0e41b1a4118d02fa562d8e78bbc0aaa">addSample</a>(base::State *workState, const base::PlannerTerminationCondition &amp;ptc)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ad9f9dd1fc29f7dc48bb0a1c2896274a3">addToRepresentatives</a>(DenseVertex q, SparseVertex rep, const std::set&lt; SparseVertex &gt; &amp;oreps)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a>()</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a6ebb461363467a0a95ccb1c1e44a7332">as</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a933074ca85fb22806c8b50959f27314d">averageValence</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a962e2d3526d358b3d4fc9015b2405d21">calculateRepresentative</a>(DenseVertex q)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a7cd536b31670fcc8d78d7c69ccca22e6">checkAddConnectivity</a>(const base::State *lastState, const std::vector&lt; SparseVertex &gt; &amp;neigh)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ada97a57b55366f6b1a524399b99c68c4">checkAddCoverage</a>(const base::State *lastState, const std::vector&lt; SparseVertex &gt; &amp;neigh)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a5fe14a1f2274a806bc67b705f1821c7c">checkAddInterface</a>(const std::vector&lt; DenseVertex &gt; &amp;graphNeighborhood, const std::vector&lt; DenseVertex &gt; &amp;visibleNeighborhood, DenseVertex q)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a0cf12b3bff14f346c9a62dada40f15bb">checkAddPath</a>(DenseVertex q, const std::vector&lt; DenseVertex &gt; &amp;neigh)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#afe63255333497becd56880a2021fa5d0">checkForSolution</a>(const base::PlannerTerminationCondition &amp;ptc, base::PathPtr &amp;solution)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a38d0e60ca6ccf611ef49abb23c799f50">checkQueryStateInitialization</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#ab416900477cf4499139c01f35663dffb">checkValidity</a>()</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ad312e20c05ad06e654511d2cee39d4c9">clear</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a22cd80376d404ab0f6196178d8da09c1">clearQuery</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#af6d221cd04db0c0e83528cae5438bb99">computeDensePath</a>(const DenseVertex start, const DenseVertex goal, DensePath &amp;path) const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#aeffda4d03123a688a734ef74e08c7993">computeVPP</a>(DenseVertex v, DenseVertex vp, std::vector&lt; SparseVertex &gt; &amp;VPPs)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a224b01b87deb0c0c16e14732b6a669de">computeX</a>(DenseVertex v, DenseVertex vp, DenseVertex vpp, std::vector&lt; SparseVertex &gt; &amp;Xs)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a39879cdfb5770defe1b6735c3325bfae">connectDensePoints</a>(DenseVertex v, DenseVertex vp)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a3f6613970a872addf4b1d4c4ba7bf93d">connectionStrategy_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>CONNECTIVITY</b> enum value (defined in <a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a>)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ab94afd1ff296f91f05adf5c774fdbf1a">connectSparsePoints</a>(SparseVertex v, SparseVertex vp)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a3a9053596063ce65ae1469a44211ee4c">consecutiveFailures_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#aa46c8edc6d85033ea57c63f6ce41bb20">constructRoadmap</a>(const base::PlannerTerminationCondition &amp;ptc)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a84fd8e31fd66ca1bc891f2009287086e">constructRoadmap</a>(const base::PlannerTerminationCondition &amp;ptc, bool stopOnMaxFail)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a4a63f320e40c03e5acbbeb0ca6c356d3">constructSolution</a>(const SparseVertex start, const SparseVertex goal) const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>COVERAGE</b> enum value (defined in <a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a>)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a6b4a1345376e3e977772c38d38d5c50c">declareParam</a>(const std::string &amp;name, const PlannerType &amp;planner, const SetterType &amp;setter, const GetterType &amp;getter, const std::string &amp;rangeSuggestion=&quot;&quot;)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a3f9da0d41951502ea4df1184ef5a99a6">declareParam</a>(const std::string &amp;name, const PlannerType &amp;planner, const SetterType &amp;setter, const std::string &amp;rangeSuggestion=&quot;&quot;)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a06d059117303085093f2ac04bc0e8b60">denseDelta_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ab906f7ac6bb9c163ea9152e7ad917357">denseDeltaFraction_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a86371fd420fa3d3dbaf1ff941279704e">DenseEdge</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ada0f38e9d7359fac443869d98735ff1f">DenseGraph</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a8f81df51e44d0a33604ceec7a69826b5">DenseNeighbors</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a8a5be424f43decdc6078024f865c069d">DensePath</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a309ea6c01d2ccfd8b2c6696f2de70d6e">DenseVertex</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ab577456c5e58b6935b93a016437a20c9">distanceFunction</a>(const DenseVertex a, const DenseVertex b) const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a4caecfda1f3c81732e80960a0f62a710">filterVisibleNeighbors</a>(base::State *inState, const std::vector&lt; SparseVertex &gt; &amp;graphNeighborhood, std::vector&lt; SparseVertex &gt; &amp;visibleNeighborhood) const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#abe82b072d388aac5650dde001cd3bc9f">freeMemory</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ae082222c487348b1e13d74975763a4e8">g_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a62771ddf86a03d2a25bc4f47a8c83987">geomPath_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ad8fa61744b9a6e2d11803f42a8ed3945">getDenseDeltaFraction</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a6a8d36951358f8ab6e29fcb8a02ea34c">getDenseGraph</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a8f8315d98eeb8c4ae315cf7def77eb38">getInterfaceNeighbor</a>(DenseVertex q, SparseVertex rep)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#af84d5f12e7cfde6384adb6f4c92b335a">getInterfaceNeighborhood</a>(DenseVertex q, std::vector&lt; DenseVertex &gt; &amp;interfaceNeighborhood)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a1348206e86ac6383f4f9d98be3bb764f">getInterfaceNeighborRepresentatives</a>(DenseVertex q, std::set&lt; SparseVertex &gt; &amp;interfaceRepresentatives)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#abe6c246dcc7b313715ca0b7bb47e941b">getIterations</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#aec5cc5d03588f57015f7f346808ebc09">getMaxFailures</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#acd7cf22ad75c421e8c454778dbe798e4">getName</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a4084d446045f2b589d1ebaf07b33e60c">getPlannerData</a>(base::PlannerData &amp;data) const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a46e60c79e6e4dbc44788a5faab7e11ee">getPlannerInputStates</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#ac8be4a36399223d93deedb9c9fa3573b">getPlannerProgressProperties</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a5d4a5b067f5a4e817e73d025e4324e80">getProblemDefinition</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a39b51f99740570d5318daf4d41b1fdef">getRoadmap</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#af467d750711d1f426125642e2a387ab9">getSpaceInformation</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#acbdd6b7ddc48b02a10783434c8aa8063">getSparseDeltaFraction</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a165d082906ea801944422499aad42a63">getSparseNeighbors</a>(base::State *inState, std::vector&lt; SparseVertex &gt; &amp;graphNeighborhood)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a6eb82ef833b530732e6c258638c53347">getSpecs</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a39fd669966990f1cd065af72e1b74458">getStretchFactor</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>GOAL</b> enum value (defined in <a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a>)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a1cee990db83fd464d4d020f6bfc9e626">goalM_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#aeefd1128cc90f4d88ba142c316ecfa39">graphMutex_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">mutable</span><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a72820275c6e5fb6f9f88d8b11e6f6383">guardCount</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ab32058a4cdbd6e4ab645537cc7735cdd">GuardType</a> enum name</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a3686dcca022363e008dbfea7c2f1864e">haveSolution</a>(const std::vector&lt; DenseVertex &gt; &amp;start, const std::vector&lt; DenseVertex &gt; &amp;goal, base::PathPtr &amp;solution)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>INTERFACE</b> enum value (defined in <a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a>)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#aeaf22f90df7b903b06d0b2d1690d5b45">InterfaceHash</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a35ffa3f844aa2c6b1339d240edb885fa">interfaceListsProperty_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a287976283c3556a6b331ecd30c10087c">isSetup</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a07dcba24f9a1ab7f0d2bd0b8aead74f4">iterations_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ae402ddf68d55b16b696b478ebb8c349d">maxFailures_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a7b54266fce0af16a712930b04e3f8b0a">milestoneCount</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a806de82eeff9ef9231963a9851524b97">name_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a48bc1a8d735608ee371e2403e862adbb">nn_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ad1c0ad7450ceeb833395f2caffce6a2f">nonInterfaceListsProperty_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a9dc98f7169ae45aa0e886376f546887a">params</a>()</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a560a93ec86a9e421e7515e7828780e2d">params</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a1cecf022e5ebac936c49b96079ba5359">params_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a6bbb3dcc3d1604977e319d52c16ef7e5">pdef_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a1c6ac45d44026aae6df87f3295d67436">pis_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a404c3be95f77983e95a468e3a7032cc9">Planner</a>(const SpaceInformationPtr &amp;si, const std::string &amp;name)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a919f116d094eb88e4c877c44531c2b75">PlannerProgressProperties</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#ab630ca0634156172daf1a2620a01caf4">plannerProgressProperties_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a761c5b0eeff509479618ae7eefa3de46">PlannerProgressProperty</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a792b63ed1763bf63a8f65aea0490dffa">printDebug</a>(std::ostream &amp;out=std::cout) const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#ab1e269df8fa9bd55926aed3b7403e685">printProperties</a>(std::ostream &amp;out) const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a29aec12824480f7b3824a98fc9f5775b">printSettings</a>(std::ostream &amp;out) const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#aa88488f15645266e02661fe370df3a2d">psimp_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>QUALITY</b> enum value (defined in <a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a>)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a63c5733d408829e0e704030ad68b138a">queryVertex_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ae18599f4e0becff02a4b7dfe61c00dab">reachedFailureLimit</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ae71e7f41b798f5fcb9a9ea1c4948f7ff">reachedTerminationCriterion</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#af9bad238da1ed18fae83e90d4ca25fbc">removeFromRepresentatives</a>(DenseVertex q, SparseVertex rep)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a44350a6b9cb924c6d588b38ea2e4fa79">representativesProperty_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ae422eed3faaa03f793895e7412905e1d">resetFailures</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ae60003e270a038a494dcfd8b98d8743e">rng_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#abe54cfe52c76097b0326685293b023b1">s_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#afc1867f92259c775e85f44e2e8336da0">sameComponent</a>(SparseVertex m1, SparseVertex m2)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#acd50cb44ea98fdf1f2820a85838c3bb2">sampler_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a47ae542f88f539d3356598812be62111">setDenseDeltaFraction</a>(double d)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ae9ddaf2a9f9c95b04b88faac63521f39">setDenseNeighbors</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#aed716541c53dca9f22892b1a6da267b0">setMaxFailures</a>(unsigned int m)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a99bb12c016b06563aab6bba5cdbed01e">setName</a>(const std::string &amp;name)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#aafbe82bc4bbae529e6c96852687fdb5e">setProblemDefinition</a>(const base::ProblemDefinitionPtr &amp;pdef)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a980542126f0d879fc609d3b26eedb6bf">setSparseDeltaFraction</a>(double d)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ada846fd037a1893a91f40810a8ac9e7d">setSparseNeighbors</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a2f6f345d22d946135837af4db90ce242">setStretchFactor</a>(double t)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#abd203a0e85a59c1bca40858fe27f3d66">setup</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#adba44a4ee27079c5b258a2ebed719eed">setup_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#aa3ceb9471163b6c96f6eeadbcfd3694e">si_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#afcd0bb3d9efd3ff8d5b681a5eed38e4d">simpleSampler_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ade5b67adc31063b7e60007600e50ae4a">snn_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#afd7e65865c23b5085391f2c77d5a4e1f">solve</a>(const base::PlannerTerminationCondition &amp;ptc)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a46d2a6941a33dbac28e6736949375e2b">ompl::base::Planner::solve</a>(const PlannerTerminationConditionFn &amp;ptc, double checkInterval)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a5a61ca64b36881603af880677f6445a7">ompl::base::Planner::solve</a>(double solveTime)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a8a91acdc84e95d8d920524dee6c9f7a3">SpannerGraph</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#afe94f657ab8a846a37ae50d3501ecd0a">SPARS</a>(const base::SpaceInformationPtr &amp;si)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#aca084020b77381bab083e918b417f6e6">sparseColorProperty_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a168b6ad450d1b5100894bf4bff8e3a72">sparseDelta_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#ad966c5db5423fd83e7ebfb22f361dce4">sparseDeltaFraction_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a7d279cb8c9fb820c402b400e7770d52d">sparseDistanceFunction</a>(const SparseVertex a, const SparseVertex b) const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#adb1e5acd47a34fba8e5a64a15689f98a">sparseDJSets_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#af3cb7d22c7e537c197e480f25ef5319f">SparseEdge</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a54da5acdd7fda373e4b7842d833c7831">SparseNeighbors</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a96b374b38cac7805cc5e3371b1fcde6e">sparseQueryVertex_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a4730df61de7338d11f55bfdd91331f94">sparseStateProperty_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a8084fd9bf075d1248dce995175a469ab">SparseVertex</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">specs_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>START</b> enum value (defined in <a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a>)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a83371198a453f553f07e0ec331a74067">startM_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a83a2e7d2f1abe84a909d2fc860edf21e">stateProperty_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a33dee098737eb963368ef74bb43cf59c">stretchFactor_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a4b95826123a856037f7d0ee74c943630">updateRepresentatives</a>(SparseVertex v)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#aad7654a88ebd166e41d3ed6e1b0c3b5d">VertexIndexType</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#a240e9215b995a65bfc64c9684dd31c5e">weightProperty_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a03f24b87575ab8d31b921fea6525a0c5">~Planner</a>()</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html#abdd0ee2d927e4d5c2513e7c4046183fd">~SPARS</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1SPARS.html">ompl::geometric::SPARS</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+</table></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:28 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

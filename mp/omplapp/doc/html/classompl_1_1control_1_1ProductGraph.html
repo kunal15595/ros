@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::control::ProductGraph Class Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1control.html">control</a></li><li class="navelem"><a class="el" href="classompl_1_1control_1_1ProductGraph.html">ProductGraph</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-types">Protected Types</a> &#124;
+<a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="classompl_1_1control_1_1ProductGraph-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::control::ProductGraph Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>A <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a> represents the weighted, directed, graph-based Cartesian product of a <a class="el" href="classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region-to-proposition assignment ope...">PropositionalDecomposition</a> object, an <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> corresponding to a co-safe LTL specification, and an <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> corresponding to a safe LTL specification.  
+ <a href="classompl_1_1control_1_1ProductGraph.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ProductGraph_8h_source.html">ProductGraph.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structompl_1_1control_1_1ProductGraph_1_1Edge.html">Edge</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a> of a <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a> represents a vertex in the graph-based Cartesian product represented by the <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a>. A <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a> is simply a tuple consisting of a <a class="el" href="classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region-to-proposition assignment ope...">PropositionalDecomposition</a> region, a co-safe <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> state, and a safe <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> state.  <a href="classompl_1_1control_1_1ProductGraph_1_1State.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ac5831b0fa221896814ce6975da0e1484"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5831b0fa221896814ce6975da0e1484"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#ac5831b0fa221896814ce6975da0e1484">ProductGraph</a> (const <a class="el" href="classompl_1_1control_1_1PropositionalDecompositionPtr.html">PropositionalDecompositionPtr</a> &amp;decomp, const <a class="el" href="classompl_1_1control_1_1AutomatonPtr.html">AutomatonPtr</a> &amp;cosafetyAut, const <a class="el" href="classompl_1_1control_1_1AutomatonPtr.html">AutomatonPtr</a> &amp;safetyAut)</td></tr>
+<tr class="memdesc:ac5831b0fa221896814ce6975da0e1484"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a> with a given <a class="el" href="classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region-to-proposition assignment ope...">PropositionalDecomposition</a>, co-safe <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a>, and safe <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a>. <br/></td></tr>
+<tr class="separator:ac5831b0fa221896814ce6975da0e1484"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5aa6d6f7c361fcb42b01d309f810c2c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa5aa6d6f7c361fcb42b01d309f810c2c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#aa5aa6d6f7c361fcb42b01d309f810c2c">ProductGraph</a> (const <a class="el" href="classompl_1_1control_1_1PropositionalDecompositionPtr.html">PropositionalDecompositionPtr</a> &amp;decomp, const <a class="el" href="classompl_1_1control_1_1AutomatonPtr.html">AutomatonPtr</a> &amp;cosafetyAut)</td></tr>
+<tr class="memdesc:aa5aa6d6f7c361fcb42b01d309f810c2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an abstraction with a given propositional decomposition and cosafety automaton. The safety automaton is set to be one that always accepts. <br/></td></tr>
+<tr class="separator:aa5aa6d6f7c361fcb42b01d309f810c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2620a0675938c501741fbc14c695219"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab2620a0675938c501741fbc14c695219"></a>
+const <br class="typebreak"/>
+<a class="el" href="classompl_1_1control_1_1PropositionalDecompositionPtr.html">PropositionalDecompositionPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#ab2620a0675938c501741fbc14c695219">getDecomp</a> () const </td></tr>
+<tr class="memdesc:ab2620a0675938c501741fbc14c695219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region-to-proposition assignment ope...">PropositionalDecomposition</a> contained within this <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a>. <br/></td></tr>
+<tr class="separator:ab2620a0675938c501741fbc14c695219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae965387df4f868edb1ba231d87831b0c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae965387df4f868edb1ba231d87831b0c"></a>
+const <a class="el" href="classompl_1_1control_1_1AutomatonPtr.html">AutomatonPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#ae965387df4f868edb1ba231d87831b0c">getCosafetyAutom</a> () const </td></tr>
+<tr class="memdesc:ae965387df4f868edb1ba231d87831b0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the co-safe <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> contained within this <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a>. <br/></td></tr>
+<tr class="separator:ae965387df4f868edb1ba231d87831b0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a266a0e0216c3ef44ae7544a4c32aed87"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a266a0e0216c3ef44ae7544a4c32aed87"></a>
+const <a class="el" href="classompl_1_1control_1_1AutomatonPtr.html">AutomatonPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#a266a0e0216c3ef44ae7544a4c32aed87">getSafetyAutom</a> () const </td></tr>
+<tr class="memdesc:a266a0e0216c3ef44ae7544a4c32aed87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the safe <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> contained within this <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a>. <br/></td></tr>
+<tr class="separator:a266a0e0216c3ef44ae7544a4c32aed87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8095c9a8d2395390384a844f521f5de0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8095c9a8d2395390384a844f521f5de0"></a>
+std::vector&lt; <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#a8095c9a8d2395390384a844f521f5de0">computeLead</a> (<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *start, const boost::function&lt; double(<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *, <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *)&gt; &amp;edgeWeight)</td></tr>
+<tr class="memdesc:a8095c9a8d2395390384a844f521f5de0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a shortest-path sequence of <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a> states, beginning with a given initial <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a> and ending with a <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a> for which the corresponding safety <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> state is accepting, and the corresponding co-safety <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> state is as close as possible to an accepting state given the adjacency properties of the <a class="el" href="classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region-to-proposition assignment ope...">PropositionalDecomposition</a>. Dijkstra's shortest-path algorithm is used to compute the path with the given edge-weight function. <br/></td></tr>
+<tr class="separator:a8095c9a8d2395390384a844f521f5de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e91325fc18add6f8e4032a4811613e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e91325fc18add6f8e4032a4811613e8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#a9e91325fc18add6f8e4032a4811613e8">clear</a> ()</td></tr>
+<tr class="memdesc:a9e91325fc18add6f8e4032a4811613e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all memory belonging to this <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a>. <br/></td></tr>
+<tr class="separator:a9e91325fc18add6f8e4032a4811613e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a572faae388b07865a22835b3c15d34f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a572faae388b07865a22835b3c15d34f0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#a572faae388b07865a22835b3c15d34f0">buildGraph</a> (<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *start, const boost::function&lt; void(<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *)&gt; &amp;initialize=ProductGraph::noInit)</td></tr>
+<tr class="memdesc:a572faae388b07865a22835b3c15d34f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs this <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a> beginning with a given initial <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a>, using a breadth-first search. Accepts an optional initialization method, which will be called exactly once on each <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a> (including the given initial <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a>) that is added to the <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a>. The default argument for the initialization method is a no-op method. <br/></td></tr>
+<tr class="separator:a572faae388b07865a22835b3c15d34f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1ad4de71d53c40d48ba5e99272e414c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1ad4de71d53c40d48ba5e99272e414c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#ac1ad4de71d53c40d48ba5e99272e414c">isSolution</a> (const <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *s) const </td></tr>
+<tr class="memdesc:ac1ad4de71d53c40d48ba5e99272e414c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the given <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a> is an accepting <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a> in this <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a>. We call a <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a> accepting if its safety <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> state component is accepting, and its co-safety <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> state component is as close as possible to an accepting state in the co-safety <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> given the adjacency properties of the <a class="el" href="classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region-to-proposition assignment ope...">PropositionalDecomposition</a>. <br/></td></tr>
+<tr class="separator:ac1ad4de71d53c40d48ba5e99272e414c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02969262c220ff3133862c95e5c84220"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a02969262c220ff3133862c95e5c84220"></a>
+<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#a02969262c220ff3133862c95e5c84220">getStartState</a> (void) const </td></tr>
+<tr class="memdesc:a02969262c220ff3133862c95e5c84220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the initial <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a> of this <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a>. <br/></td></tr>
+<tr class="separator:a02969262c220ff3133862c95e5c84220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad400ea5e4bb4fb47ad0c5fc63c49650b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad400ea5e4bb4fb47ad0c5fc63c49650b"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#ad400ea5e4bb4fb47ad0c5fc63c49650b">getRegionVolume</a> (const <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *s)</td></tr>
+<tr class="memdesc:ad400ea5e4bb4fb47ad0c5fc63c49650b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to return the volume of the <a class="el" href="classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region-to-proposition assignment ope...">PropositionalDecomposition</a> region corresponding to the given <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a> <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a>. <br/></td></tr>
+<tr class="separator:ad400ea5e4bb4fb47ad0c5fc63c49650b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae87651947d453ab41660de3b3bb53339"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae87651947d453ab41660de3b3bb53339"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#ae87651947d453ab41660de3b3bb53339">getCosafeAutDistance</a> (const <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *s) const </td></tr>
+<tr class="memdesc:ae87651947d453ab41660de3b3bb53339"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to return the distance from a given <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a>'s co-safety state to an accepting state in the co-safety <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a>. <br/></td></tr>
+<tr class="separator:ae87651947d453ab41660de3b3bb53339"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3aa6b84697f2d1a31725bb47c28d76a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae3aa6b84697f2d1a31725bb47c28d76a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#ae3aa6b84697f2d1a31725bb47c28d76a">getSafeAutDistance</a> (const <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *s) const </td></tr>
+<tr class="memdesc:ae3aa6b84697f2d1a31725bb47c28d76a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to return the distance from a given <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a>'s safety state to an accepting state in the safety <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a>. <br/></td></tr>
+<tr class="separator:ae3aa6b84697f2d1a31725bb47c28d76a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22530618a80481fa69376693d5aa6312"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22530618a80481fa69376693d5aa6312"></a>
+<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#a22530618a80481fa69376693d5aa6312">getState</a> (const <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> *cs) const </td></tr>
+<tr class="memdesc:a22530618a80481fa69376693d5aa6312"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a> <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a> with initial co-safety and safety <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> states, and the <a class="el" href="classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region-to-proposition assignment ope...">PropositionalDecomposition</a> region that contains a given <a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">base::State</a>. <br/></td></tr>
+<tr class="separator:a22530618a80481fa69376693d5aa6312"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b80ab5028a52678401f424820772d14"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b80ab5028a52678401f424820772d14"></a>
+<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#a5b80ab5028a52678401f424820772d14">getState</a> (const <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> *cs, int cosafe, int safe) const </td></tr>
+<tr class="memdesc:a5b80ab5028a52678401f424820772d14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a> <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a> with given co-safety and safety <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> states, and the <a class="el" href="classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region-to-proposition assignment ope...">PropositionalDecomposition</a> region that contains a given <a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">base::State</a>. <br/></td></tr>
+<tr class="separator:a5b80ab5028a52678401f424820772d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dd3f352627f80b2e290bbdd8ca7fc37"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1dd3f352627f80b2e290bbdd8ca7fc37"></a>
+<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#a1dd3f352627f80b2e290bbdd8ca7fc37">getState</a> (const <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *parent, int nextRegion) const </td></tr>
+<tr class="memdesc:a1dd3f352627f80b2e290bbdd8ca7fc37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a> <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a> with a given <a class="el" href="classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region-to-proposition assignment ope...">PropositionalDecomposition</a> region. The co-safety and safety <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> states are calculated using a given parent <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a> <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a> and the decomposition region. <br/></td></tr>
+<tr class="separator:a1dd3f352627f80b2e290bbdd8ca7fc37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ddf1ef65815bd29158b9304f40f0f9f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ddf1ef65815bd29158b9304f40f0f9f"></a>
+<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#a2ddf1ef65815bd29158b9304f40f0f9f">getState</a> (const <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *parent, const <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> *cs) const </td></tr>
+<tr class="memdesc:a2ddf1ef65815bd29158b9304f40f0f9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a> state with the <a class="el" href="classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region-to-proposition assignment ope...">PropositionalDecomposition</a> region that contains a given <a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">base::State</a>. The co-safety and safety <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> states are calculated using a given parent <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a> <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html" title="A State of a ProductGraph represents a vertex in the graph-based Cartesian product represented by the...">State</a> and the decomposition region. <br/></td></tr>
+<tr class="separator:a2ddf1ef65815bd29158b9304f40f0f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a9f4d7fab33076885751eb31f5f8185"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a9f4d7fab33076885751eb31f5f8185"></a>
+<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ProductGraph.html#a1a9f4d7fab33076885751eb31f5f8185">getState</a> (int region, int cosafe, int safe) const </td></tr>
+<tr class="memdesc:a1a9f4d7fab33076885751eb31f5f8185"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a> state corresponding to the given region, co-safety state, and safety state. <br/></td></tr>
+<tr class="separator:a1a9f4d7fab33076885751eb31f5f8185"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-types"></a>
+Protected Types</h2></td></tr>
+<tr class="memitem:a746ef8d1a999fb707b0b77cff5ff8451"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a746ef8d1a999fb707b0b77cff5ff8451"></a>
+typedef boost::adjacency_list<br class="typebreak"/>
+&lt; boost::vecS, boost::vecS, <br class="typebreak"/>
+boost::directedS, <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> <br class="typebreak"/>
+*, <a class="el" href="structompl_1_1control_1_1ProductGraph_1_1Edge.html">Edge</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GraphType</b></td></tr>
+<tr class="separator:a746ef8d1a999fb707b0b77cff5ff8451"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5867e75fbeda3498cf8953da56cf5a9a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5867e75fbeda3498cf8953da56cf5a9a"></a>
+typedef boost::graph_traits<br class="typebreak"/>
+&lt; GraphType &gt;<br class="typebreak"/>
+::vertex_descriptor&#160;</td><td class="memItemRight" valign="bottom"><b>Vertex</b></td></tr>
+<tr class="separator:a5867e75fbeda3498cf8953da56cf5a9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a115ef2d7fb1d46072f74666925e71512"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a115ef2d7fb1d46072f74666925e71512"></a>
+typedef boost::graph_traits<br class="typebreak"/>
+&lt; GraphType &gt;::vertex_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>VertexIter</b></td></tr>
+<tr class="separator:a115ef2d7fb1d46072f74666925e71512"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18e8140401472eee5e28fd38ce233251"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a18e8140401472eee5e28fd38ce233251"></a>
+typedef boost::property_map<br class="typebreak"/>
+&lt; GraphType, <br class="typebreak"/>
+boost::vertex_index_t &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><b>VertexIndexMap</b></td></tr>
+<tr class="separator:a18e8140401472eee5e28fd38ce233251"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0114f15b780e77248ab8f169ee130836"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0114f15b780e77248ab8f169ee130836"></a>
+typedef boost::graph_traits<br class="typebreak"/>
+&lt; GraphType &gt;::edge_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>EdgeIter</b></td></tr>
+<tr class="separator:a0114f15b780e77248ab8f169ee130836"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
+Static Protected Member Functions</h2></td></tr>
+<tr class="memitem:a425fd96d9e1da20c8d8f3169bdeeb5a3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a425fd96d9e1da20c8d8f3169bdeeb5a3"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>noInit</b> (<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *s)</td></tr>
+<tr class="separator:a425fd96d9e1da20c8d8f3169bdeeb5a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:ac1651bddd8437a027eaba6c0d7b2f2e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1651bddd8437a027eaba6c0d7b2f2e0"></a>
+<a class="el" href="classompl_1_1control_1_1PropositionalDecompositionPtr.html">PropositionalDecompositionPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><b>decomp_</b></td></tr>
+<tr class="separator:ac1651bddd8437a027eaba6c0d7b2f2e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa886c4b062b165ff98a01219dd4640cd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa886c4b062b165ff98a01219dd4640cd"></a>
+<a class="el" href="classompl_1_1control_1_1AutomatonPtr.html">AutomatonPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><b>cosafety_</b></td></tr>
+<tr class="separator:aa886c4b062b165ff98a01219dd4640cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61bb51712531ecfe82a9107a0a57fad3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a61bb51712531ecfe82a9107a0a57fad3"></a>
+<a class="el" href="classompl_1_1control_1_1AutomatonPtr.html">AutomatonPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><b>safety_</b></td></tr>
+<tr class="separator:a61bb51712531ecfe82a9107a0a57fad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1faad2c36e7862284a5ccf79068130b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1faad2c36e7862284a5ccf79068130b1"></a>
+GraphType&#160;</td><td class="memItemRight" valign="bottom"><b>graph_</b></td></tr>
+<tr class="separator:a1faad2c36e7862284a5ccf79068130b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad82e436a28bce529a2dee44e89a2bb38"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad82e436a28bce529a2dee44e89a2bb38"></a>
+<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>startState_</b></td></tr>
+<tr class="separator:ad82e436a28bce529a2dee44e89a2bb38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16119b474832efda990c0d4dd0375382"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16119b474832efda990c0d4dd0375382"></a>
+std::vector&lt; <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>solutionStates_</b></td></tr>
+<tr class="separator:a16119b474832efda990c0d4dd0375382"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40dd9c491f81ac3ae843b4ca064b5167"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a40dd9c491f81ac3ae843b4ca064b5167"></a>
+boost::unordered_map&lt; <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a>, <br class="typebreak"/>
+<a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>stateToPtr_</b></td></tr>
+<tr class="separator:a40dd9c491f81ac3ae843b4ca064b5167"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa28e848a131a6904a4307cb22c3793c6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa28e848a131a6904a4307cb22c3793c6"></a>
+boost::unordered_map&lt; <a class="el" href="classompl_1_1control_1_1ProductGraph_1_1State.html">State</a> <br class="typebreak"/>
+*, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>stateToIndex_</b></td></tr>
+<tr class="separator:aa28e848a131a6904a4307cb22c3793c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A <a class="el" href="classompl_1_1control_1_1ProductGraph.html" title="A ProductGraph represents the weighted, directed, graph-based Cartesian product of a PropositionalDec...">ProductGraph</a> represents the weighted, directed, graph-based Cartesian product of a <a class="el" href="classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region-to-proposition assignment ope...">PropositionalDecomposition</a> object, an <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> corresponding to a co-safe LTL specification, and an <a class="el" href="classompl_1_1control_1_1Automaton.html" title="A class to represent a deterministic finite automaton, each edge of which corresponds to a World...">Automaton</a> corresponding to a safe LTL specification. </p>
+
+<p>Definition at line <a class="el" href="ProductGraph_8h_source.html#l00067">67</a> of file <a class="el" href="ProductGraph_8h_source.html">ProductGraph.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>ompl/src/ompl/control/planners/ltl/<a class="el" href="ProductGraph_8h_source.html">ProductGraph.h</a></li>
+<li>ompl/src/ompl/control/planners/ltl/src/<a class="el" href="ProductGraph_8cpp_source.html">ProductGraph.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:28 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+<map id="ompl::control::PropositionalTriangularDecomposition" name="ompl::control::PropositionalTriangularDecomposition">
+<area shape="rect" id="node2" href="$classompl_1_1control_1_1PropositionalDecomposition.html" title="A propositional decomposition wraps a given Decomposition with a region&#45;to&#45;proposition assignment ope..." alt="" coords="11,81,191,122"/>
+<area shape="rect" id="node3" href="$classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ..." alt="" coords="5,5,197,32"/>
+</map>

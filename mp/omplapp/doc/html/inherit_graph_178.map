@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classompl_1_1Grid.html" title="Representation of a simple grid. " alt="" coords="6,12,127,39"/>
+<area shape="rect" id="node2" href="$classompl_1_1GridN.html" title="Representation of a grid where cells keep track of how many neighbors they have. " alt="" coords="176,12,307,39"/>
+<area shape="rect" id="node3" href="$classompl_1_1GridB.html" title="This class defines a grid that keeps track of its boundary: it distinguishes between interior and ext..." alt="" coords="355,5,546,46"/>
+</map>

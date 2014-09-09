@@ -1,0 +1,8 @@
+<map id="ompl::control::ControlSpace" name="ompl::control::ControlSpace">
+<area shape="rect" id="node3" href="$classompl_1_1control_1_1CompoundControlSpace.html" title="A control space to allow the composition of control spaces. " alt="" coords="381,5,592,46"/>
+<area shape="rect" id="node4" href="$classompl_1_1control_1_1DiscreteControlSpace.html" title="A space representing discrete controls; i.e. there are a small number of discrete controls the system..." alt="" coords="389,70,585,111"/>
+<area shape="rect" id="node5" href="$classompl_1_1control_1_1RealVectorControlSpace.html" title="A control space representing Rn. " alt="" coords="401,135,572,177"/>
+<area shape="rect" id="node6" href="$classKoulesControlSpace.html" title="KoulesControlSpace" alt="" coords="668,84,809,111"/>
+<area shape="rect" id="node7" href="$classompl_1_1control_1_1MorseControlSpace.html" title="Representation of controls applied in MORSE environments. This is an array of double values..." alt="" coords="647,135,830,177"/>
+<area shape="rect" id="node8" href="$classompl_1_1control_1_1OpenDEControlSpace.html" title="Representation of controls applied in OpenDE environments. This is an array of double values..." alt="" coords="640,201,837,242"/>
+</map>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>src/omplapp/geometry/detail/PQPStateValidityChecker.h Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e2f3b614a327e4d13db899b0ebe1ed20.html">omplapp</a></li><li class="navelem"><a class="el" href="dir_f1b94862d75e81fbfcee0f1104a39533.html">geometry</a></li><li class="navelem"><a class="el" href="dir_4d8e92aae3d2ba4cffd59aa97dd55a01.html">detail</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">PQPStateValidityChecker.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Rice University Software Distribution License</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* Copyright (c) 2010, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* All Rights Reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* For a full description see the file named LICENSE.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/* Author: Ioan Sucan */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef OMPLAPP_GEOMETRY_DETAIL_PQP_COLLISION_CHECKER_</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define OMPLAPP_GEOMETRY_DETAIL_PQP_COLLISION_CHECKER_</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;ompl/base/SpaceInformation.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;ompl/base/spaces/SE2StateSpace.h&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;ompl/base/spaces/SE3StateSpace.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;omplapp/geometry/GeometrySpecification.h&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;omplapp/geometry/detail/assimpUtil.h&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;PQP.h&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;boost/shared_ptr.hpp&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;boost/function.hpp&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;boost/thread/mutex.hpp&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>ompl</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">namespace </span>app</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">template</span>&lt;MotionModel T&gt;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">struct </span>OMPL_StateType</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keyword">typedef</span> <a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#af12997f7c56f7263fb78be7444b838e5">base::SE3StateSpace::StateType</a> type;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordtype">void</span> quaternionToMatrix(PQP_REAL m[3][3], <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1StateSpace.html#aa995357fedb73879bc7f0bb946db76d1">base::SO3StateSpace::StateType</a> &amp;q)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordtype">double</span> sqw = q.w*q.w;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keywordtype">double</span> sqx = q.x*q.x;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordtype">double</span> sqy = q.y*q.y;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <span class="keywordtype">double</span> sqz = q.z*q.z;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                m[0][0] =  sqx - sqy - sqz + sqw;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                m[1][1] = -sqx + sqy - sqz + sqw;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                m[2][2] = -sqx - sqy + sqz + sqw;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <span class="keywordtype">double</span> tmp1 = q.x*q.y;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <span class="keywordtype">double</span> tmp2 = q.z*q.w;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                m[1][0] = 2.0 * (tmp1 + tmp2);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                m[0][1] = 2.0 * (tmp1 - tmp2);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                tmp1 = q.x*q.z;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                tmp2 = q.y*q.w;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                m[2][0] = 2.0 * (tmp1 - tmp2);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                m[0][2] = 2.0 * (tmp1 + tmp2);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                tmp1 = q.y*q.z;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                tmp2 = q.x*q.w;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                m[2][1] = 2.0 * (tmp1 + tmp2);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                m[1][2] = 2.0 * (tmp1 - tmp2);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordtype">void</span> PQP_pose_from_state(PQP_REAL robTrans[3], PQP_REAL robRot[3][3], <span class="keyword">const</span> type &amp;s)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                robTrans[0] = s.getX();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                robTrans[1] = s.getY();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                robTrans[2] = s.getZ();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                quaternionToMatrix(robRot, s.rotation());</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        };</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">template</span>&lt;&gt;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">struct </span>OMPL_StateType&lt;Motion_2D&gt;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keyword">typedef</span> <a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#af12997f7c56f7263fb78be7444b838e5">base::SE2StateSpace::StateType</a> type;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordtype">void</span> PQP_pose_from_state(PQP_REAL robTrans[3], PQP_REAL robRot[3][3], <span class="keyword">const</span> type &amp;s)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                robTrans[0] = s.getX();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                robTrans[1] = s.getY();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                robTrans[2] = 0.0;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">double</span> ca = cos(s.getYaw());</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">double</span> sa = sin(s.getYaw());</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                robRot[0][0] = ca;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                robRot[0][1] = -sa;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                robRot[0][2] = 0.0;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                robRot[1][0] = sa;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                robRot[1][1] = ca;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                robRot[1][2] = 0.0;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                robRot[2][0] = 0.0;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                robRot[2][1] = 0.0;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                robRot[2][2] = 1.0;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        };</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keyword">template</span>&lt;MotionModel T&gt;</div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="classompl_1_1app_1_1PQPStateValidityChecker.html">  116</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html">PQPStateValidityChecker</a> : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1StateValidityChecker.html">base::StateValidityChecker</a></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html">PQPStateValidityChecker</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">base::SpaceInformationPtr</a> &amp;si, <span class="keyword">const</span> <a class="code" href="classompl_1_1app_1_1GeometrySpecification.html">GeometrySpecification</a> &amp;geom,</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                    <span class="keyword">const</span> GeometricStateExtractor &amp;se, <span class="keywordtype">bool</span> selfCollision) : <a class="code" href="classompl_1_1base_1_1StateValidityChecker.html">base::StateValidityChecker</a>(si), extractState_(se),</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                                                                             selfCollision_(selfCollision)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                configure(geom);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <a class="code" href="classompl_1_1base_1_1StateValidityChecker.html#aa2433d86dcb77c0dc67e99f6fa8d1e01">specs_</a>.<a class="code" href="structompl_1_1base_1_1StateValidityCheckerSpecs.html#a48bfb73e86b5950dec03bddb31e1d5d2">clearanceComputationType</a> = <a class="code" href="structompl_1_1base_1_1StateValidityCheckerSpecs.html#a986ca638de363299cf59527821c41715afd5a3122c18b46a5f9fbec3f3d47975d">base::StateValidityCheckerSpecs::EXACT</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="classompl_1_1app_1_1PQPStateValidityChecker.html#aab9c75595722b666146d4b1d393cc6ac">  128</a></span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#aab9c75595722b666146d4b1d393cc6ac">isValid</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *state)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keyword">typedef</span> <span class="keyword">typename</span> OMPL_StateType&lt;T&gt;::type StateType;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="classompl_1_1base_1_1StateValidityChecker.html#af2c66e45895871b67a253db783df6982">si_</a>-&gt;<a class="code" href="classompl_1_1base_1_1SpaceInformation.html#ad76b863efa604add17cae43b4ebcb0b9">satisfiesBounds</a>(state))</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a6f0973238182a1b093a777b900665cc0">environment_</a>)</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                <span class="keyword">static</span> PQP_REAL identityTranslation[3] = { 0.0, 0.0, 0.0 };</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                <span class="keyword">static</span> PQP_REAL identityRotation[3][3] = { { 1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 1.0} };</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                boost::mutex::scoped_lock slock(mutex_);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                PQP_REAL robTrans[3];</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                PQP_REAL robRot[3][3];</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                <span class="keywordflow">for</span> (std::size_t i = 0 ; i &lt; <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a88f1c2859ed934fef51ae7632ff9c7c2">robotParts_</a>.size() ; ++i)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                    stateConvertor_.PQP_pose_from_state(robTrans, robRot, *static_cast&lt;const StateType*&gt;(extractState_(state, i)));</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                    PQP_CollideResult cr;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                    PQP_Collide(&amp;cr, robRot, robTrans, <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a88f1c2859ed934fef51ae7632ff9c7c2">robotParts_</a>[i].<span class="keyword">get</span>(),</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                                identityRotation, identityTranslation, <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a6f0973238182a1b093a777b900665cc0">environment_</a>.get(), PQP_FIRST_CONTACT);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                    <span class="keywordflow">if</span> (cr.Colliding())</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <span class="keywordflow">if</span> (selfCollision_)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    PQP_REAL robTrans2[3];</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                    PQP_REAL robRot2[3][3];</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    <span class="keywordflow">for</span> (std::size_t i  = 0 ; i &lt; <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a88f1c2859ed934fef51ae7632ff9c7c2">robotParts_</a>.size() ; ++i)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                        stateConvertor_.PQP_pose_from_state(robTrans, robRot, *static_cast&lt;const StateType*&gt;(extractState_(state, i)));</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                        <span class="keywordflow">for</span> (std::size_t j  = i + 1 ; j &lt; <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a88f1c2859ed934fef51ae7632ff9c7c2">robotParts_</a>.size() ; ++j)</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                        {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                            stateConvertor_.PQP_pose_from_state(robTrans2, robRot2, *static_cast&lt;const StateType*&gt;(extractState_(state, j)));</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                            PQP_CollideResult cr;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                            PQP_Collide(&amp;cr, robRot, robTrans, <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a88f1c2859ed934fef51ae7632ff9c7c2">robotParts_</a>[i].<span class="keyword">get</span>(),</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                        robRot2, robTrans2, <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a88f1c2859ed934fef51ae7632ff9c7c2">robotParts_</a>[j].<span class="keyword">get</span>(), PQP_FIRST_CONTACT);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                            <span class="keywordflow">if</span> (cr.Colliding())</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                        }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                    }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a887cd5f4cc8c009dd45041abc540c0a4">  178</a></span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a887cd5f4cc8c009dd45041abc540c0a4">clearance</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *state)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                <span class="keyword">typedef</span> <span class="keyword">typename</span> OMPL_StateType&lt;T&gt;::type StateType;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                <span class="keywordtype">double</span> dist = std::numeric_limits&lt;double&gt;::infinity();</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a6f0973238182a1b093a777b900665cc0">environment_</a>)</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                    <span class="keyword">static</span> PQP_REAL identityTranslation[3] = { 0.0, 0.0, 0.0 };</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                    <span class="keyword">static</span> PQP_REAL identityRotation[3][3] = { { 1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 1.0} };</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    boost::mutex::scoped_lock slock(mutex_);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    PQP_REAL robTrans[3];</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                    PQP_REAL robRot[3][3];</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                    <span class="keywordflow">for</span> (std::size_t i = 0 ; i &lt; <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a88f1c2859ed934fef51ae7632ff9c7c2">robotParts_</a>.size() ; ++i)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                        stateConvertor_.PQP_pose_from_state(robTrans, robRot, *static_cast&lt;const StateType*&gt;(extractState_(state, i)));</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                        PQP_DistanceResult dr;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                        PQP_Distance(&amp;dr, robRot, robTrans, <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a88f1c2859ed934fef51ae7632ff9c7c2">robotParts_</a>[i].<span class="keyword">get</span>(),</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                                     identityRotation, identityTranslation, <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a6f0973238182a1b093a777b900665cc0">environment_</a>.get(), 1e-2, <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#ad859d550c37265ff5eeb2d2381e65f83">distanceTol_</a>);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                        <span class="keywordflow">if</span> (dist &gt; dr.Distance())</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                            dist = dr.Distance();</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                    }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                <span class="keywordflow">return</span> dist;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="classompl_1_1app_1_1PQPStateValidityChecker.html#aaba79da2718059be2ea4e3dbed042e69">  209</a></span>&#160;            <span class="keyword">typedef</span> boost::shared_ptr&lt;PQP_Model&gt;     <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#aaba79da2718059be2ea4e3dbed042e69">PQPModelPtr</a>;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordtype">void</span> configure(<span class="keyword">const</span> <a class="code" href="classompl_1_1app_1_1GeometrySpecification.html">GeometrySpecification</a> &amp;geom)</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                std::pair&lt;PQPModelPtr, double&gt; p = getPQPModelFromScene(geom.obstacles, geom.obstaclesShift);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a6f0973238182a1b093a777b900665cc0">environment_</a> = p.first;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#aef05d09cfcff388a862bfb5a5029e775">avgEnvSide_</a> = p.second;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#ad859d550c37265ff5eeb2d2381e65f83">distanceTol_</a> = <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#aef05d09cfcff388a862bfb5a5029e775">avgEnvSide_</a> / 100.0;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a6f0973238182a1b093a777b900665cc0">environment_</a>)</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                    <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;Empty environment loaded&quot;</span>);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                    <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;Loaded environment model with %d triangles. Average side length is %lf.&quot;</span>, <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a6f0973238182a1b093a777b900665cc0">environment_</a>-&gt;num_tris, <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#aef05d09cfcff388a862bfb5a5029e775">avgEnvSide_</a>);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; geom.robot.size() ; ++i)</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                    aiVector3D shift(0.0, 0.0, 0.0);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                    <span class="keywordflow">if</span> (geom.robotShift.size() &gt; i)</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                        shift = geom.robotShift[i];</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                    <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#aaba79da2718059be2ea4e3dbed042e69">PQPModelPtr</a> m = getPQPModelFromScene(geom.robot[i], shift).first;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                    <span class="keywordflow">if</span> (!m)</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                        <span class="keywordflow">throw</span> <a class="code" href="classompl_1_1Exception.html">Exception</a>(<span class="stringliteral">&quot;Invalid robot mesh&quot;</span>);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                        <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;Loaded robot model with %d triangles&quot;</span>, m-&gt;num_tris);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                    <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a88f1c2859ed934fef51ae7632ff9c7c2">robotParts_</a>.push_back(m);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            std::pair&lt;PQPModelPtr, double&gt; getPQPModelFromScene(<span class="keyword">const</span> aiScene *scene, <span class="keyword">const</span> aiVector3D &amp;center)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                std::vector&lt;const aiScene*&gt; scenes(1, scene);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                std::vector&lt;aiVector3D&gt;     centers(1, center);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                <span class="keywordflow">return</span> getPQPModelFromScene(scenes, centers);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno"><a class="line" href="classompl_1_1app_1_1PQPStateValidityChecker.html#ad5e573ff00483a64bb30fd6f4293cc20">  245</a></span>&#160;            std::pair&lt;PQPModelPtr, double&gt; <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#ad5e573ff00483a64bb30fd6f4293cc20">getPQPModelFromScene</a>(<span class="keyword">const</span> std::vector&lt;const aiScene*&gt; &amp;scenes, <span class="keyword">const</span> std::vector&lt;aiVector3D&gt; &amp;center)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                std::vector&lt;aiVector3D&gt; triangles;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; scenes.size() ; ++i)</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                    <span class="keywordflow">if</span> (scenes[i])</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                    {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                        std::vector&lt;aiVector3D&gt; t;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                        scene::extractTriangles(scenes[i], t);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                        <span class="keywordflow">if</span> (center.size() &gt; i)</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0 ; j &lt; t.size() ; ++j)</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                                t[j] -= center[i];</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                        triangles.insert(triangles.end(), t.begin(), t.end());</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                    }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a9bcf10ed8f84b026f73cca94815889ca">getPQPModelFromTris</a>(triangles);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
+<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a9bcf10ed8f84b026f73cca94815889ca">  262</a></span>&#160;            std::pair&lt;PQPModelPtr, double&gt; <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a9bcf10ed8f84b026f73cca94815889ca">getPQPModelFromTris</a>(<span class="keyword">const</span> std::vector&lt;aiVector3D&gt; &amp;triangles) <span class="keyword">const</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor">#ifdef OMPLAPP_ADD_PADDING_FOR_DIMENSION</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="preprocessor"></span>            {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                <a class="code" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a> bounds(3);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                scene::inferBounds(bounds, triangles, 1.0, 0.0);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                <span class="keyword">const</span> std::vector&lt;double&gt; &amp;b = bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a1bf28716cde4622689e05ac6df7706a4">getDifference</a>();</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> d = b[0] &gt; b[1] ? 1 : 0;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                <span class="keywordflow">if</span> (b[d] &gt; b[2])</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                    d = 2;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                <span class="comment">// the dimension with minimum extents is in d</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                <span class="keywordtype">double</span> other = (b[(d + 1) % 3] + b[(d + 2) % 3]) / 2.0;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                <span class="keywordflow">if</span> (b[d] * 1000.0 &lt; other &amp;&amp; b[d] &lt; 0.1)</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                    <a class="code" href="group__logging.html#ga576d0bc79b521f19c5415f330e2b173d">OMPL_DEBUG</a>(<span class="stringliteral">&quot;Adding padding for dimension %u so that collision checking is more accurate&quot;</span>, d);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                    std::vector&lt;aiVector3D&gt; extraTri;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                    extraTri.reserve(triangles.size() * 8);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">int</span> N = triangles.size() / 3;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                    <span class="keywordtype">double</span> padd = other / 10.0;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0 ; j &lt; N ; ++j)</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                    {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                        <span class="keyword">const</span> aiVector3D &amp;v0 = triangles[j * 3];</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                        <span class="keyword">const</span> aiVector3D &amp;v1 = triangles[j * 3 + 1];</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                        <span class="keyword">const</span> aiVector3D &amp;v2 = triangles[j * 3 + 2];</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                        aiVector3D x0 = v0; x0[d] += padd;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                        aiVector3D x1 = v1; x1[d] += padd;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                        aiVector3D x2 = v2; x2[d] += padd;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                        extraTri.push_back(v0); extraTri.push_back(v1); extraTri.push_back(v2);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                        extraTri.push_back(x0); extraTri.push_back(x2); extraTri.push_back(x1);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                        extraTri.push_back(x1); extraTri.push_back(v1); extraTri.push_back(v2);</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                        extraTri.push_back(x1); extraTri.push_back(v2); extraTri.push_back(x2);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                        extraTri.push_back(x1); extraTri.push_back(v0); extraTri.push_back(v1);</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                        extraTri.push_back(x1); extraTri.push_back(x0); extraTri.push_back(v0);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                        extraTri.push_back(v0); extraTri.push_back(v2); extraTri.push_back(x2);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                        extraTri.push_back(v0); extraTri.push_back(x2); extraTri.push_back(x0);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                    }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                    <span class="keywordflow">return</span> getPQPModelFromTrisHelper(extraTri);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                    <span class="keywordflow">return</span> getPQPModelFromTrisHelper(triangles);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            std::pair&lt;PQPModelPtr, double&gt; getPQPModelFromTrisHelper(<span class="keyword">const</span> std::vector&lt;aiVector3D&gt; &amp;triangles) <span class="keyword">const</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="preprocessor"></span>            {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#aaba79da2718059be2ea4e3dbed042e69">PQPModelPtr</a> model;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                <span class="keywordflow">if</span> (triangles.empty())</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                    <span class="keywordflow">return</span> std::make_pair(model, 0.0);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                <span class="comment">// create the PQP model</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                model.reset(<span class="keyword">new</span> PQP_Model());</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                model-&gt;BeginModel();</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                <span class="keywordtype">int</span> <span class="keywordtype">id</span> = 0;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">int</span> N = triangles.size() / 3;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                <span class="keywordtype">double</span> avgSide = 0.0;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0 ; j &lt; N ; ++j)</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                {</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                    <span class="keyword">const</span> aiVector3D &amp;v0 = triangles[j * 3];</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                    <span class="keyword">const</span> aiVector3D &amp;v1 = triangles[j * 3 + 1];</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                    <span class="keyword">const</span> aiVector3D &amp;v2 = triangles[j * 3 + 2];</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                    PQP_REAL dV0[3] = {v0.x, v0.y, v0.z};</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                    PQP_REAL dV1[3] = {v1.x, v1.y, v1.z};</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                    PQP_REAL dV2[3] = {v2.x, v2.y, v2.z};</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                    avgSide += (v1 - v0).Length() + (v1 - v2).Length() + (v2 - v0).Length();</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                    model-&gt;AddTri(dV0, dV1, dV2, <span class="keywordtype">id</span>++);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                model-&gt;EndModel();</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                <span class="keywordflow">return</span> std::make_pair(model, avgSide / (<span class="keywordtype">double</span>)triangles.size());</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            }</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            OMPL_StateType&lt;T&gt;           stateConvertor_;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            GeometricStateExtractor     extractState_;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            <span class="keywordtype">bool</span>                        selfCollision_;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
+<div class="line"><a name="l00344"></a><span class="lineno"><a class="line" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a88f1c2859ed934fef51ae7632ff9c7c2">  344</a></span>&#160;            std::vector&lt;PQPModelPtr&gt;    <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a88f1c2859ed934fef51ae7632ff9c7c2">robotParts_</a>;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
+<div class="line"><a name="l00347"></a><span class="lineno"><a class="line" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a6f0973238182a1b093a777b900665cc0">  347</a></span>&#160;            <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#aaba79da2718059be2ea4e3dbed042e69">PQPModelPtr</a>                 <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a6f0973238182a1b093a777b900665cc0">environment_</a>;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
+<div class="line"><a name="l00350"></a><span class="lineno"><a class="line" href="classompl_1_1app_1_1PQPStateValidityChecker.html#aef05d09cfcff388a862bfb5a5029e775">  350</a></span>&#160;            <span class="keywordtype">double</span>                      <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#aef05d09cfcff388a862bfb5a5029e775">avgEnvSide_</a>;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;</div>
+<div class="line"><a name="l00353"></a><span class="lineno"><a class="line" href="classompl_1_1app_1_1PQPStateValidityChecker.html#ad859d550c37265ff5eeb2d2381e65f83">  353</a></span>&#160;            <span class="keywordtype">double</span>                      <a class="code" href="classompl_1_1app_1_1PQPStateValidityChecker.html#ad859d550c37265ff5eeb2d2381e65f83">distanceTol_</a>;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            <span class="keyword">mutable</span> boost::mutex        mutex_;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        };</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    }</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;}</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classompl_1_1base_1_1CompoundStateSpace_html_af12997f7c56f7263fb78be7444b838e5"><div class="ttname"><a href="classompl_1_1base_1_1CompoundStateSpace.html#af12997f7c56f7263fb78be7444b838e5">ompl::base::CompoundStateSpace::StateType</a></div><div class="ttdeci">CompoundState StateType</div><div class="ttdoc">Define the type of state allocated by this state space. </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8h_source.html#l00546">StateSpace.h:546</a></div></div>
+<div class="ttc" id="classompl_1_1app_1_1GeometrySpecification_html"><div class="ttname"><a href="classompl_1_1app_1_1GeometrySpecification.html">ompl::app::GeometrySpecification</a></div><div class="ttdef"><b>Definition:</b> <a href="GeometrySpecification_8h_source.html#l00036">GeometrySpecification.h:36</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpace_html_aa995357fedb73879bc7f0bb946db76d1"><div class="ttname"><a href="classompl_1_1base_1_1StateSpace.html#aa995357fedb73879bc7f0bb946db76d1">ompl::base::StateSpace::StateType</a></div><div class="ttdeci">State StateType</div><div class="ttdoc">Define the type of state allocated by this space. </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8h_source.html#l00078">StateSpace.h:78</a></div></div>
+<div class="ttc" id="classompl_1_1app_1_1PQPStateValidityChecker_html_aef05d09cfcff388a862bfb5a5029e775"><div class="ttname"><a href="classompl_1_1app_1_1PQPStateValidityChecker.html#aef05d09cfcff388a862bfb5a5029e775">ompl::app::PQPStateValidityChecker::avgEnvSide_</a></div><div class="ttdeci">double avgEnvSide_</div><div class="ttdoc">The average length of a side in the environment. </div><div class="ttdef"><b>Definition:</b> <a href="PQPStateValidityChecker_8h_source.html#l00350">PQPStateValidityChecker.h:350</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateValidityChecker_html_aa2433d86dcb77c0dc67e99f6fa8d1e01"><div class="ttname"><a href="classompl_1_1base_1_1StateValidityChecker.html#aa2433d86dcb77c0dc67e99f6fa8d1e01">ompl::base::StateValidityChecker::specs_</a></div><div class="ttdeci">StateValidityCheckerSpecs specs_</div><div class="ttdoc">The specifications of the state validity checker (its capabilities) </div><div class="ttdef"><b>Definition:</b> <a href="StateValidityChecker_8h_source.html#l00161">StateValidityChecker.h:161</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpaceInformation_html_ad76b863efa604add17cae43b4ebcb0b9"><div class="ttname"><a href="classompl_1_1base_1_1SpaceInformation.html#ad76b863efa604add17cae43b4ebcb0b9">ompl::base::SpaceInformation::satisfiesBounds</a></div><div class="ttdeci">bool satisfiesBounds(const State *state) const </div><div class="ttdoc">Check if a state is inside the bounding box. </div><div class="ttdef"><b>Definition:</b> <a href="base_2SpaceInformation_8h_source.html#l00119">SpaceInformation.h:119</a></div></div>
+<div class="ttc" id="classompl_1_1app_1_1PQPStateValidityChecker_html_aab9c75595722b666146d4b1d393cc6ac"><div class="ttname"><a href="classompl_1_1app_1_1PQPStateValidityChecker.html#aab9c75595722b666146d4b1d393cc6ac">ompl::app::PQPStateValidityChecker::isValid</a></div><div class="ttdeci">virtual bool isValid(const base::State *state) const </div><div class="ttdoc">Return true if the state state is valid. Usually, this means at least collision checking. If it is possible that ompl::base::StateSpace::interpolate() or ompl::control::ControlSpace::propagate() return states that are outside of bounds, this function should also make a call to ompl::base::SpaceInformation::satisfiesBounds(). </div><div class="ttdef"><b>Definition:</b> <a href="PQPStateValidityChecker_8h_source.html#l00128">PQPStateValidityChecker.h:128</a></div></div>
+<div class="ttc" id="classompl_1_1app_1_1PQPStateValidityChecker_html_aaba79da2718059be2ea4e3dbed042e69"><div class="ttname"><a href="classompl_1_1app_1_1PQPStateValidityChecker.html#aaba79da2718059be2ea4e3dbed042e69">ompl::app::PQPStateValidityChecker::PQPModelPtr</a></div><div class="ttdeci">boost::shared_ptr&lt; PQP_Model &gt; PQPModelPtr</div><div class="ttdoc">Shared pointer wrapper for PQP_Model. </div><div class="ttdef"><b>Definition:</b> <a href="PQPStateValidityChecker_8h_source.html#l00209">PQPStateValidityChecker.h:209</a></div></div>
+<div class="ttc" id="classompl_1_1app_1_1PQPStateValidityChecker_html_a887cd5f4cc8c009dd45041abc540c0a4"><div class="ttname"><a href="classompl_1_1app_1_1PQPStateValidityChecker.html#a887cd5f4cc8c009dd45041abc540c0a4">ompl::app::PQPStateValidityChecker::clearance</a></div><div class="ttdeci">virtual double clearance(const base::State *state) const </div><div class="ttdoc">Report the distance to the nearest invalid state when starting from state. If the distance is negativ...</div><div class="ttdef"><b>Definition:</b> <a href="PQPStateValidityChecker_8h_source.html#l00178">PQPStateValidityChecker.h:178</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateValidityChecker_html"><div class="ttname"><a href="classompl_1_1base_1_1StateValidityChecker.html">ompl::base::StateValidityChecker</a></div><div class="ttdoc">Abstract definition for a class checking the validity of states. The implementation of this class mus...</div><div class="ttdef"><b>Definition:</b> <a href="StateValidityChecker_8h_source.html#l00093">StateValidityChecker.h:93</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1StateValidityCheckerSpecs_html_a986ca638de363299cf59527821c41715afd5a3122c18b46a5f9fbec3f3d47975d"><div class="ttname"><a href="structompl_1_1base_1_1StateValidityCheckerSpecs.html#a986ca638de363299cf59527821c41715afd5a3122c18b46a5f9fbec3f3d47975d">ompl::base::StateValidityCheckerSpecs::EXACT</a></div><div class="ttdoc">Exact clearance computation is available. </div><div class="ttdef"><b>Definition:</b> <a href="StateValidityChecker_8h_source.html#l00070">StateValidityChecker.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1app_1_1PQPStateValidityChecker_html_a88f1c2859ed934fef51ae7632ff9c7c2"><div class="ttname"><a href="classompl_1_1app_1_1PQPStateValidityChecker.html#a88f1c2859ed934fef51ae7632ff9c7c2">ompl::app::PQPStateValidityChecker::robotParts_</a></div><div class="ttdeci">std::vector&lt; PQPModelPtr &gt; robotParts_</div><div class="ttdoc">Model of the robot. </div><div class="ttdef"><b>Definition:</b> <a href="PQPStateValidityChecker_8h_source.html#l00344">PQPStateValidityChecker.h:344</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpaceInformationPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1SpaceInformationPtr.html">ompl::base::SpaceInformationPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::SpaceInformation. </div></div>
+<div class="ttc" id="classompl_1_1app_1_1PQPStateValidityChecker_html_ad859d550c37265ff5eeb2d2381e65f83"><div class="ttname"><a href="classompl_1_1app_1_1PQPStateValidityChecker.html#ad859d550c37265ff5eeb2d2381e65f83">ompl::app::PQPStateValidityChecker::distanceTol_</a></div><div class="ttdeci">double distanceTol_</div><div class="ttdoc">Tolerance passed to PQP for distance calculations. </div><div class="ttdef"><b>Definition:</b> <a href="PQPStateValidityChecker_8h_source.html#l00353">PQPStateValidityChecker.h:353</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1Exception_html"><div class="ttname"><a href="classompl_1_1Exception.html">ompl::Exception</a></div><div class="ttdoc">The exception type for ompl. </div><div class="ttdef"><b>Definition:</b> <a href="Exception_8h_source.html#l00047">Exception.h:47</a></div></div>
+<div class="ttc" id="group__logging_html_ga576d0bc79b521f19c5415f330e2b173d"><div class="ttname"><a href="group__logging.html#ga576d0bc79b521f19c5415f330e2b173d">OMPL_DEBUG</a></div><div class="ttdeci">#define OMPL_DEBUG(fmt,...)</div><div class="ttdoc">Log a formatted debugging string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00070">Console.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorBounds_html"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorBounds.html">ompl::base::RealVectorBounds</a></div><div class="ttdoc">The lower and upper bounds for an Rn space. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorBounds_8h_source.html#l00048">RealVectorBounds.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1app_1_1PQPStateValidityChecker_html_a6f0973238182a1b093a777b900665cc0"><div class="ttname"><a href="classompl_1_1app_1_1PQPStateValidityChecker.html#a6f0973238182a1b093a777b900665cc0">ompl::app::PQPStateValidityChecker::environment_</a></div><div class="ttdeci">PQPModelPtr environment_</div><div class="ttdoc">Model of the environment. </div><div class="ttdef"><b>Definition:</b> <a href="PQPStateValidityChecker_8h_source.html#l00347">PQPStateValidityChecker.h:347</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateValidityChecker_html_af2c66e45895871b67a253db783df6982"><div class="ttname"><a href="classompl_1_1base_1_1StateValidityChecker.html#af2c66e45895871b67a253db783df6982">ompl::base::StateValidityChecker::si_</a></div><div class="ttdeci">SpaceInformation * si_</div><div class="ttdoc">The instance of space information this state validity checker operates on. </div><div class="ttdef"><b>Definition:</b> <a href="StateValidityChecker_8h_source.html#l00158">StateValidityChecker.h:158</a></div></div>
+<div class="ttc" id="classompl_1_1app_1_1PQPStateValidityChecker_html_a9bcf10ed8f84b026f73cca94815889ca"><div class="ttname"><a href="classompl_1_1app_1_1PQPStateValidityChecker.html#a9bcf10ed8f84b026f73cca94815889ca">ompl::app::PQPStateValidityChecker::getPQPModelFromTris</a></div><div class="ttdeci">std::pair&lt; PQPModelPtr, double &gt; getPQPModelFromTris(const std::vector&lt; aiVector3D &gt; &amp;triangles) const </div><div class="ttdoc">Convert a set of triangles to a PQP model, but add extra padding if a particular dimension is disprop...</div><div class="ttdef"><b>Definition:</b> <a href="PQPStateValidityChecker_8h_source.html#l00262">PQPStateValidityChecker.h:262</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1StateValidityCheckerSpecs_html_a48bfb73e86b5950dec03bddb31e1d5d2"><div class="ttname"><a href="structompl_1_1base_1_1StateValidityCheckerSpecs.html#a48bfb73e86b5950dec03bddb31e1d5d2">ompl::base::StateValidityCheckerSpecs::clearanceComputationType</a></div><div class="ttdeci">ClearanceComputationType clearanceComputationType</div><div class="ttdoc">Value indicating the kind of clearance computation this StateValidityChecker can compute (if any)...</div><div class="ttdef"><b>Definition:</b> <a href="StateValidityChecker_8h_source.html#l00083">StateValidityChecker.h:83</a></div></div>
+<div class="ttc" id="classompl_1_1app_1_1PQPStateValidityChecker_html"><div class="ttname"><a href="classompl_1_1app_1_1PQPStateValidityChecker.html">ompl::app::PQPStateValidityChecker</a></div><div class="ttdoc">Define an ompl::base::StateValidityChecker that can construct PQP models internally. The instance is still abstract however, as the isValid() function is not implemented (knowledge of the state space is needed for this function to be implemented) </div><div class="ttdef"><b>Definition:</b> <a href="PQPStateValidityChecker_8h_source.html#l00116">PQPStateValidityChecker.h:116</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorBounds_html_a1bf28716cde4622689e05ac6df7706a4"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorBounds.html#a1bf28716cde4622689e05ac6df7706a4">ompl::base::RealVectorBounds::getDifference</a></div><div class="ttdeci">std::vector&lt; double &gt; getDifference() const </div><div class="ttdoc">Get the difference between the high and low bounds for each dimension: result[i] = high[i] - low[i]...</div><div class="ttdef"><b>Definition:</b> <a href="RealVectorBounds_8cpp_source.html#l00062">RealVectorBounds.cpp:62</a></div></div>
+<div class="ttc" id="classompl_1_1app_1_1PQPStateValidityChecker_html_ad5e573ff00483a64bb30fd6f4293cc20"><div class="ttname"><a href="classompl_1_1app_1_1PQPStateValidityChecker.html#ad5e573ff00483a64bb30fd6f4293cc20">ompl::app::PQPStateValidityChecker::getPQPModelFromScene</a></div><div class="ttdeci">std::pair&lt; PQPModelPtr, double &gt; getPQPModelFromScene(const std::vector&lt; const aiScene * &gt; &amp;scenes, const std::vector&lt; aiVector3D &gt; &amp;center) const </div><div class="ttdoc">Convert a mesh to a PQP model. </div><div class="ttdef"><b>Definition:</b> <a href="PQPStateValidityChecker_8h_source.html#l00245">PQPStateValidityChecker.h:245</a></div></div>
+<div class="ttc" id="group__logging_html_ga04bc36d1b8c57ad7e13a8a48451a3a05"><div class="ttname"><a href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a></div><div class="ttdeci">#define OMPL_INFORM(fmt,...)</div><div class="ttdoc">Log a formatted information string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00068">Console.h:68</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

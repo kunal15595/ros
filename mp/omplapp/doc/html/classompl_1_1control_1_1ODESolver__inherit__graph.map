@@ -1,0 +1,5 @@
+<map id="ompl::control::ODESolver" name="ompl::control::ODESolver">
+<area shape="rect" id="node2" href="$classompl_1_1control_1_1ODEAdaptiveSolver.html" title="Adaptive step size solver for ordinary differential equations of the type q&#39; = f(q, u), where q is the current state of the system and u is a control applied to the system. The maximum integration error is bounded in this approach. Solver is the numerical integration method used to solve the equations, and must implement the error stepper concept from boost::numeric::odeint. The default is a fifth order Runge&#45;Kutta Cash&#45;Karp method with a fourth order error bound. " alt="" coords="234,5,419,46"/>
+<area shape="rect" id="node3" href="$classompl_1_1control_1_1ODEBasicSolver.html" title="Basic solver for ordinary differential equations of the type q&#39; = f(q, u), where q is the current sta..." alt="" coords="225,70,429,111"/>
+<area shape="rect" id="node4" href="$classompl_1_1control_1_1ODEErrorSolver.html" title="Solver for ordinary differential equations of the type q&#39; = f(q, u), where q is the current state of ..." alt="" coords="227,135,426,177"/>
+</map>

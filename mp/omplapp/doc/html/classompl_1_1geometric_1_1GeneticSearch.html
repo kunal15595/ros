@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::geometric::GeneticSearch Class Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1geometric.html">geometric</a></li><li class="navelem"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html">GeneticSearch</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classompl_1_1geometric_1_1GeneticSearch-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::geometric::GeneticSearch Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Genetic Algorithm for searching valid states.  
+ <a href="classompl_1_1geometric_1_1GeneticSearch.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="GeneticSearch_8h_source.html">GeneticSearch.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a102ebe13ba8e436580b10589ced5dbd7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a102ebe13ba8e436580b10589ced5dbd7"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#a102ebe13ba8e436580b10589ced5dbd7">GeneticSearch</a> (const <a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">base::SpaceInformationPtr</a> &amp;si)</td></tr>
+<tr class="memdesc:a102ebe13ba8e436580b10589ced5dbd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an instance of a genetic algorithm for inverse kinematics given the space information to search within. <br/></td></tr>
+<tr class="separator:a102ebe13ba8e436580b10589ced5dbd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49004df0b90369b7c576d34f5a1c5458"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49004df0b90369b7c576d34f5a1c5458"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#a49004df0b90369b7c576d34f5a1c5458">solve</a> (double solveTime, const <a class="el" href="classompl_1_1base_1_1GoalRegion.html">base::GoalRegion</a> &amp;goal, <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> *result, const std::vector&lt; <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> * &gt; &amp;hint=std::vector&lt; <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> * &gt;())</td></tr>
+<tr class="memdesc:a49004df0b90369b7c576d34f5a1c5458"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find a state that fits the request. <br/></td></tr>
+<tr class="separator:a49004df0b90369b7c576d34f5a1c5458"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b221def8d25da4d523097bafb0c0382"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b221def8d25da4d523097bafb0c0382"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#a0b221def8d25da4d523097bafb0c0382">setMaxImproveSteps</a> (unsigned int maxSteps)</td></tr>
+<tr class="memdesc:a0b221def8d25da4d523097bafb0c0382"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the number of steps to perform when using hill climbing to improve an individual in the population. <br/></td></tr>
+<tr class="separator:a0b221def8d25da4d523097bafb0c0382"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3216464ae31b9b1a886f462c6845638"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3216464ae31b9b1a886f462c6845638"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#aa3216464ae31b9b1a886f462c6845638">getMaxImproveSteps</a> () const </td></tr>
+<tr class="memdesc:aa3216464ae31b9b1a886f462c6845638"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of steps to perform when using hill climbing to improve an individual in the population. <br/></td></tr>
+<tr class="separator:aa3216464ae31b9b1a886f462c6845638"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a342d6b266d8cad1707e826ad6862fc21"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a342d6b266d8cad1707e826ad6862fc21"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#a342d6b266d8cad1707e826ad6862fc21">setValidityCheck</a> (bool valid)</td></tr>
+<tr class="memdesc:a342d6b266d8cad1707e826ad6862fc21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the state validity flag; if this is false, states are not checked for validity. <br/></td></tr>
+<tr class="separator:a342d6b266d8cad1707e826ad6862fc21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96c3b112108680c85e4790b37addbd30"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a96c3b112108680c85e4790b37addbd30"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#a96c3b112108680c85e4790b37addbd30">getValidityCheck</a> () const </td></tr>
+<tr class="memdesc:a96c3b112108680c85e4790b37addbd30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the state validity flag; if this is false, states are not checked for validity. <br/></td></tr>
+<tr class="separator:a96c3b112108680c85e4790b37addbd30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a874fd7d6f65219d166bd2657ba8e21a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a874fd7d6f65219d166bd2657ba8e21a6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#a874fd7d6f65219d166bd2657ba8e21a6">setTryImprove</a> (bool flag)</td></tr>
+<tr class="memdesc:a874fd7d6f65219d166bd2657ba8e21a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the flag that determines whether improvements using hill climbing should be attempted for solutions generated by the genetic algorithm. <br/></td></tr>
+<tr class="separator:a874fd7d6f65219d166bd2657ba8e21a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00e4df3765c0946bb0d8f27715b9b943"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00e4df3765c0946bb0d8f27715b9b943"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#a00e4df3765c0946bb0d8f27715b9b943">getTryImprove</a> () const </td></tr>
+<tr class="memdesc:a00e4df3765c0946bb0d8f27715b9b943"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if improvements using hill climbing should be attempted for solutions generated by the genetic algorithm. Returns false otherwise. <br/></td></tr>
+<tr class="separator:a00e4df3765c0946bb0d8f27715b9b943"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e1bfe0ff0b32538d8e86b9f6aafd65c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e1bfe0ff0b32538d8e86b9f6aafd65c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#a7e1bfe0ff0b32538d8e86b9f6aafd65c">setPoolSize</a> (unsigned int size)</td></tr>
+<tr class="memdesc:a7e1bfe0ff0b32538d8e86b9f6aafd65c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the number of individuals in the population. <br/></td></tr>
+<tr class="separator:a7e1bfe0ff0b32538d8e86b9f6aafd65c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a805bf20d5cc357d85915078d462dd4bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a805bf20d5cc357d85915078d462dd4bf"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#a805bf20d5cc357d85915078d462dd4bf">getPoolSize</a> () const </td></tr>
+<tr class="memdesc:a805bf20d5cc357d85915078d462dd4bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number number of individuals in the population. <br/></td></tr>
+<tr class="separator:a805bf20d5cc357d85915078d462dd4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7d2b17af8b3da5ef2d0e387f40ee7d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae7d2b17af8b3da5ef2d0e387f40ee7d3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#ae7d2b17af8b3da5ef2d0e387f40ee7d3">setPoolMutationSize</a> (unsigned int size)</td></tr>
+<tr class="memdesc:ae7d2b17af8b3da5ef2d0e387f40ee7d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the number of individuals to mutate at each generation. <br/></td></tr>
+<tr class="separator:ae7d2b17af8b3da5ef2d0e387f40ee7d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9cf039bc5450dca11b5f2098aeebdf9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9cf039bc5450dca11b5f2098aeebdf9"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#ac9cf039bc5450dca11b5f2098aeebdf9">getPoolMutationSize</a> () const </td></tr>
+<tr class="memdesc:ac9cf039bc5450dca11b5f2098aeebdf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of individuals that are mutated at each generation. <br/></td></tr>
+<tr class="separator:ac9cf039bc5450dca11b5f2098aeebdf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a657e0ff0af8aec75bcac6c6542703226"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a657e0ff0af8aec75bcac6c6542703226"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#a657e0ff0af8aec75bcac6c6542703226">setPoolRandomSize</a> (unsigned int size)</td></tr>
+<tr class="memdesc:a657e0ff0af8aec75bcac6c6542703226"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the number of individuals to randomly sample at each generation. <br/></td></tr>
+<tr class="separator:a657e0ff0af8aec75bcac6c6542703226"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad91415d83f790f5c6fd5d4d684126561"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad91415d83f790f5c6fd5d4d684126561"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#ad91415d83f790f5c6fd5d4d684126561">getPoolRandomSize</a> () const </td></tr>
+<tr class="memdesc:ad91415d83f790f5c6fd5d4d684126561"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of individuals to randomly sample at each generation. <br/></td></tr>
+<tr class="separator:ad91415d83f790f5c6fd5d4d684126561"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5159ccc66833ed8a99f4e540ecb55252"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5159ccc66833ed8a99f4e540ecb55252"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#a5159ccc66833ed8a99f4e540ecb55252">setRange</a> (double distance)</td></tr>
+<tr class="memdesc:a5159ccc66833ed8a99f4e540ecb55252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the range (distance) to be used when sampling around a state. <br/></td></tr>
+<tr class="separator:a5159ccc66833ed8a99f4e540ecb55252"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86e1df7aaeb1460104bc3093fd981c0e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86e1df7aaeb1460104bc3093fd981c0e"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#a86e1df7aaeb1460104bc3093fd981c0e">getRange</a> () const </td></tr>
+<tr class="memdesc:a86e1df7aaeb1460104bc3093fd981c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the range <a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html" title="Genetic Algorithm for searching valid states. ">GeneticSearch</a> is using. <br/></td></tr>
+<tr class="separator:a86e1df7aaeb1460104bc3093fd981c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc6aec650f165b0b911a52adcea6f0a1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afc6aec650f165b0b911a52adcea6f0a1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html#afc6aec650f165b0b911a52adcea6f0a1">clear</a> ()</td></tr>
+<tr class="memdesc:afc6aec650f165b0b911a52adcea6f0a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the pool of samples. <br/></td></tr>
+<tr class="separator:afc6aec650f165b0b911a52adcea6f0a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Genetic Algorithm for searching valid states. </p>
+<p><a class="anchor" id="GeneticSearch"></a> </p>
+<dl class="section user"><dt>Short description</dt><dd></dd></dl>
+<p><a class="el" href="classompl_1_1geometric_1_1GeneticSearch.html" title="Genetic Algorithm for searching valid states. ">GeneticSearch</a> does search for valid states using a genetic algorithm</p>
+<dl class="section user"><dt>External documentation</dt><dd></dd></dl>
+
+<p>Definition at line <a class="el" href="GeneticSearch_8h_source.html#l00062">62</a> of file <a class="el" href="GeneticSearch_8h_source.html">GeneticSearch.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>ompl/src/ompl/geometric/<a class="el" href="GeneticSearch_8h_source.html">GeneticSearch.h</a></li>
+<li>ompl/src/ompl/geometric/src/<a class="el" href="GeneticSearch_8cpp_source.html">GeneticSearch.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:28 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

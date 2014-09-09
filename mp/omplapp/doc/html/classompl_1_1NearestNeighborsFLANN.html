@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::NearestNeighborsFLANN&lt; _T, _Dist &gt; Class Template Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html">NearestNeighborsFLANN</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="classompl_1_1NearestNeighborsFLANN-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::NearestNeighborsFLANN&lt; _T, _Dist &gt; Class Template Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Wrapper class for nearest neighbor data structures in the FLANN library.  
+ <a href="classompl_1_1NearestNeighborsFLANN.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="NearestNeighborsFLANN_8h_source.html">NearestNeighborsFLANN.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ompl::NearestNeighborsFLANN&lt; _T, _Dist &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="classompl_1_1NearestNeighborsFLANN__inherit__graph.png" border="0" usemap="#ompl_1_1NearestNeighborsFLANN_3_01__T_00_01__Dist_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="ompl_1_1NearestNeighborsFLANN_3_01__T_00_01__Dist_01_4_inherit__map" id="ompl_1_1NearestNeighborsFLANN_3_01__T_00_01__Dist_01_4_inherit__map">
+<area shape="rect" id="node3" href="classompl_1_1NearestNeighborsFLANNHierarchicalClustering.html" title="ompl::NearestNeighborsFLANNHierarchical\lClustering\&lt; _T, _Dist \&gt;" alt="" coords="473,5,749,46"/><area shape="rect" id="node4" href="classompl_1_1NearestNeighborsFLANNLinear.html" title="ompl::NearestNeighborsFLANNLinear\l\&lt; _T, _Dist \&gt;" alt="" coords="489,70,732,111"/><area shape="rect" id="node2" href="classompl_1_1NearestNeighbors.html" title="Abstract representation of a container that can perform nearest neighbors queries. " alt="" coords="5,38,168,79"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a599cd671ca110648be19a2534b450a45"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a599cd671ca110648be19a2534b450a45"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>NearestNeighborsFLANN</b> (const boost::shared_ptr&lt; flann::IndexParams &gt; &amp;params)</td></tr>
+<tr class="separator:a599cd671ca110648be19a2534b450a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa096ed65b68d1057905f9ba0b5bb661e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa096ed65b68d1057905f9ba0b5bb661e"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#aa096ed65b68d1057905f9ba0b5bb661e">clear</a> ()</td></tr>
+<tr class="memdesc:aa096ed65b68d1057905f9ba0b5bb661e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the datastructure. <br/></td></tr>
+<tr class="separator:aa096ed65b68d1057905f9ba0b5bb661e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c9b8e0a29cdd84831c8f6fa675d72a4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c9b8e0a29cdd84831c8f6fa675d72a4"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setDistanceFunction</b> (const typename <a class="el" href="classompl_1_1NearestNeighbors.html">NearestNeighbors</a>&lt; _T &gt;::<a class="el" href="classompl_1_1NearestNeighbors.html#ae13a3c9eaf05e675cdeeb70397c86fc5">DistanceFunction</a> &amp;distFun)</td></tr>
+<tr class="separator:a3c9b8e0a29cdd84831c8f6fa675d72a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00c61f35a45c51f02e1dbcb7489c56ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00c61f35a45c51f02e1dbcb7489c56ed"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#a00c61f35a45c51f02e1dbcb7489c56ed">add</a> (const _T &amp;data)</td></tr>
+<tr class="memdesc:a00c61f35a45c51f02e1dbcb7489c56ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an element to the datastructure. <br/></td></tr>
+<tr class="separator:a00c61f35a45c51f02e1dbcb7489c56ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19bf90d9ad22775cbc167e327b3b963b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19bf90d9ad22775cbc167e327b3b963b"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#a19bf90d9ad22775cbc167e327b3b963b">add</a> (const std::vector&lt; _T &gt; &amp;data)</td></tr>
+<tr class="memdesc:a19bf90d9ad22775cbc167e327b3b963b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a vector of points. <br/></td></tr>
+<tr class="separator:a19bf90d9ad22775cbc167e327b3b963b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a996c09ef23e7225fa30c595030e2eca7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a996c09ef23e7225fa30c595030e2eca7"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#a996c09ef23e7225fa30c595030e2eca7">remove</a> (const _T &amp;data)</td></tr>
+<tr class="memdesc:a996c09ef23e7225fa30c595030e2eca7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an element from the datastructure. <br/></td></tr>
+<tr class="separator:a996c09ef23e7225fa30c595030e2eca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a796d557ada3d401845c92f611ef2a907"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a796d557ada3d401845c92f611ef2a907"></a>
+virtual _T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#a796d557ada3d401845c92f611ef2a907">nearest</a> (const _T &amp;data) const </td></tr>
+<tr class="memdesc:a796d557ada3d401845c92f611ef2a907"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the nearest neighbor of a point. <br/></td></tr>
+<tr class="separator:a796d557ada3d401845c92f611ef2a907"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1e20184db04a2ceb23006001e5aab8d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1e20184db04a2ceb23006001e5aab8d"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#ac1e20184db04a2ceb23006001e5aab8d">nearestK</a> (const _T &amp;data, std::size_t k, std::vector&lt; _T &gt; &amp;nbh) const </td></tr>
+<tr class="memdesc:ac1e20184db04a2ceb23006001e5aab8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the k nearest neighbors in sorted order if searchParams_.sorted==true (the default) <br/></td></tr>
+<tr class="separator:ac1e20184db04a2ceb23006001e5aab8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a426f6a5c45afdff06f4091012155b791"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a426f6a5c45afdff06f4091012155b791"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#a426f6a5c45afdff06f4091012155b791">nearestR</a> (const _T &amp;data, double radius, std::vector&lt; _T &gt; &amp;nbh) const </td></tr>
+<tr class="memdesc:a426f6a5c45afdff06f4091012155b791"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the nearest neighbors within distance <code>radius</code> in sorted order if searchParams_.sorted==true (the default) <br/></td></tr>
+<tr class="separator:a426f6a5c45afdff06f4091012155b791"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc02ea68c02e9b1ede71e9893ff6d220"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc02ea68c02e9b1ede71e9893ff6d220"></a>
+virtual std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#acc02ea68c02e9b1ede71e9893ff6d220">size</a> () const </td></tr>
+<tr class="memdesc:acc02ea68c02e9b1ede71e9893ff6d220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of elements in the datastructure. <br/></td></tr>
+<tr class="separator:acc02ea68c02e9b1ede71e9893ff6d220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08b489871340c9d28001a6e36247b285"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a08b489871340c9d28001a6e36247b285"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#a08b489871340c9d28001a6e36247b285">list</a> (std::vector&lt; _T &gt; &amp;data) const </td></tr>
+<tr class="memdesc:a08b489871340c9d28001a6e36247b285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all the elements in the datastructure. <br/></td></tr>
+<tr class="separator:a08b489871340c9d28001a6e36247b285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e915a64536f5a114c94e03c0a757eb7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#a8e915a64536f5a114c94e03c0a757eb7">setIndexParams</a> (const boost::shared_ptr&lt; flann::IndexParams &gt; &amp;params)</td></tr>
+<tr class="memdesc:a8e915a64536f5a114c94e03c0a757eb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the FLANN index parameters.  <a href="#a8e915a64536f5a114c94e03c0a757eb7">More...</a><br/></td></tr>
+<tr class="separator:a8e915a64536f5a114c94e03c0a757eb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9da6b3ee3714bd563c71373fd98d5703"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9da6b3ee3714bd563c71373fd98d5703"></a>
+virtual const <br class="typebreak"/>
+boost::shared_ptr<br class="typebreak"/>
+&lt; flann::IndexParams &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#a9da6b3ee3714bd563c71373fd98d5703">getIndexParams</a> () const </td></tr>
+<tr class="memdesc:a9da6b3ee3714bd563c71373fd98d5703"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the FLANN parameters used to build the current index. <br/></td></tr>
+<tr class="separator:a9da6b3ee3714bd563c71373fd98d5703"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61713a0d38ec52ee242d3f6b21caaf79"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a61713a0d38ec52ee242d3f6b21caaf79"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#a61713a0d38ec52ee242d3f6b21caaf79">setSearchParams</a> (const flann::SearchParams &amp;searchParams)</td></tr>
+<tr class="memdesc:a61713a0d38ec52ee242d3f6b21caaf79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the FLANN parameters to be used during nearest neighbor searches. <br/></td></tr>
+<tr class="separator:a61713a0d38ec52ee242d3f6b21caaf79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a550e09c5d54d1f157da5385900aef93e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a550e09c5d54d1f157da5385900aef93e"></a>
+flann::SearchParams &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#a550e09c5d54d1f157da5385900aef93e">getSearchParams</a> ()</td></tr>
+<tr class="memdesc:a550e09c5d54d1f157da5385900aef93e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the FLANN parameters used during nearest neighbor searches. <br/></td></tr>
+<tr class="separator:a550e09c5d54d1f157da5385900aef93e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae29224f458a1fe9395b91c3f0084aa3c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae29224f458a1fe9395b91c3f0084aa3c"></a>
+const flann::SearchParams &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#ae29224f458a1fe9395b91c3f0084aa3c">getSearchParams</a> () const </td></tr>
+<tr class="memdesc:ae29224f458a1fe9395b91c3f0084aa3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the FLANN parameters used during nearest neighbor searches. <br/></td></tr>
+<tr class="separator:ae29224f458a1fe9395b91c3f0084aa3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92214690d344584b584abc039797cc38"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a92214690d344584b584abc039797cc38"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getContainerSize</b> () const </td></tr>
+<tr class="separator:a92214690d344584b584abc039797cc38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classompl_1_1NearestNeighbors"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classompl_1_1NearestNeighbors')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classompl_1_1NearestNeighbors.html">ompl::NearestNeighbors&lt; _T &gt;</a></td></tr>
+<tr class="memitem:abb8cd1ac5b87a0a01b27aecab2094d8f inherit pub_methods_classompl_1_1NearestNeighbors"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abb8cd1ac5b87a0a01b27aecab2094d8f"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighbors.html#abb8cd1ac5b87a0a01b27aecab2094d8f">setDistanceFunction</a> (const <a class="el" href="classompl_1_1NearestNeighbors.html#ae13a3c9eaf05e675cdeeb70397c86fc5">DistanceFunction</a> &amp;distFun)</td></tr>
+<tr class="memdesc:abb8cd1ac5b87a0a01b27aecab2094d8f inherit pub_methods_classompl_1_1NearestNeighbors"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the distance function to use. <br/></td></tr>
+<tr class="separator:abb8cd1ac5b87a0a01b27aecab2094d8f inherit pub_methods_classompl_1_1NearestNeighbors"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cdebb14635a8a7ec4c965aa7db89662 inherit pub_methods_classompl_1_1NearestNeighbors"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0cdebb14635a8a7ec4c965aa7db89662"></a>
+const <a class="el" href="classompl_1_1NearestNeighbors.html#ae13a3c9eaf05e675cdeeb70397c86fc5">DistanceFunction</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighbors.html#a0cdebb14635a8a7ec4c965aa7db89662">getDistanceFunction</a> () const </td></tr>
+<tr class="memdesc:a0cdebb14635a8a7ec4c965aa7db89662 inherit pub_methods_classompl_1_1NearestNeighbors"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the distance function used. <br/></td></tr>
+<tr class="separator:a0cdebb14635a8a7ec4c965aa7db89662 inherit pub_methods_classompl_1_1NearestNeighbors"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:aad212794536e6ecfddff9b281fde1e00"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aad212794536e6ecfddff9b281fde1e00"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#aad212794536e6ecfddff9b281fde1e00">createIndex</a> (const flann::Matrix&lt; _T &gt; &amp;mat)</td></tr>
+<tr class="memdesc:aad212794536e6ecfddff9b281fde1e00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal function to construct nearest neighbor data structure with initial elements stored in mat. <br/></td></tr>
+<tr class="separator:aad212794536e6ecfddff9b281fde1e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b935f8afe093da0397144ca500f0afc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b935f8afe093da0397144ca500f0afc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#a7b935f8afe093da0397144ca500f0afc">rebuildIndex</a> (unsigned int capacity=0)</td></tr>
+<tr class="memdesc:a7b935f8afe093da0397144ca500f0afc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rebuild the nearest neighbor data structure (necessary when changing the distance function or index parameters). <br/></td></tr>
+<tr class="separator:a7b935f8afe093da0397144ca500f0afc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a5a261a5041d8dbf0708c929ad77728"><td class="memTemplParams" colspan="2"><a class="anchor" id="a2a5a261a5041d8dbf0708c929ad77728"></a>
+template&lt;&gt; </td></tr>
+<tr class="memitem:a2a5a261a5041d8dbf0708c929ad77728"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>createIndex</b> (const flann::Matrix&lt; double &gt; &amp;mat)</td></tr>
+<tr class="separator:a2a5a261a5041d8dbf0708c929ad77728"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a5cff9cb3adfe57413fa7dbf17ed32c2e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5cff9cb3adfe57413fa7dbf17ed32c2e"></a>
+std::vector&lt; _T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#a5cff9cb3adfe57413fa7dbf17ed32c2e">data_</a></td></tr>
+<tr class="memdesc:a5cff9cb3adfe57413fa7dbf17ed32c2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">vector of data stored in FLANN's index. FLANN only indexes references, so we need store the original data. <br/></td></tr>
+<tr class="separator:a5cff9cb3adfe57413fa7dbf17ed32c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3a4cee81352c5baa2526b0579bf0206"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab3a4cee81352c5baa2526b0579bf0206"></a>
+flann::Index&lt; _Dist &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#ab3a4cee81352c5baa2526b0579bf0206">index_</a></td></tr>
+<tr class="memdesc:ab3a4cee81352c5baa2526b0579bf0206"><td class="mdescLeft">&#160;</td><td class="mdescRight">The FLANN index (the actual index type depends on params_). <br/></td></tr>
+<tr class="separator:ab3a4cee81352c5baa2526b0579bf0206"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a713bbdb67cd5fc86931eda7d17fa542b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a713bbdb67cd5fc86931eda7d17fa542b"></a>
+boost::shared_ptr<br class="typebreak"/>
+&lt; flann::IndexParams &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#a713bbdb67cd5fc86931eda7d17fa542b">params_</a></td></tr>
+<tr class="memdesc:a713bbdb67cd5fc86931eda7d17fa542b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The FLANN index parameters. This contains both the type of index and the parameters for that type. <br/></td></tr>
+<tr class="separator:a713bbdb67cd5fc86931eda7d17fa542b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab15a612bcea206654d9ff23b36a719bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab15a612bcea206654d9ff23b36a719bd"></a>
+flann::SearchParams&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#ab15a612bcea206654d9ff23b36a719bd">searchParams_</a></td></tr>
+<tr class="memdesc:ab15a612bcea206654d9ff23b36a719bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parameters used to seach for nearest neighbors. <br/></td></tr>
+<tr class="separator:ab15a612bcea206654d9ff23b36a719bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64354375954f00fce065c2520ee8bba3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64354375954f00fce065c2520ee8bba3"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighborsFLANN.html#a64354375954f00fce065c2520ee8bba3">dimension_</a></td></tr>
+<tr class="memdesc:a64354375954f00fce065c2520ee8bba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">If each element has an array-like structure that is exposed to FLANN, then the dimension_ needs to be set to the length of this array. <br/></td></tr>
+<tr class="separator:a64354375954f00fce065c2520ee8bba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classompl_1_1NearestNeighbors"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classompl_1_1NearestNeighbors')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classompl_1_1NearestNeighbors.html">ompl::NearestNeighbors&lt; _T &gt;</a></td></tr>
+<tr class="memitem:a6f15f3b591fb69b91ca35e504723b54f inherit pro_attribs_classompl_1_1NearestNeighbors"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f15f3b591fb69b91ca35e504723b54f"></a>
+<a class="el" href="classompl_1_1NearestNeighbors.html#ae13a3c9eaf05e675cdeeb70397c86fc5">DistanceFunction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighbors.html#a6f15f3b591fb69b91ca35e504723b54f">distFun_</a></td></tr>
+<tr class="memdesc:a6f15f3b591fb69b91ca35e504723b54f inherit pro_attribs_classompl_1_1NearestNeighbors"><td class="mdescLeft">&#160;</td><td class="mdescRight">The used distance function. <br/></td></tr>
+<tr class="separator:a6f15f3b591fb69b91ca35e504723b54f inherit pro_attribs_classompl_1_1NearestNeighbors"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_types_classompl_1_1NearestNeighbors"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classompl_1_1NearestNeighbors')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classompl_1_1NearestNeighbors.html">ompl::NearestNeighbors&lt; _T &gt;</a></td></tr>
+<tr class="memitem:ae13a3c9eaf05e675cdeeb70397c86fc5 inherit pub_types_classompl_1_1NearestNeighbors"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae13a3c9eaf05e675cdeeb70397c86fc5"></a>
+typedef boost::function<br class="typebreak"/>
+&lt; double(const _T &amp;, const _T &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1NearestNeighbors.html#ae13a3c9eaf05e675cdeeb70397c86fc5">DistanceFunction</a></td></tr>
+<tr class="memdesc:ae13a3c9eaf05e675cdeeb70397c86fc5 inherit pub_types_classompl_1_1NearestNeighbors"><td class="mdescLeft">&#160;</td><td class="mdescRight">The definition of a distance function. <br/></td></tr>
+<tr class="separator:ae13a3c9eaf05e675cdeeb70397c86fc5 inherit pub_types_classompl_1_1NearestNeighbors"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename _T, typename _Dist = FLANNDistance&lt;_T&gt;&gt;<br/>
+class ompl::NearestNeighborsFLANN&lt; _T, _Dist &gt;</h3>
+
+<p>Wrapper class for nearest neighbor data structures in the FLANN library. </p>
+<p>See: M. Muja and D.G. Lowe, "Fast Approximate Nearest Neighbors with
+Automatic Algorithm Configuration", in International Conference on Computer Vision Theory and Applications (VISAPP'09), 2009. <a href="http://people.cs.ubc.ca/~mariusm/index.php/FLANN/FLANN">http://people.cs.ubc.ca/~mariusm/index.php/FLANN/FLANN</a> </p>
+
+<p>Definition at line <a class="el" href="NearestNeighborsFLANN_8h_source.html#l00087">87</a> of file <a class="el" href="NearestNeighborsFLANN_8h_source.html">NearestNeighborsFLANN.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a8e915a64536f5a114c94e03c0a757eb7"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename _T , typename _Dist  = FLANNDistance&lt;_T&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="classompl_1_1NearestNeighborsFLANN.html">ompl::NearestNeighborsFLANN</a>&lt; _T, _Dist &gt;::setIndexParams </td>
+          <td>(</td>
+          <td class="paramtype">const boost::shared_ptr&lt; flann::IndexParams &gt; &amp;&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the FLANN index parameters. </p>
+<p>The parameters determine the type of nearest neighbor data structure to be constructed. </p>
+
+<p>Definition at line <a class="el" href="NearestNeighborsFLANN_8h_source.html#l00235">235</a> of file <a class="el" href="NearestNeighborsFLANN_8h_source.html">NearestNeighborsFLANN.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>ompl/src/ompl/datastructures/<a class="el" href="NearestNeighborsFLANN_8h_source.html">NearestNeighborsFLANN.h</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:27 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

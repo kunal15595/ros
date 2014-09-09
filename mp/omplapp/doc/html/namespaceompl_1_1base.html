@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::base Namespace Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1base.html">base</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::base Namespace Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>This namespace contains sampling based planning routines shared by both planning under geometric constraints (geometric) and planning under differential constraints (dynamic)  
+<a href="#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a cost value. Can represent the cost of a motion or the cost of a state.  <a href="structompl_1_1base_1_1Cost.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1DiscreteMotionValidator.html">DiscreteMotionValidator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A motion validator that only uses the state validity checker. Motions are checked for validity at a specified resolution.  <a href="classompl_1_1base_1_1DiscreteMotionValidator.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1GenericParam.html">GenericParam</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Motion planning algorithms often employ parameters to guide their exploration process. (e.g., goal biasing). Motion planners (and some of their components) use this class to declare what the parameters are, in a generic way, so that they can be set externally.  <a href="classompl_1_1base_1_1GenericParam.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpecificParam.html">SpecificParam</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a helper class that instantiates parameters with different data types.  <a href="classompl_1_1base_1_1SpecificParam.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html">ParamSet</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maintain a set of parameters.  <a href="classompl_1_1base_1_1ParamSet.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Goal.html">Goal</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract definition of goals.  <a href="classompl_1_1base_1_1Goal.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1GoalLazySamples.html">GoalLazySamples</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a goal region that can be sampled, but the sampling process can be slow. This class allows sampling the happen in a separate thread, and the number of goals may increase, as the planner is running, in a thread-safe manner.  <a href="classompl_1_1base_1_1GoalLazySamples.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1GoalRegion.html">GoalRegion</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a goal region.  <a href="classompl_1_1base_1_1GoalRegion.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1GoalSampleableRegion.html">GoalSampleableRegion</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract definition of a goal region that can be sampled.  <a href="classompl_1_1base_1_1GoalSampleableRegion.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1GoalState.html">GoalState</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a goal state.  <a href="classompl_1_1base_1_1GoalState.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1GoalStates.html">GoalStates</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a set of goal states.  <a href="classompl_1_1base_1_1GoalStates.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MotionValidator.html">MotionValidator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract definition for a class checking the validity of motions &ndash; path segments between states. This is often called a local planner. The implementation of this class must be thread safe.  <a href="classompl_1_1base_1_1MotionValidator.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MaximizeMinClearanceObjective.html">MaximizeMinClearanceObjective</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Objective for attempting to maximize the minimum clearance along a path.  <a href="classompl_1_1base_1_1MaximizeMinClearanceObjective.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MechanicalWorkOptimizationObjective.html">MechanicalWorkOptimizationObjective</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An optimization objective which defines path cost using the idea of mechanical work. To be used in conjunction with TRRT.  <a href="classompl_1_1base_1_1MechanicalWorkOptimizationObjective.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MinimaxObjective.html">MinimaxObjective</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The cost of a path is defined as the worst state cost over the entire path. This objective attempts to find the path with the "best worst cost" over all paths.  <a href="classompl_1_1base_1_1MinimaxObjective.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1PathLengthOptimizationObjective.html">PathLengthOptimizationObjective</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An optimization objective which corresponds to optimizing path length.  <a href="classompl_1_1base_1_1PathLengthOptimizationObjective.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateCostIntegralObjective.html">StateCostIntegralObjective</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines optimization objectives where path cost can be represented as a path integral over a cost function defined over the state space. This cost function is specified by implementing the <a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#af589c396f89c8d54b4e36e87b6227220" title="Evaluate a cost map defined on the state space at a state s. Default implementation maps all states t...">stateCost()</a> method.  <a href="classompl_1_1base_1_1StateCostIntegralObjective.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html">OptimizationObjective</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract definition of optimization objectives.  <a href="classompl_1_1base_1_1OptimizationObjective.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html">MultiOptimizationObjective</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class allows for the definition of multiobjective optimal planning problems. Objectives are added to this compound object, and motion costs are computed by taking a weighted sum of the individual objective costs.  <a href="classompl_1_1base_1_1MultiOptimizationObjective.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Path.html">Path</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract definition of a path.  <a href="classompl_1_1base_1_1Path.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1PlannerInputStates.html">PlannerInputStates</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper class to extract valid start &amp; goal states. Usually used internally by planners.  <a href="classompl_1_1base_1_1PlannerInputStates.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structompl_1_1base_1_1PlannerSpecs.html">PlannerSpecs</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Properties that planners may have.  <a href="structompl_1_1base_1_1PlannerSpecs.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1Planner.html">Planner</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for a planner.  <a href="classompl_1_1base_1_1Planner.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1PlannerDataVertex.html">PlannerDataVertex</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for a vertex in the <a class="el" href="classompl_1_1base_1_1PlannerData.html" title="Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...">PlannerData</a> structure. All derived classes must implement the clone and equivalence operators. It is assumed that each vertex in the <a class="el" href="classompl_1_1base_1_1PlannerData.html" title="Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...">PlannerData</a> structure is unique (i.e. no duplicates allowed).  <a href="classompl_1_1base_1_1PlannerDataVertex.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1PlannerDataEdge.html">PlannerDataEdge</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for a <a class="el" href="classompl_1_1base_1_1PlannerData.html" title="Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...">PlannerData</a> edge.  <a href="classompl_1_1base_1_1PlannerDataEdge.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1PlannerData.html">PlannerData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Object containing planner generated vertex and edge data. It is assumed that all vertices are unique, and only a single directed edge connects two vertices.  <a href="classompl_1_1base_1_1PlannerData.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1PlannerDataStorage.html">PlannerDataStorage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Object that handles loading/storing a <a class="el" href="classompl_1_1base_1_1PlannerData.html" title="Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...">PlannerData</a> object to/from a binary stream. Serialization of vertices and edges is performed using the Boost archive method <em>serialize</em>. Derived vertex/edge classes are handled, presuming those classes implement the <em>serialize</em> method.  <a href="classompl_1_1base_1_1PlannerDataStorage.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structompl_1_1base_1_1PlannerStatus.html">PlannerStatus</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class to store the exit status of <a class="el" href="classompl_1_1base_1_1Planner.html#aea8c56d18a0326b10fd111872ebd674a" title="Function that can solve the motion planning problem. This function can be called multiple times on th...">Planner::solve()</a>  <a href="structompl_1_1base_1_1PlannerStatus.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html">PlannerTerminationCondition</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encapsulate a termination condition for a motion planner. Planners will call operator() to decide whether they should terminate before a solution is found or not. operator() will return true if either the implemented condition is met (the call to <a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html#ade0fe329cab3f522fc2922f5ccf94496" title="The implementation of some termination condition. By default, this just calls fn_() ...">eval()</a> returns true) or if the user called terminate(true).  <a href="classompl_1_1base_1_1PlannerTerminationCondition.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1PrecomputedStateSampler.html">PrecomputedStateSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> space sampler for discrete states.  <a href="classompl_1_1base_1_1PrecomputedStateSampler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structompl_1_1base_1_1PlannerSolution.html">PlannerSolution</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Representation of a solution to a planning problem.  <a href="structompl_1_1base_1_1PlannerSolution.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinition.html">ProblemDefinition</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a problem to be solved. This includes the start state(s) for the system and a goal specification. Will contain solutions, if found.  <a href="classompl_1_1base_1_1ProblemDefinition.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionMatrix.html">ProjectionMatrix</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A projection matrix &ndash; it allows multiplication of real vectors by a specified matrix. The matrix can also be randomly generated.  <a href="classompl_1_1base_1_1ProjectionMatrix.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html">ProjectionEvaluator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract definition for a class computing projections to R<sup>n</sup>. Implicit integer grids are imposed on this projection space by setting cell sizes. Before use, the user must supply cell sizes for the integer grid (<a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a159e26be9f83a75a001ad2d3ba477f71" title="Define the size (in each dimension) of a grid cell. The number of sizes set here must be the same as ...">setCellSizes()</a>). The implementation of this class is thread safe.  <a href="classompl_1_1base_1_1ProjectionEvaluator.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SubspaceProjectionEvaluator.html">SubspaceProjectionEvaluator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the projection for a <a class="el" href="classompl_1_1base_1_1CompoundStateSpace.html" title="A space to allow the composition of state spaces. ">CompoundStateSpace</a> is supposed to be the same as the one for one of its included subspaces, this class facilitates selecting a projection of that subspace.  <a href="classompl_1_1base_1_1SubspaceProjectionEvaluator.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1GaussianValidStateSampler.html">GaussianValidStateSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate valid samples using the Gaussian sampling strategy.  <a href="classompl_1_1base_1_1GaussianValidStateSampler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MaximizeClearanceValidStateSampler.html">MaximizeClearanceValidStateSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate valid samples randomly, but with a bias towards higher clearance.  <a href="classompl_1_1base_1_1MaximizeClearanceValidStateSampler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ObstacleBasedValidStateSampler.html">ObstacleBasedValidStateSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate valid samples using obstacle based sampling. First sample an invalid state, then sample a valid state. Then, interpolate from the invalid state to the valid state, returning the first valid state encountered.  <a href="classompl_1_1base_1_1ObstacleBasedValidStateSampler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1UniformValidStateSampler.html">UniformValidStateSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A state sampler that only samples valid states, uniformly.  <a href="classompl_1_1base_1_1UniformValidStateSampler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a scoped state.  <a href="classompl_1_1base_1_1ScopedState.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SolutionNonExistenceProof.html">SolutionNonExistenceProof</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract definition of a proof for the non-existence of a solution to a problem.  <a href="classompl_1_1base_1_1SolutionNonExistenceProof.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformation.html">SpaceInformation</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The base class for space information. This contains all the information about the space planning is done in. <a class="el" href="classompl_1_1base_1_1SpaceInformation.html#a6e8c41f946c3c04d126983e145404ad4" title="Perform additional setup tasks (run once, before use). If state validity checking resolution has not ...">setup()</a> needs to be called as well, before use.  <a href="classompl_1_1base_1_1SpaceInformation.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1DiscreteStateSampler.html">DiscreteStateSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> space sampler for discrete states.  <a href="classompl_1_1base_1_1DiscreteStateSampler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1DiscreteStateSpace.html">DiscreteStateSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A space representing discrete states; i.e. there are a small number of discrete states the system can be in. States are represented as integers [lowerBound, upperBound], where lowerBound and upperBound are inclusive. States do not wrap around; i.e. the distance between state lowerBound and state upperBound is upperBound-lowerBound. The dimension of the space is 1.  <a href="classompl_1_1base_1_1DiscreteStateSpace.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1DubinsStateSpace.html">DubinsStateSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An SE(2) state space where distance is measured by the length of Dubins curves.  <a href="classompl_1_1base_1_1DubinsStateSpace.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1DubinsMotionValidator.html">DubinsMotionValidator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Dubins motion validator that only uses the state validity checker. Motions are checked for validity at a specified resolution.  <a href="classompl_1_1base_1_1DubinsMotionValidator.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">RealVectorBounds</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The lower and upper bounds for an R<sup>n</sup> space.  <a href="classompl_1_1base_1_1RealVectorBounds.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorLinearProjectionEvaluator.html">RealVectorLinearProjectionEvaluator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition for a class computing linear projections (multiplication of a k-by-n matrix to the the R<sup>n</sup> vector state to produce an R<sup>k</sup> projection. The multiplication matrix needs to be supplied as input.  <a href="classompl_1_1base_1_1RealVectorLinearProjectionEvaluator.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorRandomLinearProjectionEvaluator.html">RealVectorRandomLinearProjectionEvaluator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition for a class computing a random linear projections.  <a href="classompl_1_1base_1_1RealVectorRandomLinearProjectionEvaluator.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html">RealVectorOrthogonalProjectionEvaluator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition for a class computing orthogonal projections.  <a href="classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorIdentityProjectionEvaluator.html">RealVectorIdentityProjectionEvaluator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the identity projection.  <a href="classompl_1_1base_1_1RealVectorIdentityProjectionEvaluator.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorStateSampler.html">RealVectorStateSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> sampler for the R<sup>n</sup> state space.  <a href="classompl_1_1base_1_1RealVectorStateSampler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1RealVectorStateSpace.html">RealVectorStateSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A state space representing R<sup>n</sup>. The distance function is the L2 norm.  <a href="classompl_1_1base_1_1RealVectorStateSpace.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ReedsSheppStateSpace.html">ReedsSheppStateSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An SE(2) state space where distance is measured by the length of Reeds-Shepp curves.  <a href="classompl_1_1base_1_1ReedsSheppStateSpace.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ReedsSheppMotionValidator.html">ReedsSheppMotionValidator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Reeds-Shepp motion validator that only uses the state validity checker. Motions are checked for validity at a specified resolution.  <a href="classompl_1_1base_1_1ReedsSheppMotionValidator.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SE2StateSpace.html">SE2StateSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A state space representing SE(2)  <a href="classompl_1_1base_1_1SE2StateSpace.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SE3StateSpace.html">SE3StateSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A state space representing SE(3)  <a href="classompl_1_1base_1_1SE3StateSpace.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SO2StateSampler.html">SO2StateSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> space sampler for SO(2)  <a href="classompl_1_1base_1_1SO2StateSampler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SO2StateSpace.html">SO2StateSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A state space representing SO(2). The distance function and interpolation take into account angle wrapping.  <a href="classompl_1_1base_1_1SO2StateSpace.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SO3StateSampler.html">SO3StateSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> space sampler for SO(3), using quaternion representation.  <a href="classompl_1_1base_1_1SO3StateSampler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SO3StateSpace.html">SO3StateSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A state space representing SO(3). The internal representation is done with quaternions. The distance between states is the angle between quaternions and interpolation is done with slerp.  <a href="classompl_1_1base_1_1SO3StateSpace.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1TimeStateSampler.html">TimeStateSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> space sampler for time.  <a href="classompl_1_1base_1_1TimeStateSampler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1TimeStateSpace.html">TimeStateSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A state space representing time. The time can be unbounded, in which case <a class="el" href="classompl_1_1base_1_1TimeStateSpace.html#ae7b9f46ae062b26b9addb4504be6d7f9" title="Bring the state within the bounds of the state space. For unbounded spaces this function can be a no-...">enforceBounds()</a> is a no-op, <a class="el" href="classompl_1_1base_1_1TimeStateSpace.html#a91ff776b4e89de630adaf1225864010c" title="Check if a state is inside the bounding box. For unbounded spaces this function can always return tru...">satisfiesBounds()</a> always returns true, sampling uniform time states always produces time 0 and <a class="el" href="classompl_1_1base_1_1TimeStateSpace.html#ae7b29110da89f97709a4d259e02a368f" title="Get the maximum value a call to distance() can return (or an upper bound). For unbounded state spaces...">getMaximumExtent()</a> returns 1. If time is bounded (<a class="el" href="classompl_1_1base_1_1TimeStateSpace.html#a3c51355b0e7e620ba7da19c85cac93ee" title="Set the minimum and maximum time bounds. This will make the state space switch into bounded time mode...">setBounds()</a> has been previously called), the state space behaves as expected. After construction, the state space is unbounded. <a class="el" href="classompl_1_1base_1_1TimeStateSpace.html#a803bbf7c307d3dd2520d5556638462f4" title="Check if the time is bounded or not. ">isBounded()</a> can be used to check if the state space is bounded or not.  <a href="classompl_1_1base_1_1TimeStateSpace.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1State.html">State</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of an abstract state.  <a href="classompl_1_1base_1_1State.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1CompoundState.html">CompoundState</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a compound state.  <a href="classompl_1_1base_1_1CompoundState.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateSampler.html">StateSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract definition of a state space sampler.  <a href="classompl_1_1base_1_1StateSampler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1CompoundStateSampler.html">CompoundStateSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a compound state sampler. This is useful to construct samplers for compound states.  <a href="classompl_1_1base_1_1CompoundStateSampler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SubspaceStateSampler.html">SubspaceStateSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a sampler that samples only within a subspace of the space.  <a href="classompl_1_1base_1_1SubspaceStateSampler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structompl_1_1base_1_1SamplerSelector.html">SamplerSelector</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Depending on the type of state sampler, we have different allocation routines.  <a href="structompl_1_1base_1_1SamplerSelector.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateSamplerArray.html">StateSamplerArray</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class to ease the creation of a set of samplers. This is especially useful for multi-threaded planners.  <a href="classompl_1_1base_1_1StateSamplerArray.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateSpace.html">StateSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined.  <a href="classompl_1_1base_1_1StateSpace.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1CompoundStateSpace.html">CompoundStateSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A space to allow the composition of state spaces.  <a href="classompl_1_1base_1_1CompoundStateSpace.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorage.html">StateStorage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manage loading and storing for a set of states of a specified state space.  <a href="classompl_1_1base_1_1StateStorage.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html">StateStorageWithMetadata</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> storage that allows storing state metadata as well.  <a href="classompl_1_1base_1_1StateStorageWithMetadata.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structompl_1_1base_1_1StateValidityCheckerSpecs.html">StateValidityCheckerSpecs</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Properties that a state validity checker may have.  <a href="structompl_1_1base_1_1StateValidityCheckerSpecs.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateValidityChecker.html">StateValidityChecker</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract definition for a class checking the validity of states. The implementation of this class must be thread safe.  <a href="classompl_1_1base_1_1StateValidityChecker.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1AllValidStateValidityChecker.html">AllValidStateValidityChecker</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The simplest state validity checker: all states are valid.  <a href="classompl_1_1base_1_1AllValidStateValidityChecker.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ValidStateSampler.html">ValidStateSampler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract definition of a state sampler.  <a href="classompl_1_1base_1_1ValidStateSampler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MorseEnvironment.html">MorseEnvironment</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class contains the MORSE constructs OMPL needs to know about when planning.  <a href="classompl_1_1base_1_1MorseEnvironment.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MorseGoal.html">MorseGoal</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a goal class that is more amenable to Python.  <a href="classompl_1_1base_1_1MorseGoal.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MorseProjection.html">MorseProjection</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class implements a generic projection for the <a class="el" href="classompl_1_1base_1_1MorseStateSpace.html" title="State space representing MORSE states. ">MorseStateSpace</a>, namely, the subspace representing the x and y positions of every rigid body.  <a href="classompl_1_1base_1_1MorseProjection.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MorseStateSpace.html">MorseStateSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> space representing MORSE states.  <a href="classompl_1_1base_1_1MorseStateSpace.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MorseStateValidityChecker.html">MorseStateValidityChecker</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The simplest state validity checker: all states are valid if they are within bounds.  <a href="classompl_1_1base_1_1MorseStateValidityChecker.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MorseTerminationCondition.html">MorseTerminationCondition</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class represents a termination condition for the planner that only terminates if the user shuts down the MORSE simulation.  <a href="classompl_1_1base_1_1MorseTerminationCondition.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1GoalPtr.html">GoalPtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1Goal.html" title="Abstract definition of goals. ">ompl::base::Goal</a>.  <a href="classompl_1_1base_1_1GoalPtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MotionValidatorPtr.html">MotionValidatorPtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1MotionValidator.html" title="Abstract definition for a class checking the validity of motions – path segments between states...">ompl::base::MotionValidator</a>.  <a href="classompl_1_1base_1_1MotionValidatorPtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1OptimizationObjective.html" title="Abstract definition of optimization objectives. ">ompl::base::OptimizationObjective</a>.  <a href="classompl_1_1base_1_1OptimizationObjectivePtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1PathPtr.html">PathPtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1Path.html" title="Abstract definition of a path. ">ompl::base::Path</a>.  <a href="classompl_1_1base_1_1PathPtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1PlannerPtr.html">PlannerPtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1Planner.html" title="Base class for a planner. ">ompl::base::Planner</a>.  <a href="classompl_1_1base_1_1PlannerPtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1PlannerDataPtr.html">PlannerDataPtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1PlannerData.html" title="Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...">ompl::base::PlannerData</a>.  <a href="classompl_1_1base_1_1PlannerDataPtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProblemDefinitionPtr.html">ProblemDefinitionPtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1ProblemDefinition.html" title="Definition of a problem to be solved. This includes the start state(s) for the system and a goal spec...">ompl::base::ProblemDefinition</a>.  <a href="classompl_1_1base_1_1ProblemDefinitionPtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ProjectionEvaluatorPtr.html">ProjectionEvaluatorPtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html" title="Abstract definition for a class computing projections to Rn. Implicit integer grids are imposed on th...">ompl::base::ProjectionEvaluator</a>.  <a href="classompl_1_1base_1_1ProjectionEvaluatorPtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SolutionNonExistenceProofPtr.html">SolutionNonExistenceProofPtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1SolutionNonExistenceProof.html" title="Abstract definition of a proof for the non-existence of a solution to a problem. ">ompl::base::SolutionNonExistenceProof</a>.  <a href="classompl_1_1base_1_1SolutionNonExistenceProofPtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1SpaceInformation.html" title="The base class for space information. This contains all the information about the space planning is d...">ompl::base::SpaceInformation</a>.  <a href="classompl_1_1base_1_1SpaceInformationPtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateSamplerPtr.html">StateSamplerPtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1StateSampler.html" title="Abstract definition of a state space sampler. ">ompl::base::StateSampler</a>.  <a href="classompl_1_1base_1_1StateSamplerPtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1StateSpace.html" title="Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. ">ompl::base::StateSpace</a>.  <a href="classompl_1_1base_1_1StateSpacePtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StateValidityCheckerPtr.html">StateValidityCheckerPtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1StateValidityChecker.html" title="Abstract definition for a class checking the validity of states. The implementation of this class mus...">ompl::base::StateValidityChecker</a>.  <a href="classompl_1_1base_1_1StateValidityCheckerPtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ValidStateSamplerPtr.html">ValidStateSamplerPtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1ValidStateSampler.html" title="Abstract definition of a state sampler. ">ompl::base::ValidStateSampler</a>.  <a href="classompl_1_1base_1_1ValidStateSamplerPtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1StatePropagatorPtr.html">StatePropagatorPtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1control_1_1StatePropagator.html" title="Model the effect of controls on system states. ">ompl::control::StatePropagator</a>.  <a href="classompl_1_1base_1_1StatePropagatorPtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MorseEnvironmentPtr.html">MorseEnvironmentPtr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boost shared pointer wrapper for <a class="el" href="classompl_1_1base_1_1MorseEnvironment.html" title="This class contains the MORSE constructs OMPL needs to know about when planning. ">ompl::base::MorseEnvironment</a>.  <a href="classompl_1_1base_1_1MorseEnvironmentPtr.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:afea4cb1282c6a1d85250f7ebcf1d78c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afea4cb1282c6a1d85250f7ebcf1d78c4"></a>
+typedef boost::function&lt; bool(const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1GoalLazySamples.html">GoalLazySamples</a> *, <a class="el" href="classompl_1_1base_1_1State.html">State</a> *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#afea4cb1282c6a1d85250f7ebcf1d78c4">GoalSamplingFn</a></td></tr>
+<tr class="memdesc:afea4cb1282c6a1d85250f7ebcf1d78c4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classompl_1_1base_1_1Goal.html" title="Abstract definition of goals. ">Goal</a> sampling function. Returns false when no further calls should be made to it. Fills its second argument (the state) with the sampled goal state. This function need not be thread safe. <br/></td></tr>
+<tr class="separator:afea4cb1282c6a1d85250f7ebcf1d78c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f113aa9c3d10539fca0d99d7a9e69e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f113aa9c3d10539fca0d99d7a9e69e9"></a>
+typedef boost::function&lt; <a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>(const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1State.html">State</a> *, const <a class="el" href="classompl_1_1base_1_1Goal.html">Goal</a> *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a8f113aa9c3d10539fca0d99d7a9e69e9">CostToGoHeuristic</a></td></tr>
+<tr class="memdesc:a8f113aa9c3d10539fca0d99d7a9e69e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The definition of a function which returns an admissible estimate of the optimal path cost from a given state to a goal. <br/></td></tr>
+<tr class="separator:a8f113aa9c3d10539fca0d99d7a9e69e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6f2d533928363e12d3753457db3a69b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa6f2d533928363e12d3753457db3a69b"></a>
+typedef boost::function<br class="typebreak"/>
+&lt; <a class="el" href="classompl_1_1base_1_1PlannerPtr.html">PlannerPtr</a>(const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#aa6f2d533928363e12d3753457db3a69b">PlannerAllocator</a></td></tr>
+<tr class="memdesc:aa6f2d533928363e12d3753457db3a69b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a function that can allocate a planner. <br/></td></tr>
+<tr class="separator:aa6f2d533928363e12d3753457db3a69b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fd3e25e86865682038a538289c9f3f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9fd3e25e86865682038a538289c9f3f6"></a>
+typedef boost::function&lt; bool()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a9fd3e25e86865682038a538289c9f3f6">PlannerTerminationConditionFn</a></td></tr>
+<tr class="memdesc:a9fd3e25e86865682038a538289c9f3f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signature for functions that decide whether termination conditions have been met for a planner, even if no solution is found. This is usually reaching a time or memory limit. If the function returns true, the planner is signaled to terminate its computation. Otherwise, computation continues while this function returns false, until a solution is found. <br/></td></tr>
+<tr class="separator:a9fd3e25e86865682038a538289c9f3f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01cfb1e28af37bb139841342cb4afb0c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01cfb1e28af37bb139841342cb4afb0c"></a>
+typedef std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a01cfb1e28af37bb139841342cb4afb0c">ProjectionCoordinates</a></td></tr>
+<tr class="memdesc:a01cfb1e28af37bb139841342cb4afb0c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classompl_1_1Grid.html" title="Representation of a simple grid. ">Grid</a> cells corresponding to a projection value are described in terms of their coordinates. <br/></td></tr>
+<tr class="separator:a01cfb1e28af37bb139841342cb4afb0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa83f2e90d56884b236b1e400d116b10b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa83f2e90d56884b236b1e400d116b10b"></a>
+typedef <br class="typebreak"/>
+boost::numeric::ublas::vector<br class="typebreak"/>
+&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#aa83f2e90d56884b236b1e400d116b10b">EuclideanProjection</a></td></tr>
+<tr class="memdesc:aa83f2e90d56884b236b1e400d116b10b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The datatype for state projections. This class contains a real vector. <br/></td></tr>
+<tr class="separator:aa83f2e90d56884b236b1e400d116b10b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2366ab3e3b91738fe0b51bafabf50a83"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2366ab3e3b91738fe0b51bafabf50a83"></a>
+typedef boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a2366ab3e3b91738fe0b51bafabf50a83">ScopedStatePtr</a></td></tr>
+<tr class="memdesc:a2366ab3e3b91738fe0b51bafabf50a83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared pointer to a ScopedState&lt;&gt; <br/></td></tr>
+<tr class="separator:a2366ab3e3b91738fe0b51bafabf50a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53fa8a46a28674eaa17899b2026f7b75"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53fa8a46a28674eaa17899b2026f7b75"></a>
+typedef boost::function&lt; bool(const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1State.html">State</a> *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a53fa8a46a28674eaa17899b2026f7b75">StateValidityCheckerFn</a></td></tr>
+<tr class="memdesc:a53fa8a46a28674eaa17899b2026f7b75"><td class="mdescLeft">&#160;</td><td class="mdescRight">If no state validity checking class is specified (<a class="el" href="classompl_1_1base_1_1StateValidityChecker.html" title="Abstract definition for a class checking the validity of states. The implementation of this class mus...">StateValidityChecker</a>), a boost function can be specified instead. <br/></td></tr>
+<tr class="separator:a53fa8a46a28674eaa17899b2026f7b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0898b21bd2fed51298626f7be55779b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0898b21bd2fed51298626f7be55779b8"></a>
+typedef boost::function<br class="typebreak"/>
+&lt; <a class="el" href="classompl_1_1base_1_1StateSamplerPtr.html">StateSamplerPtr</a>(const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1StateSpace.html">StateSpace</a> *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a0898b21bd2fed51298626f7be55779b8">StateSamplerAllocator</a></td></tr>
+<tr class="memdesc:a0898b21bd2fed51298626f7be55779b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a function that can allocate a state sampler. <br/></td></tr>
+<tr class="separator:a0898b21bd2fed51298626f7be55779b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22b265d9afab284f0d4a1ad22d339a9a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22b265d9afab284f0d4a1ad22d339a9a"></a>
+typedef <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1StateStorageWithMetadata.html">StateStorageWithMetadata</a><br class="typebreak"/>
+&lt; std::vector&lt; std::size_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a22b265d9afab284f0d4a1ad22d339a9a">GraphStateStorage</a></td></tr>
+<tr class="memdesc:a22b265d9afab284f0d4a1ad22d339a9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Storage of states where the metadata is a vector of indices. This is is typically used to store a graph. <br/></td></tr>
+<tr class="separator:a22b265d9afab284f0d4a1ad22d339a9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a069d0949c58fb5fd3bfac955a80ad739"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a069d0949c58fb5fd3bfac955a80ad739"></a>
+typedef boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="namespaceompl_1_1base.html#a22b265d9afab284f0d4a1ad22d339a9a">GraphStateStorage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GraphStateStoragePtr</b></td></tr>
+<tr class="separator:a069d0949c58fb5fd3bfac955a80ad739"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a169b699697e871752924a93e8254e3f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a169b699697e871752924a93e8254e3f4"></a>
+typedef boost::function<br class="typebreak"/>
+&lt; <a class="el" href="classompl_1_1base_1_1ValidStateSamplerPtr.html">ValidStateSamplerPtr</a>(const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1SpaceInformation.html">SpaceInformation</a> *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a169b699697e871752924a93e8254e3f4">ValidStateSamplerAllocator</a></td></tr>
+<tr class="memdesc:a169b699697e871752924a93e8254e3f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a function that can allocate a valid state sampler. <br/></td></tr>
+<tr class="separator:a169b699697e871752924a93e8254e3f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a1620a159019faf720c550eeca5723f55"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55">GoalType</a> { <br/>
+&#160;&#160;<a class="el" href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55a63728e6f4a505262163e918202bd1785">GOAL_ANY</a> = 1, 
+<a class="el" href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55a45bf52626bee439d29a04158d867a979">GOAL_REGION</a> = GOAL_ANY + 2, 
+<a class="el" href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55a6fb685fa51055688c4e130094225b7f9">GOAL_SAMPLEABLE_REGION</a> = GOAL_REGION + 4, 
+<a class="el" href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55a451d783254d6bb398c15495e87bc1b86">GOAL_STATE</a> = GOAL_SAMPLEABLE_REGION + 8, 
+<br/>
+&#160;&#160;<a class="el" href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55a80679771e14cf79b8baf3e5ecae20142">GOAL_STATES</a> = GOAL_SAMPLEABLE_REGION + 16, 
+<a class="el" href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55a15dee78752265020cab91cf866fee69d">GOAL_LAZY_SAMPLES</a> = GOAL_STATES + 32
+<br/>
+ }</td></tr>
+<tr class="memdesc:a1620a159019faf720c550eeca5723f55"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of goal.  <a href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55">More...</a><br/></td></tr>
+<tr class="separator:a1620a159019faf720c550eeca5723f55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa66678b1f585228b1da65ed979c98211"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__advancedStateCopy.html#gaa66678b1f585228b1da65ed979c98211">AdvancedStateCopyOperation</a> { <a class="el" href="group__advancedStateCopy.html#ggaa66678b1f585228b1da65ed979c98211a6a78901c9c5abb5764843684670e231d">NO_DATA_COPIED</a> = 0, 
+<a class="el" href="group__advancedStateCopy.html#ggaa66678b1f585228b1da65ed979c98211a6068072d46749cddb0526c9f2eb9796b">SOME_DATA_COPIED</a> = 1, 
+<a class="el" href="group__advancedStateCopy.html#ggaa66678b1f585228b1da65ed979c98211a1dde9fa1931003165d3821f133337e69">ALL_DATA_COPIED</a> = 2
+ }</td></tr>
+<tr class="memdesc:gaa66678b1f585228b1da65ed979c98211"><td class="mdescLeft">&#160;</td><td class="mdescRight">The possible outputs for an advanced copy operation.  <a href="group__advancedStateCopy.html#gaa66678b1f585228b1da65ed979c98211">More...</a><br/></td></tr>
+<tr class="separator:gaa66678b1f585228b1da65ed979c98211"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a056b022e14fe04a75f81789947353920"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a056b022e14fe04a75f81789947353920">StateSpaceType</a> { <br/>
+&#160;&#160;<a class="el" href="namespaceompl_1_1base.html#a056b022e14fe04a75f81789947353920a4247bd6859b13c6482caed7f9dd9996d">STATE_SPACE_UNKNOWN</a> = 0, 
+<a class="el" href="namespaceompl_1_1base.html#a056b022e14fe04a75f81789947353920abb95f16481daa006d055bad7060b8fbb">STATE_SPACE_REAL_VECTOR</a> = 1, 
+<a class="el" href="namespaceompl_1_1base.html#a056b022e14fe04a75f81789947353920aca07fe8d9ce9fe45ad5d1b2d90c8c1fc">STATE_SPACE_SO2</a> = 2, 
+<a class="el" href="namespaceompl_1_1base.html#a056b022e14fe04a75f81789947353920ae9ec8f7cf5204246a32a44768d843fb1">STATE_SPACE_SO3</a> = 3, 
+<br/>
+&#160;&#160;<a class="el" href="namespaceompl_1_1base.html#a056b022e14fe04a75f81789947353920a197336a12b06210c42899c5b53c298b1">STATE_SPACE_SE2</a> = 4, 
+<a class="el" href="namespaceompl_1_1base.html#a056b022e14fe04a75f81789947353920acc8d4a06096c378b5473fe4caf8171f8">STATE_SPACE_SE3</a> = 5, 
+<a class="el" href="namespaceompl_1_1base.html#a056b022e14fe04a75f81789947353920afc515ecf796d311c9ae7ae879fb63158">STATE_SPACE_TIME</a> = 6, 
+<a class="el" href="namespaceompl_1_1base.html#a056b022e14fe04a75f81789947353920a56b36a6f5b0a8ae48be0baa7e348def3">STATE_SPACE_DISCRETE</a> = 7, 
+<br/>
+&#160;&#160;<a class="el" href="namespaceompl_1_1base.html#a056b022e14fe04a75f81789947353920aa011308faae02860d3e6fe26be28c167">STATE_SPACE_TYPE_COUNT</a>
+<br/>
+ }</td></tr>
+<tr class="memdesc:a056b022e14fe04a75f81789947353920"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of a state space.  <a href="namespaceompl_1_1base.html#a056b022e14fe04a75f81789947353920">More...</a><br/></td></tr>
+<tr class="separator:a056b022e14fe04a75f81789947353920"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a5708f022c6261accef3b9c0fb4d96f90"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5708f022c6261accef3b9c0fb4d96f90"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a5708f022c6261accef3b9c0fb4d96f90">operator&lt;&lt;</a> (std::ostream &amp;stream, <a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a> c)</td></tr>
+<tr class="memdesc:a5708f022c6261accef3b9c0fb4d96f90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output operator for <a class="el" href="structompl_1_1base_1_1Cost.html" title="Definition of a cost value. Can represent the cost of a motion or the cost of a state. ">Cost</a>. <br/></td></tr>
+<tr class="separator:a5708f022c6261accef3b9c0fb4d96f90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a009050ed9b663bc4d6d4dbbee94c40b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a009050ed9b663bc4d6d4dbbee94c40b8"></a>
+<a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a009050ed9b663bc4d6d4dbbee94c40b8">goalRegionCostToGo</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state, const <a class="el" href="classompl_1_1base_1_1Goal.html">Goal</a> *goal)</td></tr>
+<tr class="memdesc:a009050ed9b663bc4d6d4dbbee94c40b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">For use when goal region's distanceGoal() is equivalent to the cost-to-go of a state under the optimization objective. This function assumes that all states within the goal region's threshold have a cost-to-go of exactly zero. Note: <em>goal</em> is assumed to be of type <a class="el" href="classompl_1_1base_1_1GoalRegion.html" title="Definition of a goal region. ">ompl::base::GoalRegion</a>. <br/></td></tr>
+<tr class="separator:a009050ed9b663bc4d6d4dbbee94c40b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ac52d1250b648cdc3ae2ae59591f52f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ac52d1250b648cdc3ae2ae59591f52f"></a>
+<a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a5ac52d1250b648cdc3ae2ae59591f52f">operator+</a> (const <a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;a, const <a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;b)</td></tr>
+<tr class="memdesc:a5ac52d1250b648cdc3ae2ae59591f52f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given two optimization objectives, returns a <a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html" title="This class allows for the definition of multiobjective optimal planning problems. Objectives are adde...">MultiOptimizationObjective</a> that combines the two objectives with both weights equal to 1.0. <br/></td></tr>
+<tr class="separator:a5ac52d1250b648cdc3ae2ae59591f52f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89d47afd597e87e6f0b99d46bd5f4e0a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89d47afd597e87e6f0b99d46bd5f4e0a"></a>
+<a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a89d47afd597e87e6f0b99d46bd5f4e0a">operator*</a> (double w, const <a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;a)</td></tr>
+<tr class="memdesc:a89d47afd597e87e6f0b99d46bd5f4e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a weighing factor and an optimization objective, returns a <a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html" title="This class allows for the definition of multiobjective optimal planning problems. Objectives are adde...">MultiOptimizationObjective</a> containing only this objective weighted by the given weight. <br/></td></tr>
+<tr class="separator:a89d47afd597e87e6f0b99d46bd5f4e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae21d3b4c186b40fc2a303e842d079d79"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae21d3b4c186b40fc2a303e842d079d79"></a>
+<a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#ae21d3b4c186b40fc2a303e842d079d79">operator*</a> (const <a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;a, double w)</td></tr>
+<tr class="memdesc:ae21d3b4c186b40fc2a303e842d079d79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a weighing factor and an optimization objective, returns a <a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html" title="This class allows for the definition of multiobjective optimal planning problems. Objectives are adde...">MultiOptimizationObjective</a> containing only this objective weighted by the given weight. <br/></td></tr>
+<tr class="separator:ae21d3b4c186b40fc2a303e842d079d79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec89bfe00ba3673d7488252b4267ed0d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec89bfe00ba3673d7488252b4267ed0d"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#aec89bfe00ba3673d7488252b4267ed0d">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="structompl_1_1base_1_1PlannerStatus.html">PlannerStatus</a> &amp;status)</td></tr>
+<tr class="memdesc:aec89bfe00ba3673d7488252b4267ed0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a <a class="el" href="structompl_1_1base_1_1PlannerStatus.html" title="A class to store the exit status of Planner::solve() ">PlannerStatus</a> object. <br/></td></tr>
+<tr class="separator:aec89bfe00ba3673d7488252b4267ed0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ffbc7124ed20dc1331a8c6f40a8f05e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ffbc7124ed20dc1331a8c6f40a8f05e"></a>
+<a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html">PlannerTerminationCondition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a9ffbc7124ed20dc1331a8c6f40a8f05e">plannerNonTerminatingCondition</a> ()</td></tr>
+<tr class="memdesc:a9ffbc7124ed20dc1331a8c6f40a8f05e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple termination condition that always returns false. The termination condition will never be met. <br/></td></tr>
+<tr class="separator:a9ffbc7124ed20dc1331a8c6f40a8f05e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1125deb13109d3f27b3acab34d79c09c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1125deb13109d3f27b3acab34d79c09c"></a>
+<a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html">PlannerTerminationCondition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a1125deb13109d3f27b3acab34d79c09c">plannerAlwaysTerminatingCondition</a> ()</td></tr>
+<tr class="memdesc:a1125deb13109d3f27b3acab34d79c09c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple termination condition that always returns true. The termination condition will always be met. <br/></td></tr>
+<tr class="separator:a1125deb13109d3f27b3acab34d79c09c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a743743b4754208eb83ecb3ab20e4df4c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a743743b4754208eb83ecb3ab20e4df4c"></a>
+<a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html">PlannerTerminationCondition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a743743b4754208eb83ecb3ab20e4df4c">plannerOrTerminationCondition</a> (const <a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html">PlannerTerminationCondition</a> &amp;c1, const <a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html">PlannerTerminationCondition</a> &amp;c2)</td></tr>
+<tr class="memdesc:a743743b4754208eb83ecb3ab20e4df4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combine two termination conditions into one. If either termination condition returns true, this one will return true as well. <br/></td></tr>
+<tr class="separator:a743743b4754208eb83ecb3ab20e4df4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fe113eda8e4fb7306a5849f392db50b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6fe113eda8e4fb7306a5849f392db50b"></a>
+<a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html">PlannerTerminationCondition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a6fe113eda8e4fb7306a5849f392db50b">plannerAndTerminationCondition</a> (const <a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html">PlannerTerminationCondition</a> &amp;c1, const <a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html">PlannerTerminationCondition</a> &amp;c2)</td></tr>
+<tr class="memdesc:a6fe113eda8e4fb7306a5849f392db50b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combine two termination conditions into one. Both termination conditions need to return true for this one to return true. <br/></td></tr>
+<tr class="separator:a6fe113eda8e4fb7306a5849f392db50b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae26e5f143063be389fba4906d438a381"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae26e5f143063be389fba4906d438a381"></a>
+<a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html">PlannerTerminationCondition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#ae26e5f143063be389fba4906d438a381">timedPlannerTerminationCondition</a> (double duration)</td></tr>
+<tr class="memdesc:ae26e5f143063be389fba4906d438a381"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a termination condition that will become true <em>duration</em> seconds in the future (wall-time) <br/></td></tr>
+<tr class="separator:ae26e5f143063be389fba4906d438a381"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b50516a130c05ecc0e420dd64d6a81e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b50516a130c05ecc0e420dd64d6a81e"></a>
+<a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html">PlannerTerminationCondition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1base.html#a4b50516a130c05ecc0e420dd64d6a81e">timedPlannerTerminationCondition</a> (double duration, double interval)</td></tr>
+<tr class="memdesc:a4b50516a130c05ecc0e420dd64d6a81e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a termination condition that will become true <em>duration</em> seconds in the future (wall-time), but is checked in a separate thread, every <em>interval</em> seconds; <em>interval</em> must be less than <em>duration</em>. <br/></td></tr>
+<tr class="separator:a4b50516a130c05ecc0e420dd64d6a81e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97e069784d096867466520346576ef68"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97e069784d096867466520346576ef68"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>OMPL_CLASS_FORWARD</b> (<a class="el" href="classompl_1_1base_1_1OptimizationObjective.html">OptimizationObjective</a>)</td></tr>
+<tr class="separator:a97e069784d096867466520346576ef68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e6a8dfe3e0d56f11807e7817cf1c8c9"><td class="memTemplParams" colspan="2"><a class="anchor" id="ga7e6a8dfe3e0d56f11807e7817cf1c8c9"></a>
+template&lt;class T &gt; </td></tr>
+<tr class="memitem:ga7e6a8dfe3e0d56f11807e7817cf1c8c9"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__stateAndSpaceOperators.html#ga7e6a8dfe3e0d56f11807e7817cf1c8c9">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt; T &gt; &amp;state)</td></tr>
+<tr class="memdesc:ga7e6a8dfe3e0d56f11807e7817cf1c8c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload stream output operator. Calls <a class="el" href="classompl_1_1base_1_1StateSpace.html#a5f92fa826285aaa7adff4c1fd07a4023" title="Print a state to a stream. ">ompl::base::StateSpace::printState()</a> <br/></td></tr>
+<tr class="separator:ga7e6a8dfe3e0d56f11807e7817cf1c8c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5e5f40dc3239b5a4306609f8df5b8240"><td class="memTemplParams" colspan="2"><a class="anchor" id="ga5e5f40dc3239b5a4306609f8df5b8240"></a>
+template&lt;class T , class Y &gt; </td></tr>
+<tr class="memitem:ga5e5f40dc3239b5a4306609f8df5b8240"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt; T &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__stateAndSpaceOperators.html#ga5e5f40dc3239b5a4306609f8df5b8240">operator&lt;&lt;</a> (<a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt; T &gt; &amp;to, const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt; Y &gt; &amp;from)</td></tr>
+<tr class="memdesc:ga5e5f40dc3239b5a4306609f8df5b8240"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a fancy version of the assignment operator. It is a partial assignment, in some sense. The difference is that if the states are part of compound state spaces, the data is copied from <em>from</em> to <em>to</em> on a component by component basis. <a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> spaces are matched by name. If the state space for <em>to</em> contains any subspace whose name matches any subspace of the state space for <em>from</em>, the corresponding state components are copied. <br/></td></tr>
+<tr class="separator:ga5e5f40dc3239b5a4306609f8df5b8240"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaf35354f70335067bcea8695958f2867"><td class="memTemplParams" colspan="2"><a class="anchor" id="gaaf35354f70335067bcea8695958f2867"></a>
+template&lt;class T , class Y &gt; </td></tr>
+<tr class="memitem:gaaf35354f70335067bcea8695958f2867"><td class="memTemplItemLeft" align="right" valign="top">const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt; T &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__stateAndSpaceOperators.html#gaaf35354f70335067bcea8695958f2867">operator&gt;&gt;</a> (const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt; T &gt; &amp;from, <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt; Y &gt; &amp;to)</td></tr>
+<tr class="memdesc:gaaf35354f70335067bcea8695958f2867"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a fancy version of the assignment operator. It is a partial assignment, in some sense. The difference is that if the states are part of compound state spaces, the data is copied from <em>from</em> to <em>to</em> on a component by component basis. <a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> spaces are matched by name. If the state space for <em>to</em> contains any subspace whose name matches any subspace of the state space for <em>from</em>, the corresponding state components are copied. <br/></td></tr>
+<tr class="separator:gaaf35354f70335067bcea8695958f2867"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5d4bd70ea0237a80013a71dc2bb7daf1"><td class="memTemplParams" colspan="2">template&lt;class T , class Y &gt; </td></tr>
+<tr class="memitem:ga5d4bd70ea0237a80013a71dc2bb7daf1"><td class="memTemplItemLeft" align="right" valign="top">const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__stateAndSpaceOperators.html#ga5d4bd70ea0237a80013a71dc2bb7daf1">operator^</a> (const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt; T &gt; &amp;a, const <a class="el" href="classompl_1_1base_1_1ScopedState.html">ScopedState</a>&lt; Y &gt; &amp;b)</td></tr>
+<tr class="memdesc:ga5d4bd70ea0237a80013a71dc2bb7daf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given state <em>a</em> from state space A and state <em>b</em> from state space B, construct a state from state space A.  <a href="group__stateAndSpaceOperators.html#ga5d4bd70ea0237a80013a71dc2bb7daf1">More...</a><br/></td></tr>
+<tr class="separator:ga5d4bd70ea0237a80013a71dc2bb7daf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga26c3eda924eb78902a00170c46400a27"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga26c3eda924eb78902a00170c46400a27"></a>
+<a class="el" href="group__advancedStateCopy.html#gaa66678b1f585228b1da65ed979c98211">AdvancedStateCopyOperation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__advancedStateCopy.html#ga26c3eda924eb78902a00170c46400a27">copyStateData</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;destS, <a class="el" href="classompl_1_1base_1_1State.html">State</a> *dest, const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;sourceS, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *source)</td></tr>
+<tr class="memdesc:ga26c3eda924eb78902a00170c46400a27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy data from <em>source</em> (state from space <em>sourceS</em>) to <em>dest</em> (state from space <em>destS</em>) on a component by component basis. <a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> spaces are matched by name. If the state space <em>destS</em> contains any subspace whose name matches any subspace of the state space <em>sourceS</em>, the corresponding state components are copied. <br/></td></tr>
+<tr class="separator:ga26c3eda924eb78902a00170c46400a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga12cc0040b196f116961d6cae8a62f5d0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga12cc0040b196f116961d6cae8a62f5d0"></a>
+<a class="el" href="group__advancedStateCopy.html#gaa66678b1f585228b1da65ed979c98211">AdvancedStateCopyOperation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__advancedStateCopy.html#ga12cc0040b196f116961d6cae8a62f5d0">copyStateData</a> (const <a class="el" href="classompl_1_1base_1_1StateSpace.html">StateSpace</a> *destS, <a class="el" href="classompl_1_1base_1_1State.html">State</a> *dest, const <a class="el" href="classompl_1_1base_1_1StateSpace.html">StateSpace</a> *sourceS, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *source)</td></tr>
+<tr class="memdesc:ga12cc0040b196f116961d6cae8a62f5d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy data from <em>source</em> (state from space <em>sourceS</em>) to <em>dest</em> (state from space <em>destS</em>) on a component by component basis. <a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> spaces are matched by name. If the state space <em>destS</em> contains any subspace whose name matches any subspace of the state space <em>sourceS</em>, the corresponding state components are copied. <br/></td></tr>
+<tr class="separator:ga12cc0040b196f116961d6cae8a62f5d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab3308e05354b6e3e4175edb47d9cc46b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__advancedStateCopy.html#gaa66678b1f585228b1da65ed979c98211">AdvancedStateCopyOperation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__advancedStateCopy.html#gab3308e05354b6e3e4175edb47d9cc46b">copyStateData</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;destS, <a class="el" href="classompl_1_1base_1_1State.html">State</a> *dest, const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;sourceS, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *source, const std::vector&lt; std::string &gt; &amp;subspaces)</td></tr>
+<tr class="memdesc:gab3308e05354b6e3e4175edb47d9cc46b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy data from <em>source</em> (state from space <em>sourceS</em>) to <em>dest</em> (state from space <em>destS</em>) but only for the subspaces indicated by name in <em>subspaces</em>. This uses <a class="el" href="classompl_1_1base_1_1StateSpace.html#a535a54d0cedf038703db2fbfd00fb5d0" title="Get the list of known substate locations (keys of the map corrspond to names of subspaces) ...">StateSpace::getSubstateLocationsByName()</a>.  <a href="group__advancedStateCopy.html#gab3308e05354b6e3e4175edb47d9cc46b">More...</a><br/></td></tr>
+<tr class="separator:gab3308e05354b6e3e4175edb47d9cc46b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae1931f1fa53bb85eadfe033a3fc91d4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__advancedStateCopy.html#gaa66678b1f585228b1da65ed979c98211">AdvancedStateCopyOperation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__advancedStateCopy.html#gae1931f1fa53bb85eadfe033a3fc91d4c">copyStateData</a> (const <a class="el" href="classompl_1_1base_1_1StateSpace.html">StateSpace</a> *destS, <a class="el" href="classompl_1_1base_1_1State.html">State</a> *dest, const <a class="el" href="classompl_1_1base_1_1StateSpace.html">StateSpace</a> *sourceS, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *source, const std::vector&lt; std::string &gt; &amp;subspaces)</td></tr>
+<tr class="memdesc:gae1931f1fa53bb85eadfe033a3fc91d4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy data from <em>source</em> (state from space <em>sourceS</em>) to <em>dest</em> (state from space <em>destS</em>) but only for the subspaces indicated by name in <em>subspaces</em>. This uses <a class="el" href="classompl_1_1base_1_1StateSpace.html#a535a54d0cedf038703db2fbfd00fb5d0" title="Get the list of known substate locations (keys of the map corrspond to names of subspaces) ...">StateSpace::getSubstateLocationsByName()</a>.  <a href="group__advancedStateCopy.html#gae1931f1fa53bb85eadfe033a3fc91d4c">More...</a><br/></td></tr>
+<tr class="separator:gae1931f1fa53bb85eadfe033a3fc91d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1a2a068c3ba88614e32425cf4c493261"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1a2a068c3ba88614e32425cf4c493261"></a>
+<a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__stateAndSpaceOperators.html#ga1a2a068c3ba88614e32425cf4c493261">operator+</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;a, const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;b)</td></tr>
+<tr class="memdesc:ga1a2a068c3ba88614e32425cf4c493261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a compound state space from two existing state spaces. The components of this compound space are <em>a</em> (or the components of <em>a</em>, if <em>a</em> is compound) and <em>b</em> (or the components of <em>b</em>, if <em>b</em> is compound). <a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">State</a> spaces are identified by name. Duplicates are checked for and added only once. If the compound state space would end up containing solely one component, that component is returned instead. <br/></td></tr>
+<tr class="separator:ga1a2a068c3ba88614e32425cf4c493261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga849c861f1e209144fbab68a95c479eb8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga849c861f1e209144fbab68a95c479eb8"></a>
+<a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__stateAndSpaceOperators.html#ga849c861f1e209144fbab68a95c479eb8">operator-</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;a, const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;b)</td></tr>
+<tr class="memdesc:ga849c861f1e209144fbab68a95c479eb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a compound state space that contains subspaces only from <em>a</em>. If <em>a</em> is compound, <em>b</em> (or the components from <em>b</em>, if <em>b</em> is compound) are removed and the remaining components are returned as a compound state space. If the compound space would end up containing solely one component, that component is returned instead. <br/></td></tr>
+<tr class="separator:ga849c861f1e209144fbab68a95c479eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae1b5c9d6ea57481723cf8a9683a4eabc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae1b5c9d6ea57481723cf8a9683a4eabc"></a>
+<a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__stateAndSpaceOperators.html#gae1b5c9d6ea57481723cf8a9683a4eabc">operator-</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;a, const std::string &amp;name)</td></tr>
+<tr class="memdesc:gae1b5c9d6ea57481723cf8a9683a4eabc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a compound state space that contains subspaces only from <em>a</em>, except for maybe the one named <em>name</em>. <br/></td></tr>
+<tr class="separator:gae1b5c9d6ea57481723cf8a9683a4eabc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga16229a85742bb392d45ea9fdc49d7434"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga16229a85742bb392d45ea9fdc49d7434"></a>
+<a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__stateAndSpaceOperators.html#ga16229a85742bb392d45ea9fdc49d7434">operator*</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;a, const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">StateSpacePtr</a> &amp;b)</td></tr>
+<tr class="memdesc:ga16229a85742bb392d45ea9fdc49d7434"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a compound state space that contains subspaces that are in both <em>a</em> and <em>b</em>. <br/></td></tr>
+<tr class="separator:ga16229a85742bb392d45ea9fdc49d7434"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This namespace contains sampling based planning routines shared by both planning under geometric constraints (geometric) and planning under differential constraints (dynamic) </p>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="a1620a159019faf720c550eeca5723f55"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespaceompl_1_1base.html#a1620a159019faf720c550eeca5723f55">ompl::base::GoalType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The type of goal. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a1620a159019faf720c550eeca5723f55a63728e6f4a505262163e918202bd1785"></a>GOAL_ANY</em>&#160;</td><td class="fielddoc">
+<p>This bit is set if casting to generic goal regions (<a class="el" href="classompl_1_1base_1_1Goal.html" title="Abstract definition of goals. ">ompl::base::Goal</a>) is possible. This bit shold always be set. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a1620a159019faf720c550eeca5723f55a45bf52626bee439d29a04158d867a979"></a>GOAL_REGION</em>&#160;</td><td class="fielddoc">
+<p>This bit is set if casting to goal regions (<a class="el" href="classompl_1_1base_1_1GoalRegion.html" title="Definition of a goal region. ">ompl::base::GoalRegion</a>) is possible. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a1620a159019faf720c550eeca5723f55a6fb685fa51055688c4e130094225b7f9"></a>GOAL_SAMPLEABLE_REGION</em>&#160;</td><td class="fielddoc">
+<p>This bit is set if casting to sampleable goal regions (<a class="el" href="classompl_1_1base_1_1GoalSampleableRegion.html" title="Abstract definition of a goal region that can be sampled. ">ompl::base::GoalSampleableRegion</a>) is possible. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a1620a159019faf720c550eeca5723f55a451d783254d6bb398c15495e87bc1b86"></a>GOAL_STATE</em>&#160;</td><td class="fielddoc">
+<p>This bit is set if casting to goal state (<a class="el" href="classompl_1_1base_1_1GoalState.html" title="Definition of a goal state. ">ompl::base::GoalState</a>) is possible. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a1620a159019faf720c550eeca5723f55a80679771e14cf79b8baf3e5ecae20142"></a>GOAL_STATES</em>&#160;</td><td class="fielddoc">
+<p>This bit is set if casting to goal states (<a class="el" href="classompl_1_1base_1_1GoalStates.html" title="Definition of a set of goal states. ">ompl::base::GoalStates</a>) is possible. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a1620a159019faf720c550eeca5723f55a15dee78752265020cab91cf866fee69d"></a>GOAL_LAZY_SAMPLES</em>&#160;</td><td class="fielddoc">
+<p>This bit is set if casting to goal states (<a class="el" href="classompl_1_1base_1_1GoalLazySamples.html" title="Definition of a goal region that can be sampled, but the sampling process can be slow. This class allows sampling the happen in a separate thread, and the number of goals may increase, as the planner is running, in a thread-safe manner. ">ompl::base::GoalLazySamples</a>) is possible. </p>
+</td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="GoalTypes_8h_source.html#l00046">46</a> of file <a class="el" href="GoalTypes_8h_source.html">GoalTypes.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a056b022e14fe04a75f81789947353920"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespaceompl_1_1base.html#a056b022e14fe04a75f81789947353920">ompl::base::StateSpaceType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The type of a state space. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a056b022e14fe04a75f81789947353920a4247bd6859b13c6482caed7f9dd9996d"></a>STATE_SPACE_UNKNOWN</em>&#160;</td><td class="fielddoc">
+<p>Unset type; this is the default type. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a056b022e14fe04a75f81789947353920abb95f16481daa006d055bad7060b8fbb"></a>STATE_SPACE_REAL_VECTOR</em>&#160;</td><td class="fielddoc">
+<p><a class="el" href="classompl_1_1base_1_1RealVectorStateSpace.html" title="A state space representing Rn. The distance function is the L2 norm. ">ompl::base::RealVectorStateSpace</a> </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a056b022e14fe04a75f81789947353920aca07fe8d9ce9fe45ad5d1b2d90c8c1fc"></a>STATE_SPACE_SO2</em>&#160;</td><td class="fielddoc">
+<p><a class="el" href="classompl_1_1base_1_1SO2StateSpace.html" title="A state space representing SO(2). The distance function and interpolation take into account angle wra...">ompl::base::SO2StateSpace</a> </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a056b022e14fe04a75f81789947353920ae9ec8f7cf5204246a32a44768d843fb1"></a>STATE_SPACE_SO3</em>&#160;</td><td class="fielddoc">
+<p><a class="el" href="classompl_1_1base_1_1SO3StateSpace.html" title="A state space representing SO(3). The internal representation is done with quaternions. The distance between states is the angle between quaternions and interpolation is done with slerp. ">ompl::base::SO3StateSpace</a> </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a056b022e14fe04a75f81789947353920a197336a12b06210c42899c5b53c298b1"></a>STATE_SPACE_SE2</em>&#160;</td><td class="fielddoc">
+<p><a class="el" href="classompl_1_1base_1_1SE2StateSpace.html" title="A state space representing SE(2) ">ompl::base::SE2StateSpace</a> </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a056b022e14fe04a75f81789947353920acc8d4a06096c378b5473fe4caf8171f8"></a>STATE_SPACE_SE3</em>&#160;</td><td class="fielddoc">
+<p><a class="el" href="classompl_1_1base_1_1SE3StateSpace.html" title="A state space representing SE(3) ">ompl::base::SE3StateSpace</a> </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a056b022e14fe04a75f81789947353920afc515ecf796d311c9ae7ae879fb63158"></a>STATE_SPACE_TIME</em>&#160;</td><td class="fielddoc">
+<p><a class="el" href="classompl_1_1base_1_1TimeStateSpace.html" title="A state space representing time. The time can be unbounded, in which case enforceBounds() is a no-op...">ompl::base::TimeStateSpace</a> </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a056b022e14fe04a75f81789947353920a56b36a6f5b0a8ae48be0baa7e348def3"></a>STATE_SPACE_DISCRETE</em>&#160;</td><td class="fielddoc">
+<p><a class="el" href="classompl_1_1base_1_1DiscreteStateSpace.html" title="A space representing discrete states; i.e. there are a small number of discrete states the system can...">ompl::base::DiscreteStateSpace</a> </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a056b022e14fe04a75f81789947353920aa011308faae02860d3e6fe26be28c167"></a>STATE_SPACE_TYPE_COUNT</em>&#160;</td><td class="fielddoc">
+<p>Number of state space types; To add new types, use values that are larger than the count. </p>
+</td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="StateSpaceTypes_8h_source.html#l00046">46</a> of file <a class="el" href="StateSpaceTypes_8h_source.html">StateSpaceTypes.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:27 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

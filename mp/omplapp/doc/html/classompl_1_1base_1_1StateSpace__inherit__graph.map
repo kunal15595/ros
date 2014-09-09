@@ -1,0 +1,14 @@
+<map id="ompl::base::StateSpace" name="ompl::base::StateSpace">
+<area shape="rect" id="node3" href="$classompl_1_1base_1_1CompoundStateSpace.html" title="A space to allow the composition of state spaces. " alt="" coords="362,99,550,141"/>
+<area shape="rect" id="node11" href="$classompl_1_1base_1_1DiscreteStateSpace.html" title="A space representing discrete states; i.e. there are a small number of discrete states the system can..." alt="" coords="369,165,543,206"/>
+<area shape="rect" id="node12" href="$classompl_1_1base_1_1RealVectorStateSpace.html" title="A state space representing Rn. The distance function is the L2 norm. " alt="" coords="361,230,551,271"/>
+<area shape="rect" id="node13" href="$classompl_1_1base_1_1SO2StateSpace.html" title="A state space representing SO(2). The distance function and interpolation take into account angle wra..." alt="" coords="362,296,550,323"/>
+<area shape="rect" id="node14" href="$classompl_1_1base_1_1SO3StateSpace.html" title="A state space representing SO(3). The internal representation is done with quaternions. The distance between states is the angle between quaternions and interpolation is done with slerp. " alt="" coords="362,347,550,373"/>
+<area shape="rect" id="node15" href="$classompl_1_1base_1_1TimeStateSpace.html" title="A state space representing time. The time can be unbounded, in which case enforceBounds() is a no&#45;op..." alt="" coords="361,397,551,424"/>
+<area shape="rect" id="node5" href="$classompl_1_1base_1_1MorseStateSpace.html" title="State space representing MORSE states. " alt="" coords="601,56,799,83"/>
+<area shape="rect" id="node6" href="$classompl_1_1base_1_1SE2StateSpace.html" title="A state space representing SE(2) " alt="" coords="607,107,793,133"/>
+<area shape="rect" id="node9" href="$classompl_1_1base_1_1SE3StateSpace.html" title="A state space representing SE(3) " alt="" coords="607,157,793,184"/>
+<area shape="rect" id="node10" href="$classompl_1_1control_1_1OpenDEStateSpace.html" title="State space representing OpenDE states. " alt="" coords="607,209,793,250"/>
+<area shape="rect" id="node7" href="$classompl_1_1base_1_1DubinsStateSpace.html" title="An SE(2) state space where distance is measured by the length of Dubins curves. " alt="" coords="848,77,1051,104"/>
+<area shape="rect" id="node8" href="$classompl_1_1base_1_1ReedsSheppStateSpace.html" title="An SE(2) state space where distance is measured by the length of Reeds&#45;Shepp curves. " alt="" coords="849,129,1049,170"/>
+</map>

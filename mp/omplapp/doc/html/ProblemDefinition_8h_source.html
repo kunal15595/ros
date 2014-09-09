@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/base/ProblemDefinition.h Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_06e181af1f5888faac16991b57afb430.html">base</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ProblemDefinition.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2010, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Rice University nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Ioan Sucan */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifndef OMPL_BASE_PROBLEM_DEFINITION_</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define OMPL_BASE_PROBLEM_DEFINITION_</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;ompl/base/State.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;ompl/base/Goal.h&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;ompl/base/Path.h&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;ompl/base/SpaceInformation.h&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;ompl/base/SolutionNonExistenceProof.h&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Console_8h.html">ompl/util/Console.h</a>&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;ompl/util/ClassForward.h&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;ompl/base/ScopedState.h&quot;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#include &lt;boost/noncopyable.hpp&gt;</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">namespace </span>ompl</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">namespace </span>base</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        OMPL_CLASS_FORWARD(ProblemDefinition);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structompl_1_1base_1_1PlannerSolution.html">   70</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structompl_1_1base_1_1PlannerSolution.html">PlannerSolution</a></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        {</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structompl_1_1base_1_1PlannerSolution.html#ac626a359b2661b5bc1e9708d88def8e6">   73</a></span>&#160;            <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#ac626a359b2661b5bc1e9708d88def8e6">PlannerSolution</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PathPtr.html">PathPtr</a> &amp;path, <span class="keywordtype">bool</span> approximate = <span class="keyword">false</span>, <span class="keywordtype">double</span> difference = -1.0, <span class="keyword">const</span> std::string&amp; plannerName = <span class="stringliteral">&quot;&quot;</span>) :</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a09e5e770a22649214eb8746582845fc1">index_</a>(-1), <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a6c983b63da9ee94d5ea0d32a3ab7b825">path_</a>(path), <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a953a2d1a57fd31ed9c975482babec42d">length_</a>(path-&gt;length()),</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a827421553f0db86c3dcd53c1fe475c6b">approximate_</a>(approximate), <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a9707ec5a38b0a89d32f9d10c2a94f8f3">difference_</a>(difference),</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a19962696ffed99b53e6422d5fcda1fd0">optimized_</a>(false), <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a26f5a4cd93099f755212d46f44717ee3">plannerName_</a>(plannerName)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structompl_1_1base_1_1PlannerSolution.html#aadc83acdfef639cc1cc136f1e396416d">   81</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#aadc83acdfef639cc1cc136f1e396416d">operator==</a>(<span class="keyword">const</span> <a class="code" href="structompl_1_1base_1_1PlannerSolution.html">PlannerSolution</a>&amp; p)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a6c983b63da9ee94d5ea0d32a3ab7b825">path_</a> == p.<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a6c983b63da9ee94d5ea0d32a3ab7b825">path_</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="structompl_1_1base_1_1PlannerSolution.html#a18c169ee346a1cc90743f919d3cfe4e6">   87</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a18c169ee346a1cc90743f919d3cfe4e6">operator&lt;</a>(<span class="keyword">const</span> <a class="code" href="structompl_1_1base_1_1PlannerSolution.html">PlannerSolution</a> &amp;b)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a827421553f0db86c3dcd53c1fe475c6b">approximate_</a> &amp;&amp; b.<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a827421553f0db86c3dcd53c1fe475c6b">approximate_</a>)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a827421553f0db86c3dcd53c1fe475c6b">approximate_</a> &amp;&amp; !b.<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a827421553f0db86c3dcd53c1fe475c6b">approximate_</a>)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a827421553f0db86c3dcd53c1fe475c6b">approximate_</a> &amp;&amp; b.<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a827421553f0db86c3dcd53c1fe475c6b">approximate_</a>)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a9707ec5a38b0a89d32f9d10c2a94f8f3">difference_</a> &lt; b.<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a9707ec5a38b0a89d32f9d10c2a94f8f3">difference_</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a19962696ffed99b53e6422d5fcda1fd0">optimized_</a> &amp;&amp; !b.<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a19962696ffed99b53e6422d5fcda1fd0">optimized_</a>)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a19962696ffed99b53e6422d5fcda1fd0">optimized_</a> &amp;&amp; b.<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a19962696ffed99b53e6422d5fcda1fd0">optimized_</a>)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a953a2d1a57fd31ed9c975482babec42d">length_</a> &lt; b.<a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a953a2d1a57fd31ed9c975482babec42d">length_</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="structompl_1_1base_1_1PlannerSolution.html#a09e5e770a22649214eb8746582845fc1">  103</a></span>&#160;            <span class="keywordtype">int</span>     <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a09e5e770a22649214eb8746582845fc1">index_</a>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="structompl_1_1base_1_1PlannerSolution.html#a6c983b63da9ee94d5ea0d32a3ab7b825">  106</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1PathPtr.html">PathPtr</a> <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a6c983b63da9ee94d5ea0d32a3ab7b825">path_</a>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="structompl_1_1base_1_1PlannerSolution.html#a953a2d1a57fd31ed9c975482babec42d">  109</a></span>&#160;            <span class="keywordtype">double</span>  <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a953a2d1a57fd31ed9c975482babec42d">length_</a>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="structompl_1_1base_1_1PlannerSolution.html#a827421553f0db86c3dcd53c1fe475c6b">  112</a></span>&#160;            <span class="keywordtype">bool</span>    <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a827421553f0db86c3dcd53c1fe475c6b">approximate_</a>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="structompl_1_1base_1_1PlannerSolution.html#a9707ec5a38b0a89d32f9d10c2a94f8f3">  115</a></span>&#160;            <span class="keywordtype">double</span>  <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a9707ec5a38b0a89d32f9d10c2a94f8f3">difference_</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="structompl_1_1base_1_1PlannerSolution.html#a19962696ffed99b53e6422d5fcda1fd0">  118</a></span>&#160;            <span class="keywordtype">bool</span>    <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a19962696ffed99b53e6422d5fcda1fd0">optimized_</a>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="structompl_1_1base_1_1PlannerSolution.html#a26f5a4cd93099f755212d46f44717ee3">  121</a></span>&#160;            std::string <a class="code" href="structompl_1_1base_1_1PlannerSolution.html#a26f5a4cd93099f755212d46f44717ee3">plannerName_</a>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        };</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        OMPL_CLASS_FORWARD(<a class="code" href="classompl_1_1base_1_1OptimizationObjective.html">OptimizationObjective</a>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html">  129</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1base_1_1ProblemDefinition.html">ProblemDefinition</a> : <span class="keyword">private</span> boost::noncopyable</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a1626717b23766adb3e901bc2ff746744">ProblemDefinition</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;si);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keyword">virtual</span> ~<a class="code" href="classompl_1_1base_1_1ProblemDefinition.html">ProblemDefinition</a>()</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a6959a875ace6ebdce9024cd24324fb49">clearStartStates</a>();</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#a2073c0761c97b87274004ec41b40beed">  142</a></span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a>&amp; <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a2073c0761c97b87274004ec41b40beed">getSpaceInformation</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ac24e830b5fedc3642f3b3c4194d0decb">si_</a>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#a3120682d036099f68fd26805fee0736d">  148</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a3120682d036099f68fd26805fee0736d">addStartState</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ab545e2929804683e9841c27d492dae82">startStates_</a>.push_back(<a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ac24e830b5fedc3642f3b3c4194d0decb">si_</a>-&gt;cloneState(state));</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#a874c33b1adab325a2ebf489fa04b8099">  154</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a874c33b1adab325a2ebf489fa04b8099">addStartState</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1ScopedState.html">ScopedState&lt;&gt;</a> &amp;state)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ab545e2929804683e9841c27d492dae82">startStates_</a>.push_back(<a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ac24e830b5fedc3642f3b3c4194d0decb">si_</a>-&gt;cloneState(state.<a class="code" href="classompl_1_1base_1_1ScopedState.html#a055e6b97092ffbc0f5e485f661db0e49">get</a>()));</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a8b292f3df6545bb90fbeff72e11f0b59">hasStartState</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> *startIndex = NULL);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#a6959a875ace6ebdce9024cd24324fb49">  165</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a6959a875ace6ebdce9024cd24324fb49">clearStartStates</a>()</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ab545e2929804683e9841c27d492dae82">startStates_</a>.size() ; ++i)</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                    <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ac24e830b5fedc3642f3b3c4194d0decb">si_</a>-&gt;freeState(<a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ab545e2929804683e9841c27d492dae82">startStates_</a>[i]);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ab545e2929804683e9841c27d492dae82">startStates_</a>.clear();</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#a7ece75a393981197ef64aee59e9c9f23">  173</a></span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a7ece75a393981197ef64aee59e9c9f23">getStartStateCount</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ab545e2929804683e9841c27d492dae82">startStates_</a>.size();</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#aaf141b46b6b36418bc115fcb5e8afff3">  179</a></span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a>* <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#aaf141b46b6b36418bc115fcb5e8afff3">getStartState</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ab545e2929804683e9841c27d492dae82">startStates_</a>[index];</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#ad9fb68d7aab6f613645cf02fa6995c52">  185</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1State.html">State</a>* <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ad9fb68d7aab6f613645cf02fa6995c52">getStartState</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ab545e2929804683e9841c27d492dae82">startStates_</a>[index];</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#a039bef3abd7e8319e4ea2e4cda752ff6">  191</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a039bef3abd7e8319e4ea2e4cda752ff6">setGoal</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1GoalPtr.html">GoalPtr</a> &amp;goal)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a3bdc61f288bbf3f1dece9a275cd2c113">goal_</a> = goal;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#ae03b63af701fa3935d50877c53c78e80">  197</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ae03b63af701fa3935d50877c53c78e80">clearGoal</a>()</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a3bdc61f288bbf3f1dece9a275cd2c113">goal_</a>.reset();</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#a42f28fa7a94f496859d7b8d1fcde47ba">  203</a></span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1GoalPtr.html">GoalPtr</a>&amp; <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a42f28fa7a94f496859d7b8d1fcde47ba">getGoal</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a3bdc61f288bbf3f1dece9a275cd2c113">goal_</a>;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a817035d12f2b66e0cb9bbf339b56921e">getInputStates</a>(std::vector&lt;const State*&gt; &amp;states) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a9ab5830fd9366be606349ea1885a3695">setStartAndGoalStates</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *start, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *goal, <span class="keyword">const</span> <span class="keywordtype">double</span> threshold = std::numeric_limits&lt;double&gt;::epsilon());</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a5cd271339a73f61bc1b13588a92a36d7">setGoalState</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *goal, <span class="keyword">const</span> <span class="keywordtype">double</span> threshold = std::numeric_limits&lt;double&gt;::epsilon());</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
+<div class="line"><a name="l00227"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#a5ada7160decb7894ac566615eb22633a">  227</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a5ada7160decb7894ac566615eb22633a">setStartAndGoalStates</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1ScopedState.html">ScopedState&lt;&gt;</a> &amp;start, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1ScopedState.html">ScopedState&lt;&gt;</a> &amp;goal, <span class="keyword">const</span> <span class="keywordtype">double</span> threshold = std::numeric_limits&lt;double&gt;::epsilon())</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a9ab5830fd9366be606349ea1885a3695">setStartAndGoalStates</a>(start.<a class="code" href="classompl_1_1base_1_1ScopedState.html#a055e6b97092ffbc0f5e485f661db0e49">get</a>(), goal.<a class="code" href="classompl_1_1base_1_1ScopedState.html#a055e6b97092ffbc0f5e485f661db0e49">get</a>(), threshold);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            }</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#a935f86078c4e65dd397db736c02b3c81">  233</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a935f86078c4e65dd397db736c02b3c81">setGoalState</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1ScopedState.html">ScopedState&lt;&gt;</a> &amp;goal, <span class="keyword">const</span> <span class="keywordtype">double</span> threshold = std::numeric_limits&lt;double&gt;::epsilon())</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a5cd271339a73f61bc1b13588a92a36d7">setGoalState</a>(goal.<a class="code" href="classompl_1_1base_1_1ScopedState.html#a055e6b97092ffbc0f5e485f661db0e49">get</a>(), threshold);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#a3a1bc59a508ca02a412dd3171ce0c440">  239</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a3a1bc59a508ca02a412dd3171ce0c440">hasOptimizationObjective</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ab9ad7eb5bcfff9223ddcc8a5dab14301">optimizationObjective_</a>.get();</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#a00cf2be0c6330fb0a3d414294e29a353">  245</a></span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a>&amp; <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a00cf2be0c6330fb0a3d414294e29a353">getOptimizationObjective</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ab9ad7eb5bcfff9223ddcc8a5dab14301">optimizationObjective_</a>;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            }</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;</div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#ab2c1ea487eb353290651767435f0e74b">  251</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ab2c1ea487eb353290651767435f0e74b">setOptimizationObjective</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;optimizationObjective)</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ab9ad7eb5bcfff9223ddcc8a5dab14301">optimizationObjective_</a> = optimizationObjective;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ae8c6ae8979fb163fd01387c4a9f8fd2b">isTrivial</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> *startIndex = NULL, <span class="keywordtype">double</span> *distance = NULL) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <a class="code" href="classompl_1_1base_1_1PathPtr.html">PathPtr</a> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a3fcafadf45ea071ec4896a9a700e526c">isStraightLinePathValid</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a74aa8792df6065a84f1b602db53d108c">fixInvalidInputStates</a>(<span class="keywordtype">double</span> distStart, <span class="keywordtype">double</span> distGoal, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> attempts);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a021a6600a5e54ffa20e9626cf97e3bda">hasSolution</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a5a510a806faa9a59c120380f268708ad">hasApproximateSolution</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="keywordtype">double</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a894e668c245b35eba378c5096da97411">getSolutionDifference</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a137b1b26766ae699c79e2dbf75bb8b22">hasOptimizedSolution</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            <a class="code" href="classompl_1_1base_1_1PathPtr.html">PathPtr</a> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a897ff51629dda105778b5950d9e0e141">getSolutionPath</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#afae998ad1781b683ab89493059e63aa3">getSolution</a>(<a class="code" href="structompl_1_1base_1_1PlannerSolution.html">PlannerSolution</a>&amp; solution) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a80d99e28ec3579fbdb0fba5afa7bc4bb">addSolutionPath</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PathPtr.html">PathPtr</a> &amp;path, <span class="keywordtype">bool</span> approximate = <span class="keyword">false</span>, <span class="keywordtype">double</span> difference = -1.0, <span class="keyword">const</span> std::string&amp; plannerName = <span class="stringliteral">&quot;Unknown&quot;</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a80d99e28ec3579fbdb0fba5afa7bc4bb">addSolutionPath</a>(<span class="keyword">const</span> <a class="code" href="structompl_1_1base_1_1PlannerSolution.html">PlannerSolution</a> &amp;sol) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            std::size_t <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#abe4191f019264fbeec6e1cab7580c898">getSolutionCount</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            std::vector&lt;PlannerSolution&gt; <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a2bdb879b091c0d74fabe8050fff087a0">getSolutions</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#aa88547718b7905c99c02762cec7a3b1a">clearSolutionPaths</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a5aebd53a31048a9141fc95aaac61350e">hasSolutionNonExistenceProof</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a1916346ceb217c0db3db1b0059b54b11">clearSolutionNonExistenceProof</a>();</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SolutionNonExistenceProofPtr.html">SolutionNonExistenceProofPtr</a>&amp; <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a6301e9ec89b989daa8eca7a97964aa94">getSolutionNonExistenceProof</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a8b2d1cdeb0b4df2a1e77e6096daf1d10">setSolutionNonExistenceProof</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SolutionNonExistenceProofPtr.html">SolutionNonExistenceProofPtr</a>&amp; nonExistenceProof);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a76cd24bc1d239ffa674967c004c7df20">print</a>(std::ostream &amp;out = std::cout) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a4afcbeee27af97ac5eefdc40ea8ecfbe">fixInvalidInputState</a>(<a class="code" href="classompl_1_1base_1_1State.html">State</a> *state, <span class="keywordtype">double</span> dist, <span class="keywordtype">bool</span> start, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> attempts);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;</div>
+<div class="line"><a name="l00348"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#ac24e830b5fedc3642f3b3c4194d0decb">  348</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a>          <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ac24e830b5fedc3642f3b3c4194d0decb">si_</a>;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;</div>
+<div class="line"><a name="l00351"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#ab545e2929804683e9841c27d492dae82">  351</a></span>&#160;            std::vector&lt;State*&gt;          <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ab545e2929804683e9841c27d492dae82">startStates_</a>;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;</div>
+<div class="line"><a name="l00354"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#a3bdc61f288bbf3f1dece9a275cd2c113">  354</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1GoalPtr.html">GoalPtr</a>                      <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a3bdc61f288bbf3f1dece9a275cd2c113">goal_</a>;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;</div>
+<div class="line"><a name="l00357"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#a9eb7796abd9f95bbad330669973d2664">  357</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1SolutionNonExistenceProofPtr.html">SolutionNonExistenceProofPtr</a> <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#a9eb7796abd9f95bbad330669973d2664">nonExistenceProof_</a>;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
+<div class="line"><a name="l00360"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1ProblemDefinition.html#ab9ad7eb5bcfff9223ddcc8a5dab14301">  360</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a>     <a class="code" href="classompl_1_1base_1_1ProblemDefinition.html#ab9ad7eb5bcfff9223ddcc8a5dab14301">optimizationObjective_</a>;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            OMPL_CLASS_FORWARD(PlannerSolutionSet);</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            PlannerSolutionSetPtr        solutions_;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        };</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    }</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;}</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a00cf2be0c6330fb0a3d414294e29a353"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a00cf2be0c6330fb0a3d414294e29a353">ompl::base::ProblemDefinition::getOptimizationObjective</a></div><div class="ttdeci">const OptimizationObjectivePtr &amp; getOptimizationObjective() const </div><div class="ttdoc">Get the optimization objective to be considered during planning. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00245">ProblemDefinition.h:245</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a3bdc61f288bbf3f1dece9a275cd2c113"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a3bdc61f288bbf3f1dece9a275cd2c113">ompl::base::ProblemDefinition::goal_</a></div><div class="ttdeci">GoalPtr goal_</div><div class="ttdoc">The goal representation. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00354">ProblemDefinition.h:354</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a039bef3abd7e8319e4ea2e4cda752ff6"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a039bef3abd7e8319e4ea2e4cda752ff6">ompl::base::ProblemDefinition::setGoal</a></div><div class="ttdeci">void setGoal(const GoalPtr &amp;goal)</div><div class="ttdoc">Set the goal. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00191">ProblemDefinition.h:191</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSolution_html_ac626a359b2661b5bc1e9708d88def8e6"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSolution.html#ac626a359b2661b5bc1e9708d88def8e6">ompl::base::PlannerSolution::PlannerSolution</a></div><div class="ttdeci">PlannerSolution(const PathPtr &amp;path, bool approximate=false, double difference=-1.0, const std::string &amp;plannerName=&quot;&quot;)</div><div class="ttdoc">Construct a solution that consists of a path and its attributes (whether it is approximate and the di...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00073">ProblemDefinition.h:73</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSolution_html_a19962696ffed99b53e6422d5fcda1fd0"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSolution.html#a19962696ffed99b53e6422d5fcda1fd0">ompl::base::PlannerSolution::optimized_</a></div><div class="ttdeci">bool optimized_</div><div class="ttdoc">True of the solution was optimized to meet the specified optimization criterion. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00118">ProblemDefinition.h:118</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_ab2c1ea487eb353290651767435f0e74b"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#ab2c1ea487eb353290651767435f0e74b">ompl::base::ProblemDefinition::setOptimizationObjective</a></div><div class="ttdeci">void setOptimizationObjective(const OptimizationObjectivePtr &amp;optimizationObjective)</div><div class="ttdoc">Set the optimization objective to be considered during planning. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00251">ProblemDefinition.h:251</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a8b292f3df6545bb90fbeff72e11f0b59"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a8b292f3df6545bb90fbeff72e11f0b59">ompl::base::ProblemDefinition::hasStartState</a></div><div class="ttdeci">bool hasStartState(const State *state, unsigned int *startIndex=NULL)</div><div class="ttdoc">Check whether a specified starting state is already included in the problem definition and optionally...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00172">ProblemDefinition.cpp:172</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSolution_html"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSolution.html">ompl::base::PlannerSolution</a></div><div class="ttdoc">Representation of a solution to a planning problem. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00070">ProblemDefinition.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a1916346ceb217c0db3db1b0059b54b11"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a1916346ceb217c0db3db1b0059b54b11">ompl::base::ProblemDefinition::clearSolutionNonExistenceProof</a></div><div class="ttdeci">void clearSolutionNonExistenceProof()</div><div class="ttdoc">Removes any existing instance of SolutionNonExistenceProof. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00468">ProblemDefinition.cpp:468</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ScopedState_html"><div class="ttname"><a href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState</a></div><div class="ttdoc">Definition of a scoped state. </div><div class="ttdef"><b>Definition:</b> <a href="ScopedState_8h_source.html#l00056">ScopedState.h:56</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_ad9fb68d7aab6f613645cf02fa6995c52"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#ad9fb68d7aab6f613645cf02fa6995c52">ompl::base::ProblemDefinition::getStartState</a></div><div class="ttdeci">State * getStartState(unsigned int index)</div><div class="ttdoc">Returns a specific start state. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00185">ProblemDefinition.h:185</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SolutionNonExistenceProofPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1SolutionNonExistenceProofPtr.html">ompl::base::SolutionNonExistenceProofPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::SolutionNonExistenceProof. </div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a76cd24bc1d239ffa674967c004c7df20"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a76cd24bc1d239ffa674967c004c7df20">ompl::base::ProblemDefinition::print</a></div><div class="ttdeci">void print(std::ostream &amp;out=std::cout) const </div><div class="ttdoc">Print information about the start and goal states and the optimization objective. ...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00449">ProblemDefinition.cpp:449</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSolution_html_a6c983b63da9ee94d5ea0d32a3ab7b825"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSolution.html#a6c983b63da9ee94d5ea0d32a3ab7b825">ompl::base::PlannerSolution::path_</a></div><div class="ttdeci">PathPtr path_</div><div class="ttdoc">Solution path. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00106">ProblemDefinition.h:106</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a894e668c245b35eba378c5096da97411"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a894e668c245b35eba378c5096da97411">ompl::base::ProblemDefinition::getSolutionDifference</a></div><div class="ttdeci">double getSolutionDifference() const </div><div class="ttdoc">Get the distance to the desired goal for the top solution. Return -1.0 if there are no solutions avai...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00434">ProblemDefinition.cpp:434</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a5cd271339a73f61bc1b13588a92a36d7"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a5cd271339a73f61bc1b13588a92a36d7">ompl::base::ProblemDefinition::setGoalState</a></div><div class="ttdeci">void setGoalState(const State *goal, const double threshold=std::numeric_limits&lt; double &gt;::epsilon())</div><div class="ttdoc">A simple form of setting the goal. This is called by setStartAndGoalStates(). A more general form is ...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00163">ProblemDefinition.cpp:163</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a2073c0761c97b87274004ec41b40beed"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a2073c0761c97b87274004ec41b40beed">ompl::base::ProblemDefinition::getSpaceInformation</a></div><div class="ttdeci">const SpaceInformationPtr &amp; getSpaceInformation() const </div><div class="ttdoc">Get the space information this problem definition is for. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00142">ProblemDefinition.h:142</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a9ab5830fd9366be606349ea1885a3695"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a9ab5830fd9366be606349ea1885a3695">ompl::base::ProblemDefinition::setStartAndGoalStates</a></div><div class="ttdeci">void setStartAndGoalStates(const State *start, const State *goal, const double threshold=std::numeric_limits&lt; double &gt;::epsilon())</div><div class="ttdoc">In the simplest case possible, we have a single starting state and a single goal state. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00156">ProblemDefinition.cpp:156</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a874c33b1adab325a2ebf489fa04b8099"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a874c33b1adab325a2ebf489fa04b8099">ompl::base::ProblemDefinition::addStartState</a></div><div class="ttdeci">void addStartState(const ScopedState&lt;&gt; &amp;state)</div><div class="ttdoc">Add a start state. The state is copied. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00154">ProblemDefinition.h:154</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_ae8c6ae8979fb163fd01387c4a9f8fd2b"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#ae8c6ae8979fb163fd01387c4a9f8fd2b">ompl::base::ProblemDefinition::isTrivial</a></div><div class="ttdeci">bool isTrivial(unsigned int *startIndex=NULL, double *distance=NULL) const </div><div class="ttdoc">A problem is trivial if a given starting state already in the goal region, so we need no motion plann...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00358">ProblemDefinition.cpp:358</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a42f28fa7a94f496859d7b8d1fcde47ba"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a42f28fa7a94f496859d7b8d1fcde47ba">ompl::base::ProblemDefinition::getGoal</a></div><div class="ttdeci">const GoalPtr &amp; getGoal() const </div><div class="ttdoc">Return the current goal. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00203">ProblemDefinition.h:203</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a897ff51629dda105778b5950d9e0e141"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a897ff51629dda105778b5950d9e0e141">ompl::base::ProblemDefinition::getSolutionPath</a></div><div class="ttdeci">PathPtr getSolutionPath() const </div><div class="ttdoc">Return the top solution path, if one is found. The top path is the shortest one that was found...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00400">ProblemDefinition.cpp:400</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a9eb7796abd9f95bbad330669973d2664"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a9eb7796abd9f95bbad330669973d2664">ompl::base::ProblemDefinition::nonExistenceProof_</a></div><div class="ttdeci">SolutionNonExistenceProofPtr nonExistenceProof_</div><div class="ttdoc">A Representation of a proof of non-existence of a solution for this problem definition. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00357">ProblemDefinition.h:357</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_aaf141b46b6b36418bc115fcb5e8afff3"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#aaf141b46b6b36418bc115fcb5e8afff3">ompl::base::ProblemDefinition::getStartState</a></div><div class="ttdeci">const State * getStartState(unsigned int index) const </div><div class="ttdoc">Returns a specific start state. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00179">ProblemDefinition.h:179</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a137b1b26766ae699c79e2dbf75bb8b22"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a137b1b26766ae699c79e2dbf75bb8b22">ompl::base::ProblemDefinition::hasOptimizedSolution</a></div><div class="ttdeci">bool hasOptimizedSolution() const </div><div class="ttdoc">Return true if the top found solution is optimized (satisfies the specified optimization objective) ...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00429">ProblemDefinition.cpp:429</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ScopedState_html_a055e6b97092ffbc0f5e485f661db0e49"><div class="ttname"><a href="classompl_1_1base_1_1ScopedState.html#a055e6b97092ffbc0f5e485f661db0e49">ompl::base::ScopedState::get</a></div><div class="ttdeci">StateType * get()</div><div class="ttdoc">Returns a pointer to the contained state. </div><div class="ttdef"><b>Definition:</b> <a href="ScopedState_8h_source.html#l00396">ScopedState.h:396</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a7ece75a393981197ef64aee59e9c9f23"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a7ece75a393981197ef64aee59e9c9f23">ompl::base::ProblemDefinition::getStartStateCount</a></div><div class="ttdeci">unsigned int getStartStateCount() const </div><div class="ttdoc">Returns the number of start states. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00173">ProblemDefinition.h:173</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a021a6600a5e54ffa20e9626cf97e3bda"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a021a6600a5e54ffa20e9626cf97e3bda">ompl::base::ProblemDefinition::hasSolution</a></div><div class="ttdeci">bool hasSolution() const </div><div class="ttdoc">Returns true if a solution path has been found (could be approximate) </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00390">ProblemDefinition.cpp:390</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSolution_html_a827421553f0db86c3dcd53c1fe475c6b"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSolution.html#a827421553f0db86c3dcd53c1fe475c6b">ompl::base::PlannerSolution::approximate_</a></div><div class="ttdeci">bool approximate_</div><div class="ttdoc">True if goal was not achieved, but an approximate solution was found. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00112">ProblemDefinition.h:112</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a3a1bc59a508ca02a412dd3171ce0c440"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a3a1bc59a508ca02a412dd3171ce0c440">ompl::base::ProblemDefinition::hasOptimizationObjective</a></div><div class="ttdeci">bool hasOptimizationObjective() const </div><div class="ttdoc">Check if an optimization objective was defined for planning. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00239">ProblemDefinition.h:239</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSolution_html_a18c169ee346a1cc90743f919d3cfe4e6"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSolution.html#a18c169ee346a1cc90743f919d3cfe4e6">ompl::base::PlannerSolution::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const PlannerSolution &amp;b) const </div><div class="ttdoc">Define a ranking for solutions. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00087">ProblemDefinition.h:87</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_aa88547718b7905c99c02762cec7a3b1a"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#aa88547718b7905c99c02762cec7a3b1a">ompl::base::ProblemDefinition::clearSolutionPaths</a></div><div class="ttdeci">void clearSolutionPaths() const </div><div class="ttdoc">Forget the solution paths (thread safe). Memory is freed. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00444">ProblemDefinition.cpp:444</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a80d99e28ec3579fbdb0fba5afa7bc4bb"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a80d99e28ec3579fbdb0fba5afa7bc4bb">ompl::base::ProblemDefinition::addSolutionPath</a></div><div class="ttdeci">void addSolutionPath(const PathPtr &amp;path, bool approximate=false, double difference=-1.0, const std::string &amp;plannerName=&quot;Unknown&quot;) const </div><div class="ttdoc">Add a solution path in a thread-safe manner. Multiple solutions can be set for a goal. If a solution does not reach the desired goal it is considered approximate. Optionally, the distance between the desired goal and the one actually achieved is set by difference. Optionally, the name of the planner that generated the solution. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00410">ProblemDefinition.cpp:410</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a5ada7160decb7894ac566615eb22633a"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a5ada7160decb7894ac566615eb22633a">ompl::base::ProblemDefinition::setStartAndGoalStates</a></div><div class="ttdeci">void setStartAndGoalStates(const ScopedState&lt;&gt; &amp;start, const ScopedState&lt;&gt; &amp;goal, const double threshold=std::numeric_limits&lt; double &gt;::epsilon())</div><div class="ttdoc">In the simplest case possible, we have a single starting state and a single goal state. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00227">ProblemDefinition.h:227</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a5a510a806faa9a59c120380f268708ad"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a5a510a806faa9a59c120380f268708ad">ompl::base::ProblemDefinition::hasApproximateSolution</a></div><div class="ttdeci">bool hasApproximateSolution() const </div><div class="ttdoc">Return true if the top found solution is approximate (does not actually reach the desired goal...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00424">ProblemDefinition.cpp:424</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a8b2d1cdeb0b4df2a1e77e6096daf1d10"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a8b2d1cdeb0b4df2a1e77e6096daf1d10">ompl::base::ProblemDefinition::setSolutionNonExistenceProof</a></div><div class="ttdeci">void setSolutionNonExistenceProof(const SolutionNonExistenceProofPtr &amp;nonExistenceProof)</div><div class="ttdoc">Set the instance of SolutionNonExistenceProof for this problem definition. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00478">ProblemDefinition.cpp:478</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a935f86078c4e65dd397db736c02b3c81"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a935f86078c4e65dd397db736c02b3c81">ompl::base::ProblemDefinition::setGoalState</a></div><div class="ttdeci">void setGoalState(const ScopedState&lt;&gt; &amp;goal, const double threshold=std::numeric_limits&lt; double &gt;::epsilon())</div><div class="ttdoc">A simple form of setting the goal. This is called by setStartAndGoalStates(). A more general form is ...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00233">ProblemDefinition.h:233</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_ab9ad7eb5bcfff9223ddcc8a5dab14301"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#ab9ad7eb5bcfff9223ddcc8a5dab14301">ompl::base::ProblemDefinition::optimizationObjective_</a></div><div class="ttdeci">OptimizationObjectivePtr optimizationObjective_</div><div class="ttdoc">The objective to be optimized while solving the planning problem. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00360">ProblemDefinition.h:360</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSolution_html_a09e5e770a22649214eb8746582845fc1"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSolution.html#a09e5e770a22649214eb8746582845fc1">ompl::base::PlannerSolution::index_</a></div><div class="ttdeci">int index_</div><div class="ttdoc">When multiple solutions are found, each is given a number starting at 0, so that the order in which t...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00103">ProblemDefinition.h:103</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a74aa8792df6065a84f1b602db53d108c"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a74aa8792df6065a84f1b602db53d108c">ompl::base::ProblemDefinition::fixInvalidInputStates</a></div><div class="ttdeci">bool fixInvalidInputStates(double distStart, double distGoal, unsigned int attempts)</div><div class="ttdoc">Many times the start or goal state will barely touch an obstacle. In this case, we may want to automa...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00220">ProblemDefinition.cpp:220</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_ab545e2929804683e9841c27d492dae82"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#ab545e2929804683e9841c27d492dae82">ompl::base::ProblemDefinition::startStates_</a></div><div class="ttdeci">std::vector&lt; State * &gt; startStates_</div><div class="ttdoc">The set of start states. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00351">ProblemDefinition.h:351</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpaceInformationPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1SpaceInformationPtr.html">ompl::base::SpaceInformationPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::SpaceInformation. </div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a3fcafadf45ea071ec4896a9a700e526c"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a3fcafadf45ea071ec4896a9a700e526c">ompl::base::ProblemDefinition::isStraightLinePathValid</a></div><div class="ttdeci">PathPtr isStraightLinePathValid() const </div><div class="ttdoc">Check if a straight line path is valid. If it is, return an instance of a path that represents the st...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00265">ProblemDefinition.cpp:265</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSolution_html_aadc83acdfef639cc1cc136f1e396416d"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSolution.html#aadc83acdfef639cc1cc136f1e396416d">ompl::base::PlannerSolution::operator==</a></div><div class="ttdeci">bool operator==(const PlannerSolution &amp;p) const </div><div class="ttdoc">Return true if two solutions are the same. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00081">ProblemDefinition.h:81</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a2bdb879b091c0d74fabe8050fff087a0"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a2bdb879b091c0d74fabe8050fff087a0">ompl::base::ProblemDefinition::getSolutions</a></div><div class="ttdeci">std::vector&lt; PlannerSolution &gt; getSolutions() const </div><div class="ttdoc">Get all the solution paths available for this goal. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00439">ProblemDefinition.cpp:439</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_ae03b63af701fa3935d50877c53c78e80"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#ae03b63af701fa3935d50877c53c78e80">ompl::base::ProblemDefinition::clearGoal</a></div><div class="ttdeci">void clearGoal()</div><div class="ttdoc">Clear the goal. Memory is freed. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00197">ProblemDefinition.h:197</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html">ompl::base::OptimizationObjective</a></div><div class="ttdoc">Abstract definition of optimization objectives. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8h_source.html#l00070">OptimizationObjective.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a4afcbeee27af97ac5eefdc40ea8ecfbe"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a4afcbeee27af97ac5eefdc40ea8ecfbe">ompl::base::ProblemDefinition::fixInvalidInputState</a></div><div class="ttdeci">bool fixInvalidInputState(State *state, double dist, bool start, unsigned int attempts)</div><div class="ttdoc">Helper function for fixInvalidInputStates(). Attempts to fix an individual state. ...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00184">ProblemDefinition.cpp:184</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html">ompl::base::ProblemDefinition</a></div><div class="ttdoc">Definition of a problem to be solved. This includes the start state(s) for the system and a goal spec...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00129">ProblemDefinition.h:129</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjectivePtr_html"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjectivePtr.html">ompl::base::OptimizationObjectivePtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::OptimizationObjective. </div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_afae998ad1781b683ab89493059e63aa3"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#afae998ad1781b683ab89493059e63aa3">ompl::base::ProblemDefinition::getSolution</a></div><div class="ttdeci">bool getSolution(PlannerSolution &amp;solution) const </div><div class="ttdoc">Return true if a top solution is found, with the top solution passed by reference in the function hea...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00405">ProblemDefinition.cpp:405</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSolution_html_a26f5a4cd93099f755212d46f44717ee3"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSolution.html#a26f5a4cd93099f755212d46f44717ee3">ompl::base::PlannerSolution::plannerName_</a></div><div class="ttdeci">std::string plannerName_</div><div class="ttdoc">Name of planner type that generated this solution, as received from Planner.getName() ...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00121">ProblemDefinition.h:121</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_ac24e830b5fedc3642f3b3c4194d0decb"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#ac24e830b5fedc3642f3b3c4194d0decb">ompl::base::ProblemDefinition::si_</a></div><div class="ttdeci">SpaceInformationPtr si_</div><div class="ttdoc">The space information this problem definition is for. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00348">ProblemDefinition.h:348</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a5aebd53a31048a9141fc95aaac61350e"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a5aebd53a31048a9141fc95aaac61350e">ompl::base::ProblemDefinition::hasSolutionNonExistenceProof</a></div><div class="ttdeci">bool hasSolutionNonExistenceProof() const </div><div class="ttdoc">Returns true if the problem definition has a proof of non existence for a solution. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00463">ProblemDefinition.cpp:463</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a1626717b23766adb3e901bc2ff746744"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a1626717b23766adb3e901bc2ff746744">ompl::base::ProblemDefinition::ProblemDefinition</a></div><div class="ttdeci">ProblemDefinition(const SpaceInformationPtr &amp;si)</div><div class="ttdoc">Create a problem definition given the SpaceInformation it is part of. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00152">ProblemDefinition.cpp:152</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a3120682d036099f68fd26805fee0736d"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a3120682d036099f68fd26805fee0736d">ompl::base::ProblemDefinition::addStartState</a></div><div class="ttdeci">void addStartState(const State *state)</div><div class="ttdoc">Add a start state. The state is copied. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00148">ProblemDefinition.h:148</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GoalPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1GoalPtr.html">ompl::base::GoalPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::Goal. </div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_abe4191f019264fbeec6e1cab7580c898"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#abe4191f019264fbeec6e1cab7580c898">ompl::base::ProblemDefinition::getSolutionCount</a></div><div class="ttdeci">std::size_t getSolutionCount() const </div><div class="ttdoc">Get the number of solutions already found. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00395">ProblemDefinition.cpp:395</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a6301e9ec89b989daa8eca7a97964aa94"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a6301e9ec89b989daa8eca7a97964aa94">ompl::base::ProblemDefinition::getSolutionNonExistenceProof</a></div><div class="ttdeci">const SolutionNonExistenceProofPtr &amp; getSolutionNonExistenceProof() const </div><div class="ttdoc">Retrieve a pointer to the SolutionNonExistenceProof instance for this problem definition. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00473">ProblemDefinition.cpp:473</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSolution_html_a9707ec5a38b0a89d32f9d10c2a94f8f3"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSolution.html#a9707ec5a38b0a89d32f9d10c2a94f8f3">ompl::base::PlannerSolution::difference_</a></div><div class="ttdeci">double difference_</div><div class="ttdoc">The achieved difference between the found solution and the desired goal. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00115">ProblemDefinition.h:115</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a817035d12f2b66e0cb9bbf339b56921e"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a817035d12f2b66e0cb9bbf339b56921e">ompl::base::ProblemDefinition::getInputStates</a></div><div class="ttdeci">void getInputStates(std::vector&lt; const State * &gt; &amp;states) const </div><div class="ttdoc">Get all the input states. This includes start states and states that are part of goal regions that ca...</div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8cpp_source.html#l00249">ProblemDefinition.cpp:249</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSolution_html_a953a2d1a57fd31ed9c975482babec42d"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSolution.html#a953a2d1a57fd31ed9c975482babec42d">ompl::base::PlannerSolution::length_</a></div><div class="ttdeci">double length_</div><div class="ttdoc">For efficiency reasons, keep the length of the path as well. </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00109">ProblemDefinition.h:109</a></div></div>
+<div class="ttc" id="Console_8h_html"><div class="ttname"><a href="Console_8h.html">Console.h</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PathPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1PathPtr.html">ompl::base::PathPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::Path. </div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProblemDefinition_html_a6959a875ace6ebdce9024cd24324fb49"><div class="ttname"><a href="classompl_1_1base_1_1ProblemDefinition.html#a6959a875ace6ebdce9024cd24324fb49">ompl::base::ProblemDefinition::clearStartStates</a></div><div class="ttdeci">void clearStartStates()</div><div class="ttdoc">Clear all start states (memory is freed) </div><div class="ttdef"><b>Definition:</b> <a href="ProblemDefinition_8h_source.html#l00165">ProblemDefinition.h:165</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:25 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

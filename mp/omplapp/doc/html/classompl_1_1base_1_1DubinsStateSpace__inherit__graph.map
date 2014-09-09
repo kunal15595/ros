@@ -1,0 +1,5 @@
+<map id="ompl::base::DubinsStateSpace" name="ompl::base::DubinsStateSpace">
+<area shape="rect" id="node2" href="$classompl_1_1base_1_1SE2StateSpace.html" title="A state space representing SE(2) " alt="" coords="13,245,200,272"/>
+<area shape="rect" id="node3" href="$classompl_1_1base_1_1CompoundStateSpace.html" title="A space to allow the composition of state spaces. " alt="" coords="13,155,200,197"/>
+<area shape="rect" id="node4" href="$classompl_1_1base_1_1StateSpace.html" title="Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. " alt="" coords="25,80,188,107"/>
+</map>

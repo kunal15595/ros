@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::control::OpenDEControlSpace Class Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1control.html">control</a></li><li class="navelem"><a class="el" href="classompl_1_1control_1_1OpenDEControlSpace.html">OpenDEControlSpace</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classompl_1_1control_1_1OpenDEControlSpace-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::control::OpenDEControlSpace Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Representation of controls applied in OpenDE environments. This is an array of double values.  
+ <a href="classompl_1_1control_1_1OpenDEControlSpace.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="OpenDEControlSpace_8h_source.html">OpenDEControlSpace.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ompl::control::OpenDEControlSpace:</div>
+<div class="dyncontent">
+<div class="center"><img src="classompl_1_1control_1_1OpenDEControlSpace__inherit__graph.png" border="0" usemap="#ompl_1_1control_1_1OpenDEControlSpace_inherit__map" alt="Inheritance graph"/></div>
+<map name="ompl_1_1control_1_1OpenDEControlSpace_inherit__map" id="ompl_1_1control_1_1OpenDEControlSpace_inherit__map">
+<area shape="rect" id="node2" href="classompl_1_1control_1_1RealVectorControlSpace.html" title="A control space representing Rn. " alt="" coords="19,155,189,197"/><area shape="rect" id="node3" href="classompl_1_1control_1_1ControlSpace.html" title="A control space representing the space of applicable controls. " alt="" coords="12,80,196,107"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:af2426f2714e63cf72f55629c0eda8c93"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2426f2714e63cf72f55629c0eda8c93"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1OpenDEControlSpace.html#af2426f2714e63cf72f55629c0eda8c93">OpenDEControlSpace</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">base::StateSpacePtr</a> &amp;stateSpace)</td></tr>
+<tr class="memdesc:af2426f2714e63cf72f55629c0eda8c93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a representation of controls passed to OpenDE. If <em>stateSpace</em> does not cast to an <a class="el" href="classompl_1_1control_1_1OpenDEStateSpace.html" title="State space representing OpenDE states. ">OpenDEStateSpace</a>, an exception is thrown. <br/></td></tr>
+<tr class="separator:af2426f2714e63cf72f55629c0eda8c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c2f8069990487dcfd28c59b29265caf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c2f8069990487dcfd28c59b29265caf"></a>
+const <a class="el" href="classompl_1_1control_1_1OpenDEEnvironmentPtr.html">OpenDEEnvironmentPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1OpenDEControlSpace.html#a1c2f8069990487dcfd28c59b29265caf">getEnvironment</a> () const </td></tr>
+<tr class="memdesc:a1c2f8069990487dcfd28c59b29265caf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the OpenDE environment this state space corresponds to. <br/></td></tr>
+<tr class="separator:a1c2f8069990487dcfd28c59b29265caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classompl_1_1control_1_1RealVectorControlSpace')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html">ompl::control::RealVectorControlSpace</a></td></tr>
+<tr class="memitem:a0bacd31455e2745eb5efd291210482a8 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0bacd31455e2745eb5efd291210482a8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#a0bacd31455e2745eb5efd291210482a8">RealVectorControlSpace</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">base::StateSpacePtr</a> &amp;stateSpace, unsigned int dim)</td></tr>
+<tr class="memdesc:a0bacd31455e2745eb5efd291210482a8 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor takes the state space the controls correspond to and the dimension of the space of controls, <em>dim</em>. <br/></td></tr>
+<tr class="separator:a0bacd31455e2745eb5efd291210482a8 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab21eee94cc69d207ab578b69a423660c inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab21eee94cc69d207ab578b69a423660c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#ab21eee94cc69d207ab578b69a423660c">setBounds</a> (const <a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a> &amp;bounds)</td></tr>
+<tr class="memdesc:ab21eee94cc69d207ab578b69a423660c inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the bounds (min max values for each dimension) for the control. <br/></td></tr>
+<tr class="separator:ab21eee94cc69d207ab578b69a423660c inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a095178f210d21af4353b83bb6dba998a inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a095178f210d21af4353b83bb6dba998a"></a>
+const <a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#a095178f210d21af4353b83bb6dba998a">getBounds</a> () const </td></tr>
+<tr class="memdesc:a095178f210d21af4353b83bb6dba998a inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the bounds (min max values for each dimension) for the control. <br/></td></tr>
+<tr class="separator:a095178f210d21af4353b83bb6dba998a inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a026dcda27a1221df0b36d58bbd264de2 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a026dcda27a1221df0b36d58bbd264de2"></a>
+virtual unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#a026dcda27a1221df0b36d58bbd264de2">getDimension</a> () const </td></tr>
+<tr class="memdesc:a026dcda27a1221df0b36d58bbd264de2 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the dimension of this control space. <br/></td></tr>
+<tr class="separator:a026dcda27a1221df0b36d58bbd264de2 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ab9e55d9332c2e6609f706ab90e3676 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ab9e55d9332c2e6609f706ab90e3676"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#a4ab9e55d9332c2e6609f706ab90e3676">copyControl</a> (<a class="el" href="classompl_1_1control_1_1Control.html">Control</a> *destination, const <a class="el" href="classompl_1_1control_1_1Control.html">Control</a> *source) const </td></tr>
+<tr class="memdesc:a4ab9e55d9332c2e6609f706ab90e3676 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy a control to another. <br/></td></tr>
+<tr class="separator:a4ab9e55d9332c2e6609f706ab90e3676 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44f0c2bff20cc1704f4c66a975339340 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44f0c2bff20cc1704f4c66a975339340"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#a44f0c2bff20cc1704f4c66a975339340">equalControls</a> (const <a class="el" href="classompl_1_1control_1_1Control.html">Control</a> *control1, const <a class="el" href="classompl_1_1control_1_1Control.html">Control</a> *control2) const </td></tr>
+<tr class="memdesc:a44f0c2bff20cc1704f4c66a975339340 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if two controls are the same. <br/></td></tr>
+<tr class="separator:a44f0c2bff20cc1704f4c66a975339340 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac787d13b8594bc076a07e35b98b80d4f inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac787d13b8594bc076a07e35b98b80d4f"></a>
+virtual <a class="el" href="classompl_1_1control_1_1ControlSamplerPtr.html">ControlSamplerPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#ac787d13b8594bc076a07e35b98b80d4f">allocDefaultControlSampler</a> () const </td></tr>
+<tr class="memdesc:ac787d13b8594bc076a07e35b98b80d4f inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate the default control sampler. <br/></td></tr>
+<tr class="separator:ac787d13b8594bc076a07e35b98b80d4f inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f3bc5e9bfea1ebc34c5a90ae890ed72 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f3bc5e9bfea1ebc34c5a90ae890ed72"></a>
+virtual <a class="el" href="classompl_1_1control_1_1Control.html">Control</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#a7f3bc5e9bfea1ebc34c5a90ae890ed72">allocControl</a> () const </td></tr>
+<tr class="memdesc:a7f3bc5e9bfea1ebc34c5a90ae890ed72 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate memory for a control. <br/></td></tr>
+<tr class="separator:a7f3bc5e9bfea1ebc34c5a90ae890ed72 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a700733ab5a157781fee992511ffd6d91 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a700733ab5a157781fee992511ffd6d91"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#a700733ab5a157781fee992511ffd6d91">freeControl</a> (<a class="el" href="classompl_1_1control_1_1Control.html">Control</a> *control) const </td></tr>
+<tr class="memdesc:a700733ab5a157781fee992511ffd6d91 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the memory of a control. <br/></td></tr>
+<tr class="separator:a700733ab5a157781fee992511ffd6d91 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4d4f0c7d37c7a7118cd2bee1ed4f435 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4d4f0c7d37c7a7118cd2bee1ed4f435"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#aa4d4f0c7d37c7a7118cd2bee1ed4f435">nullControl</a> (<a class="el" href="classompl_1_1control_1_1Control.html">Control</a> *control) const </td></tr>
+<tr class="memdesc:aa4d4f0c7d37c7a7118cd2bee1ed4f435 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make the control have no effect if it were to be applied to a state for any amount of time. <br/></td></tr>
+<tr class="separator:aa4d4f0c7d37c7a7118cd2bee1ed4f435 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5ed085564053a3ac9acb4f31eacef65 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5ed085564053a3ac9acb4f31eacef65"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#ab5ed085564053a3ac9acb4f31eacef65">printControl</a> (const <a class="el" href="classompl_1_1control_1_1Control.html">Control</a> *control, std::ostream &amp;out) const </td></tr>
+<tr class="memdesc:ab5ed085564053a3ac9acb4f31eacef65 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a control to a stream. <br/></td></tr>
+<tr class="separator:ab5ed085564053a3ac9acb4f31eacef65 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0404c9dabcb7b26ebfc241855d0b40c inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad0404c9dabcb7b26ebfc241855d0b40c"></a>
+virtual double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#ad0404c9dabcb7b26ebfc241855d0b40c">getValueAddressAtIndex</a> (<a class="el" href="classompl_1_1control_1_1Control.html">Control</a> *control, const unsigned int index) const </td></tr>
+<tr class="memdesc:ad0404c9dabcb7b26ebfc241855d0b40c inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Many controls contain a number of double values. This function provides a means to get the memory address of a double value from a control <em>control</em> located at position <em>index</em>. The first double value is returned for <em>index</em> = 0. If <em>index</em> is too large (does not point to any double values in the control), the return value is NULL. <br/></td></tr>
+<tr class="separator:ad0404c9dabcb7b26ebfc241855d0b40c inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a328ae638e5b1fc2103eaf47231f0bf4d inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a328ae638e5b1fc2103eaf47231f0bf4d"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#a328ae638e5b1fc2103eaf47231f0bf4d">printSettings</a> (std::ostream &amp;out) const </td></tr>
+<tr class="memdesc:a328ae638e5b1fc2103eaf47231f0bf4d inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the settings for this control space to a stream. <br/></td></tr>
+<tr class="separator:a328ae638e5b1fc2103eaf47231f0bf4d inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada2b7e629f28df3c6758166f1e3e4213 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada2b7e629f28df3c6758166f1e3e4213"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#ada2b7e629f28df3c6758166f1e3e4213">setup</a> ()</td></tr>
+<tr class="memdesc:ada2b7e629f28df3c6758166f1e3e4213 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform final setup steps. This function is automatically called by the <a class="el" href="classompl_1_1control_1_1SpaceInformation.html" title="Space information containing necessary information for planning with controls. setup() needs to be ca...">SpaceInformation</a>. <br/></td></tr>
+<tr class="separator:ada2b7e629f28df3c6758166f1e3e4213 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4536f460b7451c3edc89d8a729f66571 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4536f460b7451c3edc89d8a729f66571"></a>
+virtual unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#a4536f460b7451c3edc89d8a729f66571">getSerializationLength</a> () const </td></tr>
+<tr class="memdesc:a4536f460b7451c3edc89d8a729f66571 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the serialization size for a single control in this space. <br/></td></tr>
+<tr class="separator:a4536f460b7451c3edc89d8a729f66571 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1737030281d2629608ec63eef6a6119 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa1737030281d2629608ec63eef6a6119"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#aa1737030281d2629608ec63eef6a6119">serialize</a> (void *serialization, const <a class="el" href="classompl_1_1control_1_1Control.html">Control</a> *ctrl) const </td></tr>
+<tr class="memdesc:aa1737030281d2629608ec63eef6a6119 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes the given control into the serialization buffer. <br/></td></tr>
+<tr class="separator:aa1737030281d2629608ec63eef6a6119 inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad932a41cbf8a7ec68318dde1598da34b inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad932a41cbf8a7ec68318dde1598da34b"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#ad932a41cbf8a7ec68318dde1598da34b">deserialize</a> (<a class="el" href="classompl_1_1control_1_1Control.html">Control</a> *ctrl, const void *serialization) const </td></tr>
+<tr class="memdesc:ad932a41cbf8a7ec68318dde1598da34b inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializes a control from the serialization buffer. <br/></td></tr>
+<tr class="separator:ad932a41cbf8a7ec68318dde1598da34b inherit pub_methods_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classompl_1_1control_1_1ControlSpace"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classompl_1_1control_1_1ControlSpace')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classompl_1_1control_1_1ControlSpace.html">ompl::control::ControlSpace</a></td></tr>
+<tr class="memitem:ac967d6891fd4e0d5328ff304842288f4 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac967d6891fd4e0d5328ff304842288f4"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#ac967d6891fd4e0d5328ff304842288f4">ControlSpace</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">base::StateSpacePtr</a> &amp;stateSpace)</td></tr>
+<tr class="memdesc:ac967d6891fd4e0d5328ff304842288f4 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a control space, given the state space. <br/></td></tr>
+<tr class="separator:ac967d6891fd4e0d5328ff304842288f4 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad493371248cdfb29afd658994ed9416f inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:ad493371248cdfb29afd658994ed9416f inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#ad493371248cdfb29afd658994ed9416f">as</a> ()</td></tr>
+<tr class="memdesc:ad493371248cdfb29afd658994ed9416f inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast this instance to a desired type.  <a href="#ad493371248cdfb29afd658994ed9416f">More...</a><br/></td></tr>
+<tr class="separator:ad493371248cdfb29afd658994ed9416f inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaefe1e90033adc60ee85bb025efbc620 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:aaefe1e90033adc60ee85bb025efbc620 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memTemplItemLeft" align="right" valign="top">const T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#aaefe1e90033adc60ee85bb025efbc620">as</a> () const </td></tr>
+<tr class="memdesc:aaefe1e90033adc60ee85bb025efbc620 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast this instance to a desired type.  <a href="#aaefe1e90033adc60ee85bb025efbc620">More...</a><br/></td></tr>
+<tr class="separator:aaefe1e90033adc60ee85bb025efbc620 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c6eb7d9584d8baed33075110ea7a7a1 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c6eb7d9584d8baed33075110ea7a7a1"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#a7c6eb7d9584d8baed33075110ea7a7a1">getName</a> () const </td></tr>
+<tr class="memdesc:a7c6eb7d9584d8baed33075110ea7a7a1 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name of the control space. <br/></td></tr>
+<tr class="separator:a7c6eb7d9584d8baed33075110ea7a7a1 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7138a1a3dd3b2dba3e222538707e15d inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae7138a1a3dd3b2dba3e222538707e15d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#ae7138a1a3dd3b2dba3e222538707e15d">setName</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:ae7138a1a3dd3b2dba3e222538707e15d inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the name of the control space. <br/></td></tr>
+<tr class="separator:ae7138a1a3dd3b2dba3e222538707e15d inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d9f0a85e62e1b64d0794b63055ad9f2 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d9f0a85e62e1b64d0794b63055ad9f2"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#a4d9f0a85e62e1b64d0794b63055ad9f2">getType</a> () const </td></tr>
+<tr class="memdesc:a4d9f0a85e62e1b64d0794b63055ad9f2 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the control space. The type can be used to verify whether two space instances are of the same type. <br/></td></tr>
+<tr class="separator:a4d9f0a85e62e1b64d0794b63055ad9f2 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7115057d0cbb11095a88515fce9ee9c2 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7115057d0cbb11095a88515fce9ee9c2"></a>
+const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">base::StateSpacePtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#a7115057d0cbb11095a88515fce9ee9c2">getStateSpace</a> () const </td></tr>
+<tr class="memdesc:a7115057d0cbb11095a88515fce9ee9c2 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the state space this control space depends on. <br/></td></tr>
+<tr class="separator:a7115057d0cbb11095a88515fce9ee9c2 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb5db1155717cacfbbbd154e29fdd7ad inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb5db1155717cacfbbbd154e29fdd7ad"></a>
+virtual <a class="el" href="classompl_1_1control_1_1ControlSamplerPtr.html">ControlSamplerPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#afb5db1155717cacfbbbd154e29fdd7ad">allocControlSampler</a> () const </td></tr>
+<tr class="memdesc:afb5db1155717cacfbbbd154e29fdd7ad inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate an instance of the control sampler for this space. This sampler will be allocated with the sampler allocator that was previously specified by <a class="el" href="classompl_1_1control_1_1ControlSpace.html#aff9f2582768673ba3c2091c960294115" title="Set the sampler allocator to use. ">setControlSamplerAllocator()</a> or, if no sampler allocator was specified, <a class="el" href="classompl_1_1control_1_1ControlSpace.html#a92ec45728c99bcbc2d8dce127687fa89" title="Allocate the default control sampler. ">allocDefaultControlSampler()</a> is called. <br/></td></tr>
+<tr class="separator:afb5db1155717cacfbbbd154e29fdd7ad inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9f2582768673ba3c2091c960294115 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff9f2582768673ba3c2091c960294115"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#aff9f2582768673ba3c2091c960294115">setControlSamplerAllocator</a> (const <a class="el" href="namespaceompl_1_1control.html#abdb02412125f6d2b9df7724f9c3d1029">ControlSamplerAllocator</a> &amp;csa)</td></tr>
+<tr class="memdesc:aff9f2582768673ba3c2091c960294115 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the sampler allocator to use. <br/></td></tr>
+<tr class="separator:aff9f2582768673ba3c2091c960294115 inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad47a72cbf62af06147a324c906cf394e inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad47a72cbf62af06147a324c906cf394e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#ad47a72cbf62af06147a324c906cf394e">clearControlSamplerAllocator</a> ()</td></tr>
+<tr class="memdesc:ad47a72cbf62af06147a324c906cf394e inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the control sampler allocator (reset to default) <br/></td></tr>
+<tr class="separator:ad47a72cbf62af06147a324c906cf394e inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc4facfba1fb4f8dcada561f0ff5446d inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc4facfba1fb4f8dcada561f0ff5446d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#abc4facfba1fb4f8dcada561f0ff5446d">computeSignature</a> (std::vector&lt; int &gt; &amp;signature) const </td></tr>
+<tr class="memdesc:abc4facfba1fb4f8dcada561f0ff5446d inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute an array of ints that uniquely identifies the structure of the control space. The first element of the signature is the number of integers that follow. <br/></td></tr>
+<tr class="separator:abc4facfba1fb4f8dcada561f0ff5446d inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2161194b465644e305b6b0ed6eb6a49d inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2161194b465644e305b6b0ed6eb6a49d"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#a2161194b465644e305b6b0ed6eb6a49d">isCompound</a> () const </td></tr>
+<tr class="memdesc:a2161194b465644e305b6b0ed6eb6a49d inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the control space is compound. <br/></td></tr>
+<tr class="separator:a2161194b465644e305b6b0ed6eb6a49d inherit pub_methods_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_attribs_classompl_1_1control_1_1RealVectorControlSpace"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classompl_1_1control_1_1RealVectorControlSpace')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html">ompl::control::RealVectorControlSpace</a></td></tr>
+<tr class="memitem:a176e9568fbe1c7fd557e8890360d7be9 inherit pro_attribs_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a176e9568fbe1c7fd557e8890360d7be9"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#a176e9568fbe1c7fd557e8890360d7be9">dimension_</a></td></tr>
+<tr class="memdesc:a176e9568fbe1c7fd557e8890360d7be9 inherit pro_attribs_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">The dimension of the state space. <br/></td></tr>
+<tr class="separator:a176e9568fbe1c7fd557e8890360d7be9 inherit pro_attribs_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2f518294c75aab253d63237605bf9ff inherit pro_attribs_classompl_1_1control_1_1RealVectorControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2f518294c75aab253d63237605bf9ff"></a>
+<a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1RealVectorControlSpace.html#aa2f518294c75aab253d63237605bf9ff">bounds_</a></td></tr>
+<tr class="memdesc:aa2f518294c75aab253d63237605bf9ff inherit pro_attribs_classompl_1_1control_1_1RealVectorControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">The bounds on controls. <br/></td></tr>
+<tr class="separator:aa2f518294c75aab253d63237605bf9ff inherit pro_attribs_classompl_1_1control_1_1RealVectorControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classompl_1_1control_1_1ControlSpace"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classompl_1_1control_1_1ControlSpace')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classompl_1_1control_1_1ControlSpace.html">ompl::control::ControlSpace</a></td></tr>
+<tr class="memitem:a81070174fae65611ce0779673c5a60df inherit pro_attribs_classompl_1_1control_1_1ControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a81070174fae65611ce0779673c5a60df"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#a81070174fae65611ce0779673c5a60df">type_</a></td></tr>
+<tr class="memdesc:a81070174fae65611ce0779673c5a60df inherit pro_attribs_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type assigned for this control space. <br/></td></tr>
+<tr class="separator:a81070174fae65611ce0779673c5a60df inherit pro_attribs_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8998ac5d1f469f7e3113b4e69d8de1cd inherit pro_attribs_classompl_1_1control_1_1ControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8998ac5d1f469f7e3113b4e69d8de1cd"></a>
+<a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">base::StateSpacePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#a8998ac5d1f469f7e3113b4e69d8de1cd">stateSpace_</a></td></tr>
+<tr class="memdesc:a8998ac5d1f469f7e3113b4e69d8de1cd inherit pro_attribs_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">The state space controls can be applied to. <br/></td></tr>
+<tr class="separator:a8998ac5d1f469f7e3113b4e69d8de1cd inherit pro_attribs_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafc829af78b3a32e549bd6ed8f0bc8b0 inherit pro_attribs_classompl_1_1control_1_1ControlSpace"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafc829af78b3a32e549bd6ed8f0bc8b0"></a>
+<a class="el" href="namespaceompl_1_1control.html#abdb02412125f6d2b9df7724f9c3d1029">ControlSamplerAllocator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ControlSpace.html#aafc829af78b3a32e549bd6ed8f0bc8b0">csa_</a></td></tr>
+<tr class="memdesc:aafc829af78b3a32e549bd6ed8f0bc8b0 inherit pro_attribs_classompl_1_1control_1_1ControlSpace"><td class="mdescLeft">&#160;</td><td class="mdescRight">An optional control sampler allocator. <br/></td></tr>
+<tr class="separator:aafc829af78b3a32e549bd6ed8f0bc8b0 inherit pro_attribs_classompl_1_1control_1_1ControlSpace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Representation of controls applied in OpenDE environments. This is an array of double values. </p>
+
+<p>Definition at line <a class="el" href="OpenDEControlSpace_8h_source.html#l00051">51</a> of file <a class="el" href="OpenDEControlSpace_8h_source.html">OpenDEControlSpace.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>ompl/src/ompl/extensions/opende/<a class="el" href="OpenDEControlSpace_8h_source.html">OpenDEControlSpace.h</a></li>
+<li>ompl/src/ompl/extensions/opende/src/<a class="el" href="OpenDEControlSpace_8cpp_source.html">OpenDEControlSpace.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:28 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

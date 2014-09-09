@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/base/OptimizationObjective.h Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_06e181af1f5888faac16991b57afb430.html">base</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">OptimizationObjective.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2012, Willow Garage, Inc.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Willow Garage nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Luis G. Torres, Ioan Sucan */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifndef OMPL_BASE_OPTIMIZATION_OBJECTIVE_</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define OMPL_BASE_OPTIMIZATION_OBJECTIVE_</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;ompl/base/Cost.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;ompl/base/SpaceInformation.h&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;ompl/util/ClassForward.h&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &lt;boost/noncopyable.hpp&gt;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;boost/concept_check.hpp&gt;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">namespace </span>ompl</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">namespace </span>base</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="namespaceompl_1_1base.html#a8f113aa9c3d10539fca0d99d7a9e69e9">   50</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1base_1_1Goal.html">Goal</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">typedef</span> boost::function&lt;Cost (const State*, const Goal*)&gt; <a class="code" href="namespaceompl_1_1base.html#a8f113aa9c3d10539fca0d99d7a9e69e9">CostToGoHeuristic</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        OMPL_CLASS_FORWARD(<a class="code" href="classompl_1_1base_1_1OptimizationObjective.html">OptimizationObjective</a>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        OMPL_CLASS_FORWARD(<a class="code" href="classompl_1_1base_1_1Path.html">Path</a>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1OptimizationObjective.html">   70</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1base_1_1OptimizationObjective.html">OptimizationObjective</a> : <span class="keyword">private</span> boost::noncopyable</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a198937100228cca52595ac9f33e36e45">OptimizationObjective</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;si);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keyword">virtual</span> ~<a class="code" href="classompl_1_1base_1_1OptimizationObjective.html">OptimizationObjective</a>()</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keyword">const</span> std::string&amp; <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#af7078bbdb57dd6059dd80fdf6fc36e8b">getDescription</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a780c272c0b856e54ca6ac30dbc529592">isSatisfied</a>(<a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> c) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a7a7f94f2a30787935dc5087261b5fb09">getCostThreshold</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a1f133b98a94cb5b20c4b1a3a998aa7e9">setCostThreshold</a>(<a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> c);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a58a3bbc94241a8c4dc0102653a0625bc">getCost</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1Path.html">Path</a> &amp;path) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#ad6ba0ff250adc0cb8cb0863d0f4d23b5">isCostBetterThan</a>(<a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> c1, <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> c2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#af589c396f89c8d54b4e36e87b6227220">stateCost</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *s) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#aa8dc9a1b7952491f6938ee8279d3a179">motionCost</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *s1, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *s2) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#abef844b078ccaf3f30edd7d005ff24df">combineCosts</a>(<a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> c1, <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> c2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#af2eb3b8f8e56732005273ce8e15b2986">identityCost</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a14f3566ca58d1c72bbf8e2318001002f">infiniteCost</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a89dff641e8e2535d6b2f20b68b861e00">initialCost</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *s) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a5d52aab37d3cd147101fe45095b2071a">terminalCost</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *s) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a32e746bb31a7eba9c85f2b2137e04483">isSymmetric</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a790d9bf0e18c8217a6eb7c93bcc73b11">averageStateCost</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numStates) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a3964de818108dd28284e49704f067b9c">setCostToGoHeuristic</a>(<span class="keyword">const</span> <a class="code" href="namespaceompl_1_1base.html#a8f113aa9c3d10539fca0d99d7a9e69e9">CostToGoHeuristic</a>&amp; <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a6917532c5f05944484ac8dab3f8a37b8">costToGo</a>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a6917532c5f05944484ac8dab3f8a37b8">costToGo</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1Goal.html">Goal</a> *goal) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#afd577784b9dedb7bbd5fad9eac23f773">motionCostHeuristic</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *s1, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *s2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a>&amp; <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#acf33dd88eb602fa298a772938f454860">getSpaceInformation</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1OptimizationObjective.html#aed9801e7e2142d7c61aa586bcacea6c4">  139</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#aed9801e7e2142d7c61aa586bcacea6c4">si_</a>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1OptimizationObjective.html#a0782ddb1c3cd4d656e4c0bae7f2caa37">  142</a></span>&#160;            std::string         <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a0782ddb1c3cd4d656e4c0bae7f2caa37">description_</a>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1OptimizationObjective.html#a4e62f03ff644f753073fc86ae7553ff1">  145</a></span>&#160;            <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a>                <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a4e62f03ff644f753073fc86ae7553ff1">threshold_</a>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1OptimizationObjective.html#a89cd7ce97d7b26efd7bcde24095b1fce">  148</a></span>&#160;            <a class="code" href="namespaceompl_1_1base.html#a8f113aa9c3d10539fca0d99d7a9e69e9">CostToGoHeuristic</a>   <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a89cd7ce97d7b26efd7bcde24095b1fce">costToGoFn_</a>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        };</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="namespaceompl_1_1base.html#a009050ed9b663bc4d6d4dbbee94c40b8">goalRegionCostToGo</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1Goal.html">Goal</a> *goal);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1MultiOptimizationObjective.html">  162</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html">MultiOptimizationObjective</a> : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html">OptimizationObjective</a></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html">MultiOptimizationObjective</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;si);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html#adc1f3daeac02055c1f43066496a9851c">addObjective</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a>&amp; objective,</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                              <span class="keywordtype">double</span> weight);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            std::size_t <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html#a4b2110d912fd7a5aa1ae87d04b67b20f">getObjectiveCount</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a>&amp; <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html#abaf3f1b3f6afc7d15934792581d21165">getObjective</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordtype">double</span> <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html#aa4750a6569c24f290d3c0d0297dff13a">getObjectiveWeight</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html#a20f6e0a7169ee2d31dcf2e6cf9f729ac">setObjectiveWeight</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx, <span class="keywordtype">double</span> weight);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html#af8ee10e2a50bd00b2dc25315a0537716">lock</a>();</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html#a5b68e4a8ac79b15fdcc2a8100efc983f">isLocked</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html#ad96ef168e90d6359a8f7e2107216da85">stateCost</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *s) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html#a018a7d4ae8e8883a307e0f44cbdef3d6">motionCost</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *s1, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *s2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="structompl_1_1base_1_1MultiOptimizationObjective_1_1Component.html">  204</a></span>&#160;            <span class="keyword">struct </span><a class="code" href="structompl_1_1base_1_1MultiOptimizationObjective_1_1Component.html">Component</a></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                <a class="code" href="structompl_1_1base_1_1MultiOptimizationObjective_1_1Component.html">Component</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a>&amp; obj, <span class="keywordtype">double</span> weight);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> objective;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                <span class="keywordtype">double</span> weight;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            };</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1MultiOptimizationObjective.html#ad2b37645c317dc327423276e44ea05dc">  212</a></span>&#160;            std::vector&lt;Component&gt; <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html#ad2b37645c317dc327423276e44ea05dc">components_</a>;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1MultiOptimizationObjective.html#a70547ad7e799b4e8a806472071546c22">  215</a></span>&#160;            <span class="keywordtype">bool</span>                   <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html#a70547ad7e799b4e8a806472071546c22">locked_</a>;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <span class="comment">// Friend functions for operator overloads for easy multiobjective creation</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keyword">friend</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html#af383e931d014bc44d371d7fea3779acb">operator+</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;a,</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                                                      <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;b);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keyword">friend</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html#a7f8b4ad4d615eace51966b8df644322b">operator*</a>(<span class="keywordtype">double</span> w, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;a);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keyword">friend</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> <a class="code" href="classompl_1_1base_1_1MultiOptimizationObjective.html#a7f8b4ad4d615eace51966b8df644322b">operator*</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;a, <span class="keywordtype">double</span> w);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        };</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> <a class="code" href="namespaceompl_1_1base.html#a5ac52d1250b648cdc3ae2ae59591f52f">operator+</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;a,</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                                           <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;b);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> <a class="code" href="namespaceompl_1_1base.html#a89d47afd597e87e6f0b99d46bd5f4e0a">operator*</a>(<span class="keywordtype">double</span> w, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;a);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> <a class="code" href="namespaceompl_1_1base.html#a89d47afd597e87e6f0b99d46bd5f4e0a">operator*</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;a, <span class="keywordtype">double</span> w);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;}</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a89dff641e8e2535d6b2f20b68b861e00"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a89dff641e8e2535d6b2f20b68b861e00">ompl::base::OptimizationObjective::initialCost</a></div><div class="ttdeci">virtual Cost initialCost(const State *s) const </div><div class="ttdoc">Returns a cost value corresponding to starting at a state s. No optimal planners currently support th...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00129">OptimizationObjective.cpp:129</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a0782ddb1c3cd4d656e4c0bae7f2caa37"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a0782ddb1c3cd4d656e4c0bae7f2caa37">ompl::base::OptimizationObjective::description_</a></div><div class="ttdeci">std::string description_</div><div class="ttdoc">The description of this optimization objective. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8h_source.html#l00142">OptimizationObjective.h:142</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MultiOptimizationObjective_html"><div class="ttname"><a href="classompl_1_1base_1_1MultiOptimizationObjective.html">ompl::base::MultiOptimizationObjective</a></div><div class="ttdoc">This class allows for the definition of multiobjective optimal planning problems. Objectives are adde...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8h_source.html#l00162">OptimizationObjective.h:162</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MultiOptimizationObjective_html_ad2b37645c317dc327423276e44ea05dc"><div class="ttname"><a href="classompl_1_1base_1_1MultiOptimizationObjective.html#ad2b37645c317dc327423276e44ea05dc">ompl::base::MultiOptimizationObjective::components_</a></div><div class="ttdeci">std::vector&lt; Component &gt; components_</div><div class="ttdoc">List of objective/weight pairs. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8h_source.html#l00212">OptimizationObjective.h:212</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a32e746bb31a7eba9c85f2b2137e04483"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a32e746bb31a7eba9c85f2b2137e04483">ompl::base::OptimizationObjective::isSymmetric</a></div><div class="ttdeci">virtual bool isSymmetric() const </div><div class="ttdoc">Check if this objective has a symmetric cost metric, i.e. motionCost(s1, s2) = motionCost(s2, s1). Default implementation returns whether the underlying state space has symmetric interpolation. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00139">OptimizationObjective.cpp:139</a></div></div>
+<div class="ttc" id="namespaceompl_1_1base_html_a8f113aa9c3d10539fca0d99d7a9e69e9"><div class="ttname"><a href="namespaceompl_1_1base.html#a8f113aa9c3d10539fca0d99d7a9e69e9">ompl::base::CostToGoHeuristic</a></div><div class="ttdeci">boost::function&lt; Cost(const State *, const Goal *)&gt; CostToGoHeuristic</div><div class="ttdoc">The definition of a function which returns an admissible estimate of the optimal path cost from a giv...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8h_source.html#l00050">OptimizationObjective.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Goal_html"><div class="ttname"><a href="classompl_1_1base_1_1Goal.html">ompl::base::Goal</a></div><div class="ttdoc">Abstract definition of goals. </div><div class="ttdef"><b>Definition:</b> <a href="Goal_8h_source.html#l00063">Goal.h:63</a></div></div>
+<div class="ttc" id="namespaceompl_1_1base_html_a009050ed9b663bc4d6d4dbbee94c40b8"><div class="ttname"><a href="namespaceompl_1_1base.html#a009050ed9b663bc4d6d4dbbee94c40b8">ompl::base::goalRegionCostToGo</a></div><div class="ttdeci">Cost goalRegionCostToGo(const State *state, const Goal *goal)</div><div class="ttdoc">For use when goal region&#39;s distanceGoal() is equivalent to the cost-to-go of a state under the optimi...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00187">OptimizationObjective.cpp:187</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MultiOptimizationObjective_html_adc1f3daeac02055c1f43066496a9851c"><div class="ttname"><a href="classompl_1_1base_1_1MultiOptimizationObjective.html#adc1f3daeac02055c1f43066496a9851c">ompl::base::MultiOptimizationObjective::addObjective</a></div><div class="ttdeci">void addObjective(const OptimizationObjectivePtr &amp;objective, double weight)</div><div class="ttdoc">Adds a new objective for this multiobjective. A weight must also be specified for specifying importan...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00210">OptimizationObjective.cpp:210</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a790d9bf0e18c8217a6eb7c93bcc73b11"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a790d9bf0e18c8217a6eb7c93bcc73b11">ompl::base::OptimizationObjective::averageStateCost</a></div><div class="ttdeci">virtual Cost averageStateCost(unsigned int numStates) const </div><div class="ttdoc">Compute the average state cost of this objective by taking a sample of numStates states. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00144">OptimizationObjective.cpp:144</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a1f133b98a94cb5b20c4b1a3a998aa7e9"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a1f133b98a94cb5b20c4b1a3a998aa7e9">ompl::base::OptimizationObjective::setCostThreshold</a></div><div class="ttdeci">void setCostThreshold(Cost c)</div><div class="ttdoc">Set the cost threshold for objective satisfaction. When a path is found with a cost better than the c...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00064">OptimizationObjective.cpp:64</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_af7078bbdb57dd6059dd80fdf6fc36e8b"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#af7078bbdb57dd6059dd80fdf6fc36e8b">ompl::base::OptimizationObjective::getDescription</a></div><div class="ttdeci">const std::string &amp; getDescription() const </div><div class="ttdoc">Get the description of this optimization objective. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00049">OptimizationObjective.cpp:49</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a14f3566ca58d1c72bbf8e2318001002f"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a14f3566ca58d1c72bbf8e2318001002f">ompl::base::OptimizationObjective::infiniteCost</a></div><div class="ttdeci">virtual Cost infiniteCost() const </div><div class="ttdoc">Get a cost which is greater than all other costs in this OptimizationObjective; required for use in D...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00124">OptimizationObjective.cpp:124</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_aa8dc9a1b7952491f6938ee8279d3a179"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#aa8dc9a1b7952491f6938ee8279d3a179">ompl::base::OptimizationObjective::motionCost</a></div><div class="ttdeci">virtual Cost motionCost(const State *s1, const State *s2) const =0</div><div class="ttdoc">Get the cost that corresponds to the motion segment between s1 and s2. </div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a89cd7ce97d7b26efd7bcde24095b1fce"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a89cd7ce97d7b26efd7bcde24095b1fce">ompl::base::OptimizationObjective::costToGoFn_</a></div><div class="ttdeci">CostToGoHeuristic costToGoFn_</div><div class="ttdoc">The function used for returning admissible estimates on the optimal cost of the path between a given ...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8h_source.html#l00148">OptimizationObjective.h:148</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_acf33dd88eb602fa298a772938f454860"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#acf33dd88eb602fa298a772938f454860">ompl::base::OptimizationObjective::getSpaceInformation</a></div><div class="ttdeci">const SpaceInformationPtr &amp; getSpaceInformation() const </div><div class="ttdoc">Returns this objective&#39;s SpaceInformation. Needed for operators in MultiOptimizationObjective. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00182">OptimizationObjective.cpp:182</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1Cost_html"><div class="ttname"><a href="structompl_1_1base_1_1Cost.html">ompl::base::Cost</a></div><div class="ttdoc">Definition of a cost value. Can represent the cost of a motion or the cost of a state. </div><div class="ttdef"><b>Definition:</b> <a href="Cost_8h_source.html#l00047">Cost.h:47</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a198937100228cca52595ac9f33e36e45"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a198937100228cca52595ac9f33e36e45">ompl::base::OptimizationObjective::OptimizationObjective</a></div><div class="ttdeci">OptimizationObjective(const SpaceInformationPtr &amp;si)</div><div class="ttdoc">Constructor. The objective must always know the space information it is part of. The cost threshold f...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00043">OptimizationObjective.cpp:43</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a3964de818108dd28284e49704f067b9c"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a3964de818108dd28284e49704f067b9c">ompl::base::OptimizationObjective::setCostToGoHeuristic</a></div><div class="ttdeci">void setCostToGoHeuristic(const CostToGoHeuristic &amp;costToGo)</div><div class="ttdoc">Set the cost-to-go heuristic function for this objective. The cost-to-go heuristic is a function whic...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00161">OptimizationObjective.cpp:161</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a4e62f03ff644f753073fc86ae7553ff1"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a4e62f03ff644f753073fc86ae7553ff1">ompl::base::OptimizationObjective::threshold_</a></div><div class="ttdeci">Cost threshold_</div><div class="ttdoc">The cost threshold used for checking whether this objective has been satisfied during planning...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8h_source.html#l00145">OptimizationObjective.h:145</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_afd577784b9dedb7bbd5fad9eac23f773"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#afd577784b9dedb7bbd5fad9eac23f773">ompl::base::OptimizationObjective::motionCostHeuristic</a></div><div class="ttdeci">virtual Cost motionCostHeuristic(const State *s1, const State *s2) const </div><div class="ttdoc">Defines an admissible estimate on the optimal cost on the motion between states s1 and s2...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00175">OptimizationObjective.cpp:175</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MultiOptimizationObjective_html_a018a7d4ae8e8883a307e0f44cbdef3d6"><div class="ttname"><a href="classompl_1_1base_1_1MultiOptimizationObjective.html#a018a7d4ae8e8883a307e0f44cbdef3d6">ompl::base::MultiOptimizationObjective::motionCost</a></div><div class="ttdeci">virtual Cost motionCost(const State *s1, const State *s2) const </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00275">OptimizationObjective.cpp:275</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a7a7f94f2a30787935dc5087261b5fb09"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a7a7f94f2a30787935dc5087261b5fb09">ompl::base::OptimizationObjective::getCostThreshold</a></div><div class="ttdeci">Cost getCostThreshold() const </div><div class="ttdoc">Returns the cost threshold currently being checked for objective satisfaction. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00059">OptimizationObjective.cpp:59</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a58a3bbc94241a8c4dc0102653a0625bc"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a58a3bbc94241a8c4dc0102653a0625bc">ompl::base::OptimizationObjective::getCost</a></div><div class="ttdeci">virtual Cost getCost(const Path &amp;path) const </div><div class="ttdoc">Get the cost that corresponds to an entire path. This implementation assumes Path is of type PathGeom...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00069">OptimizationObjective.cpp:69</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a6917532c5f05944484ac8dab3f8a37b8"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a6917532c5f05944484ac8dab3f8a37b8">ompl::base::OptimizationObjective::costToGo</a></div><div class="ttdeci">Cost costToGo(const State *state, const Goal *goal) const </div><div class="ttdoc">Uses a cost-to-go heuristic to calculate an admissible estimate of the optimal cost from a given stat...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00166">OptimizationObjective.cpp:166</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Path_html"><div class="ttname"><a href="classompl_1_1base_1_1Path.html">ompl::base::Path</a></div><div class="ttdoc">Abstract definition of a path. </div><div class="ttdef"><b>Definition:</b> <a href="Path_8h_source.html#l00067">Path.h:67</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_ad6ba0ff250adc0cb8cb0863d0f4d23b5"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#ad6ba0ff250adc0cb8cb0863d0f4d23b5">ompl::base::OptimizationObjective::isCostBetterThan</a></div><div class="ttdeci">virtual bool isCostBetterThan(Cost c1, Cost c2) const </div><div class="ttdoc">Check whether the the cost c1 is considered better than the cost c2. By default, this returns true on...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00104">OptimizationObjective.cpp:104</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_af589c396f89c8d54b4e36e87b6227220"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#af589c396f89c8d54b4e36e87b6227220">ompl::base::OptimizationObjective::stateCost</a></div><div class="ttdeci">virtual Cost stateCost(const State *s) const </div><div class="ttdoc">Evaluate a cost map defined on the state space at a state s. Default implementation maps all states t...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00109">OptimizationObjective.cpp:109</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpaceInformationPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1SpaceInformationPtr.html">ompl::base::SpaceInformationPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::SpaceInformation. </div></div>
+<div class="ttc" id="structompl_1_1base_1_1MultiOptimizationObjective_1_1Component_html"><div class="ttname"><a href="structompl_1_1base_1_1MultiOptimizationObjective_1_1Component.html">ompl::base::MultiOptimizationObjective::Component</a></div><div class="ttdoc">Defines a pairing of an objective and its weight. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8h_source.html#l00204">OptimizationObjective.h:204</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="namespaceompl_1_1base_html_a5ac52d1250b648cdc3ae2ae59591f52f"><div class="ttname"><a href="namespaceompl_1_1base.html#a5ac52d1250b648cdc3ae2ae59591f52f">ompl::base::operator+</a></div><div class="ttdeci">OptimizationObjectivePtr operator+(const OptimizationObjectivePtr &amp;a, const OptimizationObjectivePtr &amp;b)</div><div class="ttdoc">Given two optimization objectives, returns a MultiOptimizationObjective that combines the two objecti...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00289">OptimizationObjective.cpp:289</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MultiOptimizationObjective_html_a20f6e0a7169ee2d31dcf2e6cf9f729ac"><div class="ttname"><a href="classompl_1_1base_1_1MultiOptimizationObjective.html#a20f6e0a7169ee2d31dcf2e6cf9f729ac">ompl::base::MultiOptimizationObjective::setObjectiveWeight</a></div><div class="ttdeci">void setObjectiveWeight(unsigned int idx, double weight)</div><div class="ttdoc">Sets the weighing factor of a specific objective. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00243">OptimizationObjective.cpp:243</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html">ompl::base::OptimizationObjective</a></div><div class="ttdoc">Abstract definition of optimization objectives. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8h_source.html#l00070">OptimizationObjective.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MultiOptimizationObjective_html_af383e931d014bc44d371d7fea3779acb"><div class="ttname"><a href="classompl_1_1base_1_1MultiOptimizationObjective.html#af383e931d014bc44d371d7fea3779acb">ompl::base::MultiOptimizationObjective::operator+</a></div><div class="ttdeci">friend OptimizationObjectivePtr operator+(const OptimizationObjectivePtr &amp;a, const OptimizationObjectivePtr &amp;b)</div><div class="ttdoc">Given two optimization objectives, returns a MultiOptimizationObjective that combines the two objecti...</div></div>
+<div class="ttc" id="classompl_1_1base_1_1MultiOptimizationObjective_html_aa4750a6569c24f290d3c0d0297dff13a"><div class="ttname"><a href="classompl_1_1base_1_1MultiOptimizationObjective.html#aa4750a6569c24f290d3c0d0297dff13a">ompl::base::MultiOptimizationObjective::getObjectiveWeight</a></div><div class="ttdeci">double getObjectiveWeight(unsigned int idx) const </div><div class="ttdoc">Returns the weighing factor of a specific objective. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00235">OptimizationObjective.cpp:235</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MultiOptimizationObjective_html_a5b68e4a8ac79b15fdcc2a8100efc983f"><div class="ttname"><a href="classompl_1_1base_1_1MultiOptimizationObjective.html#a5b68e4a8ac79b15fdcc2a8100efc983f">ompl::base::MultiOptimizationObjective::isLocked</a></div><div class="ttdeci">bool isLocked() const </div><div class="ttdoc">Returns whether this multiobjective has been locked from adding further objectives. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00257">OptimizationObjective.cpp:257</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjectivePtr_html"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjectivePtr.html">ompl::base::OptimizationObjectivePtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::OptimizationObjective. </div></div>
+<div class="ttc" id="classompl_1_1base_1_1MultiOptimizationObjective_html_a4b2110d912fd7a5aa1ae87d04b67b20f"><div class="ttname"><a href="classompl_1_1base_1_1MultiOptimizationObjective.html#a4b2110d912fd7a5aa1ae87d04b67b20f">ompl::base::MultiOptimizationObjective::getObjectiveCount</a></div><div class="ttdeci">std::size_t getObjectiveCount() const </div><div class="ttdoc">Returns the number of objectives that make up this multiobjective. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00221">OptimizationObjective.cpp:221</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MultiOptimizationObjective_html_af8ee10e2a50bd00b2dc25315a0537716"><div class="ttname"><a href="classompl_1_1base_1_1MultiOptimizationObjective.html#af8ee10e2a50bd00b2dc25315a0537716">ompl::base::MultiOptimizationObjective::lock</a></div><div class="ttdeci">void lock()</div><div class="ttdoc">This method &quot;freezes&quot; this multiobjective so that no more objectives can be added to it...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00252">OptimizationObjective.cpp:252</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MultiOptimizationObjective_html_a70547ad7e799b4e8a806472071546c22"><div class="ttname"><a href="classompl_1_1base_1_1MultiOptimizationObjective.html#a70547ad7e799b4e8a806472071546c22">ompl::base::MultiOptimizationObjective::locked_</a></div><div class="ttdeci">bool locked_</div><div class="ttdoc">Whether this multiobjective is locked from further additions. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8h_source.html#l00215">OptimizationObjective.h:215</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a780c272c0b856e54ca6ac30dbc529592"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a780c272c0b856e54ca6ac30dbc529592">ompl::base::OptimizationObjective::isSatisfied</a></div><div class="ttdeci">virtual bool isSatisfied(Cost c) const </div><div class="ttdoc">Verify that our objective is satisfied already and we can stop planning. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00054">OptimizationObjective.cpp:54</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_abef844b078ccaf3f30edd7d005ff24df"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#abef844b078ccaf3f30edd7d005ff24df">ompl::base::OptimizationObjective::combineCosts</a></div><div class="ttdeci">virtual Cost combineCosts(Cost c1, Cost c2) const </div><div class="ttdoc">Get the cost that corresponds to combining the costs c1 and c2. Default implementation defines this c...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00114">OptimizationObjective.cpp:114</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a5d52aab37d3cd147101fe45095b2071a"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a5d52aab37d3cd147101fe45095b2071a">ompl::base::OptimizationObjective::terminalCost</a></div><div class="ttdeci">virtual Cost terminalCost(const State *s) const </div><div class="ttdoc">Returns a cost value corresponding to a path ending at a state s. No optimal planners currently suppo...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00134">OptimizationObjective.cpp:134</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_aed9801e7e2142d7c61aa586bcacea6c4"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#aed9801e7e2142d7c61aa586bcacea6c4">ompl::base::OptimizationObjective::si_</a></div><div class="ttdeci">SpaceInformationPtr si_</div><div class="ttdoc">The space information for this objective. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8h_source.html#l00139">OptimizationObjective.h:139</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MultiOptimizationObjective_html_ad96ef168e90d6359a8f7e2107216da85"><div class="ttname"><a href="classompl_1_1base_1_1MultiOptimizationObjective.html#ad96ef168e90d6359a8f7e2107216da85">ompl::base::MultiOptimizationObjective::stateCost</a></div><div class="ttdeci">virtual Cost stateCost(const State *s) const </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00262">OptimizationObjective.cpp:262</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_af2eb3b8f8e56732005273ce8e15b2986"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#af2eb3b8f8e56732005273ce8e15b2986">ompl::base::OptimizationObjective::identityCost</a></div><div class="ttdeci">virtual Cost identityCost() const </div><div class="ttdoc">Get the identity cost value. The identity cost value is the cost c_i such that, for all costs c...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00119">OptimizationObjective.cpp:119</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MultiOptimizationObjective_html_abaf3f1b3f6afc7d15934792581d21165"><div class="ttname"><a href="classompl_1_1base_1_1MultiOptimizationObjective.html#abaf3f1b3f6afc7d15934792581d21165">ompl::base::MultiOptimizationObjective::getObjective</a></div><div class="ttdeci">const OptimizationObjectivePtr &amp; getObjective(unsigned int idx) const </div><div class="ttdoc">Returns a specific objective from this multiobjective, where the individual objectives are in order o...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00227">OptimizationObjective.cpp:227</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MultiOptimizationObjective_html_a7f8b4ad4d615eace51966b8df644322b"><div class="ttname"><a href="classompl_1_1base_1_1MultiOptimizationObjective.html#a7f8b4ad4d615eace51966b8df644322b">ompl::base::MultiOptimizationObjective::operator*</a></div><div class="ttdeci">friend OptimizationObjectivePtr operator*(double w, const OptimizationObjectivePtr &amp;a)</div><div class="ttdoc">Given a weighing factor and an optimization objective, returns a MultiOptimizationObjective containin...</div></div>
+<div class="ttc" id="namespaceompl_1_1base_html_a89d47afd597e87e6f0b99d46bd5f4e0a"><div class="ttname"><a href="namespaceompl_1_1base.html#a89d47afd597e87e6f0b99d46bd5f4e0a">ompl::base::operator*</a></div><div class="ttdeci">OptimizationObjectivePtr operator*(double w, const OptimizationObjectivePtr &amp;a)</div><div class="ttdoc">Given a weighing factor and an optimization objective, returns a MultiOptimizationObjective containin...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00336">OptimizationObjective.cpp:336</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:25 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

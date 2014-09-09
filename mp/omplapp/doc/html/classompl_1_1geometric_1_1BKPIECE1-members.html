@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Member List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1geometric.html">geometric</a></li><li class="navelem"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">BKPIECE1</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ompl::geometric::BKPIECE1 Member List</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>This is the complete list of members for <a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a>, including all inherited members.</p>
+<table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a3dc481539fac465497ad158e1bdac91a">addPlannerProgressProperty</a>(const std::string &amp;progressPropertyName, const PlannerProgressProperty &amp;prop)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a2ca68a50629dd31d550632480d001c17">as</a>()</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a6ebb461363467a0a95ccb1c1e44a7332">as</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a1e61534ba2f912016e00d94cfc5449e5">BKPIECE1</a>(const base::SpaceInformationPtr &amp;si)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#ab416900477cf4499139c01f35663dffb">checkValidity</a>()</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a601a2d24bf6b1425692d3a93e7d97960">clear</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a8b25e79145b45633eba89d24a1de0d63">connectionPoint_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a6b4a1345376e3e977772c38d38d5c50c">declareParam</a>(const std::string &amp;name, const PlannerType &amp;planner, const SetterType &amp;setter, const GetterType &amp;getter, const std::string &amp;rangeSuggestion=&quot;&quot;)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a3f9da0d41951502ea4df1184ef5a99a6">declareParam</a>(const std::string &amp;name, const PlannerType &amp;planner, const SetterType &amp;setter, const std::string &amp;rangeSuggestion=&quot;&quot;)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a6083e1178d64a2064b8403a6e4d7f5be">dGoal_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#aa70b018d82b7bf967b7ed5ade3c51a81">dStart_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a921e950972763ff2a9fb7e3a32a710ab">failedExpansionScoreFactor_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#ae81ac9338565790508efaebbef3d8459">freeMotion</a>(Motion *motion)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a2862941b1435fe1b184765f73db77252">getBorderFraction</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a6c0e814697c64ebe53fc445aa76a8ff8">getFailedExpansionCellScoreFactor</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a24d66a411aa912401c62d673c3f8c94c">getMinValidPathFraction</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#acd7cf22ad75c421e8c454778dbe798e4">getName</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a1e43aa6d5965a85004951302954de5d5">getPlannerData</a>(base::PlannerData &amp;data) const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a46e60c79e6e4dbc44788a5faab7e11ee">getPlannerInputStates</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#ac8be4a36399223d93deedb9c9fa3573b">getPlannerProgressProperties</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a5d4a5b067f5a4e817e73d025e4324e80">getProblemDefinition</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a7139dc3077fb0891159c5eac03954b8d">getProjectionEvaluator</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a6ddfe2e00407011ace43b17081db7792">getRange</a>() const </td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#af467d750711d1f426125642e2a387ab9">getSpaceInformation</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a6eb82ef833b530732e6c258638c53347">getSpecs</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a287976283c3556a6b331ecd30c10087c">isSetup</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a15a290a36bac34264d12f0ca3c3dc46d">maxDistance_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#aa0962644ccc8c2cf71dd42ca0bac3ff3">minValidPathFraction_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a806de82eeff9ef9231963a9851524b97">name_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a9dc98f7169ae45aa0e886376f546887a">params</a>()</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a560a93ec86a9e421e7515e7828780e2d">params</a>() const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a1cecf022e5ebac936c49b96079ba5359">params_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a6bbb3dcc3d1604977e319d52c16ef7e5">pdef_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a1c6ac45d44026aae6df87f3295d67436">pis_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a404c3be95f77983e95a468e3a7032cc9">Planner</a>(const SpaceInformationPtr &amp;si, const std::string &amp;name)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a919f116d094eb88e4c877c44531c2b75">PlannerProgressProperties</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#ab630ca0634156172daf1a2620a01caf4">plannerProgressProperties_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a761c5b0eeff509479618ae7eefa3de46">PlannerProgressProperty</a> typedef</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#ab1e269df8fa9bd55926aed3b7403e685">printProperties</a>(std::ostream &amp;out) const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a29aec12824480f7b3824a98fc9f5775b">printSettings</a>(std::ostream &amp;out) const </td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#ac4b29de63c1a79e5ab2b819b182e230f">projectionEvaluator_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a422ff4aa4fe25dd13e40e8c9962ccc12">rng_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a88a3a9f2986351a001955070e7d22046">sampler_</a></td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a57e4e557bbd43543c4fe5d5d3733b443">setBorderFraction</a>(double bp)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a06f49930fd458b8ff60626a1f0b1b775">setFailedExpansionCellScoreFactor</a>(double factor)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a1cc89cb07e13a333f6eed645a3dfcda3">setMinValidPathFraction</a>(double fraction)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a99bb12c016b06563aab6bba5cdbed01e">setName</a>(const std::string &amp;name)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#add968ea14f1aa3d3bffc110da3e1d031">setProblemDefinition</a>(const ProblemDefinitionPtr &amp;pdef)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a0e505ace63ee03e5ccde6e9820aeabdb">setProjectionEvaluator</a>(const base::ProjectionEvaluatorPtr &amp;projectionEvaluator)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a0dbd0c85fa51f8ebce39a0ddc18517d8">setProjectionEvaluator</a>(const std::string &amp;name)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#ab803b4859de12fd5788e87b99c672679">setRange</a>(double distance)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a2db256623b56ea1ea4ef04f072532ee8">setup</a>()</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#adba44a4ee27079c5b258a2ebed719eed">setup_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#aa3ceb9471163b6c96f6eeadbcfd3694e">si_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a8cd49874a2404f68169af2766afb2865">solve</a>(const base::PlannerTerminationCondition &amp;ptc)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a46d2a6941a33dbac28e6736949375e2b">ompl::base::Planner::solve</a>(const PlannerTerminationConditionFn &amp;ptc, double checkInterval)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a5a61ca64b36881603af880677f6445a7">ompl::base::Planner::solve</a>(double solveTime)</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">specs_</a></td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~BKPIECE1</b>() (defined in <a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a>)</td><td class="entry"><a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html">ompl::geometric::BKPIECE1</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html#a03f24b87575ab8d31b921fea6525a0c5">~Planner</a>()</td><td class="entry"><a class="el" href="classompl_1_1base_1_1Planner.html">ompl::base::Planner</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+</table></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:28 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

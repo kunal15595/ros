@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/base/spaces/src/SE2StateSpace.cpp Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_06e181af1f5888faac16991b57afb430.html">base</a></li><li class="navelem"><a class="el" href="dir_657904b0a08228494dbd1c9b23b24ab9.html">spaces</a></li><li class="navelem"><a class="el" href="dir_e8f8cdfc7b99567ad5e67656e7cef3c3.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">SE2StateSpace.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2010, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Rice University nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Ioan Sucan */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;ompl/base/spaces/SE2StateSpace.h&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;ompl/tools/config/MagicConstants.h&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SE2StateSpace.html#aed7ff0f47fd0760c939c6d43d77620d7">   41</a></span>&#160;<a class="code" href="classompl_1_1base_1_1State.html">ompl::base::State</a>* <a class="code" href="classompl_1_1base_1_1SE2StateSpace.html#aed7ff0f47fd0760c939c6d43d77620d7">ompl::base::SE2StateSpace::allocState</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="classompl_1_1base_1_1SE2StateSpace_1_1StateType.html">StateType</a> *state = <span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#af12997f7c56f7263fb78be7444b838e5">StateType</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#a1486c4680ec6e01c579fba2b3614d137">allocStateComponents</a>(state);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> state;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SE2StateSpace.html#a30c9a7a7c43ceb1a57c27e784d1501ea">   48</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SE2StateSpace.html#a30c9a7a7c43ceb1a57c27e784d1501ea">ompl::base::SE2StateSpace::freeState</a>(<a class="code" href="classompl_1_1base_1_1State.html">State</a> *state)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="classompl_1_1base_1_1CompoundStateSpace.html#a891f9acb430b0486043efd4be95776bd">CompoundStateSpace::freeState</a>(state);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SE2StateSpace.html#a1d92ad341c033f049e6b5793bc668371">   53</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SE2StateSpace.html#a1d92ad341c033f049e6b5793bc668371">ompl::base::SE2StateSpace::registerProjections</a>()</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">class </span>SE2DefaultProjection : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1ProjectionEvaluator.html">ProjectionEvaluator</a></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        SE2DefaultProjection(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1StateSpace.html">StateSpace</a> *space) : <a class="code" href="classompl_1_1base_1_1ProjectionEvaluator.html">ProjectionEvaluator</a>(space)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getDimension()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">return</span> 2;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> defaultCellSizes()</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            cellSizes_.resize(2);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            bounds_ = space_-&gt;as&lt;<a class="code" href="classompl_1_1base_1_1SE2StateSpace.html">SE2StateSpace</a>&gt;()-&gt;getBounds();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            cellSizes_[0] = (bounds_.high[0] - bounds_.low[0]) / <a class="code" href="namespaceompl_1_1magic.html#a89c2a3791d4d4579c36593a70f00588d">magic::PROJECTION_DIMENSION_SPLITS</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            cellSizes_[1] = (bounds_.high[1] - bounds_.low[1]) / <a class="code" href="namespaceompl_1_1magic.html#a89c2a3791d4d4579c36593a70f00588d">magic::PROJECTION_DIMENSION_SPLITS</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> project(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *state, <a class="code" href="namespaceompl_1_1base.html#aa83f2e90d56884b236b1e400d116b10b">EuclideanProjection</a> &amp;projection)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            memcpy(&amp;projection(0), state-&gt;<a class="code" href="classompl_1_1base_1_1State.html#a04177157c4ea22d1bb2d7f344162bf31">as</a>&lt;<a class="code" href="classompl_1_1base_1_1SE2StateSpace_1_1StateType.html">SE2StateSpace::StateType</a>&gt;()-&gt;<a class="code" href="classompl_1_1base_1_1CompoundState.html#a195febd2ecd923df78eec842ddf9de6d">as</a>&lt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">RealVectorStateSpace::StateType</a>&gt;(0)-&gt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>, 2 * <span class="keyword">sizeof</span>(<span class="keywordtype">double</span>));</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    };</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    registerDefaultProjection(<a class="code" href="classompl_1_1base_1_1ProjectionEvaluatorPtr.html">ProjectionEvaluatorPtr</a>(dynamic_cast&lt;ProjectionEvaluator*&gt;(<span class="keyword">new</span> SE2DefaultProjection(<span class="keyword">this</span>))));</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="ttc" id="classompl_1_1base_1_1SE2StateSpace_1_1StateType_html"><div class="ttname"><a href="classompl_1_1base_1_1SE2StateSpace_1_1StateType.html">ompl::base::SE2StateSpace::StateType</a></div><div class="ttdoc">A state in SE(2): (x, y, yaw) </div><div class="ttdef"><b>Definition:</b> <a href="SE2StateSpace_8h_source.html#l00055">SE2StateSpace.h:55</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SE2StateSpace_html_a1d92ad341c033f049e6b5793bc668371"><div class="ttname"><a href="classompl_1_1base_1_1SE2StateSpace.html#a1d92ad341c033f049e6b5793bc668371">ompl::base::SE2StateSpace::registerProjections</a></div><div class="ttdeci">virtual void registerProjections()</div><div class="ttdoc">Register the projections for this state space. Usually, this is at least the default projection...</div><div class="ttdef"><b>Definition:</b> <a href="SE2StateSpace_8cpp_source.html#l00053">SE2StateSpace.cpp:53</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1CompoundStateSpace_html_af12997f7c56f7263fb78be7444b838e5"><div class="ttname"><a href="classompl_1_1base_1_1CompoundStateSpace.html#af12997f7c56f7263fb78be7444b838e5">ompl::base::CompoundStateSpace::StateType</a></div><div class="ttdeci">CompoundState StateType</div><div class="ttdoc">Define the type of state allocated by this state space. </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8h_source.html#l00546">StateSpace.h:546</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1CompoundStateSpace_html_a1486c4680ec6e01c579fba2b3614d137"><div class="ttname"><a href="classompl_1_1base_1_1CompoundStateSpace.html#a1486c4680ec6e01c579fba2b3614d137">ompl::base::CompoundStateSpace::allocStateComponents</a></div><div class="ttdeci">void allocStateComponents(CompoundState *state) const </div><div class="ttdoc">Allocate the state components. Called by allocState(). Usually called by derived state spaces...</div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8cpp_source.html#l01114">StateSpace.cpp:1114</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SE2StateSpace_html_a30c9a7a7c43ceb1a57c27e784d1501ea"><div class="ttname"><a href="classompl_1_1base_1_1SE2StateSpace.html#a30c9a7a7c43ceb1a57c27e784d1501ea">ompl::base::SE2StateSpace::freeState</a></div><div class="ttdeci">virtual void freeState(State *state) const </div><div class="ttdoc">Free the memory of the allocated state. </div><div class="ttdef"><b>Definition:</b> <a href="SE2StateSpace_8cpp_source.html#l00048">SE2StateSpace.cpp:48</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SE2StateSpace_html"><div class="ttname"><a href="classompl_1_1base_1_1SE2StateSpace.html">ompl::base::SE2StateSpace</a></div><div class="ttdoc">A state space representing SE(2) </div><div class="ttdef"><b>Definition:</b> <a href="SE2StateSpace_8h_source.html#l00050">SE2StateSpace.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProjectionEvaluatorPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1ProjectionEvaluatorPtr.html">ompl::base::ProjectionEvaluatorPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::ProjectionEvaluator. </div></div>
+<div class="ttc" id="namespaceompl_1_1magic_html_a89c2a3791d4d4579c36593a70f00588d"><div class="ttname"><a href="namespaceompl_1_1magic.html#a89c2a3791d4d4579c36593a70f00588d">ompl::magic::PROJECTION_DIMENSION_SPLITS</a></div><div class="ttdeci">static const double PROJECTION_DIMENSION_SPLITS</div><div class="ttdoc">When the cell sizes for a projection are automatically computed, this value defines the number of par...</div><div class="ttdef"><b>Definition:</b> <a href="MagicConstants_8h_source.html#l00057">MagicConstants.h:57</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpace_html"><div class="ttname"><a href="classompl_1_1base_1_1StateSpace.html">ompl::base::StateSpace</a></div><div class="ttdoc">Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8h_source.html#l00073">StateSpace.h:73</a></div></div>
+<div class="ttc" id="namespaceompl_1_1base_html_aa83f2e90d56884b236b1e400d116b10b"><div class="ttname"><a href="namespaceompl_1_1base.html#aa83f2e90d56884b236b1e400d116b10b">ompl::base::EuclideanProjection</a></div><div class="ttdeci">boost::numeric::ublas::vector&lt; double &gt; EuclideanProjection</div><div class="ttdoc">The datatype for state projections. This class contains a real vector. </div><div class="ttdef"><b>Definition:</b> <a href="ProjectionEvaluator_8h_source.html#l00062">ProjectionEvaluator.h:62</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1CompoundStateSpace_html_a891f9acb430b0486043efd4be95776bd"><div class="ttname"><a href="classompl_1_1base_1_1CompoundStateSpace.html#a891f9acb430b0486043efd4be95776bd">ompl::base::CompoundStateSpace::freeState</a></div><div class="ttdeci">virtual void freeState(State *state) const </div><div class="ttdoc">Free the memory of the allocated state. </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8cpp_source.html#l01121">StateSpace.cpp:1121</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SE2StateSpace_html_aed7ff0f47fd0760c939c6d43d77620d7"><div class="ttname"><a href="classompl_1_1base_1_1SE2StateSpace.html#aed7ff0f47fd0760c939c6d43d77620d7">ompl::base::SE2StateSpace::allocState</a></div><div class="ttdeci">virtual State * allocState() const </div><div class="ttdoc">Allocate a state that can store a point in the described space. </div><div class="ttdef"><b>Definition:</b> <a href="SE2StateSpace_8cpp_source.html#l00041">SE2StateSpace.cpp:41</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType_html_a916575eb76687da3b47a2d9699128498"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">ompl::base::RealVectorStateSpace::StateType::values</a></div><div class="ttdeci">double * values</div><div class="ttdoc">The value of the actual vector in Rn </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8h_source.html#l00102">RealVectorStateSpace.h:102</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType_html"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">ompl::base::RealVectorStateSpace::StateType</a></div><div class="ttdoc">The definition of a state in Rn </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorStateSpace_8h_source.html#l00080">RealVectorStateSpace.h:80</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html_a04177157c4ea22d1bb2d7f344162bf31"><div class="ttname"><a href="classompl_1_1base_1_1State.html#a04177157c4ea22d1bb2d7f344162bf31">ompl::base::State::as</a></div><div class="ttdeci">const T * as() const </div><div class="ttdoc">Cast this instance to a desired type. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00074">State.h:74</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1CompoundState_html_a195febd2ecd923df78eec842ddf9de6d"><div class="ttname"><a href="classompl_1_1base_1_1CompoundState.html#a195febd2ecd923df78eec842ddf9de6d">ompl::base::CompoundState::as</a></div><div class="ttdeci">const T * as(const unsigned int index) const </div><div class="ttdoc">Cast a component of this instance to a desired type. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00109">State.h:109</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ProjectionEvaluator_html"><div class="ttname"><a href="classompl_1_1base_1_1ProjectionEvaluator.html">ompl::base::ProjectionEvaluator</a></div><div class="ttdoc">Abstract definition for a class computing projections to Rn. Implicit integer grids are imposed on th...</div><div class="ttdef"><b>Definition:</b> <a href="ProjectionEvaluator_8h_source.html#l00138">ProjectionEvaluator.h:138</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:25 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

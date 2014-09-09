@@ -1,0 +1,13 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classompl_1_1base_1_1State.html" title="Definition of an abstract state. " alt="" coords="5,267,131,293"/>
+<area shape="rect" id="node2" href="$classompl_1_1base_1_1CompoundState.html" title="Definition of a compound state. " alt="" coords="181,109,369,136"/>
+<area shape="rect" id="node7" href="$classompl_1_1base_1_1DiscreteStateSpace_1_1StateType.html" title="The definition of a discrete state. " alt="" coords="187,161,362,202"/>
+<area shape="rect" id="node8" href="$classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html" title="The definition of a state in Rn " alt="" coords="179,226,370,267"/>
+<area shape="rect" id="node9" href="$classompl_1_1base_1_1SO2StateSpace_1_1StateType.html" title="The definition of a state in SO(2) " alt="" coords="181,291,369,333"/>
+<area shape="rect" id="node10" href="$classompl_1_1base_1_1SO3StateSpace_1_1StateType.html" title="The definition of a state in SO(3) represented as a unit quaternion. " alt="" coords="181,357,369,398"/>
+<area shape="rect" id="node11" href="$classompl_1_1base_1_1TimeStateSpace_1_1StateType.html" title="The definition of a time state. " alt="" coords="179,422,370,463"/>
+<area shape="rect" id="node3" href="$classompl_1_1base_1_1MorseStateSpace_1_1StateType.html" title="MORSE State. This is a compound state that allows accessing the properties of the bodies the state sp..." alt="" coords="419,5,618,46"/>
+<area shape="rect" id="node4" href="$classompl_1_1base_1_1SE2StateSpace_1_1StateType.html" title="A state in SE(2): (x, y, yaw) " alt="" coords="425,70,612,111"/>
+<area shape="rect" id="node5" href="$classompl_1_1base_1_1SE3StateSpace_1_1StateType.html" title="A state in SE(3): position = (x, y, z), quaternion = (x, y, z, w) " alt="" coords="425,135,612,177"/>
+<area shape="rect" id="node6" href="$classompl_1_1control_1_1OpenDEStateSpace_1_1StateType.html" title="OpenDE State. This is a compound state that allows accessing the properties of the bodies the state s..." alt="" coords="425,201,612,242"/>
+</map>

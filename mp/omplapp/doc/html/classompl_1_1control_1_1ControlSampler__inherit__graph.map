@@ -1,0 +1,6 @@
+<map id="ompl::control::ControlSampler" name="ompl::control::ControlSampler">
+<area shape="rect" id="node3" href="$classKoulesControlSampler.html" title="KoulesControlSampler" alt="" coords="421,5,573,32"/>
+<area shape="rect" id="node4" href="$classompl_1_1control_1_1CompoundControlSampler.html" title="Definition of a compound control sampler. This is useful to construct samplers for compound controls..." alt="" coords="392,57,603,98"/>
+<area shape="rect" id="node5" href="$classompl_1_1control_1_1DiscreteControlSampler.html" title="Control space sampler for discrete controls. " alt="" coords="399,122,595,163"/>
+<area shape="rect" id="node6" href="$classompl_1_1control_1_1RealVectorControlUniformSampler.html" title="Uniform sampler for the Rn state space. " alt="" coords="412,187,583,229"/>
+</map>

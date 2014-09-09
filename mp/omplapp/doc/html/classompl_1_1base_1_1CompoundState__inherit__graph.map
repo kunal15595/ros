@@ -1,0 +1,7 @@
+<map id="ompl::base::CompoundState" name="ompl::base::CompoundState">
+<area shape="rect" id="node3" href="$classompl_1_1base_1_1MorseStateSpace_1_1StateType.html" title="MORSE State. This is a compound state that allows accessing the properties of the bodies the state sp..." alt="" coords="417,5,615,46"/>
+<area shape="rect" id="node4" href="$classompl_1_1base_1_1SE2StateSpace_1_1StateType.html" title="A state in SE(2): (x, y, yaw) " alt="" coords="423,70,609,111"/>
+<area shape="rect" id="node5" href="$classompl_1_1base_1_1SE3StateSpace_1_1StateType.html" title="A state in SE(3): position = (x, y, z), quaternion = (x, y, z, w) " alt="" coords="423,135,609,177"/>
+<area shape="rect" id="node6" href="$classompl_1_1control_1_1OpenDEStateSpace_1_1StateType.html" title="OpenDE State. This is a compound state that allows accessing the properties of the bodies the state s..." alt="" coords="423,201,609,242"/>
+<area shape="rect" id="node2" href="$classompl_1_1base_1_1State.html" title="Definition of an abstract state. " alt="" coords="5,111,131,137"/>
+</map>

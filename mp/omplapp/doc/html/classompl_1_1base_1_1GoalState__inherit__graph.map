@@ -1,0 +1,5 @@
+<map id="ompl::base::GoalState" name="ompl::base::GoalState">
+<area shape="rect" id="node2" href="$classompl_1_1base_1_1GoalSampleableRegion.html" title="Abstract definition of a goal region that can be sampled. " alt="" coords="5,230,195,271"/>
+<area shape="rect" id="node3" href="$classompl_1_1base_1_1GoalRegion.html" title="Definition of a goal region. " alt="" coords="19,155,181,181"/>
+<area shape="rect" id="node4" href="$classompl_1_1base_1_1Goal.html" title="Abstract definition of goals. " alt="" coords="39,80,160,107"/>
+</map>

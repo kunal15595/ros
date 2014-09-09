@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/base/spaces/SO2StateSpace.h Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_06e181af1f5888faac16991b57afb430.html">base</a></li><li class="navelem"><a class="el" href="dir_657904b0a08228494dbd1c9b23b24ab9.html">spaces</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">SO2StateSpace.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2010, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Rice University nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Ioan Sucan */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifndef OMPL_BASE_SPACES_SO2_STATE_SPACE_</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define OMPL_BASE_SPACES_SO2_STATE_SPACE_</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;ompl/base/StateSpace.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">namespace </span>ompl</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">namespace </span>base</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SO2StateSampler.html">   48</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1base_1_1SO2StateSampler.html">SO2StateSampler</a> : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1StateSampler.html">StateSampler</a></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SO2StateSampler.html#a38da55bf187b5a2d747206ebdeb36176">   53</a></span>&#160;            <a class="code" href="classompl_1_1base_1_1SO2StateSampler.html#a38da55bf187b5a2d747206ebdeb36176">SO2StateSampler</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1StateSpace.html">StateSpace</a> *space) : <a class="code" href="classompl_1_1base_1_1StateSampler.html">StateSampler</a>(space)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SO2StateSampler.html#aeb783209f2ff23161e9d4e212c9bb42f">sampleUniform</a>(<a class="code" href="classompl_1_1base_1_1State.html">State</a> *state);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SO2StateSampler.html#a270084c2f9c4ebbf7c7b3a641673d47c">sampleUniformNear</a>(<a class="code" href="classompl_1_1base_1_1State.html">State</a> *state, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *near, <span class="keyword">const</span> <span class="keywordtype">double</span> distance);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SO2StateSampler.html#a2e37a6792d0e341cf3e944ee9c5b7829">sampleGaussian</a>(<a class="code" href="classompl_1_1base_1_1State.html">State</a> *state, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *mean, <span class="keyword">const</span> <span class="keywordtype">double</span> stdDev);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        };</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SO2StateSpace.html">   65</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1base_1_1SO2StateSpace.html">SO2StateSpace</a> : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1StateSpace.html">StateSpace</a></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SO2StateSpace_1_1StateType.html">   70</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classompl_1_1base_1_1SO2StateSpace_1_1StateType.html">StateType</a> : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SO2StateSpace_1_1StateType.html#ae81640c240cc0e8f37c6f48a96cee0b6">   75</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace_1_1StateType.html#ae81640c240cc0e8f37c6f48a96cee0b6">setIdentity</a>()</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    <a class="code" href="classompl_1_1base_1_1SO2StateSpace_1_1StateType.html#af918005e3a0679ed8ff2c9d1252f6bd5">value</a> = 0.0;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1SO2StateSpace_1_1StateType.html#af918005e3a0679ed8ff2c9d1252f6bd5">   81</a></span>&#160;                <span class="keywordtype">double</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace_1_1StateType.html#af918005e3a0679ed8ff2c9d1252f6bd5">value</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            };</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html">SO2StateSpace</a>() : <a class="code" href="classompl_1_1base_1_1StateSpace.html">StateSpace</a>()</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <a class="code" href="classompl_1_1base_1_1StateSpace.html#ad12cc022ef531dcb563f6d3d13b847ad">setName</a>(<span class="stringliteral">&quot;SO2&quot;</span> + <a class="code" href="classompl_1_1base_1_1StateSpace.html#a01c188c7dc690b152b7a61aae19b9015">getName</a>());</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <a class="code" href="classompl_1_1base_1_1StateSpace.html#a68556edd816136a66a0d81544baef08c">type_</a> = <a class="code" href="namespaceompl_1_1base.html#a056b022e14fe04a75f81789947353920aca07fe8d9ce9fe45ad5d1b2d90c8c1fc">STATE_SPACE_SO2</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keyword">virtual</span> ~<a class="code" href="classompl_1_1base_1_1SO2StateSpace.html">SO2StateSpace</a>()</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#adc6b232dc49a07086119ef8d41ff7058">getDimension</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#a5e8c7bcf005fba03d9f6afca287669a5">getMaximumExtent</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#a0aa4adab5de7ae6291f0716d1aa88c56">getMeasure</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#a238e79ef287dc8bb3d728110f0f29ea1">enforceBounds</a>(State *state) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#a627f6f6555b06e835a3a189ac1c5c83f">satisfiesBounds</a>(<span class="keyword">const</span> State *state) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#afa370ede45deafe06b4217cf2641b610">copyState</a>(State *destination, <span class="keyword">const</span> State *source) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#a0117f3cc4343fd67821a635bf26f60b6">getSerializationLength</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#af00a8f3a812818e606f3bd381c2b7936">serialize</a>(<span class="keywordtype">void</span> *serialization, <span class="keyword">const</span> State *state) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#a182b203798595666b9a5af7c2299f7c7">deserialize</a>(State *state, <span class="keyword">const</span> <span class="keywordtype">void</span> *serialization) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#acd2f2fe4af5e7358d737e992791f38f8">distance</a>(<span class="keyword">const</span> State *state1, <span class="keyword">const</span> State *state2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#aeaf8cfe977232479219b98ae2071550a">equalStates</a>(<span class="keyword">const</span> State *state1, <span class="keyword">const</span> State *state2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#a5439e63ec8bc12a8c6e7ffbab557dcf5">interpolate</a>(<span class="keyword">const</span> State *from, <span class="keyword">const</span> State *to, <span class="keyword">const</span> <span class="keywordtype">double</span> t, State *state) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keyword">virtual</span> StateSamplerPtr <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#a01a5eb945cec5c5cf601e87e5ace962c">allocDefaultStateSampler</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keyword">virtual</span> State* <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#a4671519948f96914510d6d385f0bb019">allocState</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#a35c9cce2cc850d669fb890b85bac79d0">freeState</a>(State *state) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">double</span>* <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#ae7e2c0c9d3fbe8cb0cbfbc61952d815e">getValueAddressAtIndex</a>(State *state, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#a25c4dd29e78d3b1b4a7eb57dc384dca4">printState</a>(<span class="keyword">const</span> State *state, std::ostream &amp;out) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#a053148b4abd31221424589a90fa9a72d">printSettings</a>(std::ostream &amp;out) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1SO2StateSpace.html#a638dfbcb42b9b57be013da1d9adff60f">registerProjections</a>();</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        };</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpace_html_ad12cc022ef531dcb563f6d3d13b847ad"><div class="ttname"><a href="classompl_1_1base_1_1StateSpace.html#ad12cc022ef531dcb563f6d3d13b847ad">ompl::base::StateSpace::setName</a></div><div class="ttdeci">void setName(const std::string &amp;name)</div><div class="ttdoc">Set the name of the state space. </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8cpp_source.html#l00192">StateSpace.cpp:192</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_afa370ede45deafe06b4217cf2641b610"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#afa370ede45deafe06b4217cf2641b610">ompl::base::SO2StateSpace::copyState</a></div><div class="ttdeci">virtual void copyState(State *destination, const State *source) const </div><div class="ttdoc">Copy a state to another. The memory of source and destination should NOT overlap. ...</div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00100">SO2StateSpace.cpp:100</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_1_1StateType_html_ae81640c240cc0e8f37c6f48a96cee0b6"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace_1_1StateType.html#ae81640c240cc0e8f37c6f48a96cee0b6">ompl::base::SO2StateSpace::StateType::setIdentity</a></div><div class="ttdeci">void setIdentity()</div><div class="ttdoc">Set the state to identity – no rotation (value = 0.0) </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8h_source.html#l00075">SO2StateSpace.h:75</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpace_html_a68556edd816136a66a0d81544baef08c"><div class="ttname"><a href="classompl_1_1base_1_1StateSpace.html#a68556edd816136a66a0d81544baef08c">ompl::base::StateSpace::type_</a></div><div class="ttdeci">int type_</div><div class="ttdoc">A type assigned for this state space. </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8h_source.html#l00500">StateSpace.h:500</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_adc6b232dc49a07086119ef8d41ff7058"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#adc6b232dc49a07086119ef8d41ff7058">ompl::base::SO2StateSpace::getDimension</a></div><div class="ttdeci">virtual unsigned int getDimension() const </div><div class="ttdoc">Get the dimension of the space (not the dimension of the surrounding ambient space) ...</div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00068">SO2StateSpace.cpp:68</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_a5e8c7bcf005fba03d9f6afca287669a5"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#a5e8c7bcf005fba03d9f6afca287669a5">ompl::base::SO2StateSpace::getMaximumExtent</a></div><div class="ttdeci">virtual double getMaximumExtent() const </div><div class="ttdoc">Get the maximum value a call to distance() can return (or an upper bound). For unbounded state spaces...</div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00073">SO2StateSpace.cpp:73</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_1_1StateType_html_af918005e3a0679ed8ff2c9d1252f6bd5"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace_1_1StateType.html#af918005e3a0679ed8ff2c9d1252f6bd5">ompl::base::SO2StateSpace::StateType::value</a></div><div class="ttdeci">double value</div><div class="ttdoc">The value of the angle in the interval (-Pi, Pi]. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8h_source.html#l00081">SO2StateSpace.h:81</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_acd2f2fe4af5e7358d737e992791f38f8"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#acd2f2fe4af5e7358d737e992791f38f8">ompl::base::SO2StateSpace::distance</a></div><div class="ttdeci">virtual double distance(const State *state1, const State *state2) const </div><div class="ttdoc">Computes distance between two states. This function satisfies the properties of a metric if isMetricS...</div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00120">SO2StateSpace.cpp:120</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_a0117f3cc4343fd67821a635bf26f60b6"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#a0117f3cc4343fd67821a635bf26f60b6">ompl::base::SO2StateSpace::getSerializationLength</a></div><div class="ttdeci">virtual unsigned int getSerializationLength() const </div><div class="ttdoc">Get the number of chars in the serialization of a state in this space. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00105">SO2StateSpace.cpp:105</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSampler_html_a38da55bf187b5a2d747206ebdeb36176"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSampler.html#a38da55bf187b5a2d747206ebdeb36176">ompl::base::SO2StateSampler::SO2StateSampler</a></div><div class="ttdeci">SO2StateSampler(const StateSpace *space)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8h_source.html#l00053">SO2StateSpace.h:53</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSampler_html_a2e37a6792d0e341cf3e944ee9c5b7829"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSampler.html#a2e37a6792d0e341cf3e944ee9c5b7829">ompl::base::SO2StateSampler::sampleGaussian</a></div><div class="ttdeci">virtual void sampleGaussian(State *state, const State *mean, const double stdDev)</div><div class="ttdoc">Sample a state using a Gaussian distribution with given mean and standard deviation (stdDev) ...</div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00062">SO2StateSpace.cpp:62</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_1_1StateType_html"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace_1_1StateType.html">ompl::base::SO2StateSpace::StateType</a></div><div class="ttdoc">The definition of a state in SO(2) </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8h_source.html#l00070">SO2StateSpace.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_a01a5eb945cec5c5cf601e87e5ace962c"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#a01a5eb945cec5c5cf601e87e5ace962c">ompl::base::SO2StateSpace::allocDefaultStateSampler</a></div><div class="ttdeci">virtual StateSamplerPtr allocDefaultStateSampler() const </div><div class="ttdoc">Allocate an instance of the default uniform state sampler for this space. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00158">SO2StateSpace.cpp:158</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSampler_html_aeb783209f2ff23161e9d4e212c9bb42f"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSampler.html#aeb783209f2ff23161e9d4e212c9bb42f">ompl::base::SO2StateSampler::sampleUniform</a></div><div class="ttdeci">virtual void sampleUniform(State *state)</div><div class="ttdoc">Sample a state. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00049">SO2StateSpace.cpp:49</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSampler_html_a270084c2f9c4ebbf7c7b3a641673d47c"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSampler.html#a270084c2f9c4ebbf7c7b3a641673d47c">ompl::base::SO2StateSampler::sampleUniformNear</a></div><div class="ttdeci">virtual void sampleUniformNear(State *state, const State *near, const double distance)</div><div class="ttdoc">Sample a state near another, within specified distance. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00055">SO2StateSpace.cpp:55</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpace_html"><div class="ttname"><a href="classompl_1_1base_1_1StateSpace.html">ompl::base::StateSpace</a></div><div class="ttdoc">Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8h_source.html#l00073">StateSpace.h:73</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSampler_html"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSampler.html">ompl::base::SO2StateSampler</a></div><div class="ttdoc">State space sampler for SO(2) </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8h_source.html#l00048">SO2StateSpace.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="namespaceompl_1_1base_html_a056b022e14fe04a75f81789947353920aca07fe8d9ce9fe45ad5d1b2d90c8c1fc"><div class="ttname"><a href="namespaceompl_1_1base.html#a056b022e14fe04a75f81789947353920aca07fe8d9ce9fe45ad5d1b2d90c8c1fc">ompl::base::STATE_SPACE_SO2</a></div><div class="ttdoc">ompl::base::SO2StateSpace </div><div class="ttdef"><b>Definition:</b> <a href="StateSpaceTypes_8h_source.html#l00056">StateSpaceTypes.h:56</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_a627f6f6555b06e835a3a189ac1c5c83f"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#a627f6f6555b06e835a3a189ac1c5c83f">ompl::base::SO2StateSpace::satisfiesBounds</a></div><div class="ttdeci">virtual bool satisfiesBounds(const State *state) const </div><div class="ttdoc">Check if the value of the state is in the interval (-Pi, Pi]. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00094">SO2StateSpace.cpp:94</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_a4671519948f96914510d6d385f0bb019"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#a4671519948f96914510d6d385f0bb019">ompl::base::SO2StateSpace::allocState</a></div><div class="ttdeci">virtual State * allocState() const </div><div class="ttdoc">Allocate a state that can store a point in the described space. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00163">SO2StateSpace.cpp:163</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_af00a8f3a812818e606f3bd381c2b7936"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#af00a8f3a812818e606f3bd381c2b7936">ompl::base::SO2StateSpace::serialize</a></div><div class="ttdeci">virtual void serialize(void *serialization, const State *state) const </div><div class="ttdoc">Write the binary representation of state to serialization. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00110">SO2StateSpace.cpp:110</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_ae7e2c0c9d3fbe8cb0cbfbc61952d815e"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#ae7e2c0c9d3fbe8cb0cbfbc61952d815e">ompl::base::SO2StateSpace::getValueAddressAtIndex</a></div><div class="ttdeci">virtual double * getValueAddressAtIndex(State *state, const unsigned int index) const </div><div class="ttdoc">Many states contain a number of double values. This function provides a means to get the memory addre...</div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00206">SO2StateSpace.cpp:206</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_a053148b4abd31221424589a90fa9a72d"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#a053148b4abd31221424589a90fa9a72d">ompl::base::SO2StateSpace::printSettings</a></div><div class="ttdeci">virtual void printSettings(std::ostream &amp;out) const </div><div class="ttdoc">Print the settings for this state space to a stream. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00221">SO2StateSpace.cpp:221</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_a638dfbcb42b9b57be013da1d9adff60f"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#a638dfbcb42b9b57be013da1d9adff60f">ompl::base::SO2StateSpace::registerProjections</a></div><div class="ttdeci">virtual void registerProjections()</div><div class="ttdoc">Register the projections for this state space. Usually, this is at least the default projection...</div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00173">SO2StateSpace.cpp:173</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html">ompl::base::SO2StateSpace</a></div><div class="ttdoc">A state space representing SO(2). The distance function and interpolation take into account angle wra...</div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8h_source.html#l00065">SO2StateSpace.h:65</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSpace_html_a01c188c7dc690b152b7a61aae19b9015"><div class="ttname"><a href="classompl_1_1base_1_1StateSpace.html#a01c188c7dc690b152b7a61aae19b9015">ompl::base::StateSpace::getName</a></div><div class="ttdeci">const std::string &amp; getName() const </div><div class="ttdoc">Get the name of the state space. </div><div class="ttdef"><b>Definition:</b> <a href="StateSpace_8cpp_source.html#l00187">StateSpace.cpp:187</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateSampler_html"><div class="ttname"><a href="classompl_1_1base_1_1StateSampler.html">ompl::base::StateSampler</a></div><div class="ttdoc">Abstract definition of a state space sampler. </div><div class="ttdef"><b>Definition:</b> <a href="StateSampler_8h_source.html#l00066">StateSampler.h:66</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_a238e79ef287dc8bb3d728110f0f29ea1"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#a238e79ef287dc8bb3d728110f0f29ea1">ompl::base::SO2StateSpace::enforceBounds</a></div><div class="ttdeci">virtual void enforceBounds(State *state) const </div><div class="ttdoc">Normalize the value of the state to the interval (-Pi, Pi]. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00083">SO2StateSpace.cpp:83</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_a25c4dd29e78d3b1b4a7eb57dc384dca4"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#a25c4dd29e78d3b1b4a7eb57dc384dca4">ompl::base::SO2StateSpace::printState</a></div><div class="ttdeci">virtual void printState(const State *state, std::ostream &amp;out) const </div><div class="ttdoc">Print a state to a stream. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00211">SO2StateSpace.cpp:211</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_a35c9cce2cc850d669fb890b85bac79d0"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#a35c9cce2cc850d669fb890b85bac79d0">ompl::base::SO2StateSpace::freeState</a></div><div class="ttdeci">virtual void freeState(State *state) const </div><div class="ttdoc">Free the memory of the allocated state. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00168">SO2StateSpace.cpp:168</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_a5439e63ec8bc12a8c6e7ffbab557dcf5"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#a5439e63ec8bc12a8c6e7ffbab557dcf5">ompl::base::SO2StateSpace::interpolate</a></div><div class="ttdeci">virtual void interpolate(const State *from, const State *to, const double t, State *state) const </div><div class="ttdoc">Computes the state that lies at time t in [0, 1] on the segment that connects from state to to state...</div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00136">SO2StateSpace.cpp:136</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_a182b203798595666b9a5af7c2299f7c7"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#a182b203798595666b9a5af7c2299f7c7">ompl::base::SO2StateSpace::deserialize</a></div><div class="ttdeci">virtual void deserialize(State *state, const void *serialization) const </div><div class="ttdoc">Read the binary representation of a state from serialization and write it to state. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00115">SO2StateSpace.cpp:115</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_a0aa4adab5de7ae6291f0716d1aa88c56"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#a0aa4adab5de7ae6291f0716d1aa88c56">ompl::base::SO2StateSpace::getMeasure</a></div><div class="ttdeci">virtual double getMeasure() const </div><div class="ttdoc">Get a measure of the space (this can be thought of as a generalization of volume) ...</div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00078">SO2StateSpace.cpp:78</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SO2StateSpace_html_aeaf8cfe977232479219b98ae2071550a"><div class="ttname"><a href="classompl_1_1base_1_1SO2StateSpace.html#aeaf8cfe977232479219b98ae2071550a">ompl::base::SO2StateSpace::equalStates</a></div><div class="ttdeci">virtual bool equalStates(const State *state1, const State *state2) const </div><div class="ttdoc">Checks whether two states are equal. </div><div class="ttdef"><b>Definition:</b> <a href="SO2StateSpace_8cpp_source.html#l00131">SO2StateSpace.cpp:131</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:25 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

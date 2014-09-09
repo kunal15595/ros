@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::geometric::SimpleSetup Class Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1geometric.html">geometric</a></li><li class="navelem"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html">SimpleSetup</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="classompl_1_1geometric_1_1SimpleSetup-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::geometric::SimpleSetup Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Create the set of classes typically needed to solve a geometric problem.  
+ <a href="classompl_1_1geometric_1_1SimpleSetup.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="geometric_2SimpleSetup_8h_source.html">SimpleSetup.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ompl::geometric::SimpleSetup:</div>
+<div class="dyncontent">
+<div class="center"><img src="classompl_1_1geometric_1_1SimpleSetup__inherit__graph.png" border="0" usemap="#ompl_1_1geometric_1_1SimpleSetup_inherit__map" alt="Inheritance graph"/></div>
+<map name="ompl_1_1geometric_1_1SimpleSetup_inherit__map" id="ompl_1_1geometric_1_1SimpleSetup_inherit__map">
+<area shape="rect" id="node2" href="classompl_1_1app_1_1AppBase.html" title="ompl::app::AppBase\l\&lt; CONTROL \&gt;" alt="" coords="267,105,407,146"/><area shape="rect" id="node11" href="classompl_1_1app_1_1AppBase.html" title="ompl::app::AppBase\l\&lt; GEOMETRIC \&gt;" alt="" coords="267,273,407,314"/><area shape="rect" id="node18" href="classompl_1_1app_1_1AppBase.html" title="ompl::app::AppBase\&lt; T \&gt;" alt="" coords="251,339,423,365"/><area shape="rect" id="node3" href="classompl_1_1app_1_1BlimpPlanning.html" title="A class to facilitate planning for a simple blimp model. " alt="" coords="499,5,669,32"/><area shape="rect" id="node5" href="classompl_1_1app_1_1DynamicCarPlanning.html" title="A class to facilitate planning for a generic second&#45;order car model. " alt="" coords="479,57,689,84"/><area shape="rect" id="node7" href="classompl_1_1app_1_1KinematicCarPlanning.html" title="A class to facilitate planning for a generic kinematic car model. " alt="" coords="476,112,692,139"/><area shape="rect" id="node9" href="classompl_1_1app_1_1QuadrotorPlanning.html" title="A class to facilitate planning for a simple quadrotor model. " alt="" coords="487,163,681,189"/><area shape="rect" id="node4" href="classompl_1_1app_1_1GBlimpPlanning.html" title="ompl::app::GBlimpPlanning" alt="" coords="765,5,945,32"/><area shape="rect" id="node6" href="classompl_1_1app_1_1GDynamicCarPlanning.html" title="ompl::app::GDynamicCarPlanning" alt="" coords="745,56,965,83"/><area shape="rect" id="node8" href="classompl_1_1app_1_1GKinematicCarPlanning.html" title="ompl::app::GKinematicCar\lPlanning" alt="" coords="767,107,943,149"/><area shape="rect" id="node10" href="classompl_1_1app_1_1GQuadrotorPlanning.html" title="ompl::app::GQuadrotorPlanning" alt="" coords="753,173,957,200"/><area shape="rect" id="node12" href="classompl_1_1app_1_1SE2MultiRigidBodyPlanning.html" title="Wrapper for ompl::app::RigidBodyPlanning that plans for multiple rigid bodies in SE2. " alt="" coords="499,214,669,255"/><area shape="rect" id="node13" href="classompl_1_1app_1_1SE2RigidBodyPlanning.html" title="Wrapper for ompl::app::RigidBodyPlanning that plans for rigid bodies in SE2. " alt="" coords="473,280,695,307"/><area shape="rect" id="node15" href="classompl_1_1app_1_1SE3MultiRigidBodyPlanning.html" title="Wrapper for ompl::app::RigidBodyPlanning that plans for multiple rigid bodies in SE3. " alt="" coords="499,331,669,373"/><area shape="rect" id="node16" href="classompl_1_1app_1_1SE3RigidBodyPlanning.html" title="Wrapper for ompl::app::RigidBodyPlanning that plans for rigid bodies in SE3. " alt="" coords="473,397,695,424"/><area shape="rect" id="node14" href="classompl_1_1app_1_1GSE2RigidBodyPlanning.html" title="ompl::app::GSE2RigidBody\lPlanning" alt="" coords="763,273,946,314"/><area shape="rect" id="node17" href="classompl_1_1app_1_1GSE3RigidBodyPlanning.html" title="ompl::app::GSE3RigidBody\lPlanning" alt="" coords="763,390,946,431"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a6c77f5085972396a3797bb838667e8df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c77f5085972396a3797bb838667e8df"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a6c77f5085972396a3797bb838667e8df">SimpleSetup</a> (const <a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">base::SpaceInformationPtr</a> &amp;si)</td></tr>
+<tr class="memdesc:a6c77f5085972396a3797bb838667e8df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor needs the state space used for planning. <br/></td></tr>
+<tr class="separator:a6c77f5085972396a3797bb838667e8df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af945064d1e9216058e5ad1a4daa8d1f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af945064d1e9216058e5ad1a4daa8d1f1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#af945064d1e9216058e5ad1a4daa8d1f1">SimpleSetup</a> (const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">base::StateSpacePtr</a> &amp;space)</td></tr>
+<tr class="memdesc:af945064d1e9216058e5ad1a4daa8d1f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor needs the state space used for planning. <br/></td></tr>
+<tr class="separator:af945064d1e9216058e5ad1a4daa8d1f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a735d4f184302d9c18fd08ed068731533"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a735d4f184302d9c18fd08ed068731533"></a>
+const <a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">base::SpaceInformationPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a735d4f184302d9c18fd08ed068731533">getSpaceInformation</a> () const </td></tr>
+<tr class="memdesc:a735d4f184302d9c18fd08ed068731533"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current instance of the space information. <br/></td></tr>
+<tr class="separator:a735d4f184302d9c18fd08ed068731533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa96ee7350ba2e076f48a33037568c11e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa96ee7350ba2e076f48a33037568c11e"></a>
+const <a class="el" href="classompl_1_1base_1_1ProblemDefinitionPtr.html">base::ProblemDefinitionPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#aa96ee7350ba2e076f48a33037568c11e">getProblemDefinition</a> () const </td></tr>
+<tr class="memdesc:aa96ee7350ba2e076f48a33037568c11e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current instance of the problem definition. <br/></td></tr>
+<tr class="separator:aa96ee7350ba2e076f48a33037568c11e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1a66d09baf92854d9cb4fbd4c55caa9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1a66d09baf92854d9cb4fbd4c55caa9"></a>
+const <a class="el" href="classompl_1_1base_1_1StateSpacePtr.html">base::StateSpacePtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ae1a66d09baf92854d9cb4fbd4c55caa9">getStateSpace</a> () const </td></tr>
+<tr class="memdesc:ae1a66d09baf92854d9cb4fbd4c55caa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current instance of the state space. <br/></td></tr>
+<tr class="separator:ae1a66d09baf92854d9cb4fbd4c55caa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a473762d97fa6eb655ea8ce67a0015043"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a473762d97fa6eb655ea8ce67a0015043"></a>
+const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1StateValidityCheckerPtr.html">base::StateValidityCheckerPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a473762d97fa6eb655ea8ce67a0015043">getStateValidityChecker</a> () const </td></tr>
+<tr class="memdesc:a473762d97fa6eb655ea8ce67a0015043"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current instance of the state validity checker. <br/></td></tr>
+<tr class="separator:a473762d97fa6eb655ea8ce67a0015043"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10255bd7d29bc6014613d47dbb48cd46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a10255bd7d29bc6014613d47dbb48cd46"></a>
+const <a class="el" href="classompl_1_1base_1_1GoalPtr.html">base::GoalPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a10255bd7d29bc6014613d47dbb48cd46">getGoal</a> () const </td></tr>
+<tr class="memdesc:a10255bd7d29bc6014613d47dbb48cd46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current goal definition. <br/></td></tr>
+<tr class="separator:a10255bd7d29bc6014613d47dbb48cd46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07571d41a38b8c0b7ae66172559979e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07571d41a38b8c0b7ae66172559979e8"></a>
+const <a class="el" href="classompl_1_1base_1_1PlannerPtr.html">base::PlannerPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a07571d41a38b8c0b7ae66172559979e8">getPlanner</a> () const </td></tr>
+<tr class="memdesc:a07571d41a38b8c0b7ae66172559979e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current planner. <br/></td></tr>
+<tr class="separator:a07571d41a38b8c0b7ae66172559979e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a458ee1bcb5fb15fe6a659758da5a5995"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a458ee1bcb5fb15fe6a659758da5a5995"></a>
+const <a class="el" href="namespaceompl_1_1base.html#aa6f2d533928363e12d3753457db3a69b">base::PlannerAllocator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a458ee1bcb5fb15fe6a659758da5a5995">getPlannerAllocator</a> () const </td></tr>
+<tr class="memdesc:a458ee1bcb5fb15fe6a659758da5a5995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the planner allocator. <br/></td></tr>
+<tr class="separator:a458ee1bcb5fb15fe6a659758da5a5995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23c01de9e8925a740ee80ec2cb457d8f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23c01de9e8925a740ee80ec2cb457d8f"></a>
+const <a class="el" href="classompl_1_1geometric_1_1PathSimplifierPtr.html">PathSimplifierPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a23c01de9e8925a740ee80ec2cb457d8f">getPathSimplifier</a> () const </td></tr>
+<tr class="memdesc:a23c01de9e8925a740ee80ec2cb457d8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the path simplifier. <br/></td></tr>
+<tr class="separator:a23c01de9e8925a740ee80ec2cb457d8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed52ed9ae614cab6fa843975b8b3c60f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed52ed9ae614cab6fa843975b8b3c60f"></a>
+<a class="el" href="classompl_1_1geometric_1_1PathSimplifierPtr.html">PathSimplifierPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#aed52ed9ae614cab6fa843975b8b3c60f">getPathSimplifier</a> ()</td></tr>
+<tr class="memdesc:aed52ed9ae614cab6fa843975b8b3c60f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the path simplifier. <br/></td></tr>
+<tr class="separator:aed52ed9ae614cab6fa843975b8b3c60f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1b8f84b4417a6afc3a81b99f472705f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1b8f84b4417a6afc3a81b99f472705f"></a>
+const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">base::OptimizationObjectivePtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ad1b8f84b4417a6afc3a81b99f472705f">getOptimizationObjective</a> ()</td></tr>
+<tr class="memdesc:ad1b8f84b4417a6afc3a81b99f472705f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the optimization objective to use. <br/></td></tr>
+<tr class="separator:ad1b8f84b4417a6afc3a81b99f472705f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a47163e799d3367f58437dfd903cb0b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a47163e799d3367f58437dfd903cb0b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a0a47163e799d3367f58437dfd903cb0b">haveExactSolutionPath</a> () const </td></tr>
+<tr class="memdesc:a0a47163e799d3367f58437dfd903cb0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if a solution path is available (previous call to <a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a387050f69afb31e4869f848cc837f8ba" title="Run the planner for up to a specified amount of time (default is 1 second) ">solve()</a> was successful) and the solution is exact (not approximate) <br/></td></tr>
+<tr class="separator:a0a47163e799d3367f58437dfd903cb0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8b0aa5f124609bdade2d85dca1b9db9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae8b0aa5f124609bdade2d85dca1b9db9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ae8b0aa5f124609bdade2d85dca1b9db9">haveSolutionPath</a> () const </td></tr>
+<tr class="memdesc:ae8b0aa5f124609bdade2d85dca1b9db9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if a solution path is available (previous call to <a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a387050f69afb31e4869f848cc837f8ba" title="Run the planner for up to a specified amount of time (default is 1 second) ">solve()</a> was successful). The solution may be approximate. <br/></td></tr>
+<tr class="separator:ae8b0aa5f124609bdade2d85dca1b9db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad068d05484a4466287613b0f1327f644"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad068d05484a4466287613b0f1327f644"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ad068d05484a4466287613b0f1327f644">getSolutionPlannerName</a> (void) const </td></tr>
+<tr class="memdesc:ad068d05484a4466287613b0f1327f644"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the best solution's planer name. Throw an exception if no solution is available. <br/></td></tr>
+<tr class="separator:ad068d05484a4466287613b0f1327f644"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39ebfd4caa153fb0a5a4312f85cffebf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39ebfd4caa153fb0a5a4312f85cffebf"></a>
+<a class="el" href="classompl_1_1geometric_1_1PathGeometric.html">PathGeometric</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a39ebfd4caa153fb0a5a4312f85cffebf">getSolutionPath</a> () const </td></tr>
+<tr class="memdesc:a39ebfd4caa153fb0a5a4312f85cffebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the solution path. Throw an exception if no solution is available. <br/></td></tr>
+<tr class="separator:a39ebfd4caa153fb0a5a4312f85cffebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af95bf82b928f80ec9985bf7a0979dbd3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af95bf82b928f80ec9985bf7a0979dbd3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#af95bf82b928f80ec9985bf7a0979dbd3">getPlannerData</a> (<a class="el" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a> &amp;pd) const </td></tr>
+<tr class="memdesc:af95bf82b928f80ec9985bf7a0979dbd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get information about the exploration data structure the motion planner used. <br/></td></tr>
+<tr class="separator:af95bf82b928f80ec9985bf7a0979dbd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6774bcc65c0968e2cb927bab464a3aad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6774bcc65c0968e2cb927bab464a3aad"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a6774bcc65c0968e2cb927bab464a3aad">setStateValidityChecker</a> (const <a class="el" href="classompl_1_1base_1_1StateValidityCheckerPtr.html">base::StateValidityCheckerPtr</a> &amp;svc)</td></tr>
+<tr class="memdesc:a6774bcc65c0968e2cb927bab464a3aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the state validity checker to use. <br/></td></tr>
+<tr class="separator:a6774bcc65c0968e2cb927bab464a3aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6b07d6a351500ea1333151733b254e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad6b07d6a351500ea1333151733b254e2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ad6b07d6a351500ea1333151733b254e2">setStateValidityChecker</a> (const <a class="el" href="namespaceompl_1_1base.html#a53fa8a46a28674eaa17899b2026f7b75">base::StateValidityCheckerFn</a> &amp;svc)</td></tr>
+<tr class="memdesc:ad6b07d6a351500ea1333151733b254e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the state validity checker to use. <br/></td></tr>
+<tr class="separator:ad6b07d6a351500ea1333151733b254e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f69de97e7c0cfce7cd8e5a927591ac8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f69de97e7c0cfce7cd8e5a927591ac8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a9f69de97e7c0cfce7cd8e5a927591ac8">setOptimizationObjective</a> (const <a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">base::OptimizationObjectivePtr</a> &amp;optimizationObjective)</td></tr>
+<tr class="memdesc:a9f69de97e7c0cfce7cd8e5a927591ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the optimization objective to use. <br/></td></tr>
+<tr class="separator:a9f69de97e7c0cfce7cd8e5a927591ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5613360d370f7c68adde45f03d1966d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5613360d370f7c68adde45f03d1966d3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a5613360d370f7c68adde45f03d1966d3">setStartAndGoalStates</a> (const <a class="el" href="classompl_1_1base_1_1ScopedState.html">base::ScopedState</a>&lt;&gt; &amp;start, const <a class="el" href="classompl_1_1base_1_1ScopedState.html">base::ScopedState</a>&lt;&gt; &amp;goal, const double threshold=std::numeric_limits&lt; double &gt;::epsilon())</td></tr>
+<tr class="memdesc:a5613360d370f7c68adde45f03d1966d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the start and goal states to use. <br/></td></tr>
+<tr class="separator:a5613360d370f7c68adde45f03d1966d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1dc047ae0b70d3492d7e222f56d83a7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1dc047ae0b70d3492d7e222f56d83a7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ab1dc047ae0b70d3492d7e222f56d83a7">addStartState</a> (const <a class="el" href="classompl_1_1base_1_1ScopedState.html">base::ScopedState</a>&lt;&gt; &amp;state)</td></tr>
+<tr class="memdesc:ab1dc047ae0b70d3492d7e222f56d83a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a starting state for planning. This call is not needed if <a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a5613360d370f7c68adde45f03d1966d3" title="Set the start and goal states to use. ">setStartAndGoalStates()</a> has been called. <br/></td></tr>
+<tr class="separator:ab1dc047ae0b70d3492d7e222f56d83a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfd69f5fb87a3e95811ebe5f4f45ea0c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abfd69f5fb87a3e95811ebe5f4f45ea0c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#abfd69f5fb87a3e95811ebe5f4f45ea0c">clearStartStates</a> ()</td></tr>
+<tr class="memdesc:abfd69f5fb87a3e95811ebe5f4f45ea0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the currently set starting states. <br/></td></tr>
+<tr class="separator:abfd69f5fb87a3e95811ebe5f4f45ea0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee17b73abd2876dc4dbffd02038ded34"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee17b73abd2876dc4dbffd02038ded34"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#aee17b73abd2876dc4dbffd02038ded34">setStartState</a> (const <a class="el" href="classompl_1_1base_1_1ScopedState.html">base::ScopedState</a>&lt;&gt; &amp;state)</td></tr>
+<tr class="memdesc:aee17b73abd2876dc4dbffd02038ded34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the currently set starting states and add <em>state</em> as the starting state. <br/></td></tr>
+<tr class="separator:aee17b73abd2876dc4dbffd02038ded34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bb806d078ddaded372d7cbe4b1ef82a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8bb806d078ddaded372d7cbe4b1ef82a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a8bb806d078ddaded372d7cbe4b1ef82a">setGoalState</a> (const <a class="el" href="classompl_1_1base_1_1ScopedState.html">base::ScopedState</a>&lt;&gt; &amp;goal, const double threshold=std::numeric_limits&lt; double &gt;::epsilon())</td></tr>
+<tr class="memdesc:a8bb806d078ddaded372d7cbe4b1ef82a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple form of <a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a6f6e9a1b5facde7915f51e86b48860e9" title="Set the goal for planning. This call is not needed if setStartAndGoalStates() has been called...">setGoal()</a>. The goal will be an instance of <a class="el" href="classompl_1_1base_1_1GoalState.html" title="Definition of a goal state. ">ompl::base::GoalState</a>. <br/></td></tr>
+<tr class="separator:a8bb806d078ddaded372d7cbe4b1ef82a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f6e9a1b5facde7915f51e86b48860e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f6e9a1b5facde7915f51e86b48860e9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a6f6e9a1b5facde7915f51e86b48860e9">setGoal</a> (const <a class="el" href="classompl_1_1base_1_1GoalPtr.html">base::GoalPtr</a> &amp;goal)</td></tr>
+<tr class="memdesc:a6f6e9a1b5facde7915f51e86b48860e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the goal for planning. This call is not needed if <a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a5613360d370f7c68adde45f03d1966d3" title="Set the start and goal states to use. ">setStartAndGoalStates()</a> has been called. <br/></td></tr>
+<tr class="separator:a6f6e9a1b5facde7915f51e86b48860e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a94558b2ece27d938a92b062d55df71"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a94558b2ece27d938a92b062d55df71"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a8a94558b2ece27d938a92b062d55df71">setPlanner</a> (const <a class="el" href="classompl_1_1base_1_1PlannerPtr.html">base::PlannerPtr</a> &amp;planner)</td></tr>
+<tr class="memdesc:a8a94558b2ece27d938a92b062d55df71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the planner to use. If the planner is not set, an attempt is made to use the planner allocator. If no planner allocator is available either, a default planner is set. <br/></td></tr>
+<tr class="separator:a8a94558b2ece27d938a92b062d55df71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e2d929e58376c4806234b6a473cd3e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e2d929e58376c4806234b6a473cd3e8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a9e2d929e58376c4806234b6a473cd3e8">setPlannerAllocator</a> (const <a class="el" href="namespaceompl_1_1base.html#aa6f2d533928363e12d3753457db3a69b">base::PlannerAllocator</a> &amp;pa)</td></tr>
+<tr class="memdesc:a9e2d929e58376c4806234b6a473cd3e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the planner allocator to use. This is only used if no planner has been set. This is optional &ndash; a default planner will be used if no planner is otherwise specified. <br/></td></tr>
+<tr class="separator:a9e2d929e58376c4806234b6a473cd3e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a387050f69afb31e4869f848cc837f8ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a387050f69afb31e4869f848cc837f8ba"></a>
+virtual <a class="el" href="structompl_1_1base_1_1PlannerStatus.html">base::PlannerStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a387050f69afb31e4869f848cc837f8ba">solve</a> (double time=1.0)</td></tr>
+<tr class="memdesc:a387050f69afb31e4869f848cc837f8ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the planner for up to a specified amount of time (default is 1 second) <br/></td></tr>
+<tr class="separator:a387050f69afb31e4869f848cc837f8ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adae88a9d800135ebf84daedc77b23543"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adae88a9d800135ebf84daedc77b23543"></a>
+virtual <a class="el" href="structompl_1_1base_1_1PlannerStatus.html">base::PlannerStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#adae88a9d800135ebf84daedc77b23543">solve</a> (const <a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;ptc)</td></tr>
+<tr class="memdesc:adae88a9d800135ebf84daedc77b23543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the planner until <em>ptc</em> becomes true (at most) <br/></td></tr>
+<tr class="separator:adae88a9d800135ebf84daedc77b23543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6583b0cb996572ed376b360b2f650c44"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6583b0cb996572ed376b360b2f650c44"></a>
+<a class="el" href="structompl_1_1base_1_1PlannerStatus.html">base::PlannerStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a6583b0cb996572ed376b360b2f650c44">getLastPlannerStatus</a> () const </td></tr>
+<tr class="memdesc:a6583b0cb996572ed376b360b2f650c44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the status of the last planning attempt. <br/></td></tr>
+<tr class="separator:a6583b0cb996572ed376b360b2f650c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a336c44049aa54258f67e11abd8b693b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a336c44049aa54258f67e11abd8b693b8"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a336c44049aa54258f67e11abd8b693b8">getLastPlanComputationTime</a> () const </td></tr>
+<tr class="memdesc:a336c44049aa54258f67e11abd8b693b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the amount of time (in seconds) spent during the last planning step. <br/></td></tr>
+<tr class="separator:a336c44049aa54258f67e11abd8b693b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fced050bceb5eb5db2e8e8d9553bc1d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2fced050bceb5eb5db2e8e8d9553bc1d"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a2fced050bceb5eb5db2e8e8d9553bc1d">getLastSimplificationTime</a> () const </td></tr>
+<tr class="memdesc:a2fced050bceb5eb5db2e8e8d9553bc1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the amount of time (in seconds) spend during the last path simplification step. <br/></td></tr>
+<tr class="separator:a2fced050bceb5eb5db2e8e8d9553bc1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6be73057e3a2e13fa8342c70c2e4f674"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6be73057e3a2e13fa8342c70c2e4f674"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a6be73057e3a2e13fa8342c70c2e4f674">simplifySolution</a> (double duration=0.0)</td></tr>
+<tr class="memdesc:a6be73057e3a2e13fa8342c70c2e4f674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempt to simplify the current solution path. Spent at most <em>duration</em> seconds in the simplification process. If <em>duration</em> is 0 (the default), a default simplification procedure is executed. <br/></td></tr>
+<tr class="separator:a6be73057e3a2e13fa8342c70c2e4f674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbbd67d9d06f2f9debde230b0c0e92c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adbbd67d9d06f2f9debde230b0c0e92c4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#adbbd67d9d06f2f9debde230b0c0e92c4">simplifySolution</a> (const <a class="el" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;ptc)</td></tr>
+<tr class="memdesc:adbbd67d9d06f2f9debde230b0c0e92c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempt to simplify the current solution path. Stop computation when <em>ptc</em> becomes true at the latest. <br/></td></tr>
+<tr class="separator:adbbd67d9d06f2f9debde230b0c0e92c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a2ed93879c02efab472c5db3e9a6aff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a2ed93879c02efab472c5db3e9a6aff"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a6a2ed93879c02efab472c5db3e9a6aff">clear</a> ()</td></tr>
+<tr class="memdesc:a6a2ed93879c02efab472c5db3e9a6aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all planning data. This only includes data generated by motion plan computation. Planner settings, start &amp; goal states are not affected. <br/></td></tr>
+<tr class="separator:a6a2ed93879c02efab472c5db3e9a6aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae787775ec6d05e0e9dcd6cd379839ce5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae787775ec6d05e0e9dcd6cd379839ce5"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ae787775ec6d05e0e9dcd6cd379839ce5">print</a> (std::ostream &amp;out=std::cout) const </td></tr>
+<tr class="memdesc:ae787775ec6d05e0e9dcd6cd379839ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print information about the current setup. <br/></td></tr>
+<tr class="separator:ae787775ec6d05e0e9dcd6cd379839ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af245005feb3c0b525e1ac5d397c8d3ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af245005feb3c0b525e1ac5d397c8d3ff"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#af245005feb3c0b525e1ac5d397c8d3ff">setup</a> ()</td></tr>
+<tr class="memdesc:af245005feb3c0b525e1ac5d397c8d3ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method will create the necessary classes for planning. The <a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a387050f69afb31e4869f848cc837f8ba" title="Run the planner for up to a specified amount of time (default is 1 second) ">solve()</a> method will call this function automatically. <br/></td></tr>
+<tr class="separator:af245005feb3c0b525e1ac5d397c8d3ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a69adfe8170ebbd11c5f6919ccea354"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a69adfe8170ebbd11c5f6919ccea354"></a>
+<a class="el" href="classompl_1_1base_1_1ParamSet.html">base::ParamSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a8a69adfe8170ebbd11c5f6919ccea354">params</a> ()</td></tr>
+<tr class="memdesc:a8a69adfe8170ebbd11c5f6919ccea354"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parameters for this planning context. <br/></td></tr>
+<tr class="separator:a8a69adfe8170ebbd11c5f6919ccea354"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5b3c1b7f841c01d09a59bba29a4b645"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5b3c1b7f841c01d09a59bba29a4b645"></a>
+const <a class="el" href="classompl_1_1base_1_1ParamSet.html">base::ParamSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ab5b3c1b7f841c01d09a59bba29a4b645">params</a> () const </td></tr>
+<tr class="memdesc:ab5b3c1b7f841c01d09a59bba29a4b645"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parameters for this planning context. <br/></td></tr>
+<tr class="separator:ab5b3c1b7f841c01d09a59bba29a4b645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a769e167e2959b1ca59fc9b3ea2416f45"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a769e167e2959b1ca59fc9b3ea2416f45"></a>
+<a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">base::SpaceInformationPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a769e167e2959b1ca59fc9b3ea2416f45">si_</a></td></tr>
+<tr class="memdesc:a769e167e2959b1ca59fc9b3ea2416f45"><td class="mdescLeft">&#160;</td><td class="mdescRight">The created space information. <br/></td></tr>
+<tr class="separator:a769e167e2959b1ca59fc9b3ea2416f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab996b6b96ab19c5f51ca5167bb8dd60a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab996b6b96ab19c5f51ca5167bb8dd60a"></a>
+<a class="el" href="classompl_1_1base_1_1ProblemDefinitionPtr.html">base::ProblemDefinitionPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ab996b6b96ab19c5f51ca5167bb8dd60a">pdef_</a></td></tr>
+<tr class="memdesc:ab996b6b96ab19c5f51ca5167bb8dd60a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The created problem definition. <br/></td></tr>
+<tr class="separator:ab996b6b96ab19c5f51ca5167bb8dd60a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a580b3608f6b473a1ea0bc5febd0b83cc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a580b3608f6b473a1ea0bc5febd0b83cc"></a>
+<a class="el" href="classompl_1_1base_1_1PlannerPtr.html">base::PlannerPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a580b3608f6b473a1ea0bc5febd0b83cc">planner_</a></td></tr>
+<tr class="memdesc:a580b3608f6b473a1ea0bc5febd0b83cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maintained planner instance. <br/></td></tr>
+<tr class="separator:a580b3608f6b473a1ea0bc5febd0b83cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0eec15376eb6e47b0ad03e7f281c420"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af0eec15376eb6e47b0ad03e7f281c420"></a>
+<a class="el" href="namespaceompl_1_1base.html#aa6f2d533928363e12d3753457db3a69b">base::PlannerAllocator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#af0eec15376eb6e47b0ad03e7f281c420">pa_</a></td></tr>
+<tr class="memdesc:af0eec15376eb6e47b0ad03e7f281c420"><td class="mdescLeft">&#160;</td><td class="mdescRight">The optional planner allocator. <br/></td></tr>
+<tr class="separator:af0eec15376eb6e47b0ad03e7f281c420"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b1dcfac122177dfdd3d64a0bbf86212"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b1dcfac122177dfdd3d64a0bbf86212"></a>
+<a class="el" href="classompl_1_1geometric_1_1PathSimplifierPtr.html">PathSimplifierPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a0b1dcfac122177dfdd3d64a0bbf86212">psk_</a></td></tr>
+<tr class="memdesc:a0b1dcfac122177dfdd3d64a0bbf86212"><td class="mdescLeft">&#160;</td><td class="mdescRight">The instance of the path simplifier. <br/></td></tr>
+<tr class="separator:a0b1dcfac122177dfdd3d64a0bbf86212"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a346b6fccff04f3df867d78dba27db4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a346b6fccff04f3df867d78dba27db4"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a4a346b6fccff04f3df867d78dba27db4">configured_</a></td></tr>
+<tr class="memdesc:a4a346b6fccff04f3df867d78dba27db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating whether the classes needed for planning are set up. <br/></td></tr>
+<tr class="separator:a4a346b6fccff04f3df867d78dba27db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1747fe1bdce1cb4c9284c98f381fcc1b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1747fe1bdce1cb4c9284c98f381fcc1b"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a1747fe1bdce1cb4c9284c98f381fcc1b">planTime_</a></td></tr>
+<tr class="memdesc:a1747fe1bdce1cb4c9284c98f381fcc1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The amount of time the last planning step took. <br/></td></tr>
+<tr class="separator:a1747fe1bdce1cb4c9284c98f381fcc1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07bd87a344ef361d581b799e75471307"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07bd87a344ef361d581b799e75471307"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a07bd87a344ef361d581b799e75471307">simplifyTime_</a></td></tr>
+<tr class="memdesc:a07bd87a344ef361d581b799e75471307"><td class="mdescLeft">&#160;</td><td class="mdescRight">The amount of time the last path simplification step took. <br/></td></tr>
+<tr class="separator:a07bd87a344ef361d581b799e75471307"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dff9b30ec063e43d154d59ef8a7bca9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2dff9b30ec063e43d154d59ef8a7bca9"></a>
+<a class="el" href="structompl_1_1base_1_1PlannerStatus.html">base::PlannerStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#a2dff9b30ec063e43d154d59ef8a7bca9">lastStatus_</a></td></tr>
+<tr class="memdesc:a2dff9b30ec063e43d154d59ef8a7bca9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The status of the last planning request. <br/></td></tr>
+<tr class="separator:a2dff9b30ec063e43d154d59ef8a7bca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae60b92e3fadf885bdca79c2119f5890f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae60b92e3fadf885bdca79c2119f5890f"></a>
+<a class="el" href="classompl_1_1base_1_1ParamSet.html">base::ParamSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1geometric_1_1SimpleSetup.html#ae60b92e3fadf885bdca79c2119f5890f">params_</a></td></tr>
+<tr class="memdesc:ae60b92e3fadf885bdca79c2119f5890f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parameters that describe the planning context. <br/></td></tr>
+<tr class="separator:ae60b92e3fadf885bdca79c2119f5890f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Create the set of classes typically needed to solve a geometric problem. </p>
+
+<p>Definition at line <a class="el" href="geometric_2SimpleSetup_8h_source.html#l00064">64</a> of file <a class="el" href="geometric_2SimpleSetup_8h_source.html">SimpleSetup.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>ompl/src/ompl/geometric/<a class="el" href="geometric_2SimpleSetup_8h_source.html">SimpleSetup.h</a></li>
+<li>ompl/src/ompl/geometric/src/<a class="el" href="geometric_2src_2SimpleSetup_8cpp_source.html">SimpleSetup.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:28 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

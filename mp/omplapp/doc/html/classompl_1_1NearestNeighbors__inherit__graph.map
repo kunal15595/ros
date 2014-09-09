@@ -1,0 +1,8 @@
+<map id="ompl::NearestNeighbors&lt; _T &gt;" name="ompl::NearestNeighbors&lt; _T &gt;">
+<area shape="rect" id="node2" href="$classompl_1_1NearestNeighborsFLANN.html" title="Wrapper class for nearest neighbor data structures in the FLANN library. " alt="" coords="217,37,423,78"/>
+<area shape="rect" id="node5" href="$classompl_1_1NearestNeighborsGNAT.html" title="Geometric Near&#45;neighbor Access Tree (GNAT), a data structure for nearest neighbor search..." alt="" coords="220,102,420,143"/>
+<area shape="rect" id="node6" href="$classompl_1_1NearestNeighborsLinear.html" title="A nearest neighbors datastructure that uses linear search. " alt="" coords="221,167,419,209"/>
+<area shape="rect" id="node3" href="$classompl_1_1NearestNeighborsFLANNHierarchicalClustering.html" title="ompl::NearestNeighborsFLANNHierarchical\lClustering\&lt; _T, _Dist \&gt;" alt="" coords="473,5,749,46"/>
+<area shape="rect" id="node4" href="$classompl_1_1NearestNeighborsFLANNLinear.html" title="ompl::NearestNeighborsFLANNLinear\l\&lt; _T, _Dist \&gt;" alt="" coords="489,70,732,111"/>
+<area shape="rect" id="node7" href="$classompl_1_1NearestNeighborsSqrtApprox.html" title="A nearest neighbors datastructure that uses linear search. The linear search is done over sqrt(n) ele..." alt="" coords="517,167,704,209"/>
+</map>

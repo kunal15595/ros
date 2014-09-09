@@ -1,0 +1,22 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classompl_1_1app_1_1RenderGeometry.html" title="ompl::app::RenderGeometry" alt="" coords="499,157,685,184"/>
+<area shape="rect" id="node2" href="$classompl_1_1app_1_1GBlimpPlanning.html" title="ompl::app::GBlimpPlanning" alt="" coords="773,185,953,212"/>
+<area shape="rect" id="node3" href="$classompl_1_1app_1_1GDynamicCarPlanning.html" title="ompl::app::GDynamicCarPlanning" alt="" coords="753,7,973,33"/>
+<area shape="rect" id="node4" href="$classompl_1_1app_1_1GKinematicCarPlanning.html" title="ompl::app::GKinematicCar\lPlanning" alt="" coords="775,59,951,101"/>
+<area shape="rect" id="node5" href="$classompl_1_1app_1_1GQuadrotorPlanning.html" title="ompl::app::GQuadrotorPlanning" alt="" coords="761,128,965,155"/>
+<area shape="rect" id="node6" href="$classompl_1_1app_1_1GSE2RigidBodyPlanning.html" title="ompl::app::GSE2RigidBody\lPlanning" alt="" coords="771,250,954,291"/>
+<area shape="rect" id="node7" href="$classompl_1_1app_1_1GSE3RigidBodyPlanning.html" title="ompl::app::GSE3RigidBody\lPlanning" alt="" coords="771,341,954,382"/>
+<area shape="rect" id="node8" href="$classompl_1_1app_1_1RigidBodyGeometry.html" title="ompl::app::RigidBodyGeometry" alt="" coords="6,263,210,289"/>
+<area shape="rect" id="node9" href="$classompl_1_1app_1_1AppBase.html" title="ompl::app::AppBase\l\&lt; CONTROL \&gt;" alt="" coords="275,150,415,191"/>
+<area shape="rect" id="node14" href="$classompl_1_1app_1_1AppBase.html" title="ompl::app::AppBase\l\&lt; GEOMETRIC \&gt;" alt="" coords="275,281,415,322"/>
+<area shape="rect" id="node19" href="$classompl_1_1app_1_1AppBase.html" title="ompl::app::AppBase\&lt; T \&gt;" alt="" coords="259,347,431,373"/>
+<area shape="rect" id="node10" href="$classompl_1_1app_1_1BlimpPlanning.html" title="A class to facilitate planning for a simple blimp model. " alt="" coords="507,208,677,235"/>
+<area shape="rect" id="node11" href="$classompl_1_1app_1_1DynamicCarPlanning.html" title="A class to facilitate planning for a generic second&#45;order car model. " alt="" coords="487,5,697,32"/>
+<area shape="rect" id="node12" href="$classompl_1_1app_1_1KinematicCarPlanning.html" title="A class to facilitate planning for a generic kinematic car model. " alt="" coords="484,56,700,83"/>
+<area shape="rect" id="node13" href="$classompl_1_1app_1_1QuadrotorPlanning.html" title="A class to facilitate planning for a simple quadrotor model. " alt="" coords="495,107,689,133"/>
+<area shape="rect" id="node15" href="$classompl_1_1app_1_1SE2MultiRigidBodyPlanning.html" title="Wrapper for ompl::app::RigidBodyPlanning that plans for multiple rigid bodies in SE2. " alt="" coords="507,427,677,469"/>
+<area shape="rect" id="node16" href="$classompl_1_1app_1_1SE2RigidBodyPlanning.html" title="Wrapper for ompl::app::RigidBodyPlanning that plans for rigid bodies in SE2. " alt="" coords="481,259,703,285"/>
+<area shape="rect" id="node17" href="$classompl_1_1app_1_1SE3MultiRigidBodyPlanning.html" title="Wrapper for ompl::app::RigidBodyPlanning that plans for multiple rigid bodies in SE3. " alt="" coords="507,310,677,351"/>
+<area shape="rect" id="node18" href="$classompl_1_1app_1_1SE3RigidBodyPlanning.html" title="Wrapper for ompl::app::RigidBodyPlanning that plans for rigid bodies in SE3. " alt="" coords="481,376,703,403"/>
+<area shape="rect" id="node20" href="$classompl_1_1geometric_1_1SimpleSetup.html" title="Create the set of classes typically needed to solve a geometric problem. " alt="" coords="9,313,207,340"/>
+</map>

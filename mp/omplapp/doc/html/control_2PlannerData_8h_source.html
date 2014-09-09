@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/control/PlannerData.h Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_d108bf77affaa88433173d7604bedd7d.html">control</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">PlannerData.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2011, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Rice University nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Mark Moll */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifndef OMPL_CONTROL_PLANNER_DATA_</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define OMPL_CONTROL_PLANNER_DATA_</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;ompl/base/PlannerData.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;ompl/control/SpaceInformation.h&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;ompl/control/Control.h&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &lt;boost/serialization/base_object.hpp&gt;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">namespace </span>ompl</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">namespace </span>control</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    {</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PlannerDataEdgeControl.html">   60</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html">PlannerDataEdgeControl</a> : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1PlannerDataEdge.html">base::PlannerDataEdge</a></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PlannerDataEdgeControl.html#aeed9d3f69fcc19bf7007f6752895108b">   64</a></span>&#160;            <a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html#aeed9d3f69fcc19bf7007f6752895108b">PlannerDataEdgeControl</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *c, <span class="keywordtype">double</span> duration) : PlannerDataEdge(), c_(c), duration_(duration) {}</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PlannerDataEdgeControl.html#ae6be83c08cb60bbdff9ac5f62f43d2d9">   66</a></span>&#160;            <a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html#ae6be83c08cb60bbdff9ac5f62f43d2d9">PlannerDataEdgeControl</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html">PlannerDataEdgeControl</a> &amp;rhs) : PlannerDataEdge(), c_(rhs.c_), duration_(rhs.duration_) {}</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keyword">virtual</span> ~<a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html">PlannerDataEdgeControl</a>() {}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PlannerDataEdgeControl.html#afe5ac38707c39450609f7511116cdc26">   70</a></span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classompl_1_1base_1_1PlannerDataEdge.html">base::PlannerDataEdge</a>* <a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html#afe5ac38707c39450609f7511116cdc26">clone</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="classompl_1_1base_1_1PlannerDataEdge.html">base::PlannerDataEdge</a>*<span class="keyword">&gt;</span>(<span class="keyword">new</span> <a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html">PlannerDataEdgeControl</a>(*<span class="keyword">this</span>));</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PlannerDataEdgeControl.html#ab6b99b1bd225433708cb226c8546f6ab">   76</a></span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1Control.html">Control</a>* <a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html#ab6b99b1bd225433708cb226c8546f6ab">getControl</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> c_; }</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PlannerDataEdgeControl.html#ad3fa3797730d9760ca74049d3a678bd4">   78</a></span>&#160;            <span class="keywordtype">double</span> <a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html#ad3fa3797730d9760ca74049d3a678bd4">getDuration</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> duration_; }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> PlannerDataEdge &amp;rhs)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html">PlannerDataEdgeControl</a> *rhsc = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html">PlannerDataEdgeControl</a>*<span class="keyword">&gt;</span> (&amp;rhs);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">if</span> (c_ == rhsc-&gt;c_)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>PlannerDataEdge<span class="keyword">&gt;</span>(*this) == rhs;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keyword">friend</span> <span class="keyword">class </span>boost::serialization::access;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keyword">friend</span> <span class="keyword">class </span>PlannerDataStorage;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keyword">friend</span> <span class="keyword">class </span>PlannerData;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            PlannerDataEdgeControl() : PlannerDataEdge(), c_(NULL) {};</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keyword">template</span> &lt;<span class="keyword">class</span> Archive&gt;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordtype">void</span> serialize(Archive &amp;ar, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="comment">/*version*/</span>)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                ar &amp; boost::serialization::base_object&lt;base::PlannerDataEdge&gt;(*this);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                ar &amp; duration_;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="comment">// Serializing the control is handled by control::PlannerDataStorage</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keyword">const</span> Control *c_;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordtype">double</span> duration_;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        };</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PlannerData.html">  111</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1control_1_1PlannerData.html">PlannerData</a> : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <a class="code" href="classompl_1_1control_1_1PlannerData.html#a5dd9ed6679f6be99a8dac9bb8b518f0a">PlannerData</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;siC);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classompl_1_1control_1_1PlannerData.html#aa70e81a977868ed6b45fd395001cd348">~PlannerData</a>();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1control_1_1PlannerData.html#afd481092533a5e35bc6bf2d2f342a093">removeVertex</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a> &amp;st);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1control_1_1PlannerData.html#afd481092533a5e35bc6bf2d2f342a093">removeVertex</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vIndex);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1control_1_1PlannerData.html#a930e6622356bc6d57f528d3543706d59">removeEdge</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v2);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1control_1_1PlannerData.html#a930e6622356bc6d57f528d3543706d59">removeEdge</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a> &amp;v1, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a> &amp;v2);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1PlannerData.html#ad938b301284290f18b47c2a46fb8667e">clear</a>();</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1PlannerData.html#a5b2979d822c9fa21ed3d294cadfde2a7">decoupleFromPlanner</a>();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1SpaceInformationPtr.html">SpaceInformationPtr</a>&amp; <a class="code" href="classompl_1_1control_1_1PlannerData.html#ae5d14d5023c7087fbcb59505a13b4ea0">getSpaceInformation</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classompl_1_1control_1_1PlannerData.html#a24b9599c3098f897641f40eb5aefaa49">hasControls</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PlannerData.html#af2c137590e2a049d47723ae5388d5a6b">  155</a></span>&#160;            <a class="code" href="classompl_1_1control_1_1SpaceInformationPtr.html">SpaceInformationPtr</a>  <a class="code" href="classompl_1_1control_1_1PlannerData.html#af2c137590e2a049d47723ae5388d5a6b">siC_</a>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PlannerData.html#aeea902a2032ac410c3a5150fa4911e28">  158</a></span>&#160;            std::set&lt;Control*&gt; <a class="code" href="classompl_1_1control_1_1PlannerData.html#aeea902a2032ac410c3a5150fa4911e28">decoupledControls_</a>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordtype">void</span> freeMemory();</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        };</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html">ompl::base::PlannerData</a></div><div class="ttdoc">Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00164">PlannerData.h:164</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1Control_html"><div class="ttname"><a href="classompl_1_1control_1_1Control.html">ompl::control::Control</a></div><div class="ttdoc">Definition of an abstract control. </div><div class="ttdef"><b>Definition:</b> <a href="Control_8h_source.html#l00048">Control.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerData_html_ae5d14d5023c7087fbcb59505a13b4ea0"><div class="ttname"><a href="classompl_1_1control_1_1PlannerData.html#ae5d14d5023c7087fbcb59505a13b4ea0">ompl::control::PlannerData::getSpaceInformation</a></div><div class="ttdeci">const SpaceInformationPtr &amp; getSpaceInformation() const </div><div class="ttdoc">Return the instance of SpaceInformation used in this PlannerData. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2control_2src_2PlannerData_8cpp_source.html#l00137">PlannerData.cpp:137</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataEdgeControl_html_afe5ac38707c39450609f7511116cdc26"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataEdgeControl.html#afe5ac38707c39450609f7511116cdc26">ompl::control::PlannerDataEdgeControl::clone</a></div><div class="ttdeci">virtual base::PlannerDataEdge * clone() const </div><div class="ttdoc">Return a clone of this object, allocated from the heap. </div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerData_8h_source.html#l00070">PlannerData.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerData_html_aeea902a2032ac410c3a5150fa4911e28"><div class="ttname"><a href="classompl_1_1control_1_1PlannerData.html#aeea902a2032ac410c3a5150fa4911e28">ompl::control::PlannerData::decoupledControls_</a></div><div class="ttdeci">std::set&lt; Control * &gt; decoupledControls_</div><div class="ttdoc">A list of controls that are allocated during the decoupleFromPlanner method. These controls are freed...</div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerData_8h_source.html#l00158">PlannerData.h:158</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerData_html"><div class="ttname"><a href="classompl_1_1control_1_1PlannerData.html">ompl::control::PlannerData</a></div><div class="ttdoc">Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...</div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerData_8h_source.html#l00111">PlannerData.h:111</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerData_html_ad938b301284290f18b47c2a46fb8667e"><div class="ttname"><a href="classompl_1_1control_1_1PlannerData.html#ad938b301284290f18b47c2a46fb8667e">ompl::control::PlannerData::clear</a></div><div class="ttdeci">virtual void clear()</div><div class="ttdoc">Clears the entire data structure. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2control_2src_2PlannerData_8cpp_source.html#l00104">PlannerData.cpp:104</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataEdgeControl_html"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataEdgeControl.html">ompl::control::PlannerDataEdgeControl</a></div><div class="ttdoc">Representation of an edge in PlannerData for planning with controls. This structure encodes a specifi...</div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerData_8h_source.html#l00060">PlannerData.h:60</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerData_html_a5dd9ed6679f6be99a8dac9bb8b518f0a"><div class="ttname"><a href="classompl_1_1control_1_1PlannerData.html#a5dd9ed6679f6be99a8dac9bb8b518f0a">ompl::control::PlannerData::PlannerData</a></div><div class="ttdeci">PlannerData(const SpaceInformationPtr &amp;siC)</div><div class="ttdoc">Constructor. Accepts a SpaceInformationPtr for the space planned in. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2control_2src_2PlannerData_8cpp_source.html#l00039">PlannerData.cpp:39</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerDataVertex_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a></div><div class="ttdoc">Base class for a vertex in the PlannerData structure. All derived classes must implement the clone an...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00060">PlannerData.h:60</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerData_html_af2c137590e2a049d47723ae5388d5a6b"><div class="ttname"><a href="classompl_1_1control_1_1PlannerData.html#af2c137590e2a049d47723ae5388d5a6b">ompl::control::PlannerData::siC_</a></div><div class="ttdeci">SpaceInformationPtr siC_</div><div class="ttdoc">The instance of control::SpaceInformation associated with this data. </div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerData_8h_source.html#l00155">PlannerData.h:155</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataEdgeControl_html_aeed9d3f69fcc19bf7007f6752895108b"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataEdgeControl.html#aeed9d3f69fcc19bf7007f6752895108b">ompl::control::PlannerDataEdgeControl::PlannerDataEdgeControl</a></div><div class="ttdeci">PlannerDataEdgeControl(const Control *c, double duration)</div><div class="ttdoc">Constructor. Accepts a control pointer and a duration. </div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerData_8h_source.html#l00064">PlannerData.h:64</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerData_html_aa70e81a977868ed6b45fd395001cd348"><div class="ttname"><a href="classompl_1_1control_1_1PlannerData.html#aa70e81a977868ed6b45fd395001cd348">ompl::control::PlannerData::~PlannerData</a></div><div class="ttdeci">virtual ~PlannerData()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2control_2src_2PlannerData_8cpp_source.html#l00043">PlannerData.cpp:43</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerData_html_a24b9599c3098f897641f40eb5aefaa49"><div class="ttname"><a href="classompl_1_1control_1_1PlannerData.html#a24b9599c3098f897641f40eb5aefaa49">ompl::control::PlannerData::hasControls</a></div><div class="ttdeci">virtual bool hasControls() const </div><div class="ttdoc">Returns true if this PlannerData instance has controls associated with it. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2control_2src_2PlannerData_8cpp_source.html#l00142">PlannerData.cpp:142</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerData_html_afd481092533a5e35bc6bf2d2f342a093"><div class="ttname"><a href="classompl_1_1control_1_1PlannerData.html#afd481092533a5e35bc6bf2d2f342a093">ompl::control::PlannerData::removeVertex</a></div><div class="ttdeci">virtual bool removeVertex(const base::PlannerDataVertex &amp;st)</div><div class="ttdoc">Removes the vertex associated with the given data. If the vertex does not exist, false is returned...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2control_2src_2PlannerData_8cpp_source.html#l00053">PlannerData.cpp:53</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1SpaceInformationPtr_html"><div class="ttname"><a href="classompl_1_1control_1_1SpaceInformationPtr.html">ompl::control::SpaceInformationPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::control::SpaceInformation. </div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerData_html_a930e6622356bc6d57f528d3543706d59"><div class="ttname"><a href="classompl_1_1control_1_1PlannerData.html#a930e6622356bc6d57f528d3543706d59">ompl::control::PlannerData::removeEdge</a></div><div class="ttdeci">virtual bool removeEdge(unsigned int v1, unsigned int v2)</div><div class="ttdoc">Removes the edge between vertex indexes v1 and v2. Success is returned. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2control_2src_2PlannerData_8cpp_source.html#l00077">PlannerData.cpp:77</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataEdgeControl_html_ab6b99b1bd225433708cb226c8546f6ab"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataEdgeControl.html#ab6b99b1bd225433708cb226c8546f6ab">ompl::control::PlannerDataEdgeControl::getControl</a></div><div class="ttdeci">const Control * getControl() const </div><div class="ttdoc">Return the control associated with this edge. </div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerData_8h_source.html#l00076">PlannerData.h:76</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerDataEdge_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerDataEdge.html">ompl::base::PlannerDataEdge</a></div><div class="ttdoc">Base class for a PlannerData edge. </div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00117">PlannerData.h:117</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataEdgeControl_html_ad3fa3797730d9760ca74049d3a678bd4"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataEdgeControl.html#ad3fa3797730d9760ca74049d3a678bd4">ompl::control::PlannerDataEdgeControl::getDuration</a></div><div class="ttdeci">double getDuration() const </div><div class="ttdoc">Return the duration associated with this edge. </div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerData_8h_source.html#l00078">PlannerData.h:78</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataEdgeControl_html_ae6be83c08cb60bbdff9ac5f62f43d2d9"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataEdgeControl.html#ae6be83c08cb60bbdff9ac5f62f43d2d9">ompl::control::PlannerDataEdgeControl::PlannerDataEdgeControl</a></div><div class="ttdeci">PlannerDataEdgeControl(const PlannerDataEdgeControl &amp;rhs)</div><div class="ttdoc">Copy constructor. </div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerData_8h_source.html#l00066">PlannerData.h:66</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerData_html_a5b2979d822c9fa21ed3d294cadfde2a7"><div class="ttname"><a href="classompl_1_1control_1_1PlannerData.html#a5b2979d822c9fa21ed3d294cadfde2a7">ompl::control::PlannerData::decoupleFromPlanner</a></div><div class="ttdeci">virtual void decoupleFromPlanner()</div><div class="ttdoc">Creates a deep copy of the states contained in the vertices of this PlannerData structure so that whe...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2control_2src_2PlannerData_8cpp_source.html#l00112">PlannerData.cpp:112</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:25 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

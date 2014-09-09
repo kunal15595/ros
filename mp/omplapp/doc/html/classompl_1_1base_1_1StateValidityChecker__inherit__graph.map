@@ -1,0 +1,7 @@
+<map id="ompl::base::StateValidityChecker" name="ompl::base::StateValidityChecker">
+<area shape="rect" id="node3" href="$classompl_1_1app_1_1FCLStateValidityChecker.html" title="Wrapper for FCL collision and distance checking. " alt="" coords="232,57,419,98"/>
+<area shape="rect" id="node4" href="$classompl_1_1app_1_1PQPStateValidityChecker.html" title="Define an ompl::base::StateValidityChecker that can construct PQP models internally. The instance is still abstract however, as the isValid() function is not implemented (knowledge of the state space is needed for this function to be implemented) " alt="" coords="231,122,420,163"/>
+<area shape="rect" id="node5" href="$classompl_1_1base_1_1AllValidStateValidityChecker.html" title="The simplest state validity checker: all states are valid. " alt="" coords="241,187,410,229"/>
+<area shape="rect" id="node6" href="$classompl_1_1base_1_1MorseStateValidityChecker.html" title="The simplest state validity checker: all states are valid if they are within bounds. " alt="" coords="223,253,427,294"/>
+<area shape="rect" id="node7" href="$classompl_1_1control_1_1OpenDEStateValidityChecker.html" title="The simplest state validity checker: all states are valid. " alt="" coords="232,318,419,359"/>
+</map>

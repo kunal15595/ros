@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::base::ParamSet Class Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1base.html">base</a></li><li class="navelem"><a class="el" href="classompl_1_1base_1_1ParamSet.html">ParamSet</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classompl_1_1base_1_1ParamSet-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::base::ParamSet Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Maintain a set of parameters.  
+ <a href="classompl_1_1base_1_1ParamSet.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="GenericParam_8h_source.html">GenericParam.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a3b27e180d07144d220f332750590fc71"><td class="memTemplParams" colspan="2"><a class="anchor" id="a3b27e180d07144d220f332750590fc71"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a3b27e180d07144d220f332750590fc71"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#a3b27e180d07144d220f332750590fc71">declareParam</a> (const std::string &amp;name, const typename <a class="el" href="classompl_1_1base_1_1SpecificParam.html">SpecificParam</a>&lt; T &gt;::SetterFn &amp;setter, const typename <a class="el" href="classompl_1_1base_1_1SpecificParam.html">SpecificParam</a>&lt; T &gt;::GetterFn &amp;getter=typename <a class="el" href="classompl_1_1base_1_1SpecificParam.html">SpecificParam</a>&lt; T &gt;::GetterFn())</td></tr>
+<tr class="memdesc:a3b27e180d07144d220f332750590fc71"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function declares a parameter <em>name</em>, and specifies the <em>setter</em> and <em>getter</em> functions. <br/></td></tr>
+<tr class="separator:a3b27e180d07144d220f332750590fc71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a200630b07f2f43ec2d658f4d1d6d0ede"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a200630b07f2f43ec2d658f4d1d6d0ede"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#a200630b07f2f43ec2d658f4d1d6d0ede">add</a> (const GenericParamPtr &amp;param)</td></tr>
+<tr class="memdesc:a200630b07f2f43ec2d658f4d1d6d0ede"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a parameter to the set. <br/></td></tr>
+<tr class="separator:a200630b07f2f43ec2d658f4d1d6d0ede"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe512b0a1d4127ef6e88f2f32baf3111"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afe512b0a1d4127ef6e88f2f32baf3111"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#afe512b0a1d4127ef6e88f2f32baf3111">remove</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:afe512b0a1d4127ef6e88f2f32baf3111"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a parameter from the set. <br/></td></tr>
+<tr class="separator:afe512b0a1d4127ef6e88f2f32baf3111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33cd1e7ae354235187393487292a5a46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33cd1e7ae354235187393487292a5a46"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#a33cd1e7ae354235187393487292a5a46">include</a> (const <a class="el" href="classompl_1_1base_1_1ParamSet.html">ParamSet</a> &amp;other, const std::string &amp;prefix=&quot;&quot;)</td></tr>
+<tr class="memdesc:a33cd1e7ae354235187393487292a5a46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Include the params of a different <a class="el" href="classompl_1_1base_1_1ParamSet.html" title="Maintain a set of parameters. ">ParamSet</a> into this one. Optionally include a prefix for each of the parameters. <br/></td></tr>
+<tr class="separator:a33cd1e7ae354235187393487292a5a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5db8ef79b6eafab44004b2d034b9a83"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa5db8ef79b6eafab44004b2d034b9a83"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#aa5db8ef79b6eafab44004b2d034b9a83">setParam</a> (const std::string &amp;key, const std::string &amp;value)</td></tr>
+<tr class="memdesc:aa5db8ef79b6eafab44004b2d034b9a83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Algorithms in OMPL often have parameters that can be set externally. While each algorithm will have their own getter and setter functions specifically for those parameters, this function allows setting parameters generically, for any algorithm that declares parameters, by specifying the parameter name <em>key</em> and its value <em>value</em> (both as string, but <em>value</em> is cast to the type desired by the corresponding setter). Under the hood, this calls <a class="el" href="classompl_1_1base_1_1SpecificParam.html#aa92af935bdaf5ab46172422bf54fc231" title="Set the value of the parameter. The value is taken in as a string, but converted to the type of that ...">SpecificParam::setValue()</a>. This ability makes it easy to automatically configure using external sources (e.g., a configuration file). The function returns true if the parameter was parsed and set successfully and false otherwise. <br/></td></tr>
+<tr class="separator:aa5db8ef79b6eafab44004b2d034b9a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed196ed9df566fd4d1d56f68134d1708"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed196ed9df566fd4d1d56f68134d1708"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#aed196ed9df566fd4d1d56f68134d1708">getParam</a> (const std::string &amp;key, std::string &amp;value) const </td></tr>
+<tr class="memdesc:aed196ed9df566fd4d1d56f68134d1708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the value of the parameter named <em>key</em>. Store the value as string in <em>value</em> and return true if the parameter was found. Return false otherwise. <br/></td></tr>
+<tr class="separator:aed196ed9df566fd4d1d56f68134d1708"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a663944c14405167c22aa7d8477f39b39"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a663944c14405167c22aa7d8477f39b39"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#a663944c14405167c22aa7d8477f39b39">setParams</a> (const std::map&lt; std::string, std::string &gt; &amp;kv, bool ignoreUnknown=false)</td></tr>
+<tr class="memdesc:a663944c14405167c22aa7d8477f39b39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the values for a set of parameters. The parameter names are the keys in the map <em>kv</em>. The corresponding key values in <em>kv</em> are set as the parameter values. Return true if all parameters were set successfully. This function simply calls <a class="el" href="classompl_1_1base_1_1ParamSet.html#aa5db8ef79b6eafab44004b2d034b9a83" title="Algorithms in OMPL often have parameters that can be set externally. While each algorithm will have t...">setParam()</a> multiple times. If <em>ignoreUnknown</em> is true, then no attempt is made to set unknown parameters (and thus no errors are reported) <br/></td></tr>
+<tr class="separator:a663944c14405167c22aa7d8477f39b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a128ffa31b82a5af1b840f428463f4fe1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a128ffa31b82a5af1b840f428463f4fe1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#a128ffa31b82a5af1b840f428463f4fe1">getParams</a> (std::map&lt; std::string, std::string &gt; &amp;params) const </td></tr>
+<tr class="memdesc:a128ffa31b82a5af1b840f428463f4fe1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the known parameter as a map from names to their values cast as string. <br/></td></tr>
+<tr class="separator:a128ffa31b82a5af1b840f428463f4fe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ff0f1b1ca7cb0a08dc9fc6812b787dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ff0f1b1ca7cb0a08dc9fc6812b787dc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#a0ff0f1b1ca7cb0a08dc9fc6812b787dc">getParamNames</a> (std::vector&lt; std::string &gt; &amp;params) const </td></tr>
+<tr class="memdesc:a0ff0f1b1ca7cb0a08dc9fc6812b787dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">List the names of the known parameters. <br/></td></tr>
+<tr class="separator:a0ff0f1b1ca7cb0a08dc9fc6812b787dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab45ff8b34d97017567e7867c2cf1daed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab45ff8b34d97017567e7867c2cf1daed"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#ab45ff8b34d97017567e7867c2cf1daed">getParamValues</a> (std::vector&lt; std::string &gt; &amp;vals) const </td></tr>
+<tr class="memdesc:ab45ff8b34d97017567e7867c2cf1daed"><td class="mdescLeft">&#160;</td><td class="mdescRight">List the values of the known parameters, in the same order as <a class="el" href="classompl_1_1base_1_1ParamSet.html#a0ff0f1b1ca7cb0a08dc9fc6812b787dc" title="List the names of the known parameters. ">getParamNames()</a> <br/></td></tr>
+<tr class="separator:ab45ff8b34d97017567e7867c2cf1daed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad72e99b19ee114fa65a2f2d1fe9f10b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad72e99b19ee114fa65a2f2d1fe9f10b7"></a>
+const std::map&lt; std::string, <br class="typebreak"/>
+GenericParamPtr &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#ad72e99b19ee114fa65a2f2d1fe9f10b7">getParams</a> () const </td></tr>
+<tr class="memdesc:ad72e99b19ee114fa65a2f2d1fe9f10b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the map from parameter names to parameter descriptions. <br/></td></tr>
+<tr class="separator:ad72e99b19ee114fa65a2f2d1fe9f10b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e6c56d3d3d5167637e8aef9b9aa2dff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e6c56d3d3d5167637e8aef9b9aa2dff"></a>
+const GenericParamPtr &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#a9e6c56d3d3d5167637e8aef9b9aa2dff">getParam</a> (const std::string &amp;key) const </td></tr>
+<tr class="memdesc:a9e6c56d3d3d5167637e8aef9b9aa2dff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parameter that corresponds to a specified name. An empty shared ptr is returned if the parameter does not exist. <br/></td></tr>
+<tr class="separator:a9e6c56d3d3d5167637e8aef9b9aa2dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad918276962dd623e31e20d867ceed51e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad918276962dd623e31e20d867ceed51e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#ad918276962dd623e31e20d867ceed51e">hasParam</a> (const std::string &amp;key) const </td></tr>
+<tr class="memdesc:ad918276962dd623e31e20d867ceed51e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether this set of parameters includes the parameter named <em>key</em>. <br/></td></tr>
+<tr class="separator:ad918276962dd623e31e20d867ceed51e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab933c691bdd425ef342b8790b5931e87"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab933c691bdd425ef342b8790b5931e87"></a>
+<a class="el" href="classompl_1_1base_1_1GenericParam.html">GenericParam</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#ab933c691bdd425ef342b8790b5931e87">operator[]</a> (const std::string &amp;key)</td></tr>
+<tr class="memdesc:ab933c691bdd425ef342b8790b5931e87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access operator for parameters, by name. If the parameter is not defined, an exception is thrown. <br/></td></tr>
+<tr class="separator:ab933c691bdd425ef342b8790b5931e87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4eb4f1075827a089f59f3ffcfe6aa7b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4eb4f1075827a089f59f3ffcfe6aa7b"></a>
+std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#af4eb4f1075827a089f59f3ffcfe6aa7b">size</a> () const </td></tr>
+<tr class="memdesc:af4eb4f1075827a089f59f3ffcfe6aa7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of parameters maintained by this instance. <br/></td></tr>
+<tr class="separator:af4eb4f1075827a089f59f3ffcfe6aa7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a604191032ff2beebf813c6bae2e80d6c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a604191032ff2beebf813c6bae2e80d6c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#a604191032ff2beebf813c6bae2e80d6c">clear</a> ()</td></tr>
+<tr class="memdesc:a604191032ff2beebf813c6bae2e80d6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all the set parameters. <br/></td></tr>
+<tr class="separator:a604191032ff2beebf813c6bae2e80d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56f643fa2e3a9542320d38ec43c63eb1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a56f643fa2e3a9542320d38ec43c63eb1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1ParamSet.html#a56f643fa2e3a9542320d38ec43c63eb1">print</a> (std::ostream &amp;out) const </td></tr>
+<tr class="memdesc:a56f643fa2e3a9542320d38ec43c63eb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the parameters to a stream. <br/></td></tr>
+<tr class="separator:a56f643fa2e3a9542320d38ec43c63eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Maintain a set of parameters. </p>
+
+<p>Definition at line <a class="el" href="GenericParam_8h_source.html#l00216">216</a> of file <a class="el" href="GenericParam_8h_source.html">GenericParam.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>ompl/src/ompl/base/<a class="el" href="GenericParam_8h_source.html">GenericParam.h</a></li>
+<li>ompl/src/ompl/base/src/<a class="el" href="GenericParam_8cpp_source.html">GenericParam.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:27 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::base::MultiOptimizationObjective Class Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1base.html">base</a></li><li class="navelem"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html">MultiOptimizationObjective</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
+<a href="classompl_1_1base_1_1MultiOptimizationObjective-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::base::MultiOptimizationObjective Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>This class allows for the definition of multiobjective optimal planning problems. Objectives are added to this compound object, and motion costs are computed by taking a weighted sum of the individual objective costs.  
+ <a href="classompl_1_1base_1_1MultiOptimizationObjective.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="OptimizationObjective_8h_source.html">OptimizationObjective.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ompl::base::MultiOptimizationObjective:</div>
+<div class="dyncontent">
+<div class="center"><img src="classompl_1_1base_1_1MultiOptimizationObjective__inherit__graph.png" border="0" usemap="#ompl_1_1base_1_1MultiOptimizationObjective_inherit__map" alt="Inheritance graph"/></div>
+<map name="ompl_1_1base_1_1MultiOptimizationObjective_inherit__map" id="ompl_1_1base_1_1MultiOptimizationObjective_inherit__map">
+<area shape="rect" id="node2" href="classompl_1_1base_1_1OptimizationObjective.html" title="Abstract definition of optimization objectives. " alt="" coords="19,81,185,122"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structompl_1_1base_1_1MultiOptimizationObjective_1_1Component.html">Component</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines a pairing of an objective and its weight.  <a href="structompl_1_1base_1_1MultiOptimizationObjective_1_1Component.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:add048338a854b80c2c1ba5baac788a79"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add048338a854b80c2c1ba5baac788a79"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MultiOptimizationObjective</b> (const <a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;si)</td></tr>
+<tr class="separator:add048338a854b80c2c1ba5baac788a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc1f3daeac02055c1f43066496a9851c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc1f3daeac02055c1f43066496a9851c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html#adc1f3daeac02055c1f43066496a9851c">addObjective</a> (const <a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;objective, double weight)</td></tr>
+<tr class="memdesc:adc1f3daeac02055c1f43066496a9851c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new objective for this multiobjective. A weight must also be specified for specifying importance of this objective in planning. <br/></td></tr>
+<tr class="separator:adc1f3daeac02055c1f43066496a9851c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b2110d912fd7a5aa1ae87d04b67b20f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b2110d912fd7a5aa1ae87d04b67b20f"></a>
+std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html#a4b2110d912fd7a5aa1ae87d04b67b20f">getObjectiveCount</a> () const </td></tr>
+<tr class="memdesc:a4b2110d912fd7a5aa1ae87d04b67b20f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of objectives that make up this multiobjective. <br/></td></tr>
+<tr class="separator:a4b2110d912fd7a5aa1ae87d04b67b20f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaf3f1b3f6afc7d15934792581d21165"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abaf3f1b3f6afc7d15934792581d21165"></a>
+const <a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html#abaf3f1b3f6afc7d15934792581d21165">getObjective</a> (unsigned int idx) const </td></tr>
+<tr class="memdesc:abaf3f1b3f6afc7d15934792581d21165"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a specific objective from this multiobjective, where the individual objectives are in order of addition to the multiobjective, and <em>idx</em> is the zero-based index into this ordering. <br/></td></tr>
+<tr class="separator:abaf3f1b3f6afc7d15934792581d21165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4750a6569c24f290d3c0d0297dff13a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4750a6569c24f290d3c0d0297dff13a"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html#aa4750a6569c24f290d3c0d0297dff13a">getObjectiveWeight</a> (unsigned int idx) const </td></tr>
+<tr class="memdesc:aa4750a6569c24f290d3c0d0297dff13a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the weighing factor of a specific objective. <br/></td></tr>
+<tr class="separator:aa4750a6569c24f290d3c0d0297dff13a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20f6e0a7169ee2d31dcf2e6cf9f729ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20f6e0a7169ee2d31dcf2e6cf9f729ac"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html#a20f6e0a7169ee2d31dcf2e6cf9f729ac">setObjectiveWeight</a> (unsigned int idx, double weight)</td></tr>
+<tr class="memdesc:a20f6e0a7169ee2d31dcf2e6cf9f729ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the weighing factor of a specific objective. <br/></td></tr>
+<tr class="separator:a20f6e0a7169ee2d31dcf2e6cf9f729ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8ee10e2a50bd00b2dc25315a0537716"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8ee10e2a50bd00b2dc25315a0537716"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html#af8ee10e2a50bd00b2dc25315a0537716">lock</a> ()</td></tr>
+<tr class="memdesc:af8ee10e2a50bd00b2dc25315a0537716"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method "freezes" this multiobjective so that no more objectives can be added to it. <br/></td></tr>
+<tr class="separator:af8ee10e2a50bd00b2dc25315a0537716"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b68e4a8ac79b15fdcc2a8100efc983f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b68e4a8ac79b15fdcc2a8100efc983f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html#a5b68e4a8ac79b15fdcc2a8100efc983f">isLocked</a> () const </td></tr>
+<tr class="memdesc:a5b68e4a8ac79b15fdcc2a8100efc983f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this multiobjective has been locked from adding further objectives. <br/></td></tr>
+<tr class="separator:a5b68e4a8ac79b15fdcc2a8100efc983f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad96ef168e90d6359a8f7e2107216da85"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html#ad96ef168e90d6359a8f7e2107216da85">stateCost</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *s) const </td></tr>
+<tr class="separator:ad96ef168e90d6359a8f7e2107216da85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a018a7d4ae8e8883a307e0f44cbdef3d6"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html#a018a7d4ae8e8883a307e0f44cbdef3d6">motionCost</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *s1, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *s2) const </td></tr>
+<tr class="separator:a018a7d4ae8e8883a307e0f44cbdef3d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classompl_1_1base_1_1OptimizationObjective"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classompl_1_1base_1_1OptimizationObjective')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classompl_1_1base_1_1OptimizationObjective.html">ompl::base::OptimizationObjective</a></td></tr>
+<tr class="memitem:a198937100228cca52595ac9f33e36e45 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a198937100228cca52595ac9f33e36e45"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a198937100228cca52595ac9f33e36e45">OptimizationObjective</a> (const <a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;si)</td></tr>
+<tr class="memdesc:a198937100228cca52595ac9f33e36e45 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. The objective must always know the space information it is part of. The cost threshold for objective satisfaction defaults to 0.0. <br/></td></tr>
+<tr class="separator:a198937100228cca52595ac9f33e36e45 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7078bbdb57dd6059dd80fdf6fc36e8b inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7078bbdb57dd6059dd80fdf6fc36e8b"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#af7078bbdb57dd6059dd80fdf6fc36e8b">getDescription</a> () const </td></tr>
+<tr class="memdesc:af7078bbdb57dd6059dd80fdf6fc36e8b inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the description of this optimization objective. <br/></td></tr>
+<tr class="separator:af7078bbdb57dd6059dd80fdf6fc36e8b inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a780c272c0b856e54ca6ac30dbc529592 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a780c272c0b856e54ca6ac30dbc529592"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a780c272c0b856e54ca6ac30dbc529592">isSatisfied</a> (<a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a> c) const </td></tr>
+<tr class="memdesc:a780c272c0b856e54ca6ac30dbc529592 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verify that our objective is satisfied already and we can stop planning. <br/></td></tr>
+<tr class="separator:a780c272c0b856e54ca6ac30dbc529592 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a7f94f2a30787935dc5087261b5fb09 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a7f94f2a30787935dc5087261b5fb09"></a>
+<a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a7a7f94f2a30787935dc5087261b5fb09">getCostThreshold</a> () const </td></tr>
+<tr class="memdesc:a7a7f94f2a30787935dc5087261b5fb09 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the cost threshold currently being checked for objective satisfaction. <br/></td></tr>
+<tr class="separator:a7a7f94f2a30787935dc5087261b5fb09 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f133b98a94cb5b20c4b1a3a998aa7e9 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f133b98a94cb5b20c4b1a3a998aa7e9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a1f133b98a94cb5b20c4b1a3a998aa7e9">setCostThreshold</a> (<a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a> c)</td></tr>
+<tr class="memdesc:a1f133b98a94cb5b20c4b1a3a998aa7e9 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the cost threshold for objective satisfaction. When a path is found with a cost better than the cost threshold, the objective is considered satisfied. <br/></td></tr>
+<tr class="separator:a1f133b98a94cb5b20c4b1a3a998aa7e9 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58a3bbc94241a8c4dc0102653a0625bc inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58a3bbc94241a8c4dc0102653a0625bc"></a>
+virtual <a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a58a3bbc94241a8c4dc0102653a0625bc">getCost</a> (const <a class="el" href="classompl_1_1base_1_1Path.html">Path</a> &amp;path) const </td></tr>
+<tr class="memdesc:a58a3bbc94241a8c4dc0102653a0625bc inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the cost that corresponds to an entire path. This implementation assumes <em><a class="el" href="classompl_1_1base_1_1Path.html" title="Abstract definition of a path. ">Path</a></em> is of type <em>PathGeometric</em>. <br/></td></tr>
+<tr class="separator:a58a3bbc94241a8c4dc0102653a0625bc inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6ba0ff250adc0cb8cb0863d0f4d23b5 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad6ba0ff250adc0cb8cb0863d0f4d23b5"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#ad6ba0ff250adc0cb8cb0863d0f4d23b5">isCostBetterThan</a> (<a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a> c1, <a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a> c2) const </td></tr>
+<tr class="memdesc:ad6ba0ff250adc0cb8cb0863d0f4d23b5 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether the the cost <em>c1</em> is considered better than the cost <em>c2</em>. By default, this returns true only if c1 is less by at least some threshold amount, for numerical robustness. <br/></td></tr>
+<tr class="separator:ad6ba0ff250adc0cb8cb0863d0f4d23b5 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abef844b078ccaf3f30edd7d005ff24df inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abef844b078ccaf3f30edd7d005ff24df"></a>
+virtual <a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#abef844b078ccaf3f30edd7d005ff24df">combineCosts</a> (<a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a> c1, <a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a> c2) const </td></tr>
+<tr class="memdesc:abef844b078ccaf3f30edd7d005ff24df inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the cost that corresponds to combining the costs <em>c1</em> and <em>c2</em>. Default implementation defines this combination as an addition. <br/></td></tr>
+<tr class="separator:abef844b078ccaf3f30edd7d005ff24df inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2eb3b8f8e56732005273ce8e15b2986 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2eb3b8f8e56732005273ce8e15b2986"></a>
+virtual <a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#af2eb3b8f8e56732005273ce8e15b2986">identityCost</a> () const </td></tr>
+<tr class="memdesc:af2eb3b8f8e56732005273ce8e15b2986 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the identity cost value. The identity cost value is the cost c_i such that, for all costs c, combineCosts(c, c_i) = combineCosts(c_i, c) = c. In other words, combining a cost with the identity cost does not change the original cost. By default, a cost with the value 0.0 is returned. It's very important to override this with the proper identity value for your optimization objectives, or else optimal planners may not work. <br/></td></tr>
+<tr class="separator:af2eb3b8f8e56732005273ce8e15b2986 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14f3566ca58d1c72bbf8e2318001002f inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a14f3566ca58d1c72bbf8e2318001002f"></a>
+virtual <a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a14f3566ca58d1c72bbf8e2318001002f">infiniteCost</a> () const </td></tr>
+<tr class="memdesc:a14f3566ca58d1c72bbf8e2318001002f inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a cost which is greater than all other costs in this <a class="el" href="classompl_1_1base_1_1OptimizationObjective.html" title="Abstract definition of optimization objectives. ">OptimizationObjective</a>; required for use in Dijkstra/Astar. Defaults to returning the double value inf. <br/></td></tr>
+<tr class="separator:a14f3566ca58d1c72bbf8e2318001002f inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89dff641e8e2535d6b2f20b68b861e00 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89dff641e8e2535d6b2f20b68b861e00"></a>
+virtual <a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a89dff641e8e2535d6b2f20b68b861e00">initialCost</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *s) const </td></tr>
+<tr class="memdesc:a89dff641e8e2535d6b2f20b68b861e00 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a cost value corresponding to starting at a state <em>s</em>. No optimal planners currently support this method. Defaults to returning the objective's identity cost. <br/></td></tr>
+<tr class="separator:a89dff641e8e2535d6b2f20b68b861e00 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d52aab37d3cd147101fe45095b2071a inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5d52aab37d3cd147101fe45095b2071a"></a>
+virtual <a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a5d52aab37d3cd147101fe45095b2071a">terminalCost</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *s) const </td></tr>
+<tr class="memdesc:a5d52aab37d3cd147101fe45095b2071a inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a cost value corresponding to a path ending at a state <em>s</em>. No optimal planners currently support this method. Defaults to returning the objective's identity cost. <br/></td></tr>
+<tr class="separator:a5d52aab37d3cd147101fe45095b2071a inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32e746bb31a7eba9c85f2b2137e04483 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32e746bb31a7eba9c85f2b2137e04483"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a32e746bb31a7eba9c85f2b2137e04483">isSymmetric</a> () const </td></tr>
+<tr class="memdesc:a32e746bb31a7eba9c85f2b2137e04483 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this objective has a symmetric cost metric, i.e. motionCost(s1, s2) = motionCost(s2, s1). Default implementation returns whether the underlying state space has symmetric interpolation. <br/></td></tr>
+<tr class="separator:a32e746bb31a7eba9c85f2b2137e04483 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a790d9bf0e18c8217a6eb7c93bcc73b11 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a790d9bf0e18c8217a6eb7c93bcc73b11"></a>
+virtual <a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a790d9bf0e18c8217a6eb7c93bcc73b11">averageStateCost</a> (unsigned int numStates) const </td></tr>
+<tr class="memdesc:a790d9bf0e18c8217a6eb7c93bcc73b11 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the average state cost of this objective by taking a sample of <em>numStates</em> states. <br/></td></tr>
+<tr class="separator:a790d9bf0e18c8217a6eb7c93bcc73b11 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3964de818108dd28284e49704f067b9c inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3964de818108dd28284e49704f067b9c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a3964de818108dd28284e49704f067b9c">setCostToGoHeuristic</a> (const <a class="el" href="namespaceompl_1_1base.html#a8f113aa9c3d10539fca0d99d7a9e69e9">CostToGoHeuristic</a> &amp;<a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a6917532c5f05944484ac8dab3f8a37b8">costToGo</a>)</td></tr>
+<tr class="memdesc:a3964de818108dd28284e49704f067b9c inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the cost-to-go heuristic function for this objective. The cost-to-go heuristic is a function which returns an admissible estimate of the optimal path cost from a given state to a goal, where "admissible" means that the estimated cost is always less than the true optimal cost. <br/></td></tr>
+<tr class="separator:a3964de818108dd28284e49704f067b9c inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6917532c5f05944484ac8dab3f8a37b8 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6917532c5f05944484ac8dab3f8a37b8"></a>
+<a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a6917532c5f05944484ac8dab3f8a37b8">costToGo</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *state, const <a class="el" href="classompl_1_1base_1_1Goal.html">Goal</a> *goal) const </td></tr>
+<tr class="memdesc:a6917532c5f05944484ac8dab3f8a37b8 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uses a cost-to-go heuristic to calculate an admissible estimate of the optimal cost from a given state to a given goal. If no cost-to-go heuristic has been specified with <a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a3964de818108dd28284e49704f067b9c" title="Set the cost-to-go heuristic function for this objective. The cost-to-go heuristic is a function whic...">setCostToGoHeuristic()</a>, this function just returns the identity cost, which is sure to be an admissible heuristic if there are no negative costs. <br/></td></tr>
+<tr class="separator:a6917532c5f05944484ac8dab3f8a37b8 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd577784b9dedb7bbd5fad9eac23f773 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afd577784b9dedb7bbd5fad9eac23f773"></a>
+virtual <a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#afd577784b9dedb7bbd5fad9eac23f773">motionCostHeuristic</a> (const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *s1, const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *s2) const </td></tr>
+<tr class="memdesc:afd577784b9dedb7bbd5fad9eac23f773 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines an admissible estimate on the optimal cost on the motion between states <em>s1</em> and <em>s2</em>. An admissible estimate always undervalues the true optimal cost of the motion. Used by some planners to speed up planning. The default implementation of this method returns this objective's identity cost, which is sure to be an admissible heuristic if there are no negative costs. <br/></td></tr>
+<tr class="separator:afd577784b9dedb7bbd5fad9eac23f773 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf33dd88eb602fa298a772938f454860 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf33dd88eb602fa298a772938f454860"></a>
+const <a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#acf33dd88eb602fa298a772938f454860">getSpaceInformation</a> () const </td></tr>
+<tr class="memdesc:acf33dd88eb602fa298a772938f454860 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns this objective's <a class="el" href="classompl_1_1base_1_1SpaceInformation.html" title="The base class for space information. This contains all the information about the space planning is d...">SpaceInformation</a>. Needed for operators in <a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html" title="This class allows for the definition of multiobjective optimal planning problems. Objectives are adde...">MultiOptimizationObjective</a>. <br/></td></tr>
+<tr class="separator:acf33dd88eb602fa298a772938f454860 inherit pub_methods_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:ad2b37645c317dc327423276e44ea05dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2b37645c317dc327423276e44ea05dc"></a>
+std::vector&lt; <a class="el" href="structompl_1_1base_1_1MultiOptimizationObjective_1_1Component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html#ad2b37645c317dc327423276e44ea05dc">components_</a></td></tr>
+<tr class="memdesc:ad2b37645c317dc327423276e44ea05dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of objective/weight pairs. <br/></td></tr>
+<tr class="separator:ad2b37645c317dc327423276e44ea05dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70547ad7e799b4e8a806472071546c22"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a70547ad7e799b4e8a806472071546c22"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html#a70547ad7e799b4e8a806472071546c22">locked_</a></td></tr>
+<tr class="memdesc:a70547ad7e799b4e8a806472071546c22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether this multiobjective is locked from further additions. <br/></td></tr>
+<tr class="separator:a70547ad7e799b4e8a806472071546c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classompl_1_1base_1_1OptimizationObjective"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classompl_1_1base_1_1OptimizationObjective')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classompl_1_1base_1_1OptimizationObjective.html">ompl::base::OptimizationObjective</a></td></tr>
+<tr class="memitem:aed9801e7e2142d7c61aa586bcacea6c4 inherit pro_attribs_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed9801e7e2142d7c61aa586bcacea6c4"></a>
+<a class="el" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#aed9801e7e2142d7c61aa586bcacea6c4">si_</a></td></tr>
+<tr class="memdesc:aed9801e7e2142d7c61aa586bcacea6c4 inherit pro_attribs_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">The space information for this objective. <br/></td></tr>
+<tr class="separator:aed9801e7e2142d7c61aa586bcacea6c4 inherit pro_attribs_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0782ddb1c3cd4d656e4c0bae7f2caa37 inherit pro_attribs_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0782ddb1c3cd4d656e4c0bae7f2caa37"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a0782ddb1c3cd4d656e4c0bae7f2caa37">description_</a></td></tr>
+<tr class="memdesc:a0782ddb1c3cd4d656e4c0bae7f2caa37 inherit pro_attribs_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">The description of this optimization objective. <br/></td></tr>
+<tr class="separator:a0782ddb1c3cd4d656e4c0bae7f2caa37 inherit pro_attribs_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e62f03ff644f753073fc86ae7553ff1 inherit pro_attribs_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e62f03ff644f753073fc86ae7553ff1"></a>
+<a class="el" href="structompl_1_1base_1_1Cost.html">Cost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a4e62f03ff644f753073fc86ae7553ff1">threshold_</a></td></tr>
+<tr class="memdesc:a4e62f03ff644f753073fc86ae7553ff1 inherit pro_attribs_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">The cost threshold used for checking whether this objective has been satisfied during planning. <br/></td></tr>
+<tr class="separator:a4e62f03ff644f753073fc86ae7553ff1 inherit pro_attribs_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89cd7ce97d7b26efd7bcde24095b1fce inherit pro_attribs_classompl_1_1base_1_1OptimizationObjective"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89cd7ce97d7b26efd7bcde24095b1fce"></a>
+<a class="el" href="namespaceompl_1_1base.html#a8f113aa9c3d10539fca0d99d7a9e69e9">CostToGoHeuristic</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#a89cd7ce97d7b26efd7bcde24095b1fce">costToGoFn_</a></td></tr>
+<tr class="memdesc:a89cd7ce97d7b26efd7bcde24095b1fce inherit pro_attribs_classompl_1_1base_1_1OptimizationObjective"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function used for returning admissible estimates on the optimal cost of the path between a given state and goal. <br/></td></tr>
+<tr class="separator:a89cd7ce97d7b26efd7bcde24095b1fce inherit pro_attribs_classompl_1_1base_1_1OptimizationObjective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:af383e931d014bc44d371d7fea3779acb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af383e931d014bc44d371d7fea3779acb"></a>
+<a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html#af383e931d014bc44d371d7fea3779acb">operator+</a> (const <a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;a, const <a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;b)</td></tr>
+<tr class="memdesc:af383e931d014bc44d371d7fea3779acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given two optimization objectives, returns a <a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html" title="This class allows for the definition of multiobjective optimal planning problems. Objectives are adde...">MultiOptimizationObjective</a> that combines the two objectives with both weights equal to 1.0. <br/></td></tr>
+<tr class="separator:af383e931d014bc44d371d7fea3779acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f8b4ad4d615eace51966b8df644322b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f8b4ad4d615eace51966b8df644322b"></a>
+<a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html#a7f8b4ad4d615eace51966b8df644322b">operator*</a> (double w, const <a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;a)</td></tr>
+<tr class="memdesc:a7f8b4ad4d615eace51966b8df644322b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a weighing factor and an optimization objective, returns a <a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html" title="This class allows for the definition of multiobjective optimal planning problems. Objectives are adde...">MultiOptimizationObjective</a> containing only this objective weighted by the given weight. <br/></td></tr>
+<tr class="separator:a7f8b4ad4d615eace51966b8df644322b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfcc96395100478c4ed35a289e65f6da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adfcc96395100478c4ed35a289e65f6da"></a>
+<a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html#adfcc96395100478c4ed35a289e65f6da">operator*</a> (const <a class="el" href="classompl_1_1base_1_1OptimizationObjectivePtr.html">OptimizationObjectivePtr</a> &amp;a, double w)</td></tr>
+<tr class="memdesc:adfcc96395100478c4ed35a289e65f6da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a weighing factor and an optimization objective, returns a <a class="el" href="classompl_1_1base_1_1MultiOptimizationObjective.html" title="This class allows for the definition of multiobjective optimal planning problems. Objectives are adde...">MultiOptimizationObjective</a> containing only this objective weighted by the given weight. <br/></td></tr>
+<tr class="separator:adfcc96395100478c4ed35a289e65f6da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class allows for the definition of multiobjective optimal planning problems. Objectives are added to this compound object, and motion costs are computed by taking a weighted sum of the individual objective costs. </p>
+
+<p>Definition at line <a class="el" href="OptimizationObjective_8h_source.html#l00162">162</a> of file <a class="el" href="OptimizationObjective_8h_source.html">OptimizationObjective.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a018a7d4ae8e8883a307e0f44cbdef3d6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structompl_1_1base_1_1Cost.html">ompl::base::Cost</a> ompl::base::MultiOptimizationObjective::motionCost </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>s2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The default implementation of this method is to use addition to add up all the individual objectives' motion cost values, where each individual value is scaled by its weight </p>
+
+<p>Implements <a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#aa8dc9a1b7952491f6938ee8279d3a179">ompl::base::OptimizationObjective</a>.</p>
+
+<p>Definition at line <a class="el" href="OptimizationObjective_8cpp_source.html#l00275">275</a> of file <a class="el" href="OptimizationObjective_8cpp_source.html">OptimizationObjective.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad96ef168e90d6359a8f7e2107216da85"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structompl_1_1base_1_1Cost.html">ompl::base::Cost</a> ompl::base::MultiOptimizationObjective::stateCost </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classompl_1_1base_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The default implementation of this method is to use addition to add up all the individual objectives' state cost values, where each individual value is scaled by its weight </p>
+
+<p>Reimplemented from <a class="el" href="classompl_1_1base_1_1OptimizationObjective.html#af589c396f89c8d54b4e36e87b6227220">ompl::base::OptimizationObjective</a>.</p>
+
+<p>Definition at line <a class="el" href="OptimizationObjective_8cpp_source.html#l00262">262</a> of file <a class="el" href="OptimizationObjective_8cpp_source.html">OptimizationObjective.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>ompl/src/ompl/base/<a class="el" href="OptimizationObjective_8h_source.html">OptimizationObjective.h</a></li>
+<li>ompl/src/ompl/base/src/<a class="el" href="OptimizationObjective_8cpp_source.html">OptimizationObjective.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:27 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

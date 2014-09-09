@@ -1,0 +1,4 @@
+<map id="ompl::base::SpaceInformation" name="ompl::base::SpaceInformation">
+<area shape="rect" id="node3" href="$classompl_1_1control_1_1SpaceInformation.html" title="Space information containing necessary information for planning with controls. setup() needs to be ca..." alt="" coords="17,155,223,181"/>
+<area shape="rect" id="node4" href="$classompl_1_1control_1_1LTLSpaceInformation.html" title="ompl::control::LTLSpaceInformation" alt="" coords="5,229,235,256"/>
+</map>

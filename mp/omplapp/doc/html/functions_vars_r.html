@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Class Members - Variables</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+&#160;
+
+<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>radiusMultiplier_
+: <a class="el" href="classompl_1_1geometric_1_1FMT.html#a46d97fd804d843808f96973d8428665a">ompl::geometric::FMT</a>
+</li>
+<li>rangeSuggestion_
+: <a class="el" href="classompl_1_1base_1_1GenericParam.html#adfcb7422d41e2a863c604bc6b28e892e">ompl::base::GenericParam</a>
+</li>
+<li>rebuildSize_
+: <a class="el" href="classompl_1_1NearestNeighborsGNAT.html#a2da7487ea1149c183ec8560280855a9d">ompl::NearestNeighborsGNAT&lt; _T &gt;</a>
+</li>
+<li>recognizedGoal
+: <a class="el" href="structompl_1_1base_1_1PlannerSpecs.html#ac8a946673fef335d7a802d9ee8436804">ompl::base::PlannerSpecs</a>
+</li>
+<li>reedsSheppPathType
+: <a class="el" href="classompl_1_1base_1_1ReedsSheppStateSpace.html#aec046690209af17a5072c7072739fdbb">ompl::base::ReedsSheppStateSpace</a>
+</li>
+<li>removed_
+: <a class="el" href="classompl_1_1NearestNeighborsGNAT.html#a7abdda4ba9c30f81bb92ba136f5dba26">ompl::NearestNeighborsGNAT&lt; _T &gt;</a>
+</li>
+<li>removedCacheSize_
+: <a class="el" href="classompl_1_1NearestNeighborsGNAT.html#a79547bf4b75f57dcf2d736c11f612b1d">ompl::NearestNeighborsGNAT&lt; _T &gt;</a>
+</li>
+<li>representativesProperty_
+: <a class="el" href="classompl_1_1geometric_1_1SPARS.html#a44350a6b9cb924c6d588b38ea2e4fa79">ompl::geometric::SPARS</a>
+</li>
+<li>reverse_
+: <a class="el" href="classompl_1_1base_1_1DubinsStateSpace_1_1DubinsPath.html#a2e343bbf7753309853426bf7399c93a5">ompl::base::DubinsStateSpace::DubinsPath</a>
+</li>
+<li>rho_
+: <a class="el" href="classompl_1_1base_1_1DubinsStateSpace.html#abaaaafabe7d3861288fae598e4f11a79">ompl::base::DubinsStateSpace</a>
+, <a class="el" href="classompl_1_1base_1_1ReedsSheppStateSpace.html#ab7fc1510910e2d5bc28bff7d3287576e">ompl::base::ReedsSheppStateSpace</a>
+</li>
+<li>right_
+: <a class="el" href="structompl_1_1control_1_1PDST_1_1Cell.html#a6337b19c0dbd3e298689d1e9e4945ae7">ompl::control::PDST::Cell</a>
+, <a class="el" href="structompl_1_1geometric_1_1PDST_1_1Cell.html#a1287af11bd85f01b168b7b7595663b0a">ompl::geometric::PDST::Cell</a>
+</li>
+<li>rigidBodies_
+: <a class="el" href="classompl_1_1base_1_1MorseEnvironment.html#ae4d62642f96d5fbd4b79481d84147097">ompl::base::MorseEnvironment</a>
+</li>
+<li>rng_
+: <a class="el" href="classompl_1_1base_1_1StateSampler.html#ad8b2f106c42eaa4788bb6914cd5371fb">ompl::base::StateSampler</a>
+, <a class="el" href="classompl_1_1control_1_1ControlSampler.html#af00c73c0f92f0b8169945b557b1ca84a">ompl::control::ControlSampler</a>
+, <a class="el" href="classompl_1_1control_1_1EST.html#a94897a7862ca85612f462f3be662f437">ompl::control::EST</a>
+, <a class="el" href="classompl_1_1control_1_1KPIECE1.html#a4ebcf5ecd31311092b2e69a43698879f">ompl::control::KPIECE1</a>
+, <a class="el" href="classompl_1_1control_1_1LTLPlanner.html#a3ab35591e7638e8ecbbed927a9734f16">ompl::control::LTLPlanner</a>
+, <a class="el" href="classompl_1_1control_1_1RRT.html#a0373aa7c0340db91bfdfdcc2551a97a3">ompl::control::RRT</a>
+, <a class="el" href="classompl_1_1control_1_1Syclop.html#acf70200cbbbc2955d3569e7151c51b2b">ompl::control::Syclop</a>
+, <a class="el" href="classompl_1_1geometric_1_1BKPIECE1.html#a422ff4aa4fe25dd13e40e8c9962ccc12">ompl::geometric::BKPIECE1</a>
+, <a class="el" href="classompl_1_1geometric_1_1EST.html#ace4457f72f78ca1f991035c3beb17dcf">ompl::geometric::EST</a>
+, <a class="el" href="classompl_1_1geometric_1_1KPIECE1.html#acbdf66ac8834a27368ac30d9e6d24f5a">ompl::geometric::KPIECE1</a>
+, <a class="el" href="classompl_1_1geometric_1_1LazyRRT.html#a95998cdb5bc1e7fd7c49c9d5edfd586f">ompl::geometric::LazyRRT</a>
+, <a class="el" href="classompl_1_1geometric_1_1LBKPIECE1.html#a479b1ca98e2f83020e1a9063c388ef92">ompl::geometric::LBKPIECE1</a>
+, <a class="el" href="classompl_1_1geometric_1_1LBTRRT.html#a72884b4660a347e352fac9f54b21cb6f">ompl::geometric::LBTRRT</a>
+, <a class="el" href="classompl_1_1geometric_1_1PathSimplifier.html#ad022db6be6de403569e517ed0910d2cb">ompl::geometric::PathSimplifier</a>
+, <a class="el" href="classompl_1_1geometric_1_1PRM.html#adca46f63edd3ad7ff1a13483242c1bf2">ompl::geometric::PRM</a>
+, <a class="el" href="classompl_1_1geometric_1_1RRT.html#a0d8f48d596b39914128e40ce0c488817">ompl::geometric::RRT</a>
+, <a class="el" href="classompl_1_1geometric_1_1RRTConnect.html#a89885ce34b34c5c880993f3ad553bffa">ompl::geometric::RRTConnect</a>
+, <a class="el" href="classompl_1_1geometric_1_1RRTstar.html#abceef0ae95921f2f58278864e1fe425a">ompl::geometric::RRTstar</a>
+, <a class="el" href="classompl_1_1geometric_1_1SBL.html#afffdc21c6d41c1de3a55daebac85cff0">ompl::geometric::SBL</a>
+, <a class="el" href="classompl_1_1geometric_1_1SPARS.html#ae60003e270a038a494dcfd8b98d8743e">ompl::geometric::SPARS</a>
+, <a class="el" href="classompl_1_1geometric_1_1SPARStwo.html#a73a536e798e886c1542796b681ed0e94">ompl::geometric::SPARStwo</a>
+, <a class="el" href="classompl_1_1geometric_1_1STRIDE.html#a90d67e16a4b4ac83aeb14cfa3867fdfe">ompl::geometric::STRIDE</a>
+, <a class="el" href="classompl_1_1geometric_1_1TRRT.html#a6a7641c73a280c0e9adb9a06fca6ed7e">ompl::geometric::TRRT</a>
+, <a class="el" href="classompl_1_1GreedyKCenters.html#a9f9f1e9cacc57cc0a7c1526406cc94dd">ompl::GreedyKCenters&lt; _T &gt;</a>
+</li>
+<li>robotParts_
+: <a class="el" href="classompl_1_1app_1_1FCLMethodWrapper.html#ac9b79f505ec7db8ce3d0d61356af2011">ompl::app::FCLMethodWrapper</a>
+, <a class="el" href="classompl_1_1app_1_1PQPStateValidityChecker.html#a88f1c2859ed934fef51ae7632ff9c7c2">ompl::app::PQPStateValidityChecker&lt; T &gt;</a>
+</li>
+<li>root
+: <a class="el" href="classompl_1_1geometric_1_1BKPIECE1_1_1Motion.html#ab658fee6c2727e70f145252ec4df86c6">ompl::geometric::BKPIECE1::Motion</a>
+, <a class="el" href="classompl_1_1geometric_1_1LBKPIECE1_1_1Motion.html#a8c1ec81c132808c43d8eac4ae1215505">ompl::geometric::LBKPIECE1::Motion</a>
+, <a class="el" href="classompl_1_1geometric_1_1SBL_1_1Motion.html#ab4c75449dee78c54accf15a27e45a138">ompl::geometric::SBL::Motion</a>
+</li>
+<li>runCount
+: <a class="el" href="structompl_1_1tools_1_1Benchmark_1_1CompleteExperiment.html#a9c8a6e8d4bef143a7bf69ec4ea8e2c67">ompl::tools::Benchmark::CompleteExperiment</a>
+, <a class="el" href="structompl_1_1tools_1_1Benchmark_1_1Request.html#a0252082e35f936c93c86eabf0d713e01">ompl::tools::Benchmark::Request</a>
+</li>
+<li>running
+: <a class="el" href="structompl_1_1tools_1_1Benchmark_1_1Status.html#a4fa5303fcbae2c3ca68e050bc220eb6c">ompl::tools::Benchmark::Status</a>
+</li>
+<li>runs
+: <a class="el" href="structompl_1_1tools_1_1Benchmark_1_1PlannerExperiment.html#abbfb1d6bae161a16ea1f2d08b41bf4e4">ompl::tools::Benchmark::PlannerExperiment</a>
+</li>
+<li>runsProgressData
+: <a class="el" href="structompl_1_1tools_1_1Benchmark_1_1PlannerExperiment.html#ae181cf473036c591985bd0a2d8dea589">ompl::tools::Benchmark::PlannerExperiment</a>
+</li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:29 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

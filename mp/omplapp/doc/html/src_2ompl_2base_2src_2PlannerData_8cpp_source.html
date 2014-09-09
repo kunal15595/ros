@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/base/src/PlannerData.cpp Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_06e181af1f5888faac16991b57afb430.html">base</a></li><li class="navelem"><a class="el" href="dir_136cfbef989d408f222b6813f40a2b33.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">PlannerData.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2011, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Rice University nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Ryan Luna */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;ompl/base/PlannerData.h&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;ompl/base/PlannerDataGraph.h&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;ompl/base/StateStorage.h&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;ompl/base/OptimizationObjective.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;ompl/base/objectives/PathLengthOptimizationObjective.h&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;ompl/base/ScopedState.h&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;boost/graph/graphviz.hpp&gt;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &lt;boost/graph/graphml.hpp&gt;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;boost/graph/dijkstra_shortest_paths.hpp&gt;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;boost/version.hpp&gt;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#if BOOST_VERSION &lt; 105100</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#warning Boost version &gt;=1.51 is needed for ompl::base::PlannerData::printGraphML</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;boost/property_map/function_property_map.hpp&gt;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">// This is a convenient macro to cast the void* graph pointer as the</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">// Boost.Graph structure from PlannerDataGraph.h</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define graph_ reinterpret_cast&lt;ompl::base::PlannerData::Graph*&gt;(graphRaw_)</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataEdge.html">ompl::base::PlannerDataEdge</a>   <a class="code" href="classompl_1_1base_1_1PlannerData.html#a5e9068cf84bb1c378eb2ec0823e086d2">ompl::base::PlannerData::NO_EDGE</a> = <a class="code" href="classompl_1_1base_1_1PlannerDataEdge.html">ompl::base::PlannerDataEdge</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a53b2294e37eb1b5468d70c04055f64c8">ompl::base::PlannerData::NO_VERTEX</a> = <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a>(0);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#ab2b09299d9980783a8147e280562d5a7">ompl::base::PlannerData::INVALID_INDEX</a> = std::numeric_limits&lt;unsigned int&gt;::max();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a18b0a1ffcb25445a7a3c3a132275554e">   62</a></span>&#160;<a class="code" href="classompl_1_1base_1_1PlannerData.html#a18b0a1ffcb25445a7a3c3a132275554e">ompl::base::PlannerData::PlannerData</a> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;si) : si_(si)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    graphRaw_ = <span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html">Graph</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#aeaae435c61fbc1f4c894da0140830e68">   67</a></span>&#160;<a class="code" href="classompl_1_1base_1_1PlannerData.html#aeaae435c61fbc1f4c894da0140830e68">ompl::base::PlannerData::~PlannerData</a> ()</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    freeMemory();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span> (graph_)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keyword">delete</span> graph_;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        graphRaw_ = NULL;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a7378bbca3f1006b70976292266277eb9">   78</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a7378bbca3f1006b70976292266277eb9">ompl::base::PlannerData::clear</a> ()</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    freeMemory();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    decoupledStates_.clear();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#af01506ec2ff32596dcb1bd9dfa2f8e1d">   84</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#af01506ec2ff32596dcb1bd9dfa2f8e1d">ompl::base::PlannerData::decoupleFromPlanner</a> ()</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;{</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> count = 0;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; numVertices(); ++i)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">PlannerDataVertex</a> &amp;vtx = getVertex(i);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="comment">// If this vertex&#39;s state is not in the decoupled list, clone it and add it</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">if</span> (decoupledStates_.find(const_cast&lt;State*&gt;(vtx.<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html#a20343e045f508d3545ccf13da33bea14">getState</a>())) == decoupledStates_.end())</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">State</a> *oldState = vtx.<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html#a20343e045f508d3545ccf13da33bea14">getState</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <a class="code" href="classompl_1_1base_1_1State.html">State</a> *clone = si_-&gt;cloneState(oldState);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            decoupledStates_.insert(clone);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="comment">// Replacing the shallow state pointer with our shiny new clone</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            vtx.<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html#a4f805017e2eadb495ca95f9c1d6b7177">state_</a> = clone;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="comment">// Remove oldState from stateIndexMap</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            stateIndexMap_.erase(oldState);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="comment">// Add the new, cloned state to stateIndexMap</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            stateIndexMap_[clone] = i;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            count++;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a0732c2d6732e9da62a98adbe4c82d763">  108</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a0732c2d6732e9da62a98adbe4c82d763">ompl::base::PlannerData::getEdges</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v, std::vector&lt;unsigned int&gt;&amp; edgeList)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    std::pair&lt;Graph::AdjIterator, Graph::AdjIterator&gt; iterators = boost::adjacent_vertices(boost::vertex(v, *graph_), *graph_);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    edgeList.clear();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    boost::property_map&lt;Graph::Type, boost::vertex_index_t&gt;::type vertices = <span class="keyword">get</span>(boost::vertex_index, *graph_);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#ac8bc4f27de05c06418d74d2b5282d56c">Graph::AdjIterator</a> iter = iterators.first; iter != iterators.second; ++iter)</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        edgeList.push_back(vertices[*iter]);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">return</span> edgeList.size();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#acfb08d67d9ace07380a8d72c014a97af">  120</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a0732c2d6732e9da62a98adbe4c82d763">ompl::base::PlannerData::getEdges</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v, std::map&lt;unsigned int, const PlannerDataEdge*&gt;&amp; edgeMap)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    std::pair&lt;Graph::OEIterator, Graph::OEIterator&gt; iterators = boost::out_edges(boost::vertex(v, *graph_), *graph_);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    edgeMap.clear();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    boost::property_map&lt;Graph::Type, edge_type_t&gt;::type edges = <span class="keyword">get</span>(edge_type_t(), *graph_);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    boost::property_map&lt;Graph::Type, boost::vertex_index_t&gt;::type vertices = <span class="keyword">get</span>(boost::vertex_index, *graph_);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#a679c4587c491317c6a0d0a88612057eb">Graph::OEIterator</a> iter = iterators.first; iter != iterators.second; ++iter)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        edgeMap[vertices[boost::target(*iter, *graph_)]] = boost::get(edges, *iter);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">return</span> edgeMap.size();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a9a484d02c69f7057e73ee1af1be6f05b">  133</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a9a484d02c69f7057e73ee1af1be6f05b">ompl::base::PlannerData::getIncomingEdges</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v, std::vector&lt;unsigned int&gt;&amp; edgeList)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    std::pair&lt;Graph::IEIterator, Graph::IEIterator&gt; iterators = boost::in_edges(boost::vertex(v, *graph_), *graph_);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    edgeList.clear();</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    boost::property_map&lt;Graph::Type, boost::vertex_index_t&gt;::type vertices = <span class="keyword">get</span>(boost::vertex_index, *graph_);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#a47c294789b359bc747e2ac530b21dbaa">Graph::IEIterator</a> iter = iterators.first; iter != iterators.second; ++iter)</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        edgeList.push_back(vertices[boost::source(*iter, *graph_)]);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">return</span> edgeList.size();</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a612b839eacd191500df798ae9587ef8a">  145</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a9a484d02c69f7057e73ee1af1be6f05b">ompl::base::PlannerData::getIncomingEdges</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v, std::map&lt;unsigned int, const PlannerDataEdge*&gt; &amp;edgeMap)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    std::pair&lt;Graph::IEIterator, Graph::IEIterator&gt; iterators = boost::in_edges(boost::vertex(v, *graph_), *graph_);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    edgeMap.clear();</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    boost::property_map&lt;Graph::Type, edge_type_t&gt;::type edges = <span class="keyword">get</span>(edge_type_t(), *graph_);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    boost::property_map&lt;Graph::Type, boost::vertex_index_t&gt;::type vertices = <span class="keyword">get</span>(boost::vertex_index, *graph_);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#a47c294789b359bc747e2ac530b21dbaa">Graph::IEIterator</a> iter = iterators.first; iter != iterators.second; ++iter)</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        edgeMap[vertices[boost::source(*iter, *graph_)]] = boost::get(edges, *iter);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">return</span> edgeMap.size();</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a3ad7bb69b33a92a1c5e614680bd8f628">  158</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a3ad7bb69b33a92a1c5e614680bd8f628">ompl::base::PlannerData::getEdgeWeight</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v2, <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a>* weight)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#abaeae744b26515cf99e9a1396299e6fa">Graph::Edge</a> e;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">bool</span> exists;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    boost::tie(e, exists) = boost::edge(boost::vertex(v1, *graph_), boost::vertex(v2, *graph_), *graph_);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">if</span> (exists)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        boost::property_map&lt;Graph::Type, boost::edge_weight_t&gt;::type edges = <span class="keyword">get</span>(boost::edge_weight, *graph_);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        *weight = edges[e];</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a0989a6e1614d76a1f94fb54d67341f5d">  174</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a0989a6e1614d76a1f94fb54d67341f5d">ompl::base::PlannerData::setEdgeWeight</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v2, <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> weight)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;{</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#abaeae744b26515cf99e9a1396299e6fa">Graph::Edge</a> e;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordtype">bool</span> exists;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    boost::tie(e, exists) = boost::edge(boost::vertex(v1, *graph_), boost::vertex(v2, *graph_), *graph_);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">if</span> (exists)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        boost::property_map&lt;Graph::Type, boost::edge_weight_t&gt;::type edges = <span class="keyword">get</span>(boost::edge_weight, *graph_);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        edges[e] = weight;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">return</span> exists;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a90da79739a42f9b86fa18d8f3af21c8a">  189</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a90da79739a42f9b86fa18d8f3af21c8a">ompl::base::PlannerData::edgeExists</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v2)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#abaeae744b26515cf99e9a1396299e6fa">Graph::Edge</a> e;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordtype">bool</span> exists;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    boost::tie(e, exists) = boost::edge(boost::vertex(v1, *graph_), boost::vertex(v2, *graph_), *graph_);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">return</span> exists;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;}</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a97659c4427fb4d02204e86b9ad4d0d85">  198</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a97659c4427fb4d02204e86b9ad4d0d85">ompl::base::PlannerData::vertexExists</a> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">PlannerDataVertex</a> &amp;v)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">return</span> vertexIndex(v) != INVALID_INDEX;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a4ec510507fa061ff368eb3c1826f0009">  203</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a4ec510507fa061ff368eb3c1826f0009">ompl::base::PlannerData::numVertices</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">return</span> boost::num_vertices(*graph_);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;}</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#aed73a24b4db83fb523fc6e634e2aa335">  208</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#aed73a24b4db83fb523fc6e634e2aa335">ompl::base::PlannerData::numEdges</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">return</span> boost::num_edges(*graph_);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a5228dd82b9c8b62b9e68546f1dc4da91">  213</a></span>&#160;<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a>&amp; <a class="code" href="classompl_1_1base_1_1PlannerData.html#a5228dd82b9c8b62b9e68546f1dc4da91">ompl::base::PlannerData::getVertex</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">if</span> (index &gt;= boost::num_vertices(*graph_))</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="keywordflow">return</span> NO_VERTEX;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    boost::property_map&lt;Graph::Type, vertex_type_t&gt;::type vertices = <span class="keyword">get</span>(vertex_type_t(), *graph_);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">return</span> *(vertices[boost::vertex(index, *graph_)]);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;}</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a7e1f2a259a8861ee5a88e51cc52f69e5">  222</a></span>&#160;<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a>&amp; <a class="code" href="classompl_1_1base_1_1PlannerData.html#a5228dd82b9c8b62b9e68546f1dc4da91">ompl::base::PlannerData::getVertex</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;{</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">if</span> (index &gt;= boost::num_vertices(*graph_))</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">const_cast&lt;</span><a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a>&amp;<span class="keyword">&gt;</span>(NO_VERTEX);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    boost::property_map&lt;Graph::Type, vertex_type_t&gt;::type vertices = <span class="keyword">get</span>(vertex_type_t(), *graph_);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">return</span> *(vertices[boost::vertex(index, *graph_)]);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;}</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a635568961308b738919748b839c8f4fa">  231</a></span>&#160;<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataEdge.html">ompl::base::PlannerDataEdge</a>&amp; <a class="code" href="classompl_1_1base_1_1PlannerData.html#a635568961308b738919748b839c8f4fa">ompl::base::PlannerData::getEdge</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v2)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#abaeae744b26515cf99e9a1396299e6fa">Graph::Edge</a> e;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordtype">bool</span> exists;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    boost::tie(e, exists) = boost::edge(boost::vertex(v1, *graph_), boost::vertex(v2, *graph_), *graph_);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">if</span> (exists)</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        boost::property_map&lt;Graph::Type, edge_type_t&gt;::type edges = <span class="keyword">get</span>(edge_type_t(), *graph_);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="keywordflow">return</span> *(boost::get(edges, e));</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordflow">return</span> NO_EDGE;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00246"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a42dd016470505a10e245a570e1979de3">  246</a></span>&#160;<a class="code" href="classompl_1_1base_1_1PlannerDataEdge.html">ompl::base::PlannerDataEdge</a>&amp; <a class="code" href="classompl_1_1base_1_1PlannerData.html#a635568961308b738919748b839c8f4fa">ompl::base::PlannerData::getEdge</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v2)</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;{</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#abaeae744b26515cf99e9a1396299e6fa">Graph::Edge</a> e;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordtype">bool</span> exists;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    boost::tie(e, exists) = boost::edge(boost::vertex(v1, *graph_), boost::vertex(v2, *graph_), *graph_);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordflow">if</span> (exists)</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        boost::property_map&lt;Graph::Type, edge_type_t&gt;::type edges = <span class="keyword">get</span>(edge_type_t(), *graph_);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="keywordflow">return</span> *(boost::get(edges, e));</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">const_cast&lt;</span><a class="code" href="classompl_1_1base_1_1PlannerDataEdge.html">ompl::base::PlannerDataEdge</a>&amp;<span class="keyword">&gt;</span>(NO_EDGE);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
+<div class="line"><a name="l00261"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#aa637f3586c632363498054311aee61dd">  261</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#aa637f3586c632363498054311aee61dd">ompl::base::PlannerData::printGraphviz</a> (std::ostream&amp; out)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    boost::write_graphviz(out, *graph_);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;}</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="keyword">namespace</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;{</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="comment">// Property map for extracting the edge weight of a graph edge as</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="comment">// a double for printGraphML.</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordtype">double</span> edgeWeightAsDouble (<a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#a56212a283da0e20d8fb4830087c317a4">ompl::base::PlannerData::Graph::Type</a> &amp;g,</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                               <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#abaeae744b26515cf99e9a1396299e6fa">ompl::base::PlannerData::Graph::Edge</a> e)</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    {</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">get</span>(boost::edge_weight_t(), g)[e].v;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="comment">// Property map for extracting states as arrays of doubles</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    std::string vertexCoords (<a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#a56212a283da0e20d8fb4830087c317a4">ompl::base::PlannerData::Graph::Type</a> &amp;g,</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                              <a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;&gt;</a>&amp; s,</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                              <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#a24e4bdcee982f118c628ba4f3a429680">ompl::base::PlannerData::Graph::Vertex</a> v)</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    {</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        s = *<span class="keyword">get</span>(vertex_type_t(), g)[v]-&gt;getState();</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        std::vector&lt;double&gt; coords(s.<a class="code" href="classompl_1_1base_1_1ScopedState.html#af965c40dee1fb0e41ac249e119b97fed">reals</a>());</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        std::ostringstream sstream;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        <span class="keywordflow">if</span> (coords.size()&gt;0)</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            sstream &lt;&lt; coords[0];</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">for</span> (std::size_t i = 1; i &lt; coords.size(); ++i)</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                sstream &lt;&lt; <span class="charliteral">&#39;,&#39;</span> &lt;&lt; coords[i];</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="keywordflow">return</span> sstream.str();</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;}</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00294"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#afaecec6b16a335917a011e5381f42929">  294</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#afaecec6b16a335917a011e5381f42929">ompl::base::PlannerData::printGraphML</a> (std::ostream&amp; out)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="preprocessor">#if BOOST_VERSION &lt; 105100</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="preprocessor"></span>    <a class="code" href="group__logging.html#gab76357dced39cb468d2061d3358f80a6">OMPL_WARN</a>(<span class="stringliteral">&quot;Boost version &gt;=1.51 is needed for ompl::base::PlannerData::printGraphML&quot;</span>);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="preprocessor"></span>    <span class="comment">// For some reason, make_function_property_map can&#39;t infer its</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="comment">// template arguments corresponding to edgeWeightAsDouble&#39;s type</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="comment">// signature. So, we have to use this horribly verbose</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="comment">// instantiation of the property map.</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="comment">// \TODO Can we use make_function_property_map() here and have it</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="comment">// infer the property template arguments?</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    boost::function_property_map&lt;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        boost::function&lt;double (ompl::base::PlannerData::Graph::Edge)&gt;,</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#abaeae744b26515cf99e9a1396299e6fa">ompl::base::PlannerData::Graph::Edge</a>,</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <span class="keywordtype">double</span>&gt;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        weightmap(boost::bind(&amp;edgeWeightAsDouble, *graph_, _1));</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <a class="code" href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState&lt;&gt;</a> s(si_);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    boost::function_property_map&lt;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        boost::function&lt;std::string (ompl::base::PlannerData::Graph::Vertex)&gt;,</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#a24e4bdcee982f118c628ba4f3a429680">ompl::base::PlannerData::Graph::Vertex</a>,</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        std::string &gt;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        coordsmap(boost::bind(&amp;vertexCoords, *graph_, s, _1));</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="comment">// Not writing vertex or edge structures.</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    boost::dynamic_properties dp;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    dp.property(<span class="stringliteral">&quot;weight&quot;</span>, weightmap);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    dp.property(<span class="stringliteral">&quot;coords&quot;</span>, coordsmap);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    boost::write_graphml(out, *graph_, dp);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;</div>
+<div class="line"><a name="l00328"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a8fd081adb8e8a728eab89d57514724f0">  328</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a8fd081adb8e8a728eab89d57514724f0">ompl::base::PlannerData::vertexIndex</a> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">PlannerDataVertex</a> &amp;v)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    std::map&lt;const State*, unsigned int&gt;::const_iterator it = stateIndexMap_.find(v.<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html#a20343e045f508d3545ccf13da33bea14">getState</a>());</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordflow">if</span> (it != stateIndexMap_.end())</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="keywordflow">return</span> it-&gt;second;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keywordflow">return</span> INVALID_INDEX;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;}</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;</div>
+<div class="line"><a name="l00336"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#adf4ba509f9588515ea527bbbb6f7576c">  336</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#adf4ba509f9588515ea527bbbb6f7576c">ompl::base::PlannerData::numStartVertices</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordflow">return</span> startVertexIndices_.size();</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;}</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;</div>
+<div class="line"><a name="l00341"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#aa0e79ddde25349a0fccba68731a3fd5b">  341</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#aa0e79ddde25349a0fccba68731a3fd5b">ompl::base::PlannerData::numGoalVertices</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordflow">return</span> goalVertexIndices_.size();</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;}</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
+<div class="line"><a name="l00346"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#ae327af789b89202dc7c68988d0d23175">  346</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#ae327af789b89202dc7c68988d0d23175">ompl::base::PlannerData::getStartIndex</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordflow">if</span> (i &gt;= startVertexIndices_.size())</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        <span class="keywordflow">return</span> INVALID_INDEX;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="keywordflow">return</span> startVertexIndices_[i];</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;}</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
+<div class="line"><a name="l00354"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a86774f579c347fc2ae46d1d501eaec4f">  354</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a86774f579c347fc2ae46d1d501eaec4f">ompl::base::PlannerData::getGoalIndex</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keywordflow">if</span> (i &gt;= goalVertexIndices_.size())</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        <span class="keywordflow">return</span> INVALID_INDEX;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordflow">return</span> goalVertexIndices_[i];</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;}</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;</div>
+<div class="line"><a name="l00362"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#ac5da9f36f20bfc503c95cb7c84e8ba37">  362</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#ac5da9f36f20bfc503c95cb7c84e8ba37">ompl::base::PlannerData::isStartVertex</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keywordflow">return</span> std::binary_search(startVertexIndices_.begin(), startVertexIndices_.end(), index);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;}</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;</div>
+<div class="line"><a name="l00367"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#ab07adc96f0cfcfc9e418e66b4e0078ad">  367</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#ab07adc96f0cfcfc9e418e66b4e0078ad">ompl::base::PlannerData::isGoalVertex</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="keywordflow">return</span> std::binary_search(goalVertexIndices_.begin(), goalVertexIndices_.end(), index);</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;}</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;</div>
+<div class="line"><a name="l00372"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#affaca04be4ca2658cb0d5e6cd9fbed80">  372</a></span>&#160;<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a>&amp; <a class="code" href="classompl_1_1base_1_1PlannerData.html#affaca04be4ca2658cb0d5e6cd9fbed80">ompl::base::PlannerData::getStartVertex</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <span class="keywordflow">if</span> (i &gt;= startVertexIndices_.size())</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <span class="keywordflow">return</span> NO_VERTEX;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <span class="keywordflow">return</span> getVertex(startVertexIndices_[i]);</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;}</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;</div>
+<div class="line"><a name="l00380"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#ae01edd29349d34cd7ca62384cecf7e7d">  380</a></span>&#160;<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a>&amp; <a class="code" href="classompl_1_1base_1_1PlannerData.html#affaca04be4ca2658cb0d5e6cd9fbed80">ompl::base::PlannerData::getStartVertex</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i)</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;{</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="keywordflow">if</span> (i &gt;= startVertexIndices_.size())</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <span class="keywordflow">return</span> const_cast&lt;ompl::base::PlannerDataVertex&amp;&gt;(NO_VERTEX);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <span class="keywordflow">return</span> getVertex(startVertexIndices_[i]);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;}</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;</div>
+<div class="line"><a name="l00388"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#af599f3b6eaf5789223facd978d1897b9">  388</a></span>&#160;<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a>&amp; <a class="code" href="classompl_1_1base_1_1PlannerData.html#af599f3b6eaf5789223facd978d1897b9">ompl::base::PlannerData::getGoalVertex</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordflow">if</span> (i &gt;= goalVertexIndices_.size())</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        <span class="keywordflow">return</span> NO_VERTEX;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="keywordflow">return</span> getVertex(goalVertexIndices_[i]);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;}</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;</div>
+<div class="line"><a name="l00396"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a0740003f5170235f3133162db36f1f23">  396</a></span>&#160;<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a>&amp; <a class="code" href="classompl_1_1base_1_1PlannerData.html#af599f3b6eaf5789223facd978d1897b9">ompl::base::PlannerData::getGoalVertex</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i)</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;{</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    <span class="keywordflow">if</span> (i &gt;= goalVertexIndices_.size())</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        <span class="keywordflow">return</span> const_cast&lt;ompl::base::PlannerDataVertex&amp;&gt;(NO_VERTEX);</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <span class="keywordflow">return</span> getVertex(goalVertexIndices_[i]);</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;}</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;</div>
+<div class="line"><a name="l00404"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#ac61c5ab5cfd6a66a58e03b1731c1e454">  404</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#ac61c5ab5cfd6a66a58e03b1731c1e454">ompl::base::PlannerData::addVertex</a> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">PlannerDataVertex</a> &amp;st)</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;{</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="comment">// Do not add vertices with null states</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="keywordflow">if</span> (st.<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html#a20343e045f508d3545ccf13da33bea14">getState</a>() == NULL)</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="keywordflow">return</span> INVALID_INDEX;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = vertexIndex(st);</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    <span class="keywordflow">if</span> (index == INVALID_INDEX) <span class="comment">// Vertex does not already exist</span></div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    {</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        <span class="comment">// Clone the state to prevent object slicing when retrieving this object</span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a> *clone = st.<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html#a148375c977629788441776042021f88b">clone</a>();</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#a24e4bdcee982f118c628ba4f3a429680">Graph::Vertex</a> v = boost::add_vertex(clone, *graph_);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        boost::property_map&lt;Graph::Type, boost::vertex_index_t&gt;::type vertexIndexMap = <span class="keyword">get</span>(boost::vertex_index, *graph_);</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        <span class="comment">// Insert this entry into the stateIndexMap_ for fast lookup</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        stateIndexMap_[clone-&gt;<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html#a20343e045f508d3545ccf13da33bea14">getState</a>()] = numVertices()-1;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        <span class="keywordflow">return</span> vertexIndexMap[v];</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    }</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="keywordflow">return</span> index;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;}</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;</div>
+<div class="line"><a name="l00425"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">  425</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">ompl::base::PlannerData::addStartVertex</a> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">PlannerDataVertex</a> &amp;v)</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;{</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = addVertex(v);</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="keywordflow">if</span> (index != INVALID_INDEX)</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        markStartState(v.<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html#a20343e045f508d3545ccf13da33bea14">getState</a>());</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="keywordflow">return</span> index;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;}</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;</div>
+<div class="line"><a name="l00434"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">  434</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">ompl::base::PlannerData::addGoalVertex</a>  (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">PlannerDataVertex</a> &amp;v)</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;{</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = addVertex(v);</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    <span class="keywordflow">if</span> (index != INVALID_INDEX)</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        markGoalState(v.<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html#a20343e045f508d3545ccf13da33bea14">getState</a>());</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <span class="keywordflow">return</span> index;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;}</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;</div>
+<div class="line"><a name="l00444"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">  444</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">ompl::base::PlannerData::addEdge</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v2, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataEdge.html">PlannerDataEdge</a> &amp;edge, <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> weight)</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;{</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="comment">// If either of the vertices do not exist, don&#39;t add an edge</span></div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <span class="keywordflow">if</span> (v1 &gt;= numVertices() || v2 &gt;= numVertices())</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;     <span class="comment">// If an edge already exists, do not add one</span></div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;     <span class="keywordflow">if</span> (edgeExists (v1, v2))</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    <span class="comment">// Clone the edge to prevent object slicing</span></div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <a class="code" href="classompl_1_1base_1_1PlannerDataEdge.html">ompl::base::PlannerDataEdge</a> *clone = edge.<a class="code" href="classompl_1_1base_1_1PlannerDataEdge.html#ac11bec079580da93a90ffd762f58c596">clone</a>();</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    <span class="keyword">const</span> Graph::edge_property_type properties(clone, weight);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#abaeae744b26515cf99e9a1396299e6fa">Graph::Edge</a> e;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <span class="keywordtype">bool</span> added = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    tie(e, added) = boost::add_edge(boost::vertex(v1, *graph_), boost::vertex(v2, *graph_), properties, *graph_);</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    <span class="keywordflow">if</span> (!added)</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        <span class="keyword">delete</span> clone;</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    <span class="keywordflow">return</span> added;</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;}</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;</div>
+<div class="line"><a name="l00468"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#ad2685cb2025517bdc0ee1ba94b9aff49">  468</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">ompl::base::PlannerData::addEdge</a> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">PlannerDataVertex</a> &amp; v1, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">PlannerDataVertex</a> &amp; v2, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataEdge.html">PlannerDataEdge</a> &amp;edge, <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> weight)</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;{</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index1 = addVertex(v1);</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index2 = addVertex(v2);</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    <span class="comment">// If neither vertex was added or already exists, return false</span></div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    <span class="keywordflow">if</span> (index1 == INVALID_INDEX &amp;&amp; index2 == INVALID_INDEX)</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    <span class="comment">// Only add the edge if both vertices exist</span></div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    <span class="keywordflow">if</span> (index1 != INVALID_INDEX &amp;&amp; index2 != INVALID_INDEX)</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        <span class="keywordflow">return</span> addEdge (index1, index2, edge, weight);</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;}</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;</div>
+<div class="line"><a name="l00484"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a75a2c3ad28a32136c74ad9f841727f01">  484</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a75a2c3ad28a32136c74ad9f841727f01">ompl::base::PlannerData::removeVertex</a> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">PlannerDataVertex</a> &amp;st)</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;{</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = vertexIndex (st);</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    <span class="keywordflow">if</span> (index != INVALID_INDEX)</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        <span class="keywordflow">return</span> removeVertex (index);</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;}</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;</div>
+<div class="line"><a name="l00492"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a7313c0b88697387feebff969c307193c">  492</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a75a2c3ad28a32136c74ad9f841727f01">ompl::base::PlannerData::removeVertex</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vIndex)</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;{</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    <span class="keywordflow">if</span> (vIndex &gt;= boost::num_vertices(*graph_))</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;    <span class="comment">// Retrieve a list of all edge structures</span></div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    boost::property_map&lt;Graph::Type, edge_type_t&gt;::type edgePropertyMap = <span class="keyword">get</span>(edge_type_t(), *graph_);</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;    <span class="comment">// Freeing memory associated with outgoing edges of this vertex</span></div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    std::pair&lt;Graph::OEIterator, Graph::OEIterator&gt; oiterators = boost::out_edges(boost::vertex(vIndex, *graph_), *graph_);</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#a679c4587c491317c6a0d0a88612057eb">Graph::OEIterator</a> iter = oiterators.first; iter != oiterators.second; ++iter)</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;        <span class="keyword">delete</span> edgePropertyMap[*iter];</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    <span class="comment">// Freeing memory associated with incoming edges of this vertex</span></div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;    std::pair&lt;Graph::IEIterator, Graph::IEIterator&gt; initerators = boost::in_edges(boost::vertex(vIndex, *graph_), *graph_);</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#a47c294789b359bc747e2ac530b21dbaa">Graph::IEIterator</a> iter = initerators.first; iter != initerators.second; ++iter)</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;        <span class="keyword">delete</span> edgePropertyMap[*iter];</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    <span class="comment">// Remove this vertex from stateIndexMap_, and update the map</span></div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    stateIndexMap_.erase(getVertex(vIndex).getState());</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    boost::property_map&lt;Graph::Type, vertex_type_t&gt;::type vertices = <span class="keyword">get</span>(vertex_type_t(), *graph_);</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = vIndex+1; i &lt; boost::num_vertices(*graph_); ++i)</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;         stateIndexMap_[vertices[boost::vertex(i, *graph_)]-&gt;getState()]--;</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;    <span class="comment">// Remove this vertex from the start and/or goal index list, if it exists.  Update the lists.</span></div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    std::vector&lt;unsigned int&gt;::iterator it = std::find(startVertexIndices_.begin(), startVertexIndices_.end(), vIndex);</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    <span class="keywordflow">if</span> (it != startVertexIndices_.end())</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;        startVertexIndices_.erase(it);</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; startVertexIndices_.size(); ++i)</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;        <span class="keywordflow">if</span> (startVertexIndices_[i] &gt; vIndex)</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;            startVertexIndices_[i]--;</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;    it = std::find(goalVertexIndices_.begin(), goalVertexIndices_.end(), vIndex);</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    <span class="keywordflow">if</span> (it != goalVertexIndices_.end())</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;        goalVertexIndices_.erase(it);</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; goalVertexIndices_.size(); ++i)</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        <span class="keywordflow">if</span> (goalVertexIndices_[i] &gt; vIndex)</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;            goalVertexIndices_[i]--;</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    <span class="comment">// If the state attached to this vertex was decoupled, free it here</span></div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    <a class="code" href="classompl_1_1base_1_1State.html">State</a> *vtxState = <span class="keyword">const_cast&lt;</span><a class="code" href="classompl_1_1base_1_1State.html">State</a>*<span class="keyword">&gt;</span>(getVertex(vIndex).getState());</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    <span class="keywordflow">if</span> (decoupledStates_.find(vtxState) != decoupledStates_.end())</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    {</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;        decoupledStates_.erase(vtxState);</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;        si_-&gt;freeState(vtxState);</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;        vtxState = NULL;</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    }</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    <span class="comment">// Slay the vertex</span></div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;    boost::clear_vertex(boost::vertex(vIndex, *graph_), *graph_);</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;    boost::property_map&lt;Graph::Type, vertex_type_t&gt;::type vertexTypeMap = <span class="keyword">get</span>(vertex_type_t(), *graph_);</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;    <span class="keyword">delete</span> vertexTypeMap[boost::vertex(vIndex, *graph_)];</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;    boost::remove_vertex(boost::vertex(vIndex, *graph_), *graph_);</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;}</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;</div>
+<div class="line"><a name="l00549"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a991ab62a502c3f80ae2663150e79bcea">  549</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a991ab62a502c3f80ae2663150e79bcea">ompl::base::PlannerData::removeEdge</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v2)</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;{</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;    <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html#abaeae744b26515cf99e9a1396299e6fa">Graph::Edge</a> e;</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;    <span class="keywordtype">bool</span> exists;</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    boost::tie(e, exists) = boost::edge(boost::vertex(v1, *graph_), boost::vertex(v2, *graph_), *graph_);</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;    <span class="keywordflow">if</span> (!exists)</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;    <span class="comment">// Freeing memory associated with this edge</span></div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    boost::property_map&lt;Graph::Type, edge_type_t&gt;::type edges = <span class="keyword">get</span>(edge_type_t(), *graph_);</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;    <span class="keyword">delete</span> edges[e];</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;    boost::remove_edge(boost::vertex(v1, *graph_), boost::vertex(v2, *graph_), *graph_);</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;}</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;</div>
+<div class="line"><a name="l00566"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#afda397cf585cc647d1e9b212b6092b0e">  566</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a991ab62a502c3f80ae2663150e79bcea">ompl::base::PlannerData::removeEdge</a> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">PlannerDataVertex</a> &amp;v1, <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">PlannerDataVertex</a> &amp;v2)</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;{</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index1, index2;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;    index1 = vertexIndex(v1);</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    index2 = vertexIndex(v2);</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    <span class="keywordflow">if</span> (index1 == INVALID_INDEX || index2 == INVALID_INDEX)</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    <span class="keywordflow">return</span> removeEdge (index1, index2);</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;}</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;</div>
+<div class="line"><a name="l00578"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a2b0b7c124dcac4f07c5f6d0ab51386a6">  578</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a2b0b7c124dcac4f07c5f6d0ab51386a6">ompl::base::PlannerData::tagState</a> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *st, <span class="keywordtype">int</span> tag)</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;{</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    std::map&lt;const State*, unsigned int&gt;::const_iterator it = stateIndexMap_.find(st);</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;    <span class="keywordflow">if</span> (it != stateIndexMap_.end())</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    {</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        getVertex(it-&gt;second).setTag(tag);</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;    }</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;}</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;</div>
+<div class="line"><a name="l00589"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a48ebd34b6da9efd9ec7647155f9173c9">  589</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a48ebd34b6da9efd9ec7647155f9173c9">ompl::base::PlannerData::markStartState</a> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *st)</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;{</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;    <span class="comment">// Find the index in the stateIndexMap_</span></div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;    std::map&lt;const State*, unsigned int&gt;::const_iterator it = stateIndexMap_.find(st);</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;    <span class="keywordflow">if</span> (it != stateIndexMap_.end())</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    {</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;        <span class="keywordflow">if</span> (!isStartVertex(it-&gt;second))</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;        {</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;            startVertexIndices_.push_back(it-&gt;second);</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;            <span class="comment">// Sort the indices for quick lookup</span></div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;            std::sort(startVertexIndices_.begin(), startVertexIndices_.end());</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        }</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;    }</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;}</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;</div>
+<div class="line"><a name="l00606"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a7772ac307d153831c0e7ecfc4fb1c18b">  606</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a7772ac307d153831c0e7ecfc4fb1c18b">ompl::base::PlannerData::markGoalState</a> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *st)</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;{</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;    <span class="comment">// Find the index in the stateIndexMap_</span></div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    std::map&lt;const State*, unsigned int&gt;::const_iterator it = stateIndexMap_.find(st);</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    <span class="keywordflow">if</span> (it != stateIndexMap_.end())</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;    {</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;        <span class="keywordflow">if</span> (!isGoalVertex(it-&gt;second))</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;        {</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;            goalVertexIndices_.push_back(it-&gt;second);</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;            <span class="comment">// Sort the indices for quick lookup</span></div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;            std::sort(startVertexIndices_.begin(), startVertexIndices_.end());</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;        }</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    }</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;}</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;</div>
+<div class="line"><a name="l00623"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#abf46a3a30292549f151136489c0d7041">  623</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a238a60c0e598a6e60c9be24f12e044f4">ompl::base::PlannerData::computeEdgeWeights</a> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html">OptimizationObjective</a> &amp;opt)</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;{</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nv = numVertices();</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; nv; ++i)</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;    {</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;        std::map&lt;unsigned int, const PlannerDataEdge*&gt; nbrs;</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;        getEdges(i, nbrs);</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;        std::map&lt;unsigned int, const PlannerDataEdge*&gt;::const_iterator it;</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;        <span class="keywordflow">for</span> (it = nbrs.begin(); it != nbrs.end(); ++it)</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;        {</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;            setEdgeWeight(i, it-&gt;first, opt.<a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#aa8dc9a1b7952491f6938ee8279d3a179">motionCost</a>(getVertex(i).getState(),</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;                                                       getVertex(it-&gt;first).getState()));</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;        }</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;    }</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;}</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;</div>
+<div class="line"><a name="l00640"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a238a60c0e598a6e60c9be24f12e044f4">  640</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a238a60c0e598a6e60c9be24f12e044f4">ompl::base::PlannerData::computeEdgeWeights</a> ()</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;{</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    <span class="comment">// Create a PathLengthOptimizationObjective to compute the edge</span></div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    <span class="comment">// weights according to state space distance</span></div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;    <a class="code" href="classompl_1_1base_1_1PathLengthOptimizationObjective.html">ompl::base::PathLengthOptimizationObjective</a> opt(si_);</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    computeEdgeWeights(opt);</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;}</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;<span class="keyword">namespace</span></div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;{</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    <span class="comment">// Used in minimum spanning tree</span></div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;    <a class="code" href="structompl_1_1base_1_1Cost.html">ompl::base::Cost</a> project2nd (<a class="code" href="structompl_1_1base_1_1Cost.html">ompl::base::Cost</a> <span class="comment">/*unused*/</span>, <a class="code" href="structompl_1_1base_1_1Cost.html">ompl::base::Cost</a> second)</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    {</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;        <span class="keywordflow">return</span> second;</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;    }</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;}</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;</div>
+<div class="line"><a name="l00657"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#ac45aec73f0452702d4c8a69f3fa664bf">  657</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#ac45aec73f0452702d4c8a69f3fa664bf">ompl::base::PlannerData::extractMinimumSpanningTree</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v,</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;                                                          <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1OptimizationObjective.html">base::OptimizationObjective</a> &amp;opt,</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;                                                          <a class="code" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a> &amp;mst)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    std::vector&lt;ompl::base::PlannerData::Graph::Vertex&gt; pred(numVertices());</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    <span class="comment">// This is how boost&#39;s minimum spanning tree is actually</span></div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    <span class="comment">// implemented, except it lacks the generality for specifying our</span></div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    <span class="comment">// own comparison function or zero/inf values.</span></div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;    <span class="comment">// \TODO Once (https://svn.boost.org/trac/boost/ticket/9368) gets</span></div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;    <span class="comment">// into boost we can use the far more direct</span></div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    <span class="comment">// boost::prim_minimum_spanning_tree().</span></div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    boost::dijkstra_shortest_paths</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;        (*graph_, v,</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;         boost::predecessor_map(&amp;pred[0]).</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;         distance_compare(boost::bind(&amp;<a class="code" href="classompl_1_1base_1_1OptimizationObjective.html">base::OptimizationObjective</a>::</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;                                      isCostBetterThan, &amp;opt, _1, _2)).</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;         distance_combine(&amp;project2nd).</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;         distance_inf(opt.<a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#a14f3566ca58d1c72bbf8e2318001002f">infiniteCost</a>()).</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;         distance_zero(opt.<a class="code" href="classompl_1_1base_1_1OptimizationObjective.html#af2eb3b8f8e56732005273ce8e15b2986">identityCost</a>()));</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;    <span class="comment">// Adding vertices to MST</span></div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; pred.size(); ++i)</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;    {</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;        <span class="keywordflow">if</span> (isStartVertex(i))</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;            mst.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">addStartVertex</a>(getVertex(i));</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (isGoalVertex(i))</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;            mst.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">addGoalVertex</a>(getVertex(i));</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;            mst.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac61c5ab5cfd6a66a58e03b1731c1e454">addVertex</a>(getVertex(i));</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;    }</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;    <span class="comment">// Adding edges to MST</span></div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; pred.size(); ++i)</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;    {</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;        <span class="keywordflow">if</span> (pred[i] != i)</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;        {</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;            <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> c;</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;            getEdgeWeight(pred[i], i, &amp;c);</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;            mst.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(pred[i], i, getEdge(pred[i], i), c);</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;        }</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;    }</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;}</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;</div>
+<div class="line"><a name="l00702"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#ab69dd695b9fbe2662e2a09bd37c9d96b">  702</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#ab69dd695b9fbe2662e2a09bd37c9d96b">ompl::base::PlannerData::extractReachable</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v, <a class="code" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a> &amp;data)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;    <span class="comment">// If this vertex already exists in data, return</span></div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;    <span class="keywordflow">if</span> (data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a97659c4427fb4d02204e86b9ad4d0d85">vertexExists</a>(getVertex(v)))</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;    <span class="comment">// Adding the vertex corresponding to v into data</span></div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx;</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    <span class="keywordflow">if</span> (isStartVertex(v))</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;        idx = data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">addStartVertex</a>(getVertex(v));</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (isGoalVertex(v))</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;        idx = data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">addGoalVertex</a>(getVertex(v));</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;        idx = data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac61c5ab5cfd6a66a58e03b1731c1e454">addVertex</a>(getVertex(v));</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;    assert (idx != INVALID_INDEX);</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;    std::map&lt;unsigned int, const PlannerDataEdge*&gt; neighbors;</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;    getEdges(v, neighbors);</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;    <span class="comment">// Depth-first traversal of reachable graph</span></div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;    std::map&lt;unsigned int, const PlannerDataEdge*&gt;::iterator it;</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;    <span class="keywordflow">for</span> (it = neighbors.begin(); it != neighbors.end(); ++it)</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    {</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;        extractReachable(it-&gt;first, data);</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;        <a class="code" href="structompl_1_1base_1_1Cost.html">Cost</a> weight;</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;        getEdgeWeight(v, it-&gt;first, &amp;weight);</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;        data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(idx, data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a8fd081adb8e8a728eab89d57514724f0">vertexIndex</a>(getVertex(it-&gt;first)), *(it-&gt;second), weight);</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;    }</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;}</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;</div>
+<div class="line"><a name="l00733"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a6201d765fd53de907946dffb687ffd68">  733</a></span>&#160;ompl::base::StateStoragePtr <a class="code" href="classompl_1_1base_1_1PlannerData.html#a6201d765fd53de907946dffb687ffd68">ompl::base::PlannerData::extractStateStorage</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;    <a class="code" href="classompl_1_1base_1_1StateStorageWithMetadata.html">GraphStateStorage</a> *store = <span class="keyword">new</span> <a class="code" href="namespaceompl_1_1base.html#a22b265d9afab284f0d4a1ad22d339a9a">GraphStateStorage</a>(si_-&gt;getStateSpace());</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;    <span class="keywordflow">if</span> (graph_)</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    {</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;        <span class="comment">// copy the states</span></div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;        std::map&lt;unsigned int, unsigned int&gt; indexMap;</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;        <span class="keywordflow">for</span> (std::map&lt;const State*, unsigned int&gt;::const_iterator it = stateIndexMap_.begin() ; it != stateIndexMap_.end() ; ++it)</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;        {</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;            indexMap[it-&gt;second] = store-&gt;<a class="code" href="classompl_1_1base_1_1StateStorage.html#a6f8d99d5defdf8beb30a276c14a70c07">size</a>();</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;            store-&gt;<a class="code" href="classompl_1_1base_1_1StateStorageWithMetadata.html#a1547528ad5f5fc3d33f8b57e39435bb3">addState</a>(it-&gt;first);</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;        }</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;        <span class="comment">// add the edges</span></div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;        <span class="keywordflow">for</span> (std::map&lt;unsigned int, unsigned int&gt;::const_iterator it = indexMap.begin() ; it != indexMap.end() ; ++it)</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;        {</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;            std::vector&lt;unsigned int&gt; edgeList;</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;            getEdges(it-&gt;first, edgeList);</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;            <a class="code" href="classompl_1_1base_1_1StateStorageWithMetadata.html#a20dafb7005cf4dbd6c6d24b0257b478d">GraphStateStorage::MetadataType</a> &amp;md = store-&gt;<a class="code" href="classompl_1_1base_1_1StateStorageWithMetadata.html#a578e91822cf7190a46576d67c438c63d">getMetadata</a>(it-&gt;second);</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;            md.resize(edgeList.size());</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;            <span class="comment">// map node indices to index values in StateStorage</span></div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;            <span class="keywordflow">for</span> (std::size_t k = 0 ; k &lt; edgeList.size() ; ++k)</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;                md[k] = indexMap[edgeList[k]];</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;        }</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;    }</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;    <span class="keywordflow">return</span> StateStoragePtr(store);</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;}</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;</div>
+<div class="line"><a name="l00761"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a919452f1e347b68e9331d726c85b1dad">  761</a></span>&#160;<a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html">ompl::base::PlannerData::Graph</a>&amp; <a class="code" href="classompl_1_1base_1_1PlannerData.html#a919452f1e347b68e9331d726c85b1dad">ompl::base::PlannerData::toBoostGraph</a>()</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;{</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;    <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html">ompl::base::PlannerData::Graph</a> *boostgraph = <span class="keyword">reinterpret_cast&lt;</span><a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html">ompl::base::PlannerData::Graph</a>*<span class="keyword">&gt;</span>(graphRaw_);</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;    <span class="keywordflow">return</span> *boostgraph;</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;}</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;</div>
+<div class="line"><a name="l00767"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a6f158175b4d5fd12e4a660c4be8b02f5">  767</a></span>&#160;<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html">ompl::base::PlannerData::Graph</a>&amp; <a class="code" href="classompl_1_1base_1_1PlannerData.html#a919452f1e347b68e9331d726c85b1dad">ompl::base::PlannerData::toBoostGraph</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;    <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html">ompl::base::PlannerData::Graph</a> *boostgraph = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1base_1_1PlannerData_1_1Graph.html">ompl::base::PlannerData::Graph</a>*<span class="keyword">&gt;</span>(graphRaw_);</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;    <span class="keywordflow">return</span> *boostgraph;</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;}</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;</div>
+<div class="line"><a name="l00773"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a037587d9bdfccb631ff9b494c1b6af92">  773</a></span>&#160;<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">ompl::base::SpaceInformationPtr</a>&amp; <a class="code" href="classompl_1_1base_1_1PlannerData.html#a037587d9bdfccb631ff9b494c1b6af92">ompl::base::PlannerData::getSpaceInformation</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;    <span class="keywordflow">return</span> si_;</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;}</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;<span class="keywordtype">void</span> ompl::base::PlannerData::freeMemory()</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;{</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;    <span class="comment">// Freeing decoupled states, if any</span></div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;    <span class="keywordflow">for</span> (std::set&lt;State*&gt;::iterator it = decoupledStates_.begin(); it != decoupledStates_.end(); ++it)</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;        si_-&gt;freeState(*it);</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;    <span class="keywordflow">if</span> (graph_)</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;    {</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;        std::pair&lt;Graph::EIterator, Graph::EIterator&gt; eiterators = boost::edges(*graph_);</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;        boost::property_map&lt;Graph::Type, edge_type_t&gt;::type edges = <span class="keyword">get</span>(edge_type_t(), *graph_);</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;        <span class="keywordflow">for</span> (Graph::EIterator iter = eiterators.first; iter != eiterators.second; ++iter)</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;            <span class="keyword">delete</span> boost::get(edges, *iter);</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;        std::pair&lt;Graph::VIterator, Graph::VIterator&gt; viterators = boost::vertices(*graph_);</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;        boost::property_map&lt;Graph::Type, vertex_type_t&gt;::type vertices = <span class="keyword">get</span>(vertex_type_t(), *graph_);</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;        <span class="keywordflow">for</span> (Graph::VIterator iter = viterators.first; iter != viterators.second; ++iter)</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;           <span class="keyword">delete</span> vertices[*iter];</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;        graph_-&gt;clear();</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;    }</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;}</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;</div>
+<div class="line"><a name="l00800"></a><span class="lineno"><a class="line" href="classompl_1_1base_1_1PlannerData.html#a7ee1c1a4c085d16b2aedc573e1d6a956">  800</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html#a7ee1c1a4c085d16b2aedc573e1d6a956">ompl::base::PlannerData::hasControls</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;}</div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerDataVertex_html_a4f805017e2eadb495ca95f9c1d6b7177"><div class="ttname"><a href="classompl_1_1base_1_1PlannerDataVertex.html#a4f805017e2eadb495ca95f9c1d6b7177">ompl::base::PlannerDataVertex::state_</a></div><div class="ttdeci">const State * state_</div><div class="ttdoc">The state represented by this vertex. </div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00108">PlannerData.h:108</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html">ompl::base::PlannerData</a></div><div class="ttdoc">Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00164">PlannerData.h:164</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a238a60c0e598a6e60c9be24f12e044f4"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a238a60c0e598a6e60c9be24f12e044f4">ompl::base::PlannerData::computeEdgeWeights</a></div><div class="ttdeci">void computeEdgeWeights()</div><div class="ttdoc">Computes all edge weights using state space distance (i.e. getSpaceInformation()-&gt;distance()) ...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00640">PlannerData.cpp:640</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_1_1Graph_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData_1_1Graph.html">ompl::base::PlannerData::Graph</a></div><div class="ttdoc">Wrapper class for the Boost.Graph representation of the PlannerData. This class inherits from a boost...</div><div class="ttdef"><b>Definition:</b> <a href="PlannerDataGraph_8h_source.html#l00065">PlannerDataGraph.h:65</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a6201d765fd53de907946dffb687ffd68"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a6201d765fd53de907946dffb687ffd68">ompl::base::PlannerData::extractStateStorage</a></div><div class="ttdeci">StateStoragePtr extractStateStorage() const </div><div class="ttdoc">Extract a ompl::base::GraphStateStorage object from this PlannerData. Memory for states is copied (th...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00733">PlannerData.cpp:733</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_1_1Graph_html_abaeae744b26515cf99e9a1396299e6fa"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData_1_1Graph.html#abaeae744b26515cf99e9a1396299e6fa">ompl::base::PlannerData::Graph::Edge</a></div><div class="ttdeci">boost::graph_traits&lt; Type &gt;::edge_descriptor Edge</div><div class="ttdoc">Boost.Graph edge descriptor. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerDataGraph_8h_source.html#l00074">PlannerDataGraph.h:74</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a97659c4427fb4d02204e86b9ad4d0d85"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a97659c4427fb4d02204e86b9ad4d0d85">ompl::base::PlannerData::vertexExists</a></div><div class="ttdeci">bool vertexExists(const PlannerDataVertex &amp;v) const </div><div class="ttdoc">Check whether a vertex exists with the given vertex data. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00198">PlannerData.cpp:198</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_af01506ec2ff32596dcb1bd9dfa2f8e1d"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#af01506ec2ff32596dcb1bd9dfa2f8e1d">ompl::base::PlannerData::decoupleFromPlanner</a></div><div class="ttdeci">virtual void decoupleFromPlanner()</div><div class="ttdoc">Creates a deep copy of the states contained in the vertices of this PlannerData structure so that whe...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00084">PlannerData.cpp:84</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_1_1Graph_html_ac8bc4f27de05c06418d74d2b5282d56c"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData_1_1Graph.html#ac8bc4f27de05c06418d74d2b5282d56c">ompl::base::PlannerData::Graph::AdjIterator</a></div><div class="ttdeci">boost::graph_traits&lt; Type &gt;::adjacency_iterator AdjIterator</div><div class="ttdoc">Boost.Graph adjacency iterator. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerDataGraph_8h_source.html#l00084">PlannerDataGraph.h:84</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_1_1Graph_html_a56212a283da0e20d8fb4830087c317a4"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData_1_1Graph.html#a56212a283da0e20d8fb4830087c317a4">ompl::base::PlannerData::Graph::Type</a></div><div class="ttdeci">PlannerDataGraph Type</div><div class="ttdoc">Data type for the Boost.Graph representation. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerDataGraph_8h_source.html#l00069">PlannerDataGraph.h:69</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ScopedState_html"><div class="ttname"><a href="classompl_1_1base_1_1ScopedState.html">ompl::base::ScopedState</a></div><div class="ttdoc">Definition of a scoped state. </div><div class="ttdef"><b>Definition:</b> <a href="ScopedState_8h_source.html#l00056">ScopedState.h:56</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a7ee1c1a4c085d16b2aedc573e1d6a956"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a7ee1c1a4c085d16b2aedc573e1d6a956">ompl::base::PlannerData::hasControls</a></div><div class="ttdeci">virtual bool hasControls() const </div><div class="ttdoc">Indicate whether any information about controls (ompl::control::Control) is stored in this instance...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00800">PlannerData.cpp:800</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a3604cb85b0402b09b319c5f1df02b12e"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">ompl::base::PlannerData::addGoalVertex</a></div><div class="ttdeci">unsigned int addGoalVertex(const PlannerDataVertex &amp;v)</div><div class="ttdoc">Adds the given vertex to the graph data, and marks it as a start vertex. The vertex index is returned...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00434">PlannerData.cpp:434</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_1_1Graph_html_a47c294789b359bc747e2ac530b21dbaa"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData_1_1Graph.html#a47c294789b359bc747e2ac530b21dbaa">ompl::base::PlannerData::Graph::IEIterator</a></div><div class="ttdeci">boost::graph_traits&lt; Type &gt;::in_edge_iterator IEIterator</div><div class="ttdoc">Boost.Graph input edge iterator. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerDataGraph_8h_source.html#l00080">PlannerDataGraph.h:80</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_ab69dd695b9fbe2662e2a09bd37c9d96b"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#ab69dd695b9fbe2662e2a09bd37c9d96b">ompl::base::PlannerData::extractReachable</a></div><div class="ttdeci">void extractReachable(unsigned int v, PlannerData &amp;data) const </div><div class="ttdoc">Extracts the subset of PlannerData reachable from the vertex with index v. For tree structures...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00702">PlannerData.cpp:702</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a48ebd34b6da9efd9ec7647155f9173c9"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a48ebd34b6da9efd9ec7647155f9173c9">ompl::base::PlannerData::markStartState</a></div><div class="ttdeci">bool markStartState(const State *st)</div><div class="ttdoc">Mark the given state as a start vertex. If the given state does not exist in a vertex, false is returned. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00589">PlannerData.cpp:589</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a919452f1e347b68e9331d726c85b1dad"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a919452f1e347b68e9331d726c85b1dad">ompl::base::PlannerData::toBoostGraph</a></div><div class="ttdeci">Graph &amp; toBoostGraph()</div><div class="ttdoc">Extract a Boost.Graph object from this PlannerData. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00761">PlannerData.cpp:761</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_ac61c5ab5cfd6a66a58e03b1731c1e454"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#ac61c5ab5cfd6a66a58e03b1731c1e454">ompl::base::PlannerData::addVertex</a></div><div class="ttdeci">unsigned int addVertex(const PlannerDataVertex &amp;st)</div><div class="ttdoc">Adds the given vertex to the graph data. The vertex index is returned. Duplicates are not added...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00404">PlannerData.cpp:404</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_aa0e79ddde25349a0fccba68731a3fd5b"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#aa0e79ddde25349a0fccba68731a3fd5b">ompl::base::PlannerData::numGoalVertices</a></div><div class="ttdeci">unsigned int numGoalVertices() const </div><div class="ttdoc">Returns the number of goal vertices. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00341">PlannerData.cpp:341</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_affaca04be4ca2658cb0d5e6cd9fbed80"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#affaca04be4ca2658cb0d5e6cd9fbed80">ompl::base::PlannerData::getStartVertex</a></div><div class="ttdeci">const PlannerDataVertex &amp; getStartVertex(unsigned int i) const </div><div class="ttdoc">Retrieve a reference to the ith start vertex object. If i is greater than the number of start vertice...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00372">PlannerData.cpp:372</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_ae327af789b89202dc7c68988d0d23175"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#ae327af789b89202dc7c68988d0d23175">ompl::base::PlannerData::getStartIndex</a></div><div class="ttdeci">unsigned int getStartIndex(unsigned int i) const </div><div class="ttdoc">Returns the index of the ith start state. INVALID_INDEX is returned if i is out of range...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00346">PlannerData.cpp:346</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateStorageWithMetadata_html_a20dafb7005cf4dbd6c6d24b0257b478d"><div class="ttname"><a href="classompl_1_1base_1_1StateStorageWithMetadata.html#a20dafb7005cf4dbd6c6d24b0257b478d">ompl::base::StateStorageWithMetadata::MetadataType</a></div><div class="ttdeci">M MetadataType</div><div class="ttdoc">the datatype of the metadata </div><div class="ttdef"><b>Definition:</b> <a href="StateStorage_8h_source.html#l00215">StateStorage.h:215</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a3ad7bb69b33a92a1c5e614680bd8f628"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a3ad7bb69b33a92a1c5e614680bd8f628">ompl::base::PlannerData::getEdgeWeight</a></div><div class="ttdeci">bool getEdgeWeight(unsigned int v1, unsigned int v2, Cost *weight) const </div><div class="ttdoc">Returns the weight of the edge between the given vertex indices. If there exists an edge between v1 a...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00158">PlannerData.cpp:158</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a9a484d02c69f7057e73ee1af1be6f05b"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a9a484d02c69f7057e73ee1af1be6f05b">ompl::base::PlannerData::getIncomingEdges</a></div><div class="ttdeci">unsigned int getIncomingEdges(unsigned int v, std::vector&lt; unsigned int &gt; &amp;edgeList) const </div><div class="ttdoc">Returns a list of vertices with outgoing edges to the vertex with index v. The number of edges connec...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00133">PlannerData.cpp:133</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a18b0a1ffcb25445a7a3c3a132275554e"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a18b0a1ffcb25445a7a3c3a132275554e">ompl::base::PlannerData::PlannerData</a></div><div class="ttdeci">PlannerData(const SpaceInformationPtr &amp;si)</div><div class="ttdoc">Constructor. Accepts a SpaceInformationPtr for the space planned in. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00062">PlannerData.cpp:62</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_a14f3566ca58d1c72bbf8e2318001002f"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#a14f3566ca58d1c72bbf8e2318001002f">ompl::base::OptimizationObjective::infiniteCost</a></div><div class="ttdeci">virtual Cost infiniteCost() const </div><div class="ttdoc">Get a cost which is greater than all other costs in this OptimizationObjective; required for use in D...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00124">OptimizationObjective.cpp:124</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateStorageWithMetadata_html_a1547528ad5f5fc3d33f8b57e39435bb3"><div class="ttname"><a href="classompl_1_1base_1_1StateStorageWithMetadata.html#a1547528ad5f5fc3d33f8b57e39435bb3">ompl::base::StateStorageWithMetadata::addState</a></div><div class="ttdeci">virtual void addState(const State *state)</div><div class="ttdoc">Add a state to the set of states maintained by this storage structure. The state is copied to interna...</div><div class="ttdef"><b>Definition:</b> <a href="StateStorage_8h_source.html#l00226">StateStorage.h:226</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a0989a6e1614d76a1f94fb54d67341f5d"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a0989a6e1614d76a1f94fb54d67341f5d">ompl::base::PlannerData::setEdgeWeight</a></div><div class="ttdeci">bool setEdgeWeight(unsigned int v1, unsigned int v2, Cost weight)</div><div class="ttdoc">Sets the weight of the edge between the given vertex indices. If an edge between v1 and v2 does not e...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00174">PlannerData.cpp:174</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_aa8dc9a1b7952491f6938ee8279d3a179"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#aa8dc9a1b7952491f6938ee8279d3a179">ompl::base::OptimizationObjective::motionCost</a></div><div class="ttdeci">virtual Cost motionCost(const State *s1, const State *s2) const =0</div><div class="ttdoc">Get the cost that corresponds to the motion segment between s1 and s2. </div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a0732c2d6732e9da62a98adbe4c82d763"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a0732c2d6732e9da62a98adbe4c82d763">ompl::base::PlannerData::getEdges</a></div><div class="ttdeci">unsigned int getEdges(unsigned int v, std::vector&lt; unsigned int &gt; &amp;edgeList) const </div><div class="ttdoc">Returns a list of the vertex indexes directly connected to vertex with index v (outgoing edges)...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00108">PlannerData.cpp:108</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_1_1Graph_html_a679c4587c491317c6a0d0a88612057eb"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData_1_1Graph.html#a679c4587c491317c6a0d0a88612057eb">ompl::base::PlannerData::Graph::OEIterator</a></div><div class="ttdeci">boost::graph_traits&lt; Type &gt;::out_edge_iterator OEIterator</div><div class="ttdoc">Boost.Graph output edge iterator. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerDataGraph_8h_source.html#l00082">PlannerDataGraph.h:82</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerDataVertex_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a></div><div class="ttdoc">Base class for a vertex in the PlannerData structure. All derived classes must implement the clone an...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00060">PlannerData.h:60</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a75a2c3ad28a32136c74ad9f841727f01"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a75a2c3ad28a32136c74ad9f841727f01">ompl::base::PlannerData::removeVertex</a></div><div class="ttdeci">virtual bool removeVertex(const PlannerDataVertex &amp;st)</div><div class="ttdoc">Removes the vertex associated with the given data. If the vertex does not exist, false is returned...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00484">PlannerData.cpp:484</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1Cost_html"><div class="ttname"><a href="structompl_1_1base_1_1Cost.html">ompl::base::Cost</a></div><div class="ttdoc">Definition of a cost value. Can represent the cost of a motion or the cost of a state. </div><div class="ttdef"><b>Definition:</b> <a href="Cost_8h_source.html#l00047">Cost.h:47</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_ab07adc96f0cfcfc9e418e66b4e0078ad"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#ab07adc96f0cfcfc9e418e66b4e0078ad">ompl::base::PlannerData::isGoalVertex</a></div><div class="ttdeci">bool isGoalVertex(unsigned int index) const </div><div class="ttdoc">Returns true if the given vertex index is marked as a goal vertex. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00367">PlannerData.cpp:367</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_af599f3b6eaf5789223facd978d1897b9"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#af599f3b6eaf5789223facd978d1897b9">ompl::base::PlannerData::getGoalVertex</a></div><div class="ttdeci">const PlannerDataVertex &amp; getGoalVertex(unsigned int i) const </div><div class="ttdoc">Retrieve a reference to the ith goal vertex object. If i is greater than the number of goal vertices...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00388">PlannerData.cpp:388</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a2b0b7c124dcac4f07c5f6d0ab51386a6"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a2b0b7c124dcac4f07c5f6d0ab51386a6">ompl::base::PlannerData::tagState</a></div><div class="ttdeci">bool tagState(const State *st, int tag)</div><div class="ttdoc">Set the integer tag associated with the given state. If the given state does not exist in a vertex...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00578">PlannerData.cpp:578</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_aed73a24b4db83fb523fc6e634e2aa335"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#aed73a24b4db83fb523fc6e634e2aa335">ompl::base::PlannerData::numEdges</a></div><div class="ttdeci">unsigned int numEdges() const </div><div class="ttdoc">Retrieve the number of edges in this structure. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00208">PlannerData.cpp:208</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_afaecec6b16a335917a011e5381f42929"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#afaecec6b16a335917a011e5381f42929">ompl::base::PlannerData::printGraphML</a></div><div class="ttdeci">void printGraphML(std::ostream &amp;out=std::cout) const </div><div class="ttdoc">Writes a GraphML file of this structure to the given stream. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00294">PlannerData.cpp:294</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a4ec510507fa061ff368eb3c1826f0009"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a4ec510507fa061ff368eb3c1826f0009">ompl::base::PlannerData::numVertices</a></div><div class="ttdeci">unsigned int numVertices() const </div><div class="ttdoc">Retrieve the number of vertices in this structure. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00203">PlannerData.cpp:203</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_1_1Graph_html_a24e4bdcee982f118c628ba4f3a429680"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData_1_1Graph.html#a24e4bdcee982f118c628ba4f3a429680">ompl::base::PlannerData::Graph::Vertex</a></div><div class="ttdeci">boost::graph_traits&lt; Type &gt;::vertex_descriptor Vertex</div><div class="ttdoc">Boost.Graph vertex descriptor. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerDataGraph_8h_source.html#l00072">PlannerDataGraph.h:72</a></div></div>
+<div class="ttc" id="namespaceompl_1_1base_html_a22b265d9afab284f0d4a1ad22d339a9a"><div class="ttname"><a href="namespaceompl_1_1base.html#a22b265d9afab284f0d4a1ad22d339a9a">ompl::base::GraphStateStorage</a></div><div class="ttdeci">StateStorageWithMetadata&lt; std::vector&lt; std::size_t &gt; &gt; GraphStateStorage</div><div class="ttdoc">Storage of states where the metadata is a vector of indices. This is is typically used to store a gra...</div><div class="ttdef"><b>Definition:</b> <a href="StateStorage_8h_source.html#l00277">StateStorage.h:277</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a8fd081adb8e8a728eab89d57514724f0"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a8fd081adb8e8a728eab89d57514724f0">ompl::base::PlannerData::vertexIndex</a></div><div class="ttdeci">unsigned int vertexIndex(const PlannerDataVertex &amp;v) const </div><div class="ttdoc">Return the index for the vertex associated with the given data. INVALID_INDEX is returned if this ver...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00328">PlannerData.cpp:328</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateStorageWithMetadata_html_a578e91822cf7190a46576d67c438c63d"><div class="ttname"><a href="classompl_1_1base_1_1StateStorageWithMetadata.html#a578e91822cf7190a46576d67c438c63d">ompl::base::StateStorageWithMetadata::getMetadata</a></div><div class="ttdeci">const M &amp; getMetadata(unsigned int index) const </div><div class="ttdoc">Get const access to the metadata of a state at a particular index. </div><div class="ttdef"><b>Definition:</b> <a href="StateStorage_8h_source.html#l00246">StateStorage.h:246</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_ac09c21494a8c7db500ef1a66bbbb1aa7"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">ompl::base::PlannerData::addEdge</a></div><div class="ttdeci">virtual bool addEdge(unsigned int v1, unsigned int v2, const PlannerDataEdge &amp;edge=PlannerDataEdge(), Cost weight=Cost(1.0))</div><div class="ttdoc">Adds a directed edge between the given vertex indexes. An optional edge structure and weight can be s...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00444">PlannerData.cpp:444</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpaceInformationPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1SpaceInformationPtr.html">ompl::base::SpaceInformationPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::SpaceInformation. </div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a5228dd82b9c8b62b9e68546f1dc4da91"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a5228dd82b9c8b62b9e68546f1dc4da91">ompl::base::PlannerData::getVertex</a></div><div class="ttdeci">const PlannerDataVertex &amp; getVertex(unsigned int index) const </div><div class="ttdoc">Retrieve a reference to the vertex object with the given index. If this vertex does not exist...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00213">PlannerData.cpp:213</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_aa637f3586c632363498054311aee61dd"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#aa637f3586c632363498054311aee61dd">ompl::base::PlannerData::printGraphviz</a></div><div class="ttdeci">void printGraphviz(std::ostream &amp;out=std::cout) const </div><div class="ttdoc">Writes a Graphviz dot file of this structure to the given stream. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00261">PlannerData.cpp:261</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PathLengthOptimizationObjective_html"><div class="ttname"><a href="classompl_1_1base_1_1PathLengthOptimizationObjective.html">ompl::base::PathLengthOptimizationObjective</a></div><div class="ttdoc">An optimization objective which corresponds to optimizing path length. </div><div class="ttdef"><b>Definition:</b> <a href="PathLengthOptimizationObjective_8h_source.html#l00047">PathLengthOptimizationObjective.h:47</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a7378bbca3f1006b70976292266277eb9"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a7378bbca3f1006b70976292266277eb9">ompl::base::PlannerData::clear</a></div><div class="ttdeci">virtual void clear()</div><div class="ttdoc">Clears the entire data structure. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00078">PlannerData.cpp:78</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a2eea84456784452486aa0065af391f47"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">ompl::base::PlannerData::addStartVertex</a></div><div class="ttdeci">unsigned int addStartVertex(const PlannerDataVertex &amp;v)</div><div class="ttdoc">Adds the given vertex to the graph data, and marks it as a start vertex. The vertex index is returned...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00425">PlannerData.cpp:425</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1ScopedState_html_af965c40dee1fb0e41ac249e119b97fed"><div class="ttname"><a href="classompl_1_1base_1_1ScopedState.html#af965c40dee1fb0e41ac249e119b97fed">ompl::base::ScopedState::reals</a></div><div class="ttdeci">std::vector&lt; double &gt; reals() const </div><div class="ttdoc">Return the real values corresponding to this state. If a conversion is not possible, an exception is thrown. </div><div class="ttdef"><b>Definition:</b> <a href="ScopedState_8h_source.html#l00356">ScopedState.h:356</a></div></div>
+<div class="ttc" id="group__logging_html_gab76357dced39cb468d2061d3358f80a6"><div class="ttname"><a href="group__logging.html#gab76357dced39cb468d2061d3358f80a6">OMPL_WARN</a></div><div class="ttdeci">#define OMPL_WARN(fmt,...)</div><div class="ttdoc">Log a formatted warning string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00066">Console.h:66</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_aeaae435c61fbc1f4c894da0140830e68"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#aeaae435c61fbc1f4c894da0140830e68">ompl::base::PlannerData::~PlannerData</a></div><div class="ttdeci">virtual ~PlannerData()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00067">PlannerData.cpp:67</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerDataEdge_html_ac11bec079580da93a90ffd762f58c596"><div class="ttname"><a href="classompl_1_1base_1_1PlannerDataEdge.html#ac11bec079580da93a90ffd762f58c596">ompl::base::PlannerDataEdge::clone</a></div><div class="ttdeci">virtual PlannerDataEdge * clone() const </div><div class="ttdoc">Return a clone of this object, allocated from the heap. </div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00123">PlannerData.h:123</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a53b2294e37eb1b5468d70c04055f64c8"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a53b2294e37eb1b5468d70c04055f64c8">ompl::base::PlannerData::NO_VERTEX</a></div><div class="ttdeci">static const PlannerDataVertex NO_VERTEX</div><div class="ttdoc">Representation for a non-existant vertex. </div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00172">PlannerData.h:172</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateStorageWithMetadata_html"><div class="ttname"><a href="classompl_1_1base_1_1StateStorageWithMetadata.html">ompl::base::StateStorageWithMetadata</a></div><div class="ttdoc">State storage that allows storing state metadata as well. </div><div class="ttdef"><b>Definition:</b> <a href="StateStorage_8h_source.html#l00210">StateStorage.h:210</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html">ompl::base::OptimizationObjective</a></div><div class="ttdoc">Abstract definition of optimization objectives. </div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8h_source.html#l00070">OptimizationObjective.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a90da79739a42f9b86fa18d8f3af21c8a"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a90da79739a42f9b86fa18d8f3af21c8a">ompl::base::PlannerData::edgeExists</a></div><div class="ttdeci">bool edgeExists(unsigned int v1, unsigned int v2) const </div><div class="ttdoc">Check whether an edge between vertex index v1 and index v2 exists. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00189">PlannerData.cpp:189</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_ab2b09299d9980783a8147e280562d5a7"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#ab2b09299d9980783a8147e280562d5a7">ompl::base::PlannerData::INVALID_INDEX</a></div><div class="ttdeci">static const unsigned int INVALID_INDEX</div><div class="ttdoc">Representation of an invalid vertex index. </div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00174">PlannerData.h:174</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a635568961308b738919748b839c8f4fa"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a635568961308b738919748b839c8f4fa">ompl::base::PlannerData::getEdge</a></div><div class="ttdeci">const PlannerDataEdge &amp; getEdge(unsigned int v1, unsigned int v2) const </div><div class="ttdoc">Retrieve a reference to the edge object connecting vertices with indexes v1 and v2. If this edge does not exist, NO_EDGE is returned. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00231">PlannerData.cpp:231</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a7772ac307d153831c0e7ecfc4fb1c18b"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a7772ac307d153831c0e7ecfc4fb1c18b">ompl::base::PlannerData::markGoalState</a></div><div class="ttdeci">bool markGoalState(const State *st)</div><div class="ttdoc">Mark the given state as a goal vertex. If the given state does not exist in a vertex, false is returned. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00606">PlannerData.cpp:606</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_ac5da9f36f20bfc503c95cb7c84e8ba37"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#ac5da9f36f20bfc503c95cb7c84e8ba37">ompl::base::PlannerData::isStartVertex</a></div><div class="ttdeci">bool isStartVertex(unsigned int index) const </div><div class="ttdoc">Returns true if the given vertex index is marked as a start vertex. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00362">PlannerData.cpp:362</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_adf4ba509f9588515ea527bbbb6f7576c"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#adf4ba509f9588515ea527bbbb6f7576c">ompl::base::PlannerData::numStartVertices</a></div><div class="ttdeci">unsigned int numStartVertices() const </div><div class="ttdoc">Returns the number of start vertices. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00336">PlannerData.cpp:336</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_ac45aec73f0452702d4c8a69f3fa664bf"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#ac45aec73f0452702d4c8a69f3fa664bf">ompl::base::PlannerData::extractMinimumSpanningTree</a></div><div class="ttdeci">void extractMinimumSpanningTree(unsigned int v, const OptimizationObjective &amp;opt, PlannerData &amp;mst) const </div><div class="ttdoc">Extracts the minimum spanning tree of the data rooted at the vertex with index v. The minimum spannin...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00657">PlannerData.cpp:657</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerDataEdge_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerDataEdge.html">ompl::base::PlannerDataEdge</a></div><div class="ttdoc">Base class for a PlannerData edge. </div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00117">PlannerData.h:117</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a037587d9bdfccb631ff9b494c1b6af92"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a037587d9bdfccb631ff9b494c1b6af92">ompl::base::PlannerData::getSpaceInformation</a></div><div class="ttdeci">const SpaceInformationPtr &amp; getSpaceInformation() const </div><div class="ttdoc">Return the instance of SpaceInformation used in this PlannerData. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00773">PlannerData.cpp:773</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerDataVertex_html_a148375c977629788441776042021f88b"><div class="ttname"><a href="classompl_1_1base_1_1PlannerDataVertex.html#a148375c977629788441776042021f88b">ompl::base::PlannerDataVertex::clone</a></div><div class="ttdeci">virtual PlannerDataVertex * clone() const </div><div class="ttdoc">Return a clone of this object, allocated from the heap. </div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00077">PlannerData.h:77</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerDataVertex_html_a20343e045f508d3545ccf13da33bea14"><div class="ttname"><a href="classompl_1_1base_1_1PlannerDataVertex.html#a20343e045f508d3545ccf13da33bea14">ompl::base::PlannerDataVertex::getState</a></div><div class="ttdeci">virtual const State * getState() const </div><div class="ttdoc">Retrieve the state associated with this vertex. </div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00074">PlannerData.h:74</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a86774f579c347fc2ae46d1d501eaec4f"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a86774f579c347fc2ae46d1d501eaec4f">ompl::base::PlannerData::getGoalIndex</a></div><div class="ttdeci">unsigned int getGoalIndex(unsigned int i) const </div><div class="ttdoc">Returns the index of the ith goal state. INVALID_INDEX is returned if i is out of range Indexes are v...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00354">PlannerData.cpp:354</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a991ab62a502c3f80ae2663150e79bcea"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a991ab62a502c3f80ae2663150e79bcea">ompl::base::PlannerData::removeEdge</a></div><div class="ttdeci">virtual bool removeEdge(unsigned int v1, unsigned int v2)</div><div class="ttdoc">Removes the edge between vertex indexes v1 and v2. Success is returned. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00549">PlannerData.cpp:549</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1OptimizationObjective_html_af2eb3b8f8e56732005273ce8e15b2986"><div class="ttname"><a href="classompl_1_1base_1_1OptimizationObjective.html#af2eb3b8f8e56732005273ce8e15b2986">ompl::base::OptimizationObjective::identityCost</a></div><div class="ttdeci">virtual Cost identityCost() const </div><div class="ttdoc">Get the identity cost value. The identity cost value is the cost c_i such that, for all costs c...</div><div class="ttdef"><b>Definition:</b> <a href="OptimizationObjective_8cpp_source.html#l00119">OptimizationObjective.cpp:119</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1StateStorage_html_a6f8d99d5defdf8beb30a276c14a70c07"><div class="ttname"><a href="classompl_1_1base_1_1StateStorage.html#a6f8d99d5defdf8beb30a276c14a70c07">ompl::base::StateStorage::size</a></div><div class="ttdeci">std::size_t size() const </div><div class="ttdoc">Return the number of stored states. </div><div class="ttdef"><b>Definition:</b> <a href="StateStorage_8h_source.html#l00098">StateStorage.h:98</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a5e9068cf84bb1c378eb2ec0823e086d2"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a5e9068cf84bb1c378eb2ec0823e086d2">ompl::base::PlannerData::NO_EDGE</a></div><div class="ttdeci">static const PlannerDataEdge NO_EDGE</div><div class="ttdoc">Representation for a non-existant edge. </div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00167">PlannerData.h:167</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:25 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

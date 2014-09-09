@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Use of Projections in OMPL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Use of Projections in OMPL </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>Most planning algorithms use a data structure (in addition to the tree/graph of motions) for guiding the exploration of the space. In many cases, this data structure is in the form of a discretization of the state space. For practical purposes, discretizing the state space itself is not feasible, due to its high dimensionality. An approach taken by many algorithms is to use projections from the state space to a low dimensional Euclidean space (R<sup>k</sup>, k usually around 2 or 3), and discretize that Euclidean space instead. This includes algorithms such as <a class="el" href="classompl_1_1geometric_1_1EST.html" title="Expansive Space Trees. ">ompl::geometric::EST</a>, <a class="el" href="classompl_1_1geometric_1_1SBL.html" title="Single-Query Bi-Directional Probabilistic Roadmap Planner with Lazy Collision Checking. ">ompl::geometric::SBL</a>, <a class="el" href="classompl_1_1geometric_1_1KPIECE1.html" title="Kinematic Planning by Interior-Exterior Cell Exploration. ">ompl::geometric::KPIECE1</a>. This projection can also be thought of as a hash function that maps states to cells in a low dimensional Euclidean space.</p>
+<p>To support this notion of projections, OMPL includes <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html" title="Abstract definition for a class computing projections to Rn. Implicit integer grids are imposed on th...">ompl::base::ProjectionEvaluator</a>. This is an abstract class whose main operation is <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a748a31a8f4e5737e93fcd74a430b0baf" title="Compute the projection as an array of double values. ">ompl::base::ProjectionEvaluator::project()</a>, which takes a <a class="el" href="classompl_1_1base_1_1State.html" title="Definition of an abstract state. ">ompl::base::State</a>* and produces a <a class="el" href="namespaceompl_1_1base.html#aa83f2e90d56884b236b1e400d116b10b" title="The datatype for state projections. This class contains a real vector. ">ompl::base::EuclideanProjection</a> (this is a representation of an array of real numbers).</p>
+<p><a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html" title="Abstract definition for a class computing projections to Rn. Implicit integer grids are imposed on th...">ompl::base::ProjectionEvaluator</a> also includes utilities for discretizing the projected space (the low dimensional, Euclidean one). In particular, grids can be implicitly imposed on the projection space by setting cell sizes (a real value for each dimension of the Euclidean space), using <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#a159e26be9f83a75a001ad2d3ba477f71" title="Define the size (in each dimension) of a grid cell. The number of sizes set here must be the same as ...">ompl::base::ProjectionEvaluator::setCellSizes()</a>. The coordinates in the grid that correspond to a specific projection can be computed using <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#ad8ce42480db15d62a8996f569921aae9" title="Compute integer coordinates for a projection. ">ompl::base::ProjectionEvaluator::computeCoordinates()</a>. If the sizes of cells for the grid have not been set, <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#af40dd2632f9c9e19be07d56532476496" title="Perform configuration steps, if needed. ">ompl::base::ProjectionEvaluator::setup()</a> uses sampling to identify sizes such that each dimension of the projection space is split into roughly 20 parts. This is merely a default and the user is encouraged to set desired cell sizes.</p>
+<p>Projections are specific to state spaces. This means that each <a class="el" href="classompl_1_1base_1_1StateSpace.html" title="Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. ">ompl::base::StateSpace</a> has its corresponding set of <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html" title="Abstract definition for a class computing projections to Rn. Implicit integer grids are imposed on th...">ompl::base::ProjectionEvaluator</a>. In the implementation of state spaces, it is recommended that projections are set in the <a class="el" href="classompl_1_1base_1_1StateSpace.html#a9d83398ca1647e06036d9e69ebad7cf8" title="Register the projections for this state space. Usually, this is at least the default projection...">ompl::base::StateSpace::registerProjections()</a> function. Although not required, it is good practice to register all projections to their corresponding state space, as this ensures calling <a class="el" href="classompl_1_1base_1_1ProjectionEvaluator.html#af40dd2632f9c9e19be07d56532476496" title="Perform configuration steps, if needed. ">ompl::base::ProjectionEvaluator::setup()</a> when needed. Most state spaces have at least a default projection set by <a class="el" href="classompl_1_1base_1_1StateSpace.html#a9d83398ca1647e06036d9e69ebad7cf8" title="Register the projections for this state space. Usually, this is at least the default projection...">ompl::base::StateSpace::registerProjections()</a>. The user is encouraged to define appropriate projections, if available.</p>
+<p>Example code for adding a projection for an R<sup>n</sup> state space:</p>
+<div class="fragment"><div class="line"><span class="keyword">using namespace </span>ompl;</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">class </span>MyProjection : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1ProjectionEvaluator.html">base::ProjectionEvaluator</a></div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line"></div>
+<div class="line">MyProjection(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1StateSpacePtr.html">base::StateSpacePtr</a> &amp;space) : base::ProjectionEvaluator(space)</div>
+<div class="line">{</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">virtual</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getDimension(<span class="keywordtype">void</span>)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword"></span>{</div>
+<div class="line">    <span class="keywordflow">return</span> 2;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">virtual</span> <span class="keywordtype">void</span> defaultCellSizes(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">    cellSizes_.resize(2);</div>
+<div class="line">    cellSizes_[0] = 0.1;</div>
+<div class="line">    cellSizes_[1] = 0.25;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">virtual</span> <span class="keywordtype">void</span> project(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *state, <a class="code" href="namespaceompl_1_1base.html#aa83f2e90d56884b236b1e400d116b10b">base::EuclideanProjection</a> &amp;projection)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword"></span>{</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> *values = state-&gt;<a class="code" href="classompl_1_1base_1_1State.html#a04177157c4ea22d1bb2d7f344162bf31">as</a>&lt;<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html">base::RealVectorStateSpace::StateType</a>&gt;()-&gt;values;</div>
+<div class="line">    projection.<a class="code" href="classompl_1_1base_1_1RealVectorStateSpace_1_1StateType.html#a916575eb76687da3b47a2d9699128498">values</a>[0] = (values[0] + values[1]) / 2.0;</div>
+<div class="line">    projection.values[1] = (values[2] + values[3]) / 2.0;</div>
+<div class="line">}</div>
+<div class="line">};</div>
+<div class="line">...</div>
+<div class="line">base::StateSpacePtr space;</div>
+<div class="line"><a class="code" href="classompl_1_1base_1_1PlannerPtr.html">base::PlannerPtr</a> planner;</div>
+<div class="line"></div>
+<div class="line">space-&gt;registerProjection(<span class="stringliteral">&quot;myProjection&quot;</span>, <a class="code" href="classompl_1_1base_1_1ProjectionEvaluatorPtr.html">base::ProjectionEvaluatorPtr</a>(<span class="keyword">new</span> MyProjection(space)));</div>
+<div class="line">...</div>
+<div class="line">planner-&gt;as&lt;<a class="code" href="classompl_1_1geometric_1_1KPIECE1.html">geometric::KPIECE1</a>&gt;()-&gt;setProjectionEvaluator(<span class="stringliteral">&quot;myProjection&quot;</span>);</div>
+</div><!-- fragment --><p>The last two lines can be combined into one if you register <code>MyProjection</code> as the default projection for your space:</p>
+<div class="fragment"><div class="line">space-&gt;registerDefaultProjection(base::ProjectionEvaluatorPtr(<span class="keyword">new</span> MyProjection(space)));</div>
+</div><!-- fragment --><p>For more reading on this topic, please see:</p>
+<ul>
+<li>Șucan, Ioan A., Kavraki Lydia E., On the Performance of Random Linear Projections for Sampling-Based Motion Planning, in <em>IEEE/RSJ International Conference on Intelligent Robots and Systems</em>, pp. 2434-2439, Oct 2009. DOI: <a href="http://dx.doi.org/10.1109/IROS.2009.5354403">http://dx.doi.org/10.1109/IROS.2009.5354403</a>. </li>
+</ul>
+</div></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

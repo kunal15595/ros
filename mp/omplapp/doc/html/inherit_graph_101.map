@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classompl_1_1control_1_1SimpleSetup.html" title="Create the set of classes typically needed to solve a control problem. " alt="" coords="5,45,184,72"/>
+<area shape="rect" id="node2" href="$classompl_1_1control_1_1MorseSimpleSetup.html" title="Create the set of classes typically needed to solve a control problem when forward propagation is com..." alt="" coords="239,5,420,46"/>
+<area shape="rect" id="node3" href="$classompl_1_1control_1_1OpenDESimpleSetup.html" title="Create the set of classes typically needed to solve a control problem when forward propagation is com..." alt="" coords="232,70,427,111"/>
+</map>

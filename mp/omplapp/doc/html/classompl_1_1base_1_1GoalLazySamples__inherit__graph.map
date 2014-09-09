@@ -1,0 +1,6 @@
+<map id="ompl::base::GoalLazySamples" name="ompl::base::GoalLazySamples">
+<area shape="rect" id="node2" href="$classompl_1_1base_1_1GoalStates.html" title="Definition of a set of goal states. " alt="" coords="25,320,183,347"/>
+<area shape="rect" id="node3" href="$classompl_1_1base_1_1GoalSampleableRegion.html" title="Abstract definition of a goal region that can be sampled. " alt="" coords="9,230,199,271"/>
+<area shape="rect" id="node4" href="$classompl_1_1base_1_1GoalRegion.html" title="Definition of a goal region. " alt="" coords="23,155,185,181"/>
+<area shape="rect" id="node5" href="$classompl_1_1base_1_1Goal.html" title="Abstract definition of goals. " alt="" coords="43,80,164,107"/>
+</map>

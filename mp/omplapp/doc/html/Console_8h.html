@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/util/Console.h File Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_a0aa627f6735340f26cb592001cd7598.html">util</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">Console.h File Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;string&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for Console.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="Console_8h__incl.png" border="0" usemap="#ompl_2src_2ompl_2util_2Console_8h" alt=""/></div>
+<map name="ompl_2src_2ompl_2util_2Console_8h" id="ompl_2src_2ompl_2util_2Console_8h">
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="Console_8h__dep__incl.png" border="0" usemap="#ompl_2src_2ompl_2util_2Console_8hdep" alt=""/></div>
+<map name="ompl_2src_2ompl_2util_2Console_8hdep" id="ompl_2src_2ompl_2util_2Console_8hdep">
+<area shape="rect" id="node2" href="assimpUtil_8cpp_source.html" title="src/omplapp/geometry\l/detail/assimpUtil.cpp" alt="" coords="5,97,155,138"/><area shape="rect" id="node3" href="CollisionCheckers_8cpp_source.html" title="demos/SE3RigidBodyPlanning\l/CollisionCheckers.cpp" alt="" coords="180,97,379,138"/><area shape="rect" id="node4" href="GenericParam_8h_source.html" title="ompl/src/ompl/base\l/GenericParam.h" alt="" coords="1740,97,1875,138"/><area shape="rect" id="node5" href="Planner_8h_source.html" title="ompl/src/ompl/base\l/Planner.h" alt="" coords="1248,641,1383,682"/><area shape="rect" id="node11" href="LTLPlanner_8cpp_source.html" title="ompl/src/ompl/control\l/planners/ltl/src/LTLPlanner.cpp" alt="" coords="482,822,688,863"/><area shape="rect" id="node12" href="control_2SimpleSetup_8h_source.html" title="ompl/src/ompl/control\l/SimpleSetup.h" alt="" coords="2200,731,2347,773"/><area shape="rect" id="node16" href="geometric_2SimpleSetup_8h_source.html" title="ompl/src/ompl/geometric\l/SimpleSetup.h" alt="" coords="2371,731,2535,773"/><area shape="rect" id="node19" href="ProjectionEvaluator_8h_source.html" title="ompl/src/ompl/base\l/ProjectionEvaluator.h" alt="" coords="1787,187,1937,229"/><area shape="rect" id="node20" href="StateSpace_8h_source.html" title="ompl/src/ompl/base\l/StateSpace.h" alt="" coords="1681,278,1816,319"/><area shape="rect" id="node21" href="base_2SpaceInformation_8h_source.html" title="ompl/src/ompl/base\l/SpaceInformation.h" alt="" coords="1677,369,1816,410"/><area shape="rect" id="node22" href="Goal_8h_source.html" title="ompl/src/ompl/base\l/Goal.h" alt="" coords="1856,459,1991,501"/><area shape="rect" id="node24" href="GeneticSearch_8h_source.html" title="ompl/src/ompl/geometric\l/GeneticSearch.h" alt="" coords="2209,641,2373,682"/><area shape="rect" id="node25" href="ProblemDefinition_8h_source.html" title="ompl/src/ompl/base\l/ProblemDefinition.h" alt="" coords="1395,550,1535,591"/><area shape="rect" id="node30" href="PathSimplifier_8h_source.html" title="ompl/src/ompl/geometric\l/PathSimplifier.h" alt="" coords="2216,459,2380,501"/><area shape="rect" id="node31" href="ControlSpace_8h_source.html" title="ompl/src/ompl/control\l/ControlSpace.h" alt="" coords="1395,369,1541,410"/><area shape="rect" id="node34" href="base_2PlannerDataStorage_8h_source.html" title="ompl/src/ompl/base\l/PlannerDataStorage.h" alt="" coords="2317,97,2471,138"/><area shape="rect" id="node37" href="ODESolver_8h_source.html" title="ompl/src/ompl/control\l/ODESolver.h" alt="" coords="2496,97,2643,138"/><area shape="rect" id="node38" href="ProductGraph_8cpp_source.html" title="ompl/src/ompl/control\l/planners/ltl/src/ProductGraph.cpp" alt="" coords="2667,97,2887,138"/><area shape="rect" id="node39" href="World_8cpp_source.html" title="ompl/src/ompl/control\l/planners/ltl/src/World.cpp" alt="" coords="2911,97,3085,138"/><area shape="rect" id="node40" href="Syclop_2Decomposition_8h_source.html" title="ompl/src/ompl/control\l/planners/Syclop/Decomposition.h" alt="" coords="3111,97,3332,138"/><area shape="rect" id="node41" href="syclop_2Decomposition_8h_source.html" title="ompl/src/ompl/control\l/planners/syclop/Decomposition.h" alt="" coords="899,278,1117,319"/><area shape="rect" id="node42" href="PathControl_8cpp_source.html" title="ompl/src/ompl/control\l/src/PathControl.cpp" alt="" coords="3356,97,3503,138"/><area shape="rect" id="node43" href="MorseSimpleSetup_8cpp_source.html" title="ompl/src/ompl/extensions\l/morse/src/MorseSimpleSetup.cpp" alt="" coords="3527,97,3749,138"/><area shape="rect" id="node44" href="OpenDEControlSpace_8cpp_source.html" title="ompl/src/ompl/extensions\l/opende/src/OpenDEControlSpace.cpp" alt="" coords="3773,97,4020,138"/><area shape="rect" id="node45" href="OpenDEStatePropagator_8cpp_source.html" title="ompl/src/ompl/extensions\l/opende/src/OpenDEStatePropagator.cpp" alt="" coords="4046,97,4308,138"/><area shape="rect" id="node46" href="OpenDEStateSpace_8cpp_source.html" title="ompl/src/ompl/extensions\l/opende/src/OpenDEStateSpace.cpp" alt="" coords="4333,97,4569,138"/><area shape="rect" id="node47" href="MachineSpecs_8cpp_source.html" title="ompl/src/ompl/tools\l/benchmark/src/MachineSpecs.cpp" alt="" coords="4595,97,4821,138"/><area shape="rect" id="node48" href="SelfConfig_8cpp_source.html" title="ompl/src/ompl/tools\l/config/src/SelfConfig.cpp" alt="" coords="4845,97,5019,138"/><area shape="rect" id="node49" href="Console_8cpp_source.html" title="ompl/src/ompl/util\l/src/Console.cpp" alt="" coords="5043,97,5168,138"/><area shape="rect" id="node50" href="RandomNumbers_8cpp_source.html" title="ompl/src/ompl/util\l/src/RandomNumbers.cpp" alt="" coords="5193,97,5367,138"/><area shape="rect" id="node32" href="GenericParam_8cpp_source.html" title="ompl/src/ompl/base\l/src/GenericParam.cpp" alt="" coords="1555,187,1711,229"/><area shape="rect" id="node33" href="ValidStateSampler_8h_source.html" title="ompl/src/ompl/base\l/ValidStateSampler.h" alt="" coords="1869,278,2013,319"/><area shape="rect" id="node6" href="RenderPlannerData_8h_source.html" title="src/omplapp/graphics\l/detail/RenderPlannerData.h" alt="" coords="1819,731,2005,773"/><area shape="rect" id="node7" href="RenderGeometry_8h_source.html" title="src/omplapp/graphics\l/RenderGeometry.h" alt="" coords="2029,731,2176,773"/><area shape="rect" id="node8" href="Planner_8cpp_source.html" title="ompl/src/ompl/base\l/src/Planner.cpp" alt="" coords="869,731,1004,773"/><area shape="rect" id="node9" href="control_2planners_2pdst_2PDST_8h_source.html" title="ompl/src/ompl/control\l/planners/pdst/PDST.h" alt="" coords="1029,731,1183,773"/><area shape="rect" id="node10" href="control_2planners_2PlannerIncludes_8h_source.html" title="ompl/src/ompl/control\l/planners/PlannerIncludes.h" alt="" coords="662,731,844,773"/><area shape="rect" id="node13" href="Discretization_8h_source.html" title="ompl/src/ompl/geometric\l/planners/kpiece/Discretization.h" alt="" coords="1207,731,1419,773"/><area shape="rect" id="node14" href="geometric_2planners_2pdst_2PDST_8h_source.html" title="ompl/src/ompl/geometric\l/planners/pdst/PDST.h" alt="" coords="1443,731,1607,773"/><area shape="rect" id="node15" href="geometric_2planners_2PlannerIncludes_8h_source.html" title="ompl/src/ompl/geometric\l/planners/PlannerIncludes.h" alt="" coords="455,731,637,773"/><area shape="rect" id="node18" href="ParallelPlan_8h_source.html" title="ompl/src/ompl/tools\l/multiplan/ParallelPlan.h" alt="" coords="1632,731,1795,773"/><area shape="rect" id="node17" href="demos_2PlannerData_8cpp_source.html" title="ompl/demos/PlannerData.cpp" alt="" coords="2492,829,2687,856"/><area shape="rect" id="node28" href="MorseGoal_8h_source.html" title="ompl/src/ompl/extensions\l/morse/MorseGoal.h" alt="" coords="1661,550,1832,591"/><area shape="rect" id="node23" href="GoalRegion_8h_source.html" title="ompl/src/ompl/base\l/goals/GoalRegion.h" alt="" coords="2222,550,2361,591"/><area shape="rect" id="node27" href="Goal_8cpp_source.html" title="ompl/src/ompl/base\l/src/Goal.cpp" alt="" coords="1856,550,1991,591"/><area shape="rect" id="node29" href="KoulesDirectedControlSampler_8h_source.html" title="ompl/demos/Koules/Koules\lDirectedControlSampler.h" alt="" coords="2016,550,2197,591"/><area shape="rect" id="node26" href="appUtil_8h_source.html" title="src/omplapp/apps/detail\l/appUtil.h" alt="" coords="1064,641,1223,682"/><area shape="rect" id="node35" href="base_2src_2PlannerDataStorage_8cpp_source.html" title="ompl/src/ompl/base\l/src/PlannerDataStorage.cpp" alt="" coords="2497,187,2687,229"/><area shape="rect" id="node36" href="control_2PlannerDataStorage_8h_source.html" title="ompl/src/ompl/control\l/PlannerDataStorage.h" alt="" coords="2317,187,2471,229"/></map>
+</div>
+</div>
+<p><a href="Console_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1msg_1_1OutputHandler.html">ompl::msg::OutputHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic class to handle output from a piece of code.  <a href="classompl_1_1msg_1_1OutputHandler.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1msg_1_1OutputHandlerSTD.html">ompl::msg::OutputHandlerSTD</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default implementation of <a class="el" href="classompl_1_1msg_1_1OutputHandler.html" title="Generic class to handle output from a piece of code. ">OutputHandler</a>. This sends the information to the console.  <a href="classompl_1_1msg_1_1OutputHandlerSTD.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1msg_1_1OutputHandlerFile.html">ompl::msg::OutputHandlerFile</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of <a class="el" href="classompl_1_1msg_1_1OutputHandler.html" title="Generic class to handle output from a piece of code. ">OutputHandler</a> that saves messages in a file.  <a href="classompl_1_1msg_1_1OutputHandlerFile.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceompl"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl.html">ompl</a></td></tr>
+<tr class="memdesc:namespaceompl"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main namespace. Contains everything in this library. <br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespaceompl_1_1msg"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1msg.html">ompl::msg</a></td></tr>
+<tr class="memdesc:namespaceompl_1_1msg"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message namespace. This contains classes needed to output error messages (or logging) from within the library. Message logging can be performed with <a class="el" href="group__logging.html">logging macros</a>. <br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga05ad3ae88188e7f248748785afd2b882"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(fmt,...)&#160;&#160;&#160;<a class="el" href="namespaceompl_1_1msg.html#affe7852f27c06f98af7eb2579f1e5350">ompl::msg::log</a>(__FILE__, __LINE__, ompl::msg::LOG_ERROR, fmt, ##__VA_ARGS__)</td></tr>
+<tr class="memdesc:ga05ad3ae88188e7f248748785afd2b882"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a formatted error string.  <a href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">More...</a><br/></td></tr>
+<tr class="separator:ga05ad3ae88188e7f248748785afd2b882"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab76357dced39cb468d2061d3358f80a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__logging.html#gab76357dced39cb468d2061d3358f80a6">OMPL_WARN</a>(fmt,...)&#160;&#160;&#160;<a class="el" href="namespaceompl_1_1msg.html#affe7852f27c06f98af7eb2579f1e5350">ompl::msg::log</a>(__FILE__, __LINE__, ompl::msg::LOG_WARN,  fmt, ##__VA_ARGS__)</td></tr>
+<tr class="memdesc:gab76357dced39cb468d2061d3358f80a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a formatted warning string.  <a href="group__logging.html#gab76357dced39cb468d2061d3358f80a6">More...</a><br/></td></tr>
+<tr class="separator:gab76357dced39cb468d2061d3358f80a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga04bc36d1b8c57ad7e13a8a48451a3a05"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(fmt,...)&#160;&#160;&#160;<a class="el" href="namespaceompl_1_1msg.html#affe7852f27c06f98af7eb2579f1e5350">ompl::msg::log</a>(__FILE__, __LINE__, ompl::msg::LOG_INFO,  fmt, ##__VA_ARGS__)</td></tr>
+<tr class="memdesc:ga04bc36d1b8c57ad7e13a8a48451a3a05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a formatted information string.  <a href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">More...</a><br/></td></tr>
+<tr class="separator:ga04bc36d1b8c57ad7e13a8a48451a3a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga576d0bc79b521f19c5415f330e2b173d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__logging.html#ga576d0bc79b521f19c5415f330e2b173d">OMPL_DEBUG</a>(fmt,...)&#160;&#160;&#160;<a class="el" href="namespaceompl_1_1msg.html#affe7852f27c06f98af7eb2579f1e5350">ompl::msg::log</a>(__FILE__, __LINE__, ompl::msg::LOG_DEBUG, fmt, ##__VA_ARGS__)</td></tr>
+<tr class="memdesc:ga576d0bc79b521f19c5415f330e2b173d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a formatted debugging string.  <a href="group__logging.html#ga576d0bc79b521f19c5415f330e2b173d">More...</a><br/></td></tr>
+<tr class="separator:ga576d0bc79b521f19c5415f330e2b173d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ace832246a7b4bc5a50dde93a7e29a6b9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1msg.html#ace832246a7b4bc5a50dde93a7e29a6b9">ompl::msg::LogLevel</a> { <br/>
+&#160;&#160;<b>LOG_DEBUG</b> = 0, 
+<b>LOG_INFO</b>, 
+<b>LOG_WARN</b>, 
+<b>LOG_ERROR</b>, 
+<br/>
+&#160;&#160;<b>LOG_NONE</b>
+<br/>
+ }</td></tr>
+<tr class="memdesc:ace832246a7b4bc5a50dde93a7e29a6b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The set of priorities for message logging. <br/></td></tr>
+<tr class="separator:ace832246a7b4bc5a50dde93a7e29a6b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a83e28f524a5576a73bb062523bbdc53d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83e28f524a5576a73bb062523bbdc53d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1msg.html#a83e28f524a5576a73bb062523bbdc53d">ompl::msg::noOutputHandler</a> ()</td></tr>
+<tr class="memdesc:a83e28f524a5576a73bb062523bbdc53d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function instructs ompl that no messages should be outputted. Equivalent to useOutputHandler(NULL) <br/></td></tr>
+<tr class="separator:a83e28f524a5576a73bb062523bbdc53d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae944620cc2012c5ffe07e8bb6186d28c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae944620cc2012c5ffe07e8bb6186d28c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1msg.html#ae944620cc2012c5ffe07e8bb6186d28c">ompl::msg::restorePreviousOutputHandler</a> ()</td></tr>
+<tr class="memdesc:ae944620cc2012c5ffe07e8bb6186d28c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restore the output handler that was previously in use (if any) <br/></td></tr>
+<tr class="separator:ae944620cc2012c5ffe07e8bb6186d28c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66fd8fd39855d4166ff40164fe4d9d6b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66fd8fd39855d4166ff40164fe4d9d6b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1msg.html#a66fd8fd39855d4166ff40164fe4d9d6b">ompl::msg::useOutputHandler</a> (OutputHandler *oh)</td></tr>
+<tr class="memdesc:a66fd8fd39855d4166ff40164fe4d9d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specify the instance of the <a class="el" href="classompl_1_1msg_1_1OutputHandler.html" title="Generic class to handle output from a piece of code. ">OutputHandler</a> to use. By default, this is <a class="el" href="classompl_1_1msg_1_1OutputHandlerSTD.html" title="Default implementation of OutputHandler. This sends the information to the console. ">OutputHandlerSTD</a>. <br/></td></tr>
+<tr class="separator:a66fd8fd39855d4166ff40164fe4d9d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e9a5d161592281f8caf01b0c8b2e746"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0e9a5d161592281f8caf01b0c8b2e746"></a>
+OutputHandler *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1msg.html#a0e9a5d161592281f8caf01b0c8b2e746">ompl::msg::getOutputHandler</a> ()</td></tr>
+<tr class="memdesc:a0e9a5d161592281f8caf01b0c8b2e746"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the instance of the <a class="el" href="classompl_1_1msg_1_1OutputHandler.html" title="Generic class to handle output from a piece of code. ">OutputHandler</a> currently used. This is NULL in case there is no output handler. <br/></td></tr>
+<tr class="separator:a0e9a5d161592281f8caf01b0c8b2e746"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c18c4617e713817e0e4fe7dc5c5c864"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c18c4617e713817e0e4fe7dc5c5c864"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1msg.html#a1c18c4617e713817e0e4fe7dc5c5c864">ompl::msg::setLogLevel</a> (LogLevel level)</td></tr>
+<tr class="memdesc:a1c18c4617e713817e0e4fe7dc5c5c864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the minimum level of logging data to output. Messages with lower logging levels will not be recorded. <br/></td></tr>
+<tr class="separator:a1c18c4617e713817e0e4fe7dc5c5c864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad43f0d2a008f25720e8111395c5ff314"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad43f0d2a008f25720e8111395c5ff314"></a>
+LogLevel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1msg.html#ad43f0d2a008f25720e8111395c5ff314">ompl::msg::getLogLevel</a> ()</td></tr>
+<tr class="memdesc:ad43f0d2a008f25720e8111395c5ff314"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the current level of logging data. Messages with lower logging levels will not be recorded. <br/></td></tr>
+<tr class="separator:ad43f0d2a008f25720e8111395c5ff314"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affe7852f27c06f98af7eb2579f1e5350"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="affe7852f27c06f98af7eb2579f1e5350"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceompl_1_1msg.html#affe7852f27c06f98af7eb2579f1e5350">ompl::msg::log</a> (const char *file, int line, LogLevel level, const char *m,...)</td></tr>
+<tr class="memdesc:affe7852f27c06f98af7eb2579f1e5350"><td class="mdescLeft">&#160;</td><td class="mdescRight">Root level logging function. This should not be invoked directly, but rather used via a <a class="el" href="group__logging.html">logging macro</a>. Formats the message string given the arguments and forwards the string to the output handler. <br/></td></tr>
+<tr class="separator:affe7852f27c06f98af7eb2579f1e5350"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

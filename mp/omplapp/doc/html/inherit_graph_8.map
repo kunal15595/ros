@@ -1,0 +1,110 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$classompl_1_1base_1_1Goal.html" title="Abstract definition of goals. " alt="" coords="193,107,314,133"/>
+<area shape="rect" id="node10" href="$classompl_1_1base_1_1OptimizationObjective.html" title="Abstract definition of optimization objectives. " alt="" coords="170,309,337,350"/>
+<area shape="rect" id="node17" href="$classompl_1_1base_1_1Path.html" title="Abstract definition of a path. " alt="" coords="193,523,314,549"/>
+<area shape="rect" id="node20" href="$classompl_1_1base_1_1Planner.html" title="Base class for a planner. " alt="" coords="184,1207,323,1233"/>
+<area shape="rect" id="node51" href="$classompl_1_1base_1_1PlannerData.html" title="Object containing planner generated vertex and edge data. It is assumed that all vertices are unique..." alt="" coords="170,1889,337,1916"/>
+<area shape="rect" id="node53" href="$classompl_1_1base_1_1ProblemDefinition.html" title="Definition of a problem to be solved. This includes the start state(s) for the system and a goal spec..." alt="" coords="155,1989,352,2016"/>
+<area shape="rect" id="node55" href="$classompl_1_1base_1_1ProjectionEvaluator.html" title="Abstract definition for a class computing projections to Rn. Implicit integer grids are imposed on th..." alt="" coords="150,2132,357,2159"/>
+<area shape="rect" id="node63" href="$classompl_1_1base_1_1SpaceInformation.html" title="The base class for space information. This contains all the information about the space planning is d..." alt="" coords="155,2321,351,2348"/>
+<area shape="rect" id="node66" href="$classompl_1_1base_1_1StateSampler.html" title="Abstract definition of a state space sampler. " alt="" coords="167,2576,340,2603"/>
+<area shape="rect" id="node75" href="$classompl_1_1base_1_1StateSpace.html" title="Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. " alt="" coords="172,2992,335,3019"/>
+<area shape="rect" id="node88" href="$classompl_1_1base_1_1ValidStateSampler.html" title="Abstract definition of a state sampler. " alt="" coords="152,3276,355,3303"/>
+<area shape="rect" id="node93" href="$classompl_1_1control_1_1ControlSampler.html" title="Abstract definition of a control sampler. Motion planners that need to sample controls will call func..." alt="" coords="156,3524,351,3551"/>
+<area shape="rect" id="node98" href="$classompl_1_1control_1_1ControlSpace.html" title="A control space representing the space of applicable controls. " alt="" coords="161,3752,345,3779"/>
+<area shape="rect" id="node105" href="$classompl_1_1control_1_1DirectedControlSampler.html" title="Abstract definition of a directed control sampler. Motion planners that need to sample controls that ..." alt="" coords="155,3902,351,3943"/>
+<area shape="rect" id="node109" href="$classompl_1_1tools_1_1Profiler.html" title="This is a simple thread&#45;safe tool for counting time spent in various chunks of code. This is different from external profiling tools in that it allows the user to count time spent in various bits of code (sub&#45;function granularity) or count how many times certain pieces of code are executed. " alt="" coords="186,3968,321,3995"/>
+<area shape="rect" id="node3" href="$classompl_1_1base_1_1GoalRegion.html" title="Definition of a goal region. " alt="" coords="441,56,604,83"/>
+<area shape="rect" id="node9" href="$classompl_1_1base_1_1MorseGoal.html" title="This is a goal class that is more amenable to Python. " alt="" coords="444,107,601,133"/>
+<area shape="rect" id="node4" href="$classompl_1_1base_1_1GoalSampleableRegion.html" title="Abstract definition of a goal region that can be sampled. " alt="" coords="709,49,899,90"/>
+<area shape="rect" id="node5" href="$classKoulesGoal.html" title="KoulesGoal" alt="" coords="1025,5,1114,32"/>
+<area shape="rect" id="node6" href="$classompl_1_1base_1_1GoalState.html" title="Definition of a goal state. " alt="" coords="993,56,1145,83"/>
+<area shape="rect" id="node7" href="$classompl_1_1base_1_1GoalStates.html" title="Definition of a set of goal states. " alt="" coords="990,107,1149,133"/>
+<area shape="rect" id="node8" href="$classompl_1_1base_1_1GoalLazySamples.html" title="Definition of a goal region that can be sampled, but the sampling process can be slow. This class allows sampling the happen in a separate thread, and the number of goals may increase, as the planner is running, in a thread&#45;safe manner. " alt="" coords="1219,107,1419,133"/>
+<area shape="rect" id="node11" href="$classompl_1_1base_1_1MechanicalWorkOptimizationObjective.html" title="An optimization objective which defines path cost using the idea of mechanical work. To be used in conjunction with TRRT. " alt="" coords="427,158,618,199"/>
+<area shape="rect" id="node12" href="$classompl_1_1base_1_1MinimaxObjective.html" title="The cost of a path is defined as the worst state cost over the entire path. This objective attempts t..." alt="" coords="423,224,622,251"/>
+<area shape="rect" id="node14" href="$classompl_1_1base_1_1MultiOptimizationObjective.html" title="This class allows for the definition of multiobjective optimal planning problems. Objectives are adde..." alt="" coords="425,275,620,317"/>
+<area shape="rect" id="node15" href="$classompl_1_1base_1_1PathLengthOptimizationObjective.html" title="An optimization objective which corresponds to optimizing path length. " alt="" coords="406,341,639,382"/>
+<area shape="rect" id="node16" href="$classompl_1_1base_1_1StateCostIntegralObjective.html" title="Defines optimization objectives where path cost can be represented as a path integral over a cost fun..." alt="" coords="425,406,621,447"/>
+<area shape="rect" id="node13" href="$classompl_1_1base_1_1MaximizeMinClearanceObjective.html" title="Objective for attempting to maximize the minimum clearance along a path. " alt="" coords="689,217,919,258"/>
+<area shape="rect" id="node18" href="$classompl_1_1control_1_1PathControl.html" title="Definition of a control path. " alt="" coords="435,472,610,499"/>
+<area shape="rect" id="node19" href="$classompl_1_1geometric_1_1PathGeometric.html" title="Definition of a geometric path. " alt="" coords="417,523,628,549"/>
+<area shape="rect" id="node21" href="$classompl_1_1control_1_1EST.html" title="Expansive Space Trees. " alt="" coords="457,573,588,600"/>
+<area shape="rect" id="node22" href="$classompl_1_1control_1_1KPIECE1.html" title="Kinodynamic Planning by Interior&#45;Exterior Cell Exploration. " alt="" coords="441,624,604,651"/>
+<area shape="rect" id="node23" href="$classompl_1_1control_1_1LTLPlanner.html" title="A planner for generating system trajectories to satisfy a logical specification given by an automaton..." alt="" coords="437,675,608,701"/>
+<area shape="rect" id="node24" href="$classompl_1_1control_1_1PDST.html" title="Path&#45;Directed Subdivision Tree. " alt="" coords="452,725,593,752"/>
+<area shape="rect" id="node25" href="$classompl_1_1control_1_1RRT.html" title="Rapidly&#45;exploring Random Tree. " alt="" coords="456,776,589,803"/>
+<area shape="rect" id="node26" href="$classompl_1_1control_1_1Syclop.html" title="Synergistic Combination of Layers of Planning. " alt="" coords="450,827,595,853"/>
+<area shape="rect" id="node29" href="$classompl_1_1geometric_1_1BKPIECE1.html" title="Bi&#45;directional KPIECE with one level of discretization. " alt="" coords="428,877,617,904"/>
+<area shape="rect" id="node30" href="$classompl_1_1geometric_1_1EST.html" title="Expansive Space Trees. " alt="" coords="448,928,597,955"/>
+<area shape="rect" id="node31" href="$classompl_1_1geometric_1_1FMT.html" title="Asymptotically Optimal Fast Marching Tree algorithm developed by L. Janson and M. Pavone..." alt="" coords="447,979,598,1005"/>
+<area shape="rect" id="node32" href="$classompl_1_1geometric_1_1KPIECE1.html" title="Kinematic Planning by Interior&#45;Exterior Cell Exploration. " alt="" coords="433,1029,613,1056"/>
+<area shape="rect" id="node33" href="$classompl_1_1geometric_1_1LazyRRT.html" title="Lazy RRT. " alt="" coords="433,1080,612,1107"/>
+<area shape="rect" id="node34" href="$classompl_1_1geometric_1_1LBKPIECE1.html" title="Lazy Bi&#45;directional KPIECE with one level of discretization. " alt="" coords="425,1131,621,1157"/>
+<area shape="rect" id="node35" href="$classompl_1_1geometric_1_1LBTRRT.html" title="Lower Bound Tree Rapidly&#45;exploring Random Trees. " alt="" coords="435,1181,610,1208"/>
+<area shape="rect" id="node36" href="$classompl_1_1geometric_1_1PDST.html" title="Path&#45;Directed Subdivision Tree. " alt="" coords="443,1232,602,1259"/>
+<area shape="rect" id="node37" href="$classompl_1_1geometric_1_1PRM.html" title="Probabilistic RoadMap planner. " alt="" coords="446,1283,599,1309"/>
+<area shape="rect" id="node41" href="$classompl_1_1geometric_1_1pRRT.html" title="Parallel RRT. " alt="" coords="443,1333,602,1360"/>
+<area shape="rect" id="node42" href="$classompl_1_1geometric_1_1pSBL.html" title="Parallel Single&#45;query Bi&#45;directional Lazy collision checking planner. " alt="" coords="445,1384,600,1411"/>
+<area shape="rect" id="node43" href="$classompl_1_1geometric_1_1RRT.html" title="Rapidly&#45;exploring Random Trees. " alt="" coords="447,1435,598,1461"/>
+<area shape="rect" id="node44" href="$classompl_1_1geometric_1_1RRTConnect.html" title="RRT&#45;Connect (RRTConnect) " alt="" coords="423,1485,623,1512"/>
+<area shape="rect" id="node45" href="$classompl_1_1geometric_1_1RRTstar.html" title="Optimal Rapidly&#45;exploring Random Trees. " alt="" coords="436,1536,609,1563"/>
+<area shape="rect" id="node46" href="$classompl_1_1geometric_1_1SBL.html" title="Single&#45;Query Bi&#45;Directional Probabilistic Roadmap Planner with Lazy Collision Checking. " alt="" coords="449,1587,597,1613"/>
+<area shape="rect" id="node47" href="$classompl_1_1geometric_1_1SPARS.html" title=" SPArse Roadmap Spanner technique. &#160;" alt="" coords="438,1637,607,1664"/>
+<area shape="rect" id="node48" href="$classompl_1_1geometric_1_1SPARStwo.html" title=" SPArse Roadmap Spanner Version 2.0 &#160;" alt="" coords="427,1688,618,1715"/>
+<area shape="rect" id="node49" href="$classompl_1_1geometric_1_1STRIDE.html" title="Search Tree with Resolution Independent Density Estimation. " alt="" coords="436,1739,609,1765"/>
+<area shape="rect" id="node50" href="$classompl_1_1geometric_1_1TRRT.html" title="Transition&#45;based Rapidly&#45;exploring Random Trees. " alt="" coords="443,1789,602,1816"/>
+<area shape="rect" id="node27" href="$classompl_1_1control_1_1SyclopEST.html" title="SyclopEST is Syclop with EST as its low&#45;level tree planner. " alt="" coords="719,801,889,828"/>
+<area shape="rect" id="node28" href="$classompl_1_1control_1_1SyclopRRT.html" title="SyclopRRT is Syclop with RRT as its low&#45;level tree planner. " alt="" coords="717,852,891,879"/>
+<area shape="rect" id="node38" href="$classompl_1_1geometric_1_1LazyPRM.html" title="Lazy Probabilistic RoadMap planner. " alt="" coords="713,1257,895,1284"/>
+<area shape="rect" id="node40" href="$classompl_1_1geometric_1_1PRMstar.html" title="PRM* planner. " alt="" coords="717,1308,891,1335"/>
+<area shape="rect" id="node39" href="$classompl_1_1geometric_1_1LazyPRMstar.html" title="PRM* planner. " alt="" coords="968,1257,1171,1284"/>
+<area shape="rect" id="node52" href="$classompl_1_1control_1_1PlannerData.html" title="Object containing planner generated vertex and edge data. It is assumed that all vertices are unique..." alt="" coords="434,1840,611,1867"/>
+<area shape="rect" id="node54" href="$classompl_1_1control_1_1LTLProblemDefinition.html" title="ompl::control::LTLProblem\lDefinition" alt="" coords="435,1891,610,1933"/>
+<area shape="rect" id="node56" href="$classKoulesProjection.html" title="KoulesProjection" alt="" coords="463,1957,583,1984"/>
+<area shape="rect" id="node57" href="$classompl_1_1base_1_1MorseProjection.html" title="This class implements a generic projection for the MorseStateSpace, namely, the subspace representing..." alt="" coords="429,2008,617,2035"/>
+<area shape="rect" id="node58" href="$classompl_1_1base_1_1RealVectorIdentityProjectionEvaluator.html" title="Define the identity projection. " alt="" coords="421,2059,624,2101"/>
+<area shape="rect" id="node59" href="$classompl_1_1base_1_1RealVectorLinearProjectionEvaluator.html" title="Definition for a class computing linear projections (multiplication of a k&#45;by&#45;n matrix to the the Rn ..." alt="" coords="425,2125,620,2166"/>
+<area shape="rect" id="node61" href="$classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html" title="Definition for a class computing orthogonal projections. " alt="" coords="411,2190,634,2231"/>
+<area shape="rect" id="node62" href="$classompl_1_1base_1_1SubspaceProjectionEvaluator.html" title="If the projection for a CompoundStateSpace is supposed to be the same as the one for one of its inclu..." alt="" coords="417,2255,628,2297"/>
+<area shape="rect" id="node60" href="$classompl_1_1base_1_1RealVectorRandomLinearProjectionEvaluator.html" title="Definition for a class computing a random linear projections. " alt="" coords="700,2125,908,2166"/>
+<area shape="rect" id="node64" href="$classompl_1_1control_1_1SpaceInformation.html" title="Space information containing necessary information for planning with controls. setup() needs to be ca..." alt="" coords="419,2321,626,2348"/>
+<area shape="rect" id="node65" href="$classompl_1_1control_1_1LTLSpaceInformation.html" title="ompl::control::LTLSpaceInformation" alt="" coords="689,2321,919,2348"/>
+<area shape="rect" id="node67" href="$classompl_1_1base_1_1CompoundStateSampler.html" title="Definition of a compound state sampler. This is useful to construct samplers for compound states..." alt="" coords="429,2373,617,2414"/>
+<area shape="rect" id="node68" href="$classompl_1_1base_1_1DiscreteStateSampler.html" title="State space sampler for discrete states. " alt="" coords="435,2438,610,2479"/>
+<area shape="rect" id="node69" href="$classompl_1_1base_1_1PrecomputedStateSampler.html" title="State space sampler for discrete states. " alt="" coords="421,2503,624,2545"/>
+<area shape="rect" id="node70" href="$classompl_1_1base_1_1RealVectorStateSampler.html" title="State sampler for the Rn state space. " alt="" coords="427,2569,618,2610"/>
+<area shape="rect" id="node71" href="$classompl_1_1base_1_1SO2StateSampler.html" title="State space sampler for SO(2) " alt="" coords="423,2635,622,2661"/>
+<area shape="rect" id="node72" href="$classompl_1_1base_1_1SO3StateSampler.html" title="State space sampler for SO(3), using quaternion representation. " alt="" coords="423,2685,622,2712"/>
+<area shape="rect" id="node73" href="$classompl_1_1base_1_1SubspaceStateSampler.html" title="Construct a sampler that samples only within a subspace of the space. " alt="" coords="431,2737,614,2778"/>
+<area shape="rect" id="node74" href="$classompl_1_1base_1_1TimeStateSampler.html" title="State space sampler for time. " alt="" coords="421,2803,624,2829"/>
+<area shape="rect" id="node76" href="$classompl_1_1base_1_1CompoundStateSpace.html" title="A space to allow the composition of state spaces. " alt="" coords="429,2854,617,2895"/>
+<area shape="rect" id="node83" href="$classompl_1_1base_1_1DiscreteStateSpace.html" title="A space representing discrete states; i.e. there are a small number of discrete states the system can..." alt="" coords="435,2919,610,2961"/>
+<area shape="rect" id="node84" href="$classompl_1_1base_1_1RealVectorStateSpace.html" title="A state space representing Rn. The distance function is the L2 norm. " alt="" coords="427,2985,618,3026"/>
+<area shape="rect" id="node85" href="$classompl_1_1base_1_1SO2StateSpace.html" title="A state space representing SO(2). The distance function and interpolation take into account angle wra..." alt="" coords="429,3051,617,3077"/>
+<area shape="rect" id="node86" href="$classompl_1_1base_1_1SO3StateSpace.html" title="A state space representing SO(3). The internal representation is done with quaternions. The distance between states is the angle between quaternions and interpolation is done with slerp. " alt="" coords="429,3101,617,3128"/>
+<area shape="rect" id="node87" href="$classompl_1_1base_1_1TimeStateSpace.html" title="A state space representing time. The time can be unbounded, in which case enforceBounds() is a no&#45;op..." alt="" coords="427,3152,618,3179"/>
+<area shape="rect" id="node77" href="$classompl_1_1base_1_1MorseStateSpace.html" title="State space representing MORSE states. " alt="" coords="705,2785,903,2812"/>
+<area shape="rect" id="node78" href="$classompl_1_1base_1_1SE2StateSpace.html" title="A state space representing SE(2) " alt="" coords="711,2836,897,2863"/>
+<area shape="rect" id="node81" href="$classompl_1_1base_1_1SE3StateSpace.html" title="A state space representing SE(3) " alt="" coords="711,2887,897,2913"/>
+<area shape="rect" id="node82" href="$classompl_1_1control_1_1OpenDEStateSpace.html" title="State space representing OpenDE states. " alt="" coords="711,2938,897,2979"/>
+<area shape="rect" id="node79" href="$classompl_1_1base_1_1DubinsStateSpace.html" title="An SE(2) state space where distance is measured by the length of Dubins curves. " alt="" coords="968,2807,1171,2833"/>
+<area shape="rect" id="node80" href="$classompl_1_1base_1_1ReedsSheppStateSpace.html" title="An SE(2) state space where distance is measured by the length of Reeds&#45;Shepp curves. " alt="" coords="969,2858,1169,2899"/>
+<area shape="rect" id="node89" href="$classompl_1_1base_1_1GaussianValidStateSampler.html" title="Generate valid samples using the Gaussian sampling strategy. " alt="" coords="433,3203,612,3245"/>
+<area shape="rect" id="node90" href="$classompl_1_1base_1_1MaximizeClearanceValidStateSampler.html" title="Generate valid samples randomly, but with a bias towards higher clearance. " alt="" coords="418,3269,627,3310"/>
+<area shape="rect" id="node91" href="$classompl_1_1base_1_1ObstacleBasedValidStateSampler.html" title="Generate valid samples using obstacle based sampling. First sample an invalid state, then sample a valid state. Then, interpolate from the invalid state to the valid state, returning the first valid state encountered. " alt="" coords="431,3334,614,3375"/>
+<area shape="rect" id="node92" href="$classompl_1_1base_1_1UniformValidStateSampler.html" title="A state sampler that only samples valid states, uniformly. " alt="" coords="438,3399,607,3441"/>
+<area shape="rect" id="node94" href="$classKoulesControlSampler.html" title="KoulesControlSampler" alt="" coords="447,3465,599,3492"/>
+<area shape="rect" id="node95" href="$classompl_1_1control_1_1CompoundControlSampler.html" title="Definition of a compound control sampler. This is useful to construct samplers for compound controls..." alt="" coords="417,3517,628,3558"/>
+<area shape="rect" id="node96" href="$classompl_1_1control_1_1DiscreteControlSampler.html" title="Control space sampler for discrete controls. " alt="" coords="425,3582,621,3623"/>
+<area shape="rect" id="node97" href="$classompl_1_1control_1_1RealVectorControlUniformSampler.html" title="Uniform sampler for the Rn state space. " alt="" coords="437,3647,608,3689"/>
+<area shape="rect" id="node99" href="$classompl_1_1control_1_1CompoundControlSpace.html" title="A control space to allow the composition of control spaces. " alt="" coords="417,3713,628,3754"/>
+<area shape="rect" id="node100" href="$classompl_1_1control_1_1DiscreteControlSpace.html" title="A space representing discrete controls; i.e. there are a small number of discrete controls the system..." alt="" coords="425,3778,621,3819"/>
+<area shape="rect" id="node101" href="$classompl_1_1control_1_1RealVectorControlSpace.html" title="A control space representing Rn. " alt="" coords="437,3843,608,3885"/>
+<area shape="rect" id="node102" href="$classKoulesControlSpace.html" title="KoulesControlSpace" alt="" coords="733,3792,875,3819"/>
+<area shape="rect" id="node103" href="$classompl_1_1control_1_1MorseControlSpace.html" title="Representation of controls applied in MORSE environments. This is an array of double values..." alt="" coords="713,3843,895,3885"/>
+<area shape="rect" id="node104" href="$classompl_1_1control_1_1OpenDEControlSpace.html" title="Representation of controls applied in OpenDE environments. This is an array of double values..." alt="" coords="705,3909,903,3950"/>
+<area shape="rect" id="node106" href="$classKoulesDirectedControlSampler.html" title="KoulesDirectedControlSampler" alt="" coords="422,3909,623,3936"/>
+<area shape="rect" id="node107" href="$classompl_1_1control_1_1SimpleDirectedControlSampler.html" title="Implementation of a simple directed control sampler. This is a basic implementation that does not act..." alt="" coords="425,3961,620,4002"/>
+<area shape="rect" id="node108" href="$classompl_1_1control_1_1SteeredControlSampler.html" title="Abstract definition of a steered control sampler. It uses the steering function in a state propagator..." alt="" coords="427,4026,619,4067"/>
+</map>

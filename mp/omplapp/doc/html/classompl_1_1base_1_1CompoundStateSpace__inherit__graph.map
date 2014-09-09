@@ -1,0 +1,9 @@
+<map id="ompl::base::CompoundStateSpace" name="ompl::base::CompoundStateSpace">
+<area shape="rect" id="node5" href="$classompl_1_1base_1_1MorseStateSpace.html" title="State space representing MORSE states. " alt="" coords="598,56,797,83"/>
+<area shape="rect" id="node6" href="$classompl_1_1base_1_1SE2StateSpace.html" title="A state space representing SE(2) " alt="" coords="604,107,791,133"/>
+<area shape="rect" id="node9" href="$classompl_1_1base_1_1SE3StateSpace.html" title="A state space representing SE(3) " alt="" coords="604,157,791,184"/>
+<area shape="rect" id="node10" href="$classompl_1_1control_1_1OpenDEStateSpace.html" title="State space representing OpenDE states. " alt="" coords="604,209,791,250"/>
+<area shape="rect" id="node2" href="$classompl_1_1base_1_1StateSpace.html" title="Representation of a space in which planning can be performed. Topology specific sampling, interpolation and distance are defined. " alt="" coords="149,107,312,133"/>
+<area shape="rect" id="node7" href="$classompl_1_1base_1_1DubinsStateSpace.html" title="An SE(2) state space where distance is measured by the length of Dubins curves. " alt="" coords="845,77,1048,104"/>
+<area shape="rect" id="node8" href="$classompl_1_1base_1_1ReedsSheppStateSpace.html" title="An SE(2) state space where distance is measured by the length of Reeds&#45;Shepp curves. " alt="" coords="847,129,1047,170"/>
+</map>

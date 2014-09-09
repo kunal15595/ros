@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::control::ODEErrorSolver&lt; Solver &gt; Class Template Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1control.html">control</a></li><li class="navelem"><a class="el" href="classompl_1_1control_1_1ODEErrorSolver.html">ODEErrorSolver</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="classompl_1_1control_1_1ODEErrorSolver-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::control::ODEErrorSolver&lt; Solver &gt; Class Template Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Solver for ordinary differential equations of the type q' = f(q, u), where q is the current state of the system and u is a control applied to the system. StateType defines the container object describing the state of the system. Solver is the numerical integration method used to solve the equations. The default is a fifth order Runge-Kutta Cash-Karp method with a fourth order error bound. This class wraps around the error stepper concept from boost::numeric::odeint.  
+ <a href="classompl_1_1control_1_1ODEErrorSolver.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ODESolver_8h_source.html">ODESolver.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ompl::control::ODEErrorSolver&lt; Solver &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="classompl_1_1control_1_1ODEErrorSolver__inherit__graph.png" border="0" usemap="#ompl_1_1control_1_1ODEErrorSolver_3_01Solver_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="ompl_1_1control_1_1ODEErrorSolver_3_01Solver_01_4_inherit__map" id="ompl_1_1control_1_1ODEErrorSolver_3_01Solver_01_4_inherit__map">
+<area shape="rect" id="node2" href="classompl_1_1control_1_1ODESolver.html" title="Abstract base class for an object that can solve ordinary differential equations (ODE) of the type q&#39;..." alt="" coords="19,5,189,32"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a04a2db0a9684971cb3ce15d48cb97a27"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04a2db0a9684971cb3ce15d48cb97a27"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODEErrorSolver.html#a04a2db0a9684971cb3ce15d48cb97a27">ODEErrorSolver</a> (const <a class="el" href="classompl_1_1control_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;si, const <a class="el" href="classompl_1_1control_1_1ODESolver.html#a82cda13c470cff3c531eecde6db366b2">ODESolver::ODE</a> &amp;ode, double intStep=1e-2)</td></tr>
+<tr class="memdesc:a04a2db0a9684971cb3ce15d48cb97a27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameterized constructor. Takes a reference to the <a class="el" href="classompl_1_1control_1_1SpaceInformation.html" title="Space information containing necessary information for planning with controls. setup() needs to be ca...">SpaceInformation</a>, an ODE to solve, and the integration step size - default is 0.01. <br/></td></tr>
+<tr class="separator:a04a2db0a9684971cb3ce15d48cb97a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d0fbb2f47ce9c61f92a373d483cd5d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d0fbb2f47ce9c61f92a373d483cd5d5"></a>
+<a class="el" href="classompl_1_1control_1_1ODESolver.html#a89dbf06c71fe9fa377dfa12184f1b597">ODESolver::StateType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODEErrorSolver.html#a3d0fbb2f47ce9c61f92a373d483cd5d5">getError</a> ()</td></tr>
+<tr class="memdesc:a3d0fbb2f47ce9c61f92a373d483cd5d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the error values from the most recent integration. <br/></td></tr>
+<tr class="separator:a3d0fbb2f47ce9c61f92a373d483cd5d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classompl_1_1control_1_1ODESolver"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classompl_1_1control_1_1ODESolver')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classompl_1_1control_1_1ODESolver.html">ompl::control::ODESolver</a></td></tr>
+<tr class="memitem:ae67c76208d28a41134b19b06c231df40 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae67c76208d28a41134b19b06c231df40"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODESolver.html#ae67c76208d28a41134b19b06c231df40">ODESolver</a> (const <a class="el" href="classompl_1_1control_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;si, const <a class="el" href="classompl_1_1control_1_1ODESolver.html#a82cda13c470cff3c531eecde6db366b2">ODE</a> &amp;ode, double intStep)</td></tr>
+<tr class="memdesc:ae67c76208d28a41134b19b06c231df40 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameterized constructor. Takes a reference to <a class="el" href="classompl_1_1control_1_1SpaceInformation.html" title="Space information containing necessary information for planning with controls. setup() needs to be ca...">SpaceInformation</a>, an ODE to solve, and the integration step size. <br/></td></tr>
+<tr class="separator:ae67c76208d28a41134b19b06c231df40 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2007e1376254b2691a0a0bab8fc1ddb2 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2007e1376254b2691a0a0bab8fc1ddb2"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODESolver.html#a2007e1376254b2691a0a0bab8fc1ddb2">~ODESolver</a> ()</td></tr>
+<tr class="memdesc:a2007e1376254b2691a0a0bab8fc1ddb2 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br/></td></tr>
+<tr class="separator:a2007e1376254b2691a0a0bab8fc1ddb2 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52b3602810f416987ac93c0cc058f613 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a52b3602810f416987ac93c0cc058f613"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODESolver.html#a52b3602810f416987ac93c0cc058f613">setODE</a> (const <a class="el" href="classompl_1_1control_1_1ODESolver.html#a82cda13c470cff3c531eecde6db366b2">ODE</a> &amp;ode)</td></tr>
+<tr class="memdesc:a52b3602810f416987ac93c0cc058f613 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the ODE to solve. <br/></td></tr>
+<tr class="separator:a52b3602810f416987ac93c0cc058f613 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6c429e89aa10d3b22d0ff064e8b1296 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab6c429e89aa10d3b22d0ff064e8b1296"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODESolver.html#ab6c429e89aa10d3b22d0ff064e8b1296">getIntegrationStepSize</a> () const </td></tr>
+<tr class="memdesc:ab6c429e89aa10d3b22d0ff064e8b1296 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the size of a single numerical integration step. <br/></td></tr>
+<tr class="separator:ab6c429e89aa10d3b22d0ff064e8b1296 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cb4e5fb8b5dc009726e16dcaf4e43a1 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6cb4e5fb8b5dc009726e16dcaf4e43a1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODESolver.html#a6cb4e5fb8b5dc009726e16dcaf4e43a1">setIntegrationStepSize</a> (double intStep)</td></tr>
+<tr class="memdesc:a6cb4e5fb8b5dc009726e16dcaf4e43a1 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the size of a single numerical integration step. <br/></td></tr>
+<tr class="separator:a6cb4e5fb8b5dc009726e16dcaf4e43a1 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dfe89f008df1d150159666e6b354764 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5dfe89f008df1d150159666e6b354764"></a>
+const <a class="el" href="classompl_1_1control_1_1SpaceInformationPtr.html">SpaceInformationPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODESolver.html#a5dfe89f008df1d150159666e6b354764">getSpaceInformation</a> () const </td></tr>
+<tr class="memdesc:a5dfe89f008df1d150159666e6b354764 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current instance of the space information. <br/></td></tr>
+<tr class="separator:a5dfe89f008df1d150159666e6b354764 inherit pub_methods_classompl_1_1control_1_1ODESolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:aed4b7507d00cee5a7b322d614e4419ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed4b7507d00cee5a7b322d614e4419ac"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODEErrorSolver.html#aed4b7507d00cee5a7b322d614e4419ac">solve</a> (<a class="el" href="classompl_1_1control_1_1ODESolver.html#a89dbf06c71fe9fa377dfa12184f1b597">StateType</a> &amp;state, const <a class="el" href="classompl_1_1control_1_1Control.html">Control</a> *control, const double duration) const </td></tr>
+<tr class="memdesc:aed4b7507d00cee5a7b322d614e4419ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve the ODE using boost::numeric::odeint. Save the resulting error values into error_. <br/></td></tr>
+<tr class="separator:aed4b7507d00cee5a7b322d614e4419ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a96513ba9e6e149937fb778cb38876c9f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a96513ba9e6e149937fb778cb38876c9f"></a>
+<a class="el" href="classompl_1_1control_1_1ODESolver.html#a89dbf06c71fe9fa377dfa12184f1b597">ODESolver::StateType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODEErrorSolver.html#a96513ba9e6e149937fb778cb38876c9f">error_</a></td></tr>
+<tr class="memdesc:a96513ba9e6e149937fb778cb38876c9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The error values calculated during numerical integration. <br/></td></tr>
+<tr class="separator:a96513ba9e6e149937fb778cb38876c9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classompl_1_1control_1_1ODESolver"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classompl_1_1control_1_1ODESolver')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classompl_1_1control_1_1ODESolver.html">ompl::control::ODESolver</a></td></tr>
+<tr class="memitem:a3f386d0befe4848b47c15f229acbeeb9 inherit pro_attribs_classompl_1_1control_1_1ODESolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f386d0befe4848b47c15f229acbeeb9"></a>
+const <a class="el" href="classompl_1_1control_1_1SpaceInformationPtr.html">SpaceInformationPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODESolver.html#a3f386d0befe4848b47c15f229acbeeb9">si_</a></td></tr>
+<tr class="memdesc:a3f386d0befe4848b47c15f229acbeeb9 inherit pro_attribs_classompl_1_1control_1_1ODESolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classompl_1_1control_1_1SpaceInformation.html" title="Space information containing necessary information for planning with controls. setup() needs to be ca...">SpaceInformation</a> that this <a class="el" href="classompl_1_1control_1_1ODESolver.html" title="Abstract base class for an object that can solve ordinary differential equations (ODE) of the type q&#39;...">ODESolver</a> operates in. <br/></td></tr>
+<tr class="separator:a3f386d0befe4848b47c15f229acbeeb9 inherit pro_attribs_classompl_1_1control_1_1ODESolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20164181bfd568ee1cd4ab83be32a734 inherit pro_attribs_classompl_1_1control_1_1ODESolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20164181bfd568ee1cd4ab83be32a734"></a>
+<a class="el" href="classompl_1_1control_1_1ODESolver.html#a82cda13c470cff3c531eecde6db366b2">ODE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODESolver.html#a20164181bfd568ee1cd4ab83be32a734">ode_</a></td></tr>
+<tr class="memdesc:a20164181bfd568ee1cd4ab83be32a734 inherit pro_attribs_classompl_1_1control_1_1ODESolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of the ODE to find solutions for. <br/></td></tr>
+<tr class="separator:a20164181bfd568ee1cd4ab83be32a734 inherit pro_attribs_classompl_1_1control_1_1ODESolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a089438a31ab20c9aef54103f3b16642d inherit pro_attribs_classompl_1_1control_1_1ODESolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a089438a31ab20c9aef54103f3b16642d"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODESolver.html#a089438a31ab20c9aef54103f3b16642d">intStep_</a></td></tr>
+<tr class="memdesc:a089438a31ab20c9aef54103f3b16642d inherit pro_attribs_classompl_1_1control_1_1ODESolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of the numerical integration step. Should be small to minimize error. <br/></td></tr>
+<tr class="separator:a089438a31ab20c9aef54103f3b16642d inherit pro_attribs_classompl_1_1control_1_1ODESolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_types_classompl_1_1control_1_1ODESolver"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classompl_1_1control_1_1ODESolver')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classompl_1_1control_1_1ODESolver.html">ompl::control::ODESolver</a></td></tr>
+<tr class="memitem:a89dbf06c71fe9fa377dfa12184f1b597 inherit pub_types_classompl_1_1control_1_1ODESolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89dbf06c71fe9fa377dfa12184f1b597"></a>
+typedef std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODESolver.html#a89dbf06c71fe9fa377dfa12184f1b597">StateType</a></td></tr>
+<tr class="memdesc:a89dbf06c71fe9fa377dfa12184f1b597 inherit pub_types_classompl_1_1control_1_1ODESolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">Portable data type for the state values. <br/></td></tr>
+<tr class="separator:a89dbf06c71fe9fa377dfa12184f1b597 inherit pub_types_classompl_1_1control_1_1ODESolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82cda13c470cff3c531eecde6db366b2 inherit pub_types_classompl_1_1control_1_1ODESolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82cda13c470cff3c531eecde6db366b2"></a>
+typedef boost::function&lt; void(const <br class="typebreak"/>
+<a class="el" href="classompl_1_1control_1_1ODESolver.html#a89dbf06c71fe9fa377dfa12184f1b597">StateType</a> &amp;, const <a class="el" href="classompl_1_1control_1_1Control.html">Control</a> <br class="typebreak"/>
+*, <a class="el" href="classompl_1_1control_1_1ODESolver.html#a89dbf06c71fe9fa377dfa12184f1b597">StateType</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODESolver.html#a82cda13c470cff3c531eecde6db366b2">ODE</a></td></tr>
+<tr class="memdesc:a82cda13c470cff3c531eecde6db366b2 inherit pub_types_classompl_1_1control_1_1ODESolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function that defines the ODE. Accepts the current state, input control, and output state. <br/></td></tr>
+<tr class="separator:a82cda13c470cff3c531eecde6db366b2 inherit pub_types_classompl_1_1control_1_1ODESolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8bc8236cdc7aef69ba332cd02d038dd inherit pub_types_classompl_1_1control_1_1ODESolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab8bc8236cdc7aef69ba332cd02d038dd"></a>
+typedef boost::function&lt; void(const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1State.html">base::State</a> *state, const <br class="typebreak"/>
+<a class="el" href="classompl_1_1control_1_1Control.html">Control</a> *control, const double <br class="typebreak"/>
+duration, <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> *result)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODESolver.html#ab8bc8236cdc7aef69ba332cd02d038dd">PostPropagationEvent</a></td></tr>
+<tr class="memdesc:ab8bc8236cdc7aef69ba332cd02d038dd inherit pub_types_classompl_1_1control_1_1ODESolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function to perform an event at the end of numerical integration. This functionality is optional. <br/></td></tr>
+<tr class="separator:ab8bc8236cdc7aef69ba332cd02d038dd inherit pub_types_classompl_1_1control_1_1ODESolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_methods_classompl_1_1control_1_1ODESolver"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classompl_1_1control_1_1ODESolver')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classompl_1_1control_1_1ODESolver.html">ompl::control::ODESolver</a></td></tr>
+<tr class="memitem:af77f9398111ae9d61e4e3b1a80d531f1 inherit pub_static_methods_classompl_1_1control_1_1ODESolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af77f9398111ae9d61e4e3b1a80d531f1"></a>
+static StatePropagatorPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1ODESolver.html#af77f9398111ae9d61e4e3b1a80d531f1">getStatePropagator</a> (<a class="el" href="classompl_1_1control_1_1ODESolverPtr.html">ODESolverPtr</a> solver, const <a class="el" href="classompl_1_1control_1_1ODESolver.html#ab8bc8236cdc7aef69ba332cd02d038dd">PostPropagationEvent</a> &amp;postEvent=NULL)</td></tr>
+<tr class="memdesc:af77f9398111ae9d61e4e3b1a80d531f1 inherit pub_static_methods_classompl_1_1control_1_1ODESolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a <a class="el" href="classompl_1_1control_1_1StatePropagator.html" title="Model the effect of controls on system states. ">StatePropagator</a> object that solves a system of ordinary differential equations defined by an <a class="el" href="classompl_1_1control_1_1ODESolver.html" title="Abstract base class for an object that can solve ordinary differential equations (ODE) of the type q&#39;...">ODESolver</a>. An optional PostPropagationEvent can also be specified as a callback after numerical integration is finished for further operations on the resulting state. <br/></td></tr>
+<tr class="separator:af77f9398111ae9d61e4e3b1a80d531f1 inherit pub_static_methods_classompl_1_1control_1_1ODESolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;class Solver = odeint::runge_kutta_cash_karp54&lt;ODESolver::StateType&gt;&gt;<br/>
+class ompl::control::ODEErrorSolver&lt; Solver &gt;</h3>
+
+<p>Solver for ordinary differential equations of the type q' = f(q, u), where q is the current state of the system and u is a control applied to the system. StateType defines the container object describing the state of the system. Solver is the numerical integration method used to solve the equations. The default is a fifth order Runge-Kutta Cash-Karp method with a fourth order error bound. This class wraps around the error stepper concept from boost::numeric::odeint. </p>
+
+<p>Definition at line <a class="el" href="ODESolver_8h_source.html#l00231">231</a> of file <a class="el" href="ODESolver_8h_source.html">ODESolver.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
+<li>ompl/src/ompl/control/<a class="el" href="ODESolver_8h_source.html">ODESolver.h</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:28 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

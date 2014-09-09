@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/extensions/triangle/src/TriangularDecomposition.cpp Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_090a46f3b112cd53a6064996c4b12332.html">extensions</a></li><li class="navelem"><a class="el" href="dir_f8875286cd0e731f1eff908eef85664f.html">triangle</a></li><li class="navelem"><a class="el" href="dir_94a8a8790e5cffaa49e265eda5040b3c.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">TriangularDecomposition.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2012, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Rice University nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Matt Maly */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;ompl/extensions/triangle/TriangularDecomposition.h&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;ompl/base/State.h&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;ompl/base/StateSampler.h&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;ompl/base/spaces/RealVectorBounds.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;ompl/control/planners/syclop/Decomposition.h&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;ompl/control/planners/syclop/GridDecomposition.h&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;ompl/util/RandomNumbers.h&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;ostream&gt;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &lt;boost/functional/hash.hpp&gt;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &lt;boost/lexical_cast.hpp&gt;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &lt;boost/unordered_map.hpp&gt;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">    #define REAL double</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define VOID void</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define ANSI_DECLARATORS</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #include &lt;triangle.h&gt;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1TriangularDecomposition.html#a312340319c406117f822c158c3c72ed9">   61</a></span>&#160;<a class="code" href="classompl_1_1control_1_1TriangularDecomposition.html#a312340319c406117f822c158c3c72ed9">ompl::control::TriangularDecomposition::TriangularDecomposition</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a> &amp;bounds,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">const</span> std::vector&lt;Polygon&gt; &amp;holes, <span class="keyword">const</span> std::vector&lt;Polygon&gt; &amp;intRegs) :</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classompl_1_1control_1_1Decomposition.html">Decomposition</a>(2, bounds),</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    holes_(holes),</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    intRegs_(intRegs),</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    triAreaPct_(0.005),</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    locator(64, this)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// TODO: Ensure that no two holes overlap and no two regions of interest overlap.</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">// Report an error otherwise.</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;ompl::control::TriangularDecomposition::~TriangularDecomposition(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">void</span> ompl::control::TriangularDecomposition::setup(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">int</span> numTriangles = createTriangles();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;Created %u triangles&quot;</span>, numTriangles);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    buildLocatorGrid();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">void</span> ompl::control::TriangularDecomposition::addHole(<span class="keyword">const</span> Polygon&amp; hole)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;{</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    holes_.push_back(hole);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">void</span> ompl::control::TriangularDecomposition::addRegionOfInterest(<span class="keyword">const</span> Polygon&amp; region)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    intRegs_.push_back(region);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">int</span> ompl::control::TriangularDecomposition::getNumHoles(<span class="keywordtype">void</span>)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">return</span> holes_.size();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keywordtype">int</span> ompl::control::TriangularDecomposition::getNumRegionsOfInterest(<span class="keywordtype">void</span>)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> intRegs_.size();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">const</span> std::vector&lt;ompl::control::TriangularDecomposition::Polygon&gt;&amp;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    ompl::control::TriangularDecomposition::getHoles(<span class="keywordtype">void</span>)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">return</span> holes_;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">const</span> std::vector&lt;ompl::control::TriangularDecomposition::Polygon&gt;&amp;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    ompl::control::TriangularDecomposition::getAreasOfInterest(<span class="keywordtype">void</span>)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">return</span> intRegs_;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1TriangularDecomposition.html#a198709031e9677c28897e65ef6455a8f">  116</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classompl_1_1control_1_1TriangularDecomposition.html#a198709031e9677c28897e65ef6455a8f">ompl::control::TriangularDecomposition::getRegionOfInterestAt</a>(<span class="keywordtype">int</span> triID)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">return</span> intRegInfo_[triID];</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1TriangularDecomposition.html#a2fb3f4e81c05f243db4b22f5b05ce798">  121</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classompl_1_1control_1_1TriangularDecomposition.html#a2fb3f4e81c05f243db4b22f5b05ce798">ompl::control::TriangularDecomposition::getRegionVolume</a>(<span class="keywordtype">int</span> triID)</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;{</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="structompl_1_1control_1_1TriangularDecomposition_1_1Triangle.html">Triangle</a>&amp; tri = triangles_[triID];</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">if</span> (tri.volume &lt; 0)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="comment">/* This triangle area formula relies on the vertices being</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">         * stored in counter-clockwise order. */</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        tri.volume = 0.5*(</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            (tri.pts[0].x-tri.pts[2].x)*(tri.pts[1].y-tri.pts[0].y)</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;          - (tri.pts[0].x-tri.pts[1].x)*(tri.pts[2].y-tri.pts[0].y)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        );</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">return</span> tri.volume;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1TriangularDecomposition.html#a07a86d8433791f4044aa067973f1d7f4">  136</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1TriangularDecomposition.html#a07a86d8433791f4044aa067973f1d7f4">ompl::control::TriangularDecomposition::getNeighbors</a>(<span class="keywordtype">int</span> triID, std::vector&lt;int&gt; &amp;neighbors)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    neighbors = triangles_[triID].neighbors;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1TriangularDecomposition.html#a363e3f5b7eb72423cf39fc0475b4463d">  141</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classompl_1_1control_1_1TriangularDecomposition.html#a363e3f5b7eb72423cf39fc0475b4463d">ompl::control::TriangularDecomposition::locateRegion</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a>* s)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    std::vector&lt;double&gt; coord(2);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    project(s, coord);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keyword">const</span> std::vector&lt;int&gt;&amp; gridTriangles = locator.locateTriangles(s);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordtype">int</span> triangle = -1;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">for</span> (std::vector&lt;int&gt;::const_iterator i = gridTriangles.begin(); i != gridTriangles.end(); ++i)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordtype">int</span> triID = *i;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">if</span> (triContains(triangles_[triID], coord))</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">if</span> (triangle &gt;= 0)</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                <a class="code" href="group__logging.html#gab76357dced39cb468d2061d3358f80a6">OMPL_WARN</a>(<span class="stringliteral">&quot;Decomposition space coordinate (%f,%f) is somehow contained by multiple triangles. \</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="stringliteral">                    This can happen if the coordinate is located exactly on a triangle segment.\n&quot;</span>,</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    coord[0], coord[1]);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            triangle = triID;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">return</span> triangle;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1TriangularDecomposition.html#aedb1d4f2373c718ec2d285f0c55863ac">  162</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1TriangularDecomposition.html#aedb1d4f2373c718ec2d285f0c55863ac">ompl::control::TriangularDecomposition::sampleFromRegion</a>(<span class="keywordtype">int</span> triID, <a class="code" href="classompl_1_1RNG.html">RNG</a>&amp; rng, std::vector&lt;double&gt;&amp; coord)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="comment">/* Uniformly sample a point from within a triangle, using the approach discussed in</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">     * http://math.stackexchange.com/questions/18686/uniform-random-point-in-triangle */</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keyword">const</span> <a class="code" href="structompl_1_1control_1_1TriangularDecomposition_1_1Triangle.html">Triangle</a>&amp; tri = triangles_[triID];</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    coord.resize(2);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> r1 = sqrt(rng.<a class="code" href="classompl_1_1RNG.html#af9450941c808fc53f30173c364bbfd25">uniform01</a>());</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> r2 = rng.<a class="code" href="classompl_1_1RNG.html#af9450941c808fc53f30173c364bbfd25">uniform01</a>();</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    coord[0] = (1-r1)*tri.pts[0].x + r1*(1-r2)*tri.pts[1].x + r1*r2*tri.pts[2].x;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    coord[1] = (1-r1)*tri.pts[0].y + r1*(1-r2)*tri.pts[1].y + r1*r2*tri.pts[2].y;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="keywordtype">void</span> ompl::control::TriangularDecomposition::print(std::ostream&amp; out)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="comment">/* For each triangle, print a line of the form</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">       N x1 y1 x2 y2 x3 y3 L1 L2 ... -1</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">       N is the ID of the triangle</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">       L1 L2 ... is the sequence of all regions of interest to which</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">       this triangle belongs. */</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; triangles_.size(); ++i)</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        out &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keyword">const</span> Triangle&amp; tri = triangles_[i];</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> v = 0; v &lt; 3; ++v)</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            out &lt;&lt; tri.pts[v].x &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; tri.pts[v].y &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        if (intRegInfo_[i] &gt; -1) out &lt;&lt; intRegInfo_[i] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        out &lt;&lt; <span class="stringliteral">&quot;-1&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;ompl::control::TriangularDecomposition::Vertex::Vertex(<span class="keywordtype">double</span> vx, <span class="keywordtype">double</span> vy) : x(vx), y(vy)</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;{</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="keywordtype">bool</span> ompl::control::TriangularDecomposition::Vertex::operator==(<span class="keyword">const</span> Vertex &amp;v)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordflow">return</span> x == v.x &amp;&amp; y == v.y;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;}</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="keyword">namespace </span>ompl</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;{</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keyword">namespace </span>control</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        std::size_t hash_value(<span class="keyword">const</span> TriangularDecomposition::Vertex &amp;v)</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            std::size_t hash = 0;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            boost::hash_combine(hash, v.x);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            boost::hash_combine(hash, v.y);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="keywordflow">return</span> hash;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;}</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1TriangularDecomposition.html#a56d507dad4636ad8d8b46c0cc797ef10">  215</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classompl_1_1control_1_1TriangularDecomposition.html#a56d507dad4636ad8d8b46c0cc797ef10">ompl::control::TriangularDecomposition::createTriangles</a>()</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;{</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="comment">/* create a conforming Delaunay triangulation</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">       where each triangle takes up no more than triAreaPct_ percentage of</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">       the total area of the decomposition space */</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a>&amp; bounds = getBounds();</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> maxTriangleArea = bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a962ab967cf72fdca4d446b41052430e1">getVolume</a>() * triAreaPct_;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    std::string triswitches = <span class="stringliteral">&quot;pDznQA -a&quot;</span> + boost::lexical_cast&lt;std::string&gt;(maxTriangleArea);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keyword">struct </span>triangulateio in;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="comment">/* Some vertices may be duplicates, such as when an obstacle has a vertex equivalent</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">       to one at the corner of the bounding box of the decomposition.</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">       libtriangle does not perform correctly if points are duplicated in the pointlist;</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">       so, to prevent duplicate vertices, we use a hashmap from Vertex to the index for</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">       that Vertex in the pointlist. We&#39;ll fill the map with Vertex objects,</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">       and then we&#39;ll actually add them to the pointlist. */</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    boost::unordered_map&lt;Vertex, int&gt; pointIndex;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="comment">// First, add the points from the bounding box</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    pointIndex[<a class="code" href="structompl_1_1control_1_1TriangularDecomposition_1_1Vertex.html">Vertex</a>(bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a36ebebb6a9e116093581afbd07425baa">low</a>[0], bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a36ebebb6a9e116093581afbd07425baa">low</a>[1])] = 0;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    pointIndex[<a class="code" href="structompl_1_1control_1_1TriangularDecomposition_1_1Vertex.html">Vertex</a>(bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a06827561804a768d6ee86a20a664153c">high</a>[0], bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a36ebebb6a9e116093581afbd07425baa">low</a>[1])] = 1;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    pointIndex[<a class="code" href="structompl_1_1control_1_1TriangularDecomposition_1_1Vertex.html">Vertex</a>(bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a06827561804a768d6ee86a20a664153c">high</a>[0], bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a06827561804a768d6ee86a20a664153c">high</a>[1])] = 2;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    pointIndex[<a class="code" href="structompl_1_1control_1_1TriangularDecomposition_1_1Vertex.html">Vertex</a>(bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a36ebebb6a9e116093581afbd07425baa">low</a>[0], bounds.<a class="code" href="classompl_1_1base_1_1RealVectorBounds.html#a06827561804a768d6ee86a20a664153c">high</a>[1])] = 3;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="comment">/* in.numberofpoints equals the total number of unique vertices.</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">       in.numberofsegments is slightly different: it equals the total number of given vertices.</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment">       They will both be at least 4, due to the bounding box. */</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    in.numberofpoints = 4;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    in.numberofsegments = 4;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keyword">typedef</span> std::vector&lt;Polygon&gt;::const_iterator PolyIter;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keyword">typedef</span> std::vector&lt;Vertex&gt;::const_iterator VertexIter;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="comment">//Run through obstacle vertices in holes_, and tally point and segment counters</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">for</span> (PolyIter p = holes_.begin(); p != holes_.end(); ++p)</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordflow">for</span> (VertexIter v = p-&gt;pts.begin(); v != p-&gt;pts.end(); ++v)</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            ++in.numberofsegments;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="comment">/* Only assign an index to this vertex (and tally the point counter)</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="comment">               if this is a newly discovered vertex. */</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <span class="keywordflow">if</span> (pointIndex.find(*v) == pointIndex.end())</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                pointIndex[*v] = in.numberofpoints++;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="comment">/* Run through region-of-interest vertices in intRegs_, and tally point and segment counters.</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">       Here we&#39;re following the same logic as above with holes_. */</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">for</span> (PolyIter p = intRegs_.begin(); p != intRegs_.end(); ++p)</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="keywordflow">for</span> (VertexIter v = p-&gt;pts.begin(); v != p-&gt;pts.end(); ++v)</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            ++in.numberofsegments;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keywordflow">if</span> (pointIndex.find(*v) == pointIndex.end())</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                pointIndex[*v] = in.numberofpoints++;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    }</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="comment">//in.pointlist is a sequence (x1 y1 x2 y2 ...) of ordered pairs of points</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    in.pointlist = (REAL*) malloc(2*in.numberofpoints*<span class="keyword">sizeof</span>(REAL));</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="comment">//add unique vertices from our map, using their assigned indices</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keyword">typedef</span> boost::unordered_map&lt;Vertex, int&gt;::const_iterator IndexIter;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">for</span> (IndexIter i = pointIndex.begin(); i != pointIndex.end(); ++i)</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keyword">const</span> <a class="code" href="structompl_1_1control_1_1TriangularDecomposition_1_1Vertex.html">Vertex</a>&amp; v = i-&gt;first;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keywordtype">int</span> index = i-&gt;second;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        in.pointlist[2*index] = v.x;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        in.pointlist[2*index+1] = v.y;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="comment">/* in.segmentlist is a sequence (a1 b1 a2 b2 ...) of pairs of indices into</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment">       in.pointlist to designate a segment between the respective points. */</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    in.segmentlist = (<span class="keywordtype">int</span>*) malloc(2*in.numberofsegments*<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="comment">//First, add segments for the bounding box</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 4; ++i)</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        in.segmentlist[2*i] = i;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        in.segmentlist[2*i+1] = (i+1) % 4;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    }</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="comment">/* segIndex keeps track of where we are in in.segmentlist,</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="comment">       as we fill it from multiple sources of data. */</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordtype">int</span> segIndex = 4;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="comment">/* Now, add segments for each obstacle in holes_, using our index map</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="comment">       from before to get the pointlist index for each vertex */</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordflow">for</span> (PolyIter p = holes_.begin(); p != holes_.end(); ++p)</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0; j &lt; p-&gt;pts.size(); ++j)</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            in.segmentlist[2*segIndex] = pointIndex[p-&gt;pts[j]];</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            in.segmentlist[2*segIndex+1] = pointIndex[p-&gt;pts[(j+1)%p-&gt;pts.size()]];</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            ++segIndex;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="comment">/* Now, add segments for each region-of-interest in intRegs_,</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="comment">       using the same logic as before. */</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">for</span> (PolyIter p = intRegs_.begin(); p != intRegs_.end(); ++p)</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0; j &lt; p-&gt;pts.size(); ++j)</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            in.segmentlist[2*segIndex] = pointIndex[p-&gt;pts[j]];</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            in.segmentlist[2*segIndex+1] = pointIndex[p-&gt;pts[(j+1)%p-&gt;pts.size()]];</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            ++segIndex;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    }</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="comment">/* libtriangle needs an interior point for each obstacle in holes_.</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="comment">       For now, we&#39;ll assume that each obstacle is convex, and we&#39;ll</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="comment">       generate the interior points ourselves using getPointInPoly. */</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    in.numberofholes = holes_.size();</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    in.holelist = NULL;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">if</span> (in.numberofholes &gt; 0)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="comment">/* holelist is a sequence (x1 y1 x2 y2 ...) of ordered pairs of interior points.</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="comment">           The i^th ordered pair is an interior point of the i^th obstacle in holes_. */</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        in.holelist = (REAL*) malloc(2*in.numberofholes*<span class="keyword">sizeof</span>(REAL));</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; in.numberofholes; ++i)</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        {</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            <a class="code" href="structompl_1_1control_1_1TriangularDecomposition_1_1Vertex.html">Vertex</a> v = getPointInPoly(holes_[i]);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            in.holelist[2*i] = v.x;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            in.holelist[2*i+1] = v.y;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        }</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="comment">/* Similar to above, libtriangle needs an interior point for each</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="comment">       region-of-interest in intRegs_. We follow the same assumption as before</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment">       that each region-of-interest is convex. */</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    in.numberofregions = intRegs_.size();</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    in.regionlist = NULL;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordflow">if</span> (in.numberofregions &gt; 0)</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    {</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        <span class="comment">/* regionlist is a sequence (x1 y1 L1 -1 x2 y2 L2 -1 ...) of ordered triples,</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="comment">           each ended with -1. The i^th ordered pair (xi,yi,Li) is an interior point</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="comment">           of the i^th region-of-interest in intRegs_, which is assigned the integer</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="comment">           label Li. */</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        in.regionlist = (REAL*) malloc(4*in.numberofregions*<span class="keyword">sizeof</span>(REAL));</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; intRegs_.size(); ++i)</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            <a class="code" href="structompl_1_1control_1_1TriangularDecomposition_1_1Vertex.html">Vertex</a> v = getPointInPoly(intRegs_[i]);</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            in.regionlist[4*i] = v.x;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            in.regionlist[4*i+1] = v.y;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <span class="comment">//triangles outside of interesting regions get assigned an attribute of zero by default</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            <span class="comment">//so let&#39;s number our attributes from 1 to numProps, then shift it down by 1 when we&#39;re done</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            in.regionlist[4*i+2] = (REAL) (i+1);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            in.regionlist[4*i+3] = -1.;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        }</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    }</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="comment">//mark remaining input fields as unused</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    in.segmentmarkerlist = (<span class="keywordtype">int</span>*) NULL;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    in.numberofpointattributes = 0;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    in.pointattributelist = NULL;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    in.pointmarkerlist = NULL;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="comment">//initialize output libtriangle structure, which will hold the results of the triangulation</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <span class="keyword">struct </span>triangulateio out;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    out.pointlist = (REAL*) NULL;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    out.pointattributelist = (REAL*) NULL;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    out.pointmarkerlist = (<span class="keywordtype">int</span>*) NULL;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    out.trianglelist = (<span class="keywordtype">int</span>*) NULL;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    out.triangleattributelist = (REAL*) NULL;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    out.neighborlist = (<span class="keywordtype">int</span>*) NULL;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    out.segmentlist = (<span class="keywordtype">int</span>*) NULL;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    out.segmentmarkerlist = (<span class="keywordtype">int</span>*) NULL;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    out.edgelist = (<span class="keywordtype">int</span>*) NULL;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    out.edgemarkerlist = (<span class="keywordtype">int</span>*) NULL;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    out.pointlist = (REAL*) NULL;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    out.pointattributelist = (REAL*) NULL;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    out.trianglelist = (<span class="keywordtype">int</span>*) NULL;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    out.triangleattributelist = (REAL*) NULL;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="comment">//call the triangulation routine</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    triangulate(const_cast&lt;char*&gt;(triswitches.c_str()), &amp;in, &amp;out, NULL);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    triangles_.resize(out.numberoftriangles);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    intRegInfo_.resize(out.numberoftriangles);</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; out.numberoftriangles; ++i)</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    {</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        <a class="code" href="structompl_1_1control_1_1TriangularDecomposition_1_1Triangle.html">Triangle</a>&amp; t = triangles_[i];</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; 3; ++j)</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        {</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            t.pts[j].x = out.pointlist[2*out.trianglelist[3*i+j]];</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            t.pts[j].y = out.pointlist[2*out.trianglelist[3*i+j]+1];</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            <span class="keywordflow">if</span> (out.neighborlist[3*i+j] &gt;= 0)</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                t.neighbors.push_back(out.neighborlist[3*i+j]);</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        }</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        t.volume = -1.;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        <span class="keywordflow">if</span> (in.numberofregions &gt; 0)</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        {</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            <span class="keywordtype">int</span> attribute = (int) out.triangleattributelist[i];</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            <span class="comment">/* Shift the region-of-interest ID&#39;s down to start from zero. */</span></div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            intRegInfo_[i] = (attribute &gt; 0 ? attribute-1 : -1);</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        }</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    }</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    trifree(in.pointlist);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    trifree(in.segmentlist);</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <span class="keywordflow">if</span> (in.numberofholes &gt; 0)</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        trifree(in.holelist);</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keywordflow">if</span> (in.numberofregions &gt; 0)</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        trifree(in.regionlist);</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    trifree(out.pointlist);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    trifree(out.pointattributelist);</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    trifree(out.pointmarkerlist);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    trifree(out.trianglelist);</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    trifree(out.triangleattributelist);</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    trifree(out.neighborlist);</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    trifree(out.edgelist);</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    trifree(out.edgemarkerlist);</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    trifree(out.segmentlist);</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    trifree(out.segmentmarkerlist);</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <span class="keywordflow">return</span> out.numberoftriangles;</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;}</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;<span class="keywordtype">void</span> ompl::control::TriangularDecomposition::LocatorGrid::buildTriangleMap(<span class="keyword">const</span> std::vector&lt;Triangle&gt;&amp; triangles)</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;{</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    regToTriangles_.resize(getNumRegions());</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    std::vector&lt;double&gt; bboxLow(2);</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    std::vector&lt;double&gt; bboxHigh(2);</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    std::vector&lt;int&gt; gridCoord[2];</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; triangles.size(); ++i)</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    {</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        <span class="comment">/* for Triangle tri, compute the smallest rectangular</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="comment">         * bounding box that contains tri. */</span></div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        <span class="keyword">const</span> Triangle&amp; tri = triangles[i];</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        bboxLow[0] = tri.pts[0].x;</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        bboxLow[1] = tri.pts[0].y;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        bboxHigh[0] = bboxLow[0];</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        bboxHigh[1] = bboxLow[1];</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 1; j &lt; 3; ++j)</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        {</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;            <span class="keywordflow">if</span> (tri.pts[j].x &lt; bboxLow[0])</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                bboxLow[0] = tri.pts[j].x;</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (tri.pts[j].x &gt; bboxHigh[0])</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;                bboxHigh[0] = tri.pts[j].x;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            <span class="keywordflow">if</span> (tri.pts[j].y &lt; bboxLow[1])</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                bboxLow[1] = tri.pts[j].y;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (tri.pts[j].y &gt; bboxHigh[1])</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;                bboxHigh[1] = tri.pts[j].y;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        }</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        <span class="comment">/* Convert the bounding box into grid cell coordinates */</span></div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;        coordToGridCoord(bboxLow, gridCoord[0]);</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;        coordToGridCoord(bboxHigh, gridCoord[1]);</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;        <span class="comment">/* Every grid cell within bounding box gets</span></div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;<span class="comment">           tri added to its map entry */</span></div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        std::vector&lt;int&gt; c(2);</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = gridCoord[0][0]; x &lt;= gridCoord[1][0]; ++x)</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        {</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = gridCoord[0][1]; y &lt;= gridCoord[1][1]; ++y)</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            {</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                c[0] = x;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                c[1] = y;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                <span class="keywordtype">int</span> cellID = gridCoordToRegion(c);</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;                regToTriangles_[cellID].push_back(i);</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            }</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        }</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    }</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;}</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="keywordtype">void</span> ompl::control::TriangularDecomposition::buildLocatorGrid()</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;{</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;    locator.buildTriangleMap(triangles_);</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;}</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;<span class="keywordtype">bool</span> ompl::control::TriangularDecomposition::triContains(<span class="keyword">const</span> Triangle&amp; tri, <span class="keyword">const</span> std::vector&lt;double&gt;&amp; coord)</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;{</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; ++i)</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    {</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;        <span class="comment">/* point (coord[0],coord[1]) needs to be to the left of</span></div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;<span class="comment">           the vector from (ax,ay) to (bx,by) */</span></div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">double</span> ax = tri.pts[i].x;</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">double</span> ay = tri.pts[i].y;</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">double</span> bx = tri.pts[(i+1)%3].x;</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">double</span> by = tri.pts[(i+1)%3].y;</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        <span class="comment">// return false if the point is instead to the right of the vector</span></div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;        <span class="keywordflow">if</span> ((coord[0]-ax)*(by-ay) - (bx-ax)*(coord[1]-ay) &gt; 0.)</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    }</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;}</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;<a class="code" href="structompl_1_1control_1_1TriangularDecomposition_1_1Vertex.html">ompl::control::TriangularDecomposition::Vertex</a> ompl::control::TriangularDecomposition::getPointInPoly(<span class="keyword">const</span> Polygon&amp; poly)</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;{</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    Vertex p;</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    p.x = 0.;</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    p.y = 0.;</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    <span class="keywordflow">for</span> (std::vector&lt;Vertex&gt;::const_iterator i = poly.pts.begin(); i != poly.pts.end(); ++i)</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    {</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        p.x += i-&gt;x;</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;        p.y += i-&gt;y;</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;    }</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    p.x /= poly.pts.size();</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    p.y /= poly.pts.size();</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    <span class="keywordflow">return</span> p;</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;}</div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorBounds_html_a962ab967cf72fdca4d446b41052430e1"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorBounds.html#a962ab967cf72fdca4d446b41052430e1">ompl::base::RealVectorBounds::getVolume</a></div><div class="ttdeci">double getVolume() const </div><div class="ttdoc">Compute the volume of the space enclosed by the bounds. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorBounds_8cpp_source.html#l00071">RealVectorBounds.cpp:71</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorBounds_html_a36ebebb6a9e116093581afbd07425baa"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorBounds.html#a36ebebb6a9e116093581afbd07425baa">ompl::base::RealVectorBounds::low</a></div><div class="ttdeci">std::vector&lt; double &gt; low</div><div class="ttdoc">Lower bound. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorBounds_8h_source.html#l00085">RealVectorBounds.h:85</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1TriangularDecomposition_1_1Vertex_html"><div class="ttname"><a href="structompl_1_1control_1_1TriangularDecomposition_1_1Vertex.html">ompl::control::TriangularDecomposition::Vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="TriangularDecomposition_8h_source.html#l00060">TriangularDecomposition.h:60</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1TriangularDecomposition_html_a363e3f5b7eb72423cf39fc0475b4463d"><div class="ttname"><a href="classompl_1_1control_1_1TriangularDecomposition.html#a363e3f5b7eb72423cf39fc0475b4463d">ompl::control::TriangularDecomposition::locateRegion</a></div><div class="ttdeci">virtual int locateRegion(const base::State *s) const </div><div class="ttdoc">Returns the index of the region containing a given State. Most often, this is obtained by first calli...</div><div class="ttdef"><b>Definition:</b> <a href="TriangularDecomposition_8cpp_source.html#l00141">TriangularDecomposition.cpp:141</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1TriangularDecomposition_html_a2fb3f4e81c05f243db4b22f5b05ce798"><div class="ttname"><a href="classompl_1_1control_1_1TriangularDecomposition.html#a2fb3f4e81c05f243db4b22f5b05ce798">ompl::control::TriangularDecomposition::getRegionVolume</a></div><div class="ttdeci">virtual double getRegionVolume(int triID)</div><div class="ttdoc">Returns the volume of a given region in this Decomposition. </div><div class="ttdef"><b>Definition:</b> <a href="TriangularDecomposition_8cpp_source.html#l00121">TriangularDecomposition.cpp:121</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1TriangularDecomposition_html_a56d507dad4636ad8d8b46c0cc797ef10"><div class="ttname"><a href="classompl_1_1control_1_1TriangularDecomposition.html#a56d507dad4636ad8d8b46c0cc797ef10">ompl::control::TriangularDecomposition::createTriangles</a></div><div class="ttdeci">virtual int createTriangles()</div><div class="ttdoc">Helper method to triangulate the space and return the number of triangles. </div><div class="ttdef"><b>Definition:</b> <a href="TriangularDecomposition_8cpp_source.html#l00215">TriangularDecomposition.cpp:215</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1TriangularDecomposition_html_a07a86d8433791f4044aa067973f1d7f4"><div class="ttname"><a href="classompl_1_1control_1_1TriangularDecomposition.html#a07a86d8433791f4044aa067973f1d7f4">ompl::control::TriangularDecomposition::getNeighbors</a></div><div class="ttdeci">virtual void getNeighbors(int triID, std::vector&lt; int &gt; &amp;neighbors) const </div><div class="ttdoc">Stores a given region&#39;s neighbors into a given vector. </div><div class="ttdef"><b>Definition:</b> <a href="TriangularDecomposition_8cpp_source.html#l00136">TriangularDecomposition.cpp:136</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1Decomposition_html"><div class="ttname"><a href="classompl_1_1control_1_1Decomposition.html">ompl::control::Decomposition</a></div><div class="ttdoc">A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...</div><div class="ttdef"><b>Definition:</b> <a href="Syclop_2Decomposition_8h_source.html#l00062">Decomposition.h:62</a></div></div>
+<div class="ttc" id="classompl_1_1RNG_html_af9450941c808fc53f30173c364bbfd25"><div class="ttname"><a href="classompl_1_1RNG.html#af9450941c808fc53f30173c364bbfd25">ompl::RNG::uniform01</a></div><div class="ttdeci">double uniform01()</div><div class="ttdoc">Generate a random real between 0 and 1. </div><div class="ttdef"><b>Definition:</b> <a href="RandomNumbers_8h_source.html#l00062">RandomNumbers.h:62</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1TriangularDecomposition_html_aedb1d4f2373c718ec2d285f0c55863ac"><div class="ttname"><a href="classompl_1_1control_1_1TriangularDecomposition.html#aedb1d4f2373c718ec2d285f0c55863ac">ompl::control::TriangularDecomposition::sampleFromRegion</a></div><div class="ttdeci">virtual void sampleFromRegion(int triID, RNG &amp;rng, std::vector&lt; double &gt; &amp;coord) const </div><div class="ttdoc">Samples a projected coordinate from a given region. </div><div class="ttdef"><b>Definition:</b> <a href="TriangularDecomposition_8cpp_source.html#l00162">TriangularDecomposition.cpp:162</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1TriangularDecomposition_html_a198709031e9677c28897e65ef6455a8f"><div class="ttname"><a href="classompl_1_1control_1_1TriangularDecomposition.html#a198709031e9677c28897e65ef6455a8f">ompl::control::TriangularDecomposition::getRegionOfInterestAt</a></div><div class="ttdeci">int getRegionOfInterestAt(int triID) const </div><div class="ttdoc">Returns the region of interest that contains the given triangle ID. Returns -1 if the triangle ID is ...</div><div class="ttdef"><b>Definition:</b> <a href="TriangularDecomposition_8cpp_source.html#l00116">TriangularDecomposition.cpp:116</a></div></div>
+<div class="ttc" id="classompl_1_1RNG_html"><div class="ttname"><a href="classompl_1_1RNG.html">ompl::RNG</a></div><div class="ttdoc">Random number generation. An instance of this class cannot be used by multiple threads at once (membe...</div><div class="ttdef"><b>Definition:</b> <a href="RandomNumbers_8h_source.html#l00054">RandomNumbers.h:54</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorBounds_html_a06827561804a768d6ee86a20a664153c"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorBounds.html#a06827561804a768d6ee86a20a664153c">ompl::base::RealVectorBounds::high</a></div><div class="ttdeci">std::vector&lt; double &gt; high</div><div class="ttdoc">Upper bound. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorBounds_8h_source.html#l00088">RealVectorBounds.h:88</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="group__logging_html_gab76357dced39cb468d2061d3358f80a6"><div class="ttname"><a href="group__logging.html#gab76357dced39cb468d2061d3358f80a6">OMPL_WARN</a></div><div class="ttdeci">#define OMPL_WARN(fmt,...)</div><div class="ttdoc">Log a formatted warning string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00066">Console.h:66</a></div></div>
+<div class="ttc" id="structompl_1_1control_1_1TriangularDecomposition_1_1Triangle_html"><div class="ttname"><a href="structompl_1_1control_1_1TriangularDecomposition_1_1Triangle.html">ompl::control::TriangularDecomposition::Triangle</a></div><div class="ttdef"><b>Definition:</b> <a href="TriangularDecomposition_8h_source.html#l00077">TriangularDecomposition.h:77</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1RealVectorBounds_html"><div class="ttname"><a href="classompl_1_1base_1_1RealVectorBounds.html">ompl::base::RealVectorBounds</a></div><div class="ttdoc">The lower and upper bounds for an Rn space. </div><div class="ttdef"><b>Definition:</b> <a href="RealVectorBounds_8h_source.html#l00048">RealVectorBounds.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1TriangularDecomposition_html_a312340319c406117f822c158c3c72ed9"><div class="ttname"><a href="classompl_1_1control_1_1TriangularDecomposition.html#a312340319c406117f822c158c3c72ed9">ompl::control::TriangularDecomposition::TriangularDecomposition</a></div><div class="ttdeci">TriangularDecomposition(const base::RealVectorBounds &amp;bounds, const std::vector&lt; Polygon &gt; &amp;holes=std::vector&lt; Polygon &gt;(), const std::vector&lt; Polygon &gt; &amp;intRegs=std::vector&lt; Polygon &gt;())</div><div class="ttdoc">Creates a TriangularDecomposition over the given bounds, which must be 2-dimensional. The underlying mesh will be a conforming Delaunay triangulation. The triangulation will ignore any obstacles, given as a list of polygons. The triangulation will respect the boundaries of any regions of interest, given as a list of polygons. No two obstacles may overlap, and no two regions of interest may overlap. </div><div class="ttdef"><b>Definition:</b> <a href="TriangularDecomposition_8cpp_source.html#l00061">TriangularDecomposition.cpp:61</a></div></div>
+<div class="ttc" id="group__logging_html_ga04bc36d1b8c57ad7e13a8a48451a3a05"><div class="ttname"><a href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a></div><div class="ttdeci">#define OMPL_INFORM(fmt,...)</div><div class="ttdoc">Log a formatted information string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00068">Console.h:68</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

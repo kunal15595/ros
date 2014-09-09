@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/geometric/planners/rrt/src/TRRT.cpp Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_1f57d97647ebda1e28cc730ac7313960.html">geometric</a></li><li class="navelem"><a class="el" href="dir_955a6a93aceef09599971796437d173a.html">planners</a></li><li class="navelem"><a class="el" href="dir_736ec1218ec11c17ebed8baec76dcd23.html">rrt</a></li><li class="navelem"><a class="el" href="dir_d338dba13966c9829e7850dc0578c858.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">TRRT.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Copyright (c) 2008, Willow Garage, Inc.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *   * Neither the name of the Willow Garage nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> *     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> *     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> *  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> *********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Dave Coleman */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;ompl/geometric/planners/rrt/TRRT.h&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;ompl/base/objectives/MechanicalWorkOptimizationObjective.h&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;ompl/base/goals/GoalSampleableRegion.h&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;ompl/tools/config/SelfConfig.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;ompl/tools/config/MagicConstants.h&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1TRRT.html#ad61a99cc1f7a4b5c1156ad165e37ef38">   44</a></span>&#160;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#ad61a99cc1f7a4b5c1156ad165e37ef38">ompl::geometric::TRRT::TRRT</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1SpaceInformationPtr.html">base::SpaceInformationPtr</a> &amp;si) : base::Planner(si, <span class="stringliteral">&quot;TRRT&quot;</span>)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// Standard RRT Variables</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">specs_</a>.<a class="code" href="structompl_1_1base_1_1PlannerSpecs.html#ae2facc9260851b161577e36f5a4baefc">approximateSolutions</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">specs_</a>.<a class="code" href="structompl_1_1base_1_1PlannerSpecs.html#abe3ce1c340ba64c14644b0cace72907d">directed</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1TRRT.html#a206a7dffcb734c7888fa6aeb310a5515">goalBias_</a> = 0.05;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1TRRT.html#ad9bf201c78f94737e55f67a2bdc11419">maxDistance_</a> = 0.0; <span class="comment">// set in setup()</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1TRRT.html#a52ccfe22a44bb4a3f52b4fe4212741d1">lastGoalMotion_</a> = NULL;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    Planner::declareParam&lt;double&gt;(<span class="stringliteral">&quot;range&quot;</span>, <span class="keyword">this</span>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a88488f425f4ff5f47f973a31b4de97b2">TRRT::setRange</a>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a83dc7084b66fba052c95ef7ab1c6fa5c">TRRT::getRange</a>, <span class="stringliteral">&quot;0.:1.:10000.&quot;</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    Planner::declareParam&lt;double&gt;(<span class="stringliteral">&quot;goal_bias&quot;</span>, <span class="keyword">this</span>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#abf01bc73f6a435029e40fa1cde168c79">TRRT::setGoalBias</a>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a97d6e3f42122c3dddddc2fcc9ce628c3">TRRT::getGoalBias</a>, <span class="stringliteral">&quot;0.:.05:1.&quot;</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// TRRT Specific Variables</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1TRRT.html#a213e79967a30dee30c175796b6a7816b">frontierThreshold_</a> = 0.0; <span class="comment">// set in setup()</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1TRRT.html#af33399bd16f300f10d897aaa84e0fad8">kConstant_</a> = 0.0; <span class="comment">// set in setup()</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1TRRT.html#ac612c34a89a67aeb453200a73f663429">maxStatesFailed_</a> = 10; <span class="comment">// threshold for when to start increasing the temperatuer</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1TRRT.html#a634ef8c26dd94c7b717259c3949d7be2">tempChangeFactor_</a> = 2.0; <span class="comment">// how much to decrease or increase the temp each time</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1TRRT.html#ab019e468ab50924ed23231d09ae0c23d">minTemperature_</a> = 10e-10; <span class="comment">// lower limit of the temperature change</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1TRRT.html#a8ae55d97410606a2451914f9b86931e0">initTemperature_</a> = 10e-6; <span class="comment">// where the temperature starts out</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1TRRT.html#aec0140776240aaed71d592699ffc6758">frontierNodeRatio_</a> = 0.1; <span class="comment">// 1/10, or 1 nonfrontier for every 10 frontier</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    Planner::declareParam&lt;unsigned int&gt;(<span class="stringliteral">&quot;max_states_failed&quot;</span>, <span class="keyword">this</span>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a0a6b7a5e23692b1af3f9261635c276dc">TRRT::setMaxStatesFailed</a>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#ad1513104e678e7bbaa692cd0611a78d4">TRRT::getMaxStatesFailed</a>, <span class="stringliteral">&quot;1:1000&quot;</span>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    Planner::declareParam&lt;double&gt;(<span class="stringliteral">&quot;temp_change_factor&quot;</span>, <span class="keyword">this</span>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a5f24a1e38a63214cb5a64c8631fd3a71">TRRT::setTempChangeFactor</a>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#afc8f374836ea953ce31f39ae7ffadd16">TRRT::getTempChangeFactor</a>,<span class="stringliteral">&quot;0.:.1:10.&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    Planner::declareParam&lt;double&gt;(<span class="stringliteral">&quot;min_temperature&quot;</span>, <span class="keyword">this</span>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a3a98de79ffc482f8c0627f07d9ba6a3f">TRRT::setMinTemperature</a>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a6333634f70be73d89dfac1fe85fcbb9a">TRRT::getMinTemperature</a>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    Planner::declareParam&lt;double&gt;(<span class="stringliteral">&quot;init_temperature&quot;</span>, <span class="keyword">this</span>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a54b75fca0c41d89db8d3475f8a546096">TRRT::setInitTemperature</a>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a0b5ea98d817c6cd49128f852a1e1eb5e">TRRT::getInitTemperature</a>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    Planner::declareParam&lt;double&gt;(<span class="stringliteral">&quot;frontier_threshold&quot;</span>, <span class="keyword">this</span>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a4de4dc950c5b705cc831408c155d6ef0">TRRT::setFrontierThreshold</a>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a859dcba093f63c8f2cb8af2c52b37af0">TRRT::getFrontierThreshold</a>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    Planner::declareParam&lt;double&gt;(<span class="stringliteral">&quot;frontierNodeRatio&quot;</span>, <span class="keyword">this</span>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a2ca9ee4a3c36a22e1935cf2f419adb1e">TRRT::setFrontierNodeRatio</a>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a3f7a972865cdbdba92517cfad0295385">TRRT::getFrontierNodeRatio</a>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    Planner::declareParam&lt;double&gt;(<span class="stringliteral">&quot;k_constant&quot;</span>, <span class="keyword">this</span>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a20070c4430825a99d07f4a7ca129afdc">TRRT::setKConstant</a>, &amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a38859df2314c90a63f028e7f7edddadf">TRRT::getKConstant</a>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;ompl::geometric::TRRT::~TRRT()</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    freeMemory();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1TRRT.html#a1fe3a3b4d040bd5846cd0888928969c1">   80</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1TRRT.html#a1fe3a3b4d040bd5846cd0888928969c1">ompl::geometric::TRRT::clear</a>()</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    Planner::clear();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    sampler_.reset();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    freeMemory();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span> (nearestNeighbors_)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        nearestNeighbors_-&gt;clear();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    lastGoalMotion_ = NULL;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">// Clear TRRT specific variables ---------------------------------------------------------</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    numStatesFailed_ = 0;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    temp_ = initTemperature_;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    nonfrontierCount_ = 1;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    frontierCount_ = 1; <span class="comment">// init to 1 to prevent division by zero error</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1TRRT.html#ad98e2d1a83fc2f3a4851129422449220">   96</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1TRRT.html#ad98e2d1a83fc2f3a4851129422449220">ompl::geometric::TRRT::setup</a>()</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;{</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    Planner::setup();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="classompl_1_1tools_1_1SelfConfig.html">tools::SelfConfig</a> selfConfig(si_, getName());</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">bool</span> usingDefaultObjective = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">if</span> (!pdef_-&gt;hasOptimizationObjective())</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;%s: No optimization objective specified.&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        usingDefaultObjective = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">else</span> </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        usingDefaultObjective = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">if</span> (usingDefaultObjective)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        opt_.reset(<span class="keyword">new</span> <a class="code" href="classompl_1_1base_1_1MechanicalWorkOptimizationObjective.html">base::MechanicalWorkOptimizationObjective</a>(si_));</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;%s: Defaulting to optimizing path length.&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        opt_ = pdef_-&gt;getOptimizationObjective();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">// Set maximum distance a new node can be from its nearest neighbor</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (maxDistance_ &lt; std::numeric_limits&lt;double&gt;::epsilon())</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        selfConfig.<a class="code" href="classompl_1_1tools_1_1SelfConfig.html#a65bff53ea4bc6f158342a856175ab9a6">configurePlannerRange</a>(maxDistance_);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        maxDistance_ *= <a class="code" href="namespaceompl_1_1magic.html#a3c9c3d6c0ee87fea2dbc5fa7484d15fa">magic::COST_MAX_MOTION_LENGTH_AS_SPACE_EXTENT_FRACTION</a>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="comment">// Set the threshold that decides if a new node is a frontier node or non-frontier node</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">if</span> (frontierThreshold_ &lt; std::numeric_limits&lt;double&gt;::epsilon())</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        frontierThreshold_ = si_-&gt;getMaximumExtent() * 0.01;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <a class="code" href="group__logging.html#ga576d0bc79b521f19c5415f330e2b173d">OMPL_DEBUG</a>(<span class="stringliteral">&quot;%s: Frontier threshold detected to be %lf&quot;</span>, getName().c_str(), frontierThreshold_);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="comment">// Autoconfigure the K constant</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">if</span> (kConstant_ &lt; std::numeric_limits&lt;double&gt;::epsilon())</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="comment">// Find the average cost of states by sampling</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordtype">double</span> averageCost = opt_-&gt;averageStateCost(<a class="code" href="namespaceompl_1_1magic.html#ad96353c64e790206f36a2fb9b2c7d646">magic::TEST_STATE_COUNT</a>).v;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        kConstant_ = averageCost;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <a class="code" href="group__logging.html#ga576d0bc79b521f19c5415f330e2b173d">OMPL_DEBUG</a>(<span class="stringliteral">&quot;%s: K constant detected to be %lf&quot;</span>, getName().c_str(), kConstant_);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="comment">// Create the nearest neighbor function the first time setup is run</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">if</span> (!nearestNeighbors_)</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        nearestNeighbors_.reset(tools::SelfConfig::getDefaultNearestNeighbors&lt;Motion*&gt;(si_-&gt;getStateSpace()));</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="comment">// Set the distance function</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    nearestNeighbors_-&gt;setDistanceFunction(boost::bind(&amp;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#aace4cb9b2319d9de00ae7e831692a028">TRRT::distanceFunction</a>, <span class="keyword">this</span>, _1, _2));</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="comment">// Setup TRRT specific variables ---------------------------------------------------------</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    numStatesFailed_ = 0;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    temp_ = initTemperature_;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    nonfrontierCount_ = 1;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    frontierCount_ = 1; <span class="comment">// init to 1 to prevent division by zero error</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1TRRT.html#a0afc6e754e4bcb83b29d292312c54eea">  157</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1TRRT.html#a0afc6e754e4bcb83b29d292312c54eea">ompl::geometric::TRRT::freeMemory</a>()</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;{</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="comment">// Delete all motions, states and the nearest neighbors data structure</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">if</span> (nearestNeighbors_)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        std::vector&lt;Motion*&gt; motions;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        nearestNeighbors_-&gt;list(motions);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; motions.size() ; ++i)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <span class="keywordflow">if</span> (motions[i]-&gt;state)</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                si_-&gt;freeState(motions[i]-&gt;state);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keyword">delete</span> motions[i];</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;}</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<a class="code" href="structompl_1_1base_1_1PlannerStatus.html">ompl::base::PlannerStatus</a></div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1TRRT.html#a080d1409db867e5a321dba9a766723c7">  174</a></span>&#160;<a class="code" href="classompl_1_1geometric_1_1TRRT.html#a080d1409db867e5a321dba9a766723c7">ompl::geometric::TRRT::solve</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerTerminationCondition.html">base::PlannerTerminationCondition</a> &amp;plannerTerminationCondition)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;{</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="comment">// Basic error checking</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    checkValidity();</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="comment">// Goal information</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <a class="code" href="classompl_1_1base_1_1Goal.html">base::Goal</a>                 *goal   = pdef_-&gt;getGoal().get();</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html">base::GoalSampleableRegion</a> *goalRegion = <span class="keyword">dynamic_cast&lt;</span><a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html">base::GoalSampleableRegion</a>*<span class="keyword">&gt;</span>(goal);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="comment">// Input States ---------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="comment">// Loop through valid input states and add to tree</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *state = pis_.nextStart())</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="comment">// Allocate memory for a new start state motion based on the &quot;space-information&quot;-size</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html">Motion</a> *motion = <span class="keyword">new</span> <a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html">Motion</a>(si_);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="comment">// Copy destination &lt;= source</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        si_-&gt;copyState(motion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#ad8a60f42d44cc444ac030b14be55bfad">state</a>, state);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="comment">// Set cost for this start state</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        motion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#a878515236711e1725a914092c7afb142">cost</a> = opt_-&gt;stateCost(motion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#ad8a60f42d44cc444ac030b14be55bfad">state</a>);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="comment">// Add start motion to the tree</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        nearestNeighbors_-&gt;add(motion);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="comment">// Check that input states exist</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">if</span> (nearestNeighbors_-&gt;size() == 0)</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <a class="code" href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a>(<span class="stringliteral">&quot;%s: There are no valid initial states!&quot;</span>, getName().c_str());</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547">base::PlannerStatus::INVALID_START</a>;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="comment">// Create state sampler if this is TRRT&#39;s first run</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">if</span> (!sampler_)</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        sampler_ = si_-&gt;allocStateSampler();</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="comment">// Debug</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;%s: Starting planning with %u states already in datastructure&quot;</span>, getName().c_str(), nearestNeighbors_-&gt;size());</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="comment">// Solver variables ------------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="comment">// the final solution</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html">Motion</a> *solution  = NULL;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="comment">// the approximate solution, returned if no final solution found</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html">Motion</a> *approxSolution = NULL;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="comment">// track the distance from goal to closest solution yet found</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordtype">double</span>  approxDifference = std::numeric_limits&lt;double&gt;::infinity();</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="comment">// distance between states - the intial state and the interpolated state (may be the same)</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordtype">double</span> randMotionDistance;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keywordtype">double</span> motionDistance;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="comment">// Create random motion and a pointer (for optimization) to its state</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html">Motion</a> *randMotion   = <span class="keyword">new</span> <a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html">Motion</a>(si_);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html">Motion</a> *nearMotion;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="comment">// STATES</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="comment">// The random state</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *randState = randMotion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#ad8a60f42d44cc444ac030b14be55bfad">state</a>;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="comment">// The new state that is generated between states *to* and *from*</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *interpolatedState = si_-&gt;allocState(); <span class="comment">// Allocates &quot;space information&quot;-sized memory for a state</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="comment">// The chosen state btw rand_state and interpolated_state</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <a class="code" href="classompl_1_1base_1_1State.html">base::State</a> *newState;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="comment">// Begin sampling --------------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordflow">while</span> (plannerTerminationCondition() == <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="comment">// I.</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="comment">// Sample random state (with goal biasing probability)</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keywordflow">if</span> (goalRegion &amp;&amp; rng_.uniform01() &lt; goalBias_ &amp;&amp; goalRegion-&gt;<a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html#a16108536f4fcf4595db8c0f16818afd1">canSample</a>())</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="comment">// Bias sample towards goal</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            goalRegion-&gt;<a class="code" href="classompl_1_1base_1_1GoalSampleableRegion.html#a11c9d2c4d9d5ddbeb8c30e531d1efc5f">sampleGoal</a>(randState);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="comment">// Uniformly Sample</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            sampler_-&gt;sampleUniform(randState);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="comment">// II.</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="comment">// Find closest state in the tree</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        nearMotion = nearestNeighbors_-&gt;nearest(randMotion);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="comment">// III.</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="comment">// Distance from near state q_n to a random state</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        randMotionDistance = si_-&gt;distance(nearMotion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#ad8a60f42d44cc444ac030b14be55bfad">state</a>, randState);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="comment">// Check if the rand_state is too far away</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keywordflow">if</span> (randMotionDistance &gt; maxDistance_)</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            <span class="comment">// Computes the state that lies at time t in [0, 1] on the segment that connects *from* state to *to* state.</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <span class="comment">// The memory location of *state* is not required to be different from the memory of either *from* or *to*.</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            si_-&gt;getStateSpace()-&gt;interpolate(nearMotion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#ad8a60f42d44cc444ac030b14be55bfad">state</a>, randState,</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                                              maxDistance_ / randMotionDistance, interpolatedState);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="comment">// Update the distance between near and new with the interpolated_state</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            motionDistance = si_-&gt;distance(nearMotion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#ad8a60f42d44cc444ac030b14be55bfad">state</a>, interpolatedState);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            <span class="comment">// Use the interpolated state as the new state</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            newState = interpolatedState;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            <span class="comment">// Random state is close enough</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            newState = randState;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="comment">// Copy the distance</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            motionDistance = randMotionDistance;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <span class="comment">// IV.</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="comment">// this stage integrates collision detections in the presence of obstacles and checks for collisions</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="keywordflow">if</span> (!si_-&gt;checkMotion(nearMotion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#ad8a60f42d44cc444ac030b14be55bfad">state</a>, newState))</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            <span class="keywordflow">continue</span>; <span class="comment">// try a new sample</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="comment">// Minimum Expansion Control</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="comment">// A possible side effect may appear when the tree expansion toward unexplored regions remains slow, and the</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="comment">// new nodes contribute only to refine already explored regions.</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        <span class="keywordflow">if</span> (!minExpansionControl(randMotionDistance))</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        {</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            <span class="keywordflow">continue</span>; <span class="comment">// give up on this one and try a new sample</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <a class="code" href="structompl_1_1base_1_1Cost.html">base::Cost</a> childCost = opt_-&gt;stateCost(newState);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="comment">// Only add this motion to the tree if the tranistion test accepts it</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="keywordflow">if</span>(!transitionTest(childCost.<a class="code" href="structompl_1_1base_1_1Cost.html#a2f0ece6f8517fe9a49d27b5855426ee6">v</a>, nearMotion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#a878515236711e1725a914092c7afb142">cost</a>.<a class="code" href="structompl_1_1base_1_1Cost.html#a2f0ece6f8517fe9a49d27b5855426ee6">v</a>, motionDistance))</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        {</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <span class="keywordflow">continue</span>; <span class="comment">// give up on this one and try a new sample</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        }</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        <span class="comment">// V.</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="comment">// Create a motion</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html">Motion</a> *motion = <span class="keyword">new</span> <a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html">Motion</a>(si_);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        si_-&gt;copyState(motion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#ad8a60f42d44cc444ac030b14be55bfad">state</a>, newState);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        motion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#a51193986d21f3cbb4e356e143c7e4100">parent</a> = nearMotion; <span class="comment">// link q_new to q_near as an edge</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        motion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#a878515236711e1725a914092c7afb142">cost</a> = childCost;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <span class="comment">// Add motion to data structure</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        nearestNeighbors_-&gt;add(motion);</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="comment">// VI.</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <span class="comment">// Check if this motion is the goal</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="keywordtype">double</span> distToGoal = 0.0;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="keywordtype">bool</span> isSatisfied = goal-&gt;<a class="code" href="classompl_1_1base_1_1Goal.html#a02ba4ba487714cd4e8f67c9d4164d0ec">isSatisfied</a>(motion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#ad8a60f42d44cc444ac030b14be55bfad">state</a>, &amp;distToGoal);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <span class="keywordflow">if</span> (isSatisfied)</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            approxDifference = distToGoal; <span class="comment">// the tolerated error distance btw state and goal</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            solution = motion; <span class="comment">// set the final solution</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="comment">// Is this the closest solution we&#39;ve found so far</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keywordflow">if</span> (distToGoal &lt; approxDifference)</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        {</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            approxDifference = distToGoal;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            approxSolution = motion;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        }</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    } <span class="comment">// end of solver sampling loop</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="comment">// Finish solution processing --------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keywordtype">bool</span> solved = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keywordtype">bool</span> approximate = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="comment">// Substitute an empty solution with the best approximation</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keywordflow">if</span> (solution == NULL)</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    {</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        solution = approxSolution;</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        approximate = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    }</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="comment">// Generate solution path for real/approx solution</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="keywordflow">if</span> (solution != NULL)</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    {</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        lastGoalMotion_ = solution;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="comment">// construct the solution path</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        std::vector&lt;Motion*&gt; mpath;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <span class="keywordflow">while</span> (solution != NULL)</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            mpath.push_back(solution);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            solution = solution-&gt;parent;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        }</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        <span class="comment">// set the solution path</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <a class="code" href="classompl_1_1geometric_1_1PathGeometric.html">PathGeometric</a> *path = <span class="keyword">new</span> <a class="code" href="classompl_1_1geometric_1_1PathGeometric.html">PathGeometric</a>(si_);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = mpath.size() - 1 ; i &gt;= 0 ; --i)</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            path-&gt;<a class="code" href="classompl_1_1geometric_1_1PathGeometric.html#aa9eb3ea81cc3ab442aae67d311bc4156">append</a>(mpath[i]-&gt;state);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        pdef_-&gt;addSolutionPath(<a class="code" href="classompl_1_1base_1_1PathPtr.html">base::PathPtr</a>(path), approximate, approxDifference, getName());</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        solved = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="comment">// Clean up ---------------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    si_-&gt;freeState(interpolatedState);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">if</span> (randMotion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#ad8a60f42d44cc444ac030b14be55bfad">state</a>)</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        si_-&gt;freeState(randMotion-&gt;<a class="code" href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#ad8a60f42d44cc444ac030b14be55bfad">state</a>);</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="keyword">delete</span> randMotion;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <a class="code" href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a>(<span class="stringliteral">&quot;%s: Created %u states&quot;</span>, getName().c_str(), nearestNeighbors_-&gt;size());</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structompl_1_1base_1_1PlannerStatus.html">base::PlannerStatus</a>(solved, approximate);</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;}</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;</div>
+<div class="line"><a name="l00400"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1TRRT.html#a194d0564d5210e7e73a6bf3f4d14a26e">  400</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classompl_1_1geometric_1_1TRRT.html#a194d0564d5210e7e73a6bf3f4d14a26e">ompl::geometric::TRRT::getPlannerData</a>(<a class="code" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a> &amp;data)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    Planner::getPlannerData(data);</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    std::vector&lt;Motion*&gt; motions;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    <span class="keywordflow">if</span> (nearestNeighbors_)</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        nearestNeighbors_-&gt;list(motions);</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    <span class="keywordflow">if</span> (lastGoalMotion_)</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">addGoalVertex</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(lastGoalMotion_-&gt;state));</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; motions.size() ; ++i)</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    {</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        <span class="keywordflow">if</span> (motions[i]-&gt;parent == NULL)</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">addStartVertex</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i]-&gt;state));</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            data.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(<a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i]-&gt;parent-&gt;state),</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                         <a class="code" href="classompl_1_1base_1_1PlannerDataVertex.html">base::PlannerDataVertex</a>(motions[i]-&gt;state));</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    }</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;}</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;</div>
+<div class="line"><a name="l00421"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1TRRT.html#a67463baa5c779c6e8b0095e7a3145e1d">  421</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1geometric_1_1TRRT.html#a67463baa5c779c6e8b0095e7a3145e1d">ompl::geometric::TRRT::transitionTest</a>(<span class="keywordtype">double</span> childCost, <span class="keywordtype">double</span> parentCost, <span class="keywordtype">double</span> distance)</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;{</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    <span class="comment">// Always accept if new state has same or lower cost than old state</span></div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <span class="keywordflow">if</span> (childCost &lt;= parentCost)</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="comment">// Difference in cost</span></div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="keywordtype">double</span> costSlope = (childCost - parentCost) / distance;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <span class="comment">// The probability of acceptance of a new configuration is defined by comparing its cost c_j</span></div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="comment">// relatively to the cost c_i of its parent in the tree. Based on the Metropolis criterion.</span></div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <span class="keywordtype">double</span> transitionProbability = 1.; <span class="comment">// if cost_slope is &lt;= 0, probabilty is 1</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="comment">// Only return at end</span></div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keywordtype">bool</span> result = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="comment">// Calculate tranision probabilty</span></div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    <span class="keywordflow">if</span> (costSlope &gt; 0)</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    {</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        transitionProbability = exp(-costSlope / (kConstant_ * temp_));</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    }</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    <span class="comment">// Check if we can accept it</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="keywordflow">if</span> (rng_.uniform01() &lt;= transitionProbability)</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    {</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        <span class="keywordflow">if</span> (temp_ &gt; minTemperature_)</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        {</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            temp_ /= tempChangeFactor_;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;            <span class="comment">// Prevent temp_ from getting too small</span></div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            <span class="keywordflow">if</span> (temp_ &lt; minTemperature_)</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            {</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                temp_ = minTemperature_;</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;            }</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;        }</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        numStatesFailed_ = 0;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        result = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    }</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    {</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        <span class="comment">// State has failed</span></div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        <span class="keywordflow">if</span> (numStatesFailed_ &gt;= maxStatesFailed_)</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;        {</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            temp_ *= tempChangeFactor_;</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;            numStatesFailed_ = 0;</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;        }</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        {</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            ++numStatesFailed_;</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        }</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    }</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;}</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;</div>
+<div class="line"><a name="l00479"></a><span class="lineno"><a class="line" href="classompl_1_1geometric_1_1TRRT.html#ab4bf42dd232334ab7b0eaddbc9ae78d8">  479</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classompl_1_1geometric_1_1TRRT.html#ab4bf42dd232334ab7b0eaddbc9ae78d8">ompl::geometric::TRRT::minExpansionControl</a>(<span class="keywordtype">double</span> randMotionDistance)</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;{</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    <span class="comment">// Decide to accept or not</span></div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    <span class="keywordflow">if</span> (randMotionDistance &gt; frontierThreshold_)</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    {</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        <span class="comment">// participates in the tree expansion</span></div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        ++frontierCount_;</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    }</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    {</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        <span class="comment">// participates in the tree refinement</span></div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;        <span class="comment">// check our ratio first before accepting it</span></div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;        <span class="keywordflow">if</span> ((<span class="keywordtype">double</span>)nonfrontierCount_ / (<span class="keywordtype">double</span>)frontierCount_ &gt; frontierNodeRatio_)</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        {</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;            <span class="comment">// Increment so that the temperature rises faster</span></div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;            ++numStatesFailed_;</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;            <span class="comment">// reject this node as being too much refinement</span></div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;        }</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;        {</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;            ++nonfrontierCount_;</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        }</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    }</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;}</div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSpecs_html_ae2facc9260851b161577e36f5a4baefc"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSpecs.html#ae2facc9260851b161577e36f5a4baefc">ompl::base::PlannerSpecs::approximateSolutions</a></div><div class="ttdeci">bool approximateSolutions</div><div class="ttdoc">Flag indicating whether the planner is able to compute approximate solutions. </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00212">Planner.h:212</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html">ompl::base::PlannerData</a></div><div class="ttdoc">Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00164">PlannerData.h:164</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a859dcba093f63c8f2cb8af2c52b37af0"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a859dcba093f63c8f2cb8af2c52b37af0">ompl::geometric::TRRT::getFrontierThreshold</a></div><div class="ttdeci">double getFrontierThreshold(void) const </div><div class="ttdoc">Get the distance between a new state and the nearest neighbor that qualifies that state as being a fr...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00185">TRRT.h:185</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a20070c4430825a99d07f4a7ca129afdc"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a20070c4430825a99d07f4a7ca129afdc">ompl::geometric::TRRT::setKConstant</a></div><div class="ttdeci">void setKConstant(double kConstant)</div><div class="ttdoc">Set the constant value used to normalize the expression. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00205">TRRT.h:205</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a8ae55d97410606a2451914f9b86931e0"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a8ae55d97410606a2451914f9b86931e0">ompl::geometric::TRRT::initTemperature_</a></div><div class="ttdeci">double initTemperature_</div><div class="ttdoc">A very low value at initialization to authorize very easy positive slopes. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00326">TRRT.h:326</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_ac612c34a89a67aeb453200a73f663429"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#ac612c34a89a67aeb453200a73f663429">ompl::geometric::TRRT::maxStatesFailed_</a></div><div class="ttdeci">unsigned int maxStatesFailed_</div><div class="ttdoc">Max number of rejections allowed. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00317">TRRT.h:317</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1MechanicalWorkOptimizationObjective_html"><div class="ttname"><a href="classompl_1_1base_1_1MechanicalWorkOptimizationObjective.html">ompl::base::MechanicalWorkOptimizationObjective</a></div><div class="ttdoc">An optimization objective which defines path cost using the idea of mechanical work. To be used in conjunction with TRRT. </div><div class="ttdef"><b>Definition:</b> <a href="MechanicalWorkOptimizationObjective_8h_source.html#l00047">MechanicalWorkOptimizationObjective.h:47</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a3604cb85b0402b09b319c5f1df02b12e"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a3604cb85b0402b09b319c5f1df02b12e">ompl::base::PlannerData::addGoalVertex</a></div><div class="ttdeci">unsigned int addGoalVertex(const PlannerDataVertex &amp;v)</div><div class="ttdoc">Adds the given vertex to the graph data, and marks it as a start vertex. The vertex index is returned...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00434">PlannerData.cpp:434</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Goal_html"><div class="ttname"><a href="classompl_1_1base_1_1Goal.html">ompl::base::Goal</a></div><div class="ttdoc">Abstract definition of goals. </div><div class="ttdef"><b>Definition:</b> <a href="Goal_8h_source.html#l00063">Goal.h:63</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a3f7a972865cdbdba92517cfad0295385"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a3f7a972865cdbdba92517cfad0295385">ompl::geometric::TRRT::getFrontierNodeRatio</a></div><div class="ttdeci">double getFrontierNodeRatio(void) const </div><div class="ttdoc">Get the ratio between adding nonfrontier nodes to frontier nodes, for example .1 is 1/10 or one nonfr...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00199">TRRT.h:199</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a3a98de79ffc482f8c0627f07d9ba6a3f"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a3a98de79ffc482f8c0627f07d9ba6a3f">ompl::geometric::TRRT::setMinTemperature</a></div><div class="ttdeci">void setMinTemperature(double minTemperature)</div><div class="ttdoc">Set the minimum the temperature can drop to before being floored at that value. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00153">TRRT.h:153</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a97d6e3f42122c3dddddc2fcc9ce628c3"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a97d6e3f42122c3dddddc2fcc9ce628c3">ompl::geometric::TRRT::getGoalBias</a></div><div class="ttdeci">double getGoalBias() const </div><div class="ttdoc">Get the goal bias the planner is using. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00107">TRRT.h:107</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_1_1Motion_html_a51193986d21f3cbb4e356e143c7e4100"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#a51193986d21f3cbb4e356e143c7e4100">ompl::geometric::TRRT::Motion::parent</a></div><div class="ttdeci">Motion * parent</div><div class="ttdoc">The parent motion in the exploration tree. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00253">TRRT.h:253</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a5f24a1e38a63214cb5a64c8631fd3a71"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a5f24a1e38a63214cb5a64c8631fd3a71">ompl::geometric::TRRT::setTempChangeFactor</a></div><div class="ttdeci">void setTempChangeFactor(double tempChangeFactor)</div><div class="ttdoc">Set the factor by which the temperature rises or falls based on current acceptance/rejection rate...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00141">TRRT.h:141</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerTerminationCondition_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerTerminationCondition.html">ompl::base::PlannerTerminationCondition</a></div><div class="ttdoc">Encapsulate a termination condition for a motion planner. Planners will call operator() to decide whe...</div><div class="ttdef"><b>Definition:</b> <a href="PlannerTerminationCondition_8h_source.html#l00064">PlannerTerminationCondition.h:64</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1Cost_html_a2f0ece6f8517fe9a49d27b5855426ee6"><div class="ttname"><a href="structompl_1_1base_1_1Cost.html#a2f0ece6f8517fe9a49d27b5855426ee6">ompl::base::Cost::v</a></div><div class="ttdeci">double v</div><div class="ttdoc">The value of the cost. </div><div class="ttdef"><b>Definition:</b> <a href="Cost_8h_source.html#l00052">Cost.h:52</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_ad9bf201c78f94737e55f67a2bdc11419"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#ad9bf201c78f94737e55f67a2bdc11419">ompl::geometric::TRRT::maxDistance_</a></div><div class="ttdeci">double maxDistance_</div><div class="ttdoc">The maximum length of a motion to be added to a tree. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00289">TRRT.h:289</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PathGeometric_html_aa9eb3ea81cc3ab442aae67d311bc4156"><div class="ttname"><a href="classompl_1_1geometric_1_1PathGeometric.html#aa9eb3ea81cc3ab442aae67d311bc4156">ompl::geometric::PathGeometric::append</a></div><div class="ttdeci">void append(const base::State *state)</div><div class="ttdoc">Append state to the end of this path. The memory for state is copied. </div><div class="ttdef"><b>Definition:</b> <a href="PathGeometric_8cpp_source.html#l00420">PathGeometric.cpp:420</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a67463baa5c779c6e8b0095e7a3145e1d"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a67463baa5c779c6e8b0095e7a3145e1d">ompl::geometric::TRRT::transitionTest</a></div><div class="ttdeci">bool transitionTest(double childCost, double parentCost, double distance)</div><div class="ttdoc">Filter irrelevant configuration regarding the search of low-cost paths before inserting into tree...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8cpp_source.html#l00421">TRRT.cpp:421</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerSpecs_html_abe3ce1c340ba64c14644b0cace72907d"><div class="ttname"><a href="structompl_1_1base_1_1PlannerSpecs.html#abe3ce1c340ba64c14644b0cace72907d">ompl::base::PlannerSpecs::directed</a></div><div class="ttdeci">bool directed</div><div class="ttdoc">Flag indicating whether the planner is able to account for the fact that the validity of a motion fro...</div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00220">Planner.h:220</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GoalSampleableRegion_html_a11c9d2c4d9d5ddbeb8c30e531d1efc5f"><div class="ttname"><a href="classompl_1_1base_1_1GoalSampleableRegion.html#a11c9d2c4d9d5ddbeb8c30e531d1efc5f">ompl::base::GoalSampleableRegion::sampleGoal</a></div><div class="ttdeci">virtual void sampleGoal(State *st) const =0</div><div class="ttdoc">Sample a state in the goal region. </div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a38859df2314c90a63f028e7f7edddadf"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a38859df2314c90a63f028e7f7edddadf">ompl::geometric::TRRT::getKConstant</a></div><div class="ttdeci">double getKConstant(void) const </div><div class="ttdoc">Get the constant value used to normalize the expression. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00211">TRRT.h:211</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a213e79967a30dee30c175796b6a7816b"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a213e79967a30dee30c175796b6a7816b">ompl::geometric::TRRT::frontierThreshold_</a></div><div class="ttdeci">double frontierThreshold_</div><div class="ttdoc">The distance between an old state and a new state that qualifies it as a frontier state...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00339">TRRT.h:339</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_af33399bd16f300f10d897aaa84e0fad8"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#af33399bd16f300f10d897aaa84e0fad8">ompl::geometric::TRRT::kConstant_</a></div><div class="ttdeci">double kConstant_</div><div class="ttdoc">Constant value used to normalize expression. Based on order of magnitude of the considered costs...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00314">TRRT.h:314</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerDataVertex_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerDataVertex.html">ompl::base::PlannerDataVertex</a></div><div class="ttdoc">Base class for a vertex in the PlannerData structure. All derived classes must implement the clone an...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00060">PlannerData.h:60</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html_a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html#a5fe3825813b066b664b3dd34dd1bc8c4a1f20d012b563fc223902e24a8bcd7547">ompl::base::PlannerStatus::INVALID_START</a></div><div class="ttdoc">Invalid start state or no start state specified. </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00056">PlannerStatus.h:56</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GoalSampleableRegion_html"><div class="ttname"><a href="classompl_1_1base_1_1GoalSampleableRegion.html">ompl::base::GoalSampleableRegion</a></div><div class="ttdoc">Abstract definition of a goal region that can be sampled. </div><div class="ttdef"><b>Definition:</b> <a href="GoalSampleableRegion_8h_source.html#l00049">GoalSampleableRegion.h:49</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a0b5ea98d817c6cd49128f852a1e1eb5e"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a0b5ea98d817c6cd49128f852a1e1eb5e">ompl::geometric::TRRT::getInitTemperature</a></div><div class="ttdeci">double getInitTemperature(void) const </div><div class="ttdoc">Get the initial temperature at the beginning of the algorithm. Should be low. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00171">TRRT.h:171</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_ad61a99cc1f7a4b5c1156ad165e37ef38"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#ad61a99cc1f7a4b5c1156ad165e37ef38">ompl::geometric::TRRT::TRRT</a></div><div class="ttdeci">TRRT(const base::SpaceInformationPtr &amp;si)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8cpp_source.html#l00044">TRRT.cpp:44</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_abf01bc73f6a435029e40fa1cde168c79"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#abf01bc73f6a435029e40fa1cde168c79">ompl::geometric::TRRT::setGoalBias</a></div><div class="ttdeci">void setGoalBias(double goalBias)</div><div class="ttdoc">Set the goal bias. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00101">TRRT.h:101</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1Cost_html"><div class="ttname"><a href="structompl_1_1base_1_1Cost.html">ompl::base::Cost</a></div><div class="ttdoc">Definition of a cost value. Can represent the cost of a motion or the cost of a state. </div><div class="ttdef"><b>Definition:</b> <a href="Cost_8h_source.html#l00047">Cost.h:47</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a83dc7084b66fba052c95ef7ab1c6fa5c"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a83dc7084b66fba052c95ef7ab1c6fa5c">ompl::geometric::TRRT::getRange</a></div><div class="ttdeci">double getRange() const </div><div class="ttdoc">Get the range the planner is using. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00123">TRRT.h:123</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_1_1Motion_html"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT_1_1Motion.html">ompl::geometric::TRRT::Motion</a></div><div class="ttdoc">Representation of a motion. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00232">TRRT.h:232</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a52ccfe22a44bb4a3f52b4fe4212741d1"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a52ccfe22a44bb4a3f52b4fe4212741d1">ompl::geometric::TRRT::lastGoalMotion_</a></div><div class="ttdeci">Motion * lastGoalMotion_</div><div class="ttdoc">The most recent goal motion. Used for PlannerData computation. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00295">TRRT.h:295</a></div></div>
+<div class="ttc" id="group__logging_html_ga05ad3ae88188e7f248748785afd2b882"><div class="ttname"><a href="group__logging.html#ga05ad3ae88188e7f248748785afd2b882">OMPL_ERROR</a></div><div class="ttdeci">#define OMPL_ERROR(fmt,...)</div><div class="ttdoc">Log a formatted error string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00064">Console.h:64</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_1_1Motion_html_a878515236711e1725a914092c7afb142"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#a878515236711e1725a914092c7afb142">ompl::geometric::TRRT::Motion::cost</a></div><div class="ttdeci">base::Cost cost</div><div class="ttdoc">Cost of the state. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00256">TRRT.h:256</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a88488f425f4ff5f47f973a31b4de97b2"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a88488f425f4ff5f47f973a31b4de97b2">ompl::geometric::TRRT::setRange</a></div><div class="ttdeci">void setRange(double distance)</div><div class="ttdoc">Set the range the planner is supposed to use. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00117">TRRT.h:117</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_1_1Motion_html_ad8a60f42d44cc444ac030b14be55bfad"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT_1_1Motion.html#ad8a60f42d44cc444ac030b14be55bfad">ompl::geometric::TRRT::Motion::state</a></div><div class="ttdeci">base::State * state</div><div class="ttdoc">The state contained by the motion. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00250">TRRT.h:250</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerStatus_html"><div class="ttname"><a href="structompl_1_1base_1_1PlannerStatus.html">ompl::base::PlannerStatus</a></div><div class="ttdoc">A class to store the exit status of Planner::solve() </div><div class="ttdef"><b>Definition:</b> <a href="PlannerStatus_8h_source.html#l00048">PlannerStatus.h:48</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_ac09c21494a8c7db500ef1a66bbbb1aa7"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">ompl::base::PlannerData::addEdge</a></div><div class="ttdeci">virtual bool addEdge(unsigned int v1, unsigned int v2, const PlannerDataEdge &amp;edge=PlannerDataEdge(), Cost weight=Cost(1.0))</div><div class="ttdoc">Adds a directed edge between the given vertex indexes. An optional edge structure and weight can be s...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00444">PlannerData.cpp:444</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1GoalSampleableRegion_html_a16108536f4fcf4595db8c0f16818afd1"><div class="ttname"><a href="classompl_1_1base_1_1GoalSampleableRegion.html#a16108536f4fcf4595db8c0f16818afd1">ompl::base::GoalSampleableRegion::canSample</a></div><div class="ttdeci">bool canSample() const </div><div class="ttdoc">Return true if maxSampleCount() &gt; 0, since in this case samples can certainly be produced. </div><div class="ttdef"><b>Definition:</b> <a href="GoalSampleableRegion_8h_source.html#l00070">GoalSampleableRegion.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1SpaceInformationPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1SpaceInformationPtr.html">ompl::base::SpaceInformationPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::SpaceInformation. </div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a194d0564d5210e7e73a6bf3f4d14a26e"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a194d0564d5210e7e73a6bf3f4d14a26e">ompl::geometric::TRRT::getPlannerData</a></div><div class="ttdeci">virtual void getPlannerData(base::PlannerData &amp;data) const </div><div class="ttdoc">Get information about the current run of the motion planner. Repeated calls to this function will upd...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8cpp_source.html#l00400">TRRT.cpp:400</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_aace4cb9b2319d9de00ae7e831692a028"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#aace4cb9b2319d9de00ae7e831692a028">ompl::geometric::TRRT::distanceFunction</a></div><div class="ttdeci">double distanceFunction(const Motion *a, const Motion *b) const </div><div class="ttdoc">Compute distance between motions (actually distance between contained states) </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00264">TRRT.h:264</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_afc8f374836ea953ce31f39ae7ffadd16"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#afc8f374836ea953ce31f39ae7ffadd16">ompl::geometric::TRRT::getTempChangeFactor</a></div><div class="ttdeci">double getTempChangeFactor(void) const </div><div class="ttdoc">Get the factor by which the temperature rises or falls based on current acceptance/rejection rate...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00147">TRRT.h:147</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a0a6b7a5e23692b1af3f9261635c276dc"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a0a6b7a5e23692b1af3f9261635c276dc">ompl::geometric::TRRT::setMaxStatesFailed</a></div><div class="ttdeci">void setMaxStatesFailed(double maxStatesFailed)</div><div class="ttdoc">Set the maximum number of states that can be rejected before the temperature starts to rise...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00129">TRRT.h:129</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a2eea84456784452486aa0065af391f47"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a2eea84456784452486aa0065af391f47">ompl::base::PlannerData::addStartVertex</a></div><div class="ttdeci">unsigned int addStartVertex(const PlannerDataVertex &amp;v)</div><div class="ttdoc">Adds the given vertex to the graph data, and marks it as a start vertex. The vertex index is returned...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00425">PlannerData.cpp:425</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1State_html"><div class="ttname"><a href="classompl_1_1base_1_1State.html">ompl::base::State</a></div><div class="ttdoc">Definition of an abstract state. </div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00050">State.h:50</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Goal_html_a02ba4ba487714cd4e8f67c9d4164d0ec"><div class="ttname"><a href="classompl_1_1base_1_1Goal.html#a02ba4ba487714cd4e8f67c9d4164d0ec">ompl::base::Goal::isSatisfied</a></div><div class="ttdeci">virtual bool isSatisfied(const State *st) const =0</div><div class="ttdoc">Return true if the state satisfies the goal constraints. </div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a080d1409db867e5a321dba9a766723c7"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a080d1409db867e5a321dba9a766723c7">ompl::geometric::TRRT::solve</a></div><div class="ttdeci">virtual base::PlannerStatus solve(const base::PlannerTerminationCondition &amp;plannerTerminationCondition)</div><div class="ttdoc">Function that can solve the motion planning problem. This function can be called multiple times on th...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8cpp_source.html#l00174">TRRT.cpp:174</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a6333634f70be73d89dfac1fe85fcbb9a"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a6333634f70be73d89dfac1fe85fcbb9a">ompl::geometric::TRRT::getMinTemperature</a></div><div class="ttdeci">double getMinTemperature(void) const </div><div class="ttdoc">Get the minimum the temperature can drop to before being floored at that value. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00159">TRRT.h:159</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a206a7dffcb734c7888fa6aeb310a5515"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a206a7dffcb734c7888fa6aeb310a5515">ompl::geometric::TRRT::goalBias_</a></div><div class="ttdeci">double goalBias_</div><div class="ttdoc">The fraction of time the goal is picked as the state to expand towards (if such a state is available)...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00286">TRRT.h:286</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1Planner_html_a4311ea7a0470f0e0f76cb1656d63e365"><div class="ttname"><a href="classompl_1_1base_1_1Planner.html#a4311ea7a0470f0e0f76cb1656d63e365">ompl::base::Planner::specs_</a></div><div class="ttdeci">PlannerSpecs specs_</div><div class="ttdoc">The specifications of the planner (its capabilities) </div><div class="ttdef"><b>Definition:</b> <a href="Planner_8h_source.html#l00404">Planner.h:404</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_ad1513104e678e7bbaa692cd0611a78d4"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#ad1513104e678e7bbaa692cd0611a78d4">ompl::geometric::TRRT::getMaxStatesFailed</a></div><div class="ttdeci">double getMaxStatesFailed(void) const </div><div class="ttdoc">Get the maximum number of states that can be rejected before the temperature starts to rise...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00135">TRRT.h:135</a></div></div>
+<div class="ttc" id="group__logging_html_ga576d0bc79b521f19c5415f330e2b173d"><div class="ttname"><a href="group__logging.html#ga576d0bc79b521f19c5415f330e2b173d">OMPL_DEBUG</a></div><div class="ttdeci">#define OMPL_DEBUG(fmt,...)</div><div class="ttdoc">Log a formatted debugging string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00070">Console.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a2ca9ee4a3c36a22e1935cf2f419adb1e"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a2ca9ee4a3c36a22e1935cf2f419adb1e">ompl::geometric::TRRT::setFrontierNodeRatio</a></div><div class="ttdeci">void setFrontierNodeRatio(double frontierNodeRatio)</div><div class="ttdoc">Set the ratio between adding nonfrontier nodes to frontier nodes, for example .1 is 1/10 or one nonfr...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00192">TRRT.h:192</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_ab019e468ab50924ed23231d09ae0c23d"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#ab019e468ab50924ed23231d09ae0c23d">ompl::geometric::TRRT::minTemperature_</a></div><div class="ttdeci">double minTemperature_</div><div class="ttdoc">Prevent temperature from dropping too far. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00323">TRRT.h:323</a></div></div>
+<div class="ttc" id="namespaceompl_1_1magic_html_a3c9c3d6c0ee87fea2dbc5fa7484d15fa"><div class="ttname"><a href="namespaceompl_1_1magic.html#a3c9c3d6c0ee87fea2dbc5fa7484d15fa">ompl::magic::COST_MAX_MOTION_LENGTH_AS_SPACE_EXTENT_FRACTION</a></div><div class="ttdeci">static const double COST_MAX_MOTION_LENGTH_AS_SPACE_EXTENT_FRACTION</div><div class="ttdoc">For cost-based planners it has been observed that smaller ranges are typically suitable. The same range computation strategy is used for all planners, but for cost planners an additional factor (smaller than 1) is multiplied in. </div><div class="ttdef"><b>Definition:</b> <a href="MagicConstants_8h_source.html#l00082">MagicConstants.h:82</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_ab4bf42dd232334ab7b0eaddbc9ae78d8"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#ab4bf42dd232334ab7b0eaddbc9ae78d8">ompl::geometric::TRRT::minExpansionControl</a></div><div class="ttdeci">bool minExpansionControl(double randMotionDistance)</div><div class="ttdoc">Use ratio to prefer frontier nodes to nonfrontier ones. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8cpp_source.html#l00479">TRRT.cpp:479</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a54b75fca0c41d89db8d3475f8a546096"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a54b75fca0c41d89db8d3475f8a546096">ompl::geometric::TRRT::setInitTemperature</a></div><div class="ttdeci">void setInitTemperature(double initTemperature)</div><div class="ttdoc">Set the initial temperature at the beginning of the algorithm. Should be low. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00165">TRRT.h:165</a></div></div>
+<div class="ttc" id="classompl_1_1tools_1_1SelfConfig_html_a65bff53ea4bc6f158342a856175ab9a6"><div class="ttname"><a href="classompl_1_1tools_1_1SelfConfig.html#a65bff53ea4bc6f158342a856175ab9a6">ompl::tools::SelfConfig::configurePlannerRange</a></div><div class="ttdeci">void configurePlannerRange(double &amp;range)</div><div class="ttdoc">Compute what a good length for motion segments is. </div><div class="ttdef"><b>Definition:</b> <a href="SelfConfig_8cpp_source.html#l00226">SelfConfig.cpp:226</a></div></div>
+<div class="ttc" id="classompl_1_1tools_1_1SelfConfig_html"><div class="ttname"><a href="classompl_1_1tools_1_1SelfConfig.html">ompl::tools::SelfConfig</a></div><div class="ttdoc">This class contains methods that automatically configure various parameters for motion planning...</div><div class="ttdef"><b>Definition:</b> <a href="SelfConfig_8h_source.html#l00056">SelfConfig.h:56</a></div></div>
+<div class="ttc" id="namespaceompl_1_1magic_html_ad96353c64e790206f36a2fb9b2c7d646"><div class="ttname"><a href="namespaceompl_1_1magic.html#ad96353c64e790206f36a2fb9b2c7d646">ompl::magic::TEST_STATE_COUNT</a></div><div class="ttdeci">static const unsigned int TEST_STATE_COUNT</div><div class="ttdoc">When multiple states need to be generated as part of the computation of various information (usually ...</div><div class="ttdef"><b>Definition:</b> <a href="MagicConstants_8h_source.html#l00109">MagicConstants.h:109</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1PathGeometric_html"><div class="ttname"><a href="classompl_1_1geometric_1_1PathGeometric.html">ompl::geometric::PathGeometric</a></div><div class="ttdoc">Definition of a geometric path. </div><div class="ttdef"><b>Definition:</b> <a href="PathGeometric_8h_source.html#l00054">PathGeometric.h:54</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a634ef8c26dd94c7b717259c3949d7be2"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a634ef8c26dd94c7b717259c3949d7be2">ompl::geometric::TRRT::tempChangeFactor_</a></div><div class="ttdeci">double tempChangeFactor_</div><div class="ttdoc">Failure temperature factor used when max_num_failed_ failures occur. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00320">TRRT.h:320</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a0afc6e754e4bcb83b29d292312c54eea"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a0afc6e754e4bcb83b29d292312c54eea">ompl::geometric::TRRT::freeMemory</a></div><div class="ttdeci">void freeMemory()</div><div class="ttdoc">Free the memory allocated by this planner. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8cpp_source.html#l00157">TRRT.cpp:157</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_aec0140776240aaed71d592699ffc6758"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#aec0140776240aaed71d592699ffc6758">ompl::geometric::TRRT::frontierNodeRatio_</a></div><div class="ttdeci">double frontierNodeRatio_</div><div class="ttdoc">Target ratio of nonfrontier nodes to frontier nodes. rho. </div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00342">TRRT.h:342</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_ad98e2d1a83fc2f3a4851129422449220"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#ad98e2d1a83fc2f3a4851129422449220">ompl::geometric::TRRT::setup</a></div><div class="ttdeci">virtual void setup()</div><div class="ttdoc">Perform extra configuration steps, if needed. This call will also issue a call to ompl::base::SpaceIn...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8cpp_source.html#l00096">TRRT.cpp:96</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a1fe3a3b4d040bd5846cd0888928969c1"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a1fe3a3b4d040bd5846cd0888928969c1">ompl::geometric::TRRT::clear</a></div><div class="ttdeci">virtual void clear()</div><div class="ttdoc">Clear all internal datastructures. Planner settings are not affected. Subsequent calls to solve() wil...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8cpp_source.html#l00080">TRRT.cpp:80</a></div></div>
+<div class="ttc" id="classompl_1_1geometric_1_1TRRT_html_a4de4dc950c5b705cc831408c155d6ef0"><div class="ttname"><a href="classompl_1_1geometric_1_1TRRT.html#a4de4dc950c5b705cc831408c155d6ef0">ompl::geometric::TRRT::setFrontierThreshold</a></div><div class="ttdeci">void setFrontierThreshold(double frontier_threshold)</div><div class="ttdoc">Set the distance between a new state and the nearest neighbor that qualifies that state as being a fr...</div><div class="ttdef"><b>Definition:</b> <a href="TRRT_8h_source.html#l00178">TRRT.h:178</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PathPtr_html"><div class="ttname"><a href="classompl_1_1base_1_1PathPtr.html">ompl::base::PathPtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::base::Path. </div></div>
+<div class="ttc" id="group__logging_html_ga04bc36d1b8c57ad7e13a8a48451a3a05"><div class="ttname"><a href="group__logging.html#ga04bc36d1b8c57ad7e13a8a48451a3a05">OMPL_INFORM</a></div><div class="ttdeci">#define OMPL_INFORM(fmt,...)</div><div class="ttdoc">Log a formatted information string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00068">Console.h:68</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

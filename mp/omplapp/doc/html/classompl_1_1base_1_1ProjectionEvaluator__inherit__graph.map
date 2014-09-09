@@ -1,0 +1,9 @@
+<map id="ompl::base::ProjectionEvaluator" name="ompl::base::ProjectionEvaluator">
+<area shape="rect" id="node4" href="$classKoulesProjection.html" title="KoulesProjection" alt="" coords="457,56,577,83"/>
+<area shape="rect" id="node7" href="$classompl_1_1base_1_1MorseProjection.html" title="This class implements a generic projection for the MorseStateSpace, namely, the subspace representing..." alt="" coords="423,239,611,265"/>
+<area shape="rect" id="node8" href="$classompl_1_1base_1_1RealVectorIdentityProjectionEvaluator.html" title="Define the identity projection. " alt="" coords="416,290,619,331"/>
+<area shape="rect" id="node9" href="$classompl_1_1base_1_1RealVectorLinearProjectionEvaluator.html" title="Definition for a class computing linear projections (multiplication of a k&#45;by&#45;n matrix to the the Rn ..." alt="" coords="420,355,615,397"/>
+<area shape="rect" id="node11" href="$classompl_1_1base_1_1RealVectorOrthogonalProjectionEvaluator.html" title="Definition for a class computing orthogonal projections. " alt="" coords="406,421,629,462"/>
+<area shape="rect" id="node12" href="$classompl_1_1base_1_1SubspaceProjectionEvaluator.html" title="If the projection for a CompoundStateSpace is supposed to be the same as the one for one of its inclu..." alt="" coords="412,486,623,527"/>
+<area shape="rect" id="node10" href="$classompl_1_1base_1_1RealVectorRandomLinearProjectionEvaluator.html" title="Definition for a class computing a random linear projections. " alt="" coords="677,355,885,397"/>
+</map>

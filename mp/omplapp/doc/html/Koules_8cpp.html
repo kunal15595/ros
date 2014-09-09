@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/demos/Koules/Koules.cpp File Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_bd20f02bf35df13d389bcb0b6d4c9a2f.html">demos</a></li><li class="navelem"><a class="el" href="dir_2052765afa11f5dd9d0b15ffb0403da9.html">Koules</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">Koules.cpp File Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>This file contains an elaborate demo to solve the game of <a href="http://www.ucw.cz/~hubicka/koules/English/">Koules</a>.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;KoulesConfig.h&quot;</code><br/>
+<code>#include &quot;KoulesSetup.h&quot;</code><br/>
+<code>#include &quot;KoulesStateSpace.h&quot;</code><br/>
+<code>#include &lt;ompl/tools/benchmark/Benchmark.h&gt;</code><br/>
+<code>#include &lt;ompl/config.h&gt;</code><br/>
+<code>#include &lt;boost/program_options.hpp&gt;</code><br/>
+<code>#include &lt;boost/format.hpp&gt;</code><br/>
+<code>#include &lt;fstream&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for Koules.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="Koules_8cpp__incl.png" border="0" usemap="#ompl_2demos_2Koules_2Koules_8cpp" alt=""/></div>
+<map name="ompl_2demos_2Koules_2Koules_8cpp" id="ompl_2demos_2Koules_2Koules_8cpp">
+<area shape="rect" id="node2" href="KoulesConfig_8h_source.html" title="KoulesConfig.h" alt="" coords="401,171,511,197"/><area shape="rect" id="node4" href="KoulesSetup_8h_source.html" title="KoulesSetup.h" alt="" coords="1848,88,1955,115"/><area shape="rect" id="node41" href="KoulesStateSpace_8h_source.html" title="KoulesStateSpace.h" alt="" coords="493,88,633,115"/><area shape="rect" id="node44" href="Benchmark_8h_source.html" title="ompl/tools/benchmark\l/Benchmark.h" alt="" coords="1979,81,2129,122"/><area shape="rect" id="node47" href="ompl_2src_2ompl_2config_8h_source.html" title="ompl/config.h" alt="" coords="2154,88,2253,115"/><area shape="rect" id="node5" href="control_2SimpleSetup_8h_source.html" title="ompl/control/SimpleSetup.h" alt="" coords="1963,171,2145,197"/><area shape="rect" id="node6" href="Planner_8h_source.html" title="ompl/base/Planner.h" alt="" coords="2817,253,2957,280"/><area shape="rect" id="node12" href="Console_8h.html" title="ompl/util/Console.h" alt="" coords="3771,773,3905,800"/><area shape="rect" id="node20" href="Exception_8h_source.html" title="ompl/util/Exception.h" alt="" coords="4115,600,4259,627"/><area shape="rect" id="node21" href="ProblemDefinition_8h_source.html" title="ompl/base/ProblemDefinition.h" alt="" coords="2447,336,2645,363"/><area shape="rect" id="node31" href="control_2SpaceInformation_8h_source.html" title="ompl/control/SpaceInformation.h" alt="" coords="1520,419,1729,445"/><area shape="rect" id="node37" href="control_2PlannerData_8h_source.html" title="ompl/control/PlannerData.h" alt="" coords="1533,336,1712,363"/><area shape="rect" id="node39" href="PathControl_8h_source.html" title="ompl/control/PathControl.h" alt="" coords="1789,336,1965,363"/><area shape="rect" id="node40" href="PathGeometric_8h_source.html" title="ompl/geometric/PathGeometric.h" alt="" coords="2159,419,2372,445"/><area shape="rect" id="node7" href="base_2SpaceInformation_8h_source.html" title="ompl/base/SpaceInformation.h" alt="" coords="2962,509,3160,536"/><area shape="rect" id="node11" href="GenericParam_8h_source.html" title="ompl/base/GenericParam.h" alt="" coords="3099,691,3279,717"/><area shape="rect" id="node14" href="ClassForward_8h_source.html" title="ompl/util/ClassForward.h" alt="" coords="2725,773,2891,800"/><area shape="rect" id="node26" href="base_2PlannerData_8h_source.html" title="ompl/base/PlannerData.h" alt="" coords="1914,419,2083,445"/><area shape="rect" id="node27" href="PlannerStatus_8h_source.html" title="ompl/base/PlannerStatus.h" alt="" coords="5,509,184,536"/><area shape="rect" id="node28" href="PlannerTerminationCondition_8h_source.html" title="ompl/base/PlannerTermination\lCondition.h" alt="" coords="3639,411,3837,453"/><area shape="rect" id="node29" href="Time_8h_source.html" title="ompl/util/Time.h" alt="" coords="2671,336,2785,363"/><area shape="rect" id="node30" href="Deprecation_8h_source.html" title="ompl/util/Deprecation.h" alt="" coords="2810,336,2965,363"/><area shape="rect" id="node8" href="State_8h_source.html" title="ompl/base/State.h" alt="" coords="1437,691,1565,717"/><area shape="rect" id="node10" href="StateSpace_8h_source.html" title="ompl/base/StateSpace.h" alt="" coords="1852,600,2016,627"/><area shape="rect" id="node22" href="Goal_8h_source.html" title="ompl/base/Goal.h" alt="" coords="2549,419,2672,445"/><area shape="rect" id="node23" href="Path_8h_source.html" title="ompl/base/Path.h" alt="" coords="2662,509,2785,536"/><area shape="rect" id="node24" href="SolutionNonExistenceProof_8h_source.html" title="ompl/base/SolutionNonExistence\lProof.h" alt="" coords="2995,411,3209,453"/><area shape="rect" id="node25" href="ScopedState_8h_source.html" title="ompl/base/ScopedState.h" alt="" coords="2697,419,2868,445"/><area shape="rect" id="node32" href="ControlSpace_8h_source.html" title="ompl/control/ControlSpace.h" alt="" coords="1663,509,1849,536"/><area shape="rect" id="node33" href="Control_8h_source.html" title="ompl/control/Control.h" alt="" coords="1151,691,1301,717"/><area shape="rect" id="node34" href="ControlSampler_8h_source.html" title="ompl/control/ControlSampler.h" alt="" coords="1529,600,1727,627"/><area shape="rect" id="node35" href="DirectedControlSampler_8h_source.html" title="ompl/control/DirectedControl\lSampler.h" alt="" coords="2194,593,2381,634"/><area shape="rect" id="node36" href="StatePropagator_8h_source.html" title="ompl/control/StatePropagator.h" alt="" coords="948,600,1151,627"/><area shape="rect" id="node42" href="RealVectorStateSpace_8h_source.html" title="ompl/base/spaces/RealVector\lStateSpace.h" alt="" coords="220,502,417,543"/><area shape="rect" id="node43" href="RealVectorBounds_8h_source.html" title="ompl/base/spaces/RealVector\lBounds.h" alt="" coords="220,683,417,725"/><area shape="rect" id="node45" href="geometric_2SimpleSetup_8h_source.html" title="ompl/geometric/SimpleSetup.h" alt="" coords="2788,171,2987,197"/><area shape="rect" id="node46" href="PathSimplifier_8h_source.html" title="ompl/geometric/PathSimplifier.h" alt="" coords="3579,336,3785,363"/></map>
+</div>
+</div>
+<p><a href="Koules_8cpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a60fec48c649e585fd29c6f449e13ab86"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a60fec48c649e585fd29c6f449e13ab86"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>writeParams</b> (std::ostream &amp;out)</td></tr>
+<tr class="separator:a60fec48c649e585fd29c6f449e13ab86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfda5e32da4b8ad4cef0c82af5cae4aa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abfda5e32da4b8ad4cef0c82af5cae4aa"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>plan</b> (KoulesSetup &amp;ks, double maxTime, const std::string &amp;outputFile)</td></tr>
+<tr class="separator:abfda5e32da4b8ad4cef0c82af5cae4aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add6807731311cef919d430513d8511ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add6807731311cef919d430513d8511ba"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>benchmark</b> (KoulesSetup &amp;ks, ot::Benchmark::Request request, const std::string &amp;plannerName, const std::string &amp;outputFile)</td></tr>
+<tr class="separator:add6807731311cef919d430513d8511ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (int argc, char **argv)</td></tr>
+<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file contains an elaborate demo to solve the game of <a href="http://www.ucw.cz/~hubicka/koules/English/">Koules</a>. </p>
+<p>This problem was used to illustrate the capabilities of the PDST planner to find trajectories for underactuated systems with drift. The details can be found in the references below [1,2]. The physics have been made significantly harder compared to the original game. We have tried to recreate the problem as closely as possible to the one described in [2]. The demo can solve just one level of Koules, all levels, or run a number of planners on one level as a benchmarking run.</p>
+<p>This demo illustrates also many advanced OMPL concepts, such as classes for a custom state space, a control sampler, a projection, a state propagator, and a goal class. It also demonstrates how one could put a simple bang-bang controller inside the StatePropagator. In this demo the (Directed)ControlSampler simply samples a target velocity vector and inside the StatePropagator the control is chosen to drive the ship to attain this velocity.</p>
+<p>[1] A. M. Ladd and L. E. Kavraki, “Motion planning in the presence of drift, underactuation and discrete system changes,” in Robotics: Science and Systems I, (Boston, MA), pp. 233–241, MIT Press, June 2005.</p>
+<p>[2] A. M. Ladd, Motion Planning for Physical Simulation. PhD thesis, Dept. of Computer Science, Rice University, Houston, TX, Dec. 2006. </p>
+
+<p>Definition in file <a class="el" href="Koules_8cpp_source.html">Koules.cpp</a>.</p>
+</div></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:26 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

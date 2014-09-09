@@ -1,0 +1,8 @@
+<map id="ompl::base::GoalSampleableRegion" name="ompl::base::GoalSampleableRegion">
+<area shape="rect" id="node5" href="$classKoulesGoal.html" title="KoulesGoal" alt="" coords="5,320,93,347"/>
+<area shape="rect" id="node6" href="$classompl_1_1base_1_1GoalState.html" title="Definition of a goal state. " alt="" coords="119,320,271,347"/>
+<area shape="rect" id="node7" href="$classompl_1_1base_1_1GoalStates.html" title="Definition of a set of goal states. " alt="" coords="295,320,453,347"/>
+<area shape="rect" id="node2" href="$classompl_1_1base_1_1GoalRegion.html" title="Definition of a goal region. " alt="" coords="113,155,276,181"/>
+<area shape="rect" id="node3" href="$classompl_1_1base_1_1Goal.html" title="Abstract definition of goals. " alt="" coords="134,80,255,107"/>
+<area shape="rect" id="node8" href="$classompl_1_1base_1_1GoalLazySamples.html" title="Definition of a goal region that can be sampled, but the sampling process can be slow. This class allows sampling the happen in a separate thread, and the number of goals may increase, as the planner is running, in a thread&#45;safe manner. " alt="" coords="275,395,473,421"/>
+</map>

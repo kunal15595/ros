@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl::control::GridDecomposition Class Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceompl.html">ompl</a></li><li class="navelem"><a class="el" href="namespaceompl_1_1control.html">control</a></li><li class="navelem"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html">GridDecomposition</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="classompl_1_1control_1_1GridDecomposition-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ompl::control::GridDecomposition Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>A <a class="el" href="classompl_1_1control_1_1GridDecomposition.html" title="A GridDecomposition is a Decomposition implemented using a grid. ">GridDecomposition</a> is a <a class="el" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...">Decomposition</a> implemented using a grid.  
+ <a href="classompl_1_1control_1_1GridDecomposition.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Syclop_2GridDecomposition_8h_source.html">GridDecomposition.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ompl::control::GridDecomposition:</div>
+<div class="dyncontent">
+<div class="center"><img src="classompl_1_1control_1_1GridDecomposition__inherit__graph.png" border="0" usemap="#ompl_1_1control_1_1GridDecomposition_inherit__map" alt="Inheritance graph"/></div>
+<map name="ompl_1_1control_1_1GridDecomposition_inherit__map" id="ompl_1_1control_1_1GridDecomposition_inherit__map">
+<area shape="rect" id="node2" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ..." alt="" coords="5,64,197,91"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ade2b9370ba014e3bebe8c70deb1636e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade2b9370ba014e3bebe8c70deb1636e2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#ade2b9370ba014e3bebe8c70deb1636e2">GridDecomposition</a> (int len, int dim, const <a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a> &amp;b)</td></tr>
+<tr class="memdesc:ade2b9370ba014e3bebe8c70deb1636e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Creates a <a class="el" href="classompl_1_1control_1_1GridDecomposition.html" title="A GridDecomposition is a Decomposition implemented using a grid. ">GridDecomposition</a> as a hypercube with a given dimension, side length, and bounds. The cells of the hypercube are referenced by integer coordinates of the form <img class="formulaInl" alt="$(r_1,\ldots,r_k)$" src="form_29.png"/>, where <img class="formulaInl" alt="$ 0 \leq r_i < \texttt{len}$" src="form_30.png"/>. <br/></td></tr>
+<tr class="separator:ade2b9370ba014e3bebe8c70deb1636e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36d93b986e0b3b00cc07bffcbf427627"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36d93b986e0b3b00cc07bffcbf427627"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a36d93b986e0b3b00cc07bffcbf427627">getNumRegions</a> (void) const </td></tr>
+<tr class="memdesc:a36d93b986e0b3b00cc07bffcbf427627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of regions in this <a class="el" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...">Decomposition</a>. <br/></td></tr>
+<tr class="separator:a36d93b986e0b3b00cc07bffcbf427627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab738051ec62c6c17c96bb7fd73357dbe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab738051ec62c6c17c96bb7fd73357dbe"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#ab738051ec62c6c17c96bb7fd73357dbe">getRegionVolume</a> (int)</td></tr>
+<tr class="memdesc:ab738051ec62c6c17c96bb7fd73357dbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the volume of a given region in this <a class="el" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...">Decomposition</a>. <br/></td></tr>
+<tr class="separator:ab738051ec62c6c17c96bb7fd73357dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b14fe0ab60398003b4a9c6afe02cad0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b14fe0ab60398003b4a9c6afe02cad0"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a9b14fe0ab60398003b4a9c6afe02cad0">getNeighbors</a> (int rid, std::vector&lt; int &gt; &amp;neighbors) const </td></tr>
+<tr class="memdesc:a9b14fe0ab60398003b4a9c6afe02cad0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores a given region's neighbors into a given vector. <br/></td></tr>
+<tr class="separator:a9b14fe0ab60398003b4a9c6afe02cad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af016f162e2342b515c822893f486acc6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af016f162e2342b515c822893f486acc6"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#af016f162e2342b515c822893f486acc6">locateRegion</a> (const <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> *s) const </td></tr>
+<tr class="memdesc:af016f162e2342b515c822893f486acc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the index of the region containing a given State. Most often, this is obtained by first calling <a class="el" href="classompl_1_1control_1_1Decomposition.html#a6c2047c196577528e94a75628a19c7cb" title="Project a given State to a set of coordinates in R^k, where k is the dimension of this Decomposition...">project()</a>. Returns -1 if no region contains the State. <br/></td></tr>
+<tr class="separator:af016f162e2342b515c822893f486acc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96a44d24d2b68c01772a2dffb0d0b88a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a96a44d24d2b68c01772a2dffb0d0b88a"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a96a44d24d2b68c01772a2dffb0d0b88a">sampleFromRegion</a> (int rid, <a class="el" href="classompl_1_1RNG.html">RNG</a> &amp;rng, std::vector&lt; double &gt; &amp;coord) const </td></tr>
+<tr class="memdesc:a96a44d24d2b68c01772a2dffb0d0b88a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Samples a projected coordinate from a given region. <br/></td></tr>
+<tr class="separator:a96a44d24d2b68c01772a2dffb0d0b88a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade2b9370ba014e3bebe8c70deb1636e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade2b9370ba014e3bebe8c70deb1636e2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#ade2b9370ba014e3bebe8c70deb1636e2">GridDecomposition</a> (int len, int dim, const <a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a> &amp;b)</td></tr>
+<tr class="memdesc:ade2b9370ba014e3bebe8c70deb1636e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Creates a <a class="el" href="classompl_1_1control_1_1GridDecomposition.html" title="A GridDecomposition is a Decomposition implemented using a grid. ">GridDecomposition</a> as a hypercube with a given dimension, side length, and bounds. The cells of the hypercube are referenced by integer coordinates of the form <img class="formulaInl" alt="$(r_1,\ldots,r_k)$" src="form_29.png"/>, where <img class="formulaInl" alt="$ 0 \leq r_i < \texttt{len}$" src="form_30.png"/>. <br/></td></tr>
+<tr class="separator:ade2b9370ba014e3bebe8c70deb1636e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36d93b986e0b3b00cc07bffcbf427627"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36d93b986e0b3b00cc07bffcbf427627"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a36d93b986e0b3b00cc07bffcbf427627">getNumRegions</a> (void) const </td></tr>
+<tr class="memdesc:a36d93b986e0b3b00cc07bffcbf427627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of regions in this <a class="el" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...">Decomposition</a>. <br/></td></tr>
+<tr class="separator:a36d93b986e0b3b00cc07bffcbf427627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab738051ec62c6c17c96bb7fd73357dbe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab738051ec62c6c17c96bb7fd73357dbe"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#ab738051ec62c6c17c96bb7fd73357dbe">getRegionVolume</a> (int)</td></tr>
+<tr class="memdesc:ab738051ec62c6c17c96bb7fd73357dbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the volume of a given region in this <a class="el" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...">Decomposition</a>. <br/></td></tr>
+<tr class="separator:ab738051ec62c6c17c96bb7fd73357dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac43f1d0e7eb07ec4fced8d1ba6afac7c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac43f1d0e7eb07ec4fced8d1ba6afac7c"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#ac43f1d0e7eb07ec4fced8d1ba6afac7c">getNeighbors</a> (int rid, std::vector&lt; int &gt; &amp;neighbors) const </td></tr>
+<tr class="memdesc:ac43f1d0e7eb07ec4fced8d1ba6afac7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores a given region's neighbors into a given vector. <br/></td></tr>
+<tr class="separator:ac43f1d0e7eb07ec4fced8d1ba6afac7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72c653535f5bc7cd06b77846a8dd236f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72c653535f5bc7cd06b77846a8dd236f"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a72c653535f5bc7cd06b77846a8dd236f">locateRegion</a> (const <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> *s) const </td></tr>
+<tr class="memdesc:a72c653535f5bc7cd06b77846a8dd236f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the index of the region containing a given State. Most often, this is obtained by first calling <a class="el" href="classompl_1_1control_1_1Decomposition.html#a6c2047c196577528e94a75628a19c7cb" title="Project a given State to a set of coordinates in R^k, where k is the dimension of this Decomposition...">project()</a>. Returns -1 if no region contains the State. <br/></td></tr>
+<tr class="separator:a72c653535f5bc7cd06b77846a8dd236f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5fa54c8c079d7299a168e8cc90d2765"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5fa54c8c079d7299a168e8cc90d2765"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#ad5fa54c8c079d7299a168e8cc90d2765">sampleFromRegion</a> (int rid, <a class="el" href="classompl_1_1RNG.html">RNG</a> &amp;rng, std::vector&lt; double &gt; &amp;coord) const </td></tr>
+<tr class="memdesc:ad5fa54c8c079d7299a168e8cc90d2765"><td class="mdescLeft">&#160;</td><td class="mdescRight">Samples a projected coordinate from a given region. <br/></td></tr>
+<tr class="separator:ad5fa54c8c079d7299a168e8cc90d2765"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classompl_1_1control_1_1Decomposition"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classompl_1_1control_1_1Decomposition')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classompl_1_1control_1_1Decomposition.html">ompl::control::Decomposition</a></td></tr>
+<tr class="memitem:a2bedc19c6aeb219165cc79cd679f4cab inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bedc19c6aeb219165cc79cd679f4cab"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1Decomposition.html#a2bedc19c6aeb219165cc79cd679f4cab">Decomposition</a> (int dim, const <a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a> &amp;b)</td></tr>
+<tr class="memdesc:a2bedc19c6aeb219165cc79cd679f4cab inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Creates a <a class="el" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...">Decomposition</a> with a given dimension and a given set of bounds. Accepts as an optional argument a given number of regions. <br/></td></tr>
+<tr class="separator:a2bedc19c6aeb219165cc79cd679f4cab inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a7ed952e6c78d4faace13aa9a629c1b inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a7ed952e6c78d4faace13aa9a629c1b"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1Decomposition.html#a8a7ed952e6c78d4faace13aa9a629c1b">getDimension</a> () const </td></tr>
+<tr class="memdesc:a8a7ed952e6c78d4faace13aa9a629c1b inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the dimension of this <a class="el" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...">Decomposition</a>. <br/></td></tr>
+<tr class="separator:a8a7ed952e6c78d4faace13aa9a629c1b inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9cf76bb33bdfe676ce732e1d143de66 inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab9cf76bb33bdfe676ce732e1d143de66"></a>
+virtual const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1Decomposition.html#ab9cf76bb33bdfe676ce732e1d143de66">getBounds</a> () const </td></tr>
+<tr class="memdesc:ab9cf76bb33bdfe676ce732e1d143de66 inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the bounds of this <a class="el" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...">Decomposition</a>. <br/></td></tr>
+<tr class="separator:ab9cf76bb33bdfe676ce732e1d143de66 inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c2047c196577528e94a75628a19c7cb inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c2047c196577528e94a75628a19c7cb"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1Decomposition.html#a6c2047c196577528e94a75628a19c7cb">project</a> (const <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> *s, std::vector&lt; double &gt; &amp;coord) const =0</td></tr>
+<tr class="memdesc:a6c2047c196577528e94a75628a19c7cb inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Project a given State to a set of coordinates in R^k, where k is the dimension of this <a class="el" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...">Decomposition</a>. <br/></td></tr>
+<tr class="separator:a6c2047c196577528e94a75628a19c7cb inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a3f516dedc7fb4a67bfff570c30e975 inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a3f516dedc7fb4a67bfff570c30e975"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1Decomposition.html#a2a3f516dedc7fb4a67bfff570c30e975">sampleFullState</a> (const <a class="el" href="classompl_1_1base_1_1StateSamplerPtr.html">base::StateSamplerPtr</a> &amp;sampler, const std::vector&lt; double &gt; &amp;coord, <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> *s) const =0</td></tr>
+<tr class="memdesc:a2a3f516dedc7fb4a67bfff570c30e975 inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Samples a State using a projected coordinate and a StateSampler. <br/></td></tr>
+<tr class="separator:a2a3f516dedc7fb4a67bfff570c30e975 inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bedc19c6aeb219165cc79cd679f4cab inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bedc19c6aeb219165cc79cd679f4cab"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1Decomposition.html#a2bedc19c6aeb219165cc79cd679f4cab">Decomposition</a> (int dim, const <a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a> &amp;b)</td></tr>
+<tr class="memdesc:a2bedc19c6aeb219165cc79cd679f4cab inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Creates a <a class="el" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...">Decomposition</a> with a given dimension and a given set of bounds. Accepts as an optional argument a given number of regions. <br/></td></tr>
+<tr class="separator:a2bedc19c6aeb219165cc79cd679f4cab inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a7ed952e6c78d4faace13aa9a629c1b inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a7ed952e6c78d4faace13aa9a629c1b"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1Decomposition.html#a8a7ed952e6c78d4faace13aa9a629c1b">getDimension</a> () const </td></tr>
+<tr class="memdesc:a8a7ed952e6c78d4faace13aa9a629c1b inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the dimension of this <a class="el" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...">Decomposition</a>. <br/></td></tr>
+<tr class="separator:a8a7ed952e6c78d4faace13aa9a629c1b inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9cf76bb33bdfe676ce732e1d143de66 inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab9cf76bb33bdfe676ce732e1d143de66"></a>
+virtual const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1Decomposition.html#ab9cf76bb33bdfe676ce732e1d143de66">getBounds</a> () const </td></tr>
+<tr class="memdesc:ab9cf76bb33bdfe676ce732e1d143de66 inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the bounds of this <a class="el" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...">Decomposition</a>. <br/></td></tr>
+<tr class="separator:ab9cf76bb33bdfe676ce732e1d143de66 inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c2047c196577528e94a75628a19c7cb inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c2047c196577528e94a75628a19c7cb"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1Decomposition.html#a6c2047c196577528e94a75628a19c7cb">project</a> (const <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> *s, std::vector&lt; double &gt; &amp;coord) const =0</td></tr>
+<tr class="memdesc:a6c2047c196577528e94a75628a19c7cb inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Project a given State to a set of coordinates in R^k, where k is the dimension of this <a class="el" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...">Decomposition</a>. <br/></td></tr>
+<tr class="separator:a6c2047c196577528e94a75628a19c7cb inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a3f516dedc7fb4a67bfff570c30e975 inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a3f516dedc7fb4a67bfff570c30e975"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1Decomposition.html#a2a3f516dedc7fb4a67bfff570c30e975">sampleFullState</a> (const <a class="el" href="classompl_1_1base_1_1StateSamplerPtr.html">base::StateSamplerPtr</a> &amp;sampler, const std::vector&lt; double &gt; &amp;coord, <a class="el" href="classompl_1_1base_1_1State.html">base::State</a> *s) const =0</td></tr>
+<tr class="memdesc:a2a3f516dedc7fb4a67bfff570c30e975 inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Samples a State using a projected coordinate and a StateSampler. <br/></td></tr>
+<tr class="separator:a2a3f516dedc7fb4a67bfff570c30e975 inherit pub_methods_classompl_1_1control_1_1Decomposition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a1809ebc9495bb61ac834e40a3f448808"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1809ebc9495bb61ac834e40a3f448808"></a>
+virtual const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a1809ebc9495bb61ac834e40a3f448808">getRegionBounds</a> (int rid) const </td></tr>
+<tr class="memdesc:a1809ebc9495bb61ac834e40a3f448808"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to return the bounds of a given region. <br/></td></tr>
+<tr class="separator:a1809ebc9495bb61ac834e40a3f448808"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a900eea33caf4df39b3b21cddd437fa3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a900eea33caf4df39b3b21cddd437fa3a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a900eea33caf4df39b3b21cddd437fa3a">regionToGridCoord</a> (int rid, std::vector&lt; int &gt; &amp;coord) const </td></tr>
+<tr class="memdesc:a900eea33caf4df39b3b21cddd437fa3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a given region to a coordinate in the grid. <br/></td></tr>
+<tr class="separator:a900eea33caf4df39b3b21cddd437fa3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ded2b410379a7febc8cbef25cd87860"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ded2b410379a7febc8cbef25cd87860"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a9ded2b410379a7febc8cbef25cd87860">gridCoordToRegion</a> (const std::vector&lt; int &gt; &amp;coord) const </td></tr>
+<tr class="memdesc:a9ded2b410379a7febc8cbef25cd87860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the given grid coordinate to its corresponding region ID. <br/></td></tr>
+<tr class="separator:a9ded2b410379a7febc8cbef25cd87860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c4d4b66e9b8256722eb5bdecf79ae07"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c4d4b66e9b8256722eb5bdecf79ae07"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a7c4d4b66e9b8256722eb5bdecf79ae07">coordToRegion</a> (const std::vector&lt; double &gt; &amp;coord) const </td></tr>
+<tr class="memdesc:a7c4d4b66e9b8256722eb5bdecf79ae07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a decomposition space coordinate to the ID of the region that contains iit. <br/></td></tr>
+<tr class="separator:a7c4d4b66e9b8256722eb5bdecf79ae07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26ce8c2be9334b6b9967d0ca9423f7c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26ce8c2be9334b6b9967d0ca9423f7c8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a26ce8c2be9334b6b9967d0ca9423f7c8">coordToGridCoord</a> (const std::vector&lt; double &gt; &amp;coord, std::vector&lt; int &gt; &amp;gridCoord) const </td></tr>
+<tr class="memdesc:a26ce8c2be9334b6b9967d0ca9423f7c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a decomposition space coordinate to a grid coordinate. <br/></td></tr>
+<tr class="separator:a26ce8c2be9334b6b9967d0ca9423f7c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48698a909ebaecdc4b859807b5b1206e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48698a909ebaecdc4b859807b5b1206e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a48698a909ebaecdc4b859807b5b1206e">computeGridNeighbors</a> (int rid, std::vector&lt; int &gt; &amp;neighbors) const </td></tr>
+<tr class="memdesc:a48698a909ebaecdc4b859807b5b1206e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the neighbors of the given region in a n-dimensional grid. <br/></td></tr>
+<tr class="separator:a48698a909ebaecdc4b859807b5b1206e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7976b5434a807f81d41ffa923f4fcc36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a7976b5434a807f81d41ffa923f4fcc36">computeGridNeighborsSub</a> (const std::vector&lt; int &gt; &amp;coord, std::vector&lt; int &gt; &amp;neighbors, int dim, std::vector&lt; int &gt; &amp;candidate) const </td></tr>
+<tr class="separator:a7976b5434a807f81d41ffa923f4fcc36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd0e750604746b0366f51cbebd607330"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd0e750604746b0366f51cbebd607330"></a>
+virtual const <br class="typebreak"/>
+<a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#abd0e750604746b0366f51cbebd607330">getRegionBounds</a> (int rid) const </td></tr>
+<tr class="memdesc:abd0e750604746b0366f51cbebd607330"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to return the bounds of a given region. <br/></td></tr>
+<tr class="separator:abd0e750604746b0366f51cbebd607330"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a900eea33caf4df39b3b21cddd437fa3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a900eea33caf4df39b3b21cddd437fa3a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a900eea33caf4df39b3b21cddd437fa3a">regionToGridCoord</a> (int rid, std::vector&lt; int &gt; &amp;coord) const </td></tr>
+<tr class="memdesc:a900eea33caf4df39b3b21cddd437fa3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a given region to a coordinate in the grid. <br/></td></tr>
+<tr class="separator:a900eea33caf4df39b3b21cddd437fa3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ded2b410379a7febc8cbef25cd87860"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ded2b410379a7febc8cbef25cd87860"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a9ded2b410379a7febc8cbef25cd87860">gridCoordToRegion</a> (const std::vector&lt; int &gt; &amp;coord) const </td></tr>
+<tr class="memdesc:a9ded2b410379a7febc8cbef25cd87860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the given grid coordinate to its corresponding region ID. <br/></td></tr>
+<tr class="separator:a9ded2b410379a7febc8cbef25cd87860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c4d4b66e9b8256722eb5bdecf79ae07"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c4d4b66e9b8256722eb5bdecf79ae07"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a7c4d4b66e9b8256722eb5bdecf79ae07">coordToRegion</a> (const std::vector&lt; double &gt; &amp;coord) const </td></tr>
+<tr class="memdesc:a7c4d4b66e9b8256722eb5bdecf79ae07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a decomposition space coordinate to the ID of the region that contains iit. <br/></td></tr>
+<tr class="separator:a7c4d4b66e9b8256722eb5bdecf79ae07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26ce8c2be9334b6b9967d0ca9423f7c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26ce8c2be9334b6b9967d0ca9423f7c8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a26ce8c2be9334b6b9967d0ca9423f7c8">coordToGridCoord</a> (const std::vector&lt; double &gt; &amp;coord, std::vector&lt; int &gt; &amp;gridCoord) const </td></tr>
+<tr class="memdesc:a26ce8c2be9334b6b9967d0ca9423f7c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a decomposition space coordinate to a grid coordinate. <br/></td></tr>
+<tr class="separator:a26ce8c2be9334b6b9967d0ca9423f7c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48698a909ebaecdc4b859807b5b1206e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48698a909ebaecdc4b859807b5b1206e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a48698a909ebaecdc4b859807b5b1206e">computeGridNeighbors</a> (int rid, std::vector&lt; int &gt; &amp;neighbors) const </td></tr>
+<tr class="memdesc:a48698a909ebaecdc4b859807b5b1206e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the neighbors of the given region in a n-dimensional grid. <br/></td></tr>
+<tr class="separator:a48698a909ebaecdc4b859807b5b1206e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7976b5434a807f81d41ffa923f4fcc36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classompl_1_1control_1_1GridDecomposition.html#a7976b5434a807f81d41ffa923f4fcc36">computeGridNeighborsSub</a> (const std::vector&lt; int &gt; &amp;coord, std::vector&lt; int &gt; &amp;neighbors, int dim, std::vector&lt; int &gt; &amp;candidate) const </td></tr>
+<tr class="separator:a7976b5434a807f81d41ffa923f4fcc36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:aed6d17837a517c12bf0d82045254f0d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed6d17837a517c12bf0d82045254f0d5"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>length_</b></td></tr>
+<tr class="separator:aed6d17837a517c12bf0d82045254f0d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace81e02ea505f051b2d92eb1715254d0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace81e02ea505f051b2d92eb1715254d0"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>cellVolume_</b></td></tr>
+<tr class="separator:ace81e02ea505f051b2d92eb1715254d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5e2f7e976745908d7d1dc830e01b29a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5e2f7e976745908d7d1dc830e01b29a"></a>
+boost::unordered_map&lt; int, <br class="typebreak"/>
+boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>regToBounds_</b></td></tr>
+<tr class="separator:ad5e2f7e976745908d7d1dc830e01b29a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classompl_1_1control_1_1Decomposition"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classompl_1_1control_1_1Decomposition')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classompl_1_1control_1_1Decomposition.html">ompl::control::Decomposition</a></td></tr>
+<tr class="memitem:a79149abfef3e7ef423fa1467f5116fbc inherit pro_attribs_classompl_1_1control_1_1Decomposition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a79149abfef3e7ef423fa1467f5116fbc"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>dimension_</b></td></tr>
+<tr class="separator:a79149abfef3e7ef423fa1467f5116fbc inherit pro_attribs_classompl_1_1control_1_1Decomposition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3048e2921417f8dcc15390d33d19c84 inherit pro_attribs_classompl_1_1control_1_1Decomposition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3048e2921417f8dcc15390d33d19c84"></a>
+<a class="el" href="classompl_1_1base_1_1RealVectorBounds.html">base::RealVectorBounds</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bounds_</b></td></tr>
+<tr class="separator:ac3048e2921417f8dcc15390d33d19c84 inherit pro_attribs_classompl_1_1control_1_1Decomposition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A <a class="el" href="classompl_1_1control_1_1GridDecomposition.html" title="A GridDecomposition is a Decomposition implemented using a grid. ">GridDecomposition</a> is a <a class="el" href="classompl_1_1control_1_1Decomposition.html" title="A Decomposition is a partition of a bounded Euclidean space into a fixed number of regions which are ...">Decomposition</a> implemented using a grid. </p>
+
+<p>Definition at line <a class="el" href="Syclop_2GridDecomposition_8h_source.html#l00053">53</a> of file <a class="el" href="Syclop_2GridDecomposition_8h_source.html">GridDecomposition.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a7976b5434a807f81d41ffa923f4fcc36"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ompl::control::GridDecomposition::computeGridNeighborsSub </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>coord</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>neighbors</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>candidate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Recursive subroutine for grid neighbor computation </p>
+
+<p>Definition at line <a class="el" href="Syclop_2src_2GridDecomposition_8cpp_source.html#l00161">161</a> of file <a class="el" href="Syclop_2src_2GridDecomposition_8cpp_source.html">GridDecomposition.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7976b5434a807f81d41ffa923f4fcc36"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ompl::control::GridDecomposition::computeGridNeighborsSub </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>coord</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>neighbors</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>candidate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Recursive subroutine for grid neighbor computation </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>ompl/src/ompl/control/planners/Syclop/<a class="el" href="Syclop_2GridDecomposition_8h_source.html">GridDecomposition.h</a></li>
+<li>ompl/src/ompl/control/planners/Syclop/src/<a class="el" href="Syclop_2src_2GridDecomposition_8cpp_source.html">GridDecomposition.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:28 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

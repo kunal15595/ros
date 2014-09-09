@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ompl/src/ompl/control/PlannerDataStorage.h Source File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ioan A. Șucan, Mark Moll, Lydia E. Kavraki">
+  <link href="../css/tabs.css" rel="stylesheet">
+  <link href="../css/doxygen.css" rel="stylesheet">
+  <link href="../css/search.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="../css/ompl.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="search/search.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">OMPL</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="download.html">Download</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://ompl.kavrakilab.org/OMPL_Primer.pdf">Primer</a></li>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="group__demos.html">Demos</a></li>
+              <li><a href="gui.html">OMPL.app GUI</a></li>
+              <li><a href="python.html">Python Bindings</a></li>
+              <li><a href="planners.html">Available Planners</a></li>
+              <li><a href="spaces.html">Available State Spaces</a></li>
+              <li><a href="optimalPlanning.html">Optimal Planning</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+              <li class="divider"></li>
+              <li>&nbsp;<em>External links:</em></li>
+              <li><a href="http://moveit.ros.org">MoveIt!</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FOMPL">Japanese Introduction to OMPL</a></li>
+              <li><a href="http://robotics.naist.jp/edu/text/?Robotics%2FExercise%2FOMPLProgramming">Japanese OMPL Tutorial</a></li>
+              <li><a href="http://moveit.ros.org/wiki/Tutorials/ICRA2013">ICRA 2013 Tutorial</a></li>
+              <li><a href="http://kavrakilab.org/OMPLtutorial">IROS 2011 Tutorial</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="api_overview.html">API Overview</a></li>
+              <li><a href="annotated.html">Classes</a></li>
+              <li><a href="files.html">Files</a></li>
+              <li><a href="styleGuide.html">Style Guide</a></li>
+              <li><a href="https://bitbucket.org/ompl/ompl/src">Browse Repository</a></li>
+              <li><a href="teamcity.html">TeamCity Build Server</a></li>
+            </ul>
+          </li>
+          <li><a href="https://bitbucket.org/ompl/ompl/issues?status=new&status=open">Issues</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="mailingLists.html">Mailing Lists</a></li>
+              <li><a href="developers.html">Developers</a></li>
+              <li><a href="thirdparty.html">Contributions</a></li>
+              <li><a href="contrib.html">Submit Contribution</a></li>
+              <li><a href="education.html">Education</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="license.html">License</a></li>
+              <li><a href="citations.html">Citations</a></li>
+              <li><a href="acknowledgements.html">Acknowledgments</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="http://ompl.kavrakilab.org/blog/">Blog</a></li>
+          <!-- Doxygen API search box -->
+          <div id="searchli">
+            <div id="MSearchBox" class="MSearchBoxInactive">
+              <span class="left">
+                <img id="MSearchSelect" src="search/mag_sel.png"
+                onmouseover="return searchBox.OnSearchSelectShow()"
+                onmouseout="return searchBox.OnSearchSelectHide()"
+                alt=""/>
+                <input type="text" id="MSearchField" value="Search API" accesskey="S"
+                onfocus="searchBox.OnSearchFieldFocus(true)"
+                onblur="searchBox.OnSearchFieldFocus(false)"
+                onkeyup="searchBox.OnSearchFieldChange(event)"/>
+              </span><span class="right">
+                <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+              </span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"
+  onmouseover="return searchBox.OnSearchSelectShow()"
+  onmouseout="return searchBox.OnSearchSelectHide()"
+  onkeydown="return searchBox.OnSearchSelectKey(event)">
+  <a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow">
+    <iframe src="" frameborder="0"name="MSearchResults" id="MSearchResults"></iframe>
+  </div>
+  <div class="container" role="main">
+    <div>
+<!-- Generated by Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_0fd19436226e4c048b5e49faa01c9f6d.html">ompl</a></li><li class="navelem"><a class="el" href="dir_fe38a46353d0ba9d66a915bca86e612e.html">src</a></li><li class="navelem"><a class="el" href="dir_efdc19d105c21b1223d5f8dc524071be.html">ompl</a></li><li class="navelem"><a class="el" href="dir_d108bf77affaa88433173d7604bedd7d.html">control</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">PlannerDataStorage.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*********************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Software License Agreement (BSD License)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*  Copyright (c) 2012, Rice University</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*  Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*  modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*  are met:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*   * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*     copyright notice, this list of conditions and the following</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*     disclaimer in the documentation and/or other materials provided</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*     with the distribution.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*   * Neither the name of the Rice University nor the names of its</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*********************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Author: Ryan Luna */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifndef OMPL_CONTROL_PLANNER_DATA_STORAGE_</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define OMPL_CONTROL_PLANNER_DATA_STORAGE_</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// PlannerDataStorage requires Boost version &gt;= 1.44</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;boost/version.hpp&gt;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#if BOOST_VERSION &lt; 104400</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#warning Boost version &gt;= 1.44 is required for PlannerDataStorage classes</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;ompl/base/PlannerDataStorage.h&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;ompl/control/PlannerData.h&quot;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &quot;ompl/control/SpaceInformation.h&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">namespace </span>ompl</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">namespace </span>control</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PlannerDataStorage.html">   58</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classompl_1_1control_1_1PlannerDataStorage.html">PlannerDataStorage</a> : <span class="keyword">public</span> <a class="code" href="classompl_1_1base_1_1PlannerDataStorage.html">base::PlannerDataStorage</a></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <a class="code" href="classompl_1_1control_1_1PlannerDataStorage.html#a4af6758476497b41d86abd25107a59f7">PlannerDataStorage</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classompl_1_1control_1_1PlannerDataStorage.html#ac9977783f4b8bf37a0f632de68398667">~PlannerDataStorage</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1PlannerDataStorage.html#a51a10cac176302fe17f9b32f7714f1a3">load</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, <a class="code" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a> &amp;pd);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1PlannerDataStorage.html#a51a10cac176302fe17f9b32f7714f1a3">load</a>(std::istream &amp;in, <a class="code" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a> &amp;pd);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1PlannerDataStorage.html#aadc92e3052e3450f790db0f94038772e">store</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a> &amp;pd, <span class="keyword">const</span> <span class="keywordtype">char</span> *filename);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1PlannerDataStorage.html#aadc92e3052e3450f790db0f94038772e">store</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a> &amp;pd, std::ostream &amp;out);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="comment">// Information stored at the beginning of the PlannerData archive</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keyword">struct </span><a class="code" href="structompl_1_1base_1_1PlannerDataStorage_1_1Header.html">Header</a> : <a class="code" href="structompl_1_1base_1_1PlannerDataStorage_1_1Header.html">base::PlannerDataStorage::Header</a></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                std::vector&lt;int&gt; control_signature;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Archive&gt;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordtype">void</span> <a class="code" href="structompl_1_1base_1_1PlannerDataStorage_1_1Header.html#ad915aa16bc8e63f6e065c4bfbc548839">serialize</a>(Archive &amp; ar, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="comment">/*version*/</span>)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    ar &amp; boost::serialization::base_object&lt;base::PlannerDataStorage::Header&gt;(*this);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    ar &amp; control_signature;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            };</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="comment">// The object containing all control edge data that will be stored</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keyword">struct </span>PlannerDataEdgeControlData : <a class="code" href="structompl_1_1base_1_1PlannerDataStorage_1_1PlannerDataEdgeData.html">base::PlannerDataStorage::PlannerDataEdgeData</a></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Archive&gt;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <span class="keywordtype">void</span> serialize(Archive &amp; ar, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="comment">/*version*/</span>)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                    ar &amp; boost::serialization::base_object&lt;base::PlannerDataStorage::PlannerDataEdgeData&gt;(*this);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                    ar &amp; control_;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                std::vector&lt;unsigned char&gt; control_;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            };</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PlannerDataStorage.html#a50f0c57d301f529abb13ed9eb76c1e16">  116</a></span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1PlannerDataStorage.html#a50f0c57d301f529abb13ed9eb76c1e16">loadEdges</a>(<a class="code" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a> &amp;pd, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numEdges, boost::archive::binary_iarchive &amp;ia)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <a class="code" href="group__logging.html#ga576d0bc79b521f19c5415f330e2b173d">OMPL_DEBUG</a>(<span class="stringliteral">&quot;Loading %d PlannerDataEdgeControl objects&quot;</span>, numEdges);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1ControlSpacePtr.html">ControlSpacePtr</a>&amp; space = <span class="keyword">static_cast&lt;</span><a class="code" href="classompl_1_1control_1_1PlannerData.html">control::PlannerData</a>&amp;<span class="keyword">&gt;</span>(pd).getSpaceInformation()-&gt;getControlSpace();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                std::vector&lt;Control*&gt; controls;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; numEdges; ++i)</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                    PlannerDataEdgeControlData edgeData;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                    ia &gt;&gt; edgeData;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                    std::vector&lt;unsigned char&gt; ctrlBuf (space-&gt;getSerializationLength());</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                    <a class="code" href="classompl_1_1control_1_1Control.html">Control</a> *ctrl = space-&gt;allocControl();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                    controls.push_back(ctrl);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                    space-&gt;deserialize(ctrl, &amp;edgeData.control_[0]);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                    <span class="keyword">const_cast&lt;</span><a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html">PlannerDataEdgeControl</a>*<span class="keyword">&gt;</span>(<span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1control_1_1PlannerDataEdgeControl.html">PlannerDataEdgeControl</a>*<span class="keyword">&gt;</span>(edgeData.e_))-&gt;c_ = ctrl;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                    pd.<a class="code" href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">addEdge</a>(edgeData.endpoints_.first, edgeData.endpoints_.second, *edgeData.e_, <a class="code" href="structompl_1_1base_1_1Cost.html">base::Cost</a>(edgeData.weight_));</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                    <span class="comment">// We deserialized the edge object pointer, and we own it.</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                    <span class="comment">// Since addEdge copies the object, it is safe to free here.</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                    <span class="keyword">delete</span> edgeData.e_;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                <span class="comment">// These edges are using control pointers allocated here.</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="comment">// To avoid a memory leak, we decouple planner data from the</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                <span class="comment">// &#39;planner&#39;, which will clone all controls and properly free the</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                <span class="comment">// memory when PlannerData goes out of scope.  Then it is safe</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                <span class="comment">// to free all memory allocated here.</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                pd.<a class="code" href="classompl_1_1base_1_1PlannerData.html#af01506ec2ff32596dcb1bd9dfa2f8e1d">decoupleFromPlanner</a>();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; controls.size(); ++i)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                    space-&gt;freeControl(controls[i]);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="classompl_1_1control_1_1PlannerDataStorage.html#a8567856a4f7d9918bc03e4a5d8681fb2">  154</a></span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classompl_1_1control_1_1PlannerDataStorage.html#a8567856a4f7d9918bc03e4a5d8681fb2">storeEdges</a>(<span class="keyword">const</span> <a class="code" href="classompl_1_1base_1_1PlannerData.html">base::PlannerData</a> &amp;pd, boost::archive::binary_oarchive &amp;oa)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <a class="code" href="group__logging.html#ga576d0bc79b521f19c5415f330e2b173d">OMPL_DEBUG</a>(<span class="stringliteral">&quot;Storing %d PlannerDataEdgeControl objects&quot;</span>, pd.<a class="code" href="classompl_1_1base_1_1PlannerData.html#aed73a24b4db83fb523fc6e634e2aa335">numEdges</a>());</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <span class="keyword">const</span> <a class="code" href="classompl_1_1control_1_1ControlSpacePtr.html">ControlSpacePtr</a>&amp; space = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classompl_1_1control_1_1PlannerData.html">control::PlannerData</a>&amp;<span class="keyword">&gt;</span>(pd).getSpaceInformation()-&gt;getControlSpace();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                std::vector&lt;unsigned char&gt; ctrl (space-&gt;getSerializationLength());</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; pd.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a4ec510507fa061ff368eb3c1826f0009">numVertices</a>(); ++i)</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0; j &lt; pd.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a4ec510507fa061ff368eb3c1826f0009">numVertices</a>(); ++j)</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                        <span class="keywordflow">if</span>(pd.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a90da79739a42f9b86fa18d8f3af21c8a">edgeExists</a>(i, j))</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                        {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                            PlannerDataEdgeControlData edgeData;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                            edgeData.e_ = &amp;pd.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a635568961308b738919748b839c8f4fa">getEdge</a>(i, j);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                            edgeData.endpoints_.first = i;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                            edgeData.endpoints_.second = j;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                            <a class="code" href="structompl_1_1base_1_1Cost.html">base::Cost</a> weight;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                            pd.<a class="code" href="classompl_1_1base_1_1PlannerData.html#a3ad7bb69b33a92a1c5e614680bd8f628">getEdgeWeight</a>(i, j, &amp;weight);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                            edgeData.weight_ = weight.<a class="code" href="structompl_1_1base_1_1Cost.html#a2f0ece6f8517fe9a49d27b5855426ee6">v</a>;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                            space-&gt;serialize(&amp;ctrl[0], static_cast&lt;const PlannerDataEdgeControl*&gt;(edgeData.e_)-&gt;getControl());</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                            edgeData.control_ = ctrl;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                            oa &lt;&lt; edgeData;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                        }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                    }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        };</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerDataStorage_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerDataStorage.html">ompl::base::PlannerDataStorage</a></div><div class="ttdoc">Object that handles loading/storing a PlannerData object to/from a binary stream. Serialization of ve...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerDataStorage_8h_source.html#l00085">PlannerDataStorage.h:85</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataStorage_html_a8567856a4f7d9918bc03e4a5d8681fb2"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataStorage.html#a8567856a4f7d9918bc03e4a5d8681fb2">ompl::control::PlannerDataStorage::storeEdges</a></div><div class="ttdeci">virtual void storeEdges(const base::PlannerData &amp;pd, boost::archive::binary_oarchive &amp;oa)</div><div class="ttdoc">Serialize and store all edges in pd to the binary archive. It is assumed that the edges can be cast t...</div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerDataStorage_8h_source.html#l00154">PlannerDataStorage.h:154</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html">ompl::base::PlannerData</a></div><div class="ttdoc">Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...</div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerData_8h_source.html#l00164">PlannerData.h:164</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerDataStorage_1_1PlannerDataEdgeData_html"><div class="ttname"><a href="structompl_1_1base_1_1PlannerDataStorage_1_1PlannerDataEdgeData.html">ompl::base::PlannerDataStorage::PlannerDataEdgeData</a></div><div class="ttdoc">The object containing all edge data that will be stored. </div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerDataStorage_8h_source.html#l00161">PlannerDataStorage.h:161</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_af01506ec2ff32596dcb1bd9dfa2f8e1d"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#af01506ec2ff32596dcb1bd9dfa2f8e1d">ompl::base::PlannerData::decoupleFromPlanner</a></div><div class="ttdeci">virtual void decoupleFromPlanner()</div><div class="ttdoc">Creates a deep copy of the states contained in the vertices of this PlannerData structure so that whe...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00084">PlannerData.cpp:84</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataStorage_html"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataStorage.html">ompl::control::PlannerDataStorage</a></div><div class="ttdoc">Object that handles loading/storing a PlannerData object to/from a binary stream. Serialization of ve...</div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerDataStorage_8h_source.html#l00058">PlannerDataStorage.h:58</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1Control_html"><div class="ttname"><a href="classompl_1_1control_1_1Control.html">ompl::control::Control</a></div><div class="ttdoc">Definition of an abstract control. </div><div class="ttdef"><b>Definition:</b> <a href="Control_8h_source.html#l00048">Control.h:48</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1Cost_html_a2f0ece6f8517fe9a49d27b5855426ee6"><div class="ttname"><a href="structompl_1_1base_1_1Cost.html#a2f0ece6f8517fe9a49d27b5855426ee6">ompl::base::Cost::v</a></div><div class="ttdeci">double v</div><div class="ttdoc">The value of the cost. </div><div class="ttdef"><b>Definition:</b> <a href="Cost_8h_source.html#l00052">Cost.h:52</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerData_html"><div class="ttname"><a href="classompl_1_1control_1_1PlannerData.html">ompl::control::PlannerData</a></div><div class="ttdoc">Object containing planner generated vertex and edge data. It is assumed that all vertices are unique...</div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerData_8h_source.html#l00111">PlannerData.h:111</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataStorage_html_aadc92e3052e3450f790db0f94038772e"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataStorage.html#aadc92e3052e3450f790db0f94038772e">ompl::control::PlannerDataStorage::store</a></div><div class="ttdeci">virtual void store(const base::PlannerData &amp;pd, const char *filename)</div><div class="ttdoc">Store (serialize) the structure to the given filename. The StateSpace and ControlSpace that was used ...</div><div class="ttdef"><b>Definition:</b> <a href="control_2src_2PlannerDataStorage_8cpp_source.html#l00130">PlannerDataStorage.cpp:130</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataStorage_html_ac9977783f4b8bf37a0f632de68398667"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataStorage.html#ac9977783f4b8bf37a0f632de68398667">ompl::control::PlannerDataStorage::~PlannerDataStorage</a></div><div class="ttdeci">virtual ~PlannerDataStorage()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> <a href="control_2src_2PlannerDataStorage_8cpp_source.html#l00054">PlannerDataStorage.cpp:54</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataEdgeControl_html"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataEdgeControl.html">ompl::control::PlannerDataEdgeControl</a></div><div class="ttdoc">Representation of an edge in PlannerData for planning with controls. This structure encodes a specifi...</div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerData_8h_source.html#l00060">PlannerData.h:60</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a3ad7bb69b33a92a1c5e614680bd8f628"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a3ad7bb69b33a92a1c5e614680bd8f628">ompl::base::PlannerData::getEdgeWeight</a></div><div class="ttdeci">bool getEdgeWeight(unsigned int v1, unsigned int v2, Cost *weight) const </div><div class="ttdoc">Returns the weight of the edge between the given vertex indices. If there exists an edge between v1 a...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00158">PlannerData.cpp:158</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1ControlSpacePtr_html"><div class="ttname"><a href="classompl_1_1control_1_1ControlSpacePtr.html">ompl::control::ControlSpacePtr</a></div><div class="ttdoc">A boost shared pointer wrapper for ompl::control::ControlSpace. </div></div>
+<div class="ttc" id="structompl_1_1base_1_1Cost_html"><div class="ttname"><a href="structompl_1_1base_1_1Cost.html">ompl::base::Cost</a></div><div class="ttdoc">Definition of a cost value. Can represent the cost of a motion or the cost of a state. </div><div class="ttdef"><b>Definition:</b> <a href="Cost_8h_source.html#l00047">Cost.h:47</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataStorage_html_a50f0c57d301f529abb13ed9eb76c1e16"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataStorage.html#a50f0c57d301f529abb13ed9eb76c1e16">ompl::control::PlannerDataStorage::loadEdges</a></div><div class="ttdeci">virtual void loadEdges(base::PlannerData &amp;pd, unsigned int numEdges, boost::archive::binary_iarchive &amp;ia)</div><div class="ttdoc">Read numEdges from the binary input ia and store them as PlannerData. It is assumed that the edges ca...</div><div class="ttdef"><b>Definition:</b> <a href="control_2PlannerDataStorage_8h_source.html#l00116">PlannerDataStorage.h:116</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerDataStorage_1_1Header_html_ad915aa16bc8e63f6e065c4bfbc548839"><div class="ttname"><a href="structompl_1_1base_1_1PlannerDataStorage_1_1Header.html#ad915aa16bc8e63f6e065c4bfbc548839">ompl::base::PlannerDataStorage::Header::serialize</a></div><div class="ttdeci">void serialize(Archive &amp;ar, const unsigned int)</div><div class="ttdoc">boost::serialization routine </div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerDataStorage_8h_source.html#l00128">PlannerDataStorage.h:128</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_aed73a24b4db83fb523fc6e634e2aa335"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#aed73a24b4db83fb523fc6e634e2aa335">ompl::base::PlannerData::numEdges</a></div><div class="ttdeci">unsigned int numEdges() const </div><div class="ttdoc">Retrieve the number of edges in this structure. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00208">PlannerData.cpp:208</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a4ec510507fa061ff368eb3c1826f0009"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a4ec510507fa061ff368eb3c1826f0009">ompl::base::PlannerData::numVertices</a></div><div class="ttdeci">unsigned int numVertices() const </div><div class="ttdoc">Retrieve the number of vertices in this structure. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00203">PlannerData.cpp:203</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_ac09c21494a8c7db500ef1a66bbbb1aa7"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#ac09c21494a8c7db500ef1a66bbbb1aa7">ompl::base::PlannerData::addEdge</a></div><div class="ttdeci">virtual bool addEdge(unsigned int v1, unsigned int v2, const PlannerDataEdge &amp;edge=PlannerDataEdge(), Cost weight=Cost(1.0))</div><div class="ttdoc">Adds a directed edge between the given vertex indexes. An optional edge structure and weight can be s...</div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00444">PlannerData.cpp:444</a></div></div>
+<div class="ttc" id="structompl_1_1base_1_1PlannerDataStorage_1_1Header_html"><div class="ttname"><a href="structompl_1_1base_1_1PlannerDataStorage_1_1Header.html">ompl::base::PlannerDataStorage::Header</a></div><div class="ttdoc">Information stored at the beginning of the PlannerData archive. </div><div class="ttdef"><b>Definition:</b> <a href="base_2PlannerDataStorage_8h_source.html#l00112">PlannerDataStorage.h:112</a></div></div>
+<div class="ttc" id="group__logging_html_ga576d0bc79b521f19c5415f330e2b173d"><div class="ttname"><a href="group__logging.html#ga576d0bc79b521f19c5415f330e2b173d">OMPL_DEBUG</a></div><div class="ttdeci">#define OMPL_DEBUG(fmt,...)</div><div class="ttdoc">Log a formatted debugging string. </div><div class="ttdef"><b>Definition:</b> <a href="Console_8h_source.html#l00070">Console.h:70</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a90da79739a42f9b86fa18d8f3af21c8a"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a90da79739a42f9b86fa18d8f3af21c8a">ompl::base::PlannerData::edgeExists</a></div><div class="ttdeci">bool edgeExists(unsigned int v1, unsigned int v2) const </div><div class="ttdoc">Check whether an edge between vertex index v1 and index v2 exists. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00189">PlannerData.cpp:189</a></div></div>
+<div class="ttc" id="classompl_1_1base_1_1PlannerData_html_a635568961308b738919748b839c8f4fa"><div class="ttname"><a href="classompl_1_1base_1_1PlannerData.html#a635568961308b738919748b839c8f4fa">ompl::base::PlannerData::getEdge</a></div><div class="ttdeci">const PlannerDataEdge &amp; getEdge(unsigned int v1, unsigned int v2) const </div><div class="ttdoc">Retrieve a reference to the edge object connecting vertices with indexes v1 and v2. If this edge does not exist, NO_EDGE is returned. </div><div class="ttdef"><b>Definition:</b> <a href="src_2ompl_2base_2src_2PlannerData_8cpp_source.html#l00231">PlannerData.cpp:231</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataStorage_html_a4af6758476497b41d86abd25107a59f7"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataStorage.html#a4af6758476497b41d86abd25107a59f7">ompl::control::PlannerDataStorage::PlannerDataStorage</a></div><div class="ttdeci">PlannerDataStorage()</div><div class="ttdoc">Default constructor. </div><div class="ttdef"><b>Definition:</b> <a href="control_2src_2PlannerDataStorage_8cpp_source.html#l00050">PlannerDataStorage.cpp:50</a></div></div>
+<div class="ttc" id="classompl_1_1control_1_1PlannerDataStorage_html_a51a10cac176302fe17f9b32f7714f1a3"><div class="ttname"><a href="classompl_1_1control_1_1PlannerDataStorage.html#a51a10cac176302fe17f9b32f7714f1a3">ompl::control::PlannerDataStorage::load</a></div><div class="ttdeci">virtual void load(const char *filename, base::PlannerData &amp;pd)</div><div class="ttdoc">Load the PlannerData structure from the given filename. </div><div class="ttdef"><b>Definition:</b> <a href="control_2src_2PlannerDataStorage_8cpp_source.html#l00058">PlannerDataStorage.cpp:58</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div>
+<footer class="footer">
+  <div class="container"><p>
+    <a href="http://www.kavrakilab.org">Physical and Biological Computing Group</a> &bull;
+    <a href="http://www.cs.rice.edu">Department of Computer Science</a> &bull;
+    <a href="http://www.rice.edu">Rice University</a><br>
+    <span class="gray">Generated on Tue Sep 2 2014 14:32:25 by&#160;<a href="http://www.doxygen.org/index.html">doxygen</a> 1.8.6</span>
+  </p></div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9156598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.powertip.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dynsections.js"></script>
+<script src="../js/ompl.js"></script>
+</body>
+</html>

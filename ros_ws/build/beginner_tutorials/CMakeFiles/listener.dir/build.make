@@ -82,22 +82,22 @@ listener_EXTERNAL_OBJECTS =
 /home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: beginner_tutorials/CMakeFiles/listener.dir/src/listener.cpp.o
 /home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: beginner_tutorials/CMakeFiles/listener.dir/build.make
 /home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /opt/ros/indigo/lib/libroscpp.so
-/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/i386-linux-gnu/libboost_signals.so
-/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/i386-linux-gnu/libboost_filesystem.so
+/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 /home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /opt/ros/indigo/lib/librosconsole.so
 /home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /opt/ros/indigo/lib/librosconsole_log4cxx.so
 /home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /opt/ros/indigo/lib/librosconsole_backend_interface.so
 /home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/liblog4cxx.so
-/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/i386-linux-gnu/libboost_regex.so
+/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/x86_64-linux-gnu/libboost_regex.so
 /home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /opt/ros/indigo/lib/libxmlrpcpp.so
 /home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /opt/ros/indigo/lib/libroscpp_serialization.so
 /home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /opt/ros/indigo/lib/librostime.so
-/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/i386-linux-gnu/libboost_date_time.so
+/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
 /home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /opt/ros/indigo/lib/libcpp_common.so
-/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/i386-linux-gnu/libboost_system.so
-/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/i386-linux-gnu/libboost_thread.so
-/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/i386-linux-gnu/libpthread.so
-/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/i386-linux-gnu/libconsole_bridge.so
+/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
 /home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener: beginner_tutorials/CMakeFiles/listener.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable /home/kunal15595/ros/ros_ws/devel/lib/beginner_tutorials/listener"
 	cd /home/kunal15595/ros/ros_ws/build/beginner_tutorials && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/listener.dir/link.txt --verbose=$(VERBOSE)

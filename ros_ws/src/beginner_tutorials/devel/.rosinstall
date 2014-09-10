@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/kunal15595/ros/ros_ws/src/beginner_tutorials/devel/setup.sh
